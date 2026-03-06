@@ -35,3 +35,7 @@ As a research lead, I want token-to-score sensitivity diagnostics on the primary
 
 ## Cycle time
 - Start: 2026-03-06 14:17 (Pacific/Honolulu)
+
+## Completion
+- Completed: 2026-03-06 14:22 (Pacific/Honolulu)
+- Decision: `V4` consistently compresses token-to-score sensitivity without delivering a matching discrimination gain, so future progress requires mechanism-level coupling analysis rather than more calibration work.
