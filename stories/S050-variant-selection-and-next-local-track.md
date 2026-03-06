@@ -33,6 +33,8 @@ As a research lead, I want the next active variant track selected from the now-i
 
 ## Cycle time
 - Start: 2026-03-06 12:50 (Pacific/Honolulu)
+- End: 2026-03-06 12:58 (Pacific/Honolulu)
 
 ## Notes
 - Keep this step zero-credit until a clear remote question exists.
+- Completed with `V4` selected as the active local stability track and `V4b` demoted to an exploratory branch.
