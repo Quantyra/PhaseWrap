@@ -33,6 +33,8 @@ As a research lead, I want the minimal implementation plan for `V4b`, so the nex
 
 ## Cycle time
 - Start: 2026-03-06 11:01 (Pacific/Honolulu)
+- End: 2026-03-06 11:14 (Pacific/Honolulu)
 
 ## Notes
 - Keep this step zero-credit.
+- Completed with a shared-layer-first write set and a zero-credit validation packet for `V4b`.
