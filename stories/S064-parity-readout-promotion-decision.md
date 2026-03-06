@@ -34,3 +34,7 @@ As a research lead, I want a decision on whether parity should become the defaul
 
 ## Cycle time
 - Start: 2026-03-06 14:53 (Pacific/Honolulu)
+
+## Completion
+- Completed: 2026-03-06 14:58 (Pacific/Honolulu)
+- Decision: promote `parity` to provisional default local screening readout, while retaining `weighted` as the reference baseline until the next local packet confirms the upgrade.
