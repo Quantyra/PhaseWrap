@@ -1,0 +1,7 @@
+variant:
+  id: "V0"
+  name: "no_positional_encoding"
+
+positional_encoding:
+  type: "none"
+  enabled: false

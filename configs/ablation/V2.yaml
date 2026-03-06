@@ -1,0 +1,13 @@
+variant:
+  id: "V2"
+  name: "fixed_gate_quantum_pe"
+
+positional_encoding:
+  type: "fixed_gate_quantum"
+  enabled: true
+  gate_family: "rx"
+  frequencies:
+    - 0.125
+    - 0.25
+    - 0.5
+    - 1.0

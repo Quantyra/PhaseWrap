@@ -1,0 +1,9 @@
+variant:
+  id: "V1"
+  name: "additive_sinusoidal"
+
+positional_encoding:
+  type: "sinusoidal_additive"
+  enabled: true
+  max_length: 256
+  base_frequency: 10000

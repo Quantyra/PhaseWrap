@@ -1,0 +1,17 @@
+variant:
+  id: "V4"
+  name: "q_rope_relative_phase_damped_clipped"
+
+positional_encoding:
+  type: "q_rope_relative_phase"
+  enabled: true
+  gate_family: "rz"
+  frequencies:
+    - 0.125
+    - 0.25
+    - 0.5
+    - 1.0
+  relative_mode: true
+  tie_query_key_frequencies: true
+  stability_mode: "damped_clipped"
+  phase_base: 0.14

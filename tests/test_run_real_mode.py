@@ -1,0 +1,90 @@
+import importlib.util
+
+from qrope.run import collect_quandela_scores, estimate_hardware_costs, limit_remote_samples, load_dataset_samples, run_real_experiment
+
+
+def test_real_experiment_returns_non_placeholder_metrics() -> None:
+    metrics = run_real_experiment(dataset="yelp", seed=42, backend="sim_local", variant="V0")
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+    assert metrics["train_loss_final"] > 0.0
+    assert metrics["eval_loss"] > 0.0
+    assert metrics["data_mode"] in {"synthetic_fallback", "local_jsonl"}
+
+
+def test_hardware_cost_estimate_positive() -> None:
+    gate_count, depth = estimate_hardware_costs(qubits=8, layers=2, variant="V3")
+    assert gate_count > 0
+    assert depth > 0
+
+
+def test_v4_hardware_cost_matches_v3_structure() -> None:
+    gate_count_v3, depth_v3 = estimate_hardware_costs(qubits=8, layers=2, variant="V3")
+    gate_count_v4, depth_v4 = estimate_hardware_costs(qubits=8, layers=2, variant="V4")
+    assert gate_count_v4 == gate_count_v3
+    assert depth_v4 == depth_v3
+
+
+def test_local_dataset_loader_path() -> None:
+    rows, mode = load_dataset_samples(dataset="yelp", seed=42)
+    assert len(rows) >= 20
+    assert mode == "local_jsonl"
+
+
+def test_local_amazon_dataset_loader_path() -> None:
+    rows, mode = load_dataset_samples(dataset="amazon", seed=42)
+    assert len(rows) >= 20
+    assert mode == "local_jsonl"
+
+
+def test_quantum_backend_path_runs() -> None:
+    metrics = run_real_experiment(dataset="yelp", seed=42, backend="sim_quantum_statevector", variant="V3")
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+    assert metrics["train_loss_final"] > 0.0
+    assert metrics["eval_loss"] > 0.0
+
+
+def test_v4_quantum_backend_path_runs() -> None:
+    metrics = run_real_experiment(dataset="yelp", seed=42, backend="sim_quantum_statevector", variant="V4")
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+    assert metrics["train_loss_final"] > 0.0
+    assert metrics["eval_loss"] > 0.0
+
+
+def test_qiskit_aer_backend_path_runs_if_available() -> None:
+    if not importlib.util.find_spec("qiskit_aer"):
+        return
+    metrics = run_real_experiment(dataset="yelp", seed=42, backend="sim_qiskit_aer", variant="V3")
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+
+
+def test_limit_remote_samples_balances_classes() -> None:
+    rows, _ = load_dataset_samples(dataset="yelp", seed=42)
+    subset = limit_remote_samples(rows, max_samples=12)
+    assert len(subset) == 12
+    assert sum(1 for _, label in subset if label == 1) == 6
+    assert sum(1 for _, label in subset if label == 0) == 6
+
+
+def test_collect_quandela_scores_skips_runtime_errors(monkeypatch) -> None:
+    calls = iter([0.3, RuntimeError("blocked"), 0.7])
+
+    def fake_score(*args, **kwargs):
+        value = next(calls)
+        if isinstance(value, Exception):
+            raise value
+        return value
+
+    monkeypatch.setattr("qrope.run.quandela_remote_score", fake_score)
+    labels, scores, skipped = collect_quandela_scores(
+        rows=[("a", 1), ("b", 0), ("c", 1)],
+        seed=42,
+        variant="V3",
+        platform_name="sim:slos",
+    )
+    assert labels == [1, 1]
+    assert scores == [0.3, 0.7]
+    assert skipped == 1
