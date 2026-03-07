@@ -22,6 +22,7 @@ Standardize how worker agents are launched and how they report results for QRoPE
 - Stories must cite sources or datasets used.
 - Findings should be reproducible or explicitly note limitations.
 - A novelty review gate must occur before publication drafting or formal claim hardening.
+- Publication work must stop if the current result is null-to-inconclusive without a credible positive thesis; in that state, convert the repo to internal archive/positioning mode until a materially different positive hypothesis appears.
 
 ## Planning loop protocol
 Use a plan-and-refine loop for non-trivial stories:
