@@ -31,3 +31,7 @@ As a research lead, I want the new mechanism to have an exact state-preparation 
 
 ## Unit tests (development stories only)
 - No new unit tests required.
+
+## Cycle time
+- Start: 2026-03-07 10:08 (Pacific/Honolulu)
+- End: 2026-03-07 10:14 (Pacific/Honolulu)
