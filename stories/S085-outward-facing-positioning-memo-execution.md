@@ -4,12 +4,12 @@
 S085 - Outward-facing positioning memo execution
 
 ## User value
-As a research lead, I want the actual outward-facing positioning memo written, so we can communicate the project externally with disciplined, evidence-aligned language.
+As a research lead, I want the communication layer rewritten as an internal-only positioning memo, so the project is framed accurately without pushing publication on a null result.
 
 ## Acceptance criteria
-- A concise outward-facing memo is written
-- Safe and unsafe claims are explicit
-- The recommended short pitch is included
+- A concise internal positioning memo is written
+- Null-result publication gating is explicit
+- The next restart/archival decision is clearly handed off
 
 ## Outputs
 - `docs/research/`
@@ -21,16 +21,20 @@ As a research lead, I want the actual outward-facing positioning memo written, s
 
 ## Out of scope
 - Paid remote execution
-- New technical branch creation
+- Publication-oriented packaging
 
 ## Dependencies
 - S084
 
 ## Risks
-- The memo may make the bounded posture even more explicit than internal stakeholders expect.
+- The memo may force an explicit internal acknowledgment that the current result is null-to-inconclusive.
 
 ## Unit tests (development stories only)
 - No new unit tests required unless code changes are introduced.
 
 ## Cycle time
 - Start: 2026-03-06 15:17 (Pacific/Honolulu)
+
+## Completion
+- Completed: 2026-03-06 15:20 (Pacific/Honolulu)
+- Decision: publication is gated off for the current null-result state; communication is now internal-only and hands off to a salvage-options decision rather than a publication push.
