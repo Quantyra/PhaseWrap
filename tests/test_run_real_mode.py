@@ -205,3 +205,23 @@ def test_quantum_backend_supports_interference_tail_preset() -> None:
     assert 0.0 <= metrics["accuracy"] <= 1.0
     assert 0.0 <= metrics["f1"] <= 1.0
     assert metrics["data_mode"].endswith("readout_parity+mix_mix_it1")
+
+
+def test_synthetic_offset_binary_loader_path() -> None:
+    rows, mode = load_dataset_samples(dataset="synthetic_offset_binary", seed=42)
+    assert len(rows) == 512
+    assert mode == "synthetic_offset_binary"
+
+
+def test_synthetic_offset_binary_quantum_backend_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_offset_binary",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V3",
+        local_readout="parity",
+    )
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+    assert metrics["data_mode"].endswith("readout_parity+mix_mix_v0")
+    assert metrics["dataset_diagnostics"]["dataset"] == "synthetic_offset_binary"
