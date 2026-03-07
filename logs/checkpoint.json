@@ -1,15 +1,15 @@
 {
-  "timestamp_utc": "2026-03-07T00:15:00Z",
+  "timestamp_utc": "2026-03-07T00:15:30Z",
   "current_epic_id": "E001",
   "current_epic_title": "Quantum Rotational Positional Embeddings foundation",
   "current_epic_status": "In progress",
   "current_story_ids": [
-    "S072"
+    "S073"
   ],
   "active_workers": {},
   "next_actions": [
-    "Select the next broader zero-credit local redesign question after stopping the fixed mixing branch.",
-    "Keep the next mechanism step local and narrowly scoped.",
+    "Choose one narrowly scoped joint circuit-readout redesign family for the V3 local screening path.",
+    "Define the evaluation gate before implementation.",
     "Keep the next validation wave zero-credit and restricted to variant-sensitive local backends.",
     "Keep direct Quandela as photonic-primary and IBM as secondary comparator.",
     "Use Scaleway as fallback only if direct Quandela becomes credit- or reliability-constrained again."
@@ -120,5 +120,5 @@
     "logs/ablation_runs/v4-yelp-local-s42/metrics.json",
     "logs/ablation_runs/v4-yelp-qsim-s42/metrics.json"
   ],
-  "notes": "S071 completed. The fixed post-RZ mixing preset branch is now closed as an active improvement track. `mix_v0` remains baseline, and the next step is to choose the broader local redesign question without reopening remote spend."
+  "notes": "S072 completed. The next broader local redesign question is now locked: a joint circuit-plus-readout redesign on the V3 local screening path. S073 is active to narrow that redesign family before any implementation."
 }

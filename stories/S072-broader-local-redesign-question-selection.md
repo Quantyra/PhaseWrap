@@ -34,3 +34,7 @@ As a research lead, I want the next broader zero-credit local redesign question 
 
 ## Cycle time
 - Start: 2026-03-06 14:15 (Pacific/Honolulu)
+
+## Completion
+- Completed: 2026-03-06 14:15 (Pacific/Honolulu)
+- Decision: the next broader local redesign question is a joint circuit-plus-readout redesign on the `V3` local screening path, not another narrow preset or threshold tweak.
