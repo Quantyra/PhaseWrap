@@ -17,6 +17,7 @@ from .env_utils import load_local_dotenv
 from .qibm import run_ibm_sampler_batch
 from .qphotonic import quandela_remote_score
 from .qsim import SUPPORTED_MIXING_PRESETS, SUPPORTED_READOUTS, feature_angles, simple_quantum_score, variant_phases
+from .synthetic import diagnostics_to_jsonable, generate_signed_offset_binary_bundle
 
 
 def parse_args() -> argparse.Namespace:
@@ -91,12 +92,14 @@ def main() -> None:
         train_loss_final = real_metrics["train_loss_final"]
         eval_loss = real_metrics["eval_loss"]
         data_mode = real_metrics["data_mode"]
+        dataset_diagnostics = real_metrics.get("dataset_diagnostics")
     else:
         accuracy = 0.0
         f1 = 0.0
         train_loss_final = 0.0
         eval_loss = 0.0
         data_mode = "n/a"
+        dataset_diagnostics = None
 
     metrics = {
         "run_id": run_id,
@@ -122,6 +125,9 @@ def main() -> None:
 
     with (run_dir / "metrics.json").open("w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
+    if dataset_diagnostics:
+        with (run_dir / "generator_diagnostics.json").open("w", encoding="utf-8") as f:
+            json.dump(diagnostics_to_jsonable(dataset_diagnostics), f, indent=2)
 
     print(f"Wrote run artifacts: {run_dir}")
     print(f"Metrics file: {run_dir / 'metrics.json'}")
@@ -149,10 +155,21 @@ def run_real_experiment(
     local_readout: str = "weighted",
     local_mixing_preset: str = "mix_v0",
 ) -> dict[str, float | str]:
-    samples, data_mode = load_dataset_samples(dataset, seed)
-    if backend == "sim_quandela_remote":
-        samples = limit_remote_samples(samples, max_samples=12)
-    train, test = split_samples(samples, train_ratio=0.8)
+    bundle = load_dataset_bundle(dataset, seed)
+    data_mode = bundle["data_mode"]
+    dataset_diagnostics = bundle.get("dataset_diagnostics")
+    if "rows" in bundle:
+        samples = bundle["rows"]
+        if backend == "sim_quandela_remote":
+            samples = limit_remote_samples(samples, max_samples=12)
+        train, test = split_samples(samples, train_ratio=0.8)
+        validation = None
+    else:
+        train = bundle["train"]
+        validation = bundle["validation"]
+        test = bundle["test"]
+        if backend in {"sim_quandela_remote", "ibm_runtime_remote"}:
+            raise RuntimeError(f"{dataset} is local-only and unsupported on backend {backend}")
 
     if backend == "sim_quantum_statevector":
         train_loss, eval_loss, accuracy, f1 = run_quantum_backend(
@@ -162,6 +179,7 @@ def run_real_experiment(
             variant=variant,
             readout=local_readout,
             mixing_preset=local_mixing_preset,
+            validation=validation,
         )
         data_mode = f"{data_mode}+readout_{local_readout}+mix_{local_mixing_preset}"
     elif backend == "sim_qiskit_aer":
@@ -204,6 +222,7 @@ def run_real_experiment(
         "train_loss_final": train_loss,
         "eval_loss": eval_loss,
         "data_mode": data_mode,
+        "dataset_diagnostics": dataset_diagnostics,
     }
 
 
@@ -306,6 +325,7 @@ def run_quantum_backend(
     variant: str,
     readout: str = "weighted",
     mixing_preset: str = "mix_v0",
+    validation: list[tuple[str, int]] | None = None,
 ) -> tuple[float, float, float, float]:
     if readout not in SUPPORTED_READOUTS:
         raise ValueError(f"Unsupported local readout: {readout}")
@@ -315,7 +335,8 @@ def run_quantum_backend(
         simple_quantum_score(text=t, variant=variant, seed=seed, readout=readout, mixing_preset=mixing_preset)
         for t, _ in train
     ]
-    _, validation = stratified_calibration_split(train)
+    if validation is None:
+        _, validation = stratified_calibration_split(train)
     validation_scores = [
         simple_quantum_score(text=t, variant=variant, seed=seed, readout=readout, mixing_preset=mixing_preset)
         for t, _ in validation
@@ -465,7 +486,17 @@ def run_qiskit_aer_backend(
     return train_loss, eval_loss, accuracy, f1
 
 
-def load_dataset_samples(dataset: str, seed: int) -> tuple[list[tuple[str, int]], str]:
+def load_dataset_bundle(dataset: str, seed: int) -> dict[str, Any]:
+    if dataset == "synthetic_offset_binary":
+        bundle = generate_signed_offset_binary_bundle(seed=seed)
+        return {
+            "train": bundle.train,
+            "validation": bundle.validation,
+            "test": bundle.test,
+            "data_mode": "synthetic_offset_binary",
+            "dataset_diagnostics": bundle.diagnostics,
+        }
+
     path = Path("data") / f"{dataset}.jsonl"
     if path.exists():
         rows: list[tuple[str, int]] = []
@@ -477,8 +508,16 @@ def load_dataset_samples(dataset: str, seed: int) -> tuple[list[tuple[str, int]]
                 item = json.loads(line)
                 rows.append((str(item["text"]), int(item["label"])))
         if len(rows) >= 20:
-            return rows, "local_jsonl"
-    return generate_synthetic_dataset(dataset, seed), "synthetic_fallback"
+            return {"rows": rows, "data_mode": "local_jsonl"}
+    return {"rows": generate_synthetic_dataset(dataset, seed), "data_mode": "synthetic_fallback"}
+
+
+def load_dataset_samples(dataset: str, seed: int) -> tuple[list[tuple[str, int]], str]:
+    bundle = load_dataset_bundle(dataset, seed)
+    if "rows" in bundle:
+        return bundle["rows"], bundle["data_mode"]
+    rows = bundle["train"] + bundle["validation"] + bundle["test"]
+    return rows, bundle["data_mode"]
 
 
 def generate_synthetic_dataset(dataset: str, seed: int) -> list[tuple[str, int]]:
