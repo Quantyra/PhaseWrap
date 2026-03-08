@@ -1,17 +1,17 @@
 {
-    "timestamp_utc":  "2026-03-09T20:12:00Z",
+    "timestamp_utc":  "2026-03-09T20:24:00Z",
     "current_epic_id":  "E001",
     "current_epic_title":  "Quantum Rotational Positional Embeddings foundation",
     "current_epic_status":  "Paused",
     "current_story_ids":  [
-                              "S150"
+                              "S152"
                           ],
     "active_workers":  {
 
                        },
     "next_actions":  [
                          "Keep the repo in memo-only mode.",
-                         "Develop the relational witness head angle before any approval discussion.",
+                         "Bind the witness-head angle to one exact alignment-safe task and falsification packet next.",
                          "Do not reopen code or experiments without a new restart brief."
                      ],
     "risks_or_blocks":  [
@@ -120,5 +120,5 @@
                            "logs/ablation_runs/v4-yelp-local-s42/metrics.json",
                            "logs/ablation_runs/v4-yelp-qsim-s42/metrics.json"
                        ],
-    "notes":  "S150 opened a new approach memo after the sector-parity restart was archived. The current leading angle is a constrained relational witness head that keeps quantum sector-first structure but relaxes the final decision rule into a tiny explicit hybrid head."
+    "notes":  "S152 fixed the witness-head capacity and training constraints. The next memo step is to bind this angle to one exact task and packet so it can become a real restart candidate instead of an open-ended hybrid idea."
 }
