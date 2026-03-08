@@ -21,6 +21,7 @@ from qrope.qsim import (
     position_phase_angle,
     prob_qubit_one,
     raw_variant_phases,
+    relational_witness_features,
     rx,
     simple_quantum_score,
     stable_token_hash,
@@ -267,3 +268,20 @@ def test_pairstate_sector_parity_uses_crossed_assignment() -> None:
         "negative": ["N_small", "P_large"],
     }
     assert result["sector_resolution_pre_aggregation"] is True
+
+
+def test_relational_witness_features_use_fixed_order() -> None:
+    result = relational_witness_features("lt:A rt:C lp:2 rp:5 off:+3", seed=42)
+    assert result["feature_order"] == [
+        "mu_P_small",
+        "mu_P_large",
+        "mu_N_small",
+        "mu_N_large",
+        "delta_sign_small",
+        "delta_sign_large",
+        "delta_mag_pos",
+        "delta_mag_neg",
+        "delta_task",
+    ]
+    assert result["anti_collapse_pass"] is True
+    assert result["forbidden_inputs_absent"] is True
