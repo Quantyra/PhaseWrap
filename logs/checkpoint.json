@@ -1,15 +1,13 @@
 {
-  "timestamp_utc": "2026-03-08T22:26:00Z",
+  "timestamp_utc": "2026-03-09T03:52:00Z",
   "current_epic_id": "E001",
   "current_epic_title": "Quantum Rotational Positional Embeddings foundation",
   "current_epic_status": "Paused",
-  "current_story_ids": [
-    "S112"
-  ],
+  "current_story_ids": [],
   "active_workers": {},
   "next_actions": [
-    "Record one archive handoff index for future reuse.",
     "Keep the repository in archive posture.",
+    "Allow only memo-level restart design unless a future restart brief is approved.",
     "Do not open new implementation, new experiments, or remote work."
   ],
   "risks_or_blocks": [
@@ -118,5 +116,5 @@
     "logs/ablation_runs/v4-yelp-local-s42/metrics.json",
     "logs/ablation_runs/v4-yelp-qsim-s42/metrics.json"
   ],
-  "notes": "S111 completed. The repository remains in archive posture. S112 is active only to add a practical handoff index for future memo-level reuse."
+  "notes": "S112 completed. The repository remains in explicit archive posture with no active stories. Future work is memo-only unless a new restart brief is approved first."
 }
