@@ -18,6 +18,7 @@ As a research lead, I want the new symbolic-resistant task pinned down formally,
 
 ## Evidence and references
 - `docs/research/q-rope-symbolic-resistant-task-design-v1.md`
+- `docs/research/q-rope-dual-sector-agreement-task-spec-v1.md`
 
 ## Out of scope
 - Implementation
@@ -35,3 +36,4 @@ As a research lead, I want the new symbolic-resistant task pinned down formally,
 
 ## Cycle time
 - Start: 2026-03-08 13:45 (Pacific/Honolulu)
+- End: 2026-03-08 13:54 (Pacific/Honolulu)
