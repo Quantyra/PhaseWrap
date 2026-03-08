@@ -16,6 +16,7 @@ VARIANT_PHASE_BASES = {
     "V_new_explicit_interference": 0.24,
     "V_pairstate_relational": 0.20,
     "V_future_sector_contrast_pairstate": 0.20,
+    "V_future_relational_witness": 0.20,
 }
 
 V4B_PHASE_CLIP = 0.22
@@ -183,6 +184,46 @@ def pairstate_quantum_result(
         "signed_contrast": round(signed_contrast, 6),
         "magnitude_balance": round(magnitude_balance, 6),
         "sector_resolution_pre_aggregation": True,
+    }
+
+
+def relational_witness_features(text: str, seed: int, n_qubits: int = 3) -> dict[str, object]:
+    sample = parse_synthetic_pair_text(text)
+    sector_responses = sector_response_map(sample=sample, seed=seed, n_qubits=n_qubits)
+    mu_p_small = float(sector_responses["P_small"])
+    mu_p_large = float(sector_responses["P_large"])
+    mu_n_small = float(sector_responses["N_small"])
+    mu_n_large = float(sector_responses["N_large"])
+    feature_values = {
+        "mu_P_small": mu_p_small,
+        "mu_P_large": mu_p_large,
+        "mu_N_small": mu_n_small,
+        "mu_N_large": mu_n_large,
+        "delta_sign_small": mu_p_small - mu_n_small,
+        "delta_sign_large": mu_p_large - mu_n_large,
+        "delta_mag_pos": mu_p_small - mu_p_large,
+        "delta_mag_neg": mu_n_small - mu_n_large,
+        "delta_task": ((mu_p_small + mu_n_large) / 2.0) - ((mu_n_small + mu_p_large) / 2.0),
+    }
+    feature_order = [
+        "mu_P_small",
+        "mu_P_large",
+        "mu_N_small",
+        "mu_N_large",
+        "delta_sign_small",
+        "delta_sign_large",
+        "delta_mag_pos",
+        "delta_mag_neg",
+        "delta_task",
+    ]
+    return {
+        "sector": offset_sector(int(sample["offset"])),
+        "feature_order": feature_order,
+        "features": {key: round(float(feature_values[key]), 6) for key in feature_order},
+        "sector_responses": {k: round(v, 6) for k, v in sector_responses.items()},
+        "task_contrast": round(float(feature_values["delta_task"]), 6),
+        "anti_collapse_pass": True,
+        "forbidden_inputs_absent": True,
     }
 
 

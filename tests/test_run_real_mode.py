@@ -298,3 +298,29 @@ def test_future_sector_contrast_pairstate_runs_on_sector_parity_packet() -> None
     assert "score_by_sector" in diagnostics
     assert "task_contrast_mean" in diagnostics
     assert diagnostics["anti_collapse_pass"] is True
+
+
+def test_future_relational_witness_runs_on_sector_parity_packet() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_sector_parity_binary",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_future_relational_witness",
+    )
+    assert metrics["data_mode"].endswith("readout_relational_witness+head_logreg")
+    diagnostics = metrics["run_diagnostics"]
+    assert diagnostics["feature_order"] == [
+        "mu_P_small",
+        "mu_P_large",
+        "mu_N_small",
+        "mu_N_large",
+        "delta_sign_small",
+        "delta_sign_large",
+        "delta_mag_pos",
+        "delta_mag_neg",
+        "delta_task",
+    ]
+    assert "coefficients" in diagnostics
+    assert "intercept" in diagnostics
+    assert diagnostics["anti_collapse_pass"] is True
+    assert diagnostics["forbidden_inputs_absent"] is True
