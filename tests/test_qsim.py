@@ -5,11 +5,15 @@ from qrope.qphotonic import derive_photonic_angles
 from qrope.qsim import (
     SUPPORTED_MIXING_PRESETS,
     build_quantum_state,
+    build_branch_state,
     effective_variant_phases,
+    explicit_interference_score,
     feature_angles,
     hadamard,
     parity_readout,
+    parse_synthetic_pair_text,
     pairwise_quantum_score,
+    position_phase_angle,
     prob_qubit_one,
     raw_variant_phases,
     rx,
@@ -180,3 +184,34 @@ def test_pairwise_quantum_score_prefers_identical_input() -> None:
     identical = pairwise_quantum_score("good food and quick service", "good food and quick service", variant="V3", seed=42)
     different = pairwise_quantum_score("good food and quick service", "bad slow dirty product", variant="V3", seed=42)
     assert identical >= different
+
+
+def test_parse_synthetic_pair_text_extracts_fields() -> None:
+    parsed = parse_synthetic_pair_text("lt:A rt:C lp:2 rp:5 off:+3")
+    assert parsed == {
+        "left_token": "A",
+        "right_token": "C",
+        "left_pos": 2,
+        "right_pos": 5,
+        "offset": 3,
+    }
+
+
+def test_position_phase_angle_scales_with_position() -> None:
+    assert position_phase_angle(position=0, qubit_index=1) == pytest.approx(0.0)
+    assert position_phase_angle(position=2, qubit_index=1) > position_phase_angle(position=1, qubit_index=1)
+
+
+def test_build_branch_state_is_normalized() -> None:
+    import numpy as np
+
+    state = build_branch_state(token="A", position=3, seed=42)
+    assert np.allclose(float(np.vdot(state, state).real), 1.0)
+
+
+def test_explicit_interference_score_is_deterministic_and_bounded() -> None:
+    text = "lt:A rt:C lp:2 rp:5 off:+3"
+    score_a = explicit_interference_score(text=text, seed=42)
+    score_b = explicit_interference_score(text=text, seed=42)
+    assert score_a == pytest.approx(score_b)
+    assert 0.0 <= score_a <= 1.0

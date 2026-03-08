@@ -13,6 +13,7 @@ VARIANT_PHASE_BASES = {
     "V3": 0.24,
     "V4": 0.14,
     "V4b": 0.18,
+    "V_new_explicit_interference": 0.24,
 }
 
 V4B_PHASE_CLIP = 0.22
@@ -41,6 +42,8 @@ def simple_quantum_score(
     - reverse CNOT chain
     - all-qubit weighted excitation readout
     """
+    if variant == "V_new_explicit_interference":
+        return explicit_interference_score(text=text, seed=seed, n_qubits=n_qubits)
     state = build_quantum_state(
         text=text,
         variant=variant,
@@ -99,6 +102,77 @@ def pairwise_quantum_score(
         mixing_preset=mixing_preset,
     )
     return state_overlap_score(state_a, state_b)
+
+
+def explicit_interference_score(text: str, seed: int, n_qubits: int = 3) -> float:
+    sample = parse_synthetic_pair_text(text)
+    state_a = build_branch_state(
+        token=sample["left_token"],
+        position=sample["left_pos"],
+        seed=seed,
+        n_qubits=n_qubits,
+    )
+    state_b = build_branch_state(
+        token=sample["right_token"],
+        position=sample["right_pos"],
+        seed=seed,
+        n_qubits=n_qubits,
+    )
+    constructive = normalize_state(state_a + state_b)
+    destructive = normalize_state(state_a - state_b)
+    parity_plus = parity_readout(constructive, n_qubits=n_qubits)
+    parity_minus = parity_readout(destructive, n_qubits=n_qubits)
+    contrast = parity_plus - parity_minus
+    return max(0.0, min(1.0, 0.5 + contrast / 2.0))
+
+
+def build_branch_state(token: str, position: int, seed: int, n_qubits: int = 3) -> np.ndarray:
+    n = max(2, min(n_qubits, 6))
+    dim = 1 << n
+    state = np.zeros(dim, dtype=np.complex128)
+    state[0] = 1.0 + 0.0j
+
+    features = feature_angles(text=token, n_qubits=n, seed=seed)
+    for q in range(n):
+        state = apply_single_qubit_gate(state, ry(features[q]), q, n)
+        state = apply_single_qubit_gate(state, rz(position_phase_angle(position=position, qubit_index=q)), q, n)
+
+    state = apply_forward_cnot_chain(state, n_qubits=n)
+    state = apply_global_rx_layer(state, n_qubits=n, angle=SCREENING_MIX_ANGLE)
+    state = apply_reverse_cnot_chain(state, n_qubits=n)
+    return state
+
+
+def position_phase_angle(position: int, qubit_index: int) -> float:
+    base = VARIANT_PHASE_BASES["V_new_explicit_interference"]
+    return base * (qubit_index + 1) * position
+
+
+def parse_synthetic_pair_text(text: str) -> dict[str, int | str]:
+    fields: dict[str, str] = {}
+    for part in text.split():
+        if ":" not in part:
+            continue
+        key, value = part.split(":", 1)
+        fields[key] = value
+    required = {"lt", "rt", "lp", "rp", "off"}
+    missing = required.difference(fields)
+    if missing:
+        raise ValueError(f"Missing synthetic pair fields: {sorted(missing)}")
+    return {
+        "left_token": fields["lt"],
+        "right_token": fields["rt"],
+        "left_pos": int(fields["lp"]),
+        "right_pos": int(fields["rp"]),
+        "offset": int(fields["off"]),
+    }
+
+
+def normalize_state(state: np.ndarray) -> np.ndarray:
+    norm = float(np.linalg.norm(state))
+    if norm == 0.0:
+        raise ValueError("Cannot normalize zero state")
+    return state / norm
 
 
 def feature_angles(text: str, n_qubits: int, seed: int) -> list[float]:

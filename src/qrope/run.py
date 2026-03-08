@@ -16,7 +16,7 @@ from .config_utils import apply_set, deep_merge, load_yaml
 from .env_utils import load_local_dotenv
 from .qibm import run_ibm_sampler_batch
 from .qphotonic import quandela_remote_score
-from .qsim import SUPPORTED_MIXING_PRESETS, SUPPORTED_READOUTS, feature_angles, simple_quantum_score, variant_phases
+from .qsim import SUPPORTED_MIXING_PRESETS, SUPPORTED_READOUTS, feature_angles, parse_synthetic_pair_text, simple_quantum_score, variant_phases
 from .synthetic import diagnostics_to_jsonable, generate_signed_offset_binary_bundle
 
 
@@ -93,6 +93,7 @@ def main() -> None:
         eval_loss = real_metrics["eval_loss"]
         data_mode = real_metrics["data_mode"]
         dataset_diagnostics = real_metrics.get("dataset_diagnostics")
+        run_diagnostics = real_metrics.get("run_diagnostics")
     else:
         accuracy = 0.0
         f1 = 0.0
@@ -100,6 +101,7 @@ def main() -> None:
         eval_loss = 0.0
         data_mode = "n/a"
         dataset_diagnostics = None
+        run_diagnostics = None
 
     metrics = {
         "run_id": run_id,
@@ -128,6 +130,9 @@ def main() -> None:
     if dataset_diagnostics:
         with (run_dir / "generator_diagnostics.json").open("w", encoding="utf-8") as f:
             json.dump(diagnostics_to_jsonable(dataset_diagnostics), f, indent=2)
+    if run_diagnostics:
+        with (run_dir / "run_diagnostics.json").open("w", encoding="utf-8") as f:
+            json.dump(diagnostics_to_jsonable(run_diagnostics), f, indent=2)
 
     print(f"Wrote run artifacts: {run_dir}")
     print(f"Metrics file: {run_dir / 'metrics.json'}")
@@ -154,7 +159,7 @@ def run_real_experiment(
     variant: str,
     local_readout: str = "weighted",
     local_mixing_preset: str = "mix_v0",
-) -> dict[str, float | str]:
+) -> dict[str, Any]:
     bundle = load_dataset_bundle(dataset, seed)
     data_mode = bundle["data_mode"]
     dataset_diagnostics = bundle.get("dataset_diagnostics")
@@ -172,7 +177,7 @@ def run_real_experiment(
             raise RuntimeError(f"{dataset} is local-only and unsupported on backend {backend}")
 
     if backend == "sim_quantum_statevector":
-        train_loss, eval_loss, accuracy, f1 = run_quantum_backend(
+        train_loss, eval_loss, accuracy, f1, run_diagnostics = run_quantum_backend(
             train=train,
             test=test,
             seed=seed,
@@ -181,9 +186,13 @@ def run_real_experiment(
             mixing_preset=local_mixing_preset,
             validation=validation,
         )
-        data_mode = f"{data_mode}+readout_{local_readout}+mix_{local_mixing_preset}"
+        if variant == "V_new_explicit_interference":
+            data_mode = f"{data_mode}+readout_parity_contrast+mix_interference"
+        else:
+            data_mode = f"{data_mode}+readout_{local_readout}+mix_{local_mixing_preset}"
     elif backend == "sim_qiskit_aer":
         train_loss, eval_loss, accuracy, f1 = run_qiskit_aer_backend(train=train, test=test, seed=seed, variant=variant)
+        run_diagnostics = None
     elif backend == "sim_quandela_remote":
         quandela_result = run_quandela_remote_backend(
             train=train,
@@ -197,6 +206,7 @@ def run_real_experiment(
         accuracy = quandela_result["accuracy"]
         f1 = quandela_result["f1"]
         data_mode = f"{data_mode}+quandela_remote_slice12+skip{quandela_result['skip_count']}"
+        run_diagnostics = None
     elif backend == "ibm_runtime_remote":
         samples = limit_remote_samples(samples, max_samples=12)
         train, test = split_samples(samples, train_ratio=0.8)
@@ -208,6 +218,7 @@ def run_real_experiment(
             backend_name=os.environ.get("IBM_QUANTUM_BACKEND", "").strip() or None,
         )
         data_mode = f"{data_mode}+ibm_runtime_slice12"
+        run_diagnostics = None
     else:
         model = fit_naive_bayes(train)
         train_loss = mean_nll(model, train)
@@ -216,6 +227,7 @@ def run_real_experiment(
         y_pred = [predict(model, text) for text, _ in test]
         accuracy = compute_accuracy(y_true, y_pred)
         f1 = compute_f1_binary(y_true, y_pred)
+        run_diagnostics = None
     return {
         "accuracy": accuracy,
         "f1": f1,
@@ -223,6 +235,7 @@ def run_real_experiment(
         "eval_loss": eval_loss,
         "data_mode": data_mode,
         "dataset_diagnostics": dataset_diagnostics,
+        "run_diagnostics": run_diagnostics,
     }
 
 
@@ -326,7 +339,7 @@ def run_quantum_backend(
     readout: str = "weighted",
     mixing_preset: str = "mix_v0",
     validation: list[tuple[str, int]] | None = None,
-) -> tuple[float, float, float, float]:
+) -> tuple[float, float, float, float, dict[str, Any] | None]:
     if readout not in SUPPORTED_READOUTS:
         raise ValueError(f"Unsupported local readout: {readout}")
     if mixing_preset not in SUPPORTED_MIXING_PRESETS:
@@ -362,7 +375,42 @@ def run_quantum_backend(
     eval_loss = binary_cross_entropy(y_true, probs)
     accuracy = compute_accuracy(y_true, y_pred)
     f1 = compute_f1_binary(y_true, y_pred)
-    return train_loss, eval_loss, accuracy, f1
+    diagnostics = build_run_diagnostics(rows=test, scores=probs) if is_synthetic_offset_rows(test) else None
+    return train_loss, eval_loss, accuracy, f1, diagnostics
+
+
+def is_synthetic_offset_rows(rows: list[tuple[str, int]]) -> bool:
+    if not rows:
+        return False
+    try:
+        parse_synthetic_pair_text(rows[0][0])
+    except ValueError:
+        return False
+    return True
+
+
+def build_run_diagnostics(rows: list[tuple[str, int]], scores: list[float]) -> dict[str, Any]:
+    offset_groups: dict[int, list[float]] = {}
+    positive_scores: list[float] = []
+    negative_scores: list[float] = []
+    for (text, label), score in zip(rows, scores):
+        payload = parse_synthetic_pair_text(text)
+        offset = int(payload["offset"])
+        offset_groups.setdefault(offset, []).append(score)
+        if label == 1:
+            positive_scores.append(score)
+        else:
+            negative_scores.append(score)
+
+    mean_by_offset = {str(offset): round(sum(vals) / len(vals), 6) for offset, vals in sorted(offset_groups.items())}
+    positive_mean = sum(positive_scores) / len(positive_scores) if positive_scores else 0.0
+    negative_mean = sum(negative_scores) / len(negative_scores) if negative_scores else 0.0
+    overall_mean = sum(scores) / len(scores) if scores else 0.0
+    return {
+        "score_by_offset": mean_by_offset,
+        "positive_minus_negative_offset_gap": round(positive_mean - negative_mean, 6),
+        "overall_score_mean": round(overall_mean, 6),
+    }
 
 
 def stratified_calibration_split(

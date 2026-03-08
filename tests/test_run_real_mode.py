@@ -225,3 +225,19 @@ def test_synthetic_offset_binary_quantum_backend_runs() -> None:
     assert 0.0 <= metrics["f1"] <= 1.0
     assert metrics["data_mode"].endswith("readout_parity+mix_mix_v0")
     assert metrics["dataset_diagnostics"]["dataset"] == "synthetic_offset_binary"
+
+
+def test_vnew_explicit_interference_runs_on_synthetic_packet() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_offset_binary",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_new_explicit_interference",
+        local_readout="parity",
+    )
+    assert 0.0 <= metrics["accuracy"] <= 1.0
+    assert 0.0 <= metrics["f1"] <= 1.0
+    assert metrics["data_mode"].endswith("readout_parity_contrast+mix_interference")
+    assert "score_by_offset" in metrics["run_diagnostics"]
+    assert "positive_minus_negative_offset_gap" in metrics["run_diagnostics"]
+    assert "overall_score_mean" in metrics["run_diagnostics"]
