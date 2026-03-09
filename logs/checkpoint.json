@@ -1,18 +1,18 @@
 {
-    "timestamp_utc":  "2026-03-11T05:20:00Z",
+    "timestamp_utc":  "2026-03-11T05:35:00Z",
     "current_epic_id":  "E001",
     "current_epic_title":  "Quantum Rotational Positional Embeddings foundation",
     "current_epic_status":  "Paused",
     "current_story_ids":  [
-                              "S349"
+                              "S352"
                           ],
     "active_workers":  {
 
                        },
     "next_actions":  [
-                         "Design one memo-only rank-stable transition task that treats relational ordering as primary.",
-                         "Do not reopen execution on synthetic_chart_transition_orbit_response.",
-                         "Require a new restart scaffold before any further implementation on this line."
+                         "Draft the dedicated approval gate for the rank-stable transition-orbit line.",
+                         "Prove the ordinal task cannot be reduced to a small symbolic ordinal lookup before any implementation reopens.",
+                         "Keep the line memo-only until that gate is passed."
                      ],
     "risks_or_blocks":  [
                             "Novelty remains conditional until empirical ablation results are collected.",
@@ -38,12 +38,11 @@
                         ],
     "last_test_run":  "PYTHONPATH=src python -m pytest tests/test_synthetic.py tests/test_qsim.py tests/test_run_real_mode.py",
     "recent_changes":  [
-                           "docs/research/q-rope-transition-orbit-hardening-correction-v1.md",
-                           "docs/research/q-rope-transition-orbit-deeper-pair-reindex-hardening-v1.md",
-                           "docs/research/q-rope-transition-orbit-post-deeper-pair-reindex-decision-v1.md",
-                           "docs/research/q-rope-transition-orbit-rank-stable-task-design-v1.md",
+                           "docs/research/q-rope-transition-orbit-rank-stable-task-spec-v1.md",
+                           "docs/research/q-rope-transition-orbit-rank-stable-restart-scaffold-v1.md",
+                           "docs/research/q-rope-transition-orbit-rank-stable-approval-candidate-v1.md",
                            "docs/evidence/E001-evidence-log.md",
                            "logs/checkpoint.json"
                        ],
-    "notes":  "S346-S349 completed. Chart relabeling was withdrawn as an invalid hardening idea, the non-inert pair_reindex=7 packet stopped the current transition-orbit execution branch on primary metric, and only a memo-level rank-stable next angle remains."
+    "notes":  "S350-S352 completed. The transition-orbit line is preserved only as a memo-level rank-stable restart candidate with rank correlation declared as the future primary metric and a symbolic ordinal-lookup proof still required before approval."
 }
