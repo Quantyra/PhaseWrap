@@ -1,4 +1,4 @@
-# Story template
+﻿# Story template
 
 ## Story ID and title
 S191 - Dual-sector post pair-reindex decision
@@ -36,3 +36,5 @@ As a research lead, I want the dual-sector witness branch reassessed after a mea
 
 ## Cycle time
 - Start: 2026-03-08 18:35 (Pacific/Honolulu)
+- End: 2026-03-08 18:40 (Pacific/Honolulu)
+
