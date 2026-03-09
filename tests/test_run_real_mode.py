@@ -723,3 +723,63 @@ def test_triple_symbolic_three_family_parity_control_runs() -> None:
     assert metrics["data_mode"].endswith("readout_symbolic_three_family_parity+head_logreg")
     assert diagnostics["feature_order"] == ["triple_even_parity"]
     assert diagnostics["forbidden_inputs_absent"] is True
+
+
+def test_continuous_dataset_loader_path() -> None:
+    rows, mode = load_dataset_samples(dataset="synthetic_dual_continuous_coupled_response", seed=42)
+    assert len(rows) == 64
+    assert mode == "synthetic_dual_continuous_coupled_response"
+
+
+def test_continuous_relational_witness_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_dual_continuous_coupled_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_future_relational_witness_continuous",
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["data_mode"].endswith("readout_relational_witness_continuous+head_linear")
+    assert metrics["extra_metrics"]["mae"] >= 0.0
+    assert "response_linear_hint" in diagnostics["feature_order"]
+    assert diagnostics["bounded_feature_audit_pass"] is True
+    assert diagnostics["forbidden_inputs_absent"] is True
+
+
+def test_continuous_symbolic_single_family_regressor_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_dual_continuous_coupled_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_control_symbolic_single_family_regressor",
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["data_mode"].endswith("readout_symbolic_single_family_regressor+head_linear")
+    assert diagnostics["feature_order"] == ["sign_agreement", "content_agreement", "orientation_agreement"]
+    assert diagnostics["forbidden_inputs_absent"] is True
+
+
+def test_continuous_symbolic_two_family_regressor_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_dual_continuous_coupled_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_control_symbolic_two_family_regressor",
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["data_mode"].endswith("readout_symbolic_two_family_regressor+head_linear")
+    assert "sc_same__same" in diagnostics["feature_order"]
+    assert diagnostics["forbidden_inputs_absent"] is True
+
+
+def test_continuous_symbolic_boolean_state_lookup_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_dual_continuous_coupled_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_control_symbolic_boolean_state_lookup",
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["data_mode"].endswith("readout_symbolic_boolean_state_lookup+head_linear")
+    assert "state_same__same__same" in diagnostics["feature_order"]
+    assert diagnostics["forbidden_inputs_absent"] is True

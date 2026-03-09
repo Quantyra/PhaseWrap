@@ -1,5 +1,6 @@
 from qrope.synthetic import (
     content_family_name,
+    generate_dual_continuous_coupled_response_bundle,
     generate_dual_content_parity_coupling_binary_bundle,
     generate_dual_sector_agreement_binary_bundle,
     generate_dual_sector_content_agreement_binary_bundle,
@@ -233,3 +234,38 @@ def test_dual_content_parity_coupling_labels_follow_even_parity_rule() -> None:
         )
         parity = int(sign_agreement) ^ int(content_agreement) ^ int(orientation_agreement)
         assert label == (1 if parity == 0 else 0)
+
+
+def test_dual_continuous_coupled_response_bundle_is_balanced() -> None:
+    bundle = generate_dual_continuous_coupled_response_bundle(seed=42)
+    for split in ("train", "validation", "test"):
+        summary = bundle.diagnostics["splits"][split]
+        assert summary["sector_pair_balance_ok"] is True
+        assert summary["sector_slot_balance_ok"] is True
+        assert summary["content_slot_balance_ok"] is True
+        assert summary["orientation_slot_balance_ok"] is True
+        assert -1.0 <= summary["target_min"] <= summary["target_max"] <= 1.0
+
+
+def test_dual_continuous_coupled_response_labels_follow_rule() -> None:
+    bundle = generate_dual_continuous_coupled_response_bundle(seed=42)
+    rows = bundle.train[:10] + bundle.validation[:10] + bundle.test[:10]
+    positive_sectors = {"P_small", "P_large"}
+    for text, label in rows:
+        parts = {item.split(":", 1)[0]: item.split(":", 1)[1] for item in text.split()}
+        sector_a = ("P_small" if 0 < int(parts["a_off"]) <= 2 else
+                    "P_large" if int(parts["a_off"]) > 0 else
+                    "N_small" if abs(int(parts["a_off"])) <= 2 else "N_large")
+        sector_b = ("P_small" if 0 < int(parts["b_off"]) <= 2 else
+                    "P_large" if int(parts["b_off"]) > 0 else
+                    "N_small" if abs(int(parts["b_off"])) <= 2 else "N_large")
+        sign_term = 1.0 if ((sector_a in positive_sectors) == (sector_b in positive_sectors)) else -1.0
+        content_term = 1.0 if content_family_name(parts["a_lt"], parts["a_rt"]) == content_family_name(
+            parts["b_lt"], parts["b_rt"]
+        ) else -1.0
+        orientation_term = 1.0 if token_orientation_name(parts["a_lt"], parts["a_rt"]) == token_orientation_name(
+            parts["b_lt"], parts["b_rt"]
+        ) else -1.0
+        expected = round(0.8 * (0.5 * sign_term + 0.3 * content_term + 0.2 * orientation_term)
+                         + 0.2 * (sign_term * content_term * orientation_term), 6)
+        assert label == expected
