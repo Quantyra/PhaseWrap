@@ -17,7 +17,7 @@ TEST_COUNT_PER_BUCKET = 1
 @dataclass(frozen=True)
 class SyntheticSample:
     text: str
-    label: int
+    label: float
     left_token: str
     right_token: str
     left_pos: int
@@ -37,7 +37,7 @@ class SyntheticDatasetBundle:
 @dataclass(frozen=True)
 class DualSyntheticSample:
     text: str
-    label: int
+    label: float
     sector_a: str
     sector_b: str
     sample_a: SyntheticSample
@@ -112,6 +112,24 @@ def generate_dual_content_parity_coupling_binary_bundle(
         token_permutation=token_permutation,
         pair_reindex=pair_reindex,
         label_mode="triple_parity_even",
+    )
+
+
+def generate_dual_continuous_coupled_response_bundle(
+    seed: int,
+    split_rotation: int = 0,
+    slot_swap: int = 0,
+    token_permutation: str = "identity",
+    pair_reindex: int = 0,
+) -> SyntheticDatasetBundle:
+    return generate_dual_sector_bundle(
+        seed=seed,
+        dataset_name="synthetic_dual_continuous_coupled_response",
+        split_rotation=split_rotation,
+        slot_swap=slot_swap,
+        token_permutation=token_permutation,
+        pair_reindex=pair_reindex,
+        label_mode="continuous_coupled_response",
     )
 
 
@@ -243,6 +261,18 @@ def generate_dual_sector_bundle(
                         pair_reindex=pair_reindex,
                     )
                 )
+            elif label_mode == "continuous_coupled_response":
+                pair_grouped[(sector_a, sector_b)].extend(
+                    build_balanced_triple_pairs(
+                        bucket_a=bucket_a,
+                        bucket_b=bucket_b,
+                        required=required,
+                        token_permutation=token_permutation,
+                        slot_swap=slot_swap,
+                        pair_reindex=pair_reindex,
+                        label_mode="continuous_coupled_response",
+                    )
+                )
             else:
                 for idx in range(required):
                     sample_a = bucket_a[idx]
@@ -343,6 +373,7 @@ def build_balanced_triple_pairs(
     token_permutation: str,
     slot_swap: int,
     pair_reindex: int,
+    label_mode: str = "triple_parity_even",
 ) -> list[DualSyntheticSample]:
     if required != 4:
         raise ValueError(f"Balanced triple pair builder expects required=4, got {required}")
@@ -385,7 +416,7 @@ def build_balanced_triple_pairs(
         counters_b[key_b] += 1
         if slot_swap:
             sample_a, sample_b = sample_b, sample_a
-        pairs.append(build_dual_sample(sample_a=sample_a, sample_b=sample_b, label_mode="triple_parity_even"))
+        pairs.append(build_dual_sample(sample_a=sample_a, sample_b=sample_b, label_mode=label_mode))
     return pairs
 
 
@@ -442,6 +473,20 @@ def build_dual_sample(sample_a: SyntheticSample, sample_b: SyntheticSample, labe
         )
         parity = int(sign_agreement) ^ int(content_agreement) ^ int(orientation_agreement)
         label = 1 if parity == 0 else 0
+    elif label_mode == "continuous_coupled_response":
+        sign_agreement = sector_sign_family(sector_a) == sector_sign_family(sector_b)
+        content_agreement = content_family_name(sample_a.left_token, sample_a.right_token) == content_family_name(
+            sample_b.left_token, sample_b.right_token
+        )
+        orientation_agreement = token_orientation_name(sample_a.left_token, sample_a.right_token) == token_orientation_name(
+            sample_b.left_token, sample_b.right_token
+        )
+        sign_term = 1.0 if sign_agreement else -1.0
+        content_term = 1.0 if content_agreement else -1.0
+        orientation_term = 1.0 if orientation_agreement else -1.0
+        base = 0.5 * sign_term + 0.3 * content_term + 0.2 * orientation_term
+        curvature = sign_term * content_term * orientation_term
+        label = round(0.8 * base + 0.2 * curvature, 6)
     else:
         raise ValueError(f"Unsupported dual label_mode: {label_mode}")
     text = render_dual_sample_text(sample_a=sample_a, sample_b=sample_b)
@@ -674,6 +719,7 @@ def summarize_dual_split(rows: list[DualSyntheticSample]) -> dict[str, Any]:
         == token_orientation_name(sample.sample_b.left_token, sample.sample_b.right_token)
         for sample in rows
     )
+    target_values = [float(sample.label) for sample in rows]
     return {
         "size": len(rows),
         "class_counts": dict(sorted(class_counts.items())),
@@ -692,6 +738,9 @@ def summarize_dual_split(rows: list[DualSyntheticSample]) -> dict[str, Any]:
         "sector_slot_balance_ok": len(set(sector_a_counts.values())) <= 1 and len(set(sector_b_counts.values())) <= 1,
         "content_slot_balance_ok": len(set(content_a_counts.values())) <= 1 and len(set(content_b_counts.values())) <= 1,
         "orientation_slot_balance_ok": len(set(orientation_a_counts.values())) <= 1 and len(set(orientation_b_counts.values())) <= 1,
+        "target_mean": round(sum(target_values) / len(target_values), 6) if target_values else 0.0,
+        "target_min": round(min(target_values), 6) if target_values else 0.0,
+        "target_max": round(max(target_values), 6) if target_values else 0.0,
     }
 
 

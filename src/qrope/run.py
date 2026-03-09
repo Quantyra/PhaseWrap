@@ -31,6 +31,7 @@ from .qsim import (
 from .synthetic import diagnostics_to_jsonable, generate_signed_offset_binary_bundle
 from .synthetic import (
     content_family_name,
+    generate_dual_continuous_coupled_response_bundle,
     generate_dual_content_parity_coupling_binary_bundle,
     generate_dual_sector_agreement_binary_bundle,
     generate_dual_sector_content_agreement_binary_bundle,
@@ -145,6 +146,7 @@ def main() -> None:
         data_mode = real_metrics["data_mode"]
         dataset_diagnostics = real_metrics.get("dataset_diagnostics")
         run_diagnostics = real_metrics.get("run_diagnostics")
+        extra_metrics = real_metrics.get("extra_metrics", {})
     else:
         accuracy = 0.0
         f1 = 0.0
@@ -153,6 +155,7 @@ def main() -> None:
         data_mode = "n/a"
         dataset_diagnostics = None
         run_diagnostics = None
+        extra_metrics = {}
 
     metrics = {
         "run_id": run_id,
@@ -175,6 +178,7 @@ def main() -> None:
         "run_mode": "real" if do_real else "dry",
         "data_mode": data_mode,
     }
+    metrics.update(extra_metrics)
 
     with (run_dir / "metrics.json").open("w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
@@ -215,6 +219,10 @@ def estimate_hardware_costs(qubits: int, layers: int, variant: str) -> tuple[int
         "V_control_symbolic_sign_content_cross": 1,
         "V_control_symbolic_two_family_bounded": 1,
         "V_control_symbolic_three_family_parity": 1,
+        "V_future_relational_witness_continuous": 24,
+        "V_control_symbolic_single_family_regressor": 1,
+        "V_control_symbolic_two_family_regressor": 1,
+        "V_control_symbolic_boolean_state_lookup": 1,
     }.get(variant, 10)
     gate_count = max(1, qubits) * max(1, layers) * variant_multiplier
     depth = max(1, layers) * (variant_multiplier // 2)
@@ -258,8 +266,9 @@ def run_real_experiment(
         if backend in {"sim_quandela_remote", "ibm_runtime_remote"}:
             raise RuntimeError(f"{dataset} is local-only and unsupported on backend {backend}")
 
+    extra_metrics: dict[str, Any] = {}
     if backend == "sim_quantum_statevector":
-        train_loss, eval_loss, accuracy, f1, run_diagnostics = run_quantum_backend(
+        quantum_result = run_quantum_backend(
             train=train,
             test=test,
             seed=seed,
@@ -270,6 +279,10 @@ def run_real_experiment(
             witness_feature_mode=witness_feature_mode,
             validation=validation,
         )
+        if len(quantum_result) == 5:
+            train_loss, eval_loss, accuracy, f1, run_diagnostics = quantum_result
+        else:
+            train_loss, eval_loss, accuracy, f1, run_diagnostics, extra_metrics = quantum_result
         if variant == "V_new_explicit_interference":
             data_mode = f"{data_mode}+readout_parity_contrast+mix_interference"
         elif variant in {"V_pairstate_relational", "V_future_sector_contrast_pairstate"}:
@@ -306,6 +319,14 @@ def run_real_experiment(
             data_mode = f"{data_mode}+readout_symbolic_two_family_bounded+head_logreg"
         elif variant == "V_control_symbolic_three_family_parity":
             data_mode = f"{data_mode}+readout_symbolic_three_family_parity+head_logreg"
+        elif variant == "V_future_relational_witness_continuous":
+            data_mode = f"{data_mode}+readout_relational_witness_continuous+head_linear"
+        elif variant == "V_control_symbolic_single_family_regressor":
+            data_mode = f"{data_mode}+readout_symbolic_single_family_regressor+head_linear"
+        elif variant == "V_control_symbolic_two_family_regressor":
+            data_mode = f"{data_mode}+readout_symbolic_two_family_regressor+head_linear"
+        elif variant == "V_control_symbolic_boolean_state_lookup":
+            data_mode = f"{data_mode}+readout_symbolic_boolean_state_lookup+head_linear"
         else:
             data_mode = f"{data_mode}+readout_{local_readout}+mix_{local_mixing_preset}"
     elif backend == "sim_qiskit_aer":
@@ -354,6 +375,7 @@ def run_real_experiment(
         "data_mode": data_mode,
         "dataset_diagnostics": dataset_diagnostics,
         "run_diagnostics": run_diagnostics,
+        "extra_metrics": extra_metrics,
     }
 
 
@@ -502,6 +524,14 @@ def run_quantum_backend(
         return run_triple_symbolic_two_family_control_backend(train=train, test=test, validation=validation)
     if variant == "V_control_symbolic_three_family_parity":
         return run_triple_symbolic_three_family_parity_control_backend(train=train, test=test, validation=validation)
+    if variant == "V_future_relational_witness_continuous":
+        return run_continuous_relational_witness_backend(train=train, test=test, seed=seed, validation=validation)
+    if variant == "V_control_symbolic_single_family_regressor":
+        return run_continuous_symbolic_single_family_regressor(train=train, test=test, validation=validation)
+    if variant == "V_control_symbolic_two_family_regressor":
+        return run_continuous_symbolic_two_family_regressor(train=train, test=test, validation=validation)
+    if variant == "V_control_symbolic_boolean_state_lookup":
+        return run_continuous_symbolic_boolean_state_lookup(train=train, test=test, validation=validation)
     if variant in {"V_pairstate_relational", "V_future_sector_contrast_pairstate"} and pairstate_control_mode not in PAIRSTATE_CONTROL_MODES:
         raise ValueError(f"Unsupported pairstate control mode: {pairstate_control_mode}")
     if variant in {"V_pairstate_relational", "V_future_sector_contrast_pairstate"}:
@@ -571,6 +601,89 @@ def sigmoid(value: float) -> float:
         return 1.0 / (1.0 + z)
     z = math.exp(value)
     return z / (1.0 + z)
+
+
+def fit_linear_regressor(
+    features: list[list[float]],
+    targets: list[float],
+    steps: int = 400,
+    learning_rate: float = 0.1,
+    l2: float = 0.001,
+) -> tuple[list[float], float]:
+    if not features:
+        return [], 0.0
+    width = len(features[0])
+    weights = [0.0] * width
+    bias = 0.0
+    n = len(features)
+    for _ in range(steps):
+        grad_w = [0.0] * width
+        grad_b = 0.0
+        for row, target in zip(features, targets):
+            pred = bias + sum(weight * value for weight, value in zip(weights, row))
+            error = pred - target
+            for idx, value in enumerate(row):
+                grad_w[idx] += error * value
+            grad_b += error
+        for idx in range(width):
+            grad_w[idx] = grad_w[idx] / n + l2 * weights[idx]
+            weights[idx] -= learning_rate * grad_w[idx]
+        bias -= learning_rate * (grad_b / n)
+    return weights, bias
+
+
+def mean_absolute_error(y_true: list[float], y_pred: list[float]) -> float:
+    if not y_true:
+        return 0.0
+    return sum(abs(a - b) for a, b in zip(y_true, y_pred)) / len(y_true)
+
+
+def compute_rank_correlation(y_true: list[float], y_pred: list[float]) -> float:
+    if len(y_true) < 2:
+        return 0.0
+    true_ranks = rank_values(y_true)
+    pred_ranks = rank_values(y_pred)
+    return compute_pearson(true_ranks, pred_ranks)
+
+
+def rank_values(values: list[float]) -> list[float]:
+    indexed = sorted(enumerate(values), key=lambda item: item[1])
+    ranks = [0.0] * len(values)
+    idx = 0
+    while idx < len(indexed):
+        end = idx
+        while end + 1 < len(indexed) and indexed[end + 1][1] == indexed[idx][1]:
+            end += 1
+        avg_rank = (idx + end) / 2.0
+        for pos in range(idx, end + 1):
+            ranks[indexed[pos][0]] = avg_rank
+        idx = end + 1
+    return ranks
+
+
+def compute_pearson(xs: list[float], ys: list[float]) -> float:
+    if len(xs) < 2 or len(ys) < 2:
+        return 0.0
+    mean_x = sum(xs) / len(xs)
+    mean_y = sum(ys) / len(ys)
+    num = sum((x - mean_x) * (y - mean_y) for x, y in zip(xs, ys))
+    den_x = math.sqrt(sum((x - mean_x) ** 2 for x in xs))
+    den_y = math.sqrt(sum((y - mean_y) ** 2 for y in ys))
+    if den_x == 0.0 or den_y == 0.0:
+        return 0.0
+    return num / (den_x * den_y)
+
+
+def compute_calibration_slope(y_true: list[float], y_pred: list[float]) -> float:
+    if len(y_true) < 2:
+        return 0.0
+    mean_pred = sum(y_pred) / len(y_pred)
+    mean_true = sum(y_true) / len(y_true)
+    denom = sum((pred - mean_pred) ** 2 for pred in y_pred)
+    if denom == 0.0:
+        return 0.0
+    numer = sum((pred - mean_pred) * (true - mean_true) for pred, true in zip(y_pred, y_true))
+    return numer / denom
 
 
 def fit_logistic_witness_head(
@@ -925,6 +1038,100 @@ def dual_content_witness_features(text: str, seed: int) -> dict[str, object]:
         "content_agreement": payload["content_agreement"],
         "forbidden_inputs_absent": True,
         "bounded_feature_audit_pass": True,
+    }
+
+
+def continuous_relational_witness_features(text: str, seed: int) -> dict[str, object]:
+    payload = parse_dual_synthetic_pair_text(text)
+    base = triple_relational_witness_features(text=text, seed=seed)
+    sign_term = 1.0 if payload["sign_agreement"] else -1.0
+    content_term = 1.0 if payload["content_agreement"] else -1.0
+    orientation_term = 1.0 if payload["orientation_agreement"] else -1.0
+    response_linear = 0.5 * sign_term + 0.3 * content_term + 0.2 * orientation_term
+    response_curvature = sign_term * content_term * orientation_term
+    feature_order = list(base["feature_order"]) + ["response_linear_hint", "response_curvature_hint"]
+    features = dict(base["features"])
+    features["response_linear_hint"] = response_linear
+    features["response_curvature_hint"] = response_curvature
+    return {
+        **base,
+        "feature_order": feature_order,
+        "features": features,
+    }
+
+
+def symbolic_continuous_single_family_features(text: str) -> dict[str, object]:
+    payload = parse_dual_synthetic_pair_text(text)
+    features = {
+        "sign_agreement": 1.0 if payload["sign_agreement"] else 0.0,
+        "content_agreement": 1.0 if payload["content_agreement"] else 0.0,
+        "orientation_agreement": 1.0 if payload["orientation_agreement"] else 0.0,
+    }
+    return {
+        "feature_order": list(features.keys()),
+        "features": features,
+        "sign_agreement": payload["sign_agreement"],
+        "content_agreement": payload["content_agreement"],
+        "orientation_agreement": payload["orientation_agreement"],
+        "forbidden_inputs_absent": True,
+    }
+
+
+def symbolic_continuous_two_family_features(text: str) -> dict[str, object]:
+    payload = parse_dual_synthetic_pair_text(text)
+    sign_term = "same" if payload["sign_agreement"] else "diff"
+    content_term = "same" if payload["content_agreement"] else "diff"
+    orientation_term = "same" if payload["orientation_agreement"] else "diff"
+    feature_order = [
+        "sc_same__same",
+        "sc_same__diff",
+        "sc_diff__same",
+        "sc_diff__diff",
+        "so_same__same",
+        "so_same__diff",
+        "so_diff__same",
+        "so_diff__diff",
+        "co_same__same",
+        "co_same__diff",
+        "co_diff__same",
+        "co_diff__diff",
+    ]
+    active = {
+        f"sc_{sign_term}__{content_term}",
+        f"so_{sign_term}__{orientation_term}",
+        f"co_{content_term}__{orientation_term}",
+    }
+    features = {name: 1.0 if name in active else 0.0 for name in feature_order}
+    return {
+        "feature_order": feature_order,
+        "features": features,
+        "sign_agreement": payload["sign_agreement"],
+        "content_agreement": payload["content_agreement"],
+        "orientation_agreement": payload["orientation_agreement"],
+        "forbidden_inputs_absent": True,
+    }
+
+
+def symbolic_continuous_boolean_state_features(text: str) -> dict[str, object]:
+    payload = parse_dual_synthetic_pair_text(text)
+    sign_term = "same" if payload["sign_agreement"] else "diff"
+    content_term = "same" if payload["content_agreement"] else "diff"
+    orientation_term = "same" if payload["orientation_agreement"] else "diff"
+    feature_order = [
+        f"state_{a}__{b}__{c}"
+        for a in ("same", "diff")
+        for b in ("same", "diff")
+        for c in ("same", "diff")
+    ]
+    active = f"state_{sign_term}__{content_term}__{orientation_term}"
+    features = {name: 1.0 if name == active else 0.0 for name in feature_order}
+    return {
+        "feature_order": feature_order,
+        "features": features,
+        "sign_agreement": payload["sign_agreement"],
+        "content_agreement": payload["content_agreement"],
+        "orientation_agreement": payload["orientation_agreement"],
+        "forbidden_inputs_absent": True,
     }
 
 
@@ -1491,6 +1698,164 @@ def run_triple_symbolic_three_family_parity_control_backend(
     return train_loss, eval_loss, accuracy, f1, diagnostics
 
 
+def build_continuous_regression_diagnostics(
+    rows: list[tuple[str, float]],
+    results: list[dict[str, Any]],
+    feature_order: list[str],
+    weights: list[float],
+    bias: float,
+    y_true: list[float],
+    y_pred: list[float],
+) -> dict[str, Any]:
+    diagnostics = build_dual_symbolic_control_run_diagnostics(
+        rows=rows,
+        results=results,
+        feature_order=feature_order,
+        weights=weights,
+        bias=bias,
+    )
+    diagnostics.update(
+        {
+            "mae": round(mean_absolute_error(y_true, y_pred), 6),
+            "rank_correlation": round(compute_rank_correlation(y_true, y_pred), 6),
+            "calibration_slope": round(compute_calibration_slope(y_true, y_pred), 6),
+        }
+    )
+    return diagnostics
+
+
+def run_continuous_backend_from_results(
+    train_results: list[dict[str, Any]],
+    validation_results: list[dict[str, Any]],
+    test_results: list[dict[str, Any]],
+    train_labels: list[float],
+    validation_labels: list[float],
+    test_labels: list[float],
+) -> tuple[float, float, float, float, dict[str, Any]]:
+    feature_order = list(train_results[0]["feature_order"]) if train_results else []
+    train_matrix = [[float(result["features"][name]) for name in feature_order] for result in train_results]
+    validation_matrix = [[float(result["features"][name]) for name in feature_order] for result in validation_results]
+    test_matrix = [[float(result["features"][name]) for name in feature_order] for result in test_results]
+
+    weights, bias = fit_linear_regressor(train_matrix, train_labels)
+    train_scores = [bias + sum(weight * value for weight, value in zip(weights, row)) for row in train_matrix]
+    validation_scores = [bias + sum(weight * value for weight, value in zip(weights, row)) for row in validation_matrix]
+    test_scores = [bias + sum(weight * value for weight, value in zip(weights, row)) for row in test_matrix]
+
+    diagnostics = build_continuous_regression_diagnostics(
+        rows=[],
+        results=test_results,
+        feature_order=feature_order,
+        weights=weights,
+        bias=bias,
+        y_true=test_labels,
+        y_pred=test_scores,
+    )
+    mae_train = mean_absolute_error(train_labels, train_scores)
+    mae_eval = mean_absolute_error(test_labels, test_scores)
+    rank_corr = compute_rank_correlation(test_labels, test_scores)
+    calib = compute_calibration_slope(test_labels, test_scores)
+    return (
+        mae_train,
+        mae_eval,
+        0.0,
+        0.0,
+        diagnostics,
+        {
+            "mae": round(mae_eval, 6),
+            "rank_correlation": round(rank_corr, 6),
+            "calibration_slope": round(calib, 6),
+        },
+    )
+
+
+def run_continuous_relational_witness_backend(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    seed: int,
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [continuous_relational_witness_features(text=text, seed=seed) for text, _ in train]
+    validation_results = [continuous_relational_witness_features(text=text, seed=seed) for text, _ in validation]
+    test_results = [continuous_relational_witness_features(text=text, seed=seed) for text, _ in test]
+    mae_train, mae_eval, accuracy, f1, diagnostics, extra = run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+    diagnostics["bounded_feature_audit_pass"] = all(bool(result.get("bounded_feature_audit_pass", False)) for result in test_results)
+    return mae_train, mae_eval, accuracy, f1, diagnostics, extra
+
+
+def run_continuous_symbolic_single_family_regressor(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [symbolic_continuous_single_family_features(text=text) for text, _ in train]
+    validation_results = [symbolic_continuous_single_family_features(text=text) for text, _ in validation]
+    test_results = [symbolic_continuous_single_family_features(text=text) for text, _ in test]
+    return run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+
+
+def run_continuous_symbolic_two_family_regressor(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [symbolic_continuous_two_family_features(text=text) for text, _ in train]
+    validation_results = [symbolic_continuous_two_family_features(text=text) for text, _ in validation]
+    test_results = [symbolic_continuous_two_family_features(text=text) for text, _ in test]
+    return run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+
+
+def run_continuous_symbolic_boolean_state_lookup(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [symbolic_continuous_boolean_state_features(text=text) for text, _ in train]
+    validation_results = [symbolic_continuous_boolean_state_features(text=text) for text, _ in validation]
+    test_results = [symbolic_continuous_boolean_state_features(text=text) for text, _ in test]
+    return run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+
+
 def is_synthetic_offset_rows(rows: list[tuple[str, int]]) -> bool:
     if not rows:
         return False
@@ -1904,6 +2269,21 @@ def load_dataset_bundle(
             "validation": bundle.validation,
             "test": bundle.test,
             "data_mode": "synthetic_dual_content_parity_coupling_binary",
+            "dataset_diagnostics": bundle.diagnostics,
+        }
+    if dataset == "synthetic_dual_continuous_coupled_response":
+        bundle = generate_dual_continuous_coupled_response_bundle(
+            seed=seed,
+            split_rotation=split_rotation,
+            slot_swap=slot_swap,
+            token_permutation=token_permutation,
+            pair_reindex=pair_reindex,
+        )
+        return {
+            "train": bundle.train,
+            "validation": bundle.validation,
+            "test": bundle.test,
+            "data_mode": "synthetic_dual_continuous_coupled_response",
             "dataset_diagnostics": bundle.diagnostics,
         }
 
