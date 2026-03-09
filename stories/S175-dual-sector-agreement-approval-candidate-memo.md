@@ -18,6 +18,7 @@ As a research lead, I want the harder witness task evaluated as an approval cand
 
 ## Evidence and references
 - `docs/research/q-rope-dual-sector-agreement-restart-scaffold-v1.md`
+- `docs/research/q-rope-dual-sector-agreement-approval-candidate-v1.md`
 
 ## Out of scope
 - Implementation
@@ -35,3 +36,4 @@ As a research lead, I want the harder witness task evaluated as an approval cand
 
 ## Cycle time
 - Start: 2026-03-08 14:02 (Pacific/Honolulu)
+- End: 2026-03-08 14:10 (Pacific/Honolulu)
