@@ -1,18 +1,18 @@
 ﻿{
-    "timestamp_utc":  "2026-03-10T04:35:00Z",
+    "timestamp_utc":  "2026-03-10T04:41:00Z",
     "current_epic_id":  "E001",
     "current_epic_title":  "Quantum Rotational Positional Embeddings foundation",
     "current_epic_status":  "Paused",
     "current_story_ids":  [
-                              "S191"
+                              "S192"
                           ],
     "active_workers":  {
 
                        },
     "next_actions":  [
-                         "Interpret the pair-reindex packet against the prior hardening packets.",
-                         "Decide whether the branch remains active after meaningful pairing perturbation.",
-                         "Select one next bounded pressure test only."
+                         "Define one stronger symbolic interaction control for the dual-sector task.",
+                         "Keep the task, seeds, and packet scope unchanged.",
+                         "Only reopen execution after the stronger control is explicitly bounded."
                      ],
     "risks_or_blocks":  [
                             "Novelty remains conditional until empirical ablation results are collected.",
@@ -120,5 +120,5 @@
                            "logs/ablation_runs/v4-yelp-local-s42/metrics.json",
                            "logs/ablation_runs/v4-yelp-qsim-s42/metrics.json"
                        ],
-    "notes":  "S190 completed. The next bounded step is the post-pair-reindex decision memo for the dual-sector branch."
+    "notes":  "S191 completed. The next bounded pressure test is a stronger symbolic interaction control on the same dual-sector task and packet."
 }
