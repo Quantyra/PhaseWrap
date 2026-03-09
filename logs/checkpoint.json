@@ -1,18 +1,18 @@
 ﻿{
-    "timestamp_utc":  "2026-03-11T02:10:00Z",
+    "timestamp_utc":  "2026-03-11T02:35:00Z",
     "current_epic_id":  "E001",
     "current_epic_title":  "Quantum Rotational Positional Embeddings foundation",
     "current_epic_status":  "Paused",
     "current_story_ids":  [
-                              "S319"
+                              "S322"
                           ],
     "active_workers":  {
 
                        },
     "next_actions":  [
-                         "Design the memo-only `synthetic_transition_orbit_response` task family.",
-                         "Collapse token identity into orbit-equivalence classes at task construction time.",
-                         "Keep execution closed until a new restart scaffold and approval gate exist."
+                         "Define the bounded orbit-additive symbolic baseline for `synthetic_chart_transition_orbit_response`.",
+                         "Bind that baseline into the restart scaffold and approval candidate memo.",
+                         "Keep implementation closed until the orbit-additive control is explicit."
                      ],
     "risks_or_blocks":  [
                             "Novelty remains conditional until empirical ablation results are collected.",
@@ -31,16 +31,16 @@
                             "Scaleway fallback will introduce a new account/project/API-key onboarding dependency if we keep it on the roadmap.",
                             "Official docs still do not expose an exact credit-per-run formula for direct Quandela usage.",
                             "The token-invariant chart-transition branch has been stopped after losing to all approved controls on mean MAE.",
-                            "The preserved next angle is memo-only and must not reopen execution without a new restart scaffold."
+                            "The preserved next angle is memo-only and must not reopen execution without a new restart scaffold.",
+                            "The transition-orbit line is still memo-only because an explicit orbit-additive symbolic baseline has not yet been specified."
                         ],
     "last_test_run":  "PYTHONPATH=src python -m pytest tests/test_synthetic.py tests/test_qsim.py tests/test_run_real_mode.py",
     "recent_changes":  [
-                           "docs/research/q-rope-token-invariant-chart-transition-implementation-v1.md",
-                           "docs/research/q-rope-token-invariant-chart-transition-first-packet-v1.md",
-                           "docs/research/q-rope-token-invariant-chart-transition-decision-memo-v1.md",
-                           "docs/research/q-rope-transition-orbit-task-design-v1.md",
+                           "docs/research/q-rope-transition-orbit-task-spec-v1.md",
+                           "docs/research/q-rope-transition-orbit-restart-scaffold-v1.md",
+                           "docs/research/q-rope-transition-orbit-approval-candidate-v1.md",
                            "docs/evidence/E001-evidence-log.md",
                            "logs/checkpoint.json"
                        ],
-    "notes":  "S316-S319 completed. The token-invariant chart-transition line passed invariance diagnostics but failed the fixed packet on mean MAE, so the branch is closed and the next angle is memo-only `synthetic_transition_orbit_response`."
+    "notes":  "S320-S322 completed. The next preserved line is `synthetic_chart_transition_orbit_response`, now at approval-candidate posture but still blocked on an explicit orbit-additive symbolic control."
 }
