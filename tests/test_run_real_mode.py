@@ -13,6 +13,7 @@ from qrope.run import (
     load_dataset_samples,
     parse_dual_synthetic_pair_text,
     run_real_experiment,
+    symbolic_dual_interaction_features,
     symbolic_dual_sector_features,
     symbolic_relational_features,
     stratified_calibration_split,
@@ -469,6 +470,15 @@ def test_symbolic_dual_sector_features_use_two_one_hot_blocks() -> None:
     assert sum(result["features"].values()) == 2.0
 
 
+def test_symbolic_dual_interaction_features_use_single_pair_one_hot() -> None:
+    result = symbolic_dual_interaction_features(
+        "a_lt:A a_rt:B a_lp:1 a_rp:3 a_off:+2 b_lt:C b_rt:D b_lp:7 b_rp:4 b_off:-3"
+    )
+    assert result["feature_order"][0] == "pair_P_small__P_small"
+    assert result["features"]["pair_P_small__N_large"] == 1.0
+    assert sum(result["features"].values()) == 1.0
+
+
 def test_dual_sector_agreement_loader_path() -> None:
     metrics = run_real_experiment(
         dataset="synthetic_dual_sector_agreement_binary",
@@ -523,4 +533,17 @@ def test_dual_witness_runs_on_dual_sector_agreement_packet() -> None:
     diagnostics = metrics["run_diagnostics"]
     assert metrics["data_mode"].endswith("readout_relational_witness_dual+head_logreg")
     assert diagnostics["bounded_feature_audit_pass"] is True
+    assert diagnostics["forbidden_inputs_absent"] is True
+
+
+def test_dual_symbolic_interaction_control_runs_on_dual_sector_agreement_packet() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_dual_sector_agreement_binary",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_control_symbolic_dual_interaction",
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["data_mode"].endswith("readout_symbolic_dual_interaction+head_logreg")
+    assert "pair_P_small__P_small" in diagnostics["feature_order"]
     assert diagnostics["forbidden_inputs_absent"] is True
