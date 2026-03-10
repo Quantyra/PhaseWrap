@@ -1,18 +1,18 @@
 {
-    "timestamp_utc":  "2026-03-10T16:02:00Z",
+    "timestamp_utc":  "2026-03-10T16:15:00Z",
     "current_epic_id":  "E001",
     "current_epic_title":  "Quantum Rotational Positional Embeddings foundation",
     "current_epic_status":  "Paused",
     "current_story_ids":  [
-                              "S486"
+                              "S490"
                           ],
     "active_workers":  {
 
                        },
     "next_actions":  [
-                         "Implement synthetic_transition_orbit_slot_invariant_channel_order_margin_response within the fixed bounded scope.",
-                         "Stop immediately if the generator fails the latent slot-invariance or coarse margin-null hard-stop diagnostics.",
-                         "Run the fixed three-seed packet and decide the branch from MAE and rank correlation only."
+                         "Specify synthetic_transition_orbit_slot_invariant_channel_order_rank_only exactly.",
+                         "Bind bounded symbolic invariant ranking controls into its restart scaffold.",
+                         "Keep the line memo-only until a new approval-candidate review is explicit."
                      ],
     "risks_or_blocks":  [
                             "Novelty remains conditional until empirical ablation results are collected.",
@@ -20,16 +20,16 @@
                             "Cloud provider API/platform changes may require periodic strategy updates.",
                             "Current matrix is fully real-mode but based on small handcrafted local datasets.",
                             "Local handcrafted datasets may not reflect production distributions.",
-                            "The slot-invariant binary channel-order branch stopped after mixed metric leadership on the fixed packet.",
-                            "The margin continuation is only valid if latent slot invariance and coarse margin-null conditions are proven in generator diagnostics.",
+                            "The slot-invariant channel-order margin branch stopped after mixed leadership across MAE and rank correlation.",
+                            "Any continuation must keep slot identity a nuisance variable by construction and avoid reopening the same margin target without a different objective family.",
                             "No remote work, task expansion, or control-family expansion is allowed on this line."
                         ],
     "last_test_run":  "PYTHONPATH=src python -m pytest tests/test_synthetic.py tests/test_qsim.py tests/test_run_real_mode.py",
     "recent_changes":  [
-                           "docs/research/q-rope-transition-orbit-slot-invariant-channel-order-margin-implementation-approval-gate-v1.md",
-                           "docs/research/q-rope-transition-orbit-slot-invariant-channel-order-margin-implementation-plan-v1.md",
-                           "stories/S485-transition-orbit-slot-invariant-channel-order-margin-implementation-approval-gate.md",
-                           "stories/S486-transition-orbit-slot-invariant-channel-order-margin-implementation-plan.md"
+                           "docs/research/q-rope-transition-orbit-slot-invariant-channel-order-margin-implementation-v1.md",
+                           "docs/research/q-rope-transition-orbit-slot-invariant-channel-order-margin-first-packet-v1.md",
+                           "docs/research/q-rope-transition-orbit-slot-invariant-channel-order-margin-decision-memo-v1.md",
+                           "logs/ablation_runs/summary/transition_orbit_channel_order_margin_invariant_v1.csv"
                        ],
-    "notes":  "S485-S486 completed. The slot-invariant channel-order margin line is implementation-approved but still tightly bounded, with latent slot-invariance and coarse margin-null diagnostics bound into the hard-stop contract."
+    "notes":  "S487-S489 completed. The slot-invariant channel-order margin packet passed all generator hard-stop diagnostics and the witness led on MAE, but bounded controls led on rank correlation. S490 preserves a rank-only task as the next memo-only angle."
 }
