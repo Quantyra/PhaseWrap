@@ -728,3 +728,7 @@ Use one row per evidence item.
 - EL-508 (2026-03-11): S587 ran the fixed three-seed packet; the witness lost both declared primary classification metrics to bounded controls.
 - EL-509 (2026-03-11): S588 stopped the slot-invariant top-k pair-order signed-consistency execution branch under the declared gate.
 - EL-510 (2026-03-11): S589 preserved synthetic_transition_orbit_slot_invariant_topk_pair_order_signed_flip_consistency_binary as the next memo-only angle.
+
+- EL-511 (2026-03-11): S590 fixed synthetic_transition_orbit_slot_invariant_topk_pair_order_signed_flip_consistency_binary as the next exact memo-only task.
+- EL-512 (2026-03-11): S591 bound the signed-flip consistency line to one fixed candidate, one bounded symbolic control stack, and one fixed three-seed packet.
+- EL-513 (2026-03-11): S592 elevated the slot-invariant top-k pair-order signed-flip consistency line to approval-candidate posture while keeping it memo-only.
