@@ -1,6 +1,6 @@
 # S486 Transition Orbit Slot-Invariant Channel-Order Margin Implementation Plan
 
-Status: active
+Status: completed
 Date: 2026-03-10
 
 ## Outcome
