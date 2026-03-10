@@ -556,3 +556,7 @@ Use one row per evidence item.
 - EL-369 (2026-03-10): Approved one strictly bounded local synthetic implementation phase for synthetic_transition_orbit_channel_advantage_response with a fixed regressor control stack and hard-stop generator diagnostics.
 
 - EL-370 (2026-03-10): Fixed the channel-advantage implementation boundary: writable files, fixed packet, primary metrics, required outputs, and explicit prohibitions.
+- EL-371 (2026-03-10): S451 implemented the bounded synthetic_transition_orbit_channel_advantage_response branch, merged generator diagnostics into run-level diagnostics, and tightened the generator so zero-variation coarse states are excluded before packet execution.
+- EL-372 (2026-03-10): S452 ran the fixed channel-advantage packet and found that all generator hard-stop diagnostics passed, but the witness was numerically unstable on seeds 42 and 777 and lost mean MAE to every approved bounded control.
+- EL-373 (2026-03-10): S453 stopped the transition-orbit channel-advantage execution branch because the witness failed the primary regression metric decisively and weak rank correlation was not enough to keep the branch alive.
+- EL-374 (2026-03-10): S454 preserved synthetic_transition_orbit_channel_order_response as the next memo-only angle because the remaining unresolved question is relative channel ordering rather than raw channel-effect magnitude.

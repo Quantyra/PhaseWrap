@@ -605,6 +605,41 @@ def test_transition_orbit_asymmetric_sign_localization_lookup_control_runs() -> 
     assert diagnostics["coarse_state_only"] is True
 
 
+def test_transition_orbit_channel_advantage_loader_path() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_transition_orbit_channel_advantage_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_future_relational_witness_transition_orbit_channel_advantage",
+    )
+    diagnostics = metrics["dataset_diagnostics"]
+    assert metrics["data_mode"].startswith(
+        "synthetic_transition_orbit_channel_advantage_response+readout_relational_witness_transition_orbit_channel_advantage+head_linear"
+    )
+    assert diagnostics["coarse_channel_advantage_lookup_near_null_pass"] is True
+    assert diagnostics["within_state_channel_advantage_variation_pass"] is True
+    assert diagnostics["paired_channel_diversity_pass"] is True
+    assert diagnostics["channel_advantage_balance_pass"] is True
+    assert diagnostics["token_view_balance_pass"] is True
+    assert metrics["run_diagnostics"]["channel_advantage_target_mode"] == "signed_left_minus_right_effect"
+    assert metrics["extra_metrics"]["mae"] >= 0.0
+
+
+def test_transition_orbit_channel_advantage_lookup_control_runs() -> None:
+    metrics = run_real_experiment(
+        dataset="synthetic_transition_orbit_channel_advantage_response",
+        seed=42,
+        backend="sim_quantum_statevector",
+        variant="V_control_symbolic_transition_channel_lookup_regressor",
+    )
+    assert metrics["data_mode"].startswith(
+        "synthetic_transition_orbit_channel_advantage_response+readout_symbolic_transition_channel_lookup_regressor+head_linear"
+    )
+    diagnostics = metrics["run_diagnostics"]
+    assert metrics["extra_metrics"]["mae"] >= 0.0
+    assert diagnostics["channel_advantage_target_mode"] == "signed_left_minus_right_effect"
+
+
 def test_synthetic_offset_binary_quantum_backend_runs() -> None:
     metrics = run_real_experiment(
         dataset="synthetic_offset_binary",
