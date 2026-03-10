@@ -1,6 +1,6 @@
 # S517 Transition Orbit Slot-Invariant Channel-Order Top-K Rank-Only Task Design
 
-Status: active
+Status: complete
 Date: 2026-03-10
 
 ## Outcome
