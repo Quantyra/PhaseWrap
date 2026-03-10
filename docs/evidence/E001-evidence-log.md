@@ -647,3 +647,7 @@ Use one row per evidence item.
 - EL-458 (2026-03-10): S537 bound the top-k pair-margin line to one fixed candidate, one bounded symbolic control stack, and one fixed three-seed packet.
 - EL-459 (2026-03-10): S538 elevated the top-k pair-margin line to approval-candidate posture while keeping it memo-only.
 
+
+- EL-460 (2026-03-10): S539 approved one strictly bounded implementation phase for the slot-invariant top-k pair-margin line.
+- EL-461 (2026-03-10): S540 fixed the implementation boundary, hard-stop diagnostics, and decision metrics for the top-k pair-margin packet.
+
