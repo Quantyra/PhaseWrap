@@ -504,3 +504,7 @@ Use one row per evidence item.
 - EL-343 (2026-03-11): Bound the sign-consistency line to one fixed candidate and bounded symbolic consistency control stack under a memo-only restart scaffold.
 
 - EL-344 (2026-03-11): Elevated the sign-consistency line to approval-candidate posture while keeping implementation closed pending a dedicated approval gate.
+
+- EL-345 (2026-03-11): Approved one strictly bounded local synthetic implementation phase for synthetic_transition_orbit_sign_consistency_binary with a fixed control stack and hard-stop generator diagnostics.
+
+- EL-346 (2026-03-11): Fixed the sign-consistency implementation boundary: writable files, fixed packet, primary metrics, required outputs, and explicit prohibitions.
