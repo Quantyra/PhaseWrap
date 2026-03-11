@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Review whether the symbolic-insufficiency argument is specific enough for an approval-candidate hardening memo.",
-                         "If needed, narrow the allowed symbolic basis further before any implementation gate.",
-                         "Keep the line memo-only until the insufficiency argument is auditable and concrete."
+                         "Decide whether the hardened symbolic-insufficiency line is specific enough for an implementation-approval candidate review.",
+                         "If yes, write the approval-candidate gate that enforces the frozen symbolic basis at implementation time.",
+                         "Keep the line memo-only until that gate is explicit and auditable."
                      ],
     "repo_posture":  "memo_only",
     "risks":  [
-                  "If the allowed symbolic family is still too broad or too vague, the line will drift back into post-hoc fairness arguments.",
-                  "If the task cannot guarantee coarse-state nullness and within-state latent variation simultaneously, the insufficiency claim will be weak."
+                  "If the task still cannot guarantee coarse-state nullness and within-state latent variation, the symbolic-insufficiency claim remains too weak for implementation.",
+                  "Any drift in the allowed symbolic basis during future planning would invalidate the line and should trigger an immediate stop."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -671,9 +671,14 @@
                                 "S654",
                                 "S655",
                                 "S656",
-                                "S657"
+                                "S657",
+                                "S656",
+                                "S657",
+                                "S658",
+                                "S659",
+                                "S660"
                             ],
     "current_story_ids":  [
-                              "S658"
+                              "S661"
                           ]
 }

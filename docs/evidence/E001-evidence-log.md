@@ -822,3 +822,7 @@ Use one row per evidence item.
 - EL-579 (2026-03-11): Fixed `synthetic_symbolic_insufficiency_transition_response` as the first exact task on the symbolic-insufficiency line.
 - EL-580 (2026-03-11): Declared one allowed symbolic control family and one forbidden feature family before any implementation approval discussion.
 - EL-581 (2026-03-11): Recorded a memo-level insufficiency argument and bound it into the symbolic-insufficiency restart scaffold.
+
+- EL-582 (2026-03-11): Narrowed the symbolic-insufficiency line to one explicit allowed symbolic basis to prevent symbolic-family creep during later planning.
+- EL-583 (2026-03-11): Refreshed the symbolic-insufficiency line to a hardened approval-candidate with a frozen allowed symbolic basis and explicit forbidden feature family.
+- EL-584 (2026-03-11): Bound the hardened symbolic basis directly into the symbolic-insufficiency restart scaffold and added `allowed_symbolic_basis_frozen_pass` as a required future diagnostic.
