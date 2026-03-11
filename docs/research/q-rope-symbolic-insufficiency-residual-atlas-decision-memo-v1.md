@@ -21,3 +21,8 @@ Stories: S721
 - do not reopen implementation immediately for this line
 - preserve the witness as the current strongest bounded internal positive result in the repo
 - any future fairness challenge must declare a materially stronger symbolic basis before code reopens
+
+## Artifact Correction
+- The first batch writer produced fallback sim_local artifacts for the challenger path even though the direct residual-atlas control path was implemented correctly.
+- The persisted challenger run directories were rewritten from direct single-variant runs before finalizing the standing benchmark decision.
+

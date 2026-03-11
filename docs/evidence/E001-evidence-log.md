@@ -927,3 +927,6 @@ Use one row per evidence item.
 - EL-661 (2026-03-11): S727 fixed the dual-atlas implementation plan to one control, one task, a frozen 4x4 source-destination lattice, and one frozen coupling interaction set.
 - EL-662 (2026-03-11): S728 concluded that the dual-atlas line is specific enough for one bounded implementation cycle and rejected any broader code reopening.
 
+
+- EL-656 (2026-03-11): Corrected the persisted residual-atlas challenger artifacts after detecting that an earlier batch writer had stored fallback sim_local outputs instead of the direct residual-atlas control path.
+
