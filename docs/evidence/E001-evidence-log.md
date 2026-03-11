@@ -896,3 +896,8 @@ Use one row per evidence item.
 - EL-643 (2026-03-11): S710 ran the fixed three-seed shared-atlas packet on synthetic_symbolic_insufficiency_transition_response; the witness beat the atlas control on both mae and ank_correlation across all three seeds.
 - EL-644 (2026-03-11): S711 concluded that the shared-atlas control did not catch up, so the symbolic-insufficiency witness remains the standing internal benchmark.
 - EL-645 (2026-03-11): S711 returned the shared-atlas line to memo-only posture and required any further fairness challenge to declare a materially stronger symbolic basis before code can reopen.
+
+- EL-646 (2026-03-11): S712 defined one materially stronger symbolic family beyond the shared-atlas control by adding only a globally frozen residual chart-transition family over the same four atlas charts.
+- EL-647 (2026-03-11): S713 bound the residual-atlas family to one fixed future scaffold, task, backend, seeds, and required frozen-family audits.
+- EL-648 (2026-03-11): S714 preserved the residual-atlas family as the only valid next stronger symbolic review line and kept the branch memo-only.
+
