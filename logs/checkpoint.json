@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Write one explicit implementation-approval candidate memo for the residual-atlas symbolic family.",
-                         "Freeze residual transition count, directionality, and allowed residual interactions directly into that memo.",
-                         "Do not reopen code until the residual-atlas gate is explicit and approved."
+                         "Write one bounded implementation plan for the residual-atlas symbolic family.",
+                         "Freeze transition count, directionality, and residual interaction set directly in that plan.",
+                         "Do not reopen code until that implementation plan is complete."
                      ],
-    "repo_posture":  "memo_only_residual_atlas_review",
+    "repo_posture":  "memo_only_residual_atlas_gate_decision",
     "risks":  [
-                  "If residual transitions are allowed to depend on hidden latent tuples, the fairness review becomes invalid.",
-                  "If the residual atlas family grows beyond the frozen four-chart global rule, the benchmark loses audit value."
+                  "If transition count or directionality is left implicit, the residual-atlas review becomes non-auditable.",
+                  "If residual interactions expand beyond the frozen declared set, the fairness review becomes invalid."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -724,9 +724,11 @@
                                 "S711",
                                 "S712",
                                 "S713",
-                                "S714"
+                                "S714",
+                                "S715",
+                                "S716"
                             ],
     "current_story_ids":  [
-                              "S714"
+                              "S716"
                           ]
 }
