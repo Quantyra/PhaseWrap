@@ -905,3 +905,7 @@ Use one row per evidence item.
 - EL-649 (2026-03-11): S715 wrote the explicit implementation-approval gate for the residual-atlas symbolic family and froze the chart rule, transition family type, and allowed residual interactions at gate level.
 - EL-650 (2026-03-11): S716 concluded that the residual-atlas line is specific enough for one bounded implementation-planning step, while keeping code closed in this step.
 
+
+- EL-651 (2026-03-11): S717 fixed the residual-atlas implementation plan to one control, one task, eight directional chart transitions, and one frozen residual interaction set.
+- EL-652 (2026-03-11): S718 concluded that the residual-atlas line is specific enough for one bounded implementation cycle and rejected any broader code reopening.
+
