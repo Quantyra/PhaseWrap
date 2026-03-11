@@ -37,6 +37,7 @@ from qrope.synthetic import (
     generate_dual_latent_phase_manifold_residual_response_bundle,
     generate_dual_local_atlas_manifold_response_bundle,
     generate_dual_chart_transition_manifold_response_bundle,
+    generate_symbolic_insufficiency_transition_response_bundle,
     generate_dual_content_parity_coupling_binary_bundle,
     generate_dual_nonlinear_manifold_response_bundle,
     generate_dual_phase_sensitive_manifold_response_bundle,
@@ -274,6 +275,15 @@ def test_dual_content_parity_coupling_labels_follow_even_parity_rule() -> None:
         )
         parity = int(sign_agreement) ^ int(content_agreement) ^ int(orientation_agreement)
         assert label == (1 if parity == 0 else 0)
+
+
+def test_symbolic_insufficiency_bundle_enforces_declared_diagnostics() -> None:
+    bundle = generate_symbolic_insufficiency_transition_response_bundle(seed=42)
+    diagnostics = bundle.diagnostics
+    assert diagnostics["coarse_state_null_pass"] is True
+    assert diagnostics["within_state_variation_pass"] is True
+    assert diagnostics["latent_path_diversity_pass"] is True
+    assert diagnostics["token_view_balance_pass"] is True
 
 
 def test_dual_continuous_coupled_response_bundle_is_balanced() -> None:
