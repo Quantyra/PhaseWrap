@@ -958,3 +958,11 @@ Use one row per evidence item.
 - EL-677 (2026-03-11): S743 bound the dual-atlas bilinear residual family to one fixed future scaffold, task, backend, seeds, and required frozen-family audits.
 - EL-678 (2026-03-11): S744 preserved the dual-atlas bilinear residual family as the next memo-only approval-candidate line while keeping implementation closed.
 
+
+- EL-679 (2026-03-11): S745 wrote the explicit implementation-approval gate for the dual-atlas bilinear residual symbolic family and froze the 4x4 lattice, residual channels, bilinear channels, and all allowed interactions at gate level.
+- EL-680 (2026-03-11): S746 concluded that the dual-atlas bilinear residual line is specific enough for one bounded implementation-planning step while keeping code closed in this step.
+
+
+- EL-681 (2026-03-11): S747 fixed the bounded implementation plan for the dual-atlas bilinear residual challenger with a frozen 4x4 lattice, two residual channels, two bilinear channels, and one fixed three-seed packet against the standing witness benchmark.
+- EL-682 (2026-03-11): S748 concluded that the dual-atlas bilinear residual line is specific enough for one bounded implementation cycle and rejected any broader code reopening.
+
