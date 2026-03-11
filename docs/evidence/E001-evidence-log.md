@@ -839,3 +839,6 @@ Use one row per evidence item.
 - EL-593 (2026-03-10): S668 ran the fixed three-seed symbolic-insufficiency packet; the witness beat the frozen-basis symbolic control on both declared packet metrics across all three seeds.
 - EL-594 (2026-03-10): S669 kept the symbolic-insufficiency branch active and selected fixed token-renaming hardening as the next bounded fairness step.
 - EL-595 (2026-03-10): S670 fixed one bounded token-renaming hardening packet with `token_permutation=cdab` while keeping the symbolic basis frozen.
+- EL-596 (2026-03-10): S670 ran the fixed `token_permutation=cdab` hardening packet; the perturbation was non-inert and the witness still beat the frozen-basis symbolic control on both declared packet metrics.
+- EL-597 (2026-03-10): S671 kept the symbolic-insufficiency branch active after token renaming and rejected symbolic-family widening as the next move.
+- EL-598 (2026-03-10): S672 fixed `pair_reindex=1` as the next bounded hardening step for the symbolic-insufficiency branch.
