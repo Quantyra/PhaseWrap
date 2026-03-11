@@ -260,6 +260,69 @@ def generate_dual_chart_transition_manifold_response_bundle(
     )
 
 
+def generate_symbolic_insufficiency_transition_response_bundle(
+    seed: int,
+    split_rotation: int = 0,
+    slot_swap: int = 0,
+    token_permutation: str = "identity",
+    pair_reindex: int = 0,
+) -> SyntheticDatasetBundle:
+    bundle = generate_dual_sector_bundle(
+        seed=seed,
+        dataset_name="synthetic_symbolic_insufficiency_transition_response",
+        split_rotation=split_rotation,
+        slot_swap=slot_swap,
+        token_permutation=token_permutation,
+        pair_reindex=pair_reindex,
+        label_mode="symbolic_insufficiency_transition_response",
+    )
+    all_rows = [
+        DualSyntheticSample(
+            text=text,
+            label=label,
+            sector_a=offset_sector_name(parse_dual_sample_text(text)["sample_a"].offset),
+            sector_b=offset_sector_name(parse_dual_sample_text(text)["sample_b"].offset),
+            sample_a=parse_dual_sample_text(text)["sample_a"],
+            sample_b=parse_dual_sample_text(text)["sample_b"],
+        )
+        for split_rows in (bundle.train, bundle.validation, bundle.test)
+        for text, label in split_rows
+    ]
+    combined = summarize_dual_split(all_rows)
+    latent_groups: dict[str, set[tuple[int, int]]] = defaultdict(set)
+    token_counts = Counter()
+    for row in all_rows:
+        payload = parse_dual_sample_text(row.text)
+        key = (
+            int(sector_sign_family(row.sector_a) == sector_sign_family(row.sector_b)),
+            int(content_family_name(row.sample_a.left_token, row.sample_a.right_token) == content_family_name(row.sample_b.left_token, row.sample_b.right_token)),
+            int(token_orientation_name(row.sample_a.left_token, row.sample_a.right_token) == token_orientation_name(row.sample_b.left_token, row.sample_b.right_token)),
+        )
+        latent_groups[f"{key[0]}{key[1]}{key[2]}"].add(symbolic_insufficiency_latent_ids(payload["sample_a"], payload["sample_b"]))
+        token_counts.update(
+            [
+                row.sample_a.left_token,
+                row.sample_a.right_token,
+                row.sample_b.left_token,
+                row.sample_b.right_token,
+            ]
+        )
+    diagnostics = dict(bundle.diagnostics)
+    diagnostics["coarse_state_null_pass"] = combined["coarse_tuple_mean_abs_max"] <= 1e-6
+    diagnostics["within_state_variation_pass"] = all(len(values) > 1 for values in latent_groups.values()) and combined["within_state_variation_ok"]
+    diagnostics["latent_path_diversity_pass"] = all(len(values) > 1 for values in latent_groups.values())
+    diagnostics["token_view_balance_pass"] = set(token_counts.keys()) == set(TOKENS)
+    diagnostics["latent_path_group_counts"] = {key: len(values) for key, values in sorted(latent_groups.items())}
+    diagnostics["coarse_state_null_max_abs_mean"] = combined["coarse_tuple_mean_abs_max"]
+    diagnostics["within_state_target_ranges"] = combined["within_state_target_ranges"]
+    return SyntheticDatasetBundle(
+        train=bundle.train,
+        validation=bundle.validation,
+        test=bundle.test,
+        diagnostics=diagnostics,
+    )
+
+
 def generate_chart_transition_token_invariant_response_bundle(
     seed: int,
     split_rotation: int = 0,
@@ -3696,6 +3759,7 @@ def generate_dual_sector_bundle(
                 "latent_phase_manifold_residual_response",
                 "local_atlas_manifold_response",
                 "chart_transition_manifold_response",
+                "symbolic_insufficiency_transition_response",
             }:
                 pair_grouped[(sector_a, sector_b)].extend(
                     build_balanced_triple_pairs(
@@ -3740,6 +3804,7 @@ def generate_dual_sector_bundle(
         "latent_phase_manifold_residual_response",
         "local_atlas_manifold_response",
         "chart_transition_manifold_response",
+        "symbolic_insufficiency_transition_response",
     }:
         combined = train + validation + test
         centered = orthogonalize_dual_samples_by_coarse_tuple(combined)
@@ -4179,6 +4244,38 @@ def build_dual_sample(sample_a: SyntheticSample, sample_b: SyntheticSample, labe
             + 0.08 * content_term * ordered_content_delta,
             6,
         )
+    elif label_mode == "symbolic_insufficiency_transition_response":
+        sector_magnitude_delta = normalized_sector_magnitude_delta(sample_a, sample_b)
+        ordered_content_delta = ordered_content_delta_score(sample_a, sample_b)
+        orientation_delta = orientation_delta_score(sample_a, sample_b)
+        latent_left, latent_right = symbolic_insufficiency_latent_ids(sample_a, sample_b)
+        latent_phase = {
+            (0, 0): -math.pi / 2.7,
+            (0, 1): math.pi / 5.0,
+            (0, 2): math.pi / 2.9,
+            (0, 3): -math.pi / 6.0,
+            (1, 0): math.pi / 4.0,
+            (1, 1): -math.pi / 7.5,
+            (1, 2): math.pi / 3.1,
+            (1, 3): -math.pi / 8.0,
+            (2, 0): math.pi / 2.5,
+            (2, 1): -math.pi / 5.5,
+            (2, 2): math.pi / 3.7,
+            (2, 3): -math.pi / 9.0,
+            (3, 0): math.pi / 7.0,
+            (3, 1): -math.pi / 3.9,
+            (3, 2): math.pi / 4.7,
+            (3, 3): -math.pi / 10.5,
+        }[(latent_left, latent_right)]
+        global_backbone = 0.12 * math.sin(math.pi * sector_magnitude_delta)
+        transition_phase_term = math.sin(
+            math.pi * (sector_magnitude_delta - orientation_delta) * (ordered_content_delta + 0.35 * orientation_delta)
+            + latent_phase
+        )
+        transition_curvature_term = math.cos(
+            math.pi * (sector_magnitude_delta + ordered_content_delta) * orientation_delta - 0.5 * latent_phase
+        )
+        label = round(global_backbone + 0.52 * transition_phase_term + 0.31 * transition_curvature_term, 6)
     else:
         raise ValueError(f"Unsupported dual label_mode: {label_mode}")
     text = render_dual_sample_text(sample_a=sample_a, sample_b=sample_b)
@@ -4253,6 +4350,22 @@ def parse_dual_sample_text(text: str) -> dict[str, Any]:
         offset_abs=abs(fields["b_off"]),
     )
     return fields
+
+
+def symbolic_insufficiency_latent_ids(sample_a: SyntheticSample, sample_b: SyntheticSample) -> tuple[int, int]:
+    left_id = (
+        sample_a.left_pos
+        + 2 * sample_a.right_pos
+        + sample_b.offset_abs
+        + (1 if sample_a.left_token in {"B", "D"} else 0)
+    ) % 4
+    right_id = (
+        sample_b.left_pos
+        + 3 * sample_b.right_pos
+        + sample_a.offset_abs
+        + (1 if sample_b.right_token in {"A", "C"} else 0)
+    ) % 4
+    return left_id, right_id
 
 
 def parse_transition_pairwise_text(text: str) -> dict[str, Any]:

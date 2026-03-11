@@ -834,3 +834,8 @@ Use one row per evidence item.
 - EL-588 (2026-03-11): Approved one strictly bounded implementation phase for `synthetic_symbolic_insufficiency_transition_response` under a frozen allowed symbolic basis.
 - EL-589 (2026-03-11): Bound `allowed_symbolic_basis_frozen_pass` and `forbidden_feature_family_absent_pass` directly into the symbolic-insufficiency implementation gate.
 - EL-590 (2026-03-11): Fixed the writable scope and enforcement requirements for the symbolic-insufficiency implementation phase.
+- EL-591 (2026-03-10): S666 fixed the writable scope and enforcement requirements for the symbolic-insufficiency implementation phase.
+- EL-592 (2026-03-10): S667 implemented the bounded `synthetic_symbolic_insufficiency_transition_response` branch and validated it with 255 focused tests passing.
+- EL-593 (2026-03-10): S668 ran the fixed three-seed symbolic-insufficiency packet; the witness beat the frozen-basis symbolic control on both declared packet metrics across all three seeds.
+- EL-594 (2026-03-10): S669 kept the symbolic-insufficiency branch active and selected fixed token-renaming hardening as the next bounded fairness step.
+- EL-595 (2026-03-10): S670 fixed one bounded token-renaming hardening packet with `token_permutation=cdab` while keeping the symbolic basis frozen.
