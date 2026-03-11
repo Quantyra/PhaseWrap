@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Write one bounded implementation plan for the residual-atlas symbolic family.",
-                         "Freeze transition count, directionality, and residual interaction set directly in that plan.",
-                         "Do not reopen code until that implementation plan is complete."
+                         "Implement exactly one residual-atlas symbolic control: V_control_symbolic_symbolic_insufficiency_regressor_residual_atlas.",
+                         "Run one fixed packet against the standing witness benchmark on seeds 42, 123, and 777.",
+                         "Stop the line immediately if the residual-atlas control matches or beats the witness on both declared packet metrics."
                      ],
-    "repo_posture":  "memo_only_residual_atlas_gate_decision",
+    "repo_posture":  "bounded_residual_atlas_implementation",
     "risks":  [
-                  "If transition count or directionality is left implicit, the residual-atlas review becomes non-auditable.",
-                  "If residual interactions expand beyond the frozen declared set, the fairness review becomes invalid."
+                  "If transition features drift beyond the frozen eight directional transitions, the review becomes invalid.",
+                  "If any residual interaction beyond the three declared analog residuals appears, the packet must be discarded."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -726,9 +726,11 @@
                                 "S713",
                                 "S714",
                                 "S715",
-                                "S716"
+                                "S716",
+                                "S717",
+                                "S718"
                             ],
     "current_story_ids":  [
-                              "S716"
+                              "S718"
                           ]
 }
