@@ -1,11 +1,11 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Write the explicit implementation-approval gate for the dual-atlas bilinear residual symbolic family.",
-                         "Freeze the bilinear residual basis mechanically in that gate.",
-                         "Reopen code only if that gate is explicitly approved."
+                         "Implement exactly one dual-atlas bilinear residual symbolic control.",
+                         "Run one fixed packet against the standing witness benchmark on seeds 42, 123, 777.",
+                         "Stop the line immediately if the bilinear residual control matches or beats the witness on both declared packet metrics."
                      ],
-    "repo_posture":  "memo_only_dual_atlas_bilinear_review",
+    "repo_posture":  "bounded_dual_atlas_bilinear_implementation",
     "risks":  [
                   "If the bilinear residual family grows beyond the two declared channels, the review becomes invalid.",
                   "If any hidden per-cell lookup or bespoke nonlinear transform appears, the packet must be discarded."
@@ -754,9 +754,13 @@
                                 "S741",
                                 "S742",
                                 "S743",
-                                "S744"
+                                "S744",
+                                "S745",
+                                "S746",
+                                "S747",
+                                "S748"
                             ],
     "current_story_ids":  [
-                              "S744"
+                              "S748"
                           ]
 }
