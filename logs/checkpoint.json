@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Preserve the symbolic-insufficiency witness as the standing internal benchmark.",
-                         "Do not reopen code unless a materially stronger symbolic family is declared at memo level.",
-                         "If fairness review continues, define that stronger symbolic basis before any new implementation gate."
+                         "Write one explicit implementation-approval candidate memo for the residual-atlas symbolic family.",
+                         "Freeze residual transition count, directionality, and allowed residual interactions directly into that memo.",
+                         "Do not reopen code until the residual-atlas gate is explicit and approved."
                      ],
-    "repo_posture":  "memo_only_preserved_positive_result",
+    "repo_posture":  "memo_only_residual_atlas_review",
     "risks":  [
-                  "If a future symbolic family reintroduces hidden lookup structure, the fairness review becomes invalid.",
-                  "If the benchmark is widened without a frozen symbolic basis, the current positive result loses audit value."
+                  "If residual transitions are allowed to depend on hidden latent tuples, the fairness review becomes invalid.",
+                  "If the residual atlas family grows beyond the frozen four-chart global rule, the benchmark loses audit value."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -721,9 +721,12 @@
                                 "S708",
                                 "S709",
                                 "S710",
-                                "S711"
+                                "S711",
+                                "S712",
+                                "S713",
+                                "S714"
                             ],
     "current_story_ids":  [
-                              "S711"
+                              "S714"
                           ]
 }
