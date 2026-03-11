@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Preserve the stronger-reviewed symbolic-insufficiency witness result as the standing internal benchmark.",
-                         "Do not reopen code until a materially stronger symbolic family is specified at memo level.",
-                         "If the line continues, challenge the benchmark only with a newly frozen symbolic basis and one bounded packet."
+                         "Preserve the current symbolic-insufficiency witness result as the standing internal benchmark.",
+                         "Define the shared-atlas symbolic family completely at memo level before any code reopens.",
+                         "Reject any future symbolic review that introduces latent-path ids, hidden tuple lookups, or uncontrolled chart growth."
                      ],
-    "repo_posture":  "memo_only_preserved_positive_result",
+    "repo_posture":  "memo_only_shared_atlas_symbolic_review",
     "risks":  [
-                  "If a future symbolic review relaxes the frozen stronger basis, the current benchmark loses comparability.",
-                  "If new implementation work starts without a fresh symbolic-family freeze, the current positive result becomes unauditable."
+                  "If the shared-atlas family is allowed to fit chart regions from hidden latent structure, the fairness review collapses into lookup behavior.",
+                  "If chart count or interaction family grows after seeing packet outcomes, the current benchmark loses auditability."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -712,9 +712,10 @@
                                 "S695",
                                 "S696",
                                 "S697",
-                                "S698"
+                                "S698",
+                                "S700"
                             ],
     "current_story_ids":  [
-                              "S699"
+                              "S701"
                           ]
 }
