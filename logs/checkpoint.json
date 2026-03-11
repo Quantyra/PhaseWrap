@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Define one stricter allowed symbolic basis for the symbolic-insufficiency line without reopening implementation.",
-                         "Keep the current symbolic-insufficiency branch preserved as the baseline internal reference result.",
-                         "Do not reopen code or packets unless the stricter symbolic-family review is explicit and auditable."
+                         "Write an implementation-approval candidate memo for the stricter symbolic basis on `synthetic_symbolic_insufficiency_transition_response`.",
+                         "Keep the current symbolic-insufficiency result fixed as the baseline internal reference during the stricter review.",
+                         "Do not reopen code until the stronger symbolic basis is frozen explicitly in a new implementation gate."
                      ],
-    "repo_posture":  "memo_only_symbolic_review",
+    "repo_posture":  "memo_only_stricter_symbolic_review",
     "risks":  [
-                  "If the stricter symbolic-family review is underspecified, the line will drift back into unbounded fairness creep.",
-                  "If the current result is not treated as the baseline reference, later memo work may weaken traceability of the strongest bounded internal evidence."
+                  "If the stronger symbolic basis is not frozen exactly, the line will reintroduce symbolic-family creep under a new label.",
+                  "If the baseline branch result is not held fixed during the review, the next comparison will lose interpretability."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -704,9 +704,10 @@
                                 "S681",
                                 "S682",
                                 "S683",
-                                "S685"
+                                "S685",
+                                "S687"
                             ],
     "current_story_ids":  [
-                              "S686"
+                              "S688"
                           ]
 }
