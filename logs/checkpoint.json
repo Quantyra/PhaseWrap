@@ -1,11 +1,11 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Write the explicit implementation-approval gate for the dual-atlas transition-quartic-plus symbolic family.",
-                         "Freeze the transition-quartic-plus basis mechanically in that gate.",
-                         "Reopen code only if that gate is explicitly approved."
+                         "Write the bounded implementation plan for the dual-atlas transition-quartic-plus symbolic control.",
+                         "Freeze transition-quartic-plus definitions, lattice size, and allowed transition-quartic-plus interactions mechanically in that plan.",
+                         "Reopen code only after the bounded plan is accepted."
                      ],
-    "repo_posture":  "memo_only_dual_atlas_transition_quartic_plus_review",
+    "repo_posture":  "memo_only_dual_atlas_transition_quartic_plus_gate_decision",
     "risks":  [
                   "If the transition-quartic family grows beyond the two declared directional quartic channels, the fairness review becomes invalid.",
                   "If hidden lookup behavior or uncontrolled higher-order growth appears, any future packet must be discarded."
@@ -819,9 +819,11 @@
                                 "S811",
                                 "S812",
                                 "S813",
-                                "S814"
+                                "S814",
+                                "S815",
+                                "S816"
                             ],
     "current_story_ids":  [
-                              "S814"
+                              "S816"
                           ]
 }

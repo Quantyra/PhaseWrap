@@ -1062,3 +1062,6 @@ Use one row per evidence item.
 - EL-746 (2026-03-11): S812 defined one materially stronger memo-only symbolic family beyond transition-quartic by adding exactly two frozen dual-atlas transition-quartic-plus channels.
 - EL-747 (2026-03-11): S813 bound the transition-quartic-plus family to one fixed future restart scaffold with a frozen task, backend, seeds, and audit shape.
 - EL-748 (2026-03-11): S814 raised the transition-quartic-plus family to memo-only approval-candidate posture while keeping code closed.
+
+- EL-749 (2026-03-11): S815 wrote the explicit implementation-approval gate for the dual-atlas transition-quartic-plus symbolic family and froze the quartic-plus basis at gate level before any new code reopened.
+- EL-750 (2026-03-11): S816 concluded that the dual-atlas transition-quartic-plus line is specific enough for one bounded implementation-planning step while keeping code closed in this step.
