@@ -783,3 +783,8 @@ Use one row per evidence item.
 
 - EL-550 (2026-03-11): S629 approved one strictly bounded local synthetic implementation phase for the slot-invariant top-k pair-order signed-flip reversion line.
 - EL-551 (2026-03-11): S630 fixed the implementation boundary, hard-stop diagnostics, and decision metrics for the signed-flip reversion packet.
+
+- EL-552 (2026-03-11): S631 implemented the bounded slot-invariant top-k pair-order signed-flip reversion branch and validated it with 246 focused tests passing.
+- EL-553 (2026-03-11): S632 ran the fixed three-seed packet; the witness lost both declared primary classification metrics to bounded controls.
+- EL-554 (2026-03-11): S633 stopped the slot-invariant top-k pair-order signed-flip reversion execution branch under the declared gate.
+- EL-555 (2026-03-11): S634 preserved `synthetic_transition_orbit_slot_invariant_topk_pair_order_signed_flip_hysteresis_binary` as the next memo-only angle.
