@@ -764,3 +764,7 @@ Use one row per evidence item.
 - EL-535 (2026-03-11): S614 ran the fixed three-seed packet; the witness lost both declared primary classification metrics to bounded controls.
 - EL-536 (2026-03-11): S615 stopped the slot-invariant top-k pair-order signed-flip persistence execution branch under the declared gate.
 - EL-537 (2026-03-11): S616 preserved synthetic_transition_orbit_slot_invariant_topk_pair_order_signed_flip_recurrence_binary as the next memo-only angle.
+
+- EL-538 (2026-03-11): S617 fixed synthetic_transition_orbit_slot_invariant_topk_pair_order_signed_flip_recurrence_binary as the next exact memo-only task.
+- EL-539 (2026-03-11): S618 bound the signed-flip recurrence line to one fixed candidate, one bounded symbolic control stack, and one fixed three-seed packet.
+- EL-540 (2026-03-11): S619 elevated the slot-invariant top-k pair-order signed-flip recurrence line to approval-candidate posture while keeping it memo-only.
