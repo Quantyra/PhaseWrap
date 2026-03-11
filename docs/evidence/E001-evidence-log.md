@@ -891,3 +891,8 @@ Use one row per evidence item.
 
 - EL-640 (2026-03-11): S707 fixed the bounded shared-atlas implementation plan with one control only, one task only, and a frozen four-chart global rule.
 - EL-641 (2026-03-11): S708 recorded that the shared-atlas line is specific enough for one bounded implementation cycle against the standing witness benchmark.
+
+- EL-642 (2026-03-11): S709 implemented exactly one shared-atlas symbolic control family (V_control_symbolic_symbolic_insufficiency_regressor_atlas) under the frozen four-chart global atlas contract and validated it with the focused suite passing.
+- EL-643 (2026-03-11): S710 ran the fixed three-seed shared-atlas packet on synthetic_symbolic_insufficiency_transition_response; the witness beat the atlas control on both mae and ank_correlation across all three seeds.
+- EL-644 (2026-03-11): S711 concluded that the shared-atlas control did not catch up, so the symbolic-insufficiency witness remains the standing internal benchmark.
+- EL-645 (2026-03-11): S711 returned the shared-atlas line to memo-only posture and required any further fairness challenge to declare a materially stronger symbolic basis before code can reopen.
