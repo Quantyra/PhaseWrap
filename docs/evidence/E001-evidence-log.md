@@ -860,3 +860,5 @@ Use one row per evidence item.
 - EL-614 (2026-03-10): S682 ran the fixed composite `slot_swap=1` plus `pair_reindex=7` hardening packet; the perturbation was non-inert and the witness still beat the frozen-basis symbolic control on both declared packet metrics.
 - EL-615 (2026-03-10): S683 closed the current bounded hardening cycle and recorded the symbolic-insufficiency branch as the strongest bounded internal positive line in the current repo state.
 - EL-616 (2026-03-10): S684 set the next valid move as a memo-only decision gate rather than another ad hoc perturbation packet.
+- EL-617 (2026-03-10): S685 preserved the symbolic-insufficiency branch as the strongest bounded internal positive result in the repo and rejected immediate implementation reopening.
+- EL-618 (2026-03-10): S686 fixed one stricter memo-only symbolic-family review as the only valid next continuation for the symbolic-insufficiency line.
