@@ -1,14 +1,14 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Run the fixed token-renaming hardening packet for `synthetic_symbolic_insufficiency_transition_response` with `token_permutation=cdab`.",
+                         "Run the fixed `pair_reindex=1` hardening packet for `synthetic_symbolic_insufficiency_transition_response`.",
                          "Keep the frozen symbolic basis unchanged and rerun only the witness and the symbolic-insufficiency control on seeds `42`, `123`, and `777`.",
-                         "Stop the branch if the witness loses either declared packet metric under the nuisance renaming, or record the perturbation as inert if nothing moves."
+                         "Stop the branch if the witness loses either declared packet metric under the pairing perturbation, or record the perturbation as inert if nothing moves."
                      ],
     "repo_posture":  "implementation_active_bounded",
     "risks":  [
-                  "If the witness advantage collapses under a label-preserving token rename, the branch loses most of its remaining uniqueness value.",
-                  "If token renaming is inert, the next hardening step must be non-inert rather than broadening the symbolic family again."
+                  "If the witness advantage collapses under a small pairing perturbation, the branch loses most of its remaining structural value.",
+                  "If pair reindex is inert, the next hardening step must be a different structural perturbation rather than another nuisance rename."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -689,9 +689,11 @@
                                 "S666",
                                 "S667",
                                 "S668",
-                                "S669"
+                                "S669",
+                                "S670",
+                                "S671"
                             ],
     "current_story_ids":  [
-                              "S670"
+                              "S672"
                           ]
 }
