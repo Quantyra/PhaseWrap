@@ -901,3 +901,7 @@ Use one row per evidence item.
 - EL-647 (2026-03-11): S713 bound the residual-atlas family to one fixed future scaffold, task, backend, seeds, and required frozen-family audits.
 - EL-648 (2026-03-11): S714 preserved the residual-atlas family as the only valid next stronger symbolic review line and kept the branch memo-only.
 
+
+- EL-649 (2026-03-11): S715 wrote the explicit implementation-approval gate for the residual-atlas symbolic family and froze the chart rule, transition family type, and allowed residual interactions at gate level.
+- EL-650 (2026-03-11): S716 concluded that the residual-atlas line is specific enough for one bounded implementation-planning step, while keeping code closed in this step.
+
