@@ -1320,3 +1320,21 @@ ank_correlation.
 - Story: S927
 - Artifact: docs/research/q-rope-transfer-fork-join-deeper-pair-reindex-hardening-plan-v1.md
 - Note: Fixed the next deeper structural hardening step as pair_reindex=7 while keeping the task, witness, symbolic control, seeds, and backend unchanged.
+
+## EL-862 S928 fork-join deeper pair-reindex hardening
+- Type: Result
+- Story: S928
+- Artifact: docs/research/q-rope-transfer-fork-join-deeper-pair-reindex-hardening-v1.md
+- Note: Ran the fixed pair_reindex=7 deeper structural hardening packet on synthetic_symbolic_insufficiency_fork_join_response; the perturbation was non-inert and the witness remained ahead of the bounded symbolic control on both mae and rank_correlation in the mean.
+
+## EL-863 S929 fork-join post-deeper-pair decision
+- Type: Decision
+- Story: S929
+- Artifact: docs/research/q-rope-transfer-fork-join-post-deeper-pair-reindex-decision-v1.md
+- Note: Preserved the fork-join transfer line as sufficient bounded internal transfer evidence after the approved hardening cycle and stopped default perturbation expansion.
+
+## EL-864 S930 fork-join hardening cycle synthesis
+- Type: Decision
+- Story: S930
+- Artifact: docs/research/q-rope-transfer-fork-join-hardening-cycle-synthesis-v1.md
+- Note: Closed the first bounded fork-join hardening cycle and returned the line to a memo-level decision gate.
