@@ -1,11 +1,11 @@
 {
     "active_epic":  "E001",
     "next_actions":  [
-                         "Preserve the standing benchmark and three bounded transfer results as the current internal package.",
-                         "Do not reopen same-family transfer perturbation loops by default.",
-                         "Only reopen execution for a materially different transfer family or theory-backed fairness challenge."
+                         "Write the explicit implementation-approval gate for synthetic_symbolic_insufficiency_braid_crossing_response.",
+                         "Bind the frozen braid symbolic family and generator diagnostics directly into that gate.",
+                         "Keep hardware out of scope until the braid-crossing transfer line survives approval and execution."
                      ],
-    "repo_posture":  "memo_only_internal_result_package",
+    "repo_posture":  "memo_only_transfer_braid_approval_candidate",
     "risks":  [
                   "Reopening execution without a materially different question would likely return the repo to diminishing-returns branch growth.",
                   "Using the current result for external or hardware claims would overstate the evidence base.",
@@ -864,9 +864,13 @@
                                 "S928",
                                 "S929",
                                 "S930",
-                                "S931"
+                                "S931",
+                                "S932",
+                                "S933",
+                                "S934",
+                                "S935"
                             ],
     "current_story_ids":  [
-                              "S931"
+                              "S935"
                           ]
 }

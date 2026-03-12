@@ -1344,3 +1344,12 @@ ank_correlation.
 - Story: S931
 - Artifact: docs/research/q-rope-transfer-fork-join-preservation-decision-v1.md
 - Note: Preserved the fork-join line as the third bounded internal transfer result and refreshed the internal package/executive summary to include benchmark plus three transfer families.
+
+## EL-866 S932-S935 fourth transfer family opened
+- Type: Decision
+- Story: S932, S933, S934, S935
+- Artifact: docs/research/q-rope-transfer-braid-task-family-design-v1.md
+- Artifact: docs/research/q-rope-transfer-braid-task-spec-v1.md
+- Artifact: docs/research/q-rope-transfer-first-restart-scaffold-v5.md
+- Artifact: docs/research/q-rope-transfer-braid-approval-candidate-v1.md
+- Note: Opened a fourth materially different transfer family based on ordered braid/crossing topology while keeping execution closed and hardware out of scope.
