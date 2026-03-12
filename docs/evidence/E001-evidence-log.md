@@ -1491,3 +1491,15 @@ ank_correlation.
 - Story: S956
 - Artifact: docs/research/q-rope-executive-summary-v4.md
 - Note: Refreshed the executive summary to reflect the current preserved positive transfer portfolio and the archived braid failure boundary while keeping hardware and externalization out of scope.
+
+## EL-890 S957 braid failure boundary theory note
+- Type: Decision
+- Story: S957
+- Artifact: docs/research/q-rope-braid-failure-boundary-theory-note-v1.md
+- Note: Formalized the current internal explanation for why `braid` is the archived transfer boundary while `path`, `loop-closure`, and `fork-join` remain preserved transfer evidence.
+
+## EL-891 S958 transfer portfolio theory decision
+- Type: Decision
+- Story: S958
+- Artifact: docs/research/q-rope-transfer-portfolio-theory-decision-v1.md
+- Note: Recorded that `braid` should be used as the current failure boundary in internal theory reasoning and should not be reopened without a materially different braid-family question.
