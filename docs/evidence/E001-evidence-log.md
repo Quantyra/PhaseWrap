@@ -1220,3 +1220,9 @@ ank_correlation.
 - Story: S907
 - Artifact: docs/research/q-rope-hardware-reopen-decision-memo-v1.md`r
 - Note: Recorded an explicit no-go on reopening real quantum hardware execution from the current benchmark-plus-transfer package.
+
+## EL-846 S908 internal recommendation memo
+- Type: Decision
+- Story: S908
+- Artifact: docs/research/q-rope-internal-recommendation-memo-v1.md`r
+- Note: Recorded a program-level recommendation to continue the line at low intensity while blocking hardware escalation and externalization.
