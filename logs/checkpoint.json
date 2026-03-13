@@ -1,18 +1,18 @@
 {
     "active_epic":  "E001",
-    "repo_posture":  "memo_only_transfer_portfolio_theory",
+    "repo_posture":  "memo_only_transfer_selection_rule",
     "current_story_ids":  [
-                              "S958"
+                              "S960"
                           ],
     "next_actions":  [
-                         "Use the braid failure boundary to sharpen internal theory and future transfer-family design.",
-                         "Do not reopen braid execution without a materially different braid-family question.",
-                         "Only open new execution for materially different transfer families or theory-backed fairness challenges."
+                         "Use the transfer survivability criteria as the filter for any future transfer-family proposal.",
+                         "Do not reopen transfer execution by default.",
+                         "Only advance a new transfer line if it is materially different and plausibly non-compressible under deeper reindexing."
                      ],
     "risks":  [
-                  "Treating braid as irrelevant negative evidence would weaken the internal theory package.",
-                  "Reopening braid without a materially different question would likely recreate diminishing-returns execution churn.",
-                  "Using the current package for hardware or external claims would still overstate the evidence base."
+                  "Ignoring the survivability screen would likely restart execution sprawl without improving internal understanding.",
+                  "Treating the current positive lines as universal would overstate the evidence base.",
+                  "Dropping the braid failure boundary from future selection would weaken protocol discipline."
               ],
     "completed_story_ids":  [
                                 "S001",

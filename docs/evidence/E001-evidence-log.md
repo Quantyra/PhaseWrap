@@ -1503,3 +1503,15 @@ ank_correlation.
 - Story: S958
 - Artifact: docs/research/q-rope-transfer-portfolio-theory-decision-v1.md
 - Note: Recorded that `braid` should be used as the current failure boundary in internal theory reasoning and should not be reopened without a materially different braid-family question.
+
+## EL-890 S959 transfer family survivability criteria
+- Type: Decision
+- Story: S959
+- Artifact: docs/research/q-rope-transfer-family-survivability-criteria-v1.md
+- Note: Distilled the current transfer portfolio into an explicit memo-level rule for which future transfer families are likely to survive deeper structural hardening under the frozen fairness discipline.
+
+## EL-891 S960 transfer family selection decision
+- Type: Decision
+- Story: S960
+- Artifact: docs/research/q-rope-transfer-family-selection-decision-v1.md
+- Note: Recorded that future transfer execution must pass memo-level survivability screening before any new approval-candidate review is allowed.
