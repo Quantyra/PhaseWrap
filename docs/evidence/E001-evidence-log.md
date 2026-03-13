@@ -1655,3 +1655,4 @@ ank_correlation.
 - EL-934 | 2026-03-12 | S992 | Connected the non-compressibility criterion directly to the standing witness and preserved transfer portfolio.
 - EL-935 | 2026-03-12 | S993 | Refreshed the theory package to connect witness characterization, braid boundary, and non-compressibility screening.
 - EL-936 | 2026-03-12 | S994 | Recorded that no further execution should reopen by default without passing the full intake and theory screen.
+- EL-937 | 2026-03-12 | S995 | Added board-style internal recommendation note summarizing the standing benchmark, transfer portfolio, and no-go boundaries.
