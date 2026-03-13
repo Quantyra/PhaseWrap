@@ -1666,3 +1666,5 @@ ank_correlation.
 - EL-945 | 2026-03-12 | S1003 | Proposed latch-switch as a structurally new transfer family based on delayed state persistence plus later switching.
 - EL-946 | 2026-03-12 | S1004 | Screened latch-switch against survivor-cluster and braid boundary and advanced it to approval-candidate posture.
 - EL-947 | 2026-03-12 | S1005 | Registered latch-switch as the next memo-only transfer approval candidate.
+- EL-948 | 2026-03-12 | S1006 | Wrote explicit implementation-approval gate for latch-switch transfer family.
+- EL-949 | 2026-03-12 | S1007 | Recorded latch-switch gate decision as pass for bounded implementation planning only.

@@ -1,18 +1,18 @@
 {
     "active_epic":  "E001",
-    "repo_posture":  "memo_only_transfer_latch_switch_approval_candidate",
+    "repo_posture":  "memo_only_transfer_latch_switch_gate_decision",
     "current_story_ids":  [
-                              "S1005"
+                              "S1007"
                           ],
     "next_actions":  [
-                         "Write the explicit implementation-approval gate for the latch-switch transfer family.",
-                         "Keep execution closed until the latch-switch fairness contract and diagnostics are frozen.",
-                         "Use the survivor-vs-braid and non-compressibility screens as mandatory front-door checks."
+                         "Write the bounded implementation plan for the latch-switch transfer family.",
+                         "Keep execution closed until writable scope and packet contract are frozen.",
+                         "Do not allow symbolic family growth beyond the frozen latch-switch basis."
                      ],
     "risks":  [
-                  "If the latch and switch phases are not generated independently enough, the task may collapse into a compact symbolic summary.",
-                  "If the candidate is implemented before diagnostics are frozen, fairness drift may undermine interpretability.",
-                  "If latch-switch is treated as just another ordering task, it may recreate braid-like failure."
+                  "If latch and switch summaries are too correlated, the task may collapse into a compact symbolic shortcut.",
+                  "If diagnostics are weak, the line may look novel while still being symbolically compressible.",
+                  "If execution opens before the plan is frozen, fairness drift may undermine interpretability."
               ],
     "completed_story_ids":  [
                                 "S001",
