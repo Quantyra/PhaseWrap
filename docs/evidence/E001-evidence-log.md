@@ -1709,3 +1709,9 @@ ank_correlation.
 - EL-984 | 2026-03-13 | S1043 | Completed cascade-reconciliation pair_reindex=1 hardening; the witness stayed ahead of the bounded symbolic control on mean mae and rank_correlation.
 - EL-985 | 2026-03-13 | S1044 | Preserved the cascade-reconciliation line as active after first structural hardening and advanced it to slot_swap=1.
 - EL-986 | 2026-03-13 | S1045 | Froze the next retained-model packet as slot_swap=1 under the same cascade-reconciliation fairness contract.
+
+- EL-987 | 2026-03-13 | S1046 | Completed cascade-reconciliation slot_swap=1 hardening; the witness stayed ahead of the bounded symbolic control on mean mae and rank_correlation.
+- EL-988 | 2026-03-13 | S1047 | Preserved the cascade-reconciliation line as active after slot-swap hardening and advanced it to deeper pair_reindex=7.
+- EL-989 | 2026-03-13 | S1048 | Completed cascade-reconciliation deeper pair_reindex=7 hardening; the witness stayed ahead of the bounded symbolic control on mean mae and rank_correlation.
+- EL-990 | 2026-03-13 | S1049 | Returned the cascade-reconciliation line to a memo-level decision gate after it survived the deeper structural packet.
+- EL-991 | 2026-03-13 | S1050 | Preserved the first cascade-reconciliation hardening cycle as sufficient bounded internal transfer evidence.
