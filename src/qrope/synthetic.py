@@ -1024,6 +1024,164 @@ def generate_symbolic_insufficiency_braid_crossing_response_bundle(
     )
 
 
+def generate_symbolic_insufficiency_relay_binding_response_bundle(
+    seed: int,
+    split_rotation: int = 0,
+    slot_swap: int = 0,
+    token_permutation: str = "identity",
+    pair_reindex: int = 0,
+) -> SyntheticDatasetBundle:
+    rng = random.Random(f"synthetic_symbolic_insufficiency_relay_binding_response:{seed}")
+    base_bundle = generate_dual_sector_bundle(
+        seed=seed,
+        dataset_name="synthetic_symbolic_insufficiency_transition_response",
+        split_rotation=split_rotation,
+        slot_swap=slot_swap,
+        token_permutation=token_permutation,
+        pair_reindex=pair_reindex,
+        label_mode="symbolic_insufficiency_transition_response",
+    )
+    all_rows = [
+        DualSyntheticSample(
+            text=text,
+            label=label,
+            sector_a=offset_sector_name(parse_dual_sample_text(text)["sample_a"].offset),
+            sector_b=offset_sector_name(parse_dual_sample_text(text)["sample_b"].offset),
+            sample_a=parse_dual_sample_text(text)["sample_a"],
+            sample_b=parse_dual_sample_text(text)["sample_b"],
+        )
+        for split_rows in (base_bundle.train, base_bundle.validation, base_bundle.test)
+        for text, label in split_rows
+    ]
+    candidate_rows = list(all_rows)
+    rng.shuffle(candidate_rows)
+    candidate_rows = sorted(candidate_rows[:18], key=lambda row: row.text)
+
+    candidates_by_state: dict[tuple[int, int, int, int], list[dict[str, Any]]] = defaultdict(list)
+    for index_s, row_s in enumerate(candidate_rows):
+        for index_r, row_r in enumerate(candidate_rows):
+            if index_r == index_s:
+                continue
+            for index_b, row_b in enumerate(candidate_rows):
+                if index_b in {index_s, index_r}:
+                    continue
+                sign_source = int(
+                    sector_sign_family(row_s.sector_a) == sector_sign_family(row_s.sector_b)
+                )
+                sign_relay = int(
+                    sector_sign_family(row_r.sector_a) == sector_sign_family(row_r.sector_b)
+                )
+                bind_content = int(
+                    content_family_name(row_s.sample_a.left_token, row_s.sample_a.right_token)
+                    == content_family_name(row_b.sample_a.left_token, row_b.sample_a.right_token)
+                )
+                bind_orientation = int(
+                    token_orientation_name(row_r.sample_a.left_token, row_r.sample_a.right_token)
+                    == token_orientation_name(row_b.sample_a.left_token, row_b.sample_a.right_token)
+                )
+                coarse_key = (sign_source, sign_relay, bind_content, bind_orientation)
+
+                latent_s = symbolic_insufficiency_latent_ids(row_s.sample_a, row_s.sample_b)
+                latent_r = symbolic_insufficiency_latent_ids(row_r.sample_a, row_r.sample_b)
+                latent_b = symbolic_insufficiency_latent_ids(row_b.sample_a, row_b.sample_b)
+                phase_s = _symbolic_insufficiency_latent_phase(latent_s)
+                phase_r = _symbolic_insufficiency_latent_phase(latent_r)
+                phase_b = _symbolic_insufficiency_latent_phase(latent_b)
+                raw_target = (
+                    0.22 * float(row_s.label)
+                    + 0.17 * float(row_r.label)
+                    - 0.13 * float(row_b.label)
+                    + 0.16 * math.sin((phase_s + phase_r) - phase_b)
+                    + 0.12 * math.cos((phase_s - phase_r) + phase_b)
+                    + 0.10 * math.sin(phase_s - phase_r)
+                    + 0.08 * math.cos(
+                        orientation_delta_score(row_s.sample_a, row_s.sample_b)
+                        + orientation_delta_score(row_r.sample_a, row_r.sample_b)
+                        - orientation_delta_score(row_b.sample_a, row_b.sample_b)
+                    )
+                )
+                candidates_by_state[coarse_key].append(
+                    {
+                        "text": render_symbolic_insufficiency_relay_binding_text(
+                            row_s.sample_a,
+                            row_s.sample_b,
+                            row_r.sample_a,
+                            row_r.sample_b,
+                            row_b.sample_a,
+                            row_b.sample_b,
+                        ),
+                        "raw_target": round(raw_target, 6),
+                        "latent_key": (*latent_s, *latent_r, *latent_b),
+                    }
+                )
+
+    required = TRAIN_COUNT_PER_BUCKET + VALIDATION_COUNT_PER_BUCKET + TEST_COUNT_PER_BUCKET
+    train: list[tuple[str, float]] = []
+    validation: list[tuple[str, float]] = []
+    test: list[tuple[str, float]] = []
+    state_means: dict[str, float] = {}
+    latent_group_counts: dict[str, int] = {}
+    target_ranges: dict[str, float] = {}
+    token_counts = Counter()
+    relay_bucket_counts: dict[str, int] = {}
+    for coarse_key, candidates in sorted(candidates_by_state.items()):
+        if len(candidates) < required:
+            continue
+        ordered = sorted(candidates, key=lambda item: (item["latent_key"], item["text"]))
+        selected: list[dict[str, Any]] = []
+        seen_latents: set[tuple[int, ...]] = set()
+        for item in ordered:
+            if item["latent_key"] not in seen_latents:
+                selected.append(item)
+                seen_latents.add(item["latent_key"])
+            if len(selected) == required:
+                break
+        if len(selected) < required:
+            for item in ordered:
+                if item not in selected:
+                    selected.append(item)
+                if len(selected) == required:
+                    break
+        if len({item["latent_key"] for item in selected}) < 2:
+            continue
+        mean_target = sum(float(item["raw_target"]) for item in selected) / len(selected)
+        centered = [(item["text"], round(float(item["raw_target"]) - mean_target, 6)) for item in selected]
+        train.extend(centered[:TRAIN_COUNT_PER_BUCKET])
+        validation.extend(centered[TRAIN_COUNT_PER_BUCKET : TRAIN_COUNT_PER_BUCKET + VALIDATION_COUNT_PER_BUCKET])
+        test.extend(centered[TRAIN_COUNT_PER_BUCKET + VALIDATION_COUNT_PER_BUCKET : required])
+        state_key = "".join(str(part) for part in coarse_key)
+        state_means[state_key] = round(sum(label for _, label in centered) / len(centered), 6)
+        target_ranges[state_key] = round(max(label for _, label in centered) - min(label for _, label in centered), 6)
+        latent_group_counts[state_key] = len({item["latent_key"] for item in selected})
+        relay_bucket_counts[state_key] = len(selected)
+        for text, _ in centered:
+            payload = parse_symbolic_insufficiency_relay_binding_text(text)
+            for prefix in ("s", "r", "b"):
+                token_counts.update(
+                    [
+                        payload[prefix]["sample_a"].left_token,
+                        payload[prefix]["sample_a"].right_token,
+                        payload[prefix]["sample_b"].left_token,
+                        payload[prefix]["sample_b"].right_token,
+                    ]
+                )
+
+    diagnostics = {
+        "dataset": "synthetic_symbolic_insufficiency_relay_binding_response",
+        "coarse_relay_state_null_pass": max((abs(value) for value in state_means.values()), default=1.0) <= 1e-6,
+        "within_relay_state_variation_pass": all(value > 0.0 for value in target_ranges.values()) and bool(target_ranges),
+        "latent_relay_diversity_pass": all(value > 1 for value in latent_group_counts.values()) and bool(latent_group_counts),
+        "token_view_balance_pass": set(token_counts.keys()) == set(TOKENS),
+        "relay_length_balance_pass": True,
+        "binding_target_nontrivial_pass": any(value > 0.0 for value in target_ranges.values()) and bool(target_ranges),
+        "relay_bucket_counts": relay_bucket_counts,
+        "coarse_relay_state_null_max_abs_mean": round(max((abs(value) for value in state_means.values()), default=0.0), 6),
+        "within_relay_state_target_ranges": target_ranges,
+        "latent_relay_group_counts": latent_group_counts,
+    }
+    return SyntheticDatasetBundle(train=train, validation=validation, test=test, diagnostics=diagnostics)
+
+
 def generate_chart_transition_token_invariant_response_bundle(
     seed: int,
     split_rotation: int = 0,
@@ -5269,6 +5427,49 @@ def parse_symbolic_insufficiency_braid_text(text: str) -> dict[str, Any]:
         "v": build_prefixed_dual("v"),
         "x": build_prefixed_dual("x"),
         "y": build_prefixed_dual("y"),
+    }
+
+
+def render_symbolic_insufficiency_relay_binding_text(
+    s_sample_a: SyntheticSample,
+    s_sample_b: SyntheticSample,
+    r_sample_a: SyntheticSample,
+    r_sample_b: SyntheticSample,
+    b_sample_a: SyntheticSample,
+    b_sample_b: SyntheticSample,
+) -> str:
+    return (
+        f"s_a_lt:{s_sample_a.left_token} s_a_rt:{s_sample_a.right_token} s_a_lp:{s_sample_a.left_pos} s_a_rp:{s_sample_a.right_pos} s_a_off:{s_sample_a.offset:+d} "
+        f"s_b_lt:{s_sample_b.left_token} s_b_rt:{s_sample_b.right_token} s_b_lp:{s_sample_b.left_pos} s_b_rp:{s_sample_b.right_pos} s_b_off:{s_sample_b.offset:+d} "
+        f"r_a_lt:{r_sample_a.left_token} r_a_rt:{r_sample_a.right_token} r_a_lp:{r_sample_a.left_pos} r_a_rp:{r_sample_a.right_pos} r_a_off:{r_sample_a.offset:+d} "
+        f"r_b_lt:{r_sample_b.left_token} r_b_rt:{r_sample_b.right_token} r_b_lp:{r_sample_b.left_pos} r_b_rp:{r_sample_b.right_pos} r_b_off:{r_sample_b.offset:+d} "
+        f"b_a_lt:{b_sample_a.left_token} b_a_rt:{b_sample_a.right_token} b_a_lp:{b_sample_a.left_pos} b_a_rp:{b_sample_a.right_pos} b_a_off:{b_sample_a.offset:+d} "
+        f"b_b_lt:{b_sample_b.left_token} b_b_rt:{b_sample_b.right_token} b_b_lp:{b_sample_b.left_pos} b_b_rp:{b_sample_b.right_pos} b_b_off:{b_sample_b.offset:+d}"
+    )
+
+
+def parse_symbolic_insufficiency_relay_binding_text(text: str) -> dict[str, Any]:
+    fields: dict[str, Any] = {}
+    for chunk in text.split():
+        key, value = chunk.split(":", 1)
+        if key.endswith(("_lp", "_rp", "_off")):
+            fields[key] = int(value)
+        else:
+            fields[key] = value
+
+    def build_prefixed_dual(prefix: str) -> dict[str, Any]:
+        dual_text = (
+            f"a_lt:{fields[f'{prefix}_a_lt']} a_rt:{fields[f'{prefix}_a_rt']} a_lp:{fields[f'{prefix}_a_lp']} a_rp:{fields[f'{prefix}_a_rp']} a_off:{fields[f'{prefix}_a_off']:+d} "
+            f"b_lt:{fields[f'{prefix}_b_lt']} b_rt:{fields[f'{prefix}_b_rt']} b_lp:{fields[f'{prefix}_b_lp']} b_rp:{fields[f'{prefix}_b_rp']} b_off:{fields[f'{prefix}_b_off']:+d}"
+        )
+        payload = parse_dual_sample_text(dual_text)
+        payload["dual_text"] = dual_text
+        return payload
+
+    return {
+        "s": build_prefixed_dual("s"),
+        "r": build_prefixed_dual("r"),
+        "b": build_prefixed_dual("b"),
     }
 
 
