@@ -1,18 +1,18 @@
 {
     "active_epic": "E001",
-    "repo_posture": "bounded_transfer_cascade_reconciliation_structural_hardening",
+    "repo_posture": "memo_only_transfer_cascade_reconciliation_decision_gate",
     "current_story_ids": [
-        "S1045"
+        "S1050"
     ],
     "next_actions": [
-        "Run the fixed slot_swap=1 structural hardening packet.",
-        "Keep only the cascade-reconciliation witness and bounded symbolic control.",
-        "Stop the line immediately if the control matches or beats the witness on both mae and rank_correlation."
+        "Preserve the cascade-reconciliation line as sufficient bounded internal transfer evidence.",
+        "Do not open another default perturbation packet on this family.",
+        "Only reopen execution if a materially different transfer question is chosen."
     ],
     "risks": [
-        "If slot_swap collapses the witness advantage, the line should stop under the declared two-metric gate.",
-        "If slot_swap is implemented inertly, the hardening packet will not add valid robustness evidence.",
-        "If scope expands beyond the retained witness/control packet, fairness interpretation will degrade."
+        "If the line is reopened without a materially different question, it will drift back into low-value perturbation churn.",
+        "If future summaries ignore the mixed per-seed behavior at seed 123, internal interpretation will become overstated.",
+        "If the branch is treated as hardware-ready or publication-ready, the current evidence will be overclaimed."
     ],
     "completed_story_ids": [
         "S001",
@@ -1012,7 +1012,13 @@
         "S1041",
         "S1042",
         "S1043",
-        "S1044"
+        "S1044",
+        "S1045",
+        "S1046",
+        "S1047",
+        "S1048",
+        "S1049",
+        "S1050"
     ],
     "archived_transfer_story_ids": [
         "S955",
