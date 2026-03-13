@@ -1643,3 +1643,6 @@ ank_correlation.
 - EL-915: Closed the first relay-binding hardening cycle and preserved the line at a memo-level decision gate.
 
 - EL-916: Preserved relay-binding as the fourth bounded internal transfer result and refreshed the internal package/executive summary.
+- EL-925 | 2026-03-12 | S983 | Added transfer portfolio structure theory note comparing survivor cluster to braid boundary.
+- EL-926 | 2026-03-12 | S984 | Added operational survivor-vs-braid structural comparison for future transfer screening.
+- EL-927 | 2026-03-12 | S985 | Updated future transfer selection rule to require braid-relative structural screening before execution.

@@ -1,18 +1,18 @@
 {
     "active_epic":  "E001",
-    "repo_posture":  "memo_only_internal_result_package",
+    "repo_posture":  "memo_only_transfer_structure_theory",
     "current_story_ids":  [
-                              "S982"
+                              "S985"
                           ],
     "next_actions":  [
-                         "Preserve the standing benchmark and four bounded transfer results as the internal review package.",
-                         "Do not reopen same-family transfer execution by default.",
-                         "Only open a materially different transfer family or theory-backed fairness line if explicitly chosen."
+                         "Use the preserved survivor cluster plus braid boundary as the default screen for any future transfer-family proposal.",
+                         "Do not reopen transfer execution unless a candidate is structurally closer to the survivor cluster than to braid.",
+                         "Prefer theory/reporting over further default execution."
                      ],
     "risks":  [
-                  "If relay binding compresses under slot swapping, the line may recreate a braid-style failure boundary.",
-                  "If retained-model packets drift beyond the frozen symbolic basis, the fairness contract is invalidated.",
-                  "If extra perturbations are added before slot_swap=1 is evaluated, the branch will lose interpretability."
+                  "If a future transfer family is allowed to proceed without explicit braid comparison, branch churn will return.",
+                  "If structural screening is treated as optional, the repo may revert to low-value transfer proliferation.",
+                  "If the preserved survivor cluster is overgeneralized, internal claims may outrun the actual evidence."
               ],
     "completed_story_ids":  [
                                 "S001",
