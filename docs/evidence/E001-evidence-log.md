@@ -1557,3 +1557,33 @@ ank_correlation.
 - Story: S967
 - Artifact: docs/research/q-rope-transfer-relay-binding-plan-decision-v1.md
 - Note: Recorded that the relay-binding line is specific enough to reopen code for exactly one bounded implementation cycle under the frozen plan.
+
+## EL-899 S968 relay-binding implementation
+- Type: Decision
+- Story: S968
+- Artifact: docs/research/q-rope-transfer-relay-binding-implementation-v1.md
+- Note: Implemented the bounded relay-binding transfer branch, including the relay generator, witness/control routing, and focused tests, and corrected the packet launch to use ariant.id.
+
+## EL-900 S969 relay-binding first packet
+- Type: Decision
+- Story: S969
+- Artifact: docs/research/q-rope-transfer-relay-binding-first-packet-v1.md
+- Note: The corrected fixed three-seed relay-binding packet showed the witness ahead of the bounded symbolic control on both mae and ank_correlation.
+
+## EL-901 S969 relay-binding packet summary csv
+- Type: Decision
+- Story: S969
+- Artifact: logs/ablation_runs/summary/transfer_relay_binding_v1.csv
+- Note: Recorded the per-seed relay-binding witness/control packet metrics in a compact summary table for audit and reuse.
+
+## EL-902 S970 relay-binding post-packet decision
+- Type: Decision
+- Story: S970
+- Artifact: docs/research/q-rope-transfer-relay-binding-post-packet-decision-v1.md
+- Note: Preserved the relay-binding line as active and advanced it to bounded nuisance hardening rather than widening scope.
+
+## EL-903 S970 relay-binding token-renaming plan
+- Type: Decision
+- Story: S970
+- Artifact: docs/research/q-rope-transfer-relay-binding-token-renaming-hardening-plan-v1.md
+- Note: Froze the next packet as 	oken_permutation=cdab with only the relay witness and bounded symbolic control retained.
