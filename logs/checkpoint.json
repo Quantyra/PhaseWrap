@@ -1,18 +1,18 @@
 {
     "active_epic":  "E001",
-    "repo_posture":  "memo_only_theory_package_complete",
+    "repo_posture":  "memo_only_board_recommendation",
     "current_story_ids":  [
-                              "S994"
+                              "S995"
                           ],
     "next_actions":  [
-                         "Use the current benchmark, transfer portfolio, and non-compressibility theory package for internal review.",
+                         "Use the board recommendation note as the shortest internal decision document.",
                          "Do not reopen execution by default.",
-                         "Only admit a new line if it passes intake, survivor-vs-braid screening, and non-compressibility review."
+                         "Only evaluate future candidates through the full intake and theory screen."
                      ],
     "risks":  [
-                  "If the theory note is overread as a universal statement, internal claims may outrun the bounded evidence.",
-                  "If execution is reopened without the full screen, the repo may regress into branch churn.",
-                  "If no internal review happens, the current package may remain underused despite being decision-grade internally."
+                  "If the board note is read as a product or hardware endorsement, internal expectations will become distorted.",
+                  "If future candidates bypass the screening stack, the program will regress into low-value execution churn.",
+                  "If the archived negative boundary is ignored, internal overconfidence may rise unjustifiably."
               ],
     "completed_story_ids":  [
                                 "S001",
