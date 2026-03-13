@@ -1717,3 +1717,5 @@ ank_correlation.
 - EL-991 | 2026-03-13 | S1050 | Preserved the first cascade-reconciliation hardening cycle as sufficient bounded internal transfer evidence.
 
 - EL-992 | 2026-03-13 | S1051 | Preserved cascade-reconciliation in the internal package and refreshed the executive summary.
+
+- EL-993 | 2026-03-13 | S1052 | Opened fan-in consensus as a materially different memo-level transfer candidate and advanced it to approval-candidate posture.
