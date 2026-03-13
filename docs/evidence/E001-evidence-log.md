@@ -1692,3 +1692,5 @@ ank_correlation.
 - EL-970 | 2026-03-13 | S1029 | Opened cascade-reconciliation as a materially new memo-level transfer family.
 - EL-971 | 2026-03-13 | S1030 | Screened cascade-reconciliation against survivor-cluster, braid, and staggered-binding boundaries and advanced it to approval-candidate posture.
 - EL-972 | 2026-03-13 | S1031 | Registered cascade-reconciliation as the active memo-only transfer approval candidate.
+- EL-973 | 2026-03-13 | S1032 | Wrote the explicit implementation-approval gate for the cascade-reconciliation transfer family.
+- EL-974 | 2026-03-13 | S1033 | Recorded that cascade-reconciliation passes to bounded implementation planning only.
