@@ -1929,3 +1929,6 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 - EL-1140 2026-03-14: Added the realism-bridge gate protocol so the only currently admissible future execution class is an explicitly justified realism-bridge candidate.
 
 - EL-1141 2026-03-14: Added a reusable research planning protocol so future Q-RoPE work must begin from a missing question, decision leverage, a gate ladder, and explicit stop conditions rather than from branch generation.
+
+- EL-1142 2026-03-14: Opened `offset-retrieval` as the first memo-level realism-bridge candidate because it targets relative-position retrieval under distractor competition rather than another ordinary bridge relation.
+- EL-1143 2026-03-14: Passed `offset-retrieval` to realism-bridge approval-candidate posture only; execution remains closed pending a dedicated gate.
