@@ -1,17 +1,17 @@
 {
     "active_epic":  "E001",
-    "repo_posture":  "realism_bridge_candidate_design_only",
+    "repo_posture":  "memo_only_realism_bridge_offset_retrieval_approval_candidate",
     "current_story_ids":  [
-                              "S1222"
+                              "S1225"
                           ],
     "next_actions":  [
-                         "Use the new research planning protocol for any future cycle design.",
-                         "Do not open another branch without a missing-question plan and decision-leverage statement.",
-                         "If no realism-bridge candidate can be justified cleanly, treat the current package as the evidence ceiling."
+                         "Write the dedicated realism-bridge implementation gate for synthetic_positional_offset_retrieval_response.",
+                         "Freeze the bounded offset-retrieval symbolic family and diagnostics in that gate.",
+                         "Keep the realism-bridge line memo-only until that gate is accepted."
                      ],
     "risks":  [
-                  "If realism-bridge is defined too loosely, branch churn will re-enter under a new name.",
-                  "If the realism-bridge gate is ignored, the repo will drift away from the stated missing-question discipline."
+                  "If offset-retrieval is specified too loosely, it will collapse back into another ordinary bridge variant.",
+                  "If the candidate is treated as a transformer-adjacent result before bounded execution, the repo will overclaim realism relevance."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -1177,7 +1177,10 @@
                                 "S1219",
                                 "S1220",
                                 "S1221",
-                                "S1222"
+                                "S1222",
+                                "S1223",
+                                "S1224",
+                                "S1225"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
