@@ -1750,3 +1750,6 @@ ank_correlation.
 
 - EL-1012 2026-03-13: Executed the fixed token-renaming hardening packet for echo-resolution and found mixed leadership: the witness kept mean `mae`, but the bounded symbolic control took mean `rank_correlation`.
 - EL-1013 2026-03-13: Archived echo-resolution as a negative transfer boundary after the first nuisance hardening step, preserving the line as a stop condition rather than a positive transfer result.
+
+- EL-1014 2026-03-13: Preserved echo-resolution in the internal package as an archived negative transfer boundary after the token-renaming hardening stop.
+- EL-1015 2026-03-13: Refreshed the transfer portfolio, internal result package, and executive summary so the survivor cluster and archived negative boundaries match the current repo state.

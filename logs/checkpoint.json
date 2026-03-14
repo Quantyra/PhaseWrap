@@ -1,13 +1,13 @@
 {
     "active_epic": "E001",
-    "repo_posture": "memo_only_transfer_echo_resolution_archive",
+    "repo_posture": "memo_only_internal_result_package",
     "current_story_ids": [
-        "S1079"
+        "S1080"
     ],
     "next_actions": [
-        "Preserve echo-resolution as an archived negative transfer boundary in the internal package.",
-        "Do not open another default perturbation packet on this family.",
-        "Only reopen execution through a materially different screened transfer candidate."
+        "Stop here and use the package for internal review.",
+        "Propose another screened transfer candidate at memo level only.",
+        "Re-center on theory/reporting and stop execution churn."
     ],
     "risks": [
         "If execution extends beyond the fixed packet, the line will lose bounded-fairness discipline.",
@@ -1034,7 +1034,9 @@
         "S1075",
         "S1076",
         "S1077",
-        "S1078"
+        "S1078",
+        "S1079",
+        "S1080"
     ],
     "archived_transfer_story_ids": [
         "S955",
