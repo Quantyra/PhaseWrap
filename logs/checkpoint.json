@@ -2,16 +2,16 @@
     "active_epic":  "E001",
     "repo_posture":  "bounded_transfer_counterfactual_handoff_structural_hardening",
     "current_story_ids":  [
-                              "S1110"
+                              "S1113"
                           ],
     "next_actions":  [
-                         "Run the fixed slot_swap=1 structural hardening packet for synthetic_symbolic_insufficiency_counterfactual_handoff_response.",
+                         "Run the fixed pair_reindex=7 deeper structural hardening packet for synthetic_symbolic_insufficiency_counterfactual_handoff_response.",
                          "Keep only the counterfactual-handoff witness and bounded symbolic control.",
                          "Stop the line immediately if the control matches or beats the witness on both mae and rank_correlation."
                      ],
     "risks":  [
-                  "If structural hardening is widened beyond the fixed retained-model packet set, the line will lose bounded-fairness discipline.",
-                  "If later perturbations are interpreted without preserving the same witness/control pair, the branch evidence becomes non-comparable."
+                  "If the deeper retained-model packet is skipped, the standard hardening cycle will remain incomplete.",
+                  "If the branch is widened beyond the fixed witness/control pair, the hardening record becomes non-comparable."
               ],
     "completed_story_ids":  [
                                 "S001",
@@ -1065,7 +1065,10 @@
                                 "S1107",
                                 "S1108",
                                 "S1109",
-                                "S1110"
+                                "S1110",
+                                "S1111",
+                                "S1112",
+                                "S1113"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
