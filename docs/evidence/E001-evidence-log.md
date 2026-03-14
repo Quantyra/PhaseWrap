@@ -1773,3 +1773,8 @@ ank_correlation.
 - EL-1025 2026-03-13: Wrote the bounded implementation plan for counterfactual-handoff, freezing writable scope, fixed packet shape, and required audits before code reopens.
 
 - EL-1026 2026-03-13: Formalized the Orchestrator as the Q-RoPE VP-of-Research proxy in repo protocol, making program-level research judgment an explicit governed role rather than an implicit conversational convention.
+
+- EL-1027 2026-03-13: Implemented the bounded counterfactual-handoff transfer line inside the frozen writable scope and passed the focused local validation suite (`306 passed`).
+- EL-1028 2026-03-13: Executed the fixed first packet for counterfactual-handoff; the witness led the bounded symbolic control on mean `mae` and mean `rank_correlation`.
+- EL-1029 2026-03-13: Preserved the counterfactual-handoff line as active after the first packet and advanced it to bounded token-renaming hardening.
+- EL-1030 2026-03-13: Froze the next retained-model packet as `token_permutation=cdab` under the same counterfactual-handoff fairness contract.

@@ -47,6 +47,7 @@ from qrope.synthetic import (
     generate_symbolic_insufficiency_fanin_consensus_response_bundle,
     generate_symbolic_insufficiency_echo_resolution_response_bundle,
     generate_symbolic_insufficiency_selector_arbitration_response_bundle,
+    generate_symbolic_insufficiency_counterfactual_handoff_response_bundle,
     generate_symbolic_insufficiency_braid_crossing_response_bundle,
     generate_symbolic_insufficiency_transition_response_bundle,
     generate_dual_content_parity_coupling_binary_bundle,
@@ -339,6 +340,18 @@ def test_symbolic_insufficiency_selector_arbitration_bundle_enforces_declared_di
     assert diagnostics["token_view_balance_pass"] is True
     assert diagnostics["selector_length_balance_pass"] is True
     assert diagnostics["selector_target_nontrivial_pass"] is True
+
+
+def test_symbolic_insufficiency_counterfactual_handoff_bundle_enforces_declared_diagnostics() -> None:
+    bundle = generate_symbolic_insufficiency_counterfactual_handoff_response_bundle(seed=42)
+    diagnostics = bundle.diagnostics
+    assert diagnostics["dataset"] == "synthetic_symbolic_insufficiency_counterfactual_handoff_response"
+    assert diagnostics["coarse_handoff_state_null_pass"] is True
+    assert diagnostics["within_handoff_state_variation_pass"] is True
+    assert diagnostics["latent_handoff_diversity_pass"] is True
+    assert diagnostics["token_view_balance_pass"] is True
+    assert diagnostics["handoff_length_balance_pass"] is True
+    assert diagnostics["handoff_target_nontrivial_pass"] is True
 
 
 def test_symbolic_insufficiency_loop_bundle_enforces_declared_diagnostics() -> None:
