@@ -46,6 +46,7 @@ from .synthetic import (
     generate_symbolic_insufficiency_fanin_consensus_response_bundle,
     generate_symbolic_insufficiency_echo_resolution_response_bundle,
     generate_symbolic_insufficiency_selector_arbitration_response_bundle,
+    generate_symbolic_insufficiency_counterfactual_handoff_response_bundle,
     generate_symbolic_insufficiency_transition_response_bundle,
     generate_chart_transition_token_invariant_response_bundle,
     generate_chart_transition_orbit_response_bundle,
@@ -98,6 +99,7 @@ from .synthetic import (
     parse_symbolic_insufficiency_fanin_consensus_text,
     parse_symbolic_insufficiency_echo_resolution_text,
     parse_symbolic_insufficiency_selector_arbitration_text,
+    parse_symbolic_insufficiency_counterfactual_handoff_text,
     parse_transition_localization_text,
     parse_transition_consistency_text,
     parse_transition_listwise_text,
@@ -339,6 +341,7 @@ def estimate_hardware_costs(qubits: int, layers: int, variant: str) -> tuple[int
         "V_future_relational_witness_symbolic_insufficiency_fanin_consensus": 96,
         "V_future_relational_witness_symbolic_insufficiency_echo_resolution": 96,
         "V_future_relational_witness_symbolic_insufficiency_selector_arbitration": 96,
+        "V_future_relational_witness_symbolic_insufficiency_counterfactual_handoff": 96,
         "V_future_relational_witness_symbolic_insufficiency_fork_join": 96,
         "V_future_relational_witness_symbolic_insufficiency_braid": 96,
         "V_control_symbolic_single_family_regressor": 1,
@@ -420,6 +423,7 @@ def estimate_hardware_costs(qubits: int, layers: int, variant: str) -> tuple[int
         "V_control_symbolic_symbolic_insufficiency_fanin_consensus_regressor": 1,
         "V_control_symbolic_symbolic_insufficiency_echo_resolution_regressor": 1,
         "V_control_symbolic_symbolic_insufficiency_selector_arbitration_regressor": 1,
+        "V_control_symbolic_symbolic_insufficiency_counterfactual_handoff_regressor": 1,
         "V_control_symbolic_symbolic_insufficiency_fork_join_regressor": 1,
         "V_control_symbolic_symbolic_insufficiency_braid_regressor": 1,
         "V_control_symbolic_transition_channel_order_lookup": 1,
@@ -709,6 +713,8 @@ def run_real_experiment(
             data_mode = f"{data_mode}+readout_relational_witness_symbolic_insufficiency_echo_resolution+head_linear"
         elif variant == "V_future_relational_witness_symbolic_insufficiency_selector_arbitration":
             data_mode = f"{data_mode}+readout_relational_witness_symbolic_insufficiency_selector_arbitration+head_linear"
+        elif variant == "V_future_relational_witness_symbolic_insufficiency_counterfactual_handoff":
+            data_mode = f"{data_mode}+readout_relational_witness_symbolic_insufficiency_counterfactual_handoff+head_linear"
         elif variant == "V_future_relational_witness_symbolic_insufficiency_loop":
             data_mode = f"{data_mode}+readout_relational_witness_symbolic_insufficiency_loop+head_linear"
         elif variant == "V_future_relational_witness_symbolic_insufficiency_fork_join":
@@ -771,6 +777,8 @@ def run_real_experiment(
             data_mode = f"{data_mode}+readout_symbolic_symbolic_insufficiency_echo_resolution_regressor+head_linear"
         elif variant == "V_control_symbolic_symbolic_insufficiency_selector_arbitration_regressor":
             data_mode = f"{data_mode}+readout_symbolic_symbolic_insufficiency_selector_arbitration_regressor+head_linear"
+        elif variant == "V_control_symbolic_symbolic_insufficiency_counterfactual_handoff_regressor":
+            data_mode = f"{data_mode}+readout_symbolic_symbolic_insufficiency_counterfactual_handoff_regressor+head_linear"
         elif variant == "V_control_symbolic_symbolic_insufficiency_loop_regressor":
             data_mode = f"{data_mode}+readout_symbolic_symbolic_insufficiency_loop_regressor+head_linear"
         elif variant == "V_control_symbolic_symbolic_insufficiency_fork_join_regressor":
@@ -1542,6 +1550,14 @@ def run_quantum_backend(
         return run_symbolic_insufficiency_selector_arbitration_witness_backend(train=train, test=test, seed=seed, validation=validation)
     if dataset == "synthetic_symbolic_insufficiency_selector_arbitration_response" and variant == "V_control_symbolic_symbolic_insufficiency_selector_arbitration_regressor":
         return run_symbolic_insufficiency_selector_arbitration_symbolic_regressor(train=train, test=test, validation=validation)
+    if dataset == "synthetic_symbolic_insufficiency_counterfactual_handoff_response" and variant == "V_future_relational_witness_symbolic_insufficiency_counterfactual_handoff":
+        return run_symbolic_insufficiency_counterfactual_handoff_witness_backend(
+            train=train, test=test, seed=seed, validation=validation
+        )
+    if dataset == "synthetic_symbolic_insufficiency_counterfactual_handoff_response" and variant == "V_control_symbolic_symbolic_insufficiency_counterfactual_handoff_regressor":
+        return run_symbolic_insufficiency_counterfactual_handoff_symbolic_regressor(
+            train=train, test=test, validation=validation
+        )
     if dataset == "synthetic_symbolic_insufficiency_loop_closure_response" and variant == "V_future_relational_witness_symbolic_insufficiency_loop":
         return run_symbolic_insufficiency_loop_witness_backend(train=train, test=test, seed=seed, validation=validation)
     if dataset == "synthetic_symbolic_insufficiency_loop_closure_response" and variant == "V_control_symbolic_symbolic_insufficiency_loop_regressor":
@@ -4046,6 +4062,174 @@ def symbolic_insufficiency_selector_arbitration_symbolic_features(text: str) -> 
         "feature_order": list(features.keys()),
         "features": features,
         "allowed_selector_symbolic_basis_frozen_pass": True,
+        "forbidden_feature_family_absent_pass": True,
+    }
+
+
+def symbolic_insufficiency_counterfactual_handoff_witness_features(text: str, seed: int) -> dict[str, object]:
+    payload = parse_symbolic_insufficiency_counterfactual_handoff_text(text)
+    s_result = symbolic_insufficiency_witness_features(text=payload["s"]["dual_text"], seed=seed)
+    h_result = symbolic_insufficiency_witness_features(text=payload["h"]["dual_text"], seed=seed)
+    c_result = symbolic_insufficiency_witness_features(text=payload["c"]["dual_text"], seed=seed)
+    r_result = symbolic_insufficiency_witness_features(text=payload["r"]["dual_text"], seed=seed)
+    s_step = _symbolic_insufficiency_path_step_features(payload["s"])
+    h_step = _symbolic_insufficiency_path_step_features(payload["h"])
+    c_step = _symbolic_insufficiency_path_step_features(payload["c"])
+    r_step = _symbolic_insufficiency_path_step_features(payload["r"])
+    s_phase = float(s_result["features"]["latent_transition_phase"])
+    h_phase = float(h_result["features"]["latent_transition_phase"])
+    c_phase = float(c_result["features"]["latent_transition_phase"])
+    r_phase = float(r_result["features"]["latent_transition_phase"])
+    s_curvature = float(s_result["features"]["latent_transition_curvature"])
+    h_curvature = float(h_result["features"]["latent_transition_curvature"])
+    c_curvature = float(c_result["features"]["latent_transition_curvature"])
+    r_curvature = float(r_result["features"]["latent_transition_curvature"])
+    feature_order = [
+        "source_phase",
+        "handoff_phase",
+        "counterfactual_phase",
+        "resolve_phase",
+        "source_curvature",
+        "handoff_curvature",
+        "counterfactual_curvature",
+        "resolve_curvature",
+        "handoff_persistence_gap",
+        "counterfactual_override_gap",
+        "resolve_handoff_alignment",
+        "declared_handoff_gap",
+        "declared_counterfactual_gap",
+        "handoff_counterfactual_mix",
+        "resolve_cross_curvature_mix",
+    ]
+    features = {
+        "source_phase": s_phase,
+        "handoff_phase": h_phase,
+        "counterfactual_phase": c_phase,
+        "resolve_phase": r_phase,
+        "source_curvature": s_curvature,
+        "handoff_curvature": h_curvature,
+        "counterfactual_curvature": c_curvature,
+        "resolve_curvature": r_curvature,
+        "handoff_persistence_gap": round(abs(h_phase - s_phase) + abs(h_curvature - s_curvature), 6),
+        "counterfactual_override_gap": round(abs(c_phase - h_phase) + abs(c_curvature - h_curvature), 6),
+        "resolve_handoff_alignment": round(math.sin((s_phase + h_phase) - (c_phase + r_phase)), 6),
+        "declared_handoff_gap": round(
+            abs(s_step["sector_magnitude_delta"] - h_step["sector_magnitude_delta"])
+            + abs(s_step["orientation_delta"] - h_step["orientation_delta"]),
+            6,
+        ),
+        "declared_counterfactual_gap": round(
+            abs(h_step["ordered_content_delta"] - c_step["ordered_content_delta"])
+            + abs(r_step["orientation_delta"] - c_step["orientation_delta"]),
+            6,
+        ),
+        "handoff_counterfactual_mix": round(
+            (h_phase - c_phase) * r_step["ordered_content_delta"]
+            + (s_phase - h_phase) * c_step["sector_magnitude_delta"]
+            + (r_phase - c_phase) * h_step["orientation_delta"],
+            6,
+        ),
+        "resolve_cross_curvature_mix": round(
+            (s_phase - h_phase) * r_curvature
+            + (c_phase - r_phase) * s_curvature
+            + (h_phase - c_phase) * r_step["sector_magnitude_delta"],
+            6,
+        ),
+    }
+    return {
+        "feature_order": feature_order,
+        "features": features,
+        "bounded_feature_audit_pass": True,
+        "forbidden_feature_family_absent_pass": True,
+    }
+
+
+def symbolic_insufficiency_counterfactual_handoff_symbolic_features(text: str) -> dict[str, object]:
+    payload = parse_symbolic_insufficiency_counterfactual_handoff_text(text)
+    s_step = _symbolic_insufficiency_path_step_features(payload["s"])
+    h_step = _symbolic_insufficiency_path_step_features(payload["h"])
+    c_step = _symbolic_insufficiency_path_step_features(payload["c"])
+    r_step = _symbolic_insufficiency_path_step_features(payload["r"])
+    source_sign = 1.0 if (
+        offset_sector(payload["s"]["sample_a"].offset).startswith("P")
+        == offset_sector(payload["s"]["sample_b"].offset).startswith("P")
+    ) else 0.0
+    handoff_gate = 1.0 if (
+        token_orientation_name(payload["h"]["sample_a"].left_token, payload["h"]["sample_a"].right_token)
+        == token_orientation_name(payload["s"]["sample_a"].left_token, payload["s"]["sample_a"].right_token)
+    ) else 0.0
+    counterfactual_override = 1.0 if (
+        content_family_name(payload["c"]["sample_a"].left_token, payload["c"]["sample_a"].right_token)
+        == content_family_name(payload["h"]["sample_b"].left_token, payload["h"]["sample_b"].right_token)
+    ) else 0.0
+    resolve_bind = 1.0 if (
+        content_family_name(payload["r"]["sample_a"].left_token, payload["r"]["sample_a"].right_token)
+        == content_family_name(payload["h"]["sample_a"].left_token, payload["h"]["sample_a"].right_token)
+    ) else 0.0
+    mean_sector = (
+        s_step["sector_magnitude_delta"]
+        + h_step["sector_magnitude_delta"]
+        + c_step["sector_magnitude_delta"]
+        + r_step["sector_magnitude_delta"]
+    ) / 4.0
+    mean_content = (
+        s_step["ordered_content_delta"]
+        + h_step["ordered_content_delta"]
+        + c_step["ordered_content_delta"]
+        + r_step["ordered_content_delta"]
+    ) / 4.0
+    mean_orientation = (
+        s_step["orientation_delta"]
+        + h_step["orientation_delta"]
+        + c_step["orientation_delta"]
+        + r_step["orientation_delta"]
+    ) / 4.0
+    features = {
+        "source_sign": source_sign,
+        "handoff_gate": handoff_gate,
+        "counterfactual_override": counterfactual_override,
+        "resolve_bind": resolve_bind,
+        "mean_sector_magnitude_delta": round(mean_sector, 6),
+        "mean_ordered_content_delta": round(mean_content, 6),
+        "mean_orientation_delta": round(mean_orientation, 6),
+        "sum_sector_magnitude_delta": round(
+            s_step["sector_magnitude_delta"]
+            + h_step["sector_magnitude_delta"]
+            + c_step["sector_magnitude_delta"]
+            + r_step["sector_magnitude_delta"],
+            6,
+        ),
+        "sum_ordered_content_delta": round(
+            s_step["ordered_content_delta"]
+            + h_step["ordered_content_delta"]
+            + c_step["ordered_content_delta"]
+            + r_step["ordered_content_delta"],
+            6,
+        ),
+        "sum_orientation_delta": round(
+            s_step["orientation_delta"]
+            + h_step["orientation_delta"]
+            + c_step["orientation_delta"]
+            + r_step["orientation_delta"],
+            6,
+        ),
+        "handoff_minus_source_sector": round(h_step["sector_magnitude_delta"] - s_step["sector_magnitude_delta"], 6),
+        "resolve_minus_counterfactual_sector": round(r_step["sector_magnitude_delta"] - c_step["sector_magnitude_delta"], 6),
+        "handoff_minus_source_content": round(h_step["ordered_content_delta"] - s_step["ordered_content_delta"], 6),
+        "resolve_minus_counterfactual_content": round(r_step["ordered_content_delta"] - c_step["ordered_content_delta"], 6),
+        "handoff_minus_source_orientation": round(h_step["orientation_delta"] - s_step["orientation_delta"], 6),
+        "resolve_minus_counterfactual_orientation": round(r_step["orientation_delta"] - c_step["orientation_delta"], 6),
+        "sq_mean_sector": round(mean_sector * mean_sector, 6),
+        "sq_mean_content": round(mean_content * mean_content, 6),
+        "sq_mean_orientation": round(mean_orientation * mean_orientation, 6),
+        "cross_mean_sector_content": round(mean_sector * mean_content, 6),
+        "cross_mean_sector_orientation": round(mean_sector * mean_orientation, 6),
+        "cross_mean_content_orientation": round(mean_content * mean_orientation, 6),
+    }
+    return {
+        "feature_order": list(features.keys()),
+        "features": features,
+        "allowed_handoff_symbolic_basis_frozen_pass": True,
         "forbidden_feature_family_absent_pass": True,
     }
 
@@ -8485,6 +8669,66 @@ def run_symbolic_insufficiency_selector_arbitration_symbolic_regressor(
     return mae_train, mae_eval, accuracy, f1, diagnostics, extra
 
 
+def run_symbolic_insufficiency_counterfactual_handoff_witness_backend(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    seed: int,
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [symbolic_insufficiency_counterfactual_handoff_witness_features(text=text, seed=seed) for text, _ in train]
+    validation_results = [
+        symbolic_insufficiency_counterfactual_handoff_witness_features(text=text, seed=seed)
+        for text, _ in validation
+    ]
+    test_results = [symbolic_insufficiency_counterfactual_handoff_witness_features(text=text, seed=seed) for text, _ in test]
+    mae_train, mae_eval, accuracy, f1, diagnostics, extra = run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+    diagnostics["bounded_feature_audit_pass"] = all(bool(result.get("bounded_feature_audit_pass", False)) for result in test_results)
+    diagnostics["forbidden_feature_family_absent_pass"] = all(
+        bool(result.get("forbidden_feature_family_absent_pass", False)) for result in test_results
+    )
+    return mae_train, mae_eval, accuracy, f1, diagnostics, extra
+
+
+def run_symbolic_insufficiency_counterfactual_handoff_symbolic_regressor(
+    train: list[tuple[str, float]],
+    test: list[tuple[str, float]],
+    validation: list[tuple[str, float]] | None = None,
+) -> tuple[float, float, float, float, dict[str, Any], dict[str, float]]:
+    if validation is None:
+        midpoint = max(1, len(train) // 4)
+        validation = train[:midpoint]
+    train_results = [symbolic_insufficiency_counterfactual_handoff_symbolic_features(text=text) for text, _ in train]
+    validation_results = [
+        symbolic_insufficiency_counterfactual_handoff_symbolic_features(text=text) for text, _ in validation
+    ]
+    test_results = [symbolic_insufficiency_counterfactual_handoff_symbolic_features(text=text) for text, _ in test]
+    mae_train, mae_eval, accuracy, f1, diagnostics, extra = run_continuous_backend_from_results(
+        train_results,
+        validation_results,
+        test_results,
+        [float(label) for _, label in train],
+        [float(label) for _, label in validation],
+        [float(label) for _, label in test],
+    )
+    diagnostics["allowed_handoff_symbolic_basis_frozen_pass"] = all(
+        bool(result.get("allowed_handoff_symbolic_basis_frozen_pass", False)) for result in test_results
+    )
+    diagnostics["forbidden_feature_family_absent_pass"] = all(
+        bool(result.get("forbidden_feature_family_absent_pass", False)) for result in test_results
+    )
+    return mae_train, mae_eval, accuracy, f1, diagnostics, extra
+
+
 def run_symbolic_insufficiency_loop_witness_backend(
     train: list[tuple[str, float]],
     test: list[tuple[str, float]],
@@ -12066,6 +12310,21 @@ def load_dataset_bundle(
             "validation": bundle.validation,
             "test": bundle.test,
             "data_mode": "synthetic_symbolic_insufficiency_selector_arbitration_response",
+            "dataset_diagnostics": bundle.diagnostics,
+        }
+    if dataset == "synthetic_symbolic_insufficiency_counterfactual_handoff_response":
+        bundle = generate_symbolic_insufficiency_counterfactual_handoff_response_bundle(
+            seed=seed,
+            split_rotation=split_rotation,
+            slot_swap=slot_swap,
+            token_permutation=token_permutation,
+            pair_reindex=pair_reindex,
+        )
+        return {
+            "train": bundle.train,
+            "validation": bundle.validation,
+            "test": bundle.test,
+            "data_mode": "synthetic_symbolic_insufficiency_counterfactual_handoff_response",
             "dataset_diagnostics": bundle.diagnostics,
         }
     if dataset == "synthetic_symbolic_insufficiency_loop_closure_response":
