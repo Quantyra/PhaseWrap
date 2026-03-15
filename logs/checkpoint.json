@@ -2,12 +2,12 @@
     "active_epic":  "E001",
     "repo_posture":  "low_intensity_no_execution",
     "current_story_ids":  [
-                              "S1262"
+                              "S1265"
                           ],
     "next_actions":  [
-                         "Write one candidate-specification memo for synthetic_positional_key_query_offset_selection_response.",
+                         "Write the candidate-level gate for synthetic_positional_key_query_offset_selection_response.",
                          "Keep implementation and execution closed.",
-                         "Stop the successor class if the candidate collapses into realism-bridge or loses bounded fairness."
+                         "Stop the successor class if the candidate-level gate cannot preserve bounded fairness and genuine one-of-many selection."
                      ],
     "risks":  [
                   "The realism-bridge improvement could be over-read as a NISQ solution if review discipline slips.",
@@ -1217,7 +1217,10 @@
                                 "S1259",
                                 "S1260",
                                 "S1261",
-                                "S1262"
+                                "S1262",
+                                "S1263",
+                                "S1264",
+                                "S1265"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
