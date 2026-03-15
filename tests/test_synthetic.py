@@ -56,6 +56,7 @@ from qrope.synthetic import (
     generate_positional_offset_retrieval_response_bundle,
     generate_positional_key_query_offset_selection_response_bundle,
     generate_positional_dual_anchor_offset_consensus_response_bundle,
+    generate_positional_variable_cardinality_offset_selection_response_bundle,
     generate_symbolic_insufficiency_braid_crossing_response_bundle,
     generate_symbolic_insufficiency_transition_response_bundle,
     generate_dual_content_parity_coupling_binary_bundle,
@@ -458,6 +459,20 @@ def test_positional_dual_anchor_offset_consensus_bundle_enforces_declared_diagno
     assert diagnostics["token_view_balance_pass"] is True
     assert diagnostics["bounded_candidate_count_pass"] is True
     assert diagnostics["dual_anchor_noncollapse_pass"] is True
+
+
+def test_positional_variable_cardinality_offset_selection_bundle_enforces_declared_diagnostics() -> None:
+    bundle = generate_positional_variable_cardinality_offset_selection_response_bundle(seed=42)
+    diagnostics = bundle.diagnostics
+    assert diagnostics["dataset"] == "synthetic_positional_variable_cardinality_offset_selection_response"
+    assert diagnostics["coarse_variable_cardinality_state_null_pass"] is True
+    assert diagnostics["within_variable_cardinality_state_variation_pass"] is True
+    assert diagnostics["candidate_count_range_nontrivial_pass"] is True
+    assert diagnostics["variable_cardinality_target_nontrivial_pass"] is True
+    assert diagnostics["token_view_balance_pass"] is True
+    assert diagnostics["bounded_candidate_count_pass"] is True
+    assert diagnostics["distractor_insertion_nontrivial_pass"] is True
+    assert diagnostics["cross_count_target_stability_pass"] is True
 
 
 def test_symbolic_insufficiency_loop_bundle_enforces_declared_diagnostics() -> None:
