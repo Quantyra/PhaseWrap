@@ -2027,3 +2027,6 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 - EL-1217 2026-03-14: Refreshed the internal review cover, briefing, outcome, agenda, and decision checklist after preserving the dual-anchor successor survivor.
 - EL-1218 2026-03-14: Refreshed the final internal review decision and review cycle closure after preserving the dual-anchor successor survivor.
 - EL-1219 2026-03-14: Refreshed the current state operating memo after preserving the dual-anchor successor survivor and closing the review loop.
+- EL-1220 2026-03-14: Opened `E002 - Bounded positional selection robustness` as the next stretch-effort epic in the Q-RoPE research program.
+- EL-1221 2026-03-14: Defined the next missing question as bounded robustness to candidate-set variability in positional selection.
+- EL-1222 2026-03-14: Opened `synthetic_positional_variable_cardinality_offset_selection_response` as a memo-only E002 candidate with a gate sketch only.

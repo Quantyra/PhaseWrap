@@ -1,13 +1,13 @@
 {
-    "active_epic":  "E001",
-    "repo_posture":  "low_intensity_no_execution",
+    "active_epic":  "E002",
+    "repo_posture":  "memo_only_E002_variable_cardinality_candidate_design",
     "current_story_ids":  [
-                              "S1325"
+                              "S1329"
                           ],
     "next_actions":  [
-                         "Use the current package for internal reference and decision support.",
-                         "Keep default execution closed.",
-                         "Reopen only with a materially different missing-question candidate and explicit approval."
+                         "Write the explicit memo-level gate for synthetic_positional_variable_cardinality_offset_selection_response.",
+                         "Keep implementation and execution closed until the gate passes.",
+                         "Stop E002 immediately if variable-cardinality fairness cannot stay bounded under a small fixed cap."
                      ],
     "risks":  [
                   "The realism-bridge improvement could be over-read as a NISQ solution if review discipline slips.",
@@ -1280,7 +1280,10 @@
                                 "S1322",
                                 "S1323",
                                 "S1324",
-                                "S1325"
+                                "S1325",
+                                "S1327",
+                                "S1328",
+                                "S1329"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
