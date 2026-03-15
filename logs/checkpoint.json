@@ -1,13 +1,13 @@
 {
     "active_epic":  "E002",
-    "repo_posture":  "bounded_E002_variable_cardinality_implementation",
+    "repo_posture":  "bounded_E002_variable_cardinality_hardening",
     "current_story_ids":  [
-                              "S1333"
+                              "S1337"
                           ],
     "next_actions":  [
-                         "Implement synthetic_positional_variable_cardinality_offset_selection_response within the frozen writable scope.",
-                         "Run exactly one fixed three-seed packet only if one frozen symbolic family covers candidate counts 3 to 5.",
-                         "Stop E002 immediately if implementation requires count-specific symbolic families or padded fixed-cardinality shortcuts."
+                         "Run the fixed token_permutation=cdab hardening packet for synthetic_positional_variable_cardinality_offset_selection_response.",
+                         "Keep only V_future_relational_witness_positional_variable_cardinality_offset_selection and V_control_symbolic_positional_variable_cardinality_offset_selection_regressor in scope.",
+                         "Stop immediately if the control matches or beats the witness on both mean mae and mean rank_correlation."
                      ],
     "risks":  [
                   "The realism-bridge improvement could be over-read as a NISQ solution if review discipline slips.",
@@ -1287,7 +1287,11 @@
                                 "S1330",
                                 "S1331",
                                 "S1332",
-                                "S1333"
+                                "S1333",
+                                "S1334",
+                                "S1335",
+                                "S1336",
+                                "S1337"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
