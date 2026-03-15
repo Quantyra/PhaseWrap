@@ -1,13 +1,13 @@
 ﻿{
     "active_epic":  "E001",
-    "repo_posture":  "bounded_successor_key_query_offset_selection_structural_hardening",
+    "repo_posture":  "memo_only_successor_key_query_offset_selection_decision_gate",
     "current_story_ids":  [
-                              "S1282"
+                              "S1285"
                           ],
     "next_actions":  [
-                         "Run the fixed pair_reindex=7 deeper structural hardening packet for synthetic_positional_key_query_offset_selection_response.",
-                         "Keep only the witness and bounded symbolic control in the successor packet.",
-                         "Stop the line immediately if the control matches or beats the witness on both mean mae and mean rank_correlation."
+                         "Preserve synthetic_positional_key_query_offset_selection_response as sufficient bounded successor-class evidence.",
+                         "Do not open another default perturbation packet on this family.",
+                         "Only reopen execution if a materially different successor-class question is chosen."
                      ],
     "risks":  [
                   "The realism-bridge improvement could be over-read as a NISQ solution if review discipline slips.",
@@ -1237,7 +1237,10 @@
                                 "S1279",
                                 "S1280",
                                 "S1281",
-                                "S1282"
+                                "S1282",
+                                "S1283",
+                                "S1284",
+                                "S1285"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
