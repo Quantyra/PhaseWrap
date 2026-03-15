@@ -1975,3 +1975,6 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 
 - EL-1171 2026-03-14: Wrote the stricter successor-class gate for transformer-adjacent validation so no candidate in this class can open without explicit proof of added model-likeness and bounded fairness.
 - EL-1172 2026-03-14: Passed the successor class only to memo-level candidate specification; implementation and execution remain closed.
+
+- EL-1173 2026-03-14: Specified `synthetic_positional_key_query_offset_selection_response` as the first successor-class candidate and judged it admissible for one more memo-level gate review only.
+- EL-1174 2026-03-14: Recorded that the next valid move is the candidate-level gate, not implementation or execution.
