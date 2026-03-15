@@ -2062,3 +2062,5 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 - EL-1252 2026-03-14: Advanced E003 only to the retained nuisance-hardening packet `token_permutation=cdab`.
 - EL-1253 2026-03-14: The retained nuisance-hardening packet `token_permutation=cdab` for the E003 position-content line was non-inert and left the witness ahead on both declared mean packet metrics.
 - EL-1254 2026-03-14: Advanced E003 only to the fixed structural hardening packet `pair_reindex=1`.
+- EL-1255 2026-03-14: The fixed structural packet `pair_reindex=1` for the E003 position-content line was non-inert and left the witness ahead on both declared mean packet metrics.
+- EL-1256 2026-03-14: Advanced E003 only to the fixed structural hardening packet `slot_swap=1`.
