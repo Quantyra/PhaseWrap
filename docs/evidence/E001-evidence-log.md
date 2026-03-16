@@ -2110,3 +2110,7 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 - EL-1298 2026-03-15: The retained nuisance-hardening packet 	oken_permutation=cdab for the E005 shared-memory multi-query line was strongly non-inert and let the bounded symbolic control beat the witness on both declared mean packet metrics.
 - EL-1299 2026-03-15: Stopped E005 immediately at retained nuisance hardening because the control cleared the declared two-metric stop gate.
 - EL-1300 2026-03-15: Archived synthetic_positional_shared_memory_multi_query_selection_response as a negative E005 boundary rather than preserved positive evidence.
+
+- EL-1301 2026-03-15: Opened E006 - Bounded multi-hop positional reference resolution as the next stretch-effort epic after archiving the E005 shared-memory multi-query boundary.
+- EL-1302 2026-03-15: Defined the next missing question as bounded two-stage positional reference resolution through an intermediate candidate rather than another direct or repeated-query selection variant.
+- EL-1303 2026-03-15: Opened synthetic_positional_intermediate_pointer_selection_response as a memo-only E006 candidate with a gate sketch only.
