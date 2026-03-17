@@ -2250,3 +2250,5 @@ elay-binding, cascade-reconciliation) and archived negative boundaries (raid, s
 - EL-1396 2026-03-17: Opened `E010 - Bounded nested-scope shadow resolution` as the next stretch-effort epic after preserving the E009 scope-masking survivor.
 - EL-1397 2026-03-17: Defined the next missing question as bounded hierarchical scope-shadow precedence rather than another flat masking, revision, or exception variant.
 - EL-1398 2026-03-17: Opened `synthetic_positional_nested_scope_shadow_selection_response` as a memo-only E010 candidate with a gate sketch only.
+- EL-1399 2026-03-17: Wrote the explicit memo-level gate for `synthetic_positional_nested_scope_shadow_selection_response`.
+- EL-1400 2026-03-17: Passed E010 only to bounded implementation planning review and kept code and execution closed.
