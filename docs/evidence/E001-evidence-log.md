@@ -2218,3 +2218,7 @@ ank_correlation.
 - EL-1370 2026-03-16: Defined the next missing question as bounded local-scope reference eligibility rather than another revision or exception variant.
 - EL-1371 2026-03-16: Opened `synthetic_positional_scope_masked_reference_selection_response` as a memo-only E009 candidate with a gate sketch only.
 
+
+- EL-1372 2026-03-16: Wrote the explicit memo-level gate for `synthetic_positional_scope_masked_reference_selection_response`.
+- EL-1373 2026-03-16: Passed E009 only to bounded implementation planning review and kept code and execution closed.
+

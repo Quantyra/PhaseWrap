@@ -1,13 +1,13 @@
 {
     "active_epic":  "E009",
-    "repo_posture":  "memo_only_E009_scope_masking_candidate_design",
+    "repo_posture":  "memo_only_E009_scope_masking_gate_decision",
     "current_story_ids":  [
-                              "S1545"
+                              "S1547"
                           ],
     "next_actions":  [
-                         "Write the explicit memo-level gate for synthetic_positional_scope_masked_reference_selection_response.",
-                         "Freeze the bounded scope-masking symbolic family and diagnostics in that gate.",
-                         "Keep implementation and execution closed until that gate is accepted."
+                         "Write the bounded implementation plan for synthetic_positional_scope_masked_reference_selection_response.",
+                         "Freeze the writable scope and fixed packet shape in that plan.",
+                         "Keep implementation and execution closed until that plan is accepted."
                      ],
     "risks":  [
                   "The realism-bridge improvement could be over-read as a NISQ solution if review discipline slips.",
@@ -1467,7 +1467,8 @@
                                 "S1542",
                                 "S1543",
                                 "S1544",
-                                "S1545"
+                                "S1545",
+                                "S1546"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
