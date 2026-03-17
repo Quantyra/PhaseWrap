@@ -5,7 +5,7 @@
 
                           ],
     "next_actions":  [
-                         "Use the refreshed package for internal reference and decision support.",
+                         "Use the current operating memo and handoff index as the entry point for internal work.",
                          "Keep default execution closed.",
                          "Reopen only with a materially different missing-question candidate and explicit approval."
                      ],
@@ -1494,7 +1494,8 @@
                                 "S1570",
                                 "S1571",
                                 "S1572",
-                                "S1573"
+                                "S1573",
+                                "S1574"
                             ],
     "archived_transfer_story_ids":  [
                                         "S955",
