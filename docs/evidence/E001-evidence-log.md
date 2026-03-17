@@ -2192,3 +2192,6 @@ ank_correlation.
 - EL-1354 2026-03-16: Implemented `synthetic_positional_exception_conditioned_reference_selection_response` inside the frozen E008 scope while keeping one symbolic family across candidate counts `4` and `5` with one active exception trigger per accepted example.
 - EL-1355 2026-03-16: The fixed three-seed E008 first packet left the witness ahead of the bounded symbolic control on both mean `mae` and mean `rank_correlation`.
 - EL-1356 2026-03-16: Advanced E008 only to the retained nuisance-hardening packet `token_permutation=cdab`.
+
+- EL-1357 2026-03-16: The retained nuisance-hardening packet `token_permutation=cdab` for E008 was non-inert and still left the witness ahead on both declared mean packet metrics.
+- EL-1358 2026-03-16: Advanced E008 only to the fixed structural hardening packet `pair_reindex=1`.
