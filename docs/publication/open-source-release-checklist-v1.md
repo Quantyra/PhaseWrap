@@ -1,6 +1,6 @@
 # QRoPE open-source release checklist v1
 
-Status: `LOCAL_RELEASE_ARTIFACTS_PREPARED`
+Status: `PUBLIC_RELEASE_PUBLISHED`
 
 Target repository: `https://github.com/Quantyra/QRoPE`
 
@@ -39,12 +39,14 @@ Do not proceed if the manuscript or repository front matter claims:
 - general cross-backend robustness;
 - unsupported commercial performance claims.
 
-## Remote publication steps
+## Remote publication record
 
-These steps are intentionally separate from local preparation because publishing to GitHub is a public state change:
+The public repository has been created and published:
 
-1. Confirm the target GitHub owner and repository name: `Quantyra/QRoPE`.
-2. Create or connect the public GitHub repository.
-3. Push the prepared local repository.
-4. Confirm the public page renders the license, citation, patent notice, and support audit.
-5. Tag the first public release after the remote is visible.
+| Step | Status |
+| --- | --- |
+| Confirm target GitHub owner and repository name: `Quantyra/QRoPE`. | Done |
+| Create or connect the public GitHub repository. | Done |
+| Push the prepared local repository. | Done |
+| Confirm the public repository metadata. | Done |
+| Tag the first public release after final manuscript approval. | Pending |
