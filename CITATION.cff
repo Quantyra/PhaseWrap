@@ -13,4 +13,4 @@ keywords:
   - "rotary positional encoding"
   - "hardware validation"
   - "quantum circuits"
-abstract: "Patent-pending bounded evidence repository for Quantum Rotary Positional Encoding, including phase-wrap scoring, deterministic validation packets, and a bounded real-hardware validation result."
+abstract: "Patent-pending bounded evidence repository for Quantum Rotary Positional Encoding, associated with U.S. provisional patent application 64/068,121, including phase-wrap scoring, deterministic validation packets, and a bounded real-hardware validation result."
