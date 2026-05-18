@@ -35,12 +35,9 @@ The public claim frame excludes:
 
 ## Key documents
 
-- [Manuscript-to-provisional support audit](docs/publication/manuscript-to-provisional-support-audit-v1.md)
 - [Repository paper v1](docs/publication/qrope-paper-v1.md)
-- [External review response](docs/publication/external-review-response-v1.md)
 - [Replication plan](docs/publication/replication-plan-v1.md)
 - [Replication ledger](docs/publication/replication-ledger-v1.md)
-- [External release plan](docs/publication/external-release-plan-v1.md)
 - [QRoPE method schematic](docs/publication/figures/qrope-method-schematic-v1.svg)
 - [Product-state witness circuit](docs/publication/figures/qrope-product-state-circuit-v1.png)
 - [Entangling CX witness circuit](docs/publication/figures/qrope-cx-witness-circuit-v1.png)
@@ -48,10 +45,8 @@ The public claim frame excludes:
 - [Stage 4 prediction chart](docs/publication/figures/qrope-stage4-predictions-v1.png)
 - [Stage 4 metrics chart](docs/publication/figures/qrope-stage4-metrics-v1.png)
 - [Replication status chart](docs/publication/figures/qrope-replication-status-v1.png)
-- [Open-source release checklist](docs/publication/open-source-release-checklist-v1.md)
 - [Patent notice](PATENTS.md)
 - [Stage 4 real-hardware validation result](docs/research/q-rope-stage4-real-hardware-validation-result-v1.md)
-- [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
 
 ## Quickstart

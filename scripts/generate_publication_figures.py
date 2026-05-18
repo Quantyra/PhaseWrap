@@ -16,8 +16,7 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.patches import FancyBboxPatch
-from qiskit import QuantumCircuit
+from matplotlib.patches import Circle, FancyArrowPatch, FancyBboxPatch, Rectangle
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,20 +74,70 @@ def draw_circuit(filename: str, *, entangling: bool) -> None:
     row = packet["rows"][0]
     params = row["circuit_parameters"]
 
-    circuit = QuantumCircuit(2)
-    circuit.ry(params["ry_q0"], 0)
-    circuit.ry(params["ry_q1"], 1)
-    if entangling:
-        circuit.cx(0, 1)
-    circuit.measure_all()
+    def format_angle(value: float) -> str:
+        if np.isclose(value, np.pi / 2, atol=1e-3):
+            return "pi/2"
+        return f"{value:.2f}"
 
-    fig = circuit.draw(output="mpl", fold=-1, idle_wires=False)
-    fig.set_size_inches(10.5, 3.4)
-    fig.set_facecolor(PAPER)
+    fig, ax = plt.subplots(figsize=(12.5, 4.4))
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
     title = "QRoPE entangling CX witness circuit" if entangling else "QRoPE product-state witness circuit"
     subtitle = "Circuit parameters shown for the first frozen Stage 4 packet row."
-    fig.suptitle(title, x=0.02, y=0.98, ha="left", va="top", fontsize=16, fontweight="bold", color=INK)
-    fig.text(0.02, 0.88, subtitle, ha="left", va="top", fontsize=10, color=MUTED)
+    ax.text(0.02, 0.94, title, ha="left", va="center", fontsize=21, fontweight="bold", color=INK)
+    ax.text(0.02, 0.86, subtitle, ha="left", va="center", fontsize=11, color=MUTED)
+
+    y0, y1, yc = 0.62, 0.38, 0.19
+    x_label, x_start, x_ry, x_cx, x_barrier, x_meas, x_end = 0.08, 0.15, 0.31, 0.48, 0.61, 0.75, 0.93
+    for y, label in ((y0, "q0"), (y1, "q1")):
+        ax.plot([x_start, x_end], [y, y], color=INK, linewidth=2.6, solid_capstyle="round")
+        ax.text(x_label, y, label, ha="right", va="center", fontsize=15, fontweight="bold", color=INK)
+    ax.plot([x_start, x_end], [yc, yc], color="#7a8a99", linewidth=2.2, solid_capstyle="round")
+    ax.text(x_label, yc, "c", ha="right", va="center", fontsize=15, fontweight="bold", color="#5b6a77")
+
+    def gate_box(x: float, y: float, label: str, sublabel: str, color: str) -> None:
+        box = FancyBboxPatch(
+            (x - 0.047, y - 0.061),
+            0.094,
+            0.122,
+            boxstyle="round,pad=0.01,rounding_size=0.012",
+            facecolor=color,
+            edgecolor="none",
+        )
+        ax.add_patch(box)
+        ax.text(x, y + 0.018, label, ha="center", va="center", fontsize=16, fontweight="bold", color="white")
+        ax.text(x, y - 0.033, sublabel, ha="center", va="center", fontsize=9.5, color="white")
+
+    gate_box(x_ry, y0, "RY", format_angle(float(params["ry_q0"])), "#a8175b")
+    gate_box(x_ry, y1, "RY", format_angle(float(params["ry_q1"])), "#a8175b")
+
+    if entangling:
+        ax.plot([x_cx, x_cx], [y1, y0], color="#083f9e", linewidth=3.0)
+        ax.add_patch(Circle((x_cx, y0), 0.018, facecolor="#083f9e", edgecolor="none"))
+        ax.add_patch(Circle((x_cx, y1), 0.045, facecolor="#083f9e", edgecolor="none"))
+        ax.plot([x_cx - 0.024, x_cx + 0.024], [y1, y1], color="white", linewidth=2.6)
+        ax.plot([x_cx, x_cx], [y1 - 0.024, y1 + 0.024], color="white", linewidth=2.6)
+
+    ax.add_patch(Rectangle((x_barrier - 0.012, y1 - 0.09), 0.024, (y0 - y1) + 0.18, facecolor="#d3d0c9", edgecolor="none"))
+    ax.plot([x_barrier, x_barrier], [y1 - 0.1, y0 + 0.1], color=INK, linewidth=1.3, linestyle="--")
+
+    for index, (y, x_measure) in enumerate(((y0, x_meas), (y1, x_meas + 0.07))):
+        box = FancyBboxPatch(
+            (x_measure - 0.043, y - 0.052),
+            0.086,
+            0.104,
+            boxstyle="round,pad=0.01,rounding_size=0.012",
+            facecolor="#b9bbb9",
+            edgecolor="none",
+        )
+        ax.add_patch(box)
+        ax.text(x_measure, y, "M", ha="center", va="center", fontsize=16, fontweight="bold", color=INK)
+        arrow = FancyArrowPatch((x_measure, y - 0.06), (x_measure, yc + 0.018), arrowstyle="-|>", mutation_scale=13, linewidth=1.8, color="#7a8a99")
+        ax.add_patch(arrow)
+        ax.text(x_measure + 0.025, yc + 0.02, f"c{index}", ha="left", va="center", fontsize=10, color="#5b6a77")
+
+    ax.text(0.02, 0.05, "Source: logs/automated_stage_gates/stage4_hardware_packet/frozen_packet.json", ha="left", va="center", fontsize=9, color=MUTED)
     save(fig, filename)
 
 
@@ -145,6 +194,7 @@ def stage4_metric_chart() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(12.5, 5.8), gridspec_kw={"wspace": 0.28})
     fig.suptitle("Stage 4 summary metrics", x=0.01, ha="left", fontsize=18, fontweight="bold", color=INK)
     fig.text(0.01, 0.91, "Witness versus additive single-band readout control for the published frozen packet.", color=MUTED, fontsize=10)
+    fig.subplots_adjust(top=0.76, bottom=0.15, left=0.08, right=0.98, wspace=0.28)
 
     axes[0].bar(labels, mae, color=colors, width=0.58)
     axes[0].set_title("Mean absolute error")

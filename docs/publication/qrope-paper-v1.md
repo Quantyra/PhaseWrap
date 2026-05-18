@@ -241,8 +241,6 @@ The repository prioritizes evidence files over narrative-only claims. The minimu
 
 - inspect `docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md`;
 - inspect `docs/research/q-rope-stage4-real-hardware-validation-result-v1.md`;
-- inspect `docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md`;
-- inspect `docs/publication/manuscript-to-provisional-support-audit-v1.md`;
 - run or inspect `scripts/verify_stage4_hardware_packet.py`;
 - compare the verifier output with `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`.
 
@@ -280,9 +278,6 @@ QRoPE provides an open-source research lane for phase-wrap positional scoring an
 - `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`
 - `docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md`
 - `docs/research/q-rope-stage4-real-hardware-validation-result-v1.md`
-- `docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md`
-- `docs/publication/manuscript-to-provisional-support-audit-v1.md`
-- `docs/publication/patent-status-note-v1.md`
 - `docs/publication/figures/qrope-method-schematic-v1.svg`
 - `docs/publication/figures/qrope-product-state-circuit-v1.png`
 - `docs/publication/figures/qrope-cx-witness-circuit-v1.png`

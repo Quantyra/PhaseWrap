@@ -27,8 +27,6 @@ dev = [
 ]
 figures = [
   "matplotlib>=3.8",
-  "qiskit>=1.0",
-  "pylatexenc>=2.10",
 ]
 ibm = [
   "qiskit>=1.0",
