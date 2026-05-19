@@ -1,6 +1,6 @@
 # PhaseWrap-RoPE
 
-[![CI](https://github.com/Quantyra/QRoPE/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/QRoPE/actions/workflows/ci.yml)
+[![CI](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml)
 
 PhaseWrap-RoPE is Quantyra's public research repository for phase-wrap positional scoring and bounded hardware validation.
 

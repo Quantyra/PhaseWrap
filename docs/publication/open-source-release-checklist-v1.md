@@ -2,7 +2,7 @@
 
 Status: `PUBLIC_RELEASE_PUBLISHED`
 
-Target repository: `https://github.com/Quantyra/QRoPE`
+Target repository: `https://github.com/Quantyra/PhaseWrap-RoPE`
 
 License: `AGPL-3.0-only`
 
@@ -60,7 +60,7 @@ The public repository has been created and published:
 
 | Step | Status |
 | --- | --- |
-| Confirm target GitHub owner and repository name: `Quantyra/QRoPE`. | Done |
+| Confirm target GitHub owner and repository name: `Quantyra/PhaseWrap-RoPE`. | Done |
 | Create or connect the public GitHub repository. | Done |
 | Push the prepared local repository. | Done |
 | Confirm the public repository metadata. | Done |

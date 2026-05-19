@@ -1,5 +1,5 @@
 {
-  "title": "QRoPE: Phase-Wrap Positional Encoding Evidence and Hardware-Validation Tooling",
+  "title": "PhaseWrap-RoPE: Phase-Wrap Positional Encoding Evidence and Hardware-Validation Tooling",
   "upload_type": "software",
   "description": "Open-source bounded evidence repository for Quantum Rotary Positional Encoding, including phase-wrap scoring, deterministic validation packets, a product-state Stage 4 hardware readout result, and an implemented entangling CX witness variant awaiting replication.",
   "creators": [
@@ -19,7 +19,7 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/Quantyra/QRoPE",
+      "identifier": "https://github.com/Quantyra/PhaseWrap-RoPE",
       "relation": "isSupplementTo",
       "scheme": "url"
     }
