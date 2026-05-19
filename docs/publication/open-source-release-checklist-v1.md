@@ -1,4 +1,4 @@
-# QRoPE open-source release checklist v1
+# PhaseWrap-RoPE open-source release checklist v1
 
 Status: `PUBLIC_RELEASE_PUBLISHED`
 
@@ -6,24 +6,24 @@ Target repository: `https://github.com/Quantyra/QRoPE`
 
 License: `AGPL-3.0-only`
 
-Patent notice: USPTO provisional submission received `2026-05-18`; Electronic Acknowledgement Receipt lists application `64/068,121`; final Filing Receipt pending.
+Patent notice: Patent pending under USPTO provisional application `64/068,121`.
 
 ## Required local artifacts
 
 | Artifact | Status | Notes |
 | --- | --- | --- |
-| `README.md` | Prepared | Public-facing Quantyra/QRoPE positioning with claim boundary. |
+| `README.md` | Prepared | Public-facing PhaseWrap-RoPE positioning with claim boundary. |
 | `LICENSE` | Prepared | GNU AGPL v3 text. |
 | `NOTICE` | Prepared | Short public ownership and patent/IP-status notice. |
-| `PATENTS.md` | Prepared | USPTO acknowledgement-receipt notice and license boundary. |
+| `PATENTS.md` | Prepared | Patent notice and license boundary. |
 | `CITATION.cff` | Prepared | Repository citation metadata. |
-| `docs/publication/patent-status-note-v1.md` | Prepared | Conservative acknowledgement-receipt status note and timeline. |
+| `docs/publication/patent-status-note-v1.md` | Prepared | Public patent-pending status note. |
 | `docs/publication/qrope-paper-v1.md` | Prepared | Standalone bounded repository-paper draft. |
 | `docs/publication/references.bib` | Prepared | Formal references for Transformer, RoPE, IBM Runtime primitives, SamplerV2, and backend metadata. |
 | `docs/publication/paper-gap-remediation-audit-v1.md` | Prepared | Checklist showing paper audit gaps remediated locally. |
 | `docs/publication/external-review-response-v1.md` | Prepared | External review response and unresolved follow-up list. |
 | `docs/publication/replication-plan-v1.md` | Prepared | Cross-backend/cross-date and entangling-witness replication plan. |
-| `docs/publication/external-release-plan-v1.md` | Prepared | arXiv, OSF, and Zenodo release plan with blockers. |
+| `docs/publication/external-release-plan-v1.md` | Prepared | Optional archival release plan. |
 | `.zenodo.json` | Prepared | Zenodo metadata override for first GitHub release DOI. |
 | `.github/workflows/ci.yml` | Prepared | GitHub Actions pytest and coverage workflow. |
 | `src/qrope/automated_stage_gates.py` | Prepared | Public implementation reference for formulas, packet generation, and hardware evaluation. |
@@ -41,7 +41,7 @@ Patent notice: USPTO provisional submission received `2026-05-18`; Electronic Ac
 
 Proceed if all statements remain inside this boundary:
 
-- USPTO-receipted QRoPE submission status with final Filing Receipt pending;
+- patent-pending PhaseWrap-RoPE status with USPTO provisional application `64/068,121`;
 - phase-wrap mod-8/mod-12 scoring;
 - deterministic validation packets;
 - raw-count and metadata-backed hardware evidence;

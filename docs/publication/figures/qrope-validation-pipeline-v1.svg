@@ -1,79 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">QRoPE deterministic validation pipeline</title>
-  <desc id="desc">A publication diagram showing a frozen packet moving through circuit execution, raw counts, offline verification, and bounded publication status.</desc>
+  <title id="title">PhaseWrap-RoPE validation pipeline</title>
+  <desc id="desc">A clean validation pipeline showing frozen packet, hardware run, raw counts, and offline verifier.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="1" stop-color="#eef6ff"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#111827" flood-opacity="0.14"/>
-    </filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M1,1 L9,5 L1,9 Z" fill="#334155"/>
     </marker>
     <style>
-      .title { font: 700 38px Inter, Arial, sans-serif; fill: #0f172a; }
-      .subtitle { font: 500 17px Inter, Arial, sans-serif; fill: #475569; }
-      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.8; rx: 24; filter: url(#shadow); }
-      .num { font: 700 20px Inter, Arial, sans-serif; fill: #ffffff; }
-      .label { font: 700 20px Inter, Arial, sans-serif; fill: #0f172a; }
-      .small { font: 500 15px Inter, Arial, sans-serif; fill: #475569; }
-      .tiny { font: 500 12px Inter, Arial, sans-serif; fill: #64748b; }
-      .line { stroke: #475569; stroke-width: 3; fill: none; marker-end: url(#arrow); }
-      .tag { fill: #0f766e; }
+      .title { font: 700 34px Arial, sans-serif; fill: #111827; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #475569; }
+      .step { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 10; }
+      .num { fill: #334155; }
+      .numtext { font: 700 18px Arial, sans-serif; fill: #ffffff; }
+      .label { font: 700 20px Arial, sans-serif; fill: #111827; }
+      .body { font: 400 15px Arial, sans-serif; fill: #475569; }
+      .small { font: 400 13px Arial, sans-serif; fill: #64748b; }
+      .arrow { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
     </style>
   </defs>
-  <rect width="1200" height="675" fill="url(#bg)"/>
-  <circle cx="1040" cy="100" r="210" fill="#0f766e" opacity="0.06"/>
-  <circle cx="110" cy="600" r="220" fill="#f59e0b" opacity="0.07"/>
-  <text x="70" y="78" class="title">Deterministic validation lane</text>
-  <text x="70" y="111" class="subtitle">A frozen packet is executed once, verified offline, and published only as bounded evidence.</text>
 
-  <g transform="translate(58,208)">
-    <rect width="210" height="230" class="box"/>
-    <circle cx="42" cy="42" r="22" class="tag"/>
-    <text x="35" y="49" class="num">1</text>
-    <text x="28" y="95" class="label">Frozen packet</text>
-    <text x="28" y="130" class="small">16 rows</text>
-    <text x="28" y="156" class="small">fixed inputs</text>
-    <text x="28" y="190" class="tiny">packet id locked before run</text>
-  </g>
-  <path d="M271 324 L354 324" class="line"/>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="70" y="76" class="title">Deterministic validation pipeline</text>
+  <text x="70" y="108" class="subtitle">The evidence lane preserves inputs, execution records, raw counts, and offline recomputation.</text>
 
-  <g transform="translate(370,208)">
-    <rect width="210" height="230" class="box"/>
-    <circle cx="42" cy="42" r="22" fill="#0f766e"/>
-    <text x="35" y="49" class="num">2</text>
-    <text x="28" y="95" class="label">Hardware run</text>
-    <text x="28" y="130" class="small">backend metadata</text>
-    <text x="28" y="156" class="small">4096 shots</text>
-    <text x="28" y="190" class="tiny">real noisy hardware</text>
-  </g>
-  <path d="M583 324 L666 324" class="line"/>
-
-  <g transform="translate(682,208)">
-    <rect width="210" height="230" class="box"/>
-    <circle cx="42" cy="42" r="22" fill="#b45309"/>
-    <text x="35" y="49" class="num">3</text>
-    <text x="28" y="95" class="label">Raw counts</text>
-    <text x="28" y="130" class="small">bitstrings</text>
-    <text x="28" y="156" class="small">ZZ expectation</text>
-    <text x="28" y="190" class="tiny">direct evidence artifact</text>
-  </g>
-  <path d="M896 324 L980 324" class="line"/>
-
-  <g transform="translate(996,208)">
-    <rect width="150" height="230" class="box"/>
-    <circle cx="42" cy="42" r="22" fill="#334155"/>
-    <text x="35" y="49" class="num">4</text>
-    <text x="28" y="95" class="label">Verifier</text>
-    <text x="28" y="130" class="small">offline recompute</text>
-    <text x="28" y="156" class="small">bounded status</text>
-    <text x="28" y="190" class="tiny">publish only what the packet proves</text>
+  <g transform="translate(70,230)">
+    <rect width="210" height="190" class="step"/>
+    <circle cx="42" cy="42" r="20" class="num"/>
+    <text x="36" y="49" class="numtext">1</text>
+    <text x="30" y="94" class="label">Frozen packet</text>
+    <text x="30" y="130" class="body">16 fixed rows</text>
+    <text x="30" y="156" class="body">packet id locked</text>
   </g>
 
-  <rect x="132" y="496" width="936" height="92" rx="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)"/>
-  <text x="164" y="532" class="label">Publication rule</text>
-  <text x="164" y="562" class="small">Publish the evidence lane, not a broad quantum-advantage claim.</text>
+  <path d="M292 325 L395 325" class="arrow"/>
+
+  <g transform="translate(410,230)">
+    <rect width="210" height="190" class="step"/>
+    <circle cx="42" cy="42" r="20" fill="#0f766e"/>
+    <text x="36" y="49" class="numtext">2</text>
+    <text x="30" y="94" class="label">Hardware run</text>
+    <text x="30" y="130" class="body">backend metadata</text>
+    <text x="30" y="156" class="body">fixed shot policy</text>
+  </g>
+
+  <path d="M632 325 L735 325" class="arrow"/>
+
+  <g transform="translate(750,230)">
+    <rect width="210" height="190" class="step"/>
+    <circle cx="42" cy="42" r="20" fill="#b45309"/>
+    <text x="36" y="49" class="numtext">3</text>
+    <text x="30" y="94" class="label">Raw counts</text>
+    <text x="30" y="130" class="body">bitstring outcomes</text>
+    <text x="30" y="156" class="body">expectation values</text>
+  </g>
+
+  <path d="M972 325 L1035 325" class="arrow"/>
+
+  <g transform="translate(1050,230)">
+    <rect width="100" height="190" class="step"/>
+    <circle cx="40" cy="42" r="20" fill="#334155"/>
+    <text x="34" y="49" class="numtext">4</text>
+    <text x="22" y="94" class="label">Verify</text>
+    <text x="22" y="130" class="body">offline</text>
+    <text x="22" y="156" class="body">recompute</text>
+  </g>
+
+  <rect x="180" y="500" width="840" height="70" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="10"/>
+  <text x="210" y="530" class="label">Publication rule</text>
+  <text x="210" y="556" class="body">Publish the bounded evidence record, not a broad quantum-advantage claim.</text>
+
+  <line x1="70" y1="612" x2="1130" y2="612" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="70" y="640" class="small">Figure 2. Deterministic validation path used by the Stage 4 packet and verifier.</text>
 </svg>

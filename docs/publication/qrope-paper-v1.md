@@ -1,16 +1,16 @@
-# QRoPE: A Patent-Pending Phase-Wrap Positional Encoding Method with Bounded Hardware Validation
+# PhaseWrap-RoPE: A Patent-Pending Phase-Wrap Positional Encoding Method with Bounded Hardware Validation
 
 Manuscript status: `repository-paper-v1`
 
-Publication posture: `USPTO-receipted provisional submission, bounded, reproducible, evidence-disciplined`
+Publication posture: `patent pending, bounded, reproducible, evidence-disciplined`
 
-USPTO submission record: Electronic Acknowledgement Receipt dated `2026-05-18` lists application `64/068,121` and Patent Center `76347440`; final Filing Receipt pending.
+Patent status: USPTO provisional application `64/068,121`
 
 License context: repository software released under `AGPL-3.0-only`
 
 ## Abstract
 
-Quantum Rotary Positional Encoding, or QRoPE, is a positional-encoding research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins through an SQR score. This repository paper presents the QRoPE method, its deterministic validation protocol, and completed Stage 4 real-noisy-hardware comparison runs across IBM Quantum and IonQ hardware.
+PhaseWrap-RoPE is a positional-encoding research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins into a cross-band score. This repository paper presents the PhaseWrap-RoPE method, its deterministic validation protocol, and completed Stage 4 real-noisy-hardware comparison runs across IBM Quantum and IonQ hardware.
 
 The result should be read as a bounded evidence claim. It supports the reported packet/backend/date/calibration-specific validation outcome, not broad quantum advantage, not transformer-scale superiority, and not general cross-backend robustness. The contribution is a reproducible review path: fixed packets, fixed shot counts, raw measurement counts, backend metadata, offline recomputation, and explicit claim boundaries.
 
@@ -22,24 +22,24 @@ Quantum positional encoding; rotary positional encoding; phase-wrap scoring; qua
 
 Transformer positional-encoding methods provide sequence-order information to attention models, with the Transformer architecture serving as the baseline context for modern attention-based sequence modeling [1]. Rotary Position Embedding, or RoPE, introduced a rotation-based method for incorporating positional information into self-attention and motivating relative-position behavior [2].
 
-QRoPE explores a narrower research question. It asks whether a phase-wrap positional scoring component can be specified, frozen, and validated through deterministic software artifacts and a small-circuit hardware witness. It does not claim to replace RoPE in production transformers and does not report transformer-scale training.
+PhaseWrap-RoPE explores a narrower research question. It asks whether a phase-wrap positional scoring component can be specified, frozen, and validated through deterministic software artifacts and a small-circuit hardware witness. It does not claim to replace RoPE in production transformers and does not report transformer-scale training.
 
-This paper documents the first public QRoPE release under Quantyra. The repository is open source under `AGPL-3.0-only` and references the USPTO submission record summarized in `PATENTS.md` and `docs/publication/patent-status-note-v1.md`. The release is designed to permit external review while preserving the claim boundary established by the manuscript-to-provisional support audit.
+This paper documents the first public PhaseWrap-RoPE release under Quantyra. The repository is open source under `AGPL-3.0-only` and references the USPTO submission record summarized in `PATENTS.md` and `docs/publication/patent-status-note-v1.md`. The release is designed to permit external review while preserving the claim boundary established by the manuscript-to-provisional support audit.
 
 The contribution is threefold:
 
-- A phase-wrap QRoPE scoring method using mod-8 and mod-12 signed margins.
+- A PhaseWrap-RoPE scoring method using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
 - A Stage 4 real-noisy-hardware comparison across IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU, with completed product-state and entangling-CX witness families.
 
 ## 2. Related work and claim boundary
 
-QRoPE is related to positional encoding and RoPE-style relative phase behavior, but it is not a drop-in transformer positional-embedding result. The relationship to RoPE is conceptual: QRoPE uses wrapped phase residuals and cross-band interactions, while the present release evaluates a small, deterministic evidence lane rather than a full language-model architecture.
+PhaseWrap-RoPE is related to positional encoding and RoPE-style relative phase behavior, but it is not a drop-in transformer positional-embedding result. The relationship to RoPE is conceptual: PhaseWrap-RoPE uses wrapped phase residuals and cross-band interactions, while the present release evaluates a small, deterministic evidence lane rather than a full language-model architecture.
 
 The allowed public claims are:
 
-- QRoPE defines a phase-wrap positional scoring method.
-- The SQR score is computed from mod-8 and mod-12 signed-margin structure.
+- PhaseWrap-RoPE defines a phase-wrap positional scoring method.
+- The cross-band score is computed from mod-8 and mod-12 signed-margin structure.
 - The validation lane uses frozen packets, raw counts, backend metadata, and offline recomputation.
 - The Stage 4 evidence record reports completed hardware-positive results for the recorded packet/backend/date/calibration context and the completed hardware comparison sweep.
 
@@ -51,13 +51,13 @@ The excluded claims are:
 - general cross-backend robustness;
 - commercial performance improvement in deployed language models.
 
-This boundary follows the manuscript-to-provisional support audit and the conservative patent-status note for the USPTO acknowledgement receipt.
+This boundary follows the manuscript-to-provisional support audit and patent-status note.
 
 ## 3. Method
 
-![QRoPE phase-wrap method schematic](figures/qrope-method-schematic-v1.svg)
+![PhaseWrap-RoPE phase-wrap method schematic](figures/qrope-method-schematic-v1.svg)
 
-Figure 1. QRoPE phase-wrap scoring schematic. The figure is conceptual; the normative method is the formula block below.
+Figure 1. PhaseWrap-RoPE phase-wrap scoring schematic. The figure is conceptual; the normative method is the formula block below.
 
 For integer offsets `delta_a` and `delta_b`, define a period-specific wrapped phase:
 
@@ -79,10 +79,10 @@ m8  = cos(r8)  - cos(pi/4)
 m12 = cos(r12) - cos(pi/6)
 ```
 
-The local QRoPE score is:
+The local PhaseWrap-RoPE score is:
 
 ```text
-SQR = m8 * m12
+score = m8 * m12
 ```
 
 The thresholds are tied to one modular step in each basis. For period 8, one step is `2*pi/8 = pi/4`; for period 12, one step is `2*pi/12 = pi/6`. Subtracting `cos(pi/4)` and `cos(pi/6)` centers each margin at the one-step residual boundary: margins are positive for residuals closer than one modular step, approximately zero at one step, and negative beyond one step.
@@ -90,16 +90,16 @@ The thresholds are tied to one modular step in each basis. For period 8, one ste
 The implementation normalizes the score for packet labels by clamping:
 
 ```text
-label = clamp(0.5 + 0.5 * SQR / MAX_ABS_SCORE, 0, 1)
+label = clamp(0.5 + 0.5 * score / MAX_ABS_SCORE, 0, 1)
 ```
 
 where `MAX_ABS_SCORE` is computed over the fixed delta grid used by the packet generator.
 
-### Algorithm 1. Local QRoPE score
+### Algorithm 1. Local PhaseWrap-RoPE score
 
 ```text
 Input: integer offsets delta_a, delta_b
-Output: signed score SQR and normalized label
+Output: signed score and normalized label
 
 for P in {8, 12}:
     theta_a[P] = wrap_pi(2*pi*delta_a/P)
@@ -108,8 +108,8 @@ for P in {8, 12}:
 
 m8 = cos(r[8]) - cos(pi/4)
 m12 = cos(r[12]) - cos(pi/6)
-SQR = m8 * m12
-label = clamp(0.5 + 0.5*SQR/MAX_ABS_SCORE, 0, 1)
+score = m8 * m12
+label = clamp(0.5 + 0.5*score/MAX_ABS_SCORE, 0, 1)
 ```
 
 The two-qubit witness normalizes the margins into Z targets:
@@ -144,7 +144,7 @@ Implementation reference: `src/qrope/automated_stage_gates.py`.
 
 ## 4. Validation protocol
 
-![QRoPE deterministic validation pipeline](figures/qrope-validation-pipeline-v1.svg)
+![PhaseWrap-RoPE deterministic validation pipeline](figures/qrope-validation-pipeline-v1.svg)
 
 Figure 2. Deterministic validation lane. The verification path is designed to recompute metrics from frozen packet files and execution records.
 
@@ -182,7 +182,7 @@ This verifier supports recomputation, not independent replication. Recomputing t
 
 ## 5. Hardware validation result
 
-![QRoPE Stage 4 hardware comparison](figures/qrope-stage4-comparison-v1.svg)
+![PhaseWrap-RoPE Stage 4 hardware comparison](figures/qrope-stage4-comparison-v1.svg)
 
 Figure 3. Stage 4 hardware comparison. Source data: `logs/automated_stage_gates/stage4_hardware_sweep/`.
 
@@ -251,9 +251,7 @@ The intended reproducibility standard is not that every future backend execution
 
 ## 7. Patent and open-source notice
 
-QRoPE is associated with a USPTO provisional submission received `2026-05-18`. The Electronic Acknowledgement Receipt lists application `64/068,121` and Patent Center number `76347440`; final Filing Receipt review is pending, and the completed hardware comparison sweep is documented separately in `docs/research/q-rope-stage4-hardware-comparison-v1.md`.
-
-USPTO MPEP 503 currently lists provisional application series codes as `60/` through `63/` [6]. Because the acknowledgement receipt lists `64/068,121`, public materials should describe that number as the acknowledgement-receipt application number until the final Filing Receipt is received and checked.
+PhaseWrap-RoPE is patent pending under USPTO provisional application `64/068,121`. The completed hardware comparison sweep is documented separately in `docs/research/q-rope-stage4-hardware-comparison-v1.md`.
 
 The repository software is released under `AGPL-3.0-only`. The patent/IP-status notice does not convert the repository into a broad patent grant beyond the applicable open-source license and contributor grants for covered software. Commercial patent licensing, non-AGPL use, assignments, and sublicensing should be handled separately with Quantyra/CYINT IP.
 
@@ -271,7 +269,7 @@ These limitations define the scientific scope of the current release.
 
 ## 9. Conclusion
 
-QRoPE provides an open-source research lane for phase-wrap positional scoring and bounded small-circuit validation. The current evidence supports publication as a narrowly framed method and evidence paper. The next scientific step is controlled expansion: additional packets, additional dates, larger comparison matrices, and broader transformer-adjacent experiments only if supported by new evidence.
+PhaseWrap-RoPE provides an open-source research lane for phase-wrap positional scoring and bounded small-circuit validation. The current evidence supports publication as a narrowly framed method and evidence paper. The next scientific step is controlled expansion: additional packets, additional dates, larger comparison matrices, and broader transformer-adjacent experiments only if supported by new evidence.
 
 ## Repository evidence references
 
@@ -303,5 +301,3 @@ QRoPE provides an open-source research lane for phase-wrap positional scoring an
 [4] IBM Quantum Documentation. "SamplerV2." Accessed 2026-05-18. https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/0.25/sampler-v2
 
 [5] IBM Quantum Documentation. "View backend details." Accessed 2026-05-18. https://quantum.cloud.ibm.com/docs/en/guides/qpu-information
-
-[6] USPTO Manual of Patent Examining Procedure. "503 Application Number and Filing Receipt." Accessed 2026-05-18. https://www.uspto.gov/web/offices/pac/mpep/s503.html
