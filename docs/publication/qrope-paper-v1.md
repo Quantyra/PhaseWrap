@@ -10,7 +10,7 @@ License context: repository software released under `AGPL-3.0-only`
 
 ## Abstract
 
-Quantum Rotary Positional Encoding, or QRoPE, is a positional-encoding research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins through an SQR score. This repository paper presents the QRoPE method, its deterministic validation protocol, a machine-verifiable Stage 4 packet, a machine-verifiable Amazon Braket/Rigetti replication artifact, and narrative-reported Stage 4 comparison rows whose missing raw artifacts are identified by the sweep manifest.
+Quantum Rotary Positional Encoding, or QRoPE, is a positional-encoding research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins through an SQR score. This repository paper presents the QRoPE method, its deterministic validation protocol, a machine-verifiable Stage 4 packet, a machine-verifiable Amazon Braket/Rigetti product-state replication artifact, and machine-verifiable Braket CX negative replication artifacts.
 
 The result should be read as a bounded evidence claim. It supports the reported packet/backend/date/calibration-specific validation outcome, not broad quantum advantage, not transformer-scale superiority, and not general cross-backend robustness. The contribution is a reproducible review path: fixed packets, fixed shot counts, raw measurement counts, backend metadata, offline recomputation, and explicit claim boundaries.
 
@@ -30,7 +30,7 @@ The contribution is threefold:
 
 - A phase-wrap QRoPE scoring method using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
-- A Stage 4 real-noisy-hardware comparison report across committed IBM Fez product-state, IBM Fez CX, and Amazon Braket/Rigetti product-state artifacts, with additional IBM targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
+- A Stage 4 real-noisy-hardware comparison report across committed IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and Amazon Braket CX negative artifacts, with additional IBM targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
 
 ## 2. Related work and claim boundary
 
@@ -41,7 +41,7 @@ The allowed public claims are:
 - QRoPE defines a phase-wrap positional scoring method.
 - The SQR score is computed from mod-8 and mod-12 signed-margin structure.
 - The validation lane uses frozen packets, raw counts, backend metadata, and offline recomputation.
-- The Stage 4 evidence record reports completed hardware-positive results for the recorded IBM Fez and Amazon Braket/Rigetti packet/backend/date/calibration contexts; IonQ is excluded from the active sweep because it was unavailable/not-run in the current Amazon Braket check.
+- The Stage 4 evidence record reports completed hardware-positive results for the recorded IBM Fez and Amazon Braket/Rigetti product-state packet/backend/date/calibration contexts, a completed IBM Fez CX hardware-positive result, and completed Braket CX hardware-negative replications; IonQ is excluded from the active sweep because it was unavailable/not-run in the current Amazon Braket check.
 
 The excluded claims are:
 
@@ -138,7 +138,7 @@ witness_cx = clamp(0.5 + 0.5 * score_scale * E[Z1 after CX], 0, 1)
 control_cx = clamp(0.5 + 0.25 * (E[Z0 after CX] + E[Z0 Z1 after CX]), 0, 1)
 ```
 
-This variant has a completed IBM Fez hardware artifact in the active public sweep. It supports only the recorded packet/backend/date/calibration-specific result and does not establish entanglement advantage, quantum advantage, or cross-backend robustness.
+This variant has a completed IBM Fez hardware-positive artifact in the active public sweep. It also has completed Amazon Braket hardware-negative replication artifacts on Rigetti Cepheus, IQM Garnet, and IQM Emerald. The positive claim is therefore bounded to the recorded IBM Fez packet/backend/date/calibration-specific result and does not establish entanglement advantage, quantum advantage, or cross-backend robustness.
 
 Implementation reference: `src/qrope/automated_stage_gates.py`.
 
@@ -190,7 +190,7 @@ This verifier supports recomputation, not independent replication. Recomputing t
 
 ## 5. Hardware validation result
 
-The active Stage 4 hardware sweep includes three completed records: the original IBM Fez product-state hardware packet, an IBM Fez CX hardware packet, and an Amazon Braket/Rigetti product-state replication artifact. Additional IBM machines are deferred from the active sweep. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
+The active Stage 4 hardware sweep includes six completed records: the original IBM Fez product-state hardware packet, an IBM Fez CX hardware-positive packet, an Amazon Braket/Rigetti product-state hardware-positive replication artifact, and Amazon Braket CX hardware-negative replication artifacts on Rigetti Cepheus, IQM Garnet, and IQM Emerald. Additional IBM machines are deferred from the active sweep. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
 
 The IBM Quantum run records:
 
@@ -215,8 +215,10 @@ The active sweep records:
 
 - IBM Fez completed at `4096` shots for the product-state witness family.
 - IBM Fez completed at `4096` shots for the CX witness family.
+- Amazon Braket/Rigetti completed at `1000` shots for the product-state witness family.
+- Amazon Braket CX completed at `1000` shots per row on Rigetti Cepheus, IQM Garnet, and IQM Emerald, and all three CX records were hardware-negative.
 - IonQ is not part of the active hardware sweep; Amazon Braket/IonQ was unavailable during the 2026-05-19 check, so no IonQ hardware task was submitted.
-- The committed IBM Fez and Braket/Rigetti rows preserved the witness/control ordering expected by the claim boundary.
+- The committed IBM Fez and Braket/Rigetti product-state rows preserved the witness/control ordering expected by the positive claim boundary.
 - The Amazon Braket/Rigetti 1000-shot product-state artifact is present as machine-verifiable sweep evidence and verifies with `pass=true`.
 
 The active sweep summarizes as:
@@ -237,7 +239,7 @@ The witness condition uses the cross-band product readout:
 witness = clamp(0.5 + 0.5 * score_scale * E[Z0 Z1], 0, 1)
 ```
 
-The completed IBM Fez and Braket/Rigetti records support the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
+The completed IBM Fez and Braket/Rigetti product-state records support the Stage 4 packet outcome under the recorded conditions. The completed Braket CX records are negative replications and do not support a general CX cross-backend claim. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
 
 Deferred IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
@@ -270,7 +272,7 @@ The present result has important limitations:
 
 - The Stage 4 evidence is still bounded to a small set of recorded packet/backend/date/calibration contexts rather than a broad backend survey.
 - The paper does not report transformer-scale training or evaluation.
-- The paper reports bounded IBM Fez and Braket/Rigetti hardware records, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
+- The paper reports bounded IBM Fez and Braket hardware records, including Braket CX negative replications, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
 - The paper does not compare against production language-model baselines.
 - The paper does not establish quantum advantage.
 

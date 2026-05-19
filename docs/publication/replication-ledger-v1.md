@@ -1,6 +1,6 @@
 # PhaseWrap-RoPE replication ledger v1
 
-Status: `BRAKET_REPLICATION_COMPLETED`
+Status: `BRAKET_CX_NEGATIVE_REPLICATIONS_RECORDED`
 
 Date: `2026-05-19`
 
@@ -19,8 +19,10 @@ Machine-readable ledger: `logs/automated_stage_gates/replication_lanes/replicati
 | Product rerun A | `two_qubit_zz_expectation_phase_wrap_v1` | Second IBM backend, date 1 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | Product rerun B | `two_qubit_zz_expectation_phase_wrap_v1` | Third IBM backend or same backend on date 2 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | CX IBM Fez original | `two_qubit_cx_parity_phase_wrap_v2` | IBM `ibm_fez`, `2026-05-19` | `published_completed` | Bounded CX hardware-positive result for one packet/backend/date/calibration context. |
-| CX Braket attempt | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No Braket CX evidence claim. |
-| CX rerun B | `two_qubit_cx_parity_phase_wrap_v2` | Second date or second backend | `implemented_not_executed_on_hardware` | No entangling-witness evidence claim. |
+| CX Braket Rigetti replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
+| CX Braket IQM Garnet replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Garnet`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
+| CX Braket IQM Emerald replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Emerald`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
+| CX Braket queued attempt | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No raw counts; superseded by the later completed negative Rigetti CX record. |
 
 ## Braket replication result for this update
 
@@ -68,6 +70,18 @@ Submitted task:
 `arn:aws:braket:us-west-1:485386182336:quantum-task/ac7e2b2e-2794-43e8-ba18-c65225efceea`
 
 The task remained `QUEUED` until the local runner hit its `1800` second timeout. A cancellation request was then sent, and AWS reported `CANCELLED` at `2026-05-19T22:07:22.245000Z`. No raw counts were produced, no CX metrics were computed from hardware counts, and this remains non-evidence for the entangling witness.
+
+## CX Braket negative replications
+
+Later on `2026-05-19`, online Amazon Braket gate-model devices were run for the CX witness at 8 rows and 1000 shots per row. These runs produced raw counts and machine-verifiable negative outcomes:
+
+| Target | Artifact | Witness MAE | Witness rank corr | Control MAE | Control rank corr | Outcome |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| Rigetti `Cepheus-1-108Q` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z/` | 0.290715 | 0.000000 | 0.102104 | 0.691023 | `hardware-negative` |
+| IQM `Garnet` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z/` | 0.314936 | -0.487841 | 0.126479 | 0.521298 | `hardware-negative` |
+| IQM `Emerald` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z/` | 0.324767 | -0.223607 | 0.127917 | 0.634194 | `hardware-negative` |
+
+These records show that Braket execution succeeded, but the CX witness failed the positive hardware gate on those backends. They should be reported as negative replication evidence, not omitted and not reframed as support for cross-backend robustness.
 
 A replication lane becomes publishable only after it contains:
 

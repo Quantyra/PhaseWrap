@@ -179,6 +179,54 @@ def test_metric_mismatch_fails(tmp_path: Path) -> None:
     assert witness_mae_check["pass"] is False
 
 
+def test_expected_negative_hardware_record_verifies_without_positive_gate(tmp_path: Path) -> None:
+    result_dir, record = _synthetic_result(tmp_path, ENTANGLING_CX_CIRCUIT_FAMILY)
+    evaluation_path = result_dir / "evaluation.json"
+    summary_path = result_dir / "summary.json"
+    evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
+    evaluation.update(
+        {
+            "status": "FAIL_STOP",
+            "outcome": "hardware-negative",
+            "gate_pass": False,
+            "hardware_direction_positive": False,
+            "direction_agreement": False,
+            "witness": {"mae": 0.3, "rank_correlation": 0.0},
+            "control": {"mae": 0.1, "rank_correlation": 0.5},
+            "fail_reasons": ["synthetic negative verifier fixture"],
+        }
+    )
+    _write_json(evaluation_path, evaluation)
+    _write_json(
+        summary_path,
+        {"status": "FAIL_STOP", "outcome": "hardware-negative", "gate_pass": False},
+    )
+    execution = json.loads((result_dir / "execution.json").read_text(encoding="utf-8"))
+    execution["jobs"][0]["raw_counts_by_row"] = [
+        {
+            "row_id": item["row_id"],
+            "counts": {"00": 128, "01": 128},
+        }
+        for item in execution["jobs"][0]["raw_counts_by_row"]
+    ]
+    _write_json(result_dir / "execution.json", execution)
+    recomputed = evaluate_hardware_execution(
+        json.loads((result_dir / "frozen_packet.json").read_text(encoding="utf-8")),
+        execution,
+    )
+    _write_json(evaluation_path, recomputed)
+    _write_json(
+        summary_path,
+        {"status": recomputed["status"], "outcome": recomputed["outcome"], "gate_pass": recomputed["gate_pass"]},
+    )
+    record["expected_outcome"] = "hardware-negative"
+    verification = verify_manifest(_manifest(tmp_path, [record]))
+    assert verification["pass"] is True
+    checks = {check["name"]: check["pass"] for check in verification["records"][0]["checks"]}
+    assert checks["expected_outcome_matches"] is True
+    assert checks["negative_record_does_not_support_positive_gate"] is True
+
+
 def test_overclaim_guardrail_flags_forbidden_supported_claim(tmp_path: Path) -> None:
     doc = tmp_path / "doc.md"
     doc.write_text("This would say quantum advantage proven if it were a supported claim.", encoding="utf-8")

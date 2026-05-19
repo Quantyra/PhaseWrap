@@ -1,0 +1,204 @@
+{
+  "comparability_pass": true,
+  "control": {
+    "mae": 0.126479,
+    "rank_correlation": 0.521298
+  },
+  "direction_agreement": false,
+  "fail_reasons": [
+    "hardware witness did not beat hardware control on both metrics",
+    "hardware direction did not agree with noisy-simulator direction"
+  ],
+  "gate_pass": false,
+  "hardware_direction_positive": false,
+  "metadata_complete": true,
+  "missing_metadata": [],
+  "noisy_direction_positive": true,
+  "noisy_reference": {
+    "control": {
+      "mae": 0.199548,
+      "rank_correlation": -0.098161
+    },
+    "gate_pass": true,
+    "witness": {
+      "mae": 0.009306,
+      "rank_correlation": 1.0
+    }
+  },
+  "outcome": "hardware-negative",
+  "per_row_results": [
+    {
+      "counts": {
+        "00": 38,
+        "01": 455,
+        "10": 473,
+        "11": 34
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": 0.022,
+        "z1": -0.014,
+        "zz": -0.856
+      },
+      "hardware_predictions": {
+        "control": 0.2915,
+        "witness": 0.49089666229
+      },
+      "label": 0.5,
+      "row_id": "hwrow-000"
+    },
+    {
+      "counts": {
+        "00": 9,
+        "01": 17,
+        "10": 456,
+        "11": 518
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": -0.07,
+        "z1": -0.948,
+        "zz": 0.054
+      },
+      "hardware_predictions": {
+        "control": 0.496,
+        "witness": 0.0
+      },
+      "label": 0.453314982767,
+      "row_id": "hwrow-001"
+    },
+    {
+      "counts": {
+        "00": 115,
+        "01": 487,
+        "10": 337,
+        "11": 61
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": -0.096,
+        "z1": 0.204,
+        "zz": -0.648
+      },
+      "hardware_predictions": {
+        "control": 0.314,
+        "witness": 0.632648635197
+      },
+      "label": 0.418330015736,
+      "row_id": "hwrow-002"
+    },
+    {
+      "counts": {
+        "00": 328,
+        "01": 247,
+        "10": 212,
+        "11": 213
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": 0.08,
+        "z1": 0.15,
+        "zz": 0.082
+      },
+      "hardware_predictions": {
+        "control": 0.5405,
+        "witness": 0.597535761174
+      },
+      "label": 0.508009882638,
+      "row_id": "hwrow-003"
+    },
+    {
+      "counts": {
+        "00": 9,
+        "01": 21,
+        "10": 825,
+        "11": 145
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": 0.668,
+        "z1": -0.94,
+        "zz": -0.692
+      },
+      "hardware_predictions": {
+        "control": 0.494,
+        "witness": 0.0
+      },
+      "label": 0.976007551561,
+      "row_id": "hwrow-004"
+    },
+    {
+      "counts": {
+        "00": 74,
+        "01": 72,
+        "10": 444,
+        "11": 410
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": 0.036,
+        "z1": -0.708,
+        "zz": -0.032
+      },
+      "hardware_predictions": {
+        "control": 0.501,
+        "witness": 0.039631207259
+      },
+      "label": 0.5,
+      "row_id": "hwrow-005"
+    },
+    {
+      "counts": {
+        "00": 93,
+        "01": 503,
+        "10": 339,
+        "11": 65
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": -0.136,
+        "z1": 0.192,
+        "zz": -0.684
+      },
+      "hardware_predictions": {
+        "control": 0.295,
+        "witness": 0.624845774303
+      },
+      "label": 0.418330015736,
+      "row_id": "hwrow-006"
+    },
+    {
+      "counts": {
+        "00": 321,
+        "01": 270,
+        "10": 203,
+        "11": 206
+      },
+      "expectations": {
+        "shots": 1000,
+        "valid": true,
+        "z0": 0.048,
+        "z1": 0.182,
+        "zz": 0.054
+      },
+      "hardware_predictions": {
+        "control": 0.5255,
+        "witness": 0.618343390224
+      },
+      "label": 0.508009882638,
+      "row_id": "hwrow-007"
+    }
+  ],
+  "status": "FAIL_STOP",
+  "witness": {
+    "mae": 0.314936,
+    "rank_correlation": -0.487841
+  }
+}

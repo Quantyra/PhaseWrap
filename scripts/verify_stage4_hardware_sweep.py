@@ -115,6 +115,8 @@ def validate_manifest(manifest: dict[str, Any]) -> list[str]:
             errors.append(f"{prefix}.family is not listed in manifest witness_families")
         if record.get("status") not in {"completed", "missing_evidence"}:
             errors.append(f"{prefix}.status must be completed or missing_evidence")
+        if record.get("expected_outcome") and record.get("expected_outcome") not in {"hardware-positive", "hardware-negative"}:
+            errors.append(f"{prefix}.expected_outcome must be hardware-positive or hardware-negative")
         if record.get("status") == "completed":
             for key in ("packet_path", "execution_path", "evaluation_path", "summary_path"):
                 if not record.get(key):
@@ -139,7 +141,12 @@ def compare_metric(name: str, recorded: Any, recomputed: Any, tolerance: float) 
     }
 
 
-def _record_metric_checks(recorded: dict[str, Any], recomputed: dict[str, Any]) -> list[dict[str, Any]]:
+def _record_metric_checks(
+    recorded: dict[str, Any],
+    recomputed: dict[str, Any],
+    expected_outcome: str | None = None,
+) -> list[dict[str, Any]]:
+    expected = expected_outcome or "hardware-positive"
     checks = [
         compare_metric("witness_mae", recorded.get("witness", {}).get("mae"), recomputed.get("witness", {}).get("mae"), METRIC_TOLERANCE),
         compare_metric(
@@ -177,20 +184,47 @@ def _record_metric_checks(recorded: dict[str, Any], recomputed: dict[str, Any]) 
                 "recomputed": recomputed.get("gate_pass"),
             },
             {
-                "name": "witness_beats_control_mae",
-                "pass": recomputed.get("witness", {}).get("mae", 1.0) < recomputed.get("control", {}).get("mae", 0.0),
-                "witness": recomputed.get("witness", {}).get("mae"),
-                "control": recomputed.get("control", {}).get("mae"),
-            },
-            {
-                "name": "witness_beats_control_rank",
-                "pass": recomputed.get("witness", {}).get("rank_correlation", -1.0)
-                > recomputed.get("control", {}).get("rank_correlation", 1.0),
-                "witness": recomputed.get("witness", {}).get("rank_correlation"),
-                "control": recomputed.get("control", {}).get("rank_correlation"),
+                "name": "expected_outcome_matches",
+                "pass": recomputed.get("outcome") == expected,
+                "expected": expected,
+                "recomputed": recomputed.get("outcome"),
             },
         ]
     )
+    if expected == "hardware-positive":
+        checks.extend(
+            [
+                {
+                    "name": "witness_beats_control_mae",
+                    "pass": recomputed.get("witness", {}).get("mae", 1.0)
+                    < recomputed.get("control", {}).get("mae", 0.0),
+                    "witness": recomputed.get("witness", {}).get("mae"),
+                    "control": recomputed.get("control", {}).get("mae"),
+                },
+                {
+                    "name": "witness_beats_control_rank",
+                    "pass": recomputed.get("witness", {}).get("rank_correlation", -1.0)
+                    > recomputed.get("control", {}).get("rank_correlation", 1.0),
+                    "witness": recomputed.get("witness", {}).get("rank_correlation"),
+                    "control": recomputed.get("control", {}).get("rank_correlation"),
+                },
+            ]
+        )
+    else:
+        checks.extend(
+            [
+                {
+                    "name": "negative_record_does_not_support_positive_gate",
+                    "pass": recomputed.get("gate_pass") is False,
+                    "gate_pass": recomputed.get("gate_pass"),
+                },
+                {
+                    "name": "negative_record_outcome_is_hardware_negative",
+                    "pass": recomputed.get("outcome") == "hardware-negative",
+                    "outcome": recomputed.get("outcome"),
+                },
+            ]
+        )
     return checks
 
 
@@ -267,7 +301,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
     evaluation = read_json(REPO_ROOT / resolved_paths["evaluation_path"])
     summary = read_json(REPO_ROOT / resolved_paths["summary_path"])
     recomputed = evaluate_hardware_execution(packet, execution)
-    checks = _record_metric_checks(evaluation, recomputed)
+    checks = _record_metric_checks(evaluation, recomputed, record.get("expected_outcome"))
     checks.extend(
         [
             {
@@ -320,6 +354,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
         "control_mae": recomputed.get("control", {}).get("mae"),
         "control_rank_corr": recomputed.get("control", {}).get("rank_correlation"),
         "outcome": recomputed.get("outcome"),
+        "expected_outcome": record.get("expected_outcome") or "hardware-positive",
     }
     return {
         **base,

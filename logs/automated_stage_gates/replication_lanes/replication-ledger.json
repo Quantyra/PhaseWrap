@@ -1,13 +1,14 @@
 {
   "as_of_date": "2026-05-19",
-  "claim_boundary": "The original IBM Fez product-state hardware packet, IBM Fez CX hardware packet, and Amazon Braket/Rigetti product-state replication artifact are published as completed hardware evidence. Cross-date and broader cross-backend lanes remain unexecuted until credentialled jobs produce raw counts, metadata, and verifier outputs.",
+  "claim_boundary": "The original IBM Fez product-state hardware packet, IBM Fez CX hardware-positive packet, Amazon Braket/Rigetti product-state replication artifact, and Amazon Braket CX hardware-negative replication artifacts are published as completed hardware evidence. The Braket CX negative records do not support a general cross-backend CX claim.",
   "environment_preflight": {
     "amazon_braket_rigetti_completed": true,
+    "amazon_braket_cx_negative_completed": true,
     "checked_at_local_date": "2026-05-19",
     "cx_no_hardware_rehearsal_passed": true,
     "ibm_fez_cx_completed": true,
     "ionq_available_through_braket": false,
-    "public_reason": "Amazon Braket/Rigetti produced a completed product-state hardware replication artifact. IBM Fez produced a completed CX hardware artifact. Amazon Braket/IonQ devices checked on 2026-05-19 were unavailable."
+    "public_reason": "Amazon Braket/Rigetti produced a completed product-state hardware-positive replication artifact. IBM Fez produced a completed CX hardware-positive artifact. Amazon Braket/Rigetti and Amazon Braket/IQM produced completed CX hardware-negative replication artifacts. Amazon Braket/IonQ devices checked on 2026-05-19 were unavailable."
   },
   "lanes": [
     {
@@ -99,6 +100,48 @@
       "timeout_seconds": 1800
     },
     {
+      "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+      "circuit_family": "two_qubit_cx_parity_phase_wrap_v2",
+      "control_mae": 0.102104,
+      "control_rank_correlation": 0.691023,
+      "date_utc": "2026-05-19",
+      "evidence": "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z/",
+      "lane_id": "stage4-cx-braket-rigetti-negative",
+      "outcome": "hardware-negative",
+      "provider": "amazon_braket",
+      "status": "published_completed_negative",
+      "witness_mae": 0.290715,
+      "witness_rank_correlation": 0.0
+    },
+    {
+      "backend": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+      "circuit_family": "two_qubit_cx_parity_phase_wrap_v2",
+      "control_mae": 0.126479,
+      "control_rank_correlation": 0.521298,
+      "date_utc": "2026-05-19",
+      "evidence": "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z/",
+      "lane_id": "stage4-cx-braket-iqm-garnet-negative",
+      "outcome": "hardware-negative",
+      "provider": "amazon_braket",
+      "status": "published_completed_negative",
+      "witness_mae": 0.314936,
+      "witness_rank_correlation": -0.487841
+    },
+    {
+      "backend": "arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald",
+      "circuit_family": "two_qubit_cx_parity_phase_wrap_v2",
+      "control_mae": 0.127917,
+      "control_rank_correlation": 0.634194,
+      "date_utc": "2026-05-19",
+      "evidence": "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z/",
+      "lane_id": "stage4-cx-braket-iqm-emerald-negative",
+      "outcome": "hardware-negative",
+      "provider": "amazon_braket",
+      "status": "published_completed_negative",
+      "witness_mae": 0.324767,
+      "witness_rank_correlation": -0.223607
+    },
+    {
       "circuit_family": "two_qubit_cx_parity_phase_wrap_v2",
       "lane_id": "cx-rerun-b",
       "required_before_claim": [
@@ -112,5 +155,5 @@
     }
   ],
   "ledger_version": "qrope_replication_ledger_v1",
-  "status": "braket_replication_completed_ibm_cx_completed"
+  "status": "braket_cx_negative_replications_recorded"
 }
