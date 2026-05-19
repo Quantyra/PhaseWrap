@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
   <title id="title">QRoPE Stage 4 hardware comparison</title>
-  <desc id="desc">A publication comparison chart showing product-state and entangling witness performance across IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU hardware runs.</desc>
+  <desc id="desc">A publication comparison chart showing product-state and entangling witness performance for IBM hardware rows, with IonQ shown as narrative-only and not machine-verifiable in the current repository.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#f8fafc"/>
@@ -28,8 +28,8 @@
   <rect width="1400" height="760" fill="url(#bg)"/>
   <circle cx="1290" cy="90" r="220" fill="#0f766e" opacity="0.08"/>
   <circle cx="90" cy="700" r="260" fill="#f59e0b" opacity="0.10"/>
-  <text x="70" y="76" class="title">Stage 4 completed hardware comparison</text>
-  <text x="70" y="108" class="subtitle">Product-state witness and entangling CX witness across IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU.</text>
+  <text x="70" y="76" class="title">Stage 4 bounded hardware comparison</text>
+  <text x="70" y="108" class="subtitle">IBM hardware rows plus narrative-only IonQ rows; Braket/IonQ was unavailable in the current check.</text>
 
   <rect x="70" y="150" width="610" height="510" class="panel"/>
   <text x="104" y="198" class="label">Witness MAE</text>
@@ -61,7 +61,7 @@
   <text x="176" y="590" class="small">IBM Kingston</text>
   <text x="291" y="590" class="small">IBM Marrakesh</text>
   <text x="417" y="590" class="small">IBM Fez</text>
-  <text x="529" y="590" class="small">IonQ QPU</text>
+  <text x="529" y="590" class="small">IonQ narrative</text>
 
   <text x="180" y="452" class="value">0.0434</text>
   <text x="225" y="451" class="value">0.2156</text>
@@ -114,7 +114,7 @@
   <text x="835" y="590" class="small">IBM Kingston</text>
   <text x="950" y="590" class="small">IBM Marrakesh</text>
   <text x="1076" y="590" class="small">IBM Fez</text>
-  <text x="1188" y="590" class="small">IonQ QPU</text>
+  <text x="1188" y="590" class="small">IonQ narrative</text>
 
   <text x="849" y="355" class="value">0.7812</text>
   <text x="895" y="554" class="value">-0.1513</text>

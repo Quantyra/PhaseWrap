@@ -30,7 +30,7 @@ The contribution is threefold:
 
 - A phase-wrap QRoPE scoring method using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
-- A Stage 4 real-noisy-hardware comparison report across IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU, with the current sweep manifest explicitly marking missing raw evidence records until those real run artifacts are supplied.
+- A Stage 4 real-noisy-hardware comparison report across IBM Kingston, IBM Marrakesh, IBM Fez, and a narrative-only IonQ lane, with the current sweep manifest explicitly marking missing raw evidence records and documenting that Amazon Braket/IonQ was unavailable during the 2026-05-19 check.
 
 ## 2. Related work and claim boundary
 
@@ -41,7 +41,7 @@ The allowed public claims are:
 - QRoPE defines a phase-wrap positional scoring method.
 - The SQR score is computed from mod-8 and mod-12 signed-margin structure.
 - The validation lane uses frozen packets, raw counts, backend metadata, and offline recomputation.
-- The Stage 4 evidence record reports completed hardware-positive results for the recorded packet/backend/date/calibration context and the completed hardware comparison sweep.
+- The Stage 4 evidence record reports completed hardware-positive results for the recorded packet/backend/date/calibration context and the completed IBM/Braket records whose artifacts are present or recoverable; IonQ remains unavailable/not-run in the current Amazon Braket check.
 
 The excluded claims are:
 
@@ -194,7 +194,7 @@ This verifier supports recomputation, not independent replication. Recomputing t
 
 Figure 3. Stage 4 hardware comparison. Source data: `logs/automated_stage_gates/stage4_hardware_sweep/`.
 
-The Stage 4 narrative comparison report includes product-state and entangling-CX hardware runs on IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU. The current machine-verifiable sweep manifest distinguishes those narrative-reported rows from raw evidence artifacts. In the current repository state, the IBM/IonQ per-backend/per-family raw-count records are missing from `logs/automated_stage_gates/stage4_hardware_sweep/`, so the sweep verifier fails those rows explicitly until real run records are supplied.
+The Stage 4 narrative comparison report includes product-state and entangling-CX hardware rows for IBM Kingston, IBM Marrakesh, IBM Fez, and a narrative-only IonQ lane. The current machine-verifiable sweep manifest distinguishes narrative-reported rows from raw evidence artifacts. In the current repository state, the IBM/IonQ per-backend/per-family raw-count records are missing from `logs/automated_stage_gates/stage4_hardware_sweep/`, so the sweep verifier fails those rows explicitly until real run records are supplied. For IonQ specifically, the current intended route is Amazon Braket; a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
 
 The IBM Quantum run records:
 
@@ -218,11 +218,11 @@ The IBM Quantum run records:
 The comparison report records:
 
 - IBM Kingston, IBM Marrakesh, and IBM Fez each completed at `4096` shots for both witness families.
-- IonQ `ionq_qpu` completed at `1024` shots for both witness families, which is the exposed provider cap in the available metadata.
+- IonQ is not currently present as machine-verifiable hardware evidence; Amazon Braket/IonQ was unavailable during the 2026-05-19 check, so no IonQ hardware task was submitted.
 - Every narrative-reported hardware run preserved the witness/control ordering expected by the claim boundary.
 - The Amazon Braket/Rigetti 1000-shot product-state artifact is present as machine-verifiable sweep evidence and verifies with `pass=true`.
 
-The comparison report summarizes the completed sweep in a backend-wise view:
+The comparison report summarizes the completed IBM records and narrative-only IonQ rows in a backend-wise view:
 
 | Family | Best witness MAE | Best witness rank corr | Worst control MAE | Worst control rank corr |
 | --- | ---: | ---: | ---: | ---: |
@@ -243,9 +243,9 @@ The witness condition uses the cross-band product readout:
 witness = clamp(0.5 + 0.5 * score_scale * E[Z0 Z1], 0, 1)
 ```
 
-The completed comparison sweep supports the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
+The completed IBM and Braket/Rigetti records support the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
 
-Narrative-reported IBM/IonQ comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository.
+Narrative-reported IBM/IonQ comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available.
 
 ## 6. Reproducibility artifacts
 
@@ -264,7 +264,7 @@ The intended reproducibility standard is not that every future backend execution
 
 ## 7. Patent and open-source notice
 
-QRoPE is associated with a USPTO provisional submission received `2026-05-18`. The Electronic Acknowledgement Receipt lists application `64/068,121` and Patent Center number `76347440`; final Filing Receipt review is pending, and the completed hardware comparison sweep is documented separately in `docs/research/q-rope-stage4-hardware-comparison-v1.md`.
+QRoPE is associated with a USPTO provisional submission received `2026-05-18`. The Electronic Acknowledgement Receipt lists application `64/068,121` and Patent Center number `76347440`; final Filing Receipt review is pending, and the bounded hardware comparison status is documented separately in `docs/research/q-rope-stage4-hardware-comparison-v1.md`.
 
 USPTO MPEP 503 currently lists provisional application series codes as `60/` through `63/` [6]. Because the acknowledgement receipt lists `64/068,121`, public materials should describe that number as the acknowledgement-receipt application number until the final Filing Receipt is received and checked.
 
@@ -276,7 +276,7 @@ The present result has important limitations:
 
 - The Stage 4 evidence is still bounded to a small set of recorded packet/backend/date/calibration contexts rather than a broad backend survey.
 - The paper does not report transformer-scale training or evaluation.
-- The paper reports completed cross-backend comparison runs, but it does not claim that these few backends establish general cross-backend robustness.
+- The paper reports bounded IBM and Braket/Rigetti hardware records, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
 - The paper does not compare against production language-model baselines.
 - The paper does not establish quantum advantage.
 

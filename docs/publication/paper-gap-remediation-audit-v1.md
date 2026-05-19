@@ -19,7 +19,7 @@ Objective: address the gaps discovered in the paper audit.
 | Hallucinated citation risk. | References use primary arXiv pages and IBM Quantum documentation URLs with access date. | Addressed. |
 | External review flagged provisional-number/date credibility. | `docs/publication/patent-status-note-v1.md`, `PATENTS.md`, `README.md`, and paper now use conservative acknowledgement-receipt wording and note final Filing Receipt pending. | Addressed. |
 | External review flagged product-state witness overclaim. | Paper and README now state the Stage 4 circuit is a product-state angle-encoding/readout witness with no entangling gate. | Addressed. |
-| External review flagged recomputation vs replication. | Paper now distinguishes saved-count recomputation from independent replication. The publication docs also record the completed cross-backend comparison sweep. | Addressed. |
+| External review flagged recomputation vs replication. | Paper now distinguishes saved-count recomputation from independent replication. The publication docs also record the bounded IBM/Braket evidence posture and the Amazon Braket/IonQ unavailable/not-run status. | Addressed. |
 
 ## Remaining non-blocking work
 

@@ -12,7 +12,7 @@ This repository is intended for open scientific review of the QRoPE method, vali
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
 - `Current evidence posture`: Stage 4 real-noisy-hardware positive results for bounded frozen packet/backend/date/calibration contexts, including IBM Runtime and Amazon Braket/Rigetti artifacts.
-- `Hardware posture`: IBM Quantum and Amazon Braket/Rigetti lanes have completed Stage 4 hardware artifacts; IonQ/Quandela availability depends on explicit provider configuration.
+- `Hardware posture`: IBM Quantum and Amazon Braket/Rigetti lanes have completed Stage 4 hardware artifacts; Amazon Braket/IonQ was checked on 2026-05-19 and was not run because Forte devices were `OFFLINE` and Aria 1 was `RETIRED`; Quandela availability depends on explicit provider configuration.
 
 ## Claim boundary
 
@@ -24,7 +24,7 @@ The public claim frame for this repository is:
 - The Stage 4 result is a bounded real-hardware validation for the frozen packet reported in this repository.
 - The Amazon Braket/Rigetti replication artifact is an 8-row, 1000-shot-per-row product-state hardware-positive run with offline verifier pass.
 - The current hardware evidence includes a two-qubit product-state angle-encoding/readout witness and an executed entangling CX witness family; neither should be described as evidence of nonclassical advantage.
-- The entangling CX witness family is implemented as `two_qubit_cx_parity_phase_wrap_v2` and is included in the completed hardware comparison report.
+- The entangling CX witness family is implemented as `two_qubit_cx_parity_phase_wrap_v2` and is included in the IBM hardware comparison report; IonQ remains unavailable/not-run in the current Amazon Braket check.
 
 The public claim frame excludes:
 

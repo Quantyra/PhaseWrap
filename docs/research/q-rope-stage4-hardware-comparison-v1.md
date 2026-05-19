@@ -4,14 +4,14 @@ Date: 2026-05-19
 
 ## BLUF
 
-The hardware comparison report records completed runs for both witness families on the prior IBM/IonQ target set, and the Amazon Braket/Rigetti product-state replication lane now has a completed 1000-shot-per-row artifact. In the current repository state, only records with raw packet/execution/evaluation artifacts are machine-verifiable; the sweep manifest fails explicitly for missing IBM/IonQ raw evidence.
+The hardware comparison report records completed runs for both witness families on the prior IBM target set, narrative-only IonQ rows that are not machine-verifiable in this repository, and a completed Amazon Braket/Rigetti product-state replication artifact. In the current repository state, only records with raw packet/execution/evaluation artifacts are machine-verifiable; the sweep manifest fails explicitly for missing raw evidence.
 
 The product-state witness and the entangling CX witness both preserved the same qualitative pattern:
 
 - witness metrics were substantially better than the control metrics
 - control rank correlation remained negative on every backend
 - IBM runs used 4096 shots
-- IonQ `ionq_qpu` completed with 1024 shots, which is the exposed cap from the available provider metadata
+- Amazon Braket/IonQ was checked on 2026-05-19 and was not run because `Forte-1` and `Forte-Enterprise-1` were `OFFLINE`, while `Aria-1` was `RETIRED`
 - Amazon Braket/Rigetti completed the product-state lane with 1000 shots per row on `Cepheus-1-108Q`
 
 ## Visual Summary
@@ -31,7 +31,7 @@ The figure shows the same result pattern in a compact form:
 | IBM Runtime | `ibm_kingston` | 4096 | PASS | hardware-positive |
 | IBM Runtime | `ibm_marrakesh` | 4096 | PASS | hardware-positive |
 | IBM Runtime | `ibm_fez` | 4096 | PASS | hardware-positive |
-| IonQ | `ionq_qpu` | 1024 | PASS | hardware-positive |
+| Amazon Braket/IonQ | intended IonQ QPU route | n/a | NOT RUN | hardware-unavailable |
 | Amazon Braket | `Rigetti Cepheus-1-108Q` | 1000 | PASS | hardware-positive |
 
 ## Product-State Witness
@@ -43,7 +43,7 @@ Circuit family: `two_qubit_zz_expectation_phase_wrap_v1`
 | `ibm_kingston` | 0.043376 | 0.781236 | 0.215599 | -0.151337 |
 | `ibm_marrakesh` | 0.011859 | 0.879555 | 0.230110 | -0.184302 |
 | `ibm_fez` | 0.015664 | 0.940875 | 0.220397 | -0.169318 |
-| `ionq_qpu` | 0.014829 | 0.861459 | 0.230163 | -0.184302 |
+| `ionq_qpu` narrative-only row | 0.014829 | 0.861459 | 0.230163 | -0.184302 |
 | `rigetti_cepheus_1_108q` | 0.069901 | 0.786644 | 0.149995 | 0.121232 |
 
 ## Entangling CX Witness
@@ -55,7 +55,7 @@ Circuit family: `two_qubit_cx_parity_phase_wrap_v2`
 | `ibm_kingston` | 0.026686 | 0.925187 | 0.205612 | -0.184302 |
 | `ibm_marrakesh` | 0.015108 | 0.960468 | 0.225158 | -0.176810 |
 | `ibm_fez` | 0.016162 | 0.981446 | 0.213417 | -0.169318 |
-| `ionq_qpu` | 0.016037 | 0.908612 | 0.229827 | -0.176810 |
+| `ionq_qpu` narrative-only row | 0.016037 | 0.908612 | 0.229827 | -0.176810 |
 
 ## Comparison
 
@@ -76,19 +76,15 @@ That is the cleanest hardware evidence that the CX variant is not merely decorat
 | `ibm_kingston` | 0.1718 | 0.1790 | 0.9326 | 1.1095 |
 | `ibm_marrakesh` | 0.2183 | 0.2101 | 1.0639 | 1.1373 |
 | `ibm_fez` | 0.2047 | 0.1973 | 1.1102 | 1.1508 |
-| `ionq_qpu` | 0.2153 | 0.2138 | 1.0458 | 1.0854 |
+| `ionq_qpu` narrative-only row | 0.2153 | 0.2138 | 1.0458 | 1.0854 |
 
 Here the MAE delta is `control MAE - witness MAE`, so larger is better. The rank delta is `witness rank correlation - control rank correlation`, so larger is better.
 
-### IBM vs IonQ
+### IBM vs IonQ availability
 
 IBM delivered the most complete and directly comparable set of 4096-shot runs.
 
-IonQ also completed both families successfully, but the run was constrained to 1024 shots by the backend exposure. The qualitative result still matched the IBM pattern:
-
-- witness MAE remained low
-- control MAE remained high
-- control rank correlation stayed negative
+The current intended IonQ route is Amazon Braket, not direct IonQ API execution. A read-only Braket device check on 2026-05-19 found `arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1` and `arn:aws:braket:us-east-1::device/qpu/ionq/Forte-Enterprise-1` in `OFFLINE` status and `arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1` in `RETIRED` status. No Braket/IonQ Stage 4 task was submitted, and no IonQ hardware artifact is present in the repository.
 
 ### Amazon Braket / Rigetti
 
@@ -115,8 +111,9 @@ Current repository state distinguishes narrative-reported comparison rows from m
 - The Amazon Braket/Rigetti 1000-shot artifact is present and recomputable from raw counts.
 - The IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU comparison rows described above do not currently have their per-backend/per-family `frozen_packet.json`, `execution.json`, `evaluation.json`, and `summary.json` records in `logs/automated_stage_gates/stage4_hardware_sweep/`.
 - The sweep verifier therefore fails explicitly for those missing IBM/IonQ evidence records instead of treating narrative metrics as raw evidence.
+- The IonQ records also carry an availability note in the manifest: the checked Amazon Braket IonQ devices were unavailable on 2026-05-19, so IonQ hardware tests could not be run from the checked AWS account.
 
-Those IBM/IonQ rows should not be treated as machine-verifiable public evidence until the real run records, job IDs, raw counts, backend metadata, and verifier outputs are added.
+Those IBM/IonQ rows should not be treated as machine-verifiable public evidence until the real run records, job IDs, raw counts, backend metadata, and verifier outputs are added. For IonQ specifically, a future artifact should be labeled as a new dated Amazon Braket/IonQ run if a Braket IonQ device becomes available.
 
 ### Family-level summary
 
@@ -149,4 +146,4 @@ The next step is documentation packaging, not more execution:
 
 1. fold these run results into the publication docs
 2. decide whether the entangling witness should be described as a confirmed result or a supporting extension
-3. keep the 4096-shot wording for IBM and explicitly note the IonQ cap
+3. keep the 4096-shot wording for IBM and explicitly note that Amazon Braket/IonQ was unavailable during the 2026-05-19 check

@@ -2,7 +2,7 @@
   "schema_version": "qrope_stage4_hardware_sweep_manifest_v1",
   "sweep_id": "qrope-stage4-hardware-sweep-v1",
   "packet_id": null,
-  "packet_id_note": "Sweep records may use different frozen packet IDs; see records[].packet_id. Missing IBM/IonQ records cannot be assigned packet IDs until real evidence files are supplied.",
+  "packet_id_note": "Sweep records may use different frozen packet IDs; see records[].packet_id. Missing records cannot be assigned packet IDs until real evidence files are supplied.",
   "witness_families": [
     "two_qubit_zz_expectation_phase_wrap_v1",
     "two_qubit_cx_parity_phase_wrap_v2"
@@ -26,12 +26,41 @@
     {
       "provider": "ionq",
       "backend": "ionq_qpu",
-      "label": "IonQ QPU"
+      "label": "IonQ QPU narrative label; intended current route is Amazon Braket IonQ"
     },
     {
       "provider": "amazon_braket",
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
       "label": "Rigetti Cepheus-1-108Q"
+    }
+  ],
+  "provider_availability_checks": [
+    {
+      "checked_at_utc": "2026-05-19T16:40:00Z",
+      "provider": "amazon_braket",
+      "backend": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+      "device_name": "Forte 1",
+      "device_status": "OFFLINE",
+      "result": "not_run",
+      "note": "Amazon Braket reported the IonQ Forte 1 QPU offline; no Stage 4 task was submitted."
+    },
+    {
+      "checked_at_utc": "2026-05-19T16:40:00Z",
+      "provider": "amazon_braket",
+      "backend": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-Enterprise-1",
+      "device_name": "Forte Enterprise 1",
+      "device_status": "OFFLINE",
+      "result": "not_run",
+      "note": "Amazon Braket reported the IonQ Forte Enterprise 1 QPU offline; no Stage 4 task was submitted."
+    },
+    {
+      "checked_at_utc": "2026-05-19T16:40:00Z",
+      "provider": "amazon_braket",
+      "backend": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+      "device_name": "Aria 1",
+      "device_status": "RETIRED",
+      "result": "not_run",
+      "note": "Amazon Braket reported the IonQ Aria 1 QPU retired; no Stage 4 task was submitted."
     }
   ],
   "bounded_claim_statement": "This manifest supports only machine verification of recorded packet/backend/date/calibration-specific Stage 4 hardware artifacts that are present in the repository. It does not support broad quantum advantage, production transformer superiority, full transformer-scale validation, or general cross-backend robustness.",
@@ -202,8 +231,10 @@
         "evaluation.json",
         "summary.json",
         "job IDs",
-        "backend/calibration metadata"
-      ]
+        "backend/calibration metadata",
+        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
+      ],
+      "availability_note": "The current intended IonQ route is Amazon Braket. The checked Braket IonQ QPUs were unavailable, so this row is not executable evidence and remains missing."
     },
     {
       "record_id": "ibm_kingston__two_qubit_cx_parity_phase_wrap_v2",
@@ -358,8 +389,10 @@
         "evaluation.json",
         "summary.json",
         "job IDs",
-        "backend/calibration metadata"
-      ]
+        "backend/calibration metadata",
+        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
+      ],
+      "availability_note": "The current intended IonQ route is Amazon Braket. The checked Braket IonQ QPUs were unavailable, so this row is not executable evidence and remains missing."
     },
     {
       "record_id": "rigetti_cepheus_1_108q__two_qubit_zz_expectation_phase_wrap_v1__20260519T100942Z",
