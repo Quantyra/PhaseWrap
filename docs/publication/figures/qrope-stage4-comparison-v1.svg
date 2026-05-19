@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
   <title id="title">QRoPE Stage 4 hardware comparison</title>
-  <desc id="desc">A publication comparison chart showing product-state and entangling witness performance for IBM hardware rows, with IonQ shown as narrative-only and not machine-verifiable in the current repository.</desc>
+  <desc id="desc">A publication comparison chart showing product-state and entangling witness performance for IBM hardware rows; IonQ is excluded from the active sweep because Braket IonQ devices were unavailable.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#f8fafc"/>
@@ -21,6 +21,7 @@
       .value { font: 700 15px Consolas, monospace; fill: #0f172a; }
       .witness { fill: #0f766e; }
       .control { fill: #b45309; }
+      .excluded { fill: #cbd5e1; }
       .product { stroke: #0f766e; stroke-width: 4; fill: none; }
       .entangle { stroke: #b45309; stroke-width: 4; fill: none; }
     </style>
@@ -29,7 +30,7 @@
   <circle cx="1290" cy="90" r="220" fill="#0f766e" opacity="0.08"/>
   <circle cx="90" cy="700" r="260" fill="#f59e0b" opacity="0.10"/>
   <text x="70" y="76" class="title">Stage 4 bounded hardware comparison</text>
-  <text x="70" y="108" class="subtitle">IBM hardware rows plus narrative-only IonQ rows; Braket/IonQ was unavailable in the current check.</text>
+  <text x="70" y="108" class="subtitle">IBM hardware rows; Braket/IonQ was unavailable and is excluded from the active sweep.</text>
 
   <rect x="70" y="150" width="610" height="510" class="panel"/>
   <text x="104" y="198" class="label">Witness MAE</text>
@@ -55,13 +56,13 @@
   <rect x="346" y="468" width="42" height="92" rx="5" class="control"/>
   <rect x="415" y="505" width="42" height="55" rx="5" class="witness"/>
   <rect x="461" y="462" width="42" height="98" rx="5" class="control"/>
-  <rect x="530" y="516" width="42" height="44" rx="5" class="witness"/>
-  <rect x="576" y="462" width="42" height="98" rx="5" class="control"/>
+  <rect x="530" y="552" width="42" height="8" rx="5" class="excluded"/>
+  <rect x="576" y="552" width="42" height="8" rx="5" class="excluded"/>
 
   <text x="176" y="590" class="small">IBM Kingston</text>
   <text x="291" y="590" class="small">IBM Marrakesh</text>
   <text x="417" y="590" class="small">IBM Fez</text>
-  <text x="529" y="590" class="small">IonQ narrative</text>
+  <text x="529" y="590" class="small">IonQ excluded</text>
 
   <text x="180" y="452" class="value">0.0434</text>
   <text x="225" y="451" class="value">0.2156</text>
@@ -69,8 +70,8 @@
   <text x="341" y="454" class="value">0.2301</text>
   <text x="410" y="491" class="value">0.0157</text>
   <text x="456" y="448" class="value">0.2204</text>
-  <text x="525" y="502" class="value">0.0148</text>
-  <text x="571" y="448" class="value">0.2302</text>
+  <text x="525" y="502" class="value">n/a</text>
+  <text x="571" y="448" class="value">n/a</text>
 
   <text x="190" y="612" class="tiny">product</text>
   <text x="235" y="612" class="tiny">control</text>
@@ -78,8 +79,8 @@
   <text x="351" y="612" class="tiny">control</text>
   <text x="420" y="612" class="tiny">product</text>
   <text x="466" y="612" class="tiny">control</text>
-  <text x="535" y="612" class="tiny">product</text>
-  <text x="581" y="612" class="tiny">control</text>
+  <text x="535" y="612" class="tiny">excluded</text>
+  <text x="581" y="612" class="tiny">excluded</text>
 
   <rect x="726" y="150" width="604" height="510" class="panel"/>
   <text x="760" y="198" class="label">Rank correlation</text>
@@ -108,13 +109,13 @@
   <rect x="1015" y="534" width="40" height="26" rx="5" class="control"/>
   <rect x="1084" y="324" width="40" height="236" rx="5" class="witness"/>
   <rect x="1130" y="533" width="40" height="27" rx="5" class="control"/>
-  <rect x="1199" y="358" width="40" height="202" rx="5" class="witness"/>
-  <rect x="1245" y="535" width="40" height="25" rx="5" class="control"/>
+  <rect x="1199" y="552" width="40" height="8" rx="5" class="excluded"/>
+  <rect x="1245" y="552" width="40" height="8" rx="5" class="excluded"/>
 
   <text x="835" y="590" class="small">IBM Kingston</text>
   <text x="950" y="590" class="small">IBM Marrakesh</text>
   <text x="1076" y="590" class="small">IBM Fez</text>
-  <text x="1188" y="590" class="small">IonQ narrative</text>
+  <text x="1188" y="590" class="small">IonQ excluded</text>
 
   <text x="849" y="355" class="value">0.7812</text>
   <text x="895" y="554" class="value">-0.1513</text>
@@ -122,7 +123,7 @@
   <text x="1010" y="553" class="value">-0.1768</text>
   <text x="1079" y="310" class="value">0.9814</text>
   <text x="1125" y="552" class="value">-0.1693</text>
-  <text x="1194" y="344" class="value">0.9086</text>
-  <text x="1240" y="554" class="value">-0.1768</text>
+  <text x="1194" y="344" class="value">n/a</text>
+  <text x="1240" y="554" class="value">n/a</text>
 
 </svg>

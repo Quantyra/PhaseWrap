@@ -24,11 +24,6 @@
       "label": "IBM Fez"
     },
     {
-      "provider": "ionq",
-      "backend": "ionq_qpu",
-      "label": "IonQ QPU narrative label; intended current route is Amazon Braket IonQ"
-    },
-    {
       "provider": "amazon_braket",
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
       "label": "Rigetti Cepheus-1-108Q"
@@ -67,7 +62,8 @@
   "claim_boundary": {
     "supported": [
       "Recompute metrics from real raw-count evidence records that are present in this repository.",
-      "Fail explicitly for narrative-reported hardware records whose raw-count evidence files are absent.",
+      "Fail explicitly for expected hardware records whose raw-count evidence files are absent.",
+      "Record excluded provider targets separately from active sweep records when devices are unavailable.",
       "Support only bounded packet/backend/date/calibration-specific validation outcomes."
     ],
     "excluded": [
@@ -196,47 +192,6 @@
       ]
     },
     {
-      "record_id": "ionq_qpu__two_qubit_zz_expectation_phase_wrap_v1",
-      "provider": "ionq",
-      "backend": "ionq_qpu",
-      "backend_label": "IonQ QPU",
-      "family": "two_qubit_zz_expectation_phase_wrap_v1",
-      "status": "missing_evidence",
-      "shots": 1024,
-      "row_count": null,
-      "job_ids": [],
-      "packet_id": null,
-      "submitted_at_utc": null,
-      "completed_at_utc": null,
-      "packet_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_zz_expectation_phase_wrap_v1/frozen_packet.json",
-      "execution_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_zz_expectation_phase_wrap_v1/execution.json",
-      "evaluation_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_zz_expectation_phase_wrap_v1/evaluation.json",
-      "summary_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_zz_expectation_phase_wrap_v1/summary.json",
-      "calibration_metadata_path": null,
-      "raw_count_file_paths": [],
-      "verifier_output_path": null,
-      "reported_metrics_from_narrative_only": {
-        "witness": {
-          "mae": 0.014829,
-          "rank_correlation": 0.861459
-        },
-        "control": {
-          "mae": 0.230163,
-          "rank_correlation": -0.184302
-        }
-      },
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "availability_note": "The current intended IonQ route is Amazon Braket. The checked Braket IonQ QPUs were unavailable, so this row is not executable evidence and remains missing."
-    },
-    {
       "record_id": "ibm_kingston__two_qubit_cx_parity_phase_wrap_v2",
       "provider": "ibm_runtime",
       "backend": "ibm_kingston",
@@ -354,47 +309,6 @@
       ]
     },
     {
-      "record_id": "ionq_qpu__two_qubit_cx_parity_phase_wrap_v2",
-      "provider": "ionq",
-      "backend": "ionq_qpu",
-      "backend_label": "IonQ QPU",
-      "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "status": "missing_evidence",
-      "shots": 1024,
-      "row_count": null,
-      "job_ids": [],
-      "packet_id": null,
-      "submitted_at_utc": null,
-      "completed_at_utc": null,
-      "packet_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_cx_parity_phase_wrap_v2/frozen_packet.json",
-      "execution_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_cx_parity_phase_wrap_v2/execution.json",
-      "evaluation_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_cx_parity_phase_wrap_v2/evaluation.json",
-      "summary_path": "logs/automated_stage_gates/stage4_hardware_sweep/ionq__ionq_qpu/two_qubit_cx_parity_phase_wrap_v2/summary.json",
-      "calibration_metadata_path": null,
-      "raw_count_file_paths": [],
-      "verifier_output_path": null,
-      "reported_metrics_from_narrative_only": {
-        "witness": {
-          "mae": 0.016037,
-          "rank_correlation": 0.908612
-        },
-        "control": {
-          "mae": 0.229827,
-          "rank_correlation": -0.17681
-        }
-      },
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "availability_note": "The current intended IonQ route is Amazon Braket. The checked Braket IonQ QPUs were unavailable, so this row is not executable evidence and remains missing."
-    },
-    {
       "record_id": "rigetti_cepheus_1_108q__two_qubit_zz_expectation_phase_wrap_v1__20260519T100942Z",
       "provider": "amazon_braket",
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
@@ -425,6 +339,14 @@
         "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z/execution.json#/jobs/0/raw_counts_by_row"
       ],
       "verifier_output_path": "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z/offline_verification.json"
+    }
+  ],
+  "excluded_targets": [
+    {
+      "provider": "amazon_braket",
+      "target": "IonQ QPU via Amazon Braket",
+      "status": "excluded_from_active_sweep",
+      "reason": "Amazon Braket IonQ devices checked on 2026-05-19 were unavailable: Forte-1 and Forte-Enterprise-1 were OFFLINE; Aria-1 was RETIRED. No IonQ hardware task was submitted, so IonQ is not an expected verifier record for this sweep."
     }
   ]
 }

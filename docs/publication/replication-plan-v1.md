@@ -16,7 +16,7 @@ This plan separates saved-count recomputation from independent replication.
 | Circuit family | Status | Claim boundary |
 | --- | --- | --- |
 | `two_qubit_zz_expectation_phase_wrap_v1` | Executed once on `ibm_fez` | Product-state angle-encoding/readout witness. |
-| `two_qubit_cx_parity_phase_wrap_v2` | Executed across IBM `ibm_kingston`, `ibm_marrakesh`, and `ibm_fez`; IonQ remains unavailable/not-run in the current Braket check | Entangling CX witness variant. IonQ evidence requires a future dated Amazon Braket/IonQ run when a Braket IonQ QPU is available. |
+| `two_qubit_cx_parity_phase_wrap_v2` | Executed across IBM `ibm_kingston`, `ibm_marrakesh`, and `ibm_fez`; IonQ excluded from the active sweep after the current Braket availability check | Entangling CX witness variant. IonQ evidence requires a future dated Amazon Braket/IonQ run when a Braket IonQ QPU is available. |
 
 ## Minimum replication matrix
 
@@ -33,7 +33,7 @@ This plan separates saved-count recomputation from independent replication.
 - Optional IBM Cloud instance CRN through `IBM_QUANTUM_INSTANCE_CRN`.
 - Runtime dependencies installed:
 
-Current provider posture (2026-05-19): IBM hardware and Amazon Braket/Rigetti have Stage 4 evidence paths in this repository. The Braket/Rigetti product-state artifact is present and machine-verifiable. Narrative-reported IBM/IonQ comparison rows still require their per-backend/per-family raw-count artifacts before they are machine-verifiable through `scripts/verify_stage4_hardware_sweep.py`. The current intended IonQ route is Amazon Braket, but the checked Braket IonQ devices were unavailable on 2026-05-19: `Forte-1` and `Forte-Enterprise-1` were `OFFLINE`, and `Aria-1` was `RETIRED`; no IonQ hardware task was submitted. Quandela Stage 4 execution remains configured to simulator profiles unless explicitly changed.
+Current provider posture (2026-05-19): IBM hardware and Amazon Braket/Rigetti have Stage 4 evidence paths in this repository. The Braket/Rigetti product-state artifact is present and machine-verifiable. Narrative-reported IBM comparison rows still require their per-backend/per-family raw-count artifacts before they are machine-verifiable through `scripts/verify_stage4_hardware_sweep.py`. IonQ is excluded from the active sweep: the current intended IonQ route is Amazon Braket, but the checked Braket IonQ devices were unavailable on 2026-05-19: `Forte-1` and `Forte-Enterprise-1` were `OFFLINE`, and `Aria-1` was `RETIRED`; no IonQ hardware task was submitted. Quandela Stage 4 execution remains configured to simulator profiles unless explicitly changed.
 
 ```bash
 python -m pip install -e ".[ibm]"

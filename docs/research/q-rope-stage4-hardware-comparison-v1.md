@@ -4,7 +4,7 @@ Date: 2026-05-19
 
 ## BLUF
 
-The hardware comparison report records completed runs for both witness families on the prior IBM target set, narrative-only IonQ rows that are not machine-verifiable in this repository, and a completed Amazon Braket/Rigetti product-state replication artifact. In the current repository state, only records with raw packet/execution/evaluation artifacts are machine-verifiable; the sweep manifest fails explicitly for missing raw evidence.
+The hardware comparison report records completed runs for both witness families on the prior IBM target set and a completed Amazon Braket/Rigetti product-state replication artifact. Amazon Braket/IonQ is excluded from the active sweep because the checked IonQ devices were unavailable. In the current repository state, only records with raw packet/execution/evaluation artifacts are machine-verifiable; the sweep manifest fails explicitly for expected records with missing raw evidence.
 
 The product-state witness and the entangling CX witness both preserved the same qualitative pattern:
 
@@ -31,7 +31,6 @@ The figure shows the same result pattern in a compact form:
 | IBM Runtime | `ibm_kingston` | 4096 | PASS | hardware-positive |
 | IBM Runtime | `ibm_marrakesh` | 4096 | PASS | hardware-positive |
 | IBM Runtime | `ibm_fez` | 4096 | PASS | hardware-positive |
-| Amazon Braket/IonQ | intended IonQ QPU route | n/a | NOT RUN | hardware-unavailable |
 | Amazon Braket | `Rigetti Cepheus-1-108Q` | 1000 | PASS | hardware-positive |
 
 ## Product-State Witness
@@ -43,7 +42,6 @@ Circuit family: `two_qubit_zz_expectation_phase_wrap_v1`
 | `ibm_kingston` | 0.043376 | 0.781236 | 0.215599 | -0.151337 |
 | `ibm_marrakesh` | 0.011859 | 0.879555 | 0.230110 | -0.184302 |
 | `ibm_fez` | 0.015664 | 0.940875 | 0.220397 | -0.169318 |
-| `ionq_qpu` narrative-only row | 0.014829 | 0.861459 | 0.230163 | -0.184302 |
 | `rigetti_cepheus_1_108q` | 0.069901 | 0.786644 | 0.149995 | 0.121232 |
 
 ## Entangling CX Witness
@@ -55,7 +53,6 @@ Circuit family: `two_qubit_cx_parity_phase_wrap_v2`
 | `ibm_kingston` | 0.026686 | 0.925187 | 0.205612 | -0.184302 |
 | `ibm_marrakesh` | 0.015108 | 0.960468 | 0.225158 | -0.176810 |
 | `ibm_fez` | 0.016162 | 0.981446 | 0.213417 | -0.169318 |
-| `ionq_qpu` narrative-only row | 0.016037 | 0.908612 | 0.229827 | -0.176810 |
 
 ## Comparison
 
@@ -76,11 +73,10 @@ That is the cleanest hardware evidence that the CX variant is not merely decorat
 | `ibm_kingston` | 0.1718 | 0.1790 | 0.9326 | 1.1095 |
 | `ibm_marrakesh` | 0.2183 | 0.2101 | 1.0639 | 1.1373 |
 | `ibm_fez` | 0.2047 | 0.1973 | 1.1102 | 1.1508 |
-| `ionq_qpu` narrative-only row | 0.2153 | 0.2138 | 1.0458 | 1.0854 |
 
 Here the MAE delta is `control MAE - witness MAE`, so larger is better. The rank delta is `witness rank correlation - control rank correlation`, so larger is better.
 
-### IBM vs IonQ availability
+### Excluded IonQ target
 
 IBM delivered the most complete and directly comparable set of 4096-shot runs.
 
@@ -106,14 +102,14 @@ The offline sweep verifier is:
 
 `scripts/verify_stage4_hardware_sweep.py`
 
-Current repository state distinguishes narrative-reported comparison rows from machine-verifiable evidence rows:
+Current repository state distinguishes expected sweep records from excluded targets:
 
 - The Amazon Braket/Rigetti 1000-shot artifact is present and recomputable from raw counts.
-- The IBM Kingston, IBM Marrakesh, IBM Fez, and IonQ QPU comparison rows described above do not currently have their per-backend/per-family `frozen_packet.json`, `execution.json`, `evaluation.json`, and `summary.json` records in `logs/automated_stage_gates/stage4_hardware_sweep/`.
-- The sweep verifier therefore fails explicitly for those missing IBM/IonQ evidence records instead of treating narrative metrics as raw evidence.
-- The IonQ records also carry an availability note in the manifest: the checked Amazon Braket IonQ devices were unavailable on 2026-05-19, so IonQ hardware tests could not be run from the checked AWS account.
+- The IBM Kingston, IBM Marrakesh, and IBM Fez comparison rows described above do not currently have their per-backend/per-family `frozen_packet.json`, `execution.json`, `evaluation.json`, and `summary.json` records in `logs/automated_stage_gates/stage4_hardware_sweep/`.
+- The sweep verifier therefore fails explicitly for those missing IBM evidence records instead of treating narrative metrics as raw evidence.
+- IonQ is not an active sweep record. The manifest records it only under excluded targets because the checked Amazon Braket IonQ devices were unavailable on 2026-05-19, so IonQ hardware tests could not be run from the checked AWS account.
 
-Those IBM/IonQ rows should not be treated as machine-verifiable public evidence until the real run records, job IDs, raw counts, backend metadata, and verifier outputs are added. For IonQ specifically, a future artifact should be labeled as a new dated Amazon Braket/IonQ run if a Braket IonQ device becomes available.
+Those IBM rows should not be treated as machine-verifiable public evidence until the real run records, job IDs, raw counts, backend metadata, and verifier outputs are added. For IonQ specifically, a future artifact should be labeled as a new dated Amazon Braket/IonQ run if a Braket IonQ device becomes available, and then added as a new manifest record.
 
 ### Family-level summary
 
@@ -134,7 +130,7 @@ The execution goals are complete:
 
 ## Evidence Pointers
 
-- [Product-state IBM/IonQ sweep logs](/C:/Users/Dan/Desktop/Projects/QuantyraQRope/logs/automated_stage_gates/stage4_hardware_sweep)
+- [Product-state IBM sweep logs](/C:/Users/Dan/Desktop/Projects/QuantyraQRope/logs/automated_stage_gates/stage4_hardware_sweep)
 - [Amazon Braket/Rigetti 1000-shot artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z)
 - [Stage 4 sweep manifest](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/manifest.json)
 - [Stage 4 sweep verifier](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/scripts/verify_stage4_hardware_sweep.py)

@@ -9,7 +9,8 @@
     ],
     "supported": [
       "Recompute metrics from real raw-count evidence records that are present in this repository.",
-      "Fail explicitly for narrative-reported hardware records whose raw-count evidence files are absent.",
+      "Fail explicitly for expected hardware records whose raw-count evidence files are absent.",
+      "Record excluded provider targets separately from active sweep records when devices are unavailable.",
       "Support only bounded packet/backend/date/calibration-specific validation outcomes."
     ]
   },
@@ -56,18 +57,6 @@
         "evaluation.json",
         "summary.json",
         "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "record_id": "ionq_qpu__two_qubit_zz_expectation_phase_wrap_v1"
-    },
-    {
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
         "backend/calibration metadata"
       ],
       "record_id": "ibm_kingston__two_qubit_cx_parity_phase_wrap_v2"
@@ -93,18 +82,6 @@
         "backend/calibration metadata"
       ],
       "record_id": "ibm_fez__two_qubit_cx_parity_phase_wrap_v2"
-    },
-    {
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "record_id": "ionq_qpu__two_qubit_cx_parity_phase_wrap_v2"
     }
   ],
   "overclaim_guardrail": {
@@ -216,42 +193,6 @@
       "status": "missing_evidence"
     },
     {
-      "backend": "ionq_qpu",
-      "backend_label": "IonQ QPU",
-      "checks": [
-        {
-          "detail": [
-            "frozen_packet.json",
-            "execution.json with raw_counts_by_row",
-            "evaluation.json",
-            "summary.json",
-            "job IDs",
-            "backend/calibration metadata",
-            "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-          ],
-          "name": "real_evidence_present",
-          "pass": false
-        }
-      ],
-      "family": "two_qubit_zz_expectation_phase_wrap_v1",
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "outcome": "missing-evidence",
-      "pass": false,
-      "provider": "ionq",
-      "record_id": "ionq_qpu__two_qubit_zz_expectation_phase_wrap_v1",
-      "row_count": null,
-      "shots": 1024,
-      "status": "missing_evidence"
-    },
-    {
       "backend": "ibm_kingston",
       "backend_label": "IBM Kingston",
       "checks": [
@@ -351,42 +292,6 @@
       "record_id": "ibm_fez__two_qubit_cx_parity_phase_wrap_v2",
       "row_count": null,
       "shots": 4096,
-      "status": "missing_evidence"
-    },
-    {
-      "backend": "ionq_qpu",
-      "backend_label": "IonQ QPU",
-      "checks": [
-        {
-          "detail": [
-            "frozen_packet.json",
-            "execution.json with raw_counts_by_row",
-            "evaluation.json",
-            "summary.json",
-            "job IDs",
-            "backend/calibration metadata",
-            "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-          ],
-          "name": "real_evidence_present",
-          "pass": false
-        }
-      ],
-      "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "missing_evidence": [
-        "frozen_packet.json",
-        "execution.json with raw_counts_by_row",
-        "evaluation.json",
-        "summary.json",
-        "job IDs",
-        "backend/calibration metadata",
-        "Amazon Braket IonQ availability check reported Forte devices OFFLINE and Aria RETIRED on 2026-05-19; no IonQ hardware task was submitted from the checked AWS account"
-      ],
-      "outcome": "missing-evidence",
-      "pass": false,
-      "provider": "ionq",
-      "record_id": "ionq_qpu__two_qubit_cx_parity_phase_wrap_v2",
-      "row_count": null,
-      "shots": 1024,
       "status": "missing_evidence"
     },
     {
