@@ -30,7 +30,7 @@ The contribution is threefold:
 
 - A phase-wrap QRoPE scoring method using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
-- A Stage 4 real-noisy-hardware comparison report across IBM Kingston, IBM Marrakesh, IBM Fez, and Amazon Braket/Rigetti, with the current sweep manifest explicitly marking missing raw evidence records and documenting Amazon Braket/IonQ as an excluded unavailable target during the 2026-05-19 check.
+- A Stage 4 real-noisy-hardware comparison report across committed IBM Fez and Amazon Braket/Rigetti product-state artifacts, with additional IBM/CX targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
 
 ## 2. Related work and claim boundary
 
@@ -41,7 +41,7 @@ The allowed public claims are:
 - QRoPE defines a phase-wrap positional scoring method.
 - The SQR score is computed from mod-8 and mod-12 signed-margin structure.
 - The validation lane uses frozen packets, raw counts, backend metadata, and offline recomputation.
-- The Stage 4 evidence record reports completed hardware-positive results for the recorded packet/backend/date/calibration context and the completed IBM/Braket records whose artifacts are present or recoverable; IonQ is excluded from the active sweep because it was unavailable/not-run in the current Amazon Braket check.
+- The Stage 4 evidence record reports completed hardware-positive results for the recorded IBM Fez and Amazon Braket/Rigetti packet/backend/date/calibration contexts; IonQ is excluded from the active sweep because it was unavailable/not-run in the current Amazon Braket check.
 
 The excluded claims are:
 
@@ -138,7 +138,7 @@ witness_cx = clamp(0.5 + 0.5 * score_scale * E[Z1 after CX], 0, 1)
 control_cx = clamp(0.5 + 0.25 * (E[Z0 after CX] + E[Z0 Z1 after CX]), 0, 1)
 ```
 
-This variant is now part of the completed Stage 4 hardware evidence and is summarized in the comparison report and comparison figure.
+This variant is implemented and prepared for future hardware execution, but it is deferred from the active public hardware sweep until real raw-count artifacts are committed.
 
 Implementation reference: `src/qrope/automated_stage_gates.py`.
 
@@ -171,7 +171,7 @@ For the Stage 4 hardware sweep manifest, the verifier entry point is:
 python scripts/verify_stage4_hardware_sweep.py
 ```
 
-The sweep verifier recomputes metrics only for completed records whose packet, execution, evaluation, and summary artifacts are present. It fails explicitly for narrative-reported records whose raw-count evidence files are missing.
+The sweep verifier recomputes metrics only for active completed records whose packet, execution, evaluation, and summary artifacts are present. Deferred or unavailable targets are documented in the manifest but are not treated as required verifier records.
 
 The default verifier inputs are:
 
@@ -190,11 +190,7 @@ This verifier supports recomputation, not independent replication. Recomputing t
 
 ## 5. Hardware validation result
 
-![QRoPE Stage 4 hardware comparison](figures/qrope-stage4-comparison-v1.svg)
-
-Figure 3. Stage 4 hardware comparison. Source data: `logs/automated_stage_gates/stage4_hardware_sweep/`.
-
-The Stage 4 narrative comparison report includes product-state and entangling-CX hardware rows for IBM Kingston, IBM Marrakesh, and IBM Fez, plus an Amazon Braket/Rigetti product-state artifact. The current machine-verifiable sweep manifest distinguishes expected records from excluded targets. In the current repository state, the IBM per-backend/per-family raw-count records are missing from `logs/automated_stage_gates/stage4_hardware_sweep/`, so the sweep verifier fails those rows explicitly until real run records are supplied. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
+The active Stage 4 hardware sweep includes two completed product-state records: the original IBM Fez hardware packet and an Amazon Braket/Rigetti replication artifact. Additional IBM machines and the CX witness lane are deferred from the active sweep because they do not add enough value to the current bounded public claim without committed raw-count artifacts. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
 
 The IBM Quantum run records:
 
@@ -215,21 +211,18 @@ The IBM Quantum run records:
 - control rank correlation: `-0.176940`;
 - outcome: `hardware-positive`.
 
-The comparison report records:
+The active sweep records:
 
-- IBM Kingston, IBM Marrakesh, and IBM Fez each completed at `4096` shots for both witness families.
+- IBM Fez completed at `4096` shots for the product-state witness family.
 - IonQ is not part of the active hardware sweep; Amazon Braket/IonQ was unavailable during the 2026-05-19 check, so no IonQ hardware task was submitted.
-- Every listed IBM hardware row preserved the witness/control ordering expected by the claim boundary.
+- The committed IBM Fez and Braket/Rigetti rows preserved the witness/control ordering expected by the claim boundary.
 - The Amazon Braket/Rigetti 1000-shot product-state artifact is present as machine-verifiable sweep evidence and verifies with `pass=true`.
 
-The comparison report summarizes the completed IBM records in a backend-wise view:
+The active sweep summarizes as:
 
 | Family | Best witness MAE | Best witness rank corr | Worst control MAE | Worst control rank corr |
 | --- | ---: | ---: | ---: | ---: |
-| Product-state | 0.011859 | 0.940875 | 0.230163 | -0.184302 |
-| Entangling CX | 0.015108 | 0.981446 | 0.229827 | -0.184302 |
-
-The completed comparison figure shows the same story visually: the witness bars stay low on MAE and high on rank correlation, while the control bars stay high on MAE and negative on rank correlation.
+| Product-state | 0.018382 | 0.876558 | 0.217262 | -0.176940 |
 
 The control condition is the additive single-band readout baseline:
 
@@ -243,9 +236,9 @@ The witness condition uses the cross-band product readout:
 witness = clamp(0.5 + 0.5 * score_scale * E[Z0 Z1], 0, 1)
 ```
 
-The completed IBM and Braket/Rigetti records support the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
+The completed IBM Fez and Braket/Rigetti records support the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
 
-Narrative-reported IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
+Deferred IBM/CX comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
 ## 6. Reproducibility artifacts
 
@@ -276,7 +269,7 @@ The present result has important limitations:
 
 - The Stage 4 evidence is still bounded to a small set of recorded packet/backend/date/calibration contexts rather than a broad backend survey.
 - The paper does not report transformer-scale training or evaluation.
-- The paper reports bounded IBM and Braket/Rigetti hardware records, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
+- The paper reports bounded IBM Fez and Braket/Rigetti hardware records, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
 - The paper does not compare against production language-model baselines.
 - The paper does not establish quantum advantage.
 
