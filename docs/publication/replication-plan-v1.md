@@ -16,7 +16,7 @@ This plan separates saved-count recomputation from independent replication.
 | Circuit family | Status | Claim boundary |
 | --- | --- | --- |
 | `two_qubit_zz_expectation_phase_wrap_v1` | Executed once on `ibm_fez` | Product-state angle-encoding/readout witness. |
-| `two_qubit_cx_parity_phase_wrap_v2` | Implemented; no-hardware ideal-count rehearsal passes; deferred from the active public hardware sweep | Entangling CX witness variant. Hardware evidence requires a future dated run with committed raw counts, metadata, and verifier output. |
+| `two_qubit_cx_parity_phase_wrap_v2` | Completed once on IBM Fez after no-hardware ideal-count rehearsal | Entangling CX witness variant. Supports only the recorded packet/backend/date/calibration-specific result. |
 
 ## No-hardware CX rehearsal
 
@@ -50,7 +50,7 @@ This rehearsal uses deterministic ideal counts and submits no hardware job. It i
 - Optional IBM Cloud instance CRN through `IBM_QUANTUM_INSTANCE_CRN`.
 - Runtime dependencies installed:
 
-Current provider posture (2026-05-19): IBM Fez and Amazon Braket/Rigetti have active Stage 4 evidence paths in this repository. The Braket/Rigetti product-state artifact is present and machine-verifiable. Additional IBM backends and the CX hardware lane are deferred from the active public sweep unless real per-backend/per-family raw-count artifacts are added. The CX lane is ready for credentialled execution in the narrow sense that the no-hardware ideal-count rehearsal passes; an Amazon Braket/Rigetti CX hardware attempt was submitted on 2026-05-19 but timed out while queued, cancellation was requested, and no raw counts were produced. IonQ is excluded from the active sweep: the current intended IonQ route is Amazon Braket, but the checked Braket IonQ devices were unavailable on 2026-05-19: `Forte-1` and `Forte-Enterprise-1` were `OFFLINE`, and `Aria-1` was `RETIRED`; no IonQ hardware task was submitted. Quandela Stage 4 execution remains configured to simulator profiles unless explicitly changed.
+Current provider posture (2026-05-19): IBM Fez and Amazon Braket/Rigetti have active Stage 4 evidence paths in this repository. The Braket/Rigetti product-state artifact is present and machine-verifiable. The IBM Fez CX artifact is present and machine-verifiable. Additional IBM backends remain deferred from the active public sweep unless real per-backend/per-family raw-count artifacts are added. An Amazon Braket/Rigetti CX hardware attempt was submitted on 2026-05-19 but timed out while queued, cancellation was requested, and no raw counts were produced. IonQ is excluded from the active sweep: the current intended IonQ route is Amazon Braket, but the checked Braket IonQ devices were unavailable on 2026-05-19: `Forte-1` and `Forte-Enterprise-1` were `OFFLINE`, and `Aria-1` was `RETIRED`; no IonQ hardware task was submitted. Quandela Stage 4 execution remains configured to simulator profiles unless explicitly changed.
 
 ```bash
 python -m pip install -e ".[ibm]"

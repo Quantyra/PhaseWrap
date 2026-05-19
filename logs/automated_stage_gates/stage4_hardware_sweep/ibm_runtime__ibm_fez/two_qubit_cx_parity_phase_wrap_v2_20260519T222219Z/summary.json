@@ -1,0 +1,29 @@
+{
+  "account_setup_check": {
+    "checked": false
+  },
+  "artifact_dir": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_sweep\\ibm_runtime__ibm_fez\\two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z",
+  "backend": "ibm_fez",
+  "blockers": [],
+  "cost_per_shot_usd": null,
+  "effective_shots": 4096,
+  "error": null,
+  "error_category": null,
+  "execution_status": "COMPLETED",
+  "gate_pass": true,
+  "job_ids": [
+    "d86e50lg7okc73el0fog"
+  ],
+  "outcome": "hardware-positive",
+  "packet_id": "qrope-hardware-527184f6a5e960ce",
+  "preflight_blockers": [],
+  "preflight_status": "READY",
+  "provider": "ibm_runtime",
+  "result_s3_uris": [],
+  "row_limit": 16,
+  "status": "PASS",
+  "target_shots": 4096,
+  "task_arns": [
+    "d86e50lg7okc73el0fog"
+  ]
+}

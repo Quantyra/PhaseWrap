@@ -30,7 +30,7 @@ The contribution is threefold:
 
 - A phase-wrap QRoPE scoring method using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
-- A Stage 4 real-noisy-hardware comparison report across committed IBM Fez and Amazon Braket/Rigetti product-state artifacts, with additional IBM/CX targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
+- A Stage 4 real-noisy-hardware comparison report across committed IBM Fez product-state, IBM Fez CX, and Amazon Braket/Rigetti product-state artifacts, with additional IBM targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
 
 ## 2. Related work and claim boundary
 
@@ -138,7 +138,7 @@ witness_cx = clamp(0.5 + 0.5 * score_scale * E[Z1 after CX], 0, 1)
 control_cx = clamp(0.5 + 0.25 * (E[Z0 after CX] + E[Z0 Z1 after CX]), 0, 1)
 ```
 
-This variant is implemented and prepared for future hardware execution, but it is deferred from the active public hardware sweep until real raw-count artifacts are committed.
+This variant has a completed IBM Fez hardware artifact in the active public sweep. It supports only the recorded packet/backend/date/calibration-specific result and does not establish entanglement advantage, quantum advantage, or cross-backend robustness.
 
 Implementation reference: `src/qrope/automated_stage_gates.py`.
 
@@ -190,7 +190,7 @@ This verifier supports recomputation, not independent replication. Recomputing t
 
 ## 5. Hardware validation result
 
-The active Stage 4 hardware sweep includes two completed product-state records: the original IBM Fez hardware packet and an Amazon Braket/Rigetti replication artifact. Additional IBM machines and the CX witness lane are deferred from the active sweep because they do not add enough value to the current bounded public claim without committed raw-count artifacts. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
+The active Stage 4 hardware sweep includes three completed records: the original IBM Fez product-state hardware packet, an IBM Fez CX hardware packet, and an Amazon Braket/Rigetti product-state replication artifact. Additional IBM machines are deferred from the active sweep. IonQ is not an active sweep record: the current intended route is Amazon Braket, and a read-only Braket check on 2026-05-19 found `Forte-1` and `Forte-Enterprise-1` `OFFLINE` and `Aria-1` `RETIRED`, so no IonQ hardware task was submitted.
 
 The IBM Quantum run records:
 
@@ -214,6 +214,7 @@ The IBM Quantum run records:
 The active sweep records:
 
 - IBM Fez completed at `4096` shots for the product-state witness family.
+- IBM Fez completed at `4096` shots for the CX witness family.
 - IonQ is not part of the active hardware sweep; Amazon Braket/IonQ was unavailable during the 2026-05-19 check, so no IonQ hardware task was submitted.
 - The committed IBM Fez and Braket/Rigetti rows preserved the witness/control ordering expected by the claim boundary.
 - The Amazon Braket/Rigetti 1000-shot product-state artifact is present as machine-verifiable sweep evidence and verifies with `pass=true`.
@@ -238,7 +239,7 @@ witness = clamp(0.5 + 0.5 * score_scale * E[Z0 Z1], 0, 1)
 
 The completed IBM Fez and Braket/Rigetti records support the Stage 4 packet outcome under the recorded conditions. Backend calibration, queue conditions, transpilation details, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
 
-Deferred IBM/CX comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
+Deferred IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
 ## 6. Reproducibility artifacts
 

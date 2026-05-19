@@ -18,7 +18,8 @@ Machine-readable ledger: `logs/automated_stage_gates/replication_lanes/replicati
 | Product Braket replication | `two_qubit_zz_expectation_phase_wrap_v1` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `published_completed` | Bounded hardware-positive Braket/Rigetti replication for one packet/backend/date/calibration context. |
 | Product rerun A | `two_qubit_zz_expectation_phase_wrap_v1` | Second IBM backend, date 1 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | Product rerun B | `two_qubit_zz_expectation_phase_wrap_v1` | Third IBM backend or same backend on date 2 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
-| CX rerun A | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No entangling-witness hardware evidence claim. |
+| CX IBM Fez original | `two_qubit_cx_parity_phase_wrap_v2` | IBM `ibm_fez`, `2026-05-19` | `published_completed` | Bounded CX hardware-positive result for one packet/backend/date/calibration context. |
+| CX Braket attempt | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No Braket CX evidence claim. |
 | CX rerun B | `two_qubit_cx_parity_phase_wrap_v2` | Second date or second backend | `implemented_not_executed_on_hardware` | No entangling-witness evidence claim. |
 
 ## Braket replication result for this update

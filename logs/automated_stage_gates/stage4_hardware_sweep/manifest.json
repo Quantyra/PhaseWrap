@@ -119,6 +119,31 @@
         "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z/execution.json#/jobs/0/raw_counts_by_row"
       ],
       "verifier_output_path": "logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z/offline_verification.json"
+    },
+    {
+      "record_id": "ibm_fez__two_qubit_cx_parity_phase_wrap_v2__20260519T222219Z",
+      "provider": "ibm_runtime",
+      "backend": "ibm_fez",
+      "backend_label": "IBM Fez",
+      "family": "two_qubit_cx_parity_phase_wrap_v2",
+      "status": "completed",
+      "shots": 4096,
+      "row_count": 16,
+      "job_ids": [
+        "d86e50lg7okc73el0fog"
+      ],
+      "packet_id": "qrope-hardware-527184f6a5e960ce",
+      "submitted_at_utc": "2026-05-19T22:21:54Z",
+      "completed_at_utc": "2026-05-19T22:22:18Z",
+      "packet_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/frozen_packet.json",
+      "execution_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/execution.json",
+      "evaluation_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/evaluation.json",
+      "summary_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/summary.json",
+      "calibration_metadata_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/execution.json#/calibration_metadata",
+      "raw_count_file_paths": [
+        "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/execution.json#/jobs/0/raw_counts_by_row"
+      ],
+      "verifier_output_path": null
     }
   ],
   "deferred_targets": [
@@ -132,7 +157,7 @@
       "provider": "amazon_braket",
       "target": "two_qubit_cx_parity_phase_wrap_v2 hardware run on Rigetti Cepheus-1-108Q",
       "status": "deferred_from_active_sweep",
-      "reason": "A no-hardware ideal-count rehearsal exists for this witness family, and an Amazon Braket/Rigetti hardware attempt was submitted on 2026-05-19. The submitted task timed out while queued and cancellation was requested; no raw counts were produced. It remains a prepared/future hardware lane, not active public evidence."
+      "reason": "An Amazon Braket/Rigetti CX hardware attempt was submitted on 2026-05-19. The submitted task timed out while queued and was cancelled; no raw counts were produced. It remains a non-evidence attempt record."
     }
   ],
   "excluded_targets": [
