@@ -1,12 +1,12 @@
-# PhaseWrap-RoPE replication plan v1
+# QRoPE replication plan v1
 
-Status: `READY_FOR_CREDENTIALLED_EXECUTION_WITH_LEDGER`
+Status: `READY_FOR_CREDENTIALLED_EXECUTION`
 
 Date: `2026-05-18`
 
 ## Purpose
 
-This plan separates saved-count recomputation from independent replication. Current execution state is recorded in `docs/publication/replication-ledger-v1.md`.
+This plan separates saved-count recomputation from independent replication.
 
 - Recompute: run the verifier against already-published raw counts.
 - Replicate: submit a new hardware job for the same frozen packet family, capture new raw counts and metadata, and compare metrics.
@@ -16,7 +16,7 @@ This plan separates saved-count recomputation from independent replication. Curr
 | Circuit family | Status | Claim boundary |
 | --- | --- | --- |
 | `two_qubit_zz_expectation_phase_wrap_v1` | Executed once on `ibm_fez` | Product-state angle-encoding/readout witness. |
-| `two_qubit_cx_parity_phase_wrap_v2` | Implemented and unit-tested; not yet executed on hardware | Entangling CX witness variant. No evidence claim until credentialled execution is completed and reported. |
+| `two_qubit_cx_parity_phase_wrap_v2` | Executed across IBM `ibm_kingston`, `ibm_marrakesh`, `ibm_fez`, and IonQ `ionq_qpu` | Entangling CX witness variant. Hardware evidence recorded in the comparison report. |
 
 ## Minimum replication matrix
 
@@ -32,6 +32,8 @@ This plan separates saved-count recomputation from independent replication. Curr
 - IBM Quantum credentials available through `IBM_QUANTUM_TOKEN` or `QISKIT_IBM_TOKEN`.
 - Optional IBM Cloud instance CRN through `IBM_QUANTUM_INSTANCE_CRN`.
 - Runtime dependencies installed:
+
+Current provider posture (2026-05-19): only IBM hardware backends are used for Stage 4 replication runs. `ionq_qpu` and `ionq` `QPU Targets` are not currently enabled, and Quandela Stage 4 execution remains configured to simulator profiles unless explicitly changed.
 
 ```bash
 python -m pip install -e ".[ibm]"
@@ -95,4 +97,8 @@ python scripts/verify_stage4_hardware_packet.py --expected-backend "<backend-nam
 
 ## Publication rule
 
-Do not broaden the PhaseWrap-RoPE claim boundary until at least one replication lane produces completed raw counts, metadata, and verifier output. Negative or inconclusive replications should be published as evidence rather than hidden. Update `logs/automated_stage_gates/replication_lanes/replication-ledger.json` and `docs/publication/replication-ledger-v1.md` in the same commit that publishes any new replication packet.
+Do not broaden the QRoPE claim boundary until at least one replication lane produces completed raw counts, metadata, and verifier output. Negative or inconclusive replications should be published as evidence rather than hidden.
+
+Completed comparison report:
+
+- `docs/research/q-rope-stage4-hardware-comparison-v1.md`
