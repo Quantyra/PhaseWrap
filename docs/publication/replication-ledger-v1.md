@@ -1,8 +1,8 @@
 # PhaseWrap-RoPE replication ledger v1
 
-Status: `CREDENTIALLED_HARDWARE_EXECUTION_REQUIRED`
+Status: `BRAKET_REPLICATION_COMPLETED`
 
-Date: `2026-05-18`
+Date: `2026-05-19`
 
 ## Purpose
 
@@ -15,16 +15,29 @@ Machine-readable ledger: `logs/automated_stage_gates/replication_lanes/replicati
 | Lane | Circuit family | Target | Status | Public evidence claim |
 | --- | --- | --- | --- | --- |
 | Stage 4 product original | `two_qubit_zz_expectation_phase_wrap_v1` | IBM `ibm_fez`, `2026-05-17` | `published_completed` | Bounded hardware-positive result for one packet/backend/date/calibration context. |
+| Product Braket replication | `two_qubit_zz_expectation_phase_wrap_v1` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `published_completed` | Bounded hardware-positive Braket/Rigetti replication for one packet/backend/date/calibration context. |
 | Product rerun A | `two_qubit_zz_expectation_phase_wrap_v1` | Second IBM backend, date 1 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | Product rerun B | `two_qubit_zz_expectation_phase_wrap_v1` | Third IBM backend or same backend on date 2 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | CX rerun A | `two_qubit_cx_parity_phase_wrap_v2` | IBM backend with acceptable CX profile, date 1 | `implemented_not_executed_on_hardware` | No entangling-witness evidence claim. |
 | CX rerun B | `two_qubit_cx_parity_phase_wrap_v2` | Second date or second backend | `implemented_not_executed_on_hardware` | No entangling-witness evidence claim. |
 
-## Local preflight result for this update
+## Braket replication result for this update
 
-The implementation environment had IBM/Qiskit runtime dependencies available, but no IBM Quantum token, backend, or budget-cap environment variables were configured. That means the repo can prepare and document the replication lanes, but it cannot honestly publish new hardware execution results from this environment.
+The implementation environment had AWS credentials for account `485386182336`, a reachable Amazon Braket Rigetti QPU, and a Braket-compatible output bucket. The Braket replication lane completed with 8 tasks at 1000 shots per task and verified as `PASS / hardware-positive`.
 
-This is a blocker, not a failure of the method. A replication lane becomes publishable only after it contains:
+Artifact directory:
+
+`logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z`
+
+Metrics:
+
+- witness MAE: `0.069901`
+- witness rank correlation: `0.786644`
+- control MAE: `0.149995`
+- control rank correlation: `0.121232`
+- offline verifier: `pass=true`
+
+A replication lane becomes publishable only after it contains:
 
 - completed raw counts;
 - backend metadata;

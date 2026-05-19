@@ -1,10 +1,10 @@
 # Q-RoPE Stage 4 Hardware Comparison v1
 
-Date: 2026-05-18
+Date: 2026-05-19
 
 ## BLUF
 
-The hardware run goals were completed. Both witness families were executed on all currently discovered hardware targets, and every run returned `PASS / hardware-positive`.
+The hardware run goals were completed. Both witness families were executed on the prior IBM/IonQ target set, and the Amazon Braket/Rigetti product-state replication lane now has a completed 1000-shot-per-row artifact. Every reported publishable run returned `PASS / hardware-positive`.
 
 The product-state witness and the entangling CX witness both preserved the same qualitative pattern:
 
@@ -12,6 +12,7 @@ The product-state witness and the entangling CX witness both preserved the same 
 - control rank correlation remained negative on every backend
 - IBM runs used 4096 shots
 - IonQ `ionq_qpu` completed with 1024 shots, which is the exposed cap from the available provider metadata
+- Amazon Braket/Rigetti completed the product-state lane with 1000 shots per row on `Cepheus-1-108Q`
 
 ## Visual Summary
 
@@ -31,6 +32,7 @@ The figure shows the same result pattern in a compact form:
 | IBM Runtime | `ibm_marrakesh` | 4096 | PASS | hardware-positive |
 | IBM Runtime | `ibm_fez` | 4096 | PASS | hardware-positive |
 | IonQ | `ionq_qpu` | 1024 | PASS | hardware-positive |
+| Amazon Braket | `Rigetti Cepheus-1-108Q` | 1000 | PASS | hardware-positive |
 
 ## Product-State Witness
 
@@ -42,6 +44,7 @@ Circuit family: `two_qubit_zz_expectation_phase_wrap_v1`
 | `ibm_marrakesh` | 0.011859 | 0.879555 | 0.230110 | -0.184302 |
 | `ibm_fez` | 0.015664 | 0.940875 | 0.220397 | -0.169318 |
 | `ionq_qpu` | 0.014829 | 0.861459 | 0.230163 | -0.184302 |
+| `rigetti_cepheus_1_108q` | 0.069901 | 0.786644 | 0.149995 | 0.121232 |
 
 ## Entangling CX Witness
 
@@ -87,6 +90,16 @@ IonQ also completed both families successfully, but the run was constrained to 1
 - control MAE remained high
 - control rank correlation stayed negative
 
+### Amazon Braket / Rigetti
+
+The Braket/Rigetti product-state run completed after adding a Braket-specific preparation and execution adapter. It used 8 frozen rows with 1000 shots per row on `Cepheus-1-108Q`. The witness beat control on both declared metrics:
+
+- witness MAE: `0.069901` vs control MAE: `0.149995`
+- witness rank correlation: `0.786644` vs control rank correlation: `0.121232`
+- offline verifier: `pass=true`
+
+This run should be treated as a bounded cross-provider replication artifact, not as a broad robustness proof.
+
 ### Family-level summary
 
 | Family | Best witness MAE | Best witness rank corr | Worst control MAE | Worst control rank corr |
@@ -102,10 +115,12 @@ The execution goals are complete:
 2. run the entangling CX witness variant on the same set
 3. record backend-specific artifacts and job IDs
 4. preserve the 4096-shot target where supported
+5. add an Amazon Braket/Rigetti product-state replication artifact with completed task ARNs and S3 result URIs
 
 ## Evidence Pointers
 
 - [Product-state IBM/IonQ sweep logs](/C:/Users/Dan/Desktop/Projects/QuantyraQRope/logs/automated_stage_gates/stage4_hardware_sweep)
+- [Amazon Braket/Rigetti 1000-shot artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z)
 - [Stage 4 sweep runner](/C:/Users/Dan/Desktop/Projects/QuantyraQRope/scripts/run_stage4_hardware_sweep.py)
 
 ## Recommendation

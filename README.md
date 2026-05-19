@@ -11,8 +11,8 @@ This repository is intended for open scientific review of the QRoPE method, vali
 - `Patent/IP posture`: USPTO provisional submission received `2026-05-18`; the Electronic Acknowledgement Receipt lists application `64/068,121` and Patent Center `76347440`; final Filing Receipt pending. See [Patent status note](docs/publication/patent-status-note-v1.md).
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
-- `Current evidence posture`: Stage 4 real-noisy-hardware positive result for one frozen packet/backend/date/calibration context.
-- `Hardware posture`: IBM Quantum is the only hardware lane currently available for QRoPE Stage 4; IonQ and Quandela remain simulator paths unless explicitly reconfigured.
+- `Current evidence posture`: Stage 4 real-noisy-hardware positive results for bounded frozen packet/backend/date/calibration contexts, including IBM Runtime and Amazon Braket/Rigetti artifacts.
+- `Hardware posture`: IBM Quantum and Amazon Braket/Rigetti lanes have completed Stage 4 hardware artifacts; IonQ/Quandela availability depends on explicit provider configuration.
 
 ## Claim boundary
 
@@ -22,6 +22,7 @@ The public claim frame for this repository is:
 - The SQR score uses the product of the mod-8 and mod-12 signed margins.
 - The evidence lane includes deterministic frozen-packet validation, raw counts, backend metadata, and offline recomputation.
 - The Stage 4 result is a bounded real-hardware validation for the frozen packet reported in this repository.
+- The Amazon Braket/Rigetti replication artifact is an 8-row, 1000-shot-per-row product-state hardware-positive run with offline verifier pass.
 - The current hardware evidence includes a two-qubit product-state angle-encoding/readout witness and an executed entangling CX witness family; neither should be described as evidence of nonclassical advantage.
 - The entangling CX witness family is implemented as `two_qubit_cx_parity_phase_wrap_v2` and is included in the completed hardware comparison report.
 
@@ -47,6 +48,7 @@ The public claim frame excludes:
 - [Open-source release checklist](docs/publication/open-source-release-checklist-v1.md)
 - [Patent notice](PATENTS.md)
 - [Stage 4 real-hardware validation result](docs/research/q-rope-stage4-real-hardware-validation-result-v1.md)
+- [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
 
@@ -70,12 +72,18 @@ print("label", normalized_phase_label(margins["score"]))
 PY
 ```
 
-IBM hardware reruns require separate IBM Quantum credentials and runtime dependencies. The local method check and saved-packet verifier do not require IBM credentials.
+IBM and Amazon Braket hardware reruns require separate cloud credentials and provider dependencies. The local method check and saved-packet verifier do not require hardware credentials.
 
 Install IBM Runtime dependencies only when preparing a real hardware run:
 
 ```bash
 python -m pip install -e ".[ibm]"
+```
+
+Install Amazon Braket dependencies only when preparing a Braket hardware run:
+
+```bash
+python -m pip install -e ".[braket]"
 ```
 
 Verify the saved Stage 4 packet arithmetic from the published raw-count evidence:

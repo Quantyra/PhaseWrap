@@ -1,0 +1,46 @@
+{
+  "account_setup_check": {
+    "checked": false,
+    "reason": "Amazon Braket user-agreement acceptance is validated only when CreateQuantumTask is called; hardware execution records any AccessDeniedException as a hardware blocker."
+  },
+  "artifact_dir": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_sweep\\amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q\\two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z",
+  "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+  "blockers": [],
+  "cost_per_shot_usd": 0.000425,
+  "effective_shots": 1000,
+  "error": null,
+  "error_category": null,
+  "execution_status": "COMPLETED",
+  "gate_pass": true,
+  "job_ids": [
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/e35e3aa6-a1c4-4e82-91e6-0696fa305429,arn:aws:braket:us-west-1:485386182336:quantum-task/f00f3214-d6ad-4b79-b8b1-32f957e27126,arn:aws:braket:us-west-1:485386182336:quantum-task/c3487449-55b4-4c33-b1db-3aa05e3ae63c,arn:aws:braket:us-west-1:485386182336:quantum-task/06acf815-ef22-43c2-80ea-54c75608a10e,arn:aws:braket:us-west-1:485386182336:quantum-task/9c2467b7-9322-416c-9379-b044d0fbe05b,arn:aws:braket:us-west-1:485386182336:quantum-task/9471b78d-2b23-40cf-af7f-4cb87a0d5d37,arn:aws:braket:us-west-1:485386182336:quantum-task/a1b3207e-46bf-43a0-9736-4a3aa1e8cda2,arn:aws:braket:us-west-1:485386182336:quantum-task/277ea374-46d3-47fe-9fb2-fb330ccf9498"
+  ],
+  "outcome": "hardware-positive",
+  "packet_id": "qrope-hardware-5244f90bce2f93b8",
+  "preflight_blockers": [],
+  "preflight_status": "READY",
+  "provider": "amazon_braket",
+  "result_s3_uris": [
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-000/e35e3aa6-a1c4-4e82-91e6-0696fa305429/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-001/f00f3214-d6ad-4b79-b8b1-32f957e27126/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-002/c3487449-55b4-4c33-b1db-3aa05e3ae63c/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-003/06acf815-ef22-43c2-80ea-54c75608a10e/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-004/9c2467b7-9322-416c-9379-b044d0fbe05b/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-005/9471b78d-2b23-40cf-af7f-4cb87a0d5d37/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-006/a1b3207e-46bf-43a0-9736-4a3aa1e8cda2/results.json",
+    "s3://amazon-braket-us-west-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/20260519T100703Z/qrope-hardware-5244f90bce2f93b8/hwrow-007/277ea374-46d3-47fe-9fb2-fb330ccf9498/results.json"
+  ],
+  "row_limit": 8,
+  "status": "PASS",
+  "target_shots": 1000,
+  "task_arns": [
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/e35e3aa6-a1c4-4e82-91e6-0696fa305429",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/f00f3214-d6ad-4b79-b8b1-32f957e27126",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/c3487449-55b4-4c33-b1db-3aa05e3ae63c",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/06acf815-ef22-43c2-80ea-54c75608a10e",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/9c2467b7-9322-416c-9379-b044d0fbe05b",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/9471b78d-2b23-40cf-af7f-4cb87a0d5d37",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/a1b3207e-46bf-43a0-9736-4a3aa1e8cda2",
+    "arn:aws:braket:us-west-1:485386182336:quantum-task/277ea374-46d3-47fe-9fb2-fb330ccf9498"
+  ]
+}
