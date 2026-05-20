@@ -260,6 +260,8 @@ The repository prioritizes evidence files over narrative-only claims. The minimu
 
 The intended reproducibility standard is not that every future backend execution match the present numbers. The standard is that the reported numbers are traceable to packet files, execution records, raw counts, and deterministic recomputation.
 
+Repository naming note: public materials use `PhaseWrap-RoPE`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem.
+
 ## 7. Patent and open-source notice
 
 PhaseWrap-RoPE is associated with a USPTO provisional submission received `2026-05-18`. The Electronic Acknowledgement Receipt lists application `64/068,121` and Patent Center number `76347440`; final Filing Receipt review is pending, and the bounded hardware comparison status is documented separately in `docs/research/q-rope-stage4-hardware-comparison-v1.md`.
