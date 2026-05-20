@@ -63,7 +63,7 @@ Preferred task lanes:
 | Compact QA or language modeling | controlled text-fact QA, small natural-language corpus | Checks whether the mechanism survives a non-synthetic text setting. |
 | Synthetic diagnostics | phase-cued retrieval, alias/adversarial rows | Preserves interpretability, but cannot be the sole success criterion. |
 
-Stage 26 provides a useful compact content-key QA packet. Stage 27 adds a compact attention bridge over that packet with five deterministic model initialization seeds. Stage 28 adds a compact attention bridge directly over non-phase-cued RULER-style retrieval rows. The next step is to move these structures into a stronger small decoder-only transformer or a standard retrieval harness while preserving matched compute, multiple seeds, and failed-run reporting.
+Stage 26 provides a useful compact content-key QA packet. Stage 27 adds a compact attention bridge over that packet with five deterministic model initialization seeds. Stage 28 adds a compact attention bridge directly over non-phase-cued RULER-style retrieval rows. Stage 30 reruns that bridge with matched feature width and learned parameter count across positional variants. The next step is to move these structures into a stronger small decoder-only transformer or a standard retrieval harness while preserving matched compute, multiple seeds, and failed-run reporting.
 
 ## PhaseWrap Mechanism Requirements
 
@@ -111,6 +111,8 @@ Open theory questions:
 ## Promotion Gate
 
 PhaseWrap-RoPE can be described as a credible RoPE-replacement candidate only after a matched trained-transformer benchmark shows competitive performance against RoPE, ALiBI, sinusoidal, and no-position baselines on at least one non-PhaseWrap-labeled task, across multiple seeds, with confidence intervals and failed-run artifacts.
+
+Stage 30 closes a compact-bridge confound by equalizing feature width and parameter count, but it does not satisfy this promotion gate because it is still a retrieval bridge rather than a stronger decoder-only transformer or standard language-model/retrieval harness.
 
 Until then, the supported claim remains narrower: PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible classical analyses, bounded hardware readout witnesses, and mixed but useful toy downstream evidence.
 
