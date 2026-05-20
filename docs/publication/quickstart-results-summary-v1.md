@@ -95,6 +95,14 @@ python scripts/run_stage9_trained_transformer_ablation.py
 
 This writes `logs/automated_stage_gates/stage9_trained_transformer_ablation/manifest.json`, `results.json`, `summary.csv`, `per_seed_results.csv`, and `failed_runs.json`.
 
+Run the Stage 10 full-transformer preflight:
+
+```bash
+python scripts/run_stage10_small_decoder_transformer.py
+```
+
+This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`, `preflight.json`, and `summary.csv`. In the current release environment, Stage 10 is blocked because the optional `transformer` dependency group is not installed.
+
 ## What This Supports
 
 - A bounded phase-wrap scoring method using mod-8 and mod-12 wrapped residual margins.
@@ -106,6 +114,7 @@ This writes `logs/automated_stage_gates/stage9_trained_transformer_ablation/mani
 - A deterministic Stage 7 four-layer toy transformer ablation where `phasewrap_rope_4layer` has the best argmax retrieval ranking on a fixed synthetic length-extrapolation retrieval packet, while calibration remains mixed.
 - A deterministic Stage 8 local Needle-style retrieval benchmark where `phasewrap_rope_8_12` has the best top-1 and MRR on a phase-cued synthetic packet across five seeds and context lengths up to 1024.
 - A deterministic Stage 9 trained positional-attention ablation where `phasewrap_adapter` has mean test top-1 `0.668750` and mean test MRR `0.745096` on the phase-cued train-short/test-long packet, while `rope_relative` is strongest on the exact-offset passkey packet whose answer is not selected by the PhaseWrap score.
+- A Stage 10 full-transformer preflight artifact that records the current blocker for a real small decoder-only transformer run: missing optional `torch` dependency.
 
 ## What This Does Not Support
 
@@ -120,6 +129,7 @@ This writes `logs/automated_stage_gates/stage9_trained_transformer_ablation/mani
 - a claim that Stage 7 establishes production transformer or full transformer-scale superiority.
 - a claim that Stage 8 is a standard RULER benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE.
 - a claim that Stage 9 is a full language-model benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE.
+- a claim that Stage 10 has produced model metrics before the optional transformer dependency is installed and the run artifacts exist.
 
 ## Open Questions
 
@@ -141,6 +151,7 @@ This writes `logs/automated_stage_gates/stage9_trained_transformer_ablation/mani
 | Stage 7 | Four-layer toy transformer ablation | Complete for one fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
 | Stage 8 | Local Needle-style retrieval benchmark | Complete for one phase-cued synthetic packet with five seeds, bootstrap intervals, and period-pair ablation. |
 | Stage 9 | Trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention packets; remaining work is full small decoder-only transformer training and non-synthetic retrieval or QA tasks. |
-| Stage 10 | Hardware witness hardening | Add provider bit-order calibration circuits, shot-noise intervals, independent reruns, preregistered packets, and classical compute timing/cost estimates. |
-| Stage 11 | Theory of the score | Formalize invariances, aliasing, period-pair tradeoffs, context-length behavior, kernel interpretations, and task distributions where the score helps or hurts. |
-| Stage 12 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |
+| Stage 10 | Full small decoder-only transformer gate | Preflight artifact complete; currently blocked by missing optional `transformer` dependency. |
+| Stage 11 | Hardware witness hardening | Add provider bit-order calibration circuits, shot-noise intervals, independent reruns, preregistered packets, and classical compute timing/cost estimates. |
+| Stage 12 | Theory of the score | Formalize invariances, aliasing, period-pair tradeoffs, context-length behavior, kernel interpretations, and task distributions where the score helps or hurts. |
+| Stage 13 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |

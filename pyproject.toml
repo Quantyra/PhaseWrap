@@ -39,6 +39,9 @@ braket = [
 quandela = [
   "perceval-quandela>=0.12",
 ]
+transformer = [
+  "torch>=2.3",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

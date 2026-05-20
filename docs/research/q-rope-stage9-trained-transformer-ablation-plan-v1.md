@@ -136,6 +136,22 @@ Stage 9 should publish:
 
 The current executable subset satisfies these artifact requirements for its synthetic positional-attention tasks. The remaining gap is the broader task/model scope: full small decoder-only transformer runs, non-synthetic retrieval or QA tasks, and richer calibration reporting.
 
+## Stage 10 Preflight
+
+The repository now includes a dependency-gated preflight for the full small decoder-only transformer milestone:
+
+```bash
+python scripts/run_stage10_small_decoder_transformer.py
+```
+
+Current artifact paths:
+
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/preflight.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/summary.csv`
+
+The current release environment does not have `torch` installed, so the preflight records `blocked` with install command `python -m pip install -e ".[transformer]"`. No Stage 10 model metrics should be cited until the dependency is installed and completed training artifacts are present.
+
 ## Promotion Gate
 
 Stage 9 can promote PhaseWrap-RoPE from "worth testing in broader RoPE-facing settings" to "competitive in the tested small trained-transformer setting" only if PhaseWrap variants are competitive against RoPE, ALiBI, sinusoidal, and no-position baselines under matched training controls across multiple seeds and at least one task whose target is not constructed from the PhaseWrap formula.

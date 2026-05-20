@@ -1,0 +1,31 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full language-model validation",
+      "proof that PhaseWrap-RoPE replaces RoPE",
+      "broad quantum advantage",
+      "general cross-backend robustness"
+    ],
+    "supported": [
+      "A machine-readable preflight record for the full small decoder-only transformer milestone.",
+      "A clear dependency gate showing that no full transformer run was executed in this environment."
+    ]
+  },
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "no_hardware_submission": true,
+  "optional_dependency_group": "transformer",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/preflight.json",
+  "schema_version": "qrope_stage10_small_decoder_transformer_v1",
+  "stage": "stage10_small_decoder_transformer",
+  "status": "blocked",
+  "summary_csv_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/summary.csv"
+}

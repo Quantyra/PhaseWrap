@@ -52,6 +52,7 @@ PhaseWrap-RoPE is related to RoPE-style phase behavior, but the present release 
 | Stage 7 toy transformer ablation | Four-layer attention-only synthetic length-extrapolation packet | PhaseWrap-RoPE has the best argmax retrieval ranking on one fixed packet | Full transformer-scale validation or better calibration |
 | Stage 8 Needle-style benchmark | Local phase-cued synthetic retrieval packet | PhaseWrap-RoPE is worth testing in broader RoPE-facing retrieval settings | RULER result, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE |
 | Stage 9 trained positional-attention ablation | Synthetic train-short/test-long phase-cued and exact-offset passkey packets with matched optimizer/seeds | `phasewrap_adapter` is strongest on the phase-cued packet; `rope_relative` is strongest on exact-offset passkey | Full language-model benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE |
+| Stage 10 full-transformer preflight | Dependency and artifact gate for small decoder-only transformer training | Current environment lacks the optional `torch` dependency, so no model metrics are reported | Any completed full-transformer result |
 
 The allowed public claims are:
 
@@ -210,6 +211,14 @@ python scripts/run_stage9_trained_transformer_ablation.py
 
 Stage 9 trains matched decoder-style positional attention mechanisms across five seeds, short training contexts, and longer test contexts. The current synthetic packets compare `phasewrap_bias`, `phasewrap_adapter`, `rope_relative`, `alibi`, `sinusoidal`, and `no_position`. On the phase-cued packet, `phasewrap_adapter` has mean test top-1 `0.668750` and mean test MRR `0.745096`, with no failed runs. On the exact-offset passkey packet, whose target is not selected by the PhaseWrap score, `rope_relative` has mean test top-1 `1.000000`, mean test MRR `1.000000`, and lower mean test loss than `phasewrap_adapter`. This is a trained positional-attention result, not a full language-model benchmark.
 
+The repository also includes a Stage 10 preflight for the full small decoder-only transformer milestone:
+
+```bash
+python scripts/run_stage10_small_decoder_transformer.py
+```
+
+The current preflight records `blocked` because the optional `transformer` dependency group, which provides `torch`, is not installed in the release environment. This is reported as an artifact gate rather than as a missing result or a silent pass. No Stage 10 model metrics are claimed.
+
 ## 6. Validation Protocol
 
 ![PhaseWrap-RoPE deterministic validation pipeline](figures/qrope-validation-pipeline-v1.svg)
@@ -362,6 +371,12 @@ The Stage 9 trained positional-attention artifacts are:
 - `logs/automated_stage_gates/stage9_trained_transformer_ablation/per_seed_results.csv`
 - `logs/automated_stage_gates/stage9_trained_transformer_ablation/failed_runs.json`
 
+The Stage 10 full-transformer preflight artifacts are:
+
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/preflight.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/summary.csv`
+
 Deferred IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
 ## 8. Reproducibility Artifacts
@@ -418,14 +433,14 @@ The next scientific step is not broader rhetoric about the current hardware reco
 
 | Priority | Work item | Evidence required before promotion |
 | --- | --- | --- |
-| 1 | Full Stage 9 trained transformer ablation | Extend the current trained positional-attention subset to full small decoder-only transformer runs where only the positional mechanism changes. Compare RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap positional variants under matched parameter counts, optimizer settings, training tokens, seeds, and hyperparameter budget. |
+| 1 | Full Stage 10 trained transformer ablation | Install the optional `transformer` dependency group and run full small decoder-only transformer training where only the positional mechanism changes. Compare RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap positional variants under matched parameter counts, optimizer settings, training tokens, seeds, and hyperparameter budget. |
 | 2 | Standard retrieval tasks | Move beyond the current Stage 8 and Stage 9 synthetic packets toward Needle-in-Haystack, passkey retrieval, multi-needle retrieval, RULER-style multi-hop/aggregation, or compact natural-language QA tasks where the correct answer is not defined by the PhaseWrap score. |
 | 3 | Comparable PhaseWrap mechanism | Implement PhaseWrap as a genuine positional mechanism: a positional attention bias, a query/key rotation analogue, or a learned adapter around PhaseWrap features. Avoid treating the normalized phase label as an oracle scalar input. |
 | 4 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score. Add provider bit-order and observable calibration circuits, shot-noise or bootstrap intervals, independent reruns across dates and queue conditions, preregistered packet sets, and classical compute timing/cost estimates. |
 | 5 | Theory of the score | Formalize invariances, unavoidable aliases, period-pair tradeoffs, context-length behavior, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
 | 6 | Larger or error-aware witnesses | Explore larger witness families or mitigation analysis only when the packet generator, controls, costs, and verifier can preserve the current artifact discipline. |
 
-The highest-impact research gap remains downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts, that the Stage 5 synthetic attention-scoring label is recoverable by simple exposed-feature baselines, that Stage 6 is a useful oracle phase-feature sanity check, that Stage 7 improves argmax retrieval ranking in a four-layer toy length-extrapolation ablation, that Stage 8 wins a local phase-cued packet with a release-local period-pair ablation, and that Stage 9 produces a first trained positional-attention result with a mixed outcome across task lanes. A full small decoder-only transformer ablation on harder tasks is therefore the next milestone for any stronger RoPE-replacement claim.
+The highest-impact research gap remains downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts, that the Stage 5 synthetic attention-scoring label is recoverable by simple exposed-feature baselines, that Stage 6 is a useful oracle phase-feature sanity check, that Stage 7 improves argmax retrieval ranking in a four-layer toy length-extrapolation ablation, that Stage 8 wins a local phase-cued packet with a release-local period-pair ablation, and that Stage 9 produces a first trained positional-attention result with a mixed outcome across task lanes. Stage 10 records the dependency gate for the full transformer run. A full small decoder-only transformer ablation on harder tasks remains the next milestone for any stronger RoPE-replacement claim.
 
 Broader hardware expansion is useful but secondary to the transformer ablation. The hardware track should be framed as an auditable hardware witness for a classical phase score, not as quantum-enhanced attention. IonQ should be added only through a dated Amazon Braket/IonQ record when a device is available. Quandela, AQT, or larger-qubit witnesses should be added only when credentials, provider cost, and artifact capture support the same manifest/verifier discipline as Stage 4.
 
@@ -459,6 +474,7 @@ The repository software is released under `AGPL-3.0-only`. The patent/IP-status 
 - `scripts/run_stage7_toy_transformer_ablation.py`
 - `scripts/run_stage8_needle_benchmark.py`
 - `scripts/run_stage9_trained_transformer_ablation.py`
+- `scripts/run_stage10_small_decoder_transformer.py`
 - `logs/automated_stage_gates/stage4_hardware_packet/frozen_packet.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/execution.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/evaluation.json`
@@ -469,6 +485,7 @@ The repository software is released under `AGPL-3.0-only`. The patent/IP-status 
 - `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest.json`
 - `logs/automated_stage_gates/stage8_needle_benchmark/manifest.json`
 - `logs/automated_stage_gates/stage9_trained_transformer_ablation/manifest.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`
 - `docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md`
 - `docs/research/q-rope-stage4-real-hardware-validation-result-v1.md`
 - `docs/research/q-rope-stage4-hardware-comparison-v1.md`
