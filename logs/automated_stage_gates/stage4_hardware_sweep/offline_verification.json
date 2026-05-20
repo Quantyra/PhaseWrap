@@ -25,6 +25,7 @@
     {
       "backend": "ibm_fez",
       "backend_label": "IBM Fez",
+      "bitstring_order": "q1q0",
       "checks": [
         {
           "name": "witness_mae",
@@ -125,6 +126,12 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 4096,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q1q0",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q1q0"
         }
       ],
       "completed_at_utc": "2026-05-17T03:29:05Z",
@@ -144,6 +151,7 @@
       },
       "provider": "ibm_runtime",
       "recomputed_evaluation": {
+        "bitstring_order": "q1q0",
         "comparability_pass": true,
         "control": {
           "mae": 0.217262,
@@ -514,6 +522,7 @@
       },
       "record_id": "ibm_fez__two_qubit_zz_expectation_phase_wrap_v1__20260517T032905Z",
       "recorded_evaluation": {
+        "bitstring_order": "q1q0",
         "comparability_pass": true,
         "control": {
           "mae": 0.217262,
@@ -888,6 +897,7 @@
       "submitted_at_utc": "2026-05-17T03:28:38Z",
       "table_row": {
         "backend": "IBM Fez",
+        "bitstring_order": "q1q0",
         "control_mae": 0.217262,
         "control_rank_corr": -0.17694,
         "expected_outcome": "hardware-positive",
@@ -903,6 +913,7 @@
     {
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
       "backend_label": "Rigetti Cepheus-1-108Q",
+      "bitstring_order": "q0q1",
       "checks": [
         {
           "name": "witness_mae",
@@ -1003,6 +1014,12 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 1000,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q0q1",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q0q1"
         }
       ],
       "completed_at_utc": "2026-05-19T10:09:41Z",
@@ -1029,6 +1046,7 @@
       },
       "provider": "amazon_braket",
       "recomputed_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
           "mae": 0.149995,
@@ -1064,8 +1082,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.866,
-              "z1": 0.248,
+              "z0": 0.248,
+              "z1": -0.866,
               "zz": -0.222
             },
             "hardware_predictions": {
@@ -1085,8 +1103,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.068,
-              "z1": -0.268,
+              "z0": -0.268,
+              "z1": 0.068,
               "zz": -0.008
             },
             "hardware_predictions": {
@@ -1106,8 +1124,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.626,
-              "z1": 0.27,
+              "z0": 0.27,
+              "z1": -0.626,
               "zz": -0.156
             },
             "hardware_predictions": {
@@ -1127,8 +1145,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.146,
-              "z1": 0.438,
+              "z0": 0.438,
+              "z1": 0.146,
               "zz": 0.056
             },
             "hardware_predictions": {
@@ -1148,8 +1166,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.618,
-              "z1": -0.514,
+              "z0": -0.514,
+              "z1": -0.618,
               "zz": 0.288
             },
             "hardware_predictions": {
@@ -1169,8 +1187,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.042,
-              "z1": -0.118,
+              "z0": -0.118,
+              "z1": 0.042,
               "zz": -0.008
             },
             "hardware_predictions": {
@@ -1190,8 +1208,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.684,
-              "z1": 0.198,
+              "z0": 0.198,
+              "z1": -0.684,
               "zz": -0.158
             },
             "hardware_predictions": {
@@ -1211,8 +1229,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.142,
-              "z1": 0.206,
+              "z0": 0.206,
+              "z1": 0.142,
               "zz": 0.028
             },
             "hardware_predictions": {
@@ -1231,6 +1249,7 @@
       },
       "record_id": "rigetti_cepheus_1_108q__two_qubit_zz_expectation_phase_wrap_v1__20260519T100942Z",
       "recorded_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
           "mae": 0.149995,
@@ -1266,8 +1285,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.866,
-              "z1": 0.248,
+              "z0": 0.248,
+              "z1": -0.866,
               "zz": -0.222
             },
             "hardware_predictions": {
@@ -1287,8 +1306,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.068,
-              "z1": -0.268,
+              "z0": -0.268,
+              "z1": 0.068,
               "zz": -0.008
             },
             "hardware_predictions": {
@@ -1308,8 +1327,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.626,
-              "z1": 0.27,
+              "z0": 0.27,
+              "z1": -0.626,
               "zz": -0.156
             },
             "hardware_predictions": {
@@ -1329,8 +1348,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.146,
-              "z1": 0.438,
+              "z0": 0.438,
+              "z1": 0.146,
               "zz": 0.056
             },
             "hardware_predictions": {
@@ -1350,8 +1369,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.618,
-              "z1": -0.514,
+              "z0": -0.514,
+              "z1": -0.618,
               "zz": 0.288
             },
             "hardware_predictions": {
@@ -1371,8 +1390,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.042,
-              "z1": -0.118,
+              "z0": -0.118,
+              "z1": 0.042,
               "zz": -0.008
             },
             "hardware_predictions": {
@@ -1392,8 +1411,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.684,
-              "z1": 0.198,
+              "z0": 0.198,
+              "z1": -0.684,
               "zz": -0.158
             },
             "hardware_predictions": {
@@ -1413,8 +1432,8 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.142,
-              "z1": 0.206,
+              "z0": 0.206,
+              "z1": 0.142,
               "zz": 0.028
             },
             "hardware_predictions": {
@@ -1437,6 +1456,7 @@
       "submitted_at_utc": "2026-05-19T10:07:08Z",
       "table_row": {
         "backend": "Rigetti Cepheus-1-108Q",
+        "bitstring_order": "q0q1",
         "control_mae": 0.149995,
         "control_rank_corr": 0.121232,
         "expected_outcome": "hardware-positive",
@@ -1452,6 +1472,7 @@
     {
       "backend": "ibm_fez",
       "backend_label": "IBM Fez",
+      "bitstring_order": "q1q0",
       "checks": [
         {
           "name": "witness_mae",
@@ -1552,6 +1573,12 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 4096,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q1q0",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q1q0"
         }
       ],
       "completed_at_utc": "2026-05-19T22:22:18Z",
@@ -1571,6 +1598,7 @@
       },
       "provider": "ibm_runtime",
       "recomputed_evaluation": {
+        "bitstring_order": "q1q0",
         "comparability_pass": true,
         "control": {
           "mae": 0.212516,
@@ -1941,6 +1969,7 @@
       },
       "record_id": "ibm_fez__two_qubit_cx_parity_phase_wrap_v2__20260519T222219Z",
       "recorded_evaluation": {
+        "bitstring_order": "q1q0",
         "comparability_pass": true,
         "control": {
           "mae": 0.212516,
@@ -2315,6 +2344,7 @@
       "submitted_at_utc": "2026-05-19T22:21:54Z",
       "table_row": {
         "backend": "IBM Fez",
+        "bitstring_order": "q1q0",
         "control_mae": 0.212516,
         "control_rank_corr": -0.169318,
         "expected_outcome": "hardware-positive",
@@ -2330,80 +2360,83 @@
     {
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
       "backend_label": "Rigetti Cepheus-1-108Q",
+      "bitstring_order": "q0q1",
       "checks": [
         {
           "name": "witness_mae",
           "pass": true,
-          "recomputed": 0.290715,
-          "recorded": 0.290715,
+          "recomputed": 0.061643,
+          "recorded": 0.061643,
           "tolerance": 1e-06
         },
         {
           "name": "witness_rank_correlation",
           "pass": true,
-          "recomputed": 0.0,
-          "recorded": 0.0,
+          "recomputed": 0.557668,
+          "recorded": 0.557668,
           "tolerance": 1e-06
         },
         {
           "name": "control_mae",
           "pass": true,
-          "recomputed": 0.102104,
-          "recorded": 0.102104,
+          "recomputed": 0.19437,
+          "recorded": 0.19437,
           "tolerance": 1e-06
         },
         {
           "name": "control_rank_correlation",
           "pass": true,
-          "recomputed": 0.691023,
-          "recorded": 0.691023,
+          "recomputed": -0.060616,
+          "recorded": -0.060616,
           "tolerance": 1e-06
         },
         {
           "name": "status_matches",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "name": "gate_pass_matches",
           "pass": true,
-          "recomputed": false,
-          "recorded": false
+          "recomputed": true,
+          "recorded": true
         },
         {
-          "expected": "hardware-negative",
+          "expected": "hardware-positive",
           "name": "expected_outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative"
+          "recomputed": "hardware-positive"
         },
         {
-          "gate_pass": false,
-          "name": "negative_record_does_not_support_positive_gate",
-          "pass": true
+          "control": 0.19437,
+          "name": "witness_beats_control_mae",
+          "pass": true,
+          "witness": 0.061643
         },
         {
-          "name": "negative_record_outcome_is_hardware_negative",
-          "outcome": "hardware-negative",
-          "pass": true
+          "control": -0.060616,
+          "name": "witness_beats_control_rank",
+          "pass": true,
+          "witness": 0.557668
         },
         {
           "name": "summary_status_matches_recomputed",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "summary_outcome_matches_recomputed",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "manifest_family": "two_qubit_cx_parity_phase_wrap_v2",
@@ -2428,11 +2461,17 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 1000,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q0q1",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q0q1"
         }
       ],
       "completed_at_utc": "2026-05-19T23:00:46Z",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "gate_pass": false,
+      "gate_pass": true,
       "job_ids": [
         "arn:aws:braket:us-west-1:485386182336:quantum-task/c5fb6119-61e0-4138-a64b-e1cb621e7301",
         "arn:aws:braket:us-west-1:485386182336:quantum-task/76f38473-4390-413b-9d42-b8ed50bd1246",
@@ -2443,7 +2482,7 @@
         "arn:aws:braket:us-west-1:485386182336:quantum-task/4018c0ad-1d2b-4fa4-a284-ba7aeb72ef91",
         "arn:aws:braket:us-west-1:485386182336:quantum-task/6e3b04aa-a883-4575-b75a-d025e0fad531"
       ],
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "packet_id": "qrope-hardware-7e5eaa2ee2d462b8",
       "pass": true,
       "paths": {
@@ -2454,18 +2493,16 @@
       },
       "provider": "amazon_braket",
       "recomputed_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.102104,
-          "rank_correlation": 0.691023
+          "mae": 0.19437,
+          "rank_correlation": -0.060616
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -2480,7 +2517,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -2492,13 +2529,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.07,
-              "z1": -0.118,
+              "z0": -0.118,
+              "z1": 0.07,
               "zz": -0.704
             },
             "hardware_predictions": {
-              "control": 0.3415,
-              "witness": 0.423271867877
+              "control": 0.2945,
+              "witness": 0.545516688548
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -2513,13 +2550,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.038,
-              "z1": -0.92,
+              "z0": -0.92,
+              "z1": -0.038,
               "zz": 0.05
             },
             "hardware_predictions": {
-              "control": 0.503,
-              "witness": 0.0
+              "control": 0.2825,
+              "witness": 0.475290940503
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -2534,13 +2571,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.012,
-              "z1": 0.06,
+              "z0": 0.06,
+              "z1": -0.012,
               "zz": -0.46
             },
             "hardware_predictions": {
-              "control": 0.382,
-              "witness": 0.53901430447
+              "control": 0.4,
+              "witness": 0.492197139106
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -2555,13 +2592,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.044,
-              "z1": 0.108,
+              "z0": 0.108,
+              "z1": 0.044,
               "zz": 0.136
             },
             "hardware_predictions": {
-              "control": 0.545,
-              "witness": 0.570225748045
+              "control": 0.561,
+              "witness": 0.528610489944
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -2576,13 +2613,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.568,
-              "z1": -0.938,
+              "z0": -0.938,
+              "z1": 0.568,
               "zz": -0.554
             },
             "hardware_predictions": {
-              "control": 0.5035,
-              "witness": 0.0
+              "control": 0.127,
+              "witness": 0.869335415645
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -2597,13 +2634,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.07,
-              "z1": -0.768,
+              "z0": -0.768,
+              "z1": -0.07,
               "zz": 0.07
             },
             "hardware_predictions": {
-              "control": 0.5,
-              "witness": 0.00061690279
+              "control": 0.3255,
+              "witness": 0.454483311452
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -2618,13 +2655,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.066,
-              "z1": -0.008,
+              "z0": -0.008,
+              "z1": 0.066,
               "zz": -0.45
             },
             "hardware_predictions": {
-              "control": 0.404,
-              "witness": 0.494798092737
+              "control": 0.3855,
+              "witness": 0.542915734917
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -2639,38 +2676,37 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.096,
-              "z1": 0.106,
+              "z0": 0.106,
+              "z1": 0.096,
               "zz": 0.13
             },
             "hardware_predictions": {
-              "control": 0.5565,
-              "witness": 0.56892527123
+              "control": 0.559,
+              "witness": 0.562422887151
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.290715,
-          "rank_correlation": 0.0
+          "mae": 0.061643,
+          "rank_correlation": 0.557668
         }
       },
       "record_id": "rigetti_cepheus_1_108q__two_qubit_cx_parity_phase_wrap_v2__20260519T230047Z",
       "recorded_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.102104,
-          "rank_correlation": 0.691023
+          "mae": 0.19437,
+          "rank_correlation": -0.060616
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
+        "historical_decoder_note": "Earlier generic q1q0 decoding classified this Braket CX record as hardware-negative; provider-aware q0q1 decoding recomputes it from the same raw counts as hardware-positive.",
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -2685,7 +2721,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -2697,13 +2733,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.07,
-              "z1": -0.118,
+              "z0": -0.118,
+              "z1": 0.07,
               "zz": -0.704
             },
             "hardware_predictions": {
-              "control": 0.3415,
-              "witness": 0.423271867877
+              "control": 0.2945,
+              "witness": 0.545516688548
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -2718,13 +2754,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.038,
-              "z1": -0.92,
+              "z0": -0.92,
+              "z1": -0.038,
               "zz": 0.05
             },
             "hardware_predictions": {
-              "control": 0.503,
-              "witness": 0.0
+              "control": 0.2825,
+              "witness": 0.475290940503
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -2739,13 +2775,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.012,
-              "z1": 0.06,
+              "z0": 0.06,
+              "z1": -0.012,
               "zz": -0.46
             },
             "hardware_predictions": {
-              "control": 0.382,
-              "witness": 0.53901430447
+              "control": 0.4,
+              "witness": 0.492197139106
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -2760,13 +2796,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.044,
-              "z1": 0.108,
+              "z0": 0.108,
+              "z1": 0.044,
               "zz": 0.136
             },
             "hardware_predictions": {
-              "control": 0.545,
-              "witness": 0.570225748045
+              "control": 0.561,
+              "witness": 0.528610489944
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -2781,13 +2817,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.568,
-              "z1": -0.938,
+              "z0": -0.938,
+              "z1": 0.568,
               "zz": -0.554
             },
             "hardware_predictions": {
-              "control": 0.5035,
-              "witness": 0.0
+              "control": 0.127,
+              "witness": 0.869335415645
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -2802,13 +2838,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.07,
-              "z1": -0.768,
+              "z0": -0.768,
+              "z1": -0.07,
               "zz": 0.07
             },
             "hardware_predictions": {
-              "control": 0.5,
-              "witness": 0.00061690279
+              "control": 0.3255,
+              "witness": 0.454483311452
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -2823,13 +2859,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.066,
-              "z1": -0.008,
+              "z0": -0.008,
+              "z1": 0.066,
               "zz": -0.45
             },
             "hardware_predictions": {
-              "control": 0.404,
-              "witness": 0.494798092737
+              "control": 0.3855,
+              "witness": 0.542915734917
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -2844,22 +2880,22 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.096,
-              "z1": 0.106,
+              "z0": 0.106,
+              "z1": 0.096,
               "zz": 0.13
             },
             "hardware_predictions": {
-              "control": 0.5565,
-              "witness": 0.56892527123
+              "control": 0.559,
+              "witness": 0.562422887151
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.290715,
-          "rank_correlation": 0.0
+          "mae": 0.061643,
+          "rank_correlation": 0.557668
         }
       },
       "row_count": 8,
@@ -2868,95 +2904,99 @@
       "submitted_at_utc": "2026-05-19T22:57:32Z",
       "table_row": {
         "backend": "Rigetti Cepheus-1-108Q",
-        "control_mae": 0.102104,
-        "control_rank_corr": 0.691023,
-        "expected_outcome": "hardware-negative",
+        "bitstring_order": "q0q1",
+        "control_mae": 0.19437,
+        "control_rank_corr": -0.060616,
+        "expected_outcome": "hardware-positive",
         "family": "two_qubit_cx_parity_phase_wrap_v2",
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "provider": "amazon_braket",
         "rows": 8,
         "shots": 1000,
-        "witness_mae": 0.290715,
-        "witness_rank_corr": 0.0
+        "witness_mae": 0.061643,
+        "witness_rank_corr": 0.557668
       }
     },
     {
       "backend": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
       "backend_label": "IQM Garnet",
+      "bitstring_order": "q0q1",
       "checks": [
         {
           "name": "witness_mae",
           "pass": true,
-          "recomputed": 0.314936,
-          "recorded": 0.314936,
+          "recomputed": 0.021719,
+          "recorded": 0.021719,
           "tolerance": 1e-06
         },
         {
           "name": "witness_rank_correlation",
           "pass": true,
-          "recomputed": -0.487841,
-          "recorded": -0.487841,
+          "recomputed": 0.981981,
+          "recorded": 0.981981,
           "tolerance": 1e-06
         },
         {
           "name": "control_mae",
           "pass": true,
-          "recomputed": 0.126479,
-          "recorded": 0.126479,
+          "recomputed": 0.20437,
+          "recorded": 0.20437,
           "tolerance": 1e-06
         },
         {
           "name": "control_rank_correlation",
           "pass": true,
-          "recomputed": 0.521298,
-          "recorded": 0.521298,
+          "recomputed": -0.060616,
+          "recorded": -0.060616,
           "tolerance": 1e-06
         },
         {
           "name": "status_matches",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "name": "gate_pass_matches",
           "pass": true,
-          "recomputed": false,
-          "recorded": false
+          "recomputed": true,
+          "recorded": true
         },
         {
-          "expected": "hardware-negative",
+          "expected": "hardware-positive",
           "name": "expected_outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative"
+          "recomputed": "hardware-positive"
         },
         {
-          "gate_pass": false,
-          "name": "negative_record_does_not_support_positive_gate",
-          "pass": true
+          "control": 0.20437,
+          "name": "witness_beats_control_mae",
+          "pass": true,
+          "witness": 0.021719
         },
         {
-          "name": "negative_record_outcome_is_hardware_negative",
-          "outcome": "hardware-negative",
-          "pass": true
+          "control": -0.060616,
+          "name": "witness_beats_control_rank",
+          "pass": true,
+          "witness": 0.981981
         },
         {
           "name": "summary_status_matches_recomputed",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "summary_outcome_matches_recomputed",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "manifest_family": "two_qubit_cx_parity_phase_wrap_v2",
@@ -2981,11 +3021,17 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 1000,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q0q1",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q0q1"
         }
       ],
       "completed_at_utc": "2026-05-19T23:04:44Z",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "gate_pass": false,
+      "gate_pass": true,
       "job_ids": [
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/2ee4d2e8-8b8c-43c8-98d3-77d55752b771",
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/f19211be-ff16-44b1-8a6b-71a942c2196c",
@@ -2996,7 +3042,7 @@
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/b30ec4cd-2002-4522-a78b-e990d2a03436",
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/3c43c44a-8ec5-43ff-b8bb-ecdfaaedc54c"
       ],
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "packet_id": "qrope-hardware-b18377a1f2d6c22d",
       "pass": true,
       "paths": {
@@ -3007,18 +3053,16 @@
       },
       "provider": "amazon_braket",
       "recomputed_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.126479,
-          "rank_correlation": 0.521298
+          "mae": 0.20437,
+          "rank_correlation": -0.060616
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -3033,7 +3077,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -3045,13 +3089,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.022,
-              "z1": -0.014,
+              "z0": -0.014,
+              "z1": 0.022,
               "zz": -0.856
             },
             "hardware_predictions": {
-              "control": 0.2915,
-              "witness": 0.49089666229
+              "control": 0.2825,
+              "witness": 0.514305244972
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -3066,13 +3110,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.07,
-              "z1": -0.948,
+              "z0": -0.948,
+              "z1": -0.07,
               "zz": 0.054
             },
             "hardware_predictions": {
-              "control": 0.496,
-              "witness": 0.0
+              "control": 0.2765,
+              "witness": 0.454483311452
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -3087,13 +3131,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.096,
-              "z1": 0.204,
+              "z0": 0.204,
+              "z1": -0.096,
               "zz": -0.648
             },
             "hardware_predictions": {
-              "control": 0.314,
-              "witness": 0.632648635197
+              "control": 0.389,
+              "witness": 0.437577112849
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -3108,13 +3152,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.08,
-              "z1": 0.15,
+              "z0": 0.15,
+              "z1": 0.08,
               "zz": 0.082
             },
             "hardware_predictions": {
-              "control": 0.5405,
-              "witness": 0.597535761174
+              "control": 0.558,
+              "witness": 0.552019072626
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -3129,13 +3173,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.668,
-              "z1": -0.94,
+              "z0": -0.94,
+              "z1": 0.668,
               "zz": -0.692
             },
             "hardware_predictions": {
-              "control": 0.494,
-              "witness": 0.0
+              "control": 0.092,
+              "witness": 0.934359256428
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -3150,13 +3194,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.036,
-              "z1": -0.708,
+              "z0": -0.708,
+              "z1": 0.036,
               "zz": -0.032
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.039631207259
+              "control": 0.315,
+              "witness": 0.523408582682
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -3171,13 +3215,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.136,
-              "z1": 0.192,
+              "z0": 0.192,
+              "z1": -0.136,
               "zz": -0.684
             },
             "hardware_predictions": {
-              "control": 0.295,
-              "witness": 0.624845774303
+              "control": 0.377,
+              "witness": 0.411567576536
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -3192,38 +3236,37 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.048,
-              "z1": 0.182,
+              "z0": 0.182,
+              "z1": 0.048,
               "zz": 0.054
             },
             "hardware_predictions": {
-              "control": 0.5255,
-              "witness": 0.618343390224
+              "control": 0.559,
+              "witness": 0.531211443576
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.314936,
-          "rank_correlation": -0.487841
+          "mae": 0.021719,
+          "rank_correlation": 0.981981
         }
       },
       "record_id": "iqm_garnet__two_qubit_cx_parity_phase_wrap_v2__20260519T230446Z",
       "recorded_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.126479,
-          "rank_correlation": 0.521298
+          "mae": 0.20437,
+          "rank_correlation": -0.060616
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
+        "historical_decoder_note": "Earlier generic q1q0 decoding classified this Braket CX record as hardware-negative; provider-aware q0q1 decoding recomputes it from the same raw counts as hardware-positive.",
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -3238,7 +3281,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -3250,13 +3293,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.022,
-              "z1": -0.014,
+              "z0": -0.014,
+              "z1": 0.022,
               "zz": -0.856
             },
             "hardware_predictions": {
-              "control": 0.2915,
-              "witness": 0.49089666229
+              "control": 0.2825,
+              "witness": 0.514305244972
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -3271,13 +3314,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.07,
-              "z1": -0.948,
+              "z0": -0.948,
+              "z1": -0.07,
               "zz": 0.054
             },
             "hardware_predictions": {
-              "control": 0.496,
-              "witness": 0.0
+              "control": 0.2765,
+              "witness": 0.454483311452
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -3292,13 +3335,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.096,
-              "z1": 0.204,
+              "z0": 0.204,
+              "z1": -0.096,
               "zz": -0.648
             },
             "hardware_predictions": {
-              "control": 0.314,
-              "witness": 0.632648635197
+              "control": 0.389,
+              "witness": 0.437577112849
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -3313,13 +3356,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.08,
-              "z1": 0.15,
+              "z0": 0.15,
+              "z1": 0.08,
               "zz": 0.082
             },
             "hardware_predictions": {
-              "control": 0.5405,
-              "witness": 0.597535761174
+              "control": 0.558,
+              "witness": 0.552019072626
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -3334,13 +3377,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.668,
-              "z1": -0.94,
+              "z0": -0.94,
+              "z1": 0.668,
               "zz": -0.692
             },
             "hardware_predictions": {
-              "control": 0.494,
-              "witness": 0.0
+              "control": 0.092,
+              "witness": 0.934359256428
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -3355,13 +3398,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.036,
-              "z1": -0.708,
+              "z0": -0.708,
+              "z1": 0.036,
               "zz": -0.032
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.039631207259
+              "control": 0.315,
+              "witness": 0.523408582682
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -3376,13 +3419,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.136,
-              "z1": 0.192,
+              "z0": 0.192,
+              "z1": -0.136,
               "zz": -0.684
             },
             "hardware_predictions": {
-              "control": 0.295,
-              "witness": 0.624845774303
+              "control": 0.377,
+              "witness": 0.411567576536
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -3397,22 +3440,22 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.048,
-              "z1": 0.182,
+              "z0": 0.182,
+              "z1": 0.048,
               "zz": 0.054
             },
             "hardware_predictions": {
-              "control": 0.5255,
-              "witness": 0.618343390224
+              "control": 0.559,
+              "witness": 0.531211443576
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.314936,
-          "rank_correlation": -0.487841
+          "mae": 0.021719,
+          "rank_correlation": 0.981981
         }
       },
       "row_count": 8,
@@ -3421,95 +3464,99 @@
       "submitted_at_utc": "2026-05-19T23:01:19Z",
       "table_row": {
         "backend": "IQM Garnet",
-        "control_mae": 0.126479,
-        "control_rank_corr": 0.521298,
-        "expected_outcome": "hardware-negative",
+        "bitstring_order": "q0q1",
+        "control_mae": 0.20437,
+        "control_rank_corr": -0.060616,
+        "expected_outcome": "hardware-positive",
         "family": "two_qubit_cx_parity_phase_wrap_v2",
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "provider": "amazon_braket",
         "rows": 8,
         "shots": 1000,
-        "witness_mae": 0.314936,
-        "witness_rank_corr": -0.487841
+        "witness_mae": 0.021719,
+        "witness_rank_corr": 0.981981
       }
     },
     {
       "backend": "arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald",
       "backend_label": "IQM Emerald",
+      "bitstring_order": "q0q1",
       "checks": [
         {
           "name": "witness_mae",
           "pass": true,
-          "recomputed": 0.324767,
-          "recorded": 0.324767,
+          "recomputed": 0.021479,
+          "recorded": 0.021479,
           "tolerance": 1e-06
         },
         {
           "name": "witness_rank_correlation",
           "pass": true,
-          "recomputed": -0.223607,
-          "recorded": -0.223607,
+          "recomputed": 0.884995,
+          "recorded": 0.884995,
           "tolerance": 1e-06
         },
         {
           "name": "control_mae",
           "pass": true,
-          "recomputed": 0.127917,
-          "recorded": 0.127917,
+          "recomputed": 0.210995,
+          "recorded": 0.210995,
           "tolerance": 1e-06
         },
         {
           "name": "control_rank_correlation",
           "pass": true,
-          "recomputed": 0.634194,
-          "recorded": 0.634194,
+          "recomputed": -0.096986,
+          "recorded": -0.096986,
           "tolerance": 1e-06
         },
         {
           "name": "status_matches",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "name": "gate_pass_matches",
           "pass": true,
-          "recomputed": false,
-          "recorded": false
+          "recomputed": true,
+          "recorded": true
         },
         {
-          "expected": "hardware-negative",
+          "expected": "hardware-positive",
           "name": "expected_outcome_matches",
           "pass": true,
-          "recomputed": "hardware-negative"
+          "recomputed": "hardware-positive"
         },
         {
-          "gate_pass": false,
-          "name": "negative_record_does_not_support_positive_gate",
-          "pass": true
+          "control": 0.210995,
+          "name": "witness_beats_control_mae",
+          "pass": true,
+          "witness": 0.021479
         },
         {
-          "name": "negative_record_outcome_is_hardware_negative",
-          "outcome": "hardware-negative",
-          "pass": true
+          "control": -0.096986,
+          "name": "witness_beats_control_rank",
+          "pass": true,
+          "witness": 0.884995
         },
         {
           "name": "summary_status_matches_recomputed",
           "pass": true,
-          "recomputed": "FAIL_STOP",
-          "recorded": "FAIL_STOP"
+          "recomputed": "PASS",
+          "recorded": "PASS"
         },
         {
           "name": "summary_outcome_matches_recomputed",
           "pass": true,
-          "recomputed": "hardware-negative",
-          "recorded": "hardware-negative"
+          "recomputed": "hardware-positive",
+          "recorded": "hardware-positive"
         },
         {
           "manifest_family": "two_qubit_cx_parity_phase_wrap_v2",
@@ -3534,11 +3581,17 @@
           "name": "packet_shots_match_manifest",
           "packet_shots": 1000,
           "pass": true
+        },
+        {
+          "manifest_bitstring_order": "q0q1",
+          "name": "evaluation_bitstring_order_matches_manifest",
+          "pass": true,
+          "recorded": "q0q1"
         }
       ],
       "completed_at_utc": "2026-05-19T23:08:17Z",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "gate_pass": false,
+      "gate_pass": true,
       "job_ids": [
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/e8a196e7-a797-4f51-b501-ef2b6757abf3",
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/6f01fb84-a044-4a1d-b748-a38b3e102236",
@@ -3549,7 +3602,7 @@
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/a69879e2-18e6-4323-acef-b1d3bf909a79",
         "arn:aws:braket:eu-north-1:485386182336:quantum-task/36c16f94-61e4-477e-b293-274827723663"
       ],
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "packet_id": "qrope-hardware-1aeca8f0360c20cd",
       "pass": true,
       "paths": {
@@ -3560,18 +3613,16 @@
       },
       "provider": "amazon_braket",
       "recomputed_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.127917,
-          "rank_correlation": 0.634194
+          "mae": 0.210995,
+          "rank_correlation": -0.096986
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -3586,7 +3637,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -3598,13 +3649,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.036,
-              "z1": 0.06,
+              "z0": 0.06,
+              "z1": -0.036,
               "zz": -0.892
             },
             "hardware_predictions": {
-              "control": 0.268,
-              "witness": 0.53901430447
+              "control": 0.292,
+              "witness": 0.476591417318
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -3619,13 +3670,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.078,
-              "z1": -0.972,
+              "z0": -0.972,
+              "z1": -0.078,
               "zz": 0.082
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.0
+              "control": 0.2775,
+              "witness": 0.44928140419
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -3640,13 +3691,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.114,
-              "z1": 0.172,
+              "z0": 0.172,
+              "z1": -0.114,
               "zz": -0.698
             },
             "hardware_predictions": {
-              "control": 0.297,
-              "witness": 0.611841006146
+              "control": 0.3685,
+              "witness": 0.425872821508
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -3661,13 +3712,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.022,
-              "z1": 0.174,
+              "z0": 0.174,
+              "z1": -0.022,
               "zz": 0.064
             },
             "hardware_predictions": {
-              "control": 0.5105,
-              "witness": 0.613141482962
+              "control": 0.5595,
+              "witness": 0.485694755028
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -3682,13 +3733,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.682,
-              "z1": -0.972,
+              "z0": -0.972,
+              "z1": 0.682,
               "zz": -0.678
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.0
+              "control": 0.0875,
+              "witness": 0.943462594137
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -3703,13 +3754,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.08,
-              "z1": -0.802,
+              "z0": -0.802,
+              "z1": 0.08,
               "zz": -0.106
             },
             "hardware_predictions": {
-              "control": 0.4935,
-              "witness": 0.0
+              "control": 0.273,
+              "witness": 0.552019072626
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -3724,13 +3775,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.148,
-              "z1": 0.208,
+              "z0": 0.208,
+              "z1": -0.148,
               "zz": -0.708
             },
             "hardware_predictions": {
-              "control": 0.286,
-              "witness": 0.635249588828
+              "control": 0.375,
+              "witness": 0.403764715642
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -3745,38 +3796,37 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.036,
-              "z1": 0.188,
+              "z0": 0.188,
+              "z1": 0.036,
               "zz": 0.02
             },
             "hardware_predictions": {
-              "control": 0.514,
-              "witness": 0.622244820671
+              "control": 0.552,
+              "witness": 0.523408582682
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.324767,
-          "rank_correlation": -0.223607
+          "mae": 0.021479,
+          "rank_correlation": 0.884995
         }
       },
       "record_id": "iqm_emerald__two_qubit_cx_parity_phase_wrap_v2__20260519T230818Z",
       "recorded_evaluation": {
+        "bitstring_order": "q0q1",
         "comparability_pass": true,
         "control": {
-          "mae": 0.127917,
-          "rank_correlation": 0.634194
+          "mae": 0.210995,
+          "rank_correlation": -0.096986
         },
-        "direction_agreement": false,
-        "fail_reasons": [
-          "hardware witness did not beat hardware control on both metrics",
-          "hardware direction did not agree with noisy-simulator direction"
-        ],
-        "gate_pass": false,
-        "hardware_direction_positive": false,
+        "direction_agreement": true,
+        "fail_reasons": [],
+        "gate_pass": true,
+        "hardware_direction_positive": true,
+        "historical_decoder_note": "Earlier generic q1q0 decoding classified this Braket CX record as hardware-negative; provider-aware q0q1 decoding recomputes it from the same raw counts as hardware-positive.",
         "metadata_complete": true,
         "missing_metadata": [],
         "noisy_direction_positive": true,
@@ -3791,7 +3841,7 @@
             "rank_correlation": 1.0
           }
         },
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "per_row_results": [
           {
             "counts": {
@@ -3803,13 +3853,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.036,
-              "z1": 0.06,
+              "z0": 0.06,
+              "z1": -0.036,
               "zz": -0.892
             },
             "hardware_predictions": {
-              "control": 0.268,
-              "witness": 0.53901430447
+              "control": 0.292,
+              "witness": 0.476591417318
             },
             "label": 0.5,
             "row_id": "hwrow-000"
@@ -3824,13 +3874,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.078,
-              "z1": -0.972,
+              "z0": -0.972,
+              "z1": -0.078,
               "zz": 0.082
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.0
+              "control": 0.2775,
+              "witness": 0.44928140419
             },
             "label": 0.453314982767,
             "row_id": "hwrow-001"
@@ -3845,13 +3895,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.114,
-              "z1": 0.172,
+              "z0": 0.172,
+              "z1": -0.114,
               "zz": -0.698
             },
             "hardware_predictions": {
-              "control": 0.297,
-              "witness": 0.611841006146
+              "control": 0.3685,
+              "witness": 0.425872821508
             },
             "label": 0.418330015736,
             "row_id": "hwrow-002"
@@ -3866,13 +3916,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.022,
-              "z1": 0.174,
+              "z0": 0.174,
+              "z1": -0.022,
               "zz": 0.064
             },
             "hardware_predictions": {
-              "control": 0.5105,
-              "witness": 0.613141482962
+              "control": 0.5595,
+              "witness": 0.485694755028
             },
             "label": 0.508009882638,
             "row_id": "hwrow-003"
@@ -3887,13 +3937,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.682,
-              "z1": -0.972,
+              "z0": -0.972,
+              "z1": 0.682,
               "zz": -0.678
             },
             "hardware_predictions": {
-              "control": 0.501,
-              "witness": 0.0
+              "control": 0.0875,
+              "witness": 0.943462594137
             },
             "label": 0.976007551561,
             "row_id": "hwrow-004"
@@ -3908,13 +3958,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.08,
-              "z1": -0.802,
+              "z0": -0.802,
+              "z1": 0.08,
               "zz": -0.106
             },
             "hardware_predictions": {
-              "control": 0.4935,
-              "witness": 0.0
+              "control": 0.273,
+              "witness": 0.552019072626
             },
             "label": 0.5,
             "row_id": "hwrow-005"
@@ -3929,13 +3979,13 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": -0.148,
-              "z1": 0.208,
+              "z0": 0.208,
+              "z1": -0.148,
               "zz": -0.708
             },
             "hardware_predictions": {
-              "control": 0.286,
-              "witness": 0.635249588828
+              "control": 0.375,
+              "witness": 0.403764715642
             },
             "label": 0.418330015736,
             "row_id": "hwrow-006"
@@ -3950,22 +4000,22 @@
             "expectations": {
               "shots": 1000,
               "valid": true,
-              "z0": 0.036,
-              "z1": 0.188,
+              "z0": 0.188,
+              "z1": 0.036,
               "zz": 0.02
             },
             "hardware_predictions": {
-              "control": 0.514,
-              "witness": 0.622244820671
+              "control": 0.552,
+              "witness": 0.523408582682
             },
             "label": 0.508009882638,
             "row_id": "hwrow-007"
           }
         ],
-        "status": "FAIL_STOP",
+        "status": "PASS",
         "witness": {
-          "mae": 0.324767,
-          "rank_correlation": -0.223607
+          "mae": 0.021479,
+          "rank_correlation": 0.884995
         }
       },
       "row_count": 8,
@@ -3974,16 +4024,17 @@
       "submitted_at_utc": "2026-05-19T23:04:52Z",
       "table_row": {
         "backend": "IQM Emerald",
-        "control_mae": 0.127917,
-        "control_rank_corr": 0.634194,
-        "expected_outcome": "hardware-negative",
+        "bitstring_order": "q0q1",
+        "control_mae": 0.210995,
+        "control_rank_corr": -0.096986,
+        "expected_outcome": "hardware-positive",
         "family": "two_qubit_cx_parity_phase_wrap_v2",
-        "outcome": "hardware-negative",
+        "outcome": "hardware-positive",
         "provider": "amazon_braket",
         "rows": 8,
         "shots": 1000,
-        "witness_mae": 0.324767,
-        "witness_rank_corr": -0.223607
+        "witness_mae": 0.021479,
+        "witness_rank_corr": 0.884995
       }
     }
   ],
@@ -3992,6 +4043,7 @@
   "table": [
     {
       "backend": "IBM Fez",
+      "bitstring_order": "q1q0",
       "control_mae": 0.217262,
       "control_rank_corr": -0.17694,
       "expected_outcome": "hardware-positive",
@@ -4005,6 +4057,7 @@
     },
     {
       "backend": "Rigetti Cepheus-1-108Q",
+      "bitstring_order": "q0q1",
       "control_mae": 0.149995,
       "control_rank_corr": 0.121232,
       "expected_outcome": "hardware-positive",
@@ -4018,6 +4071,7 @@
     },
     {
       "backend": "IBM Fez",
+      "bitstring_order": "q1q0",
       "control_mae": 0.212516,
       "control_rank_corr": -0.169318,
       "expected_outcome": "hardware-positive",
@@ -4031,42 +4085,45 @@
     },
     {
       "backend": "Rigetti Cepheus-1-108Q",
-      "control_mae": 0.102104,
-      "control_rank_corr": 0.691023,
-      "expected_outcome": "hardware-negative",
+      "bitstring_order": "q0q1",
+      "control_mae": 0.19437,
+      "control_rank_corr": -0.060616,
+      "expected_outcome": "hardware-positive",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "provider": "amazon_braket",
       "rows": 8,
       "shots": 1000,
-      "witness_mae": 0.290715,
-      "witness_rank_corr": 0.0
+      "witness_mae": 0.061643,
+      "witness_rank_corr": 0.557668
     },
     {
       "backend": "IQM Garnet",
-      "control_mae": 0.126479,
-      "control_rank_corr": 0.521298,
-      "expected_outcome": "hardware-negative",
+      "bitstring_order": "q0q1",
+      "control_mae": 0.20437,
+      "control_rank_corr": -0.060616,
+      "expected_outcome": "hardware-positive",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "provider": "amazon_braket",
       "rows": 8,
       "shots": 1000,
-      "witness_mae": 0.314936,
-      "witness_rank_corr": -0.487841
+      "witness_mae": 0.021719,
+      "witness_rank_corr": 0.981981
     },
     {
       "backend": "IQM Emerald",
-      "control_mae": 0.127917,
-      "control_rank_corr": 0.634194,
-      "expected_outcome": "hardware-negative",
+      "bitstring_order": "q0q1",
+      "control_mae": 0.210995,
+      "control_rank_corr": -0.096986,
+      "expected_outcome": "hardware-positive",
       "family": "two_qubit_cx_parity_phase_wrap_v2",
-      "outcome": "hardware-negative",
+      "outcome": "hardware-positive",
       "provider": "amazon_braket",
       "rows": 8,
       "shots": 1000,
-      "witness_mae": 0.324767,
-      "witness_rank_corr": -0.223607
+      "witness_mae": 0.021479,
+      "witness_rank_corr": 0.884995
     }
   ],
   "verifier": "qrope_stage4_hardware_sweep_offline_verifier_v1"

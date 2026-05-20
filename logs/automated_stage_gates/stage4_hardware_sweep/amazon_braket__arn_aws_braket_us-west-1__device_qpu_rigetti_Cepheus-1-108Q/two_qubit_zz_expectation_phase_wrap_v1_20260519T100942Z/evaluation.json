@@ -1,4 +1,5 @@
 {
+  "bitstring_order": "q0q1",
   "comparability_pass": true,
   "control": {
     "mae": 0.149995,
@@ -34,8 +35,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": -0.866,
-        "z1": 0.248,
+        "z0": 0.248,
+        "z1": -0.866,
         "zz": -0.222
       },
       "hardware_predictions": {
@@ -55,8 +56,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": 0.068,
-        "z1": -0.268,
+        "z0": -0.268,
+        "z1": 0.068,
         "zz": -0.008
       },
       "hardware_predictions": {
@@ -76,8 +77,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": -0.626,
-        "z1": 0.27,
+        "z0": 0.27,
+        "z1": -0.626,
         "zz": -0.156
       },
       "hardware_predictions": {
@@ -97,8 +98,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": 0.146,
-        "z1": 0.438,
+        "z0": 0.438,
+        "z1": 0.146,
         "zz": 0.056
       },
       "hardware_predictions": {
@@ -118,8 +119,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": -0.618,
-        "z1": -0.514,
+        "z0": -0.514,
+        "z1": -0.618,
         "zz": 0.288
       },
       "hardware_predictions": {
@@ -139,8 +140,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": 0.042,
-        "z1": -0.118,
+        "z0": -0.118,
+        "z1": 0.042,
         "zz": -0.008
       },
       "hardware_predictions": {
@@ -160,8 +161,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": -0.684,
-        "z1": 0.198,
+        "z0": 0.198,
+        "z1": -0.684,
         "zz": -0.158
       },
       "hardware_predictions": {
@@ -181,8 +182,8 @@
       "expectations": {
         "shots": 1000,
         "valid": true,
-        "z0": 0.142,
-        "z1": 0.206,
+        "z0": 0.206,
+        "z1": 0.142,
         "zz": 0.028
       },
       "hardware_predictions": {

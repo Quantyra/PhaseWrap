@@ -1,46 +1,7 @@
 {
-  "account_setup_check": {
-    "checked": false,
-    "reason": "Amazon Braket user-agreement acceptance is validated only when CreateQuantumTask is called; hardware execution records any AccessDeniedException as a hardware blocker."
-  },
-  "artifact_dir": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_sweep\\amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald\\two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z",
-  "backend": "arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald",
-  "blockers": [],
-  "cost_per_shot_usd": 0.0016,
-  "effective_shots": 1000,
-  "error": null,
-  "error_category": null,
-  "execution_status": "COMPLETED",
-  "gate_pass": false,
-  "job_ids": [
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/e8a196e7-a797-4f51-b501-ef2b6757abf3,arn:aws:braket:eu-north-1:485386182336:quantum-task/6f01fb84-a044-4a1d-b748-a38b3e102236,arn:aws:braket:eu-north-1:485386182336:quantum-task/36202374-cfcb-4313-bfe5-4cdedc457df1,arn:aws:braket:eu-north-1:485386182336:quantum-task/5c18ff20-41ff-47c3-a93c-e3ccddb52b19,arn:aws:braket:eu-north-1:485386182336:quantum-task/60609d11-cf7a-4b0a-bb5d-bc492e2d0356,arn:aws:braket:eu-north-1:485386182336:quantum-task/4bec2c14-2a80-42ef-bb40-b42ac23b1b32,arn:aws:braket:eu-north-1:485386182336:quantum-task/a69879e2-18e6-4323-acef-b1d3bf909a79,arn:aws:braket:eu-north-1:485386182336:quantum-task/36c16f94-61e4-477e-b293-274827723663"
-  ],
-  "outcome": "hardware-negative",
-  "packet_id": "qrope-hardware-1aeca8f0360c20cd",
-  "preflight_blockers": [],
-  "preflight_status": "READY",
-  "provider": "amazon_braket",
-  "result_s3_uris": [
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-000/e8a196e7-a797-4f51-b501-ef2b6757abf3/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-001/6f01fb84-a044-4a1d-b748-a38b3e102236/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-002/36202374-cfcb-4313-bfe5-4cdedc457df1/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-003/5c18ff20-41ff-47c3-a93c-e3ccddb52b19/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-004/60609d11-cf7a-4b0a-bb5d-bc492e2d0356/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-005/4bec2c14-2a80-42ef-bb40-b42ac23b1b32/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-006/a69879e2-18e6-4323-acef-b1d3bf909a79/results.json",
-    "s3://amazon-braket-eu-north-1-485386182336/phasewrap-rope/stage4-hardware-sweep/arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/20260519T230446Z/qrope-hardware-1aeca8f0360c20cd/hwrow-007/36c16f94-61e4-477e-b293-274827723663/results.json"
-  ],
-  "row_limit": 8,
-  "status": "FAIL_STOP",
-  "target_shots": 1000,
-  "task_arns": [
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/e8a196e7-a797-4f51-b501-ef2b6757abf3",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/6f01fb84-a044-4a1d-b748-a38b3e102236",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/36202374-cfcb-4313-bfe5-4cdedc457df1",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/5c18ff20-41ff-47c3-a93c-e3ccddb52b19",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/60609d11-cf7a-4b0a-bb5d-bc492e2d0356",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/4bec2c14-2a80-42ef-bb40-b42ac23b1b32",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/a69879e2-18e6-4323-acef-b1d3bf909a79",
-    "arn:aws:braket:eu-north-1:485386182336:quantum-task/36c16f94-61e4-477e-b293-274827723663"
-  ]
+  "bitstring_order": "q0q1",
+  "gate_pass": true,
+  "historical_decoder_note": "Earlier generic q1q0 decoding classified this Braket CX record as hardware-negative; provider-aware q0q1 decoding recomputes it from the same raw counts as hardware-positive.",
+  "outcome": "hardware-positive",
+  "status": "PASS"
 }

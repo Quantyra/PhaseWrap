@@ -68,8 +68,8 @@ def rank_correlation(labels: list[float], predictions: list[float]) -> float:
     return evaluate_prediction_values(labels, predictions)["rank_correlation"]
 
 
-def raw_counts_to_expectations(counts: dict[str, int]) -> dict[str, Any]:
-    return counts_to_expectations(counts)
+def raw_counts_to_expectations(counts: dict[str, int], bitstring_order: str = "q1q0") -> dict[str, Any]:
+    return counts_to_expectations(counts, bitstring_order=bitstring_order)
 
 
 def validate_manifest(manifest: dict[str, Any]) -> list[str]:
@@ -121,6 +121,8 @@ def validate_manifest(manifest: dict[str, Any]) -> list[str]:
             for key in ("packet_path", "execution_path", "evaluation_path", "summary_path"):
                 if not record.get(key):
                     errors.append(f"{prefix} completed record missing path field: {key}")
+            if record.get("bitstring_order") not in {"q1q0", "q0q1"}:
+                errors.append(f"{prefix} completed record bitstring_order must be q1q0 or q0q1")
         if record.get("status") == "missing_evidence" and not record.get("missing_evidence"):
             errors.append(f"{prefix} missing_evidence record must list missing_evidence")
     return errors
@@ -269,6 +271,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
         "shots": record.get("shots"),
         "row_count": record.get("row_count"),
         "status": record.get("status"),
+        "bitstring_order": record.get("bitstring_order"),
     }
     if record.get("status") != "completed":
         return {
@@ -300,7 +303,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
     execution = read_json(REPO_ROOT / resolved_paths["execution_path"])
     evaluation = read_json(REPO_ROOT / resolved_paths["evaluation_path"])
     summary = read_json(REPO_ROOT / resolved_paths["summary_path"])
-    recomputed = evaluate_hardware_execution(packet, execution)
+    recomputed = evaluate_hardware_execution(packet, execution, bitstring_order=record.get("bitstring_order"))
     checks = _record_metric_checks(evaluation, recomputed, record.get("expected_outcome"))
     checks.extend(
         [
@@ -340,6 +343,12 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
                 "packet_shots": packet.get("shot_count"),
                 "manifest_shots": record.get("shots"),
             },
+            {
+                "name": "evaluation_bitstring_order_matches_manifest",
+                "pass": evaluation.get("bitstring_order") == record.get("bitstring_order"),
+                "recorded": evaluation.get("bitstring_order"),
+                "manifest_bitstring_order": record.get("bitstring_order"),
+            },
         ]
     )
     timestamps = _timestamps_from_execution(execution)
@@ -355,6 +364,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
         "control_rank_corr": recomputed.get("control", {}).get("rank_correlation"),
         "outcome": recomputed.get("outcome"),
         "expected_outcome": record.get("expected_outcome") or "hardware-positive",
+        "bitstring_order": record.get("bitstring_order"),
     }
     return {
         **base,

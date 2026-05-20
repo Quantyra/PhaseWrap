@@ -1,7 +1,6 @@
 {
-  "derived_from": "logs/automated_stage_gates/stage4_hardware_packet/summary.json",
+  "bitstring_order": "q1q0",
   "gate_pass": true,
-  "note": "Canonical sweep summary wrapper for the already committed IBM Fez Stage 4 hardware packet. Raw counts and backend metadata remain in logs/automated_stage_gates/stage4_hardware_packet/.",
   "outcome": "hardware-positive",
   "status": "PASS"
 }

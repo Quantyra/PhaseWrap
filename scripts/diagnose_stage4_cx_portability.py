@@ -222,6 +222,11 @@ def diagnose_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, An
     recovered = [item for item in convention_results if item["gate_pass"]]
     best_by_mae = min(convention_results, key=lambda item: item["witness"]["mae"])
     best_by_rank = max(convention_results, key=lambda item: item["witness"]["rank_correlation"])
+    generic_decoder_reference = next(
+        item
+        for item in convention_results
+        if item["bit_order"] == "q1q0_current" and item["witness_source"] == "z1_current_target"
+    )
     ideal = evaluate_ideal_cx_packet(packet)
     return {
         "record_id": record.get("record_id"),
@@ -233,6 +238,7 @@ def diagnose_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, An
         "recorded_status": recorded.get("status"),
         "recorded_witness": recorded.get("witness"),
         "recorded_control": recorded.get("control"),
+        "historical_generic_decoder_reference": generic_decoder_reference,
         "ideal_counts_reference": {
             "outcome": ideal.get("outcome"),
             "gate_pass": ideal.get("gate_pass"),
@@ -261,7 +267,8 @@ def diagnose_manifest(manifest_path: Path) -> dict[str, Any]:
     braket_negative = [
         item
         for item in diagnostics
-        if item.get("provider") == "amazon_braket" and item.get("recorded_outcome") == "hardware-negative"
+        if item.get("provider") == "amazon_braket"
+        and item["historical_generic_decoder_reference"].get("outcome") == "hardware-negative-under-convention"
     ]
     recovered = [
         item
@@ -284,7 +291,7 @@ def diagnose_manifest(manifest_path: Path) -> dict[str, Any]:
         "classical decoding convention mismatch."
         if braket_negative and not recovered
         else (
-            "All Braket CX negative records recover under a common q0q1 bitstring interpretation with "
+            "All historical generic-decoder Braket CX negative records recover under a common q0q1 bitstring interpretation with "
             "the original Z1-after-CX target witness. This points to a provider bitstring-order decoding "
             "mismatch rather than a physical CX portability failure."
             if len(recovered) == len(braket_negative) and ("q0q1_reversed", "z1_current_target") in common_recovery
@@ -305,23 +312,24 @@ def diagnose_manifest(manifest_path: Path) -> dict[str, Any]:
             ],
             "conclusion": conclusion,
             "next_questions": [
-                "Add an explicit provider bitstring-order field before reclassifying Braket CX artifacts.",
-                "Re-run the sweep verifier with provider-aware decoding and preserve both original and corrected interpretations.",
-                "Only after that, compare logical CX against native CZ or XX-family witness circuits if portability questions remain.",
+                "Provider-aware bitstring order is now explicit in the sweep manifest.",
+                "The sweep verifier now recomputes Amazon Braket records with q0q1 decoding and preserves the generic-decoder diagnostic separately.",
+                "If portability questions remain, compare logical CX against native CZ or XX-family witness circuits in a new dated evidence packet.",
             ],
         },
     }
 
 
 def print_summary(report: dict[str, Any]) -> None:
-    print("backend | recorded | recovered_by_convention | best_witness_mae | best_witness_rank")
-    print("--- | --- | --- | --- | ---")
+    print("backend | current_recorded | generic_q1q0 | recovered_by_convention | best_witness_mae | best_witness_rank")
+    print("--- | --- | --- | --- | --- | ---")
     for record in report["records"]:
         print(
             " | ".join(
                 [
                     str(record.get("backend_label") or record.get("backend")),
                     str(record.get("recorded_outcome")),
+                    str(record["historical_generic_decoder_reference"].get("outcome")),
                     str(record["diagnosis"]["bit_order_or_sign_flip_recovers_positive_gate"]),
                     str(record["best_by_witness_mae"]["witness"]["mae"]),
                     str(record["best_by_witness_rank"]["witness"]["rank_correlation"]),

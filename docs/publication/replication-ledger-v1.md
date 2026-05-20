@@ -1,6 +1,6 @@
 # PhaseWrap-RoPE replication ledger v1
 
-Status: `BRAKET_CX_NEGATIVE_REPLICATIONS_RECORDED`
+Status: `PROVIDER_AWARE_BRAKET_CX_REPLICATIONS_RECORDED`
 
 Date: `2026-05-19`
 
@@ -19,10 +19,10 @@ Machine-readable ledger: `logs/automated_stage_gates/replication_lanes/replicati
 | Product rerun A | `two_qubit_zz_expectation_phase_wrap_v1` | Second IBM backend, date 1 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | Product rerun B | `two_qubit_zz_expectation_phase_wrap_v1` | Third IBM backend or same backend on date 2 | `blocked_pending_credentials_and_backend_selection` | No replication claim. |
 | CX IBM Fez original | `two_qubit_cx_parity_phase_wrap_v2` | IBM `ibm_fez`, `2026-05-19` | `published_completed` | Bounded CX hardware-positive result for one packet/backend/date/calibration context. |
-| CX Braket Rigetti replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
-| CX Braket IQM Garnet replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Garnet`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
-| CX Braket IQM Emerald replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Emerald`, `2026-05-19` | `published_completed_negative` | Hardware-negative Braket CX replication; does not support a cross-backend CX claim. |
-| CX Braket queued attempt | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No raw counts; superseded by the later completed negative Rigetti CX record. |
+| CX Braket Rigetti replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `published_completed` | Bounded provider-aware hardware-positive Braket CX result; does not support a general cross-backend CX claim. |
+| CX Braket IQM Garnet replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Garnet`, `2026-05-19` | `published_completed` | Bounded provider-aware hardware-positive Braket CX result; does not support a general cross-backend CX claim. |
+| CX Braket IQM Emerald replication | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket IQM `Emerald`, `2026-05-19` | `published_completed` | Bounded provider-aware hardware-positive Braket CX result; does not support a general cross-backend CX claim. |
+| CX Braket queued attempt | `two_qubit_cx_parity_phase_wrap_v2` | Amazon Braket Rigetti `Cepheus-1-108Q`, `2026-05-19` | `hardware_attempt_timeout_cancelled` | No raw counts; superseded by the later completed Rigetti CX record. |
 
 ## Braket replication result for this update
 
@@ -71,17 +71,17 @@ Submitted task:
 
 The task remained `QUEUED` until the local runner hit its `1800` second timeout. A cancellation request was then sent, and AWS reported `CANCELLED` at `2026-05-19T22:07:22.245000Z`. No raw counts were produced, no CX metrics were computed from hardware counts, and this remains non-evidence for the entangling witness.
 
-## CX Braket negative replications
+## CX Braket provider-aware replications
 
-Later on `2026-05-19`, online Amazon Braket gate-model devices were run for the CX witness at 8 rows and 1000 shots per row. These runs produced raw counts and machine-verifiable negative outcomes:
+Later on `2026-05-19`, online Amazon Braket gate-model devices were run for the CX witness at 8 rows and 1000 shots per row. These runs produced raw counts and machine-verifiable provider-aware positive outcomes. The earlier generic `q1q0` decode classified them as negative; the active sweep verifier now records Amazon Braket result keys as `q0q1`.
 
 | Target | Artifact | Witness MAE | Witness rank corr | Control MAE | Control rank corr | Outcome |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| Rigetti `Cepheus-1-108Q` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z/` | 0.290715 | 0.000000 | 0.102104 | 0.691023 | `hardware-negative` |
-| IQM `Garnet` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z/` | 0.314936 | -0.487841 | 0.126479 | 0.521298 | `hardware-negative` |
-| IQM `Emerald` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z/` | 0.324767 | -0.223607 | 0.127917 | 0.634194 | `hardware-negative` |
+| Rigetti `Cepheus-1-108Q` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z/` | 0.061643 | 0.557668 | 0.194370 | -0.060616 | `hardware-positive` |
+| IQM `Garnet` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z/` | 0.021719 | 0.981981 | 0.204370 | -0.060616 | `hardware-positive` |
+| IQM `Emerald` | `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z/` | 0.021479 | 0.884995 | 0.210995 | -0.096986 | `hardware-positive` |
 
-These records show that Braket execution succeeded, but the CX witness failed the positive hardware gate on those backends. They should be reported as negative replication evidence, not omitted and not reframed as support for cross-backend robustness.
+These records show that Braket execution succeeded and that provider-aware decoding preserves witness/control ordering for the recorded packet/backend/date/calibration contexts. They should not be reframed as support for general cross-backend robustness.
 
 A replication lane becomes publishable only after it contains:
 

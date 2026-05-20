@@ -1,4 +1,5 @@
 {
+  "bitstring_order": "q1q0",
   "comparability_pass": true,
   "control": {
     "mae": 0.212516,

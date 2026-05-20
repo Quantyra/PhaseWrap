@@ -825,28 +825,41 @@ def freeze_hardware_packet(rows: list[AttentionRow], env: dict[str, str] | None 
     return packet_core
 
 
-def counts_to_expectations(counts: dict[str, int]) -> dict[str, Any]:
+BITSTRING_ORDERS: dict[str, tuple[int, int]] = {
+    "q1q0": (-1, -2),
+    "q0q1": (0, 1),
+}
+
+
+def counts_to_expectations(counts: dict[str, int], *, bitstring_order: str = "q1q0") -> dict[str, Any]:
+    if bitstring_order not in BITSTRING_ORDERS:
+        raise ValueError(f"unsupported bitstring_order: {bitstring_order}")
     shots = sum(int(value) for value in counts.values())
     if shots <= 0:
         return {"shots": 0, "z0": 0.0, "z1": 0.0, "zz": 0.0, "valid": False}
+    q0_index, q1_index = BITSTRING_ORDERS[bitstring_order]
     z0_total = 0.0
     z1_total = 0.0
     zz_total = 0.0
+    valid_shots = 0
     for raw_key, raw_count in counts.items():
         key = str(raw_key).replace(" ", "")
         if len(key) < 2:
             continue
         count = int(raw_count)
-        z0 = 1.0 if key[-1] == "0" else -1.0
-        z1 = 1.0 if key[-2] == "0" else -1.0
+        z0 = 1.0 if key[q0_index] == "0" else -1.0
+        z1 = 1.0 if key[q1_index] == "0" else -1.0
         z0_total += z0 * count
         z1_total += z1 * count
         zz_total += z0 * z1 * count
+        valid_shots += count
+    if valid_shots <= 0:
+        return {"shots": shots, "z0": 0.0, "z1": 0.0, "zz": 0.0, "valid": False}
     return {
         "shots": shots,
-        "z0": round(z0_total / shots, 12),
-        "z1": round(z1_total / shots, 12),
-        "zz": round(zz_total / shots, 12),
+        "z0": round(z0_total / valid_shots, 12),
+        "z1": round(z1_total / valid_shots, 12),
+        "zz": round(zz_total / valid_shots, 12),
         "valid": True,
     }
 
@@ -1685,7 +1698,12 @@ def _hardware_metadata_complete(packet: dict[str, Any], execution: dict[str, Any
     return not missing, missing
 
 
-def evaluate_hardware_execution(packet: dict[str, Any], execution: dict[str, Any]) -> dict[str, Any]:
+def evaluate_hardware_execution(
+    packet: dict[str, Any],
+    execution: dict[str, Any],
+    *,
+    bitstring_order: str | None = None,
+) -> dict[str, Any]:
     if execution.get("status") != "COMPLETED":
         return {
             "status": "FAIL_STOP",
@@ -1698,9 +1716,10 @@ def evaluate_hardware_execution(packet: dict[str, Any], execution: dict[str, Any
     control_predictions: list[float] = []
     per_row: list[dict[str, Any]] = []
     counts = _counts_by_row(execution)
+    order = bitstring_order or execution.get("bitstring_order") or packet.get("bitstring_order") or "q1q0"
     for row in packet["rows"]:
         row_counts = counts.get(row["row_id"], {})
-        expectations = counts_to_expectations(row_counts)
+        expectations = counts_to_expectations(row_counts, bitstring_order=order)
         labels.append(float(row["label"]))
         scale = row["circuit_parameters"]["score_scale"]
         if packet.get("circuit_family") == ENTANGLING_CX_CIRCUIT_FAMILY:
@@ -1793,6 +1812,7 @@ def evaluate_hardware_execution(packet: dict[str, Any], execution: dict[str, Any
         "metadata_complete": metadata_complete,
         "missing_metadata": missing_metadata,
         "comparability_pass": comparable,
+        "bitstring_order": order,
         "fail_reasons": fail_reasons,
         "per_row_results": per_row,
     }

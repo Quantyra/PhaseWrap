@@ -4,12 +4,12 @@ Date: 2026-05-19
 
 ## BLUF
 
-The Braket CX negatives are not yet evidence of a physical CX portability failure. Replaying the committed raw counts under alternate two-bit conventions shows that all three Braket CX records recover as positive under the same simple interpretation:
+This diagnostic explains the earlier Braket CX generic-decoder negatives. Replaying the committed raw counts under alternate two-bit conventions showed that all three Braket CX records recover as positive under the same simple interpretation:
 
 - bitstring order: `q0q1`
 - witness source: original `E[Z1 after CX]`
 
-This points to a provider result-decoding convention mismatch between IBM-style `q1q0` counts and Amazon Braket OpenQASM result keys, not to a native-gate or backend-noise failure.
+This pointed to a provider result-decoding convention mismatch between IBM-style `q1q0` counts and Amazon Braket OpenQASM result keys, not to a native-gate or backend-noise failure. The canonical sweep verifier now records this explicitly: IBM records use `q1q0`; Amazon Braket records use `q0q1`.
 
 ## Inputs
 
@@ -32,7 +32,7 @@ Source artifacts:
 
 ## Result
 
-| Backend | Recorded outcome | Recovered by convention | Best witness MAE | Best witness rank corr |
+| Backend | Historical generic-decoder outcome | Recovered by convention | Best witness MAE | Best witness rank corr |
 | --- | --- | --- | ---: | ---: |
 | IBM Fez | `hardware-positive` | yes | 0.021458 | 0.972455 |
 | Rigetti Cepheus-1-108Q | `hardware-negative` | yes | 0.061643 | 0.557668 |
@@ -48,26 +48,26 @@ Common recovered Braket convention:
 }
 ```
 
-Under that convention, the Braket records preserve witness/control ordering. The original negative Braket outcomes came from applying the current generic decoder, which treats two-bit strings as `q1q0`.
+Under that convention, the Braket records preserve witness/control ordering. The original negative Braket outcomes came from applying the earlier generic decoder, which treated two-bit strings as `q1q0`.
 
 ## Interpretation
 
-The current evidence supports this narrower diagnosis:
+The evidence supports this narrower diagnosis:
 
 1. IBM Fez CX is positive under the existing `q1q0` decoder.
-2. Braket CX raw counts are negative under the existing generic decoder.
+2. Braket CX raw counts were negative under the earlier generic decoder.
 3. The same Braket raw counts become positive under a uniform `q0q1` result-key interpretation.
-4. Therefore, the Braket CX failure is likely a classical result-decoding convention issue.
+4. Therefore, the apparent Braket CX failure was likely a classical result-decoding convention issue.
 
-This is not yet a license to claim cross-backend CX robustness. The committed negative records should remain historically auditable until the verifier schema explicitly records provider bit-order metadata and recomputes corrected evaluations from the same raw counts.
+This is not a license to claim general cross-backend CX robustness. The historical generic-decoder classification remains auditable, while the canonical sweep verifier now records provider bit-order metadata and recomputes corrected evaluations from the same raw counts.
 
 ## Next Steps
 
-1. Add an explicit provider bitstring-order field to hardware packets or execution metadata.
-2. Update the offline verifier to decode Amazon Braket OpenQASM result keys as `q0q1` while preserving IBM's current interpretation.
-3. Recompute corrected Braket CX evaluation files from the already committed raw counts.
-4. Keep the old negative interpretation visible as a diagnostic finding, not as the final scientific classification.
-5. Only after provider-aware decoding is verified should native CZ or XX-family variants be considered.
+1. Completed: add an explicit provider bitstring-order field to the sweep manifest.
+2. Completed: update the offline verifier to decode Amazon Braket OpenQASM result keys as `q0q1` while preserving IBM's current interpretation.
+3. Completed: recompute corrected Braket CX evaluation files from the already committed raw counts.
+4. Completed: keep the old negative interpretation visible as a diagnostic finding, not as the final scientific classification.
+5. Future work: only after provider-aware decoding is verified should native CZ or XX-family variants be considered.
 
 ## Claim Boundary
 

@@ -80,6 +80,7 @@ def _synthetic_result(tmp_path: Path, family: str = PRODUCT_STATE_CIRCUIT_FAMILY
         "status": "completed",
         "shots": packet["shot_count"],
         "row_count": packet["row_count"],
+        "bitstring_order": "q1q0",
         "job_ids": ["synthetic-job-1"],
         "packet_id": packet["packet_id"],
         "packet_path": str(result_dir / "frozen_packet.json"),
@@ -116,9 +117,25 @@ def test_manifest_schema_validation_accepts_synthetic_completed_record(tmp_path:
     assert validate_manifest(manifest) == []
 
 
+def test_manifest_schema_requires_bitstring_order_for_completed_records(tmp_path: Path) -> None:
+    _, record = _synthetic_result(tmp_path)
+    record.pop("bitstring_order")
+    manifest = json.loads(_manifest(tmp_path, [record]).read_text(encoding="utf-8"))
+    assert "records[0] completed record bitstring_order must be q1q0 or q0q1" in validate_manifest(manifest)
+
+
 def test_raw_count_to_expectation_conversion() -> None:
     expectations = raw_counts_to_expectations({"00": 3, "01": 1, "10": 1, "11": 3})
     assert expectations == {"shots": 8, "z0": 0.0, "z1": 0.0, "zz": 0.5, "valid": True}
+
+
+def test_provider_aware_raw_count_to_expectation_conversion() -> None:
+    current = raw_counts_to_expectations({"01": 8}, bitstring_order="q1q0")
+    braket = raw_counts_to_expectations({"01": 8}, bitstring_order="q0q1")
+    assert current["z0"] == -1.0
+    assert current["z1"] == 1.0
+    assert braket["z0"] == 1.0
+    assert braket["z1"] == -1.0
 
 
 def test_product_state_witness_metric_recomputation(tmp_path: Path) -> None:
@@ -159,6 +176,7 @@ def test_missing_evidence_files_fail_clearly(tmp_path: Path) -> None:
         "status": "missing_evidence",
         "shots": 4096,
         "row_count": None,
+        "bitstring_order": "q1q0",
         "missing_evidence": ["execution.json with raw_counts_by_row"],
     }
     verification = verify_manifest(_manifest(tmp_path, [record]))

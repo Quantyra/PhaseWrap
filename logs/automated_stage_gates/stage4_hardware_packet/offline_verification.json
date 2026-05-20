@@ -27,20 +27,10 @@
       "pass": true
     },
     {
-      "detail": "ibm_runtime",
-      "name": "expected_provider",
-      "pass": true
-    },
-    {
-      "detail": "ibm_fez",
-      "name": "expected_backend",
-      "pass": true
-    },
-    {
       "detail": [
         "d84jbq00bvlc73d4krr0"
       ],
-      "name": "expected_job_id",
+      "name": "job_id_present",
       "pass": true
     },
     {
@@ -100,19 +90,20 @@
       "pass": true
     }
   ],
-  "evaluation_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope\\logs\\automated_stage_gates\\stage4_hardware_packet\\evaluation.json",
-  "execution_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope\\logs\\automated_stage_gates\\stage4_hardware_packet\\execution.json",
+  "evaluation_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_packet\\evaluation.json",
+  "execution_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_packet\\execution.json",
   "execution_sha256": "7b4bbea6693608cbf689a77337117194f42d26c815686778b9a375702520469c",
   "job_ids": [
     "d84jbq00bvlc73d4krr0"
   ],
   "no_hardware_submission": true,
   "packet_id": "qrope-hardware-73c61893576297ff",
-  "packet_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope\\logs\\automated_stage_gates\\stage4_hardware_packet\\frozen_packet.json",
+  "packet_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_packet\\frozen_packet.json",
   "packet_sha256": "15b6f9cce1bca27ed6935d5a36b990848f79553dded7ff1424b63999bde156c5",
   "pass": true,
   "provider": "ibm_runtime",
   "recomputed_evaluation": {
+    "bitstring_order": "q1q0",
     "comparability_pass": true,
     "control": {
       "mae": 0.217262,
@@ -481,6 +472,6 @@
       "rank_correlation": 0.876558
     }
   },
-  "summary_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope\\logs\\automated_stage_gates\\stage4_hardware_packet\\summary.json",
+  "summary_path": "C:\\Users\\Dan\\Desktop\\Projects\\QuantyraQRope-sync\\logs\\automated_stage_gates\\stage4_hardware_packet\\summary.json",
   "verifier": "qrope_stage4_offline_verifier_v1"
 }
