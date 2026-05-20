@@ -15,7 +15,7 @@ This plan separates saved-count recomputation from independent replication.
 
 | Circuit family | Status | Claim boundary |
 | --- | --- | --- |
-| `two_qubit_zz_expectation_phase_wrap_v1` | Executed once on `ibm_fez` | Product-state angle-encoding/readout witness. |
+| `two_qubit_zz_expectation_phase_wrap_v1` | Completed as hardware-positive on IBM Fez and Amazon Braket/Rigetti Cepheus | Product-state angle-encoding/readout witness. Supports only the recorded packet/backend/date/calibration-specific positive results; it is not entanglement evidence. |
 | `two_qubit_cx_parity_phase_wrap_v2` | Completed as hardware-positive on IBM Fez and as provider-aware hardware-positive on Braket/Rigetti and Braket/IQM after no-hardware ideal-count rehearsal | Entangling CX witness variant. Supports only the recorded packet/backend/date/calibration-specific positive results under manifest-declared bitstring decoding; this is not a general cross-backend robustness claim. |
 
 ## No-hardware CX rehearsal

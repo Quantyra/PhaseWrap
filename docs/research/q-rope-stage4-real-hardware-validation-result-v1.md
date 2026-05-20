@@ -4,7 +4,22 @@ Date: 2026-05-19
 
 ## Result
 
-Stage 4 real-hardware validation has completed on IBM Runtime and Amazon Braket/Rigetti. The Braket replication artifact is the preferred current cross-provider evidence item because it was run after the Braket preparation adapter was added and verified with a 1000-shot-per-row hardware gate.
+Stage 4 real-hardware validation has completed on IBM Runtime and Amazon Braket. The current canonical public evidence is the provider-aware hardware sweep manifest at `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`, verified by `python scripts/verify_stage4_hardware_sweep.py`. The sweep includes IBM Fez and Amazon Braket/Rigetti product-state artifacts plus IBM Fez and Amazon Braket CX artifacts on Rigetti Cepheus, IQM Garnet, and IQM Emerald.
+
+This file is a narrative result note. The manifest and sweep verifier are authoritative when this note and generated JSON artifacts differ in level of detail.
+
+## Current Sweep Summary
+
+| Backend | Provider | Family | Shots | Rows | Witness MAE | Witness rank corr | Control MAE | Control rank corr | Outcome |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| IBM Fez | `ibm_runtime` | `two_qubit_zz_expectation_phase_wrap_v1` | 4096 | 16 | 0.018382 | 0.876558 | 0.217262 | -0.176940 | `hardware-positive` |
+| Rigetti Cepheus-1-108Q | `amazon_braket` | `two_qubit_zz_expectation_phase_wrap_v1` | 1000 | 8 | 0.069901 | 0.786644 | 0.149995 | 0.121232 | `hardware-positive` |
+| IBM Fez | `ibm_runtime` | `two_qubit_cx_parity_phase_wrap_v2` | 4096 | 16 | 0.021458 | 0.972455 | 0.212516 | -0.169318 | `hardware-positive` |
+| Rigetti Cepheus-1-108Q | `amazon_braket` | `two_qubit_cx_parity_phase_wrap_v2` | 1000 | 8 | 0.061643 | 0.557668 | 0.194370 | -0.060616 | `hardware-positive` |
+| IQM Garnet | `amazon_braket` | `two_qubit_cx_parity_phase_wrap_v2` | 1000 | 8 | 0.021719 | 0.981981 | 0.204370 | -0.060616 | `hardware-positive` |
+| IQM Emerald | `amazon_braket` | `two_qubit_cx_parity_phase_wrap_v2` | 1000 | 8 | 0.021479 | 0.884995 | 0.210995 | -0.096986 | `hardware-positive` |
+
+The Amazon Braket CX records are decoded with manifest-declared `q0q1` bitstring order. The earlier generic `q1q0` classification is retained in the CX portability diagnostic as historical audit context, not as the active scientific classification.
 
 ### Amazon Braket / Rigetti Result
 
@@ -89,7 +104,7 @@ Stage 4 real-hardware validation also completed on IBM Runtime and passed the de
 
 ## Boundary
 
-These are bounded real-noisy-hardware results for frozen Stage 4 packets on IBM `ibm_fez` and Amazon Braket/Rigetti `Cepheus-1-108Q`. They support the Stage 4 claim boundary produced by the automated ladder: bounded real-noisy-hardware packets. They do not generalize beyond the frozen packets, backends, dates, calibration windows, and declared metrics.
+These are bounded real-noisy-hardware results for frozen Stage 4 packets on IBM `ibm_fez`, Amazon Braket/Rigetti `Cepheus-1-108Q`, Amazon Braket/IQM `Garnet`, and Amazon Braket/IQM `Emerald`. They support the Stage 4 claim boundary produced by the automated ladder: bounded real-noisy-hardware packets. They do not generalize beyond the frozen packets, backends, dates, calibration windows, provider result-key conventions, and declared metrics. They do not establish quantum advantage, production transformer superiority, full transformer-scale validation, or general cross-backend robustness.
 
 ## Evidence
 
@@ -98,4 +113,6 @@ These are bounded real-noisy-hardware results for frozen Stage 4 packets on IBM 
 - `logs/automated_stage_gates/stage4_hardware_packet/preflight.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/execution.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/evaluation.json`
+- `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`
+- `logs/automated_stage_gates/stage4_hardware_sweep/offline_verification.json`
 - `docs/research/q-rope-stage4-hardware-packet-v1.md`
