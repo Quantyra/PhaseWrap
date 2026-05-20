@@ -39,6 +39,7 @@ The public claim frame excludes:
 - [Manuscript-to-provisional support audit](docs/publication/manuscript-to-provisional-support-audit-v1.md)
 - [Repository paper v1](docs/publication/qrope-paper-v1.md)
 - [Patent status note](docs/publication/patent-status-note-v1.md)
+- [Quickstart and results summary](docs/publication/quickstart-results-summary-v1.md)
 - [External review response](docs/publication/external-review-response-v1.md)
 - [Replication plan](docs/publication/replication-plan-v1.md)
 - [External release plan](docs/publication/external-release-plan-v1.md)
@@ -124,6 +125,7 @@ The diagnostic documents why the earlier generic `q1q0` Braket CX classification
 ## Reviewer path in 10 minutes
 
 - Read the claim boundary in this README.
+- Open [Quickstart and results summary](docs/publication/quickstart-results-summary-v1.md).
 - Open [Repository paper v1](docs/publication/qrope-paper-v1.md).
 - Inspect [Patent status note](docs/publication/patent-status-note-v1.md).
 - Inspect the Stage 4 packet files under `logs/automated_stage_gates/stage4_hardware_packet/`.
@@ -148,6 +150,19 @@ If you cite or discuss this work, use the bounded posture:
 > QRoPE is a phase-wrap positional-encoding and validation method with repository-backed deterministic evidence packets, including a bounded Stage 4 real-hardware validation result.
 
 Do not restate the result as a proof of broad quantum transformer superiority.
+
+## Research Roadmap
+
+The current release is ready for bounded repository/preprint publication. The next research work should be evidence-producing rather than claim-broadening:
+
+| Priority | Work item | Purpose |
+| --- | --- | --- |
+| 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Test downstream impact on a concrete metric such as length extrapolation or attention-score stability. |
+| 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
+| 3 | Independent hardware replication | Add new packet/date/backend records, including IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
+| 4 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
+
+The mod-8/mod-12 choice is a fixed first-release design: two wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band product signal. Other period pairs are future ablation targets, not current evidence.
 
 ## Licensing and patent notice
 

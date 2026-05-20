@@ -87,6 +87,8 @@ SQR = m8 * m12
 
 The thresholds are tied to one modular step in each basis. For period 8, one step is `2*pi/8 = pi/4`; for period 12, one step is `2*pi/12 = pi/6`. Subtracting `cos(pi/4)` and `cos(pi/6)` centers each margin at the one-step residual boundary: margins are positive for residuals closer than one modular step, approximately zero at one step, and negative beyond one step.
 
+The period pair `8` and `12` is a fixed first-release design choice rather than a proven optimum. It gives two distinct wrapped residual bases, two different one-step thresholds, and a simple cross-band interaction through the product of signed margins. Other period pairs, learned period schedules, and task-conditioned period selection are intentionally left as future ablation targets.
+
 The implementation normalizes the score for packet labels by clamping:
 
 ```text
@@ -278,7 +280,22 @@ The present result has important limitations:
 
 These limitations define the scientific scope of the current release.
 
-## 9. Conclusion
+## 9. Roadmap and Open Questions
+
+The next scientific step is not broader rhetoric about the current hardware records. It is controlled expansion with new evidence:
+
+| Priority | Work item | Evidence required before promotion |
+| --- | --- | --- |
+| 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Fixed task, fixed metric, fixed seeds, and a reported comparison on length extrapolation or attention-score stability. |
+| 2 | DOI/preprint release packaging | Release tag, archived snapshot, DOI metadata, and unchanged bounded claim language. |
+| 3 | Independent hardware replication | New packet/date/backend records with raw counts, backend metadata, and verifier output. |
+| 4 | Larger or error-aware witnesses | Larger witness families or mitigation analysis with explicit controls and no unsupported quantum-advantage claim. |
+
+The highest-impact research gap is downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts. It does not yet show that QRoPE improves a classical attention model. A small transformer-adjacent benchmark against standard RoPE is therefore the preferred Stage 5 experiment.
+
+Broader hardware expansion is useful but secondary. IonQ should be added only through a dated Amazon Braket/IonQ record when a device is available. Quandela, AQT, or larger-qubit witnesses should be added only when credentials, provider cost, and artifact capture support the same manifest/verifier discipline as Stage 4.
+
+## 10. Conclusion
 
 QRoPE provides an open-source research lane for phase-wrap positional scoring and bounded small-circuit validation. The current evidence supports publication as a narrowly framed method and evidence paper. The next scientific step is controlled expansion: additional packets, additional dates, larger comparison matrices, and broader transformer-adjacent experiments only if supported by new evidence.
 

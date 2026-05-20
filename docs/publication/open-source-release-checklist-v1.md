@@ -18,6 +18,7 @@ Patent notice: USPTO provisional submission received `2026-05-18`; Electronic Ac
 | `PATENTS.md` | Prepared | USPTO acknowledgement-receipt notice and license boundary. |
 | `CITATION.cff` | Prepared | Repository citation metadata. |
 | `docs/publication/patent-status-note-v1.md` | Prepared | Conservative acknowledgement-receipt status note and timeline. |
+| `docs/publication/quickstart-results-summary-v1.md` | Prepared | One-page reviewer entry point with verifier commands, active hardware table, claim boundary, and roadmap. |
 | `docs/publication/qrope-paper-v1.md` | Prepared | Standalone bounded repository-paper draft. |
 | `docs/publication/references.bib` | Prepared | Formal references for Transformer, RoPE, IBM Runtime primitives, SamplerV2, and backend metadata. |
 | `docs/publication/paper-gap-remediation-audit-v1.md` | Prepared | Checklist showing paper audit gaps remediated locally. |
@@ -28,7 +29,7 @@ Patent notice: USPTO provisional submission received `2026-05-18`; Electronic Ac
 | `.github/workflows/ci.yml` | Prepared | GitHub Actions pytest and coverage workflow. |
 | `src/qrope/automated_stage_gates.py` | Prepared | Public implementation reference for formulas, packet generation, and hardware evaluation. |
 | `scripts/verify_stage4_hardware_packet.py` | Prepared | Offline verifier for saved Stage 4 packet arithmetic. |
-| `scripts/verify_stage4_hardware_sweep.py` | Prepared | Offline verifier for the Stage 4 sweep manifest; verifies active committed hardware evidence and keeps deferred/unavailable targets out of the required verifier path. |
+| `scripts/verify_stage4_hardware_sweep.py` | Prepared | Provider-aware offline verifier for the Stage 4 sweep manifest; verifies active committed hardware evidence and keeps deferred/unavailable targets out of the required verifier path. |
 | `logs/automated_stage_gates/stage4_hardware_packet/*.json` | Prepared | Frozen packet, execution, evaluation, summary, and offline verification evidence. |
 | `docs/publication/figures/qrope-method-schematic-v1.svg` | Prepared | Publication-grade method schematic. |
 | `docs/publication/figures/qrope-validation-pipeline-v1.svg` | Prepared | Publication-grade validation pipeline diagram. |
@@ -47,6 +48,7 @@ Proceed if all statements remain inside this boundary:
 - deterministic validation packets;
 - raw-count and metadata-backed hardware evidence;
 - bounded Stage 4 real-hardware result.
+- open questions framed as future work unless backed by current artifacts.
 
 Do not proceed if the manuscript or repository front matter claims:
 
@@ -66,3 +68,4 @@ The public repository has been created and published:
 | Push the prepared local repository. | Done |
 | Confirm the public repository metadata. | Done |
 | Tag the first public release after final manuscript approval. | Pending |
+| Enable Zenodo integration and mint the release DOI. | Pending |

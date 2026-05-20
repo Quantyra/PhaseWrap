@@ -26,6 +26,8 @@ Given two query-key relative offsets `delta_a` and `delta_b`, and a fixed rotary
 
 The algorithm uses RoPE-shaped relative phase behavior rather than raw anchor order, anchor distance, span membership, or single-band modulo summaries. Its discriminating term is a cross-band interaction over wrapped rotary residuals.
 
+The `8` and `12` periods are a fixed first-release design pair. They give two distinct modular residual bases with one-step angular thresholds of `pi/4` and `pi/6`, making the cross-band signed-margin product easy to audit. This choice is not claimed as optimal; other period pairs and learned schedules remain future ablation targets.
+
 ## Research Criteria Met Locally
 
 The component meets the current local realism-bridge criteria:
@@ -53,10 +55,11 @@ Retained hardening also preserved witness leadership on both metrics for every r
 This is not yet:
 
 - a transformer-adjacent validation,
-- a hardware-backed result,
 - a publication-ready claim,
 - a broad superiority claim,
 - proof of full RoPE behavior in a complete quantum attention model.
+
+The later Stage 4 hardware sweep adds bounded hardware-backed evidence for small-circuit witness packets. It does not change this algorithm note into a transformer-adjacent validation or a production-model claim.
 
 ## Next Research Question
 
