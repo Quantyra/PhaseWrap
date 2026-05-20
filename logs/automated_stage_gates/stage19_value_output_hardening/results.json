@@ -1,0 +1,373 @@
+{
+  "attention_mode": "teacher_forced_target_attention",
+  "best_config_by_test_top1_mrr": "adam_embed12",
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage",
+      "general cross-backend robustness",
+      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+    ],
+    "supported": [
+      "A deterministic capacity and optimization hardening probe for the Stage 17 and Stage 18 learned value-output bottleneck.",
+      "Evidence about whether larger value embeddings and Adam optimization improve teacher-forced value-token readout."
+    ]
+  },
+  "configs": [
+    {
+      "config_name": "adam_embed12",
+      "embed_dim": 12,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    },
+    {
+      "config_name": "adam_embed32",
+      "embed_dim": 32,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    },
+    {
+      "config_name": "adam_embed64",
+      "embed_dim": 64,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    }
+  ],
+  "context_lengths": [
+    128,
+    256,
+    512,
+    1024
+  ],
+  "dataset": "deterministic_value_output_hardening_probe_v1",
+  "examples_per_task_length": 4,
+  "model": {
+    "optimizer": "full_batch_adam",
+    "trained_parameters": "value embeddings, output projection, output bias",
+    "type": "teacher_forced_attention_value_output_hardening_probe",
+    "value_vocab_size": 257
+  },
+  "no_hardware_submission": true,
+  "schema_version": "qrope_stage19_value_output_hardening_v1",
+  "seeds": [
+    401,
+    409,
+    419,
+    421,
+    431
+  ],
+  "selection_table": [
+    {
+      "config_name": "adam_embed12",
+      "loss": 2.815508,
+      "mean_first_relevant_value_rank": 71.616667,
+      "mean_target_value_probability": 0.480821,
+      "mrr": 0.552776,
+      "mrr_ci_high": 0.677174,
+      "mrr_ci_low": 0.428757,
+      "perplexity": 16.70166,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.58648,
+      "target_value_probability_ci_low": 0.35192,
+      "top1_accuracy": 0.533333,
+      "top1_ci_high": 0.666667,
+      "top1_ci_low": 0.4
+    },
+    {
+      "config_name": "adam_embed32",
+      "loss": 2.720191,
+      "mean_first_relevant_value_rank": 74.45,
+      "mean_target_value_probability": 0.483142,
+      "mrr": 0.536005,
+      "mrr_ci_high": 0.643778,
+      "mrr_ci_low": 0.411627,
+      "perplexity": 15.183228,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.592627,
+      "target_value_probability_ci_low": 0.359959,
+      "top1_accuracy": 0.5,
+      "top1_ci_high": 0.633333,
+      "top1_ci_low": 0.366667
+    },
+    {
+      "config_name": "adam_embed64",
+      "loss": 2.688699,
+      "mean_first_relevant_value_rank": 80.366667,
+      "mean_target_value_probability": 0.480739,
+      "mrr": 0.535775,
+      "mrr_ci_high": 0.660129,
+      "mrr_ci_low": 0.41151,
+      "perplexity": 14.712529,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.594766,
+      "target_value_probability_ci_low": 0.360876,
+      "top1_accuracy": 0.5,
+      "top1_ci_high": 0.616667,
+      "top1_ci_low": 0.383333
+    }
+  ],
+  "stage": "stage19_value_output_hardening",
+  "table": [
+    {
+      "config_name": "adam_embed12",
+      "loss": 0.002098,
+      "mean_first_relevant_value_rank": 1.0,
+      "mean_target_value_probability": 0.997905,
+      "mrr": 1.0,
+      "mrr_ci_high": 1.0,
+      "mrr_ci_low": 1.0,
+      "perplexity": 1.0021,
+      "row_count": 120,
+      "split": "train",
+      "target_value_probability_ci_high": 0.998071,
+      "target_value_probability_ci_low": 0.997732,
+      "top1_accuracy": 1.0,
+      "top1_ci_high": 1.0,
+      "top1_ci_low": 1.0
+    },
+    {
+      "config_name": "adam_embed12",
+      "loss": 2.746671,
+      "mean_first_relevant_value_rank": 71.683333,
+      "mean_target_value_probability": 0.448435,
+      "mrr": 0.548195,
+      "mrr_ci_high": 0.676636,
+      "mrr_ci_low": 0.420195,
+      "perplexity": 15.590637,
+      "row_count": 60,
+      "split": "validation",
+      "target_value_probability_ci_high": 0.554513,
+      "target_value_probability_ci_low": 0.348269,
+      "top1_accuracy": 0.5,
+      "top1_ci_high": 0.616667,
+      "top1_ci_low": 0.383333
+    },
+    {
+      "config_name": "adam_embed12",
+      "loss": 2.815508,
+      "mean_first_relevant_value_rank": 71.616667,
+      "mean_target_value_probability": 0.480821,
+      "mrr": 0.552776,
+      "mrr_ci_high": 0.677174,
+      "mrr_ci_low": 0.428757,
+      "perplexity": 16.70166,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.58648,
+      "target_value_probability_ci_low": 0.35192,
+      "top1_accuracy": 0.533333,
+      "top1_ci_high": 0.666667,
+      "top1_ci_low": 0.4
+    },
+    {
+      "config_name": "adam_embed32",
+      "loss": 0.001521,
+      "mean_first_relevant_value_rank": 1.0,
+      "mean_target_value_probability": 0.998481,
+      "mrr": 1.0,
+      "mrr_ci_high": 1.0,
+      "mrr_ci_low": 1.0,
+      "perplexity": 1.001522,
+      "row_count": 120,
+      "split": "train",
+      "target_value_probability_ci_high": 0.998645,
+      "target_value_probability_ci_low": 0.998326,
+      "top1_accuracy": 1.0,
+      "top1_ci_high": 1.0,
+      "top1_ci_low": 1.0
+    },
+    {
+      "config_name": "adam_embed32",
+      "loss": 2.62813,
+      "mean_first_relevant_value_rank": 70.75,
+      "mean_target_value_probability": 0.460804,
+      "mrr": 0.569068,
+      "mrr_ci_high": 0.69322,
+      "mrr_ci_low": 0.428297,
+      "perplexity": 13.847854,
+      "row_count": 60,
+      "split": "validation",
+      "target_value_probability_ci_high": 0.562994,
+      "target_value_probability_ci_low": 0.348767,
+      "top1_accuracy": 0.533333,
+      "top1_ci_high": 0.65,
+      "top1_ci_low": 0.416667
+    },
+    {
+      "config_name": "adam_embed32",
+      "loss": 2.720191,
+      "mean_first_relevant_value_rank": 74.45,
+      "mean_target_value_probability": 0.483142,
+      "mrr": 0.536005,
+      "mrr_ci_high": 0.643778,
+      "mrr_ci_low": 0.411627,
+      "perplexity": 15.183228,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.592627,
+      "target_value_probability_ci_low": 0.359959,
+      "top1_accuracy": 0.5,
+      "top1_ci_high": 0.633333,
+      "top1_ci_low": 0.366667
+    },
+    {
+      "config_name": "adam_embed64",
+      "loss": 0.001366,
+      "mean_first_relevant_value_rank": 1.0,
+      "mean_target_value_probability": 0.998636,
+      "mrr": 1.0,
+      "mrr_ci_high": 1.0,
+      "mrr_ci_low": 1.0,
+      "perplexity": 1.001366,
+      "row_count": 120,
+      "split": "train",
+      "target_value_probability_ci_high": 0.998777,
+      "target_value_probability_ci_low": 0.998494,
+      "top1_accuracy": 1.0,
+      "top1_ci_high": 1.0,
+      "top1_ci_low": 1.0
+    },
+    {
+      "config_name": "adam_embed64",
+      "loss": 2.614317,
+      "mean_first_relevant_value_rank": 70.65,
+      "mean_target_value_probability": 0.451262,
+      "mrr": 0.560726,
+      "mrr_ci_high": 0.685115,
+      "mrr_ci_low": 0.452765,
+      "perplexity": 13.657881,
+      "row_count": 60,
+      "split": "validation",
+      "target_value_probability_ci_high": 0.55468,
+      "target_value_probability_ci_low": 0.333888,
+      "top1_accuracy": 0.516667,
+      "top1_ci_high": 0.65,
+      "top1_ci_low": 0.383333
+    },
+    {
+      "config_name": "adam_embed64",
+      "loss": 2.688699,
+      "mean_first_relevant_value_rank": 80.366667,
+      "mean_target_value_probability": 0.480739,
+      "mrr": 0.535775,
+      "mrr_ci_high": 0.660129,
+      "mrr_ci_low": 0.41151,
+      "perplexity": 14.712529,
+      "row_count": 60,
+      "split": "test",
+      "target_value_probability_ci_high": 0.594766,
+      "target_value_probability_ci_low": 0.360876,
+      "top1_accuracy": 0.5,
+      "top1_ci_high": 0.616667,
+      "top1_ci_low": 0.383333
+    }
+  ],
+  "test_row_count": 60,
+  "train_row_count": 120,
+  "training_records": [
+    {
+      "config_name": "adam_embed12",
+      "embed_dim": 12,
+      "epochs": 500,
+      "final_training_loss": 0.021454,
+      "l2": 1e-05,
+      "learning_rate": 0.03,
+      "optimizer": "full_batch_adam",
+      "seed": 1901,
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 5.317866
+        },
+        {
+          "epoch": 125,
+          "loss": 0.026132
+        },
+        {
+          "epoch": 250,
+          "loss": 0.023194
+        },
+        {
+          "epoch": 375,
+          "loss": 0.022123
+        },
+        {
+          "epoch": 500,
+          "loss": 0.021454
+        }
+      ]
+    },
+    {
+      "config_name": "adam_embed32",
+      "embed_dim": 32,
+      "epochs": 500,
+      "final_training_loss": 0.017627,
+      "l2": 1e-05,
+      "learning_rate": 0.03,
+      "optimizer": "full_batch_adam",
+      "seed": 1901,
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 5.317804
+        },
+        {
+          "epoch": 125,
+          "loss": 0.024513
+        },
+        {
+          "epoch": 250,
+          "loss": 0.019858
+        },
+        {
+          "epoch": 375,
+          "loss": 0.01827
+        },
+        {
+          "epoch": 500,
+          "loss": 0.017627
+        }
+      ]
+    },
+    {
+      "config_name": "adam_embed64",
+      "embed_dim": 64,
+      "epochs": 500,
+      "final_training_loss": 0.016611,
+      "l2": 1e-05,
+      "learning_rate": 0.03,
+      "optimizer": "full_batch_adam",
+      "seed": 1901,
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 5.315921
+        },
+        {
+          "epoch": 125,
+          "loss": 0.027237
+        },
+        {
+          "epoch": 250,
+          "loss": 0.01983
+        },
+        {
+          "epoch": 375,
+          "loss": 0.01729
+        },
+        {
+          "epoch": 500,
+          "loss": 0.016611
+        }
+      ]
+    }
+  ],
+  "validation_row_count": 60
+}

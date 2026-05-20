@@ -1,0 +1,54 @@
+{
+  "attention_mode": "teacher_forced_target_attention",
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage",
+      "general cross-backend robustness",
+      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+    ],
+    "supported": [
+      "A deterministic capacity and optimization hardening probe for the Stage 17 and Stage 18 learned value-output bottleneck.",
+      "Evidence about whether larger value embeddings and Adam optimization improve teacher-forced value-token readout."
+    ]
+  },
+  "configs": [
+    {
+      "config_name": "adam_embed12",
+      "embed_dim": 12,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    },
+    {
+      "config_name": "adam_embed32",
+      "embed_dim": 32,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    },
+    {
+      "config_name": "adam_embed64",
+      "embed_dim": 64,
+      "epochs": 500,
+      "l2": 1e-05,
+      "learning_rate": 0.03
+    }
+  ],
+  "dataset": "deterministic_value_output_hardening_probe_v1",
+  "model": {
+    "optimizer": "full_batch_adam",
+    "trained_parameters": "value embeddings, output projection, output bias",
+    "type": "teacher_forced_attention_value_output_hardening_probe",
+    "value_vocab_size": 257
+  },
+  "no_hardware_submission": true,
+  "result_path": "logs/automated_stage_gates/stage19_value_output_hardening/results.json",
+  "schema_version": "qrope_stage19_value_output_hardening_v1",
+  "stage": "stage19_value_output_hardening",
+  "summary_csv_path": "logs/automated_stage_gates/stage19_value_output_hardening/summary.csv",
+  "test_row_count": 60,
+  "train_row_count": 120,
+  "validation_row_count": 60
+}
