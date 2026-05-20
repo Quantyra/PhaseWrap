@@ -30,6 +30,7 @@ python scripts/run_stage5_attention_baselines.py
 python scripts/run_stage6_downstream_attention.py
 python scripts/run_stage7_toy_transformer_ablation.py
 python scripts/run_stage8_needle_benchmark.py
+python scripts/run_stage9_trained_transformer_ablation.py
 ```
 
 ## Status
@@ -39,7 +40,7 @@ python scripts/run_stage8_needle_benchmark.py
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
 - `Current evidence posture`: Stage 4 real-noisy-hardware results for bounded frozen packet/backend/date/calibration contexts, including IBM Fez positives, Amazon Braket/Rigetti product-state positive evidence, and provider-aware Amazon Braket CX positive recomputations from committed raw counts.
-- `RoPE-facing benchmark posture`: Stage 8 adds a local phase-cued Needle-style retrieval packet with multiple seeds, bootstrap intervals, and a period-pair ablation. It supports continued RoPE-replacement research, not a production replacement claim.
+- `RoPE-facing benchmark posture`: Stage 8 adds a local phase-cued Needle-style retrieval packet, and Stage 9 adds a trained decoder-style positional attention ablation with matched seeds, optimizer, train-short/test-long context lengths, failed-run artifacts, and confidence intervals. These support continued RoPE-replacement research, not a production replacement claim.
 - `Hardware posture`: IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and Amazon Braket CX lanes have completed active Stage 4 hardware artifacts; additional IBM machines are deferred from the active sweep; Amazon Braket/IonQ was checked on 2026-05-19 and was not run because Forte devices were `OFFLINE` and Aria 1 was `RETIRED`; AQT IBEX Q1 is deferred due cost.
 - `Evidence tree posture`: `logs/automated_stage_gates/stage4_hardware_packet/` remains the default single-packet verifier path. The same IBM Fez 2026-05-17 product-state pass is also preserved as an immutable named run under `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/` for the sweep manifest.
 
@@ -83,6 +84,7 @@ The public claim frame excludes:
 - [Stage 6 downstream attention result](docs/research/q-rope-stage6-downstream-attention-v1.md)
 - [Stage 7 toy transformer ablation](docs/research/q-rope-stage7-toy-transformer-ablation-v1.md)
 - [Stage 8 Needle-style benchmark](docs/research/q-rope-stage8-needle-benchmark-v1.md)
+- [Stage 9 trained transformer ablation plan and first executable subset](docs/research/q-rope-stage9-trained-transformer-ablation-plan-v1.md)
 - [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
@@ -195,6 +197,14 @@ python scripts/run_stage8_needle_benchmark.py
 
 Stage 8 compares PhaseWrap-RoPE against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules on a phase-cued synthetic retrieval packet across five seeds and context lengths up to 1024. The result supports keeping the RoPE-replacement research lane open, but it is not a RULER score or production transformer result.
 
+Run the deterministic Stage 9 trained positional-attention ablation:
+
+```bash
+python scripts/run_stage9_trained_transformer_ablation.py
+```
+
+Stage 9 is the first executable subset of the trained-transformer plan. It trains matched decoder-style positional attention mechanisms across five seeds, short training contexts, and longer test contexts. On this synthetic retrieval packet, `phasewrap_adapter` has the best mean MRR and top-1 accuracy. This remains a compact trained positional-attention ablation, not a full language-model benchmark or proof that PhaseWrap-RoPE replaces RoPE.
+
 ## Reviewer path in 10 minutes
 
 - Read the claim boundary in this README.
@@ -206,6 +216,7 @@ Stage 8 compares PhaseWrap-RoPE against RoPE-like, ALiBI-like, sinusoidal, and n
 - Inspect `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`.
 - Run `python scripts/verify_stage4_hardware_sweep.py`.
 - Run `python scripts/run_stage8_needle_benchmark.py` for the local RoPE-facing retrieval sanity check.
+- Run `python scripts/run_stage9_trained_transformer_ablation.py` for the trained positional-attention ablation.
 
 ## CI and test coverage
 
@@ -237,7 +248,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | 3 | Toy downstream attention benchmark | Complete for a fixed synthetic packet; Stage 6 is best read as an oracle phase-feature sanity check. |
 | 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
 | 5 | Local Needle-style retrieval benchmark | Complete for a phase-cued synthetic packet with five seeds, bootstrap intervals, and a period-pair ablation; use it to justify harder RoPE-facing benchmarks, not production claims. |
-| 6 | Stage 9 trained transformer ablation | Train matched small decoder-only transformers where only the positional mechanism changes: RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap variants. Include train-short/test-long context extrapolation, at least five seeds, synthetic and non-synthetic tasks, failed-run artifacts, and confidence intervals. |
+| 6 | Stage 9 trained transformer ablation | First executable subset complete for a synthetic trained decoder-style positional attention task. Remaining work: full small decoder-only transformer training, non-synthetic retrieval or QA tasks, and richer calibration metrics. |
 | 7 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score: add provider bit-order calibration packets, shot-noise or bootstrap intervals, independent reruns across dates, preregistered packet sets, and classical compute timing/cost estimates. |
 | 8 | Theory of the score | Formalize invariances, aliasing, context-length behavior, period-pair tradeoffs, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
 | 9 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |

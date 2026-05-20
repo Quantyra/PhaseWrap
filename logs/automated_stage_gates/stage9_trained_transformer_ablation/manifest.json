@@ -1,0 +1,51 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full language-model validation",
+      "proof that PhaseWrap-RoPE replaces RoPE",
+      "broad quantum advantage",
+      "general cross-backend robustness"
+    ],
+    "supported": [
+      "A no-credential trained positional attention ablation under matched seeds, data budget, optimizer, and epochs.",
+      "Train-short/test-long retrieval evaluation with confidence intervals over seeds.",
+      "A first executable Stage 9 artifact for the RoPE-replacement research lane."
+    ]
+  },
+  "dataset": "synthetic_train_short_test_long_phase_retrieval_v1",
+  "examples_per_length": 16,
+  "failed_runs_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/failed_runs.json",
+  "method_names": [
+    "phasewrap_bias",
+    "phasewrap_adapter",
+    "rope_relative",
+    "alibi",
+    "sinusoidal",
+    "no_position"
+  ],
+  "no_hardware_submission": true,
+  "per_seed_csv_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/per_seed_results.csv",
+  "result_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/results.json",
+  "schema_version": "qrope_stage9_trained_transformer_ablation_v1",
+  "seeds": [
+    211,
+    223,
+    227,
+    229,
+    233
+  ],
+  "stage": "stage9_trained_transformer_ablation",
+  "summary_csv_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/summary.csv",
+  "test_lengths": [
+    256,
+    512
+  ],
+  "train_lengths": [
+    64,
+    128
+  ],
+  "validation_lengths": [
+    192
+  ]
+}

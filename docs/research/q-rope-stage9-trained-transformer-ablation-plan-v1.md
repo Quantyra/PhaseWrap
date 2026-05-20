@@ -2,7 +2,7 @@
 
 Date: `2026-05-20`
 
-Status: `planned`
+Status: `first_executable_subset_complete`
 
 ## Purpose
 
@@ -10,9 +10,19 @@ Stage 9 is the next evidence milestone for the RoPE-replacement research lane. I
 
 Stage 9 is not a hardware experiment. It should run without quantum-provider credentials.
 
+The current repository includes the first executable subset:
+
+```bash
+python scripts/run_stage9_trained_transformer_ablation.py
+```
+
+This subset trains decoder-style positional attention mechanisms under matched seeds, data budget, optimizer, and epochs. It is useful evidence for the RoPE-facing research lane, but it is still narrower than the full trained small decoder-only transformer benchmark described below.
+
 ## Claim Boundary
 
 Stage 9 may support a narrow statement that a PhaseWrap positional mechanism is competitive on the tested small trained-transformer tasks if the results support that conclusion.
+
+The current executable subset supports only a narrower statement: on one synthetic train-short/test-long positional retrieval packet, the learned `phasewrap_adapter` mechanism has the best mean MRR and top-1 accuracy among the tested positional attention variants.
 
 Stage 9 must not be reported as:
 
@@ -36,6 +46,31 @@ The minimum comparison set is:
 | `phasewrap_adapter` | learned adapter around PhaseWrap features |
 
 The PhaseWrap variants should be implemented as real positional mechanisms rather than scalar oracle labels. Acceptable forms include a positional attention bias, a query/key rotation analogue, or a learned adapter around PhaseWrap features.
+
+The current executable subset includes `phasewrap_bias` and `phasewrap_adapter`. The adapter is trained over PhaseWrap-derived positional features; it is not given the target position or target label.
+
+## Current Executable Result
+
+Artifacts:
+
+- `logs/automated_stage_gates/stage9_trained_transformer_ablation/manifest.json`
+- `logs/automated_stage_gates/stage9_trained_transformer_ablation/results.json`
+- `logs/automated_stage_gates/stage9_trained_transformer_ablation/summary.csv`
+- `logs/automated_stage_gates/stage9_trained_transformer_ablation/per_seed_results.csv`
+- `logs/automated_stage_gates/stage9_trained_transformer_ablation/failed_runs.json`
+
+Current summary:
+
+| Method | Mean test top-1 | Mean test MRR | Mean test loss | Failed runs |
+| --- | ---: | ---: | ---: | ---: |
+| `phasewrap_adapter` | `0.668750` | `0.745096` | `2.110092` | `0` |
+| `sinusoidal` | `0.281250` | `0.331624` | `3.798228` | `0` |
+| `alibi` | `0.000000` | `0.086369` | `5.221903` | `0` |
+| `no_position` | `0.000000` | `0.086369` | `5.888817` | `0` |
+| `rope_relative` | `0.006250` | `0.044751` | `5.760238` | `0` |
+| `phasewrap_bias` | `0.000000` | `0.006330` | `5.618299` | `0` |
+
+The result is intentionally reported as a trained positional-attention ablation, not as a full language-model result.
 
 ## Training Controls
 
@@ -87,6 +122,8 @@ Stage 9 should publish:
 - failed-run logs;
 - aggregate summary with confidence intervals;
 - verifier or summarizer script that rebuilds the public tables from saved metrics.
+
+The current executable subset satisfies these artifact requirements for its synthetic positional-attention task. The remaining gap is the broader task/model scope: full small decoder-only transformer runs, non-synthetic retrieval or QA tasks, and richer calibration reporting.
 
 ## Promotion Gate
 
