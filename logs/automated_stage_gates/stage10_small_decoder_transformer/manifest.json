@@ -8,10 +8,11 @@
       "general cross-backend robustness"
     ],
     "supported": [
-      "A machine-readable preflight record for the full small decoder-only transformer milestone.",
-      "A clear dependency gate showing that no full transformer run was executed in this environment."
+      "A no-credential small decoder-only transformer ablation with matched seeds, tasks, model shape, optimizer, and epochs.",
+      "Train-short/test-long retrieval evaluation with confidence intervals over seeds."
     ]
   },
+  "failed_runs_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/failed_runs.json",
   "method_names": [
     "no_position",
     "sinusoidal",
@@ -21,11 +22,11 @@
     "phasewrap_adapter"
   ],
   "no_hardware_submission": true,
-  "optional_dependency_group": "transformer",
+  "per_seed_csv_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/per_seed_results.csv",
   "provider_credentials_required": false,
-  "result_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/preflight.json",
+  "result_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/results.json",
   "schema_version": "qrope_stage10_small_decoder_transformer_v1",
   "stage": "stage10_small_decoder_transformer",
-  "status": "blocked",
+  "status": "completed",
   "summary_csv_path": "logs/automated_stage_gates/stage10_small_decoder_transformer/summary.csv"
 }

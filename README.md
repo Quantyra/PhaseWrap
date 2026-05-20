@@ -206,13 +206,13 @@ python scripts/run_stage9_trained_transformer_ablation.py
 
 Stage 9 is an executable subset of the trained-transformer plan. It trains matched decoder-style positional attention mechanisms across five seeds, short training contexts, and longer test contexts. On the phase-cued packet, `phasewrap_adapter` has the best mean MRR and top-1 accuracy. On the exact-offset passkey packet whose answer is not selected by the PhaseWrap score, `rope_relative` is strongest. This remains a compact trained positional-attention ablation, not a full language-model benchmark or proof that PhaseWrap-RoPE replaces RoPE.
 
-Run the Stage 10 small decoder-only transformer preflight:
+Run the Stage 10 small decoder-only transformer ablation:
 
 ```bash
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-Stage 10 is the full small decoder-only transformer milestone. In the current local release environment it is recorded as blocked because there is insufficient free disk space to install the optional `transformer` dependency group. Install it with `python -m pip install -e ".[transformer]"` only after freeing enough disk space, then rerun the Stage 10 gate before attempting a real trained transformer run. The checked-in Stage 10 preflight is a dependency/artifact gate, not a model result.
+Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The result is weak and near chance across the tested synthetic retrieval lanes; it is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
 
 ## Reviewer path in 10 minutes
 
@@ -226,7 +226,7 @@ Stage 10 is the full small decoder-only transformer milestone. In the current lo
 - Run `python scripts/verify_stage4_hardware_sweep.py`.
 - Run `python scripts/run_stage8_needle_benchmark.py` for the local RoPE-facing retrieval sanity check.
 - Run `python scripts/run_stage9_trained_transformer_ablation.py` for the trained positional-attention ablation.
-- Run `python scripts/run_stage10_small_decoder_transformer.py` to inspect the full-transformer dependency gate.
+- Run `python scripts/run_stage10_small_decoder_transformer.py` for the small decoder-only transformer ablation.
 
 ## CI and test coverage
 
@@ -259,7 +259,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
 | 5 | Local Needle-style retrieval benchmark | Complete for a phase-cued synthetic packet with five seeds, bootstrap intervals, and a period-pair ablation; use it to justify harder RoPE-facing benchmarks, not production claims. |
 | 6 | Stage 9 trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention tasks. Remaining work: full small decoder-only transformer training, non-synthetic retrieval or QA tasks, and richer calibration metrics. |
-| 7 | Stage 10 full transformer gate | Preflight complete and blocked in the current environment by insufficient disk space for the optional `torch` dependency install. Next step is to free disk space, install `.[transformer]`, and run full small decoder-only transformer training with the same artifact discipline. |
+| 7 | Stage 10 full transformer ablation | Complete for a very small autograd-backed one-block decoder-only transformer. The result is near chance, so the next step is a stronger small-transformer implementation and non-synthetic retrieval or QA tasks. |
 | 8 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score: add provider bit-order calibration packets, shot-noise or bootstrap intervals, independent reruns across dates, preregistered packet sets, and classical compute timing/cost estimates. |
 | 9 | Theory of the score | Formalize invariances, aliasing, context-length behavior, period-pair tradeoffs, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
 | 10 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |

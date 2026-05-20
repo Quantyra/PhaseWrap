@@ -136,9 +136,9 @@ Stage 9 should publish:
 
 The current executable subset satisfies these artifact requirements for its synthetic positional-attention tasks. The remaining gap is the broader task/model scope: full small decoder-only transformer runs, non-synthetic retrieval or QA tasks, and richer calibration reporting.
 
-## Stage 10 Preflight
+## Stage 10 Small Decoder-Only Transformer Ablation
 
-The repository now includes a dependency-gated preflight for the full small decoder-only transformer milestone:
+The repository now includes an autograd-backed first full-transformer sanity check for the small decoder-only transformer milestone:
 
 ```bash
 python scripts/run_stage10_small_decoder_transformer.py
@@ -147,10 +147,12 @@ python scripts/run_stage10_small_decoder_transformer.py
 Current artifact paths:
 
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`
-- `logs/automated_stage_gates/stage10_small_decoder_transformer/preflight.json`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/results.json`
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/summary.csv`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/per_seed_results.csv`
+- `logs/automated_stage_gates/stage10_small_decoder_transformer/failed_runs.json`
 
-The current release environment does not have enough free disk space to install `torch`, so the preflight records `blocked` with install command `python -m pip install -e ".[transformer]"`. No Stage 10 model metrics should be cited until disk space is available, the dependency is installed, and completed training artifacts are present.
+The current Stage 10 result is near chance across the tested synthetic retrieval lanes. It should be cited as a completed first small-transformer sanity check with negative or inconclusive evidence, not as a PhaseWrap advantage.
 
 ## Promotion Gate
 
