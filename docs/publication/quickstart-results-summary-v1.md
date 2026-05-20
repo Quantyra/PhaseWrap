@@ -103,6 +103,14 @@ python scripts/run_stage10_small_decoder_transformer.py
 
 This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`, `results.json`, `summary.csv`, `per_seed_results.csv`, and `failed_runs.json`. The current result is near chance across phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane.
 
+Run the Stage 11 score-theory analysis:
+
+```bash
+python scripts/run_stage11_phasewrap_theory.py
+```
+
+This writes `logs/automated_stage_gates/stage11_phasewrap_theory/manifest.json`, `results.json`, `alias_summary.csv`, `period_pair_summary.csv`, and `residue_score_table.csv`. The current result verifies that the fixed 8/12 score is a mod-24 periodic feature with translation invariance, mirror aliases, 10 distinct residue scores, alias growth with context length, and exact small Fourier support `[1, 2, 3, 5]`.
+
 ## What This Supports
 
 - A bounded phase-wrap scoring method using mod-8 and mod-12 wrapped residual margins.
@@ -115,6 +123,7 @@ This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manife
 - A deterministic Stage 8 local Needle-style retrieval benchmark where `phasewrap_rope_8_12` has the best top-1 and MRR on a phase-cued synthetic packet across five seeds and context lengths up to 1024.
 - A deterministic Stage 9 trained positional-attention ablation where `phasewrap_adapter` has mean test top-1 `0.668750` and mean test MRR `0.745096` on the phase-cued train-short/test-long packet, while `rope_relative` is strongest on the exact-offset passkey packet whose answer is not selected by the PhaseWrap score.
 - A Stage 10 small decoder-only transformer ablation showing that this very small autograd-backed model does not yet produce a meaningful PhaseWrap advantage on the tested phase-cued, passkey, or tiny text-fact QA lanes; the capacity probe also indicates weak training-set fit.
+- A Stage 11 score-theory analysis showing that the fixed 8/12 score is compact and exactly auditable as a classical periodic feature, with explicit long-context aliasing limits.
 
 ## What This Does Not Support
 
@@ -130,10 +139,11 @@ This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manife
 - a claim that Stage 8 is a standard RULER benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE.
 - a claim that Stage 9 is a full language-model benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE.
 - a claim that Stage 10 establishes production transformer superiority, a RoPE replacement result, or a full language-model benchmark.
+- a claim that Stage 11 proves the 8/12 period pair is globally optimal or resolves long-context aliasing by itself.
 
 ## Open Questions
 
-- **Why mod-8 and mod-12?** They provide two distinct wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band interaction through the product of signed margins. Stage 8 adds a release-local period-pair ablation where `(8, 12)` is best on the phase-cued Needle-style packet; this is not a proof of global optimality.
+- **Why mod-8 and mod-12?** They provide two distinct wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band interaction through the product of signed margins. Stage 8 adds a release-local period-pair ablation where `(8, 12)` is best on the phase-cued Needle-style packet, and Stage 11 shows the fixed 8/12 score is exactly a mod-24 periodic feature with frequency support `[1, 2, 3, 5]`; this is still not a proof of global optimality.
 - **Does PhaseWrap-RoPE help a classical ML task?** Stage 5 through Stage 10 are now present as bounded synthetic downstream checks. Stage 9 gives a compact trained positional-attention result with a useful split: PhaseWrap wins the phase-cued lane, while RoPE-relative wins the exact-offset passkey lane. Stage 10 adds a very small decoder-only transformer run, but it is near chance and does not show a meaningful PhaseWrap advantage.
 - **What would make the RoPE-replacement case stronger?** The next expansion should train a stronger matched small decoder-only transformer with RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap positional mechanisms; evaluate train-short/test-long context extrapolation; include non-synthetic retrieval or QA tasks; run at least five seeds; and publish failed runs plus confidence intervals.
 - **Why the CX variant?** It is the smallest entangling extension of the product-state witness: keep the two `RY` margin encodings, add one `CX(q0 -> q1)`, and read a target-qubit parity/product signal while preserving the same packet discipline.
@@ -152,6 +162,6 @@ This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manife
 | Stage 8 | Local Needle-style retrieval benchmark | Complete for one phase-cued synthetic packet with five seeds, bootstrap intervals, and period-pair ablation. |
 | Stage 9 | Trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention packets; remaining work is full small decoder-only transformer training and non-synthetic retrieval or QA tasks. |
 | Stage 10 | Full small decoder-only transformer ablation | Complete for a very small one-block decoder-only transformer with phase-cued, passkey, and tiny text-fact QA lanes; result is near chance, so stronger small-transformer and harder non-synthetic tasks remain next. |
-| Stage 11 | Hardware witness hardening | Add provider bit-order calibration circuits, shot-noise intervals, independent reruns, preregistered packets, and classical compute timing/cost estimates. |
-| Stage 12 | Theory of the score | Formalize invariances, aliasing, period-pair tradeoffs, context-length behavior, kernel interpretations, and task distributions where the score helps or hurts. |
+| Stage 11 | Theory of the score | Complete for the fixed 8/12 score: invariances, aliasing, period-pair tradeoffs, context-length behavior, and exact periodic-feature support are artifact-backed. Remaining work is task-distribution theory. |
+| Stage 12 | Hardware witness hardening | Add provider bit-order calibration circuits, shot-noise intervals, independent reruns, preregistered packets, and classical compute timing/cost estimates. |
 | Stage 13 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |

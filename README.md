@@ -32,6 +32,7 @@ python scripts/run_stage7_toy_transformer_ablation.py
 python scripts/run_stage8_needle_benchmark.py
 python scripts/run_stage9_trained_transformer_ablation.py
 python scripts/run_stage10_small_decoder_transformer.py
+python scripts/run_stage11_phasewrap_theory.py
 ```
 
 ## Status
@@ -42,6 +43,7 @@ python scripts/run_stage10_small_decoder_transformer.py
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
 - `Current evidence posture`: Stage 4 real-noisy-hardware results for bounded frozen packet/backend/date/calibration contexts, including IBM Fez positives, Amazon Braket/Rigetti product-state positive evidence, and provider-aware Amazon Braket CX positive recomputations from committed raw counts.
 - `RoPE-facing benchmark posture`: Stage 8 adds a local phase-cued Needle-style retrieval packet, and Stage 9 adds a trained decoder-style positional attention ablation with matched seeds, optimizer, train-short/test-long context lengths, failed-run artifacts, and confidence intervals. These support continued RoPE-replacement research, not a production replacement claim.
+- `Score theory posture`: Stage 11 formalizes the fixed 8/12 score as a mod-24 periodic feature with translation invariance, mirror aliases, 10 distinct residue scores, and exact small Fourier support. This clarifies why stronger transformer benchmarks must resolve aliasing before any replacement claim.
 - `Hardware posture`: IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and Amazon Braket CX lanes have completed active Stage 4 hardware artifacts; additional IBM machines are deferred from the active sweep; Amazon Braket/IonQ was checked on 2026-05-19 and was not run because Forte devices were `OFFLINE` and Aria 1 was `RETIRED`; AQT IBEX Q1 is deferred due cost.
 - `Evidence tree posture`: `logs/automated_stage_gates/stage4_hardware_packet/` remains the default single-packet verifier path. The same IBM Fez 2026-05-17 product-state pass is also preserved as an immutable named run under `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/` for the sweep manifest.
 
@@ -86,6 +88,7 @@ The public claim frame excludes:
 - [Stage 7 toy transformer ablation](docs/research/q-rope-stage7-toy-transformer-ablation-v1.md)
 - [Stage 8 Needle-style benchmark](docs/research/q-rope-stage8-needle-benchmark-v1.md)
 - [Stage 9 trained transformer ablation plan and first executable subset](docs/research/q-rope-stage9-trained-transformer-ablation-plan-v1.md)
+- [Stage 11 PhaseWrap score theory analysis](docs/research/q-rope-stage11-phasewrap-theory-v1.md)
 - [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
@@ -214,6 +217,14 @@ python scripts/run_stage10_small_decoder_transformer.py
 
 Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; the included capacity probe does not show strong training-set fit. This is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
 
+Run the deterministic Stage 11 score-theory analysis:
+
+```bash
+python scripts/run_stage11_phasewrap_theory.py
+```
+
+Stage 11 analyzes the fixed 8/12 score directly. It verifies mod-24 periodicity, translation invariance, mirrored aliases, context-length alias growth, period-pair tradeoffs, and exact small Fourier support `[1, 2, 3, 5]` over the mod-24 residue table. This is useful theory evidence for the score, not evidence that PhaseWrap-RoPE replaces RoPE in trained transformers.
+
 ## Reviewer path in 10 minutes
 
 - Read the claim boundary in this README.
@@ -227,6 +238,7 @@ Stage 10 trains a small one-block decoder-only single-head transformer with matc
 - Run `python scripts/run_stage8_needle_benchmark.py` for the local RoPE-facing retrieval sanity check.
 - Run `python scripts/run_stage9_trained_transformer_ablation.py` for the trained positional-attention ablation.
 - Run `python scripts/run_stage10_small_decoder_transformer.py` for the small decoder-only transformer ablation.
+- Run `python scripts/run_stage11_phasewrap_theory.py` for the score invariance and aliasing analysis.
 
 ## CI and test coverage
 
@@ -261,7 +273,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | 6 | Stage 9 trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention tasks. Remaining work: full small decoder-only transformer training, non-synthetic retrieval or QA tasks, and richer calibration metrics. |
 | 7 | Stage 10 full transformer ablation | Complete for a very small autograd-backed one-block decoder-only transformer with phase-cued, passkey, and tiny text-fact QA lanes. The result is near chance, so the next step is a stronger small-transformer implementation and harder non-synthetic retrieval or QA tasks. |
 | 8 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score: add provider bit-order calibration packets, shot-noise or bootstrap intervals, independent reruns across dates, preregistered packet sets, and classical compute timing/cost estimates. |
-| 9 | Theory of the score | Formalize invariances, aliasing, context-length behavior, period-pair tradeoffs, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
+| 9 | Theory of the score | Complete for the fixed 8/12 score: Stage 11 verifies mod-24 periodicity, translation invariance, mirror aliases, alias growth, period-pair tradeoffs, and exact small Fourier support. Remaining work is to connect those facts to task distributions and stronger trained mechanisms. |
 | 10 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
 
 The mod-8/mod-12 choice is a fixed first-release design: two wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band product signal. Stage 8 now includes a release-local period-pair ablation in which `(8, 12)` is best on the synthetic phase-cued Needle-style packet. That supports the current design choice for this packet, but it is not a proof of global optimality.

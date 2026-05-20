@@ -53,6 +53,7 @@ PhaseWrap-RoPE is related to RoPE-style phase behavior, but the present release 
 | Stage 8 Needle-style benchmark | Local phase-cued synthetic retrieval packet | PhaseWrap-RoPE is worth testing in broader RoPE-facing retrieval settings | RULER result, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE |
 | Stage 9 trained positional-attention ablation | Synthetic train-short/test-long phase-cued and exact-offset passkey packets with matched optimizer/seeds | `phasewrap_adapter` is strongest on the phase-cued packet; `rope_relative` is strongest on exact-offset passkey | Full language-model benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE |
 | Stage 10 small decoder-only transformer ablation | Autograd-backed one-block decoder-only transformer on phase-cued retrieval, exact-offset passkey, and tiny text-fact QA lanes | The first full-transformer sanity check is near chance and does not show a meaningful PhaseWrap advantage | Production transformer result, full language-model benchmark, or proof that PhaseWrap-RoPE replaces RoPE |
+| Stage 11 score theory | Deterministic invariance, aliasing, period-pair, and Fourier-support analysis | The fixed 8/12 score is a mod-24 periodic feature with unavoidable aliases and exact small classical Fourier support | Proof that 8/12 is globally optimal or that the score improves trained transformers |
 
 The allowed public claims are:
 
@@ -109,6 +110,14 @@ SQR = m8 * m12
 The thresholds are tied to one modular step in each basis. For period 8, one step is `2*pi/8 = pi/4`; for period 12, one step is `2*pi/12 = pi/6`. Subtracting `cos(pi/4)` and `cos(pi/6)` centers each margin at the one-step residual boundary: margins are positive for residuals closer than one modular step, approximately zero at one step, and negative beyond one step.
 
 The period pair `8` and `12` is a fixed first-release design choice rather than a proven optimum. It gives two distinct wrapped residual bases, two different one-step thresholds, and a simple cross-band interaction through the product of signed margins. Other period pairs, learned period schedules, and task-conditioned period selection are intentionally left as future ablation targets.
+
+The repository now includes a deterministic Stage 11 score-theory analysis:
+
+```bash
+python scripts/run_stage11_phasewrap_theory.py
+```
+
+Stage 11 verifies that the default 8/12 score has least common period `24`, is invariant under joint translation of both offsets, is invariant when either offset is shifted by `24`, and is symmetric under sign reversal of the offset difference. The mod-24 residue table contains `10` distinct score values after mirrored and zero-margin aliases are accounted for. Fourier analysis over the residue table gives positive frequency support `[1, 2, 3, 5]`, so the fixed score is exactly representable as a small classical periodic feature map. This makes the score easier to audit, but it also makes the aliasing limitation explicit.
 
 The implementation normalizes the score for packet labels by clamping:
 
@@ -379,6 +388,14 @@ The Stage 10 small decoder-only transformer artifacts are:
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/per_seed_results.csv`
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/failed_runs.json`
 
+The Stage 11 score-theory artifacts are:
+
+- `logs/automated_stage_gates/stage11_phasewrap_theory/manifest.json`
+- `logs/automated_stage_gates/stage11_phasewrap_theory/results.json`
+- `logs/automated_stage_gates/stage11_phasewrap_theory/alias_summary.csv`
+- `logs/automated_stage_gates/stage11_phasewrap_theory/period_pair_summary.csv`
+- `logs/automated_stage_gates/stage11_phasewrap_theory/residue_score_table.csv`
+
 Deferred IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
 ## 8. Reproducibility Artifacts
@@ -397,6 +414,7 @@ The repository prioritizes evidence files over narrative-only claims. The minimu
 - run or inspect `scripts/run_stage8_needle_benchmark.py`;
 - run or inspect `scripts/run_stage9_trained_transformer_ablation.py`;
 - run or inspect `scripts/run_stage10_small_decoder_transformer.py`;
+- run or inspect `scripts/run_stage11_phasewrap_theory.py`;
 - compare the verifier output with `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`.
 - inspect `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json` and the sweep verifier output.
 
@@ -412,7 +430,8 @@ The current evidence has several important limitations:
 - The product-state readout is not an entangling or quantum-advantage result.
 - The CX readout is an entangling circuit variant, but it does not establish entanglement advantage.
 - The Stage 5 synthetic target is exactly recoverable by simple exposed-feature baselines.
-- Stage 6, Stage 7, Stage 8, and Stage 9 are toy downstream, retrieval, or compact trained positional-attention experiments, not production transformer evaluations.
+- Stage 6, Stage 7, Stage 8, Stage 9, and Stage 10 are toy downstream, retrieval, compact trained positional-attention, or very small transformer experiments, not production transformer evaluations.
+- Stage 11 shows the fixed score is periodic and aliasing-limited; it is theory evidence for the score, not downstream model evidence.
 - The paper does not compare against production language-model baselines.
 - The current hardware sweep is not a statistically broad backend survey.
 - Provider result-key conventions can change the interpretation of recorded bitstrings, so manifest-declared decoding rules must be audited carefully.
@@ -427,7 +446,9 @@ The current evidence package is most valuable as a reproducibility-first method 
 
 The Stage 4 hardware evidence is encouraging because the witness/control ordering is preserved across the active recorded IBM Fez and Amazon Braket artifacts under the manifest-declared verifier. The result remains context-specific. Backend calibration windows, provider result-key conventions, transpilation choices, shot budgets, queue conditions, and packet composition can all change future outcomes. The paper therefore treats the hardware runs as bounded validation records rather than as evidence of general cross-backend robustness.
 
-The Stage 5 through Stage 9 classical experiments clarify the downstream interpretation. Stage 5 showed that the original synthetic attention-scoring target is exactly recoverable by simple exposed-feature baselines, which prevents overreading that result. Stage 6 made the target less tautological by mixing content and positional signal, but it remains an oracle phase-feature sanity check because the PhaseWrap model sees the normalized phase label directly. Stage 7 then moved one step closer to a transformer-like setting by swapping the PhaseWrap positional term into a four-layer attention-only toy stack, where it had the best argmax retrieval ranking on a synthetic length-extrapolation packet while calibration remained mixed. Stage 8 added a local Needle-style retrieval packet with multiple seeds, bootstrap intervals, and a period-pair ablation. Stage 9 adds a trained decoder-style positional attention ablation where `phasewrap_adapter` is strongest on the phase-cued train-short/test-long packet, while `rope_relative` is strongest on the exact-offset passkey packet. These experiments support continued RoPE-facing downstream study; they do not establish production transformer superiority or full transformer-scale validation.
+The Stage 5 through Stage 10 classical experiments clarify the downstream interpretation. Stage 5 showed that the original synthetic attention-scoring target is exactly recoverable by simple exposed-feature baselines, which prevents overreading that result. Stage 6 made the target less tautological by mixing content and positional signal, but it remains an oracle phase-feature sanity check because the PhaseWrap model sees the normalized phase label directly. Stage 7 then moved one step closer to a transformer-like setting by swapping the PhaseWrap positional term into a four-layer attention-only toy stack, where it had the best argmax retrieval ranking on a synthetic length-extrapolation packet while calibration remained mixed. Stage 8 added a local Needle-style retrieval packet with multiple seeds, bootstrap intervals, and a period-pair ablation. Stage 9 adds a trained decoder-style positional attention ablation where `phasewrap_adapter` is strongest on the phase-cued train-short/test-long packet, while `rope_relative` is strongest on the exact-offset passkey packet. Stage 10 adds a first full small-transformer sanity check and is near chance across the tested lanes. These experiments support continued RoPE-facing downstream study; they do not establish production transformer superiority or full transformer-scale validation.
+
+Stage 11 adds theory evidence for the score itself. It shows that the 8/12 rule is exactly periodic over mod 24, has only 10 distinct residue scores because of mirrored and zero-margin aliases, and is exactly expressible as a small classical Fourier feature map. This helps explain why the score can be compact and auditable while still requiring stronger mechanisms or auxiliary information for long-context transformer use.
 
 The CX witness should also be read pragmatically. It was selected because it is the smallest entangling extension of the product-state witness: preserve the two `RY` margin encodings, add one `CX(q0 -> q1)`, and read a target-qubit parity/product signal while retaining the same packet discipline. It is useful for checking whether the phase-wrap cross-band signal survives an entangling readout path, not for claiming entanglement advantage.
 
@@ -441,10 +462,10 @@ The next scientific step is not broader rhetoric about the current hardware reco
 | 2 | Standard retrieval tasks | Move beyond the current Stage 8 and Stage 9 synthetic packets toward Needle-in-Haystack, passkey retrieval, multi-needle retrieval, RULER-style multi-hop/aggregation, or compact natural-language QA tasks where the correct answer is not defined by the PhaseWrap score. |
 | 3 | Comparable PhaseWrap mechanism | Implement PhaseWrap as a genuine positional mechanism: a positional attention bias, a query/key rotation analogue, or a learned adapter around PhaseWrap features. Avoid treating the normalized phase label as an oracle scalar input. |
 | 4 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score. Add provider bit-order and observable calibration circuits, shot-noise or bootstrap intervals, independent reruns across dates and queue conditions, preregistered packet sets, and classical compute timing/cost estimates. |
-| 5 | Theory of the score | Formalize invariances, unavoidable aliases, period-pair tradeoffs, context-length behavior, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
+| 5 | Theory-to-task connection | Stage 11 now formalizes invariances, unavoidable aliases, period-pair tradeoffs, context-length behavior, and exact periodic-feature support. Next, connect those facts to task distributions and mechanism designs where the score should help or hurt. |
 | 6 | Larger or error-aware witnesses | Explore larger witness families or mitigation analysis only when the packet generator, controls, costs, and verifier can preserve the current artifact discipline. |
 
-The highest-impact research gap remains downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts, that the Stage 5 synthetic attention-scoring label is recoverable by simple exposed-feature baselines, that Stage 6 is a useful oracle phase-feature sanity check, that Stage 7 improves argmax retrieval ranking in a four-layer toy length-extrapolation ablation, that Stage 8 wins a local phase-cued packet with a release-local period-pair ablation, and that Stage 9 produces a first trained positional-attention result with a mixed outcome across task lanes. Stage 10 adds a first full small-transformer sanity check, including a tiny text-fact QA lane, but its near-chance result means a stronger small decoder-only transformer ablation on harder tasks remains the next milestone for any stronger RoPE-replacement claim.
+The highest-impact research gap remains downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts, that the Stage 5 synthetic attention-scoring label is recoverable by simple exposed-feature baselines, that Stage 6 is a useful oracle phase-feature sanity check, that Stage 7 improves argmax retrieval ranking in a four-layer toy length-extrapolation ablation, that Stage 8 wins a local phase-cued packet with a release-local period-pair ablation, and that Stage 9 produces a first trained positional-attention result with a mixed outcome across task lanes. Stage 10 adds a first full small-transformer sanity check, including a tiny text-fact QA lane, but its near-chance result means a stronger small decoder-only transformer ablation on harder tasks remains the next milestone for any stronger RoPE-replacement claim. Stage 11 clarifies that the fixed score is a mod-24 periodic feature with aliases, so future model experiments must demonstrate useful behavior despite that aliasing.
 
 Broader hardware expansion is useful but secondary to the transformer ablation. The hardware track should be framed as an auditable hardware witness for a classical phase score, not as quantum-enhanced attention. IonQ should be added only through a dated Amazon Braket/IonQ record when a device is available. Quandela, AQT, or larger-qubit witnesses should be added only when credentials, provider cost, and artifact capture support the same manifest/verifier discipline as Stage 4.
 
@@ -456,7 +477,7 @@ For presentation clarity, public materials should keep three concepts separate:
 
 ## 12. Conclusion
 
-PhaseWrap-RoPE provides a compact phase-wrap positional scoring rule and a reproducibility-first evidence path for auditing that rule through deterministic packets, classical baselines, bounded small-circuit hardware readouts, local retrieval benchmarks, and a compact trained positional-attention ablation. The current evidence supports a narrow method-and-artifact claim: the score is well specified, the packet machinery is auditable, selected hardware records preserve the witness/control ordering, and toy downstream, Needle-style, and trained positional-attention results justify continued RoPE-facing study.
+PhaseWrap-RoPE provides a compact phase-wrap positional scoring rule and a reproducibility-first evidence path for auditing that rule through deterministic packets, classical baselines, bounded small-circuit hardware readouts, local retrieval benchmarks, compact trained positional-attention ablations, and a deterministic score-theory analysis. The current evidence supports a narrow method-and-artifact claim: the score is well specified, the packet machinery is auditable, selected hardware records preserve the witness/control ordering, the 8/12 score's periodic structure is explicit, and toy downstream, Needle-style, and trained positional-attention results justify continued RoPE-facing study.
 
 The current evidence does not support production transformer superiority, general cross-backend robustness, or quantum advantage. The next scientific step is controlled expansion: multi-seed downstream tasks, less phase-aligned targets, confidence intervals, and independently replicated hardware records.
 
