@@ -6,7 +6,7 @@
       "broad quantum advantage"
     ],
     "supported": [
-      "Toy downstream attention evidence on a deterministic synthetic task that mixes content and positional signal.",
+      "Oracle phase-feature sanity check on a deterministic synthetic task that mixes content and positional signal.",
       "Comparison against RoPE, ALiBI, sinusoidal, no-position, mod-24 lookup, and exposed phase-feature baselines."
     ]
   },

@@ -110,6 +110,12 @@ The offline sweep verifier is:
 
 `scripts/verify_stage4_hardware_sweep.py`
 
+The verifier output is:
+
+`logs/automated_stage_gates/stage4_hardware_sweep/offline_verification.json`
+
+The current verifier includes deterministic row-bootstrap percentile intervals over committed per-row records for witness/control MAE, rank correlation, and witness-control deltas. Shot-level resampling is not performed by this verifier.
+
 Current repository state distinguishes active sweep records from deferred or excluded targets:
 
 - The IBM Fez 4096-shot artifact is present and recomputable from raw counts.
@@ -123,6 +129,10 @@ Current repository state distinguishes active sweep records from deferred or exc
 - IonQ is not an active sweep record. The manifest records it only under excluded targets because the checked Amazon Braket IonQ devices were unavailable on 2026-05-19, so IonQ hardware tests could not be run from the checked AWS account.
 
 Deferred IBM rows should not be treated as machine-verifiable public evidence until the real run records, job IDs, raw counts, backend metadata, and verifier outputs are added. For IonQ specifically, a future artifact should be labeled as a new dated Amazon Braket/IonQ run if a Braket IonQ device becomes available, and then added as a new manifest record.
+
+### Provider bitstring calibration status
+
+Amazon Braket CX records are positive only under the manifest-declared `q0q1` result-key convention. The current support for that convention is the provider-aware manifest plus the CX portability diagnostic over committed raw counts. A stronger future replication packet should add known-state provider calibration runs for `|00>`, `|01>`, `|10>`, and `|11>` before promoting any broader provider-level decoding claim.
 
 ### Family-level summary
 
@@ -144,17 +154,18 @@ The active evidence packaging goals are complete:
 
 ## Evidence Pointers
 
-- [Product-state IBM packet logs](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_packet)
-- [IBM Fez CX artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z)
-- [Amazon Braket/Rigetti 1000-shot artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z)
-- [Amazon Braket/Rigetti CX artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z)
-- [Amazon Braket/IQM Garnet CX artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z)
-- [Amazon Braket/IQM Emerald CX artifact](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z)
-- [CX portability diagnostic](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/docs/research/q-rope-stage4-cx-portability-diagnostic-v1.md)
-- [CX no-hardware rehearsal](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_cx_rehearsal/ideal_counts_rehearsal)
-- [Stage 4 sweep manifest](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/logs/automated_stage_gates/stage4_hardware_sweep/manifest.json)
-- [Stage 4 sweep verifier](/C:/Users/Dan/Desktop/Projects/QuantyraQRope-sync/scripts/verify_stage4_hardware_sweep.py)
-- [Stage 4 sweep runner](/C:/Users/Dan/Desktop/Projects/QuantyraQRope/scripts/run_stage4_hardware_sweep.py)
+- Product-state IBM packet logs: `logs/automated_stage_gates/stage4_hardware_packet`
+- IBM Fez CX artifact: `logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z`
+- Amazon Braket/Rigetti 1000-shot artifact: `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_zz_expectation_phase_wrap_v1_20260519T100942Z`
+- Amazon Braket/Rigetti CX artifact: `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_us-west-1__device_qpu_rigetti_Cepheus-1-108Q/two_qubit_cx_parity_phase_wrap_v2_20260519T230047Z`
+- Amazon Braket/IQM Garnet CX artifact: `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Garnet/two_qubit_cx_parity_phase_wrap_v2_20260519T230446Z`
+- Amazon Braket/IQM Emerald CX artifact: `logs/automated_stage_gates/stage4_hardware_sweep/amazon_braket__arn_aws_braket_eu-north-1__device_qpu_iqm_Emerald/two_qubit_cx_parity_phase_wrap_v2_20260519T230818Z`
+- CX portability diagnostic: `docs/research/q-rope-stage4-cx-portability-diagnostic-v1.md`
+- CX no-hardware rehearsal: `logs/automated_stage_gates/stage4_cx_rehearsal/ideal_counts_rehearsal`
+- Stage 4 sweep manifest: `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`
+- Stage 4 sweep verifier output: `logs/automated_stage_gates/stage4_hardware_sweep/offline_verification.json`
+- Stage 4 sweep verifier: `scripts/verify_stage4_hardware_sweep.py`
+- Stage 4 sweep runner: `scripts/run_stage4_hardware_sweep.py`
 
 ## Recommendation
 

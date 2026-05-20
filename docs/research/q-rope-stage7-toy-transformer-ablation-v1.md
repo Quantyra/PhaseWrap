@@ -13,6 +13,7 @@ The task is intentionally small and synthetic. It is useful for reviewer intuiti
 - Manifest: `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest.json`
 - Results: `logs/automated_stage_gates/stage7_toy_transformer_ablation/results.json`
 - Summary CSV: `logs/automated_stage_gates/stage7_toy_transformer_ablation/summary.csv`
+- Calibration summary CSV: `logs/automated_stage_gates/stage7_toy_transformer_ablation/calibration_summary.csv`
 - Runner: `scripts/run_stage7_toy_transformer_ablation.py`
 - Implementation: `src/qrope/stage7_toy_transformer_ablation.py`
 - Tests: `tests/test_stage7_toy_transformer_ablation.py`
@@ -33,14 +34,24 @@ The toy stack has four attention-only layers. The only changed component across 
 | `sinusoidal_4layer` | 4 | 4.0 | 40 | 48-64 | 0.945480 | 0.054520 | 0.050000 | 0.304167 |
 | `no_position_4layer` | 4 | 0.0 | 40 | 48-64 | 0.961044 | 0.038956 | 0.300000 | 0.600000 |
 
-The PhaseWrap variant has the best top-1 and MRR on this fixed packet. Its absolute target probability remains low because the toy stack spreads probability mass across many phase-compatible distractors. This result should therefore be read as a ranking/selection ablation, not as a calibrated probability result.
+The PhaseWrap variant has the best argmax retrieval ranking by top-1 and MRR on this fixed packet. Its absolute target probability remains low because the toy stack spreads probability mass across many phase-compatible distractors. This result should therefore be read as a ranking/selection ablation, not as a calibrated probability result.
+
+Sorted by target-probability calibration, `rope_4layer` is best on this same packet:
+
+| Method | Target prob MAE | Mean target prob | Rank corr | Top-1 | MRR |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `rope_4layer` | 0.895771 | 0.104229 | 0.850390 | 0.400000 | 0.700000 |
+| `sinusoidal_4layer` | 0.945480 | 0.054520 | 0.953139 | 0.050000 | 0.304167 |
+| `no_position_4layer` | 0.961044 | 0.038956 | -0.272139 | 0.300000 | 0.600000 |
+| `phasewrap_rope_4layer` | 0.962992 | 0.037008 | 0.000000 | 1.000000 | 1.000000 |
+| `alibi_4layer` | 0.971458 | 0.028542 | 0.960197 | 0.050000 | 0.212083 |
 
 ## Claim Boundary
 
 Supported:
 
 - a deterministic synthetic length-extrapolation ablation for a four-layer toy attention stack;
-- evidence that the PhaseWrap positional term can improve target ranking on this fixed toy packet;
+- evidence that the PhaseWrap positional term can improve argmax target ranking on this fixed toy packet;
 - a no-hardware, no-provider-credential reproducibility path.
 
 Excluded:

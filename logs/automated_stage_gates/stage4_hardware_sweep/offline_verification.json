@@ -17,6 +17,7 @@
   "manifest_schema_version": "qrope_stage4_hardware_sweep_manifest_v1",
   "missing_evidence": [],
   "overclaim_guardrail": {
+    "advisory_findings": [],
     "findings": [],
     "pass": true
   },
@@ -908,6 +909,45 @@
         "shots": 4096,
         "witness_mae": 0.018382,
         "witness_rank_corr": 0.876558
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.38039,
+            "low": 0.092854,
+            "point": 0.217262
+          },
+          "control_minus_witness_mae": {
+            "high": 0.354272,
+            "low": 0.080479,
+            "point": 0.19888
+          },
+          "control_rank_correlation": {
+            "high": 0.50683,
+            "low": -0.722258,
+            "point": -0.17694
+          },
+          "witness_mae": {
+            "high": 0.028536,
+            "low": 0.010654,
+            "point": 0.018382
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.68206,
+            "low": 0.159998,
+            "point": 1.053498
+          },
+          "witness_rank_correlation": {
+            "high": 0.976017,
+            "low": 0.601137,
+            "point": 0.876558
+          }
+        },
+        "row_count": 16,
+        "shot_resampling": "not_performed"
       }
     },
     {
@@ -1467,6 +1507,45 @@
         "shots": 1000,
         "witness_mae": 0.069901,
         "witness_rank_corr": 0.786644
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.32898,
+            "low": 0.032677,
+            "point": 0.149995
+          },
+          "control_minus_witness_mae": {
+            "high": 0.198267,
+            "low": 0.003312,
+            "point": 0.080094
+          },
+          "control_rank_correlation": {
+            "high": 0.993224,
+            "low": -0.753441,
+            "point": 0.121232
+          },
+          "witness_mae": {
+            "high": 0.138353,
+            "low": 0.017061,
+            "point": 0.069901
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.559217,
+            "low": -0.08985,
+            "point": 0.665412
+          },
+          "witness_rank_correlation": {
+            "high": 1.0,
+            "low": 0.100647,
+            "point": 0.786644
+          }
+        },
+        "row_count": 8,
+        "shot_resampling": "not_performed"
       }
     },
     {
@@ -2355,6 +2434,45 @@
         "shots": 4096,
         "witness_mae": 0.021458,
         "witness_rank_corr": 0.972455
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.35831,
+            "low": 0.085434,
+            "point": 0.212516
+          },
+          "control_minus_witness_mae": {
+            "high": 0.329821,
+            "low": 0.069577,
+            "point": 0.191058
+          },
+          "control_rank_correlation": {
+            "high": 0.575471,
+            "low": -0.727173,
+            "point": -0.169318
+          },
+          "witness_mae": {
+            "high": 0.029908,
+            "low": 0.012784,
+            "point": 0.021458
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.71564,
+            "low": 0.371697,
+            "point": 1.141773
+          },
+          "witness_rank_correlation": {
+            "high": 0.992498,
+            "low": 0.895559,
+            "point": 0.972455
+          }
+        },
+        "row_count": 16,
+        "shot_resampling": "not_performed"
       }
     },
     {
@@ -2915,6 +3033,45 @@
         "shots": 1000,
         "witness_mae": 0.061643,
         "witness_rank_corr": 0.557668
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.4016,
+            "low": 0.059154,
+            "point": 0.19437
+          },
+          "control_minus_witness_mae": {
+            "high": 0.336748,
+            "low": -0.009105,
+            "point": 0.132727
+          },
+          "control_rank_correlation": {
+            "high": 0.893154,
+            "low": -0.92582,
+            "point": -0.060616
+          },
+          "witness_mae": {
+            "high": 0.087518,
+            "low": 0.0389,
+            "point": 0.061643
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.693687,
+            "low": -0.64053,
+            "point": 0.618284
+          },
+          "witness_rank_correlation": {
+            "high": 0.955433,
+            "low": -0.276779,
+            "point": 0.557668
+          }
+        },
+        "row_count": 8,
+        "shot_resampling": "not_performed"
       }
     },
     {
@@ -3475,6 +3632,45 @@
         "shots": 1000,
         "witness_mae": 0.021719,
         "witness_rank_corr": 0.981981
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.415537,
+            "low": 0.071483,
+            "point": 0.20437
+          },
+          "control_minus_witness_mae": {
+            "high": 0.389451,
+            "low": 0.048113,
+            "point": 0.182651
+          },
+          "control_rank_correlation": {
+            "high": 0.877058,
+            "low": -0.923146,
+            "point": -0.060616
+          },
+          "witness_mae": {
+            "high": 0.032074,
+            "low": 0.012002,
+            "point": 0.021719
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.887317,
+            "low": 0.0,
+            "point": 1.042597
+          },
+          "witness_rank_correlation": {
+            "high": 1.0,
+            "low": 0.893011,
+            "point": 0.981981
+          }
+        },
+        "row_count": 8,
+        "shot_resampling": "not_performed"
       }
     },
     {
@@ -4035,6 +4231,45 @@
         "shots": 1000,
         "witness_mae": 0.021479,
         "witness_rank_corr": 0.884995
+      },
+      "uncertainty_intervals": {
+        "confidence_level": 0.95,
+        "iterations": 1000,
+        "method": "row_bootstrap_percentile",
+        "metrics": {
+          "control_mae": {
+            "high": 0.42438,
+            "low": 0.082375,
+            "point": 0.210995
+          },
+          "control_minus_witness_mae": {
+            "high": 0.396278,
+            "low": 0.066536,
+            "point": 0.189516
+          },
+          "control_rank_correlation": {
+            "high": 0.796972,
+            "low": -0.969046,
+            "point": -0.096986
+          },
+          "witness_mae": {
+            "high": 0.032194,
+            "low": 0.012444,
+            "point": 0.021479
+          },
+          "witness_minus_control_rank_correlation": {
+            "high": 1.961174,
+            "low": -0.117771,
+            "point": 0.981981
+          },
+          "witness_rank_correlation": {
+            "high": 1.0,
+            "low": 0.33323,
+            "point": 0.884995
+          }
+        },
+        "row_count": 8,
+        "shot_resampling": "not_performed"
       }
     }
   ],
@@ -4126,5 +4361,6 @@
       "witness_rank_corr": 0.884995
     }
   ],
+  "uncertainty_note": "Intervals are deterministic row-bootstrap percentile intervals over committed per-row records; shot-level resampling is not performed by this verifier.",
   "verifier": "qrope_stage4_hardware_sweep_offline_verifier_v1"
 }

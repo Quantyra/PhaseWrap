@@ -1,4 +1,5 @@
 {
+  "calibration_csv_path": "logs/automated_stage_gates/stage7_toy_transformer_ablation/calibration_summary.csv",
   "claim_boundary": {
     "excluded": [
       "production transformer superiority",

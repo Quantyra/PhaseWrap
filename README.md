@@ -29,6 +29,7 @@ python scripts/verify_stage4_hardware_sweep.py
 python scripts/run_stage5_attention_baselines.py
 python scripts/run_stage6_downstream_attention.py
 python scripts/run_stage7_toy_transformer_ablation.py
+python scripts/run_stage8_needle_benchmark.py
 ```
 
 ## Status
@@ -38,6 +39,7 @@ python scripts/run_stage7_toy_transformer_ablation.py
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
 - `Current evidence posture`: Stage 4 real-noisy-hardware results for bounded frozen packet/backend/date/calibration contexts, including IBM Fez positives, Amazon Braket/Rigetti product-state positive evidence, and provider-aware Amazon Braket CX positive recomputations from committed raw counts.
+- `RoPE-facing benchmark posture`: Stage 8 adds a local phase-cued Needle-style retrieval packet with multiple seeds, bootstrap intervals, and a period-pair ablation. It supports continued RoPE-replacement research, not a production replacement claim.
 - `Hardware posture`: IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and Amazon Braket CX lanes have completed active Stage 4 hardware artifacts; additional IBM machines are deferred from the active sweep; Amazon Braket/IonQ was checked on 2026-05-19 and was not run because Forte devices were `OFFLINE` and Aria 1 was `RETIRED`; AQT IBEX Q1 is deferred due cost.
 - `Evidence tree posture`: `logs/automated_stage_gates/stage4_hardware_packet/` remains the default single-packet verifier path. The same IBM Fez 2026-05-17 product-state pass is also preserved as an immutable named run under `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/` for the sweep manifest.
 
@@ -80,6 +82,7 @@ The public claim frame excludes:
 - [Stage 5 attention baseline result](docs/research/q-rope-stage5-attention-baselines-v1.md)
 - [Stage 6 downstream attention result](docs/research/q-rope-stage6-downstream-attention-v1.md)
 - [Stage 7 toy transformer ablation](docs/research/q-rope-stage7-toy-transformer-ablation-v1.md)
+- [Stage 8 Needle-style benchmark](docs/research/q-rope-stage8-needle-benchmark-v1.md)
 - [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
@@ -117,6 +120,8 @@ Install Amazon Braket dependencies only when preparing a Braket hardware run:
 ```bash
 python -m pip install -e ".[braket]"
 ```
+
+The current Amazon Braket adapter also shells out to the external `aws` executable for STS, Braket, and S3 operations. Install and configure AWS CLI v2 separately before attempting a Braket hardware run.
 
 Verify the saved Stage 4 packet arithmetic from the published raw-count evidence:
 
@@ -172,7 +177,7 @@ Run the deterministic Stage 6 toy downstream attention benchmark:
 python scripts/run_stage6_downstream_attention.py
 ```
 
-Stage 6 mixes token/content compatibility with phase-wrap positional signal so mod-24 lookup and direct `m8/m12/m8*m12` baselines are no longer exact. On the fixed packet, `phasewrap_rope_attention` has the lowest MAE, while the claim remains limited to this toy downstream benchmark.
+Stage 6 is an oracle phase-feature sanity check: it mixes token/content compatibility with phase-wrap positional signal so mod-24 lookup and direct `m8/m12/m8*m12` baselines are no longer exact. On the fixed packet, `phasewrap_rope_attention` has the lowest MAE, while the claim remains limited to this toy downstream packet.
 
 Run the deterministic Stage 7 four-layer toy transformer ablation:
 
@@ -180,7 +185,15 @@ Run the deterministic Stage 7 four-layer toy transformer ablation:
 python scripts/run_stage7_toy_transformer_ablation.py
 ```
 
-Stage 7 swaps the PhaseWrap positional term into a four-layer attention-only toy transformer on a synthetic length-extrapolation retrieval task. On the fixed packet, `phasewrap_rope_4layer` has the best top-1 and MRR; this remains a small synthetic ablation, not production transformer evidence.
+Stage 7 swaps the PhaseWrap positional term into a four-layer attention-only toy transformer on a synthetic length-extrapolation retrieval task. On the fixed packet, `phasewrap_rope_4layer` has the best argmax retrieval ranking by top-1 and MRR, while `rope_4layer` is better on target-probability calibration. This remains a small synthetic ablation, not production transformer evidence.
+
+Run the deterministic Stage 8 local Needle-style benchmark:
+
+```bash
+python scripts/run_stage8_needle_benchmark.py
+```
+
+Stage 8 compares PhaseWrap-RoPE against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules on a phase-cued synthetic retrieval packet across five seeds and context lengths up to 1024. The result supports keeping the RoPE-replacement research lane open, but it is not a RULER score or production transformer result.
 
 ## Reviewer path in 10 minutes
 
@@ -192,6 +205,7 @@ Stage 7 swaps the PhaseWrap positional term into a four-layer attention-only toy
 - Run `python scripts/verify_stage4_hardware_packet.py`.
 - Inspect `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`.
 - Run `python scripts/verify_stage4_hardware_sweep.py`.
+- Run `python scripts/run_stage8_needle_benchmark.py` for the local RoPE-facing retrieval sanity check.
 
 ## CI and test coverage
 
@@ -220,12 +234,13 @@ The current release is ready for bounded repository/preprint publication. The ne
 | --- | --- | --- |
 | 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
 | 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
-| 3 | Toy downstream attention benchmark | Complete for a fixed synthetic packet; PhaseWrap-RoPE gives the best score calibration, but broader claims require harder tasks and more seeds. |
-| 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE improves target ranking, but broader claims require harder tasks and more seeds. |
-| 5 | Independent hardware replication | Add new packet/date/backend records, confidence or bootstrap intervals for MAE/rank correlations, and IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
-| 6 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
+| 3 | Toy downstream attention benchmark | Complete for a fixed synthetic packet; Stage 6 is best read as an oracle phase-feature sanity check. |
+| 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
+| 5 | Local Needle-style retrieval benchmark | Complete for a phase-cued synthetic packet with five seeds, bootstrap intervals, and a period-pair ablation; use it to justify harder RoPE-facing benchmarks, not production claims. |
+| 6 | Independent hardware replication | Add new packet/date/backend records, confidence or bootstrap intervals for MAE/rank correlations, and IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
+| 7 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
 
-The mod-8/mod-12 choice is a fixed first-release design: two wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band product signal. Other period pairs are future ablation targets, not current evidence.
+The mod-8/mod-12 choice is a fixed first-release design: two wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band product signal. Stage 8 now includes a release-local period-pair ablation in which `(8, 12)` is best on the synthetic phase-cued Needle-style packet. That supports the current design choice for this packet, but it is not a proof of global optimality.
 
 The CX variant was chosen as the smallest entangling extension of the product-state witness: it preserves the two `RY` margin encodings, adds one `CX(q0 -> q1)`, and reads a target-qubit parity/product signal without changing the packet discipline. The full Stage 4 packet generation pipeline is already present in `src/qrope/automated_stage_gates.py` and exposed through the Stage 4 runner/verifier scripts; future work is to separate that path into a cleaner researcher-facing API without changing the recorded packets.
 

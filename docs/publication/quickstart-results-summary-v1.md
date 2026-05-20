@@ -79,6 +79,14 @@ python scripts/run_stage7_toy_transformer_ablation.py
 
 This writes `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest.json`, `results.json`, and `summary.csv`.
 
+Run the Stage 8 no-credential local Needle-style benchmark:
+
+```bash
+python scripts/run_stage8_needle_benchmark.py
+```
+
+This writes `logs/automated_stage_gates/stage8_needle_benchmark/manifest.json`, `results.json`, `summary.csv`, and `period_pair_ablation.csv`.
+
 ## What This Supports
 
 - A bounded phase-wrap scoring method using mod-8 and mod-12 wrapped residual margins.
@@ -86,8 +94,9 @@ This writes `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest
 - Small-circuit hardware validation that the witness/control ordering holds for the recorded packet/backend/date/calibration contexts listed above.
 - A provider-aware Amazon Braket correction that is auditable from the saved raw counts.
 - A deterministic Stage 5 attention-scoring baseline suite showing that the current synthetic label is exactly recoverable by mod-24 lookup and direct `m8*m12` exposed features.
-- A deterministic Stage 6 toy downstream attention benchmark where the target is not exactly recoverable by mod-24 lookup or direct phase features alone, and `phasewrap_rope_attention` has the lowest MAE on the fixed packet.
-- A deterministic Stage 7 four-layer toy transformer ablation where `phasewrap_rope_4layer` has the best target ranking on a fixed synthetic length-extrapolation retrieval packet.
+- A deterministic Stage 6 oracle phase-feature sanity check where the target is not exactly recoverable by mod-24 lookup or direct phase features alone, and `phasewrap_rope_attention` has the lowest MAE on the fixed packet.
+- A deterministic Stage 7 four-layer toy transformer ablation where `phasewrap_rope_4layer` has the best argmax retrieval ranking on a fixed synthetic length-extrapolation retrieval packet, while calibration remains mixed.
+- A deterministic Stage 8 local Needle-style retrieval benchmark where `phasewrap_rope_8_12` has the best top-1 and MRR on a phase-cued synthetic packet across five seeds and context lengths up to 1024.
 
 ## What This Does Not Support
 
@@ -100,11 +109,12 @@ This writes `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest
 - a claim that Stage 5 establishes production transformer or full transformer-scale superiority.
 - a claim that Stage 6 establishes production transformer or full transformer-scale superiority.
 - a claim that Stage 7 establishes production transformer or full transformer-scale superiority.
+- a claim that Stage 8 is a standard RULER benchmark, production transformer result, or proof that PhaseWrap-RoPE replaces RoPE.
 
 ## Open Questions
 
-- **Why mod-8 and mod-12?** They provide two distinct wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band interaction through the product of signed margins. Other period pairs remain an ablation target.
-- **Does PhaseWrap-RoPE help a classical ML task?** Stage 5, Stage 6, and Stage 7 are now present as bounded synthetic downstream checks. Stage 7 gives a compact four-layer toy transformer ranking result, but harder multi-seed tasks are still needed before making broader downstream claims.
+- **Why mod-8 and mod-12?** They provide two distinct wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band interaction through the product of signed margins. Stage 8 adds a release-local period-pair ablation where `(8, 12)` is best on the phase-cued Needle-style packet; this is not a proof of global optimality.
+- **Does PhaseWrap-RoPE help a classical ML task?** Stage 5, Stage 6, Stage 7, and Stage 8 are now present as bounded synthetic downstream checks. Stage 8 gives a compact local Needle-style retrieval result, but harder standard benchmarks and small trained transformer experiments are still needed before making broader downstream claims.
 - **Why the CX variant?** It is the smallest entangling extension of the product-state witness: keep the two `RY` margin encodings, add one `CX(q0 -> q1)`, and read a target-qubit parity/product signal while preserving the same packet discipline.
 - **Will the packet generation pipeline be reusable?** The current pipeline is open in `src/qrope/automated_stage_gates.py` and the Stage 4 runner/verifier scripts. A cleaner researcher-facing API is a packaging task, not new scientific evidence.
 - **Should more hardware be run?** Yes, but as independent replication: new dates, new frozen packets, and cost-justified provider targets. IonQ was unavailable through Amazon Braket during the checked window; Quandela/AQT require separate execution and budget decisions.
@@ -116,7 +126,9 @@ This writes `logs/automated_stage_gates/stage7_toy_transformer_ablation/manifest
 | --- | --- | --- |
 | Stage 4 | Hardware evidence packaging | Complete for the active sweep. |
 | Stage 5 | Attention-scoring baselines | Complete for the current synthetic task; the label is exactly recoverable by mod-24 lookup and direct `m8*m12` features. |
-| Stage 6 | Toy downstream attention comparison | Complete for one fixed synthetic packet; broader downstream claims require harder tasks and more seeds. |
-| Stage 7 | Four-layer toy transformer ablation | Complete for one fixed synthetic length-extrapolation packet; broader downstream claims require harder tasks and more seeds. |
-| Stage 8 | Independent hardware replication | Add new packet/date/backend records with raw counts, verifier output, and confidence or bootstrap intervals. |
-| Stage 9 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |
+| Stage 6 | Toy downstream attention comparison | Complete for one fixed synthetic packet; best read as an oracle phase-feature sanity check. |
+| Stage 7 | Four-layer toy transformer ablation | Complete for one fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
+| Stage 8 | Local Needle-style retrieval benchmark | Complete for one phase-cued synthetic packet with five seeds, bootstrap intervals, and period-pair ablation. |
+| Stage 9 | Standard retrieval or small trained transformer benchmark | Move to RULER-style retrieval or a small trained attention model with matched compute, multiple seeds, and confidence intervals. |
+| Stage 10 | Independent hardware replication | Add new packet/date/backend records with raw counts, verifier output, and confidence or bootstrap intervals. |
+| Stage 11 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |

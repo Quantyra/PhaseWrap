@@ -1,0 +1,6 @@
+method,period_pair,row_count,seed_count,sequence_length_min,sequence_length_max,top1_accuracy,top1_ci_low,top1_ci_high,mrr,mrr_ci_low,mrr_ci_high,mean_target_probability,mean_target_probability_ci_low,mean_target_probability_ci_high,mean_rank,rank_correlation
+phasewrap_rope_8_12,"[8, 12]",160,5,128,1024,1.0,1.0,1.0,1.0,1.0,1.0,0.219558,0.204672,0.234159,1.0,0.0
+rope_relative,,160,5,128,1024,0.04375,0.0125,0.08125,0.180632,0.149406,0.21446,0.052568,0.049018,0.056194,13.1875,0.819933
+alibi,,160,5,128,1024,0.03125,0.00625,0.0625,0.160126,0.129624,0.191875,0.051733,0.047305,0.05602,13.7125,0.908978
+sinusoidal,,160,5,128,1024,0.04375,0.0125,0.075,0.181553,0.151338,0.216159,0.05267,0.049039,0.056785,11.775,0.826514
+no_position,,160,5,128,1024,0.06875,0.03125,0.10625,0.216054,0.180333,0.250577,0.05373,0.050263,0.056996,9.5375,0.235716

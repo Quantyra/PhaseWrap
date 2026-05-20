@@ -39,6 +39,14 @@
       "Support only bounded packet/backend/date/calibration-specific validation outcomes for the active records."
     ]
   },
+  "provider_bitstring_calibration": {
+    "current_basis": "The active verifier uses the manifest-declared provider bitstring order and the Stage 4 CX portability diagnostic over committed raw counts. IBM records use q1q0; Amazon Braket records use q0q1.",
+    "required_future_artifacts": [
+      "Before promoting new provider-wide claims, add provider-specific known-state calibration packets for |00>, |01>, |10>, and |11> preparations.",
+      "Record raw counts, task or job IDs, backend metadata, timestamps, declared result-key convention, and offline verifier output for each calibration packet."
+    ],
+    "status": "planned_not_run_for_current_release"
+  },
   "deferred_targets": [
     {
       "provider": "ibm_runtime",
@@ -203,7 +211,7 @@
       "status": "completed",
       "submitted_at_utc": "2026-05-19T22:21:54Z",
       "summary_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/summary.json",
-      "verifier_output_path": null
+      "verifier_output_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_cx_parity_phase_wrap_v2_20260519T222219Z/offline_verification.json"
     },
     {
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",

@@ -208,7 +208,21 @@ def run_toy_transformer_ablation(seed: int = 42) -> dict[str, Any]:
                 **metrics,
             }
         )
-    best = max(rows, key=lambda row: (row["mrr"], row["top1_accuracy"], row["mean_target_probability"], row["method"]))
+    ranking_table = sorted(
+        rows,
+        key=lambda row: (row["mrr"], row["top1_accuracy"], row["mean_target_probability"], row["method"]),
+        reverse=True,
+    )
+    calibration_table = sorted(
+        rows,
+        key=lambda row: (
+            row["target_probability_mae"],
+            -row["mean_target_probability"],
+            -row["rank_correlation"],
+            row["method"],
+        ),
+    )
+    best = ranking_table[0]
     return {
         "schema_version": STAGE7_SCHEMA_VERSION,
         "stage": "stage7_toy_transformer_ablation",
@@ -241,7 +255,11 @@ def run_toy_transformer_ablation(seed: int = 42) -> dict[str, Any]:
             for name, rows_for_split in splits.items()
         },
         "table": rows,
+        "ranking_table": ranking_table,
+        "calibration_table": calibration_table,
         "best_method": best["method"],
+        "best_selection_method": best["method"],
+        "best_calibration_method": calibration_table[0]["method"],
     }
 
 
@@ -255,12 +273,14 @@ def write_stage7_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OUTP
         "model_names": list(MODEL_NAMES),
         "result_path": str((output_dir / "results.json").as_posix()),
         "summary_csv_path": str((output_dir / "summary.csv").as_posix()),
+        "calibration_csv_path": str((output_dir / "calibration_summary.csv").as_posix()),
         "claim_boundary": result["claim_boundary"],
     }
     paths = {
         "manifest": str(output_dir / "manifest.json"),
         "results": str(output_dir / "results.json"),
         "summary_csv": str(output_dir / "summary.csv"),
+        "calibration_csv": str(output_dir / "calibration_summary.csv"),
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
     (output_dir / "results.json").write_text(json.dumps(result, indent=2, sort_keys=True), encoding="utf-8")
@@ -268,6 +288,10 @@ def write_stage7_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OUTP
         writer = csv.DictWriter(handle, fieldnames=list(result["table"][0].keys()))
         writer.writeheader()
         writer.writerows(result["table"])
+    with (output_dir / "calibration_summary.csv").open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(result["calibration_table"][0].keys()))
+        writer.writeheader()
+        writer.writerows(result["calibration_table"])
     return paths
 
 
@@ -286,5 +310,5 @@ def print_stage7_table(result: dict[str, Any]) -> None:
     )
     print(" | ".join(columns))
     print(" | ".join("---" for _ in columns))
-    for row in result["table"]:
+    for row in result["ranking_table"]:
         print(" | ".join(str(row[column]) for column in columns))

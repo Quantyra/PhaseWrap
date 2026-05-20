@@ -16,6 +16,7 @@ from scripts.verify_stage4_hardware_sweep import (
     mean_absolute_error,
     rank_correlation,
     raw_counts_to_expectations,
+    row_bootstrap_intervals,
     scan_public_docs_for_overclaims,
     validate_manifest,
     verify_manifest,
@@ -145,6 +146,9 @@ def test_product_state_witness_metric_recomputation(tmp_path: Path) -> None:
     row = verification["records"][0]["table_row"]
     assert row["family"] == PRODUCT_STATE_CIRCUIT_FAMILY
     assert row["witness_mae"] < row["control_mae"]
+    intervals = verification["records"][0]["uncertainty_intervals"]
+    assert intervals["method"] == "row_bootstrap_percentile"
+    assert intervals["metrics"]["witness_mae"]["low"] <= row["witness_mae"] <= intervals["metrics"]["witness_mae"]["high"]
 
 
 def test_nested_packet_summary_is_accepted(tmp_path: Path) -> None:
@@ -173,6 +177,18 @@ def test_mae_calculation() -> None:
 
 def test_rank_correlation_calculation() -> None:
     assert rank_correlation([0.0, 0.5, 1.0], [0.0, 0.5, 1.0]) == 1.0
+
+
+def test_row_bootstrap_intervals_are_deterministic() -> None:
+    rows = [
+        {"label": 0.0, "hardware_predictions": {"witness": 0.1, "control": 0.6}},
+        {"label": 0.5, "hardware_predictions": {"witness": 0.4, "control": 0.2}},
+        {"label": 1.0, "hardware_predictions": {"witness": 0.9, "control": 0.1}},
+    ]
+    first = row_bootstrap_intervals(rows, seed_text="synthetic", iterations=100)
+    second = row_bootstrap_intervals(rows, seed_text="synthetic", iterations=100)
+    assert first == second
+    assert first["metrics"]["witness_mae"]["point"] == 0.1
 
 
 def test_missing_evidence_files_fail_clearly(tmp_path: Path) -> None:
@@ -259,3 +275,11 @@ def test_overclaim_guardrail_flags_forbidden_supported_claim(tmp_path: Path) -> 
     result = scan_public_docs_for_overclaims([doc])
     assert result["pass"] is False
     assert result["findings"][0]["phrase"] == "quantum advantage proven"
+
+
+def test_overclaim_guardrail_reports_advisory_terms_without_failing(tmp_path: Path) -> None:
+    doc = tmp_path / "doc.md"
+    doc.write_text("The result improves RoPE on this demo.", encoding="utf-8")
+    result = scan_public_docs_for_overclaims([doc])
+    assert result["pass"] is True
+    assert result["advisory_findings"][0]["term"] == "improves rope"

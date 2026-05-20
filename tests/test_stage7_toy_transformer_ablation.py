@@ -45,6 +45,10 @@ def test_run_toy_transformer_ablation_is_deterministic_and_complete() -> None:
     assert first["table"] == second["table"]
     assert [row["method"] for row in first["table"]] == list(MODEL_NAMES)
     assert first["best_method"] in MODEL_NAMES
+    assert first["best_selection_method"] in MODEL_NAMES
+    assert first["best_calibration_method"] in MODEL_NAMES
+    assert first["ranking_table"][0]["method"] == first["best_selection_method"]
+    assert first["calibration_table"][0]["method"] == first["best_calibration_method"]
     assert all(row["layers"] == LAYER_COUNT for row in first["table"])
 
 
@@ -53,7 +57,8 @@ def test_stage7_outputs_are_written(tmp_path) -> None:
     paths = write_stage7_outputs(result, tmp_path)
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
     saved = json.loads((tmp_path / "results.json").read_text(encoding="utf-8"))
-    assert set(paths) == {"manifest", "results", "summary_csv"}
+    assert set(paths) == {"manifest", "results", "summary_csv", "calibration_csv"}
     assert manifest["stage"] == "stage7_toy_transformer_ablation"
     assert saved["table"] == result["table"]
     assert (tmp_path / "summary.csv").exists()
+    assert (tmp_path / "calibration_summary.csv").exists()

@@ -346,10 +346,11 @@ def run_downstream_attention(seed: int = 42) -> dict[str, Any]:
             "target": "0.10 + 0.50*content_score + 0.30*phase_label + 0.10*content_score*phase_label",
             "content_source": "query/candidate token compatibility",
             "position_source": "existing phase-wrap attention rows",
+            "interpretation": "oracle phase-feature sanity check; PhaseWrap features include phase_label directly",
         },
         "claim_boundary": {
             "supported": [
-                "Toy downstream attention evidence on a deterministic synthetic task that mixes content and positional signal.",
+                "Oracle phase-feature sanity check on a deterministic synthetic task that mixes content and positional signal.",
                 "Comparison against RoPE, ALiBI, sinusoidal, no-position, mod-24 lookup, and exposed phase-feature baselines.",
             ],
             "excluded": [

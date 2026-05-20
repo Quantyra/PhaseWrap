@@ -19,6 +19,16 @@ This note records the Amazon Braket Stage 4 execution path, setup blockers, and 
 - Standard same-region bucket `amazon-braket-us-west-1-485386182336` now exists and was used for the completed task.
 - Standard same-region bucket `amazon-braket-eu-north-1-485386182336` was checked earlier and not found.
 
+## Local Runtime Requirements
+
+Install the Python optional dependency group before preparing Braket runs:
+
+```bash
+python -m pip install -e ".[braket]"
+```
+
+The current Braket adapter also requires the external AWS CLI v2 executable. The code shells out to `aws sts`, `aws braket`, `aws s3api`, and `aws s3 cp`; installing `amazon-braket-sdk` and `boto3` alone does not provide that executable.
+
 ## Resolved Setup Blockers
 
 An earlier `CreateQuantumTask` attempt was denied before a task ARN was created:

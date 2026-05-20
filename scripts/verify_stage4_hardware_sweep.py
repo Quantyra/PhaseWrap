@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import random
 import sys
 from pathlib import Path
 from typing import Any
@@ -29,6 +31,31 @@ FORBIDDEN_SUPPORTED_CLAIMS = [
     "transformer superiority proven",
     "general cross-backend robustness established",
     "production llm improvement",
+    "production transformer improvement proven",
+    "hardware generalization established",
+    "validated replacement for rope",
+    "validated transformer positional encoding",
+]
+ADVISORY_OVERCLAIM_TERMS = [
+    "robust across providers",
+    "hardware generalization",
+    "validated transformer",
+    "improves rope",
+    "beats rope",
+    "production improvement",
+]
+ADVISORY_ALLOWLIST_HINTS = [
+    "not ",
+    "no ",
+    "without ",
+    "excluded",
+    "unsupported",
+    "does not",
+    "do not",
+    "future",
+    "next ",
+    "planned",
+    "question",
 ]
 
 
@@ -70,6 +97,67 @@ def rank_correlation(labels: list[float], predictions: list[float]) -> float:
 
 def raw_counts_to_expectations(counts: dict[str, int], bitstring_order: str = "q1q0") -> dict[str, Any]:
     return counts_to_expectations(counts, bitstring_order=bitstring_order)
+
+
+def _percentile(sorted_values: list[float], percentile: float) -> float:
+    if not sorted_values:
+        raise ValueError("cannot compute percentile for empty values")
+    index = percentile * (len(sorted_values) - 1)
+    lower = int(index)
+    upper = min(lower + 1, len(sorted_values) - 1)
+    fraction = index - lower
+    return sorted_values[lower] * (1.0 - fraction) + sorted_values[upper] * fraction
+
+
+def _metrics_from_per_row(per_row_results: list[dict[str, Any]], indices: list[int] | None = None) -> dict[str, float]:
+    selected = per_row_results if indices is None else [per_row_results[index] for index in indices]
+    labels = [float(row["label"]) for row in selected]
+    witness_predictions = [float(row["hardware_predictions"]["witness"]) for row in selected]
+    control_predictions = [float(row["hardware_predictions"]["control"]) for row in selected]
+    witness = evaluate_prediction_values(labels, witness_predictions)
+    control = evaluate_prediction_values(labels, control_predictions)
+    return {
+        "witness_mae": witness["mae"],
+        "witness_rank_correlation": witness["rank_correlation"],
+        "control_mae": control["mae"],
+        "control_rank_correlation": control["rank_correlation"],
+        "control_minus_witness_mae": round(control["mae"] - witness["mae"], 6),
+        "witness_minus_control_rank_correlation": round(witness["rank_correlation"] - control["rank_correlation"], 6),
+    }
+
+
+def row_bootstrap_intervals(
+    per_row_results: list[dict[str, Any]],
+    *,
+    seed_text: str,
+    iterations: int = 1000,
+) -> dict[str, Any]:
+    if not per_row_results:
+        return {"method": "row_bootstrap_percentile", "pass": False, "reason": "no per-row results"}
+    rng = random.Random(int(hashlib.sha256(seed_text.encode("utf-8")).hexdigest()[:16], 16))
+    point = _metrics_from_per_row(per_row_results)
+    samples: dict[str, list[float]] = {key: [] for key in point}
+    for _ in range(iterations):
+        indices = [rng.randrange(len(per_row_results)) for _ in range(len(per_row_results))]
+        metrics = _metrics_from_per_row(per_row_results, indices)
+        for key, value in metrics.items():
+            samples[key].append(float(value))
+    intervals: dict[str, Any] = {}
+    for key, values in samples.items():
+        ordered = sorted(values)
+        intervals[key] = {
+            "point": point[key],
+            "low": round(_percentile(ordered, 0.025), 6),
+            "high": round(_percentile(ordered, 0.975), 6),
+        }
+    return {
+        "method": "row_bootstrap_percentile",
+        "confidence_level": 0.95,
+        "iterations": iterations,
+        "row_count": len(per_row_results),
+        "shot_resampling": "not_performed",
+        "metrics": intervals,
+    }
 
 
 def validate_manifest(manifest: dict[str, Any]) -> list[str]:
@@ -304,6 +392,10 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
     evaluation = read_json(REPO_ROOT / resolved_paths["evaluation_path"])
     summary = read_json(REPO_ROOT / resolved_paths["summary_path"])
     recomputed = evaluate_hardware_execution(packet, execution, bitstring_order=record.get("bitstring_order"))
+    uncertainty_intervals = row_bootstrap_intervals(
+        recomputed.get("per_row_results", []),
+        seed_text=str(record.get("record_id")),
+    )
     summary_result = summary.get("result", summary)
     summary_evaluation = summary_result.get("evaluation", summary_result)
     checks = _record_metric_checks(evaluation, recomputed, record.get("expected_outcome"))
@@ -380,6 +472,7 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
         "paths": resolved_paths,
         "recorded_evaluation": evaluation,
         "recomputed_evaluation": recomputed,
+        "uncertainty_intervals": uncertainty_intervals,
         "checks": checks,
         "table_row": table_row,
     }
@@ -407,6 +500,7 @@ def verify_manifest(manifest_path: Path) -> dict[str, Any]:
         "schema_errors": schema_errors,
         "records": records,
         "table": completed_rows,
+        "uncertainty_note": "Intervals are deterministic row-bootstrap percentile intervals over committed per-row records; shot-level resampling is not performed by this verifier.",
         "missing_evidence": missing,
         "pass": not schema_errors and bool(records) and all(record.get("pass") for record in records),
     }
@@ -434,14 +528,30 @@ def print_table(rows: list[dict[str, Any]]) -> None:
 
 def scan_public_docs_for_overclaims(paths: list[Path]) -> dict[str, Any]:
     findings: list[dict[str, str]] = []
+    advisory_findings: list[dict[str, str | int]] = []
     for path in paths:
         if not path.exists():
             continue
-        text = path.read_text(encoding="utf-8").lower()
+        raw_text = path.read_text(encoding="utf-8")
+        text = raw_text.lower()
         for phrase in FORBIDDEN_SUPPORTED_CLAIMS:
             if phrase in text:
                 findings.append({"path": display_path(path), "phrase": phrase})
-    return {"pass": not findings, "findings": findings}
+        for line_number, line in enumerate(raw_text.splitlines(), start=1):
+            lowered = line.lower()
+            if any(hint in lowered for hint in ADVISORY_ALLOWLIST_HINTS):
+                continue
+            for term in ADVISORY_OVERCLAIM_TERMS:
+                if term in lowered:
+                    advisory_findings.append(
+                        {
+                            "path": display_path(path),
+                            "line": line_number,
+                            "term": term,
+                            "snippet": line.strip()[:180],
+                        }
+                    )
+    return {"pass": not findings, "findings": findings, "advisory_findings": advisory_findings}
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -26,9 +26,11 @@ def main(argv: list[str] | None = None) -> int:
     paths = write_stage7_outputs(result, args.output_dir)
     print_stage7_table(result)
     print(f"best_method: {result['best_method']}")
+    print(f"best_calibration_method: {result['best_calibration_method']}")
     print(f"wrote {paths['manifest']}")
     print(f"wrote {paths['results']}")
     print(f"wrote {paths['summary_csv']}")
+    print(f"wrote {paths['calibration_csv']}")
     return 0
 
 

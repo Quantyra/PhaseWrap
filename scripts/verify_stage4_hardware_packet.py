@@ -24,6 +24,15 @@ def _json_hash(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _display_path(path: Path | None) -> str | None:
+    if path is None:
+        return None
+    try:
+        return str(path.resolve().relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def _select_metrics(payload: dict[str, Any]) -> dict[str, Any]:
     return {
         "status": payload.get("status"),
@@ -107,10 +116,10 @@ def verify_packet_files(
     verification = {
         "verifier": "qrope_stage4_offline_verifier_v1",
         "no_hardware_submission": True,
-        "packet_path": str(packet_path),
-        "execution_path": str(execution_path),
-        "evaluation_path": str(evaluation_path) if evaluation_path else None,
-        "summary_path": str(summary_path) if summary_path else None,
+        "packet_path": _display_path(packet_path),
+        "execution_path": _display_path(execution_path),
+        "evaluation_path": _display_path(evaluation_path),
+        "summary_path": _display_path(summary_path),
         "packet_sha256": _json_hash(packet_path),
         "execution_sha256": _json_hash(execution_path),
         "provider": packet.get("provider"),
