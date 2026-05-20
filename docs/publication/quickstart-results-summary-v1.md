@@ -101,7 +101,7 @@ Run the Stage 10 small decoder-only transformer ablation:
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`, `results.json`, `summary.csv`, `per_seed_results.csv`, and `failed_runs.json`. The current result is near chance across the tested synthetic retrieval lanes.
+This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manifest.json`, `results.json`, `summary.csv`, `per_seed_results.csv`, and `failed_runs.json`. The current result is near chance across phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane.
 
 ## What This Supports
 
@@ -114,7 +114,7 @@ This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manife
 - A deterministic Stage 7 four-layer toy transformer ablation where `phasewrap_rope_4layer` has the best argmax retrieval ranking on a fixed synthetic length-extrapolation retrieval packet, while calibration remains mixed.
 - A deterministic Stage 8 local Needle-style retrieval benchmark where `phasewrap_rope_8_12` has the best top-1 and MRR on a phase-cued synthetic packet across five seeds and context lengths up to 1024.
 - A deterministic Stage 9 trained positional-attention ablation where `phasewrap_adapter` has mean test top-1 `0.668750` and mean test MRR `0.745096` on the phase-cued train-short/test-long packet, while `rope_relative` is strongest on the exact-offset passkey packet whose answer is not selected by the PhaseWrap score.
-- A Stage 10 small decoder-only transformer ablation showing that this very small autograd-backed model does not yet produce a meaningful PhaseWrap advantage on the tested synthetic retrieval lanes.
+- A Stage 10 small decoder-only transformer ablation showing that this very small autograd-backed model does not yet produce a meaningful PhaseWrap advantage on the tested phase-cued, passkey, or tiny text-fact QA lanes.
 
 ## What This Does Not Support
 
@@ -151,7 +151,7 @@ This writes `logs/automated_stage_gates/stage10_small_decoder_transformer/manife
 | Stage 7 | Four-layer toy transformer ablation | Complete for one fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
 | Stage 8 | Local Needle-style retrieval benchmark | Complete for one phase-cued synthetic packet with five seeds, bootstrap intervals, and period-pair ablation. |
 | Stage 9 | Trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention packets; remaining work is full small decoder-only transformer training and non-synthetic retrieval or QA tasks. |
-| Stage 10 | Full small decoder-only transformer ablation | Complete for a very small one-block decoder-only transformer; result is near chance, so stronger small-transformer and non-synthetic tasks remain next. |
+| Stage 10 | Full small decoder-only transformer ablation | Complete for a very small one-block decoder-only transformer with phase-cued, passkey, and tiny text-fact QA lanes; result is near chance, so stronger small-transformer and harder non-synthetic tasks remain next. |
 | Stage 11 | Hardware witness hardening | Add provider bit-order calibration circuits, shot-noise intervals, independent reruns, preregistered packets, and classical compute timing/cost estimates. |
 | Stage 12 | Theory of the score | Formalize invariances, aliasing, period-pair tradeoffs, context-length behavior, kernel interpretations, and task distributions where the score helps or hurts. |
 | Stage 13 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after downstream and replication evidence justify it. |

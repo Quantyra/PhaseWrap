@@ -152,7 +152,7 @@ Current artifact paths:
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/per_seed_results.csv`
 - `logs/automated_stage_gates/stage10_small_decoder_transformer/failed_runs.json`
 
-The current Stage 10 result is near chance across the tested synthetic retrieval lanes. It should be cited as a completed first small-transformer sanity check with negative or inconclusive evidence, not as a PhaseWrap advantage.
+The current Stage 10 result is near chance across the tested phase-cued retrieval, exact-offset passkey, and tiny text-fact QA lanes. It should be cited as a completed first small-transformer sanity check with negative or inconclusive evidence, not as a PhaseWrap advantage.
 
 ## Promotion Gate
 

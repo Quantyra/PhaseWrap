@@ -36,6 +36,9 @@ def test_stage10_splits_and_biases_are_deterministic() -> None:
     assert first == second
     row = first["exact_offset_passkey"]["test"][0]
     assert row.reference_delta == row.target_delta
+    qa_row = first["tiny_text_fact_qa"]["test"][0]
+    assert qa_row.reference_delta == qa_row.target_delta
+    assert qa_row.label_token in qa_row.tokens
     for method_name in METHOD_NAMES:
         assert positional_bias(row, method_name).shape == (row.query_pos,)
 

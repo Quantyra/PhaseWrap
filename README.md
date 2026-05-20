@@ -212,7 +212,7 @@ Run the Stage 10 small decoder-only transformer ablation:
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The result is weak and near chance across the tested synthetic retrieval lanes; it is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
+Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; it is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
 
 ## Reviewer path in 10 minutes
 
@@ -259,7 +259,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
 | 5 | Local Needle-style retrieval benchmark | Complete for a phase-cued synthetic packet with five seeds, bootstrap intervals, and a period-pair ablation; use it to justify harder RoPE-facing benchmarks, not production claims. |
 | 6 | Stage 9 trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention tasks. Remaining work: full small decoder-only transformer training, non-synthetic retrieval or QA tasks, and richer calibration metrics. |
-| 7 | Stage 10 full transformer ablation | Complete for a very small autograd-backed one-block decoder-only transformer. The result is near chance, so the next step is a stronger small-transformer implementation and non-synthetic retrieval or QA tasks. |
+| 7 | Stage 10 full transformer ablation | Complete for a very small autograd-backed one-block decoder-only transformer with phase-cued, passkey, and tiny text-fact QA lanes. The result is near chance, so the next step is a stronger small-transformer implementation and harder non-synthetic retrieval or QA tasks. |
 | 8 | Hardware witness hardening | Treat hardware as an auditable witness for a classical phase score: add provider bit-order calibration packets, shot-noise or bootstrap intervals, independent reruns across dates, preregistered packet sets, and classical compute timing/cost estimates. |
 | 9 | Theory of the score | Formalize invariances, aliasing, context-length behavior, period-pair tradeoffs, low-rank or periodic-kernel interpretations, and task distributions where the score should help or hurt. |
 | 10 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |

@@ -18,15 +18,37 @@ from .automated_stage_gates import phase_residual
 STAGE10_SCHEMA_VERSION = "qrope_stage10_small_decoder_transformer_v1"
 DEFAULT_OUTPUT_DIR = Path("logs") / "automated_stage_gates" / "stage10_small_decoder_transformer"
 METHOD_NAMES = ("no_position", "sinusoidal", "alibi", "rope", "phasewrap_bias", "phasewrap_adapter")
-TASK_NAMES = ("phase_cued_retrieval", "exact_offset_passkey")
+TASK_NAMES = ("phase_cued_retrieval", "exact_offset_passkey", "tiny_text_fact_qa")
 DEFAULT_SEEDS = (307, 311, 313, 317, 331)
 TRAIN_LENGTHS = (24, 32)
 VALIDATION_LENGTHS = (40,)
 TEST_LENGTHS = (48, 64)
 EXAMPLES_PER_LENGTH = 4
-VOCAB_SIZE = 96
+VOCAB_SIZE = 128
 MODEL_DIM = 8
 DEFAULT_EPOCHS = 45
+
+TEXT_FACTS = (
+    ("paris", "france"),
+    ("rome", "italy"),
+    ("oslo", "norway"),
+    ("lima", "peru"),
+    ("cairo", "egypt"),
+    ("tokyo", "japan"),
+    ("nairobi", "kenya"),
+    ("dublin", "ireland"),
+)
+TEXT_TOKEN_IDS = {
+    "where": 80,
+    "is": 81,
+    "capital": 82,
+    "of": 83,
+    "answer": 84,
+    "fact": 85,
+    "query": 86,
+    **{entity: 87 + index for index, (entity, _) in enumerate(TEXT_FACTS)},
+    **{answer: 96 + index for index, (_, answer) in enumerate(TEXT_FACTS)},
+}
 
 
 @dataclass(frozen=True)
@@ -75,14 +97,38 @@ def make_stage10_splits(
                             reference_delta = int(reference_deltas[(seed + sequence_length + item_index) % len(reference_deltas)])
                             candidates = [delta for delta in range(reference_delta, query_pos, 24) if delta >= 3]
                             target_delta = int(candidates[-1]) if candidates else reference_delta
-                        else:
+                        elif task == "exact_offset_passkey":
                             target_delta = int(rng.integers(max(3, query_pos // 8), max(4, query_pos - 2)))
+                            reference_delta = target_delta
+                        else:
+                            target_delta = int(rng.integers(max(6, query_pos // 4), max(7, query_pos - 3)))
                             reference_delta = target_delta
                         target_pos = query_pos - target_delta
                         tokens = [int(value) for value in rng.integers(0, VOCAB_SIZE - 16, size=sequence_length)]
-                        label_token = int((17 * seed + 11 * sequence_length + 7 * item_index + target_delta) % (VOCAB_SIZE - 16))
-                        tokens[target_pos] = label_token
-                        tokens[query_pos] = VOCAB_SIZE - 1 - int(reference_delta % 16)
+                        if task == "tiny_text_fact_qa":
+                            entity, answer = TEXT_FACTS[(seed + sequence_length + item_index) % len(TEXT_FACTS)]
+                            label_token = TEXT_TOKEN_IDS[answer]
+                            prefix = [
+                                TEXT_TOKEN_IDS["fact"],
+                                TEXT_TOKEN_IDS[entity],
+                                TEXT_TOKEN_IDS["is"],
+                                label_token,
+                            ]
+                            for offset, token_id in enumerate(prefix):
+                                position = max(0, target_pos - len(prefix) + 1 + offset)
+                                tokens[position] = token_id
+                            query_tokens = [
+                                TEXT_TOKEN_IDS["where"],
+                                TEXT_TOKEN_IDS["is"],
+                                TEXT_TOKEN_IDS[entity],
+                                TEXT_TOKEN_IDS["query"],
+                            ]
+                            for offset, token_id in enumerate(query_tokens):
+                                tokens[query_pos - len(query_tokens) + 1 + offset] = token_id
+                        else:
+                            label_token = int((17 * seed + 11 * sequence_length + 7 * item_index + target_delta) % (VOCAB_SIZE - 16))
+                            tokens[target_pos] = label_token
+                            tokens[query_pos] = VOCAB_SIZE - 1 - int(reference_delta % 16)
                         splits[task][split].append(
                             Stage10Example(
                                 example_id=f"{task}_{split}_seed{seed}_L{sequence_length}_{item_index:03d}",
