@@ -385,6 +385,52 @@
     "phase_cued_retrieval": "sinusoidal",
     "tiny_text_fact_qa": "phasewrap_bias"
   },
+  "capacity_probe": {
+    "epochs": 300,
+    "interpretation": "The capacity probe is diagnostic only. It distinguishes optimizer/capacity failure from train-fit-with-poor-extrapolation when interpreting the Stage 10 result.",
+    "method": "rope",
+    "purpose": "Check whether the tiny decoder can optimize the training packet and whether that fit extrapolates.",
+    "seed": 307,
+    "task": "phase_cued_retrieval",
+    "test_metrics": {
+      "loss": 4.852089,
+      "mean_target_probability": 0.007812,
+      "mrr": 0.034503,
+      "perplexity": 128.007508,
+      "row_count": 8,
+      "top1_accuracy": 0.0
+    },
+    "train_metrics": {
+      "loss": 4.850664,
+      "mean_target_probability": 0.007823,
+      "mrr": 0.377227,
+      "perplexity": 127.825178,
+      "row_count": 8,
+      "top1_accuracy": 0.125
+    },
+    "training_history": [
+      {
+        "epoch": 1,
+        "loss": 4.85201
+      },
+      {
+        "epoch": 151,
+        "loss": 4.851711
+      },
+      {
+        "epoch": 300,
+        "loss": 4.850679
+      }
+    ],
+    "validation_metrics": {
+      "loss": 4.851977,
+      "mean_target_probability": 0.007813,
+      "mrr": 0.02529,
+      "perplexity": 127.993224,
+      "row_count": 4,
+      "top1_accuracy": 0.0
+    }
+  },
   "claim_boundary": {
     "excluded": [
       "production transformer superiority",

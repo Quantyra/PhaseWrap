@@ -217,7 +217,7 @@ The repository also includes a Stage 10 small decoder-only transformer ablation:
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-Stage 10 trains a very small one-block decoder-only single-head transformer with token embeddings, query/key/value projections, an output projection, and a positional scale. The tested variants use matched seeds, tasks, model shape, optimizer, and epochs. The task set includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The current result is near chance across the tested lanes, so it is reported as a negative or inconclusive first full-transformer sanity check rather than as a PhaseWrap advantage.
+Stage 10 trains a very small one-block decoder-only single-head transformer with token embeddings, query/key/value projections, an output projection, and a positional scale. The tested variants use matched seeds, tasks, model shape, optimizer, and epochs. The task set includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The current result is near chance across the tested lanes, and the included capacity probe does not show strong training-set fit. It is therefore reported as a negative or inconclusive first full-transformer sanity check rather than as a PhaseWrap advantage.
 
 ## 6. Validation Protocol
 

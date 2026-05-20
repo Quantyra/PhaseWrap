@@ -27,6 +27,7 @@ EXAMPLES_PER_LENGTH = 4
 VOCAB_SIZE = 128
 MODEL_DIM = 8
 DEFAULT_EPOCHS = 45
+CAPACITY_PROBE_EPOCHS = 300
 
 TEXT_FACTS = (
     ("paris", "france"),
@@ -424,6 +425,29 @@ def run_stage10_ablation(
         "aggregate_table": aggregate_table,
         "ranking_table": ranking_table,
         "best_method_by_task": best_method_by_task,
+        "capacity_probe": _run_capacity_probe(splits_by_task) if epochs >= DEFAULT_EPOCHS and len(seeds) >= len(DEFAULT_SEEDS) else None,
+    }
+
+
+def _run_capacity_probe(splits_by_task: dict[str, dict[str, list[Stage10Example]]]) -> dict[str, Any]:
+    task_name = "phase_cued_retrieval"
+    method_name = "rope"
+    seed = DEFAULT_SEEDS[0]
+    train_rows = [row for row in splits_by_task[task_name]["train"] if row.seed == seed]
+    validation_rows = [row for row in splits_by_task[task_name]["validation"] if row.seed == seed]
+    test_rows = [row for row in splits_by_task[task_name]["test"] if row.seed == seed]
+    trained = train_small_decoder(train_rows, method_name, seed=seed, epochs=CAPACITY_PROBE_EPOCHS)
+    return {
+        "task": task_name,
+        "method": method_name,
+        "seed": seed,
+        "epochs": CAPACITY_PROBE_EPOCHS,
+        "purpose": "Check whether the tiny decoder can optimize the training packet and whether that fit extrapolates.",
+        "train_metrics": evaluate_small_decoder(train_rows, method_name, trained["weights"]),
+        "validation_metrics": evaluate_small_decoder(validation_rows, method_name, trained["weights"]),
+        "test_metrics": evaluate_small_decoder(test_rows, method_name, trained["weights"]),
+        "training_history": trained["training_history"],
+        "interpretation": "The capacity probe is diagnostic only. It distinguishes optimizer/capacity failure from train-fit-with-poor-extrapolation when interpreting the Stage 10 result.",
     }
 
 

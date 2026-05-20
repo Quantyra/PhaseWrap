@@ -212,7 +212,7 @@ Run the Stage 10 small decoder-only transformer ablation:
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; it is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
+Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; the included capacity probe does not show strong training-set fit. This is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
 
 ## Reviewer path in 10 minutes
 
