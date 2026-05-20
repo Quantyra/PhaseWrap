@@ -330,25 +330,34 @@ The present result has important limitations:
 
 These limitations define the scientific scope of the current release.
 
-## 9. Roadmap and Open Questions
+## 9. Discussion
+
+The current evidence package is most valuable as a reproducibility-first method record. It shows that the PhaseWrap-RoPE score can be defined with a compact formula, frozen into small evidence packets, read out through two-qubit witness circuits, and recomputed offline from committed artifacts. This is a narrower but stronger posture than a broad performance claim: a reviewer can inspect the exact packet, backend, date, raw-count, and verifier path used for each reported result.
+
+The Stage 4 hardware evidence is encouraging because the witness/control ordering is preserved across the active recorded IBM Fez and Amazon Braket artifacts under the manifest-declared verifier. The result remains context-specific. Backend calibration windows, provider result-key conventions, transpilation choices, shot budgets, queue conditions, and packet composition can all change future outcomes. The paper therefore treats the hardware runs as bounded validation records rather than as evidence of general cross-backend robustness.
+
+The Stage 5, Stage 6, and Stage 7 classical experiments clarify the downstream interpretation. Stage 5 showed that the original synthetic attention-scoring target is exactly recoverable by simple exposed-feature baselines, which prevents overreading that result. Stage 6 made the target less tautological by mixing content and positional signal, where PhaseWrap-RoPE gave the best score calibration on one fixed packet. Stage 7 then moved one step closer to a transformer-like setting by swapping the PhaseWrap positional term into a four-layer attention-only toy stack, where it improved target ranking on a synthetic length-extrapolation retrieval packet. These experiments support continued downstream study; they do not establish production transformer superiority or full transformer-scale validation.
+
+The CX witness should also be read pragmatically. It was selected because it is the smallest entangling extension of the product-state witness: preserve the two `RY` margin encodings, add one `CX(q0 -> q1)`, and read a target-qubit parity/product signal while retaining the same packet discipline. It is useful for checking whether the phase-wrap cross-band signal survives an entangling readout path, not for claiming entanglement advantage.
+
+## 10. Recommended Next Experiments
 
 The next scientific step is not broader rhetoric about the current hardware records. It is controlled expansion with new evidence:
 
 | Priority | Work item | Evidence required before promotion |
 | --- | --- | --- |
-| 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
-| 2 | DOI/preprint release packaging | Release tag, archived snapshot, DOI metadata, and unchanged bounded claim language. |
-| 3 | Harder downstream attention benchmark | Stage 7 now adds one four-layer toy transformer length-extrapolation ablation; additional seeds and harder task variants are still needed. |
-| 4 | Independent hardware replication | New packet/date/backend records with raw counts, backend metadata, verifier output, and confidence or bootstrap intervals for MAE/rank correlations. |
-| 5 | Larger or error-aware witnesses | Larger witness families or mitigation analysis with explicit controls and no unsupported quantum-advantage claim. |
+| 1 | Multi-seed downstream benchmark suite | Repeat Stage 6 and Stage 7 style tasks across seeds, lengths, distractor regimes, and task variants; promote only if results remain stable against lookup, exposed-feature, RoPE, ALiBI, sinusoidal, and no-position baselines. |
+| 2 | Less phase-aligned toy transformer tasks | Add retrieval and classification tasks where the target is not constructed directly from the mod-8/mod-12 relation, so the benchmark tests useful inductive bias rather than formula recovery. |
+| 3 | Confidence intervals for existing hardware metrics | Add bootstrap or other interval estimates for witness/control MAE and rank correlations using the committed raw-count artifacts. |
+| 4 | Independent hardware replication | Add new packet/date/backend records with raw counts, backend metadata, verifier output, and confidence or bootstrap intervals for MAE/rank correlations. |
+| 5 | Larger or error-aware witnesses | Explore larger witness families or mitigation analysis only when the packet generator, controls, costs, and verifier can preserve the current artifact discipline. |
+| 6 | DOI/preprint release packaging | Publish a tagged archive with DOI metadata and unchanged bounded claim language before further experiments alter the repository state. |
 
 The highest-impact research gap is downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts, that the Stage 5 synthetic attention-scoring label is recoverable by simple exposed-feature baselines, that Stage 6 improves score calibration on one non-tautological toy downstream packet, and that Stage 7 improves target ranking in a four-layer toy length-extrapolation ablation. Harder multi-seed downstream tasks are therefore the preferred next experiment.
 
-The CX witness was chosen because it is the smallest entangling extension of the product-state packet: keep the two `RY` margin encodings, add one `CX(q0 -> q1)`, and read the target-qubit parity/product signal. The full Stage 4 packet generation path is available in `src/qrope/automated_stage_gates.py` with runner/verifier entry points; a cleaner researcher-facing API is future packaging work rather than additional scientific evidence.
-
 Broader hardware expansion is useful but secondary. IonQ should be added only through a dated Amazon Braket/IonQ record when a device is available. Quandela, AQT, or larger-qubit witnesses should be added only when credentials, provider cost, and artifact capture support the same manifest/verifier discipline as Stage 4.
 
-## 10. Conclusion
+## 11. Conclusion
 
 PhaseWrap-RoPE provides an open-source research lane for phase-wrap positional scoring and bounded small-circuit validation. The current evidence supports publication as a narrowly framed method and evidence paper. The next scientific step is controlled expansion: additional packets, additional dates, larger comparison matrices, and broader transformer-adjacent experiments only if supported by new evidence.
 
