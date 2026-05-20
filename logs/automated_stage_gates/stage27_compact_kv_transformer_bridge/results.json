@@ -1,0 +1,6931 @@
+{
+  "best_method_by_test_top1_mrr": "phasewrap_distance_adapter",
+  "candidate_count": 32,
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage",
+      "general cross-backend robustness",
+      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+    ],
+    "supported": [
+      "A deterministic multi-initialization attention-bridge comparison on the Stage 26 compact QA packet.",
+      "Evidence about whether learned nonlinear attention over PhaseWrap-derived candidate features is competitive on this compact non-PhaseWrap-labeled task.",
+      "Confidence intervals over initialization seeds and explicit weak-run reporting."
+    ]
+  },
+  "context_lengths": [
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "data_seeds": [
+    2601,
+    2611,
+    2621,
+    2633,
+    2647
+  ],
+  "dataset": "stage26_compact_key_value_qa_retrieval_v1",
+  "examples_per_length": 4,
+  "method_names": [
+    "no_position",
+    "alibi",
+    "rope_relative",
+    "sinusoidal",
+    "phasewrap_score",
+    "phasewrap_residual_adapter",
+    "phasewrap_distance_adapter"
+  ],
+  "model": {
+    "epochs": 160,
+    "hidden_dim": 8,
+    "trained_parameters": "feature-to-hidden weights, hidden bias, hidden-to-attention-logit weights, logit bias",
+    "type": "one_hidden_layer_attention_bridge_over_stage26_candidate_features"
+  },
+  "model_seeds": [
+    2701,
+    2711,
+    2729,
+    2731,
+    2741
+  ],
+  "no_hardware_submission": true,
+  "run_table": [
+    {
+      "loss": 1.146747,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319224,
+      "method": "no_position",
+      "model_seed": 2701,
+      "mrr": 0.325,
+      "perplexity": 3.147936,
+      "row_count": 20,
+      "top1_accuracy": 0.0
+    },
+    {
+      "loss": 1.146964,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319154,
+      "method": "no_position",
+      "model_seed": 2711,
+      "mrr": 0.325,
+      "perplexity": 3.148618,
+      "row_count": 20,
+      "top1_accuracy": 0.0
+    },
+    {
+      "loss": 1.146383,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319341,
+      "method": "no_position",
+      "model_seed": 2729,
+      "mrr": 0.325,
+      "perplexity": 3.146791,
+      "row_count": 20,
+      "top1_accuracy": 0.0
+    },
+    {
+      "loss": 1.146165,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319411,
+      "method": "no_position",
+      "model_seed": 2731,
+      "mrr": 0.325,
+      "perplexity": 3.146104,
+      "row_count": 20,
+      "top1_accuracy": 0.0
+    },
+    {
+      "loss": 1.146942,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319161,
+      "method": "no_position",
+      "model_seed": 2741,
+      "mrr": 0.325,
+      "perplexity": 3.148551,
+      "row_count": 20,
+      "top1_accuracy": 0.0
+    },
+    {
+      "loss": 0.238686,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.822351,
+      "method": "alibi",
+      "model_seed": 2701,
+      "mrr": 0.975,
+      "perplexity": 1.26958,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.238782,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.822007,
+      "method": "alibi",
+      "model_seed": 2711,
+      "mrr": 0.975,
+      "perplexity": 1.269702,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.239048,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.821106,
+      "method": "alibi",
+      "model_seed": 2729,
+      "mrr": 0.975,
+      "perplexity": 1.270039,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.238482,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.822695,
+      "method": "alibi",
+      "model_seed": 2731,
+      "mrr": 0.975,
+      "perplexity": 1.269321,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.239913,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.82127,
+      "method": "alibi",
+      "model_seed": 2741,
+      "mrr": 0.975,
+      "perplexity": 1.271139,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 3.274356,
+      "mean_first_relevant_rank": 2.75,
+      "mean_target_probability": 0.31248,
+      "method": "rope_relative",
+      "model_seed": 2701,
+      "mrr": 0.555417,
+      "perplexity": 26.42621,
+      "row_count": 20,
+      "top1_accuracy": 0.35
+    },
+    {
+      "loss": 3.206392,
+      "mean_first_relevant_rank": 2.8,
+      "mean_target_probability": 0.322006,
+      "method": "rope_relative",
+      "model_seed": 2711,
+      "mrr": 0.534722,
+      "perplexity": 24.689832,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 2.923312,
+      "mean_first_relevant_rank": 2.55,
+      "mean_target_probability": 0.320989,
+      "method": "rope_relative",
+      "model_seed": 2729,
+      "mrr": 0.562083,
+      "perplexity": 18.602794,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 3.282144,
+      "mean_first_relevant_rank": 3.15,
+      "mean_target_probability": 0.306718,
+      "method": "rope_relative",
+      "model_seed": 2731,
+      "mrr": 0.506806,
+      "perplexity": 26.632805,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 3.133331,
+      "mean_first_relevant_rank": 3.1,
+      "mean_target_probability": 0.319622,
+      "method": "rope_relative",
+      "model_seed": 2741,
+      "mrr": 0.547879,
+      "perplexity": 22.950293,
+      "row_count": 20,
+      "top1_accuracy": 0.35
+    },
+    {
+      "loss": 0.436283,
+      "mean_first_relevant_rank": 1.2,
+      "mean_target_probability": 0.708516,
+      "method": "sinusoidal",
+      "model_seed": 2701,
+      "mrr": 0.9,
+      "perplexity": 1.546947,
+      "row_count": 20,
+      "top1_accuracy": 0.8
+    },
+    {
+      "loss": 0.424897,
+      "mean_first_relevant_rank": 1.15,
+      "mean_target_probability": 0.719204,
+      "method": "sinusoidal",
+      "model_seed": 2711,
+      "mrr": 0.925,
+      "perplexity": 1.529432,
+      "row_count": 20,
+      "top1_accuracy": 0.85
+    },
+    {
+      "loss": 0.408016,
+      "mean_first_relevant_rank": 1.2,
+      "mean_target_probability": 0.721634,
+      "method": "sinusoidal",
+      "model_seed": 2729,
+      "mrr": 0.9,
+      "perplexity": 1.503832,
+      "row_count": 20,
+      "top1_accuracy": 0.8
+    },
+    {
+      "loss": 0.410487,
+      "mean_first_relevant_rank": 1.25,
+      "mean_target_probability": 0.709782,
+      "method": "sinusoidal",
+      "model_seed": 2731,
+      "mrr": 0.875,
+      "perplexity": 1.507551,
+      "row_count": 20,
+      "top1_accuracy": 0.75
+    },
+    {
+      "loss": 0.385991,
+      "mean_first_relevant_rank": 1.15,
+      "mean_target_probability": 0.735941,
+      "method": "sinusoidal",
+      "model_seed": 2741,
+      "mrr": 0.925,
+      "perplexity": 1.471071,
+      "row_count": 20,
+      "top1_accuracy": 0.85
+    },
+    {
+      "loss": 1.123449,
+      "mean_first_relevant_rank": 1.95,
+      "mean_target_probability": 0.328748,
+      "method": "phasewrap_score",
+      "model_seed": 2701,
+      "mrr": 0.608333,
+      "perplexity": 3.075444,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 1.126721,
+      "mean_first_relevant_rank": 1.9,
+      "mean_target_probability": 0.327594,
+      "method": "phasewrap_score",
+      "model_seed": 2711,
+      "mrr": 0.616667,
+      "perplexity": 3.085523,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 1.121148,
+      "mean_first_relevant_rank": 1.95,
+      "mean_target_probability": 0.329646,
+      "method": "phasewrap_score",
+      "model_seed": 2729,
+      "mrr": 0.608333,
+      "perplexity": 3.068374,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 1.121914,
+      "mean_first_relevant_rank": 1.95,
+      "mean_target_probability": 0.329371,
+      "method": "phasewrap_score",
+      "model_seed": 2731,
+      "mrr": 0.608333,
+      "perplexity": 3.070724,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 1.123024,
+      "mean_first_relevant_rank": 1.95,
+      "mean_target_probability": 0.328894,
+      "method": "phasewrap_score",
+      "model_seed": 2741,
+      "mrr": 0.608333,
+      "perplexity": 3.074136,
+      "row_count": 20,
+      "top1_accuracy": 0.3
+    },
+    {
+      "loss": 0.258437,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.802058,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2701,
+      "mrr": 0.975,
+      "perplexity": 1.294904,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.293132,
+      "mean_first_relevant_rank": 1.1,
+      "mean_target_probability": 0.799218,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2711,
+      "mrr": 0.95,
+      "perplexity": 1.34062,
+      "row_count": 20,
+      "top1_accuracy": 0.9
+    },
+    {
+      "loss": 0.275344,
+      "mean_first_relevant_rank": 1.1,
+      "mean_target_probability": 0.80845,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2729,
+      "mrr": 0.95,
+      "perplexity": 1.316983,
+      "row_count": 20,
+      "top1_accuracy": 0.9
+    },
+    {
+      "loss": 0.264455,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.799755,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2731,
+      "mrr": 0.975,
+      "perplexity": 1.302721,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.293298,
+      "mean_first_relevant_rank": 1.1,
+      "mean_target_probability": 0.796333,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2741,
+      "mrr": 0.95,
+      "perplexity": 1.340843,
+      "row_count": 20,
+      "top1_accuracy": 0.9
+    },
+    {
+      "loss": 0.242573,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.821666,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2701,
+      "mrr": 0.975,
+      "perplexity": 1.274524,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.239522,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.824931,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2711,
+      "mrr": 0.975,
+      "perplexity": 1.270642,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.230891,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.827779,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2729,
+      "mrr": 0.975,
+      "perplexity": 1.259722,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.232878,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.827609,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2731,
+      "mrr": 0.975,
+      "perplexity": 1.262227,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    },
+    {
+      "loss": 0.259353,
+      "mean_first_relevant_rank": 1.05,
+      "mean_target_probability": 0.813044,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2741,
+      "mrr": 0.975,
+      "perplexity": 1.296091,
+      "row_count": 20,
+      "top1_accuracy": 0.95
+    }
+  ],
+  "schema_version": "qrope_stage27_compact_kv_transformer_bridge_v1",
+  "selection_table": [
+    {
+      "loss_ci_high": 0.250702,
+      "loss_ci_low": 0.233625,
+      "loss_mean": 0.241043,
+      "mean_first_relevant_rank_ci_high": 1.05,
+      "mean_first_relevant_rank_ci_low": 1.05,
+      "mean_first_relevant_rank_mean": 1.05,
+      "mean_target_probability_ci_high": 0.827141,
+      "mean_target_probability_ci_low": 0.817715,
+      "mean_target_probability_mean": 0.823006,
+      "method": "phasewrap_distance_adapter",
+      "mrr_ci_high": 0.975,
+      "mrr_ci_low": 0.975,
+      "mrr_mean": 0.975,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.95,
+      "top1_accuracy_ci_low": 0.95,
+      "top1_accuracy_mean": 0.95
+    },
+    {
+      "loss_ci_high": 0.239454,
+      "loss_ci_low": 0.238636,
+      "loss_mean": 0.238982,
+      "mean_first_relevant_rank_ci_high": 1.05,
+      "mean_first_relevant_rank_ci_low": 1.05,
+      "mean_first_relevant_rank_mean": 1.05,
+      "mean_target_probability_ci_high": 0.822377,
+      "mean_target_probability_ci_low": 0.821352,
+      "mean_target_probability_mean": 0.821886,
+      "method": "alibi",
+      "mrr_ci_high": 0.975,
+      "mrr_ci_low": 0.975,
+      "mrr_mean": 0.975,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.95,
+      "top1_accuracy_ci_low": 0.95,
+      "top1_accuracy_mean": 0.95
+    },
+    {
+      "loss_ci_high": 0.289608,
+      "loss_ci_low": 0.264226,
+      "loss_mean": 0.276933,
+      "mean_first_relevant_rank_ci_high": 1.1,
+      "mean_first_relevant_rank_ci_low": 1.06,
+      "mean_first_relevant_rank_mean": 1.08,
+      "mean_target_probability_ci_high": 0.805325,
+      "mean_target_probability_ci_low": 0.798055,
+      "mean_target_probability_mean": 0.801163,
+      "method": "phasewrap_residual_adapter",
+      "mrr_ci_high": 0.97,
+      "mrr_ci_low": 0.95,
+      "mrr_mean": 0.96,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.94,
+      "top1_accuracy_ci_low": 0.9,
+      "top1_accuracy_mean": 0.92
+    },
+    {
+      "loss_ci_high": 0.428352,
+      "loss_ci_low": 0.398177,
+      "loss_mean": 0.413135,
+      "mean_first_relevant_rank_ci_high": 1.23,
+      "mean_first_relevant_rank_ci_low": 1.16,
+      "mean_first_relevant_rank_mean": 1.19,
+      "mean_target_probability_ci_high": 0.727595,
+      "mean_target_probability_ci_low": 0.711393,
+      "mean_target_probability_mean": 0.719015,
+      "method": "sinusoidal",
+      "mrr_ci_high": 0.92,
+      "mrr_ci_low": 0.885,
+      "mrr_mean": 0.905,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.84,
+      "top1_accuracy_ci_low": 0.78,
+      "top1_accuracy_mean": 0.81
+    },
+    {
+      "loss_ci_high": 3.262321,
+      "loss_ci_low": 3.036544,
+      "loss_mean": 3.163907,
+      "mean_first_relevant_rank_ci_high": 3.07,
+      "mean_first_relevant_rank_ci_low": 2.68,
+      "mean_first_relevant_rank_mean": 2.87,
+      "mean_target_probability_ci_high": 0.321122,
+      "mean_target_probability_ci_low": 0.310725,
+      "mean_target_probability_mean": 0.316363,
+      "method": "rope_relative",
+      "mrr_ci_high": 0.555278,
+      "mrr_ci_low": 0.523445,
+      "mrr_mean": 0.541381,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.34,
+      "top1_accuracy_ci_low": 0.3,
+      "top1_accuracy_mean": 0.32
+    },
+    {
+      "loss_ci_high": 1.125327,
+      "loss_ci_low": 1.121761,
+      "loss_mean": 1.123251,
+      "mean_first_relevant_rank_ci_high": 1.95,
+      "mean_first_relevant_rank_ci_low": 1.92,
+      "mean_first_relevant_rank_mean": 1.94,
+      "mean_target_probability_ci_high": 0.329386,
+      "mean_target_probability_ci_low": 0.328114,
+      "mean_target_probability_mean": 0.328851,
+      "method": "phasewrap_score",
+      "mrr_ci_high": 0.613333,
+      "mrr_ci_low": 0.608333,
+      "mrr_mean": 0.61,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.3,
+      "top1_accuracy_ci_low": 0.3,
+      "top1_accuracy_mean": 0.3
+    },
+    {
+      "loss_ci_high": 1.146912,
+      "loss_ci_low": 1.146339,
+      "loss_mean": 1.14664,
+      "mean_first_relevant_rank_ci_high": 3.1,
+      "mean_first_relevant_rank_ci_low": 3.1,
+      "mean_first_relevant_rank_mean": 3.1,
+      "mean_target_probability_ci_high": 0.319347,
+      "mean_target_probability_ci_low": 0.319171,
+      "mean_target_probability_mean": 0.319258,
+      "method": "no_position",
+      "mrr_ci_high": 0.325,
+      "mrr_ci_low": 0.325,
+      "mrr_mean": 0.325,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.0,
+      "top1_accuracy_ci_low": 0.0,
+      "top1_accuracy_mean": 0.0
+    }
+  ],
+  "stage": "stage27_compact_kv_transformer_bridge",
+  "table": [
+    {
+      "loss_ci_high": 1.146912,
+      "loss_ci_low": 1.146339,
+      "loss_mean": 1.14664,
+      "mean_first_relevant_rank_ci_high": 3.1,
+      "mean_first_relevant_rank_ci_low": 3.1,
+      "mean_first_relevant_rank_mean": 3.1,
+      "mean_target_probability_ci_high": 0.319347,
+      "mean_target_probability_ci_low": 0.319171,
+      "mean_target_probability_mean": 0.319258,
+      "method": "no_position",
+      "mrr_ci_high": 0.325,
+      "mrr_ci_low": 0.325,
+      "mrr_mean": 0.325,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.0,
+      "top1_accuracy_ci_low": 0.0,
+      "top1_accuracy_mean": 0.0
+    },
+    {
+      "loss_ci_high": 0.239454,
+      "loss_ci_low": 0.238636,
+      "loss_mean": 0.238982,
+      "mean_first_relevant_rank_ci_high": 1.05,
+      "mean_first_relevant_rank_ci_low": 1.05,
+      "mean_first_relevant_rank_mean": 1.05,
+      "mean_target_probability_ci_high": 0.822377,
+      "mean_target_probability_ci_low": 0.821352,
+      "mean_target_probability_mean": 0.821886,
+      "method": "alibi",
+      "mrr_ci_high": 0.975,
+      "mrr_ci_low": 0.975,
+      "mrr_mean": 0.975,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.95,
+      "top1_accuracy_ci_low": 0.95,
+      "top1_accuracy_mean": 0.95
+    },
+    {
+      "loss_ci_high": 3.262321,
+      "loss_ci_low": 3.036544,
+      "loss_mean": 3.163907,
+      "mean_first_relevant_rank_ci_high": 3.07,
+      "mean_first_relevant_rank_ci_low": 2.68,
+      "mean_first_relevant_rank_mean": 2.87,
+      "mean_target_probability_ci_high": 0.321122,
+      "mean_target_probability_ci_low": 0.310725,
+      "mean_target_probability_mean": 0.316363,
+      "method": "rope_relative",
+      "mrr_ci_high": 0.555278,
+      "mrr_ci_low": 0.523445,
+      "mrr_mean": 0.541381,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.34,
+      "top1_accuracy_ci_low": 0.3,
+      "top1_accuracy_mean": 0.32
+    },
+    {
+      "loss_ci_high": 0.428352,
+      "loss_ci_low": 0.398177,
+      "loss_mean": 0.413135,
+      "mean_first_relevant_rank_ci_high": 1.23,
+      "mean_first_relevant_rank_ci_low": 1.16,
+      "mean_first_relevant_rank_mean": 1.19,
+      "mean_target_probability_ci_high": 0.727595,
+      "mean_target_probability_ci_low": 0.711393,
+      "mean_target_probability_mean": 0.719015,
+      "method": "sinusoidal",
+      "mrr_ci_high": 0.92,
+      "mrr_ci_low": 0.885,
+      "mrr_mean": 0.905,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.84,
+      "top1_accuracy_ci_low": 0.78,
+      "top1_accuracy_mean": 0.81
+    },
+    {
+      "loss_ci_high": 1.125327,
+      "loss_ci_low": 1.121761,
+      "loss_mean": 1.123251,
+      "mean_first_relevant_rank_ci_high": 1.95,
+      "mean_first_relevant_rank_ci_low": 1.92,
+      "mean_first_relevant_rank_mean": 1.94,
+      "mean_target_probability_ci_high": 0.329386,
+      "mean_target_probability_ci_low": 0.328114,
+      "mean_target_probability_mean": 0.328851,
+      "method": "phasewrap_score",
+      "mrr_ci_high": 0.613333,
+      "mrr_ci_low": 0.608333,
+      "mrr_mean": 0.61,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.3,
+      "top1_accuracy_ci_low": 0.3,
+      "top1_accuracy_mean": 0.3
+    },
+    {
+      "loss_ci_high": 0.289608,
+      "loss_ci_low": 0.264226,
+      "loss_mean": 0.276933,
+      "mean_first_relevant_rank_ci_high": 1.1,
+      "mean_first_relevant_rank_ci_low": 1.06,
+      "mean_first_relevant_rank_mean": 1.08,
+      "mean_target_probability_ci_high": 0.805325,
+      "mean_target_probability_ci_low": 0.798055,
+      "mean_target_probability_mean": 0.801163,
+      "method": "phasewrap_residual_adapter",
+      "mrr_ci_high": 0.97,
+      "mrr_ci_low": 0.95,
+      "mrr_mean": 0.96,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.94,
+      "top1_accuracy_ci_low": 0.9,
+      "top1_accuracy_mean": 0.92
+    },
+    {
+      "loss_ci_high": 0.250702,
+      "loss_ci_low": 0.233625,
+      "loss_mean": 0.241043,
+      "mean_first_relevant_rank_ci_high": 1.05,
+      "mean_first_relevant_rank_ci_low": 1.05,
+      "mean_first_relevant_rank_mean": 1.05,
+      "mean_target_probability_ci_high": 0.827141,
+      "mean_target_probability_ci_low": 0.817715,
+      "mean_target_probability_mean": 0.823006,
+      "method": "phasewrap_distance_adapter",
+      "mrr_ci_high": 0.975,
+      "mrr_ci_low": 0.975,
+      "mrr_mean": 0.975,
+      "row_count": 20,
+      "run_count": 5,
+      "top1_accuracy_ci_high": 0.95,
+      "top1_accuracy_ci_low": 0.95,
+      "top1_accuracy_mean": 0.95
+    }
+  ],
+  "task": {
+    "description": "Compact train-short/test-long key-value QA attention bridge with explicit content keys.",
+    "scope": "This is a compact attention/value bridge, not a full decoder-only language-model benchmark.",
+    "target_construction": "The target is the latest candidate with the matching content key; it is not selected by the PhaseWrap score."
+  },
+  "test_lengths": [
+    2048
+  ],
+  "test_row_count": 20,
+  "train_lengths": [
+    256,
+    512
+  ],
+  "train_row_count": 40,
+  "training_records": [
+    {
+      "epochs": 160,
+      "feature_dim": 2,
+      "final_training_loss": 1.14158,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "no_position",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          0.2965667,
+          -0.00268722,
+          -0.1787829,
+          -0.02030609,
+          -5.393e-05,
+          -0.05106019,
+          0.1480905,
+          0.38677061
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.33603484,
+            0.0689806,
+            -0.17866242,
+            -0.08908876,
+            -0.04947398,
+            -0.05764655,
+            0.17617075,
+            0.4116107
+          ],
+          [
+            -1.45289798,
+            0.1471892,
+            1.00089755,
+            0.48847653,
+            0.00350741,
+            0.57544526,
+            -0.94446414,
+            -1.75163671
+          ]
+        ],
+        "w2": [
+          -1.68330005,
+          0.14829655,
+          1.10299926,
+          0.50086472,
+          0.00290292,
+          0.60238242,
+          -1.03082154,
+          -2.11243841
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467382
+        },
+        {
+          "epoch": 41,
+          "loss": 1.177647
+        },
+        {
+          "epoch": 81,
+          "loss": 1.147524
+        },
+        {
+          "epoch": 160,
+          "loss": 1.14158
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 2,
+      "final_training_loss": 1.141947,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "no_position",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          0.04642726,
+          0.41020738,
+          -0.31548439,
+          0.12755581,
+          0.00012045,
+          0.00242118,
+          0.13474975,
+          -0.05240168
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.06258444,
+            0.46012559,
+            -0.32332888,
+            0.08537954,
+            0.00495987,
+            0.04700098,
+            0.10528199,
+            -0.01101044
+          ],
+          [
+            -0.56588658,
+            -1.88615517,
+            1.46385743,
+            -0.78768304,
+            -0.08294772,
+            -0.25022722,
+            -0.82536056,
+            0.52947706
+          ]
+        ],
+        "w2": [
+          -0.58992319,
+          -2.31802482,
+          1.7022447,
+          -0.84949566,
+          -0.08206145,
+          -0.25198994,
+          -0.89461595,
+          0.55409613
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467697
+        },
+        {
+          "epoch": 41,
+          "loss": 1.177852
+        },
+        {
+          "epoch": 81,
+          "loss": 1.148106
+        },
+        {
+          "epoch": 160,
+          "loss": 1.141947
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 2,
+      "final_training_loss": 1.140946,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "no_position",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          0.02680033,
+          0.22469233,
+          0.00027648,
+          0.19847324,
+          -0.24805648,
+          -0.32037638,
+          0.17005527,
+          -0.01472878
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.08652293,
+            0.21269123,
+            -0.04756327,
+            0.25994771,
+            -0.25236151,
+            -0.34649039,
+            0.11635897,
+            -0.04412
+          ],
+          [
+            -0.51847602,
+            -1.12733816,
+            -0.06793758,
+            -1.15754055,
+            1.22844939,
+            1.51290754,
+            -0.9010716,
+            0.39281122
+          ]
+        ],
+        "w2": [
+          -0.53512993,
+          -1.26177357,
+          -0.0685366,
+          -1.29255342,
+          1.38866725,
+          1.76806795,
+          -0.98714797,
+          0.40048714
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.468464
+        },
+        {
+          "epoch": 41,
+          "loss": 1.179612
+        },
+        {
+          "epoch": 81,
+          "loss": 1.146676
+        },
+        {
+          "epoch": 160,
+          "loss": 1.140946
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 2,
+      "final_training_loss": 1.140658,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "no_position",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          0.07151834,
+          0.24058001,
+          0.21317539,
+          0.35030765,
+          0.05763422,
+          0.136482,
+          0.25058331,
+          -0.01108602
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.03861864,
+            0.2544099,
+            0.15581932,
+            0.24902914,
+            0.03928375,
+            0.1504896,
+            0.2684138,
+            -0.02355878
+          ],
+          [
+            -0.61294499,
+            -1.21886975,
+            -1.02439979,
+            -1.39415107,
+            -0.5750954,
+            -0.88757266,
+            -1.25840866,
+            0.33869058
+          ]
+        ],
+        "w2": [
+          -0.64716537,
+          -1.37550904,
+          -1.13804638,
+          -1.61497456,
+          -0.60319403,
+          -0.96542855,
+          -1.42637203,
+          0.34457125
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.464942
+        },
+        {
+          "epoch": 41,
+          "loss": 1.170981
+        },
+        {
+          "epoch": 81,
+          "loss": 1.145764
+        },
+        {
+          "epoch": 160,
+          "loss": 1.140658
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 2,
+      "final_training_loss": 1.141843,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "no_position",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          -0.03794677,
+          -0.0054123,
+          -0.02603064,
+          -5.457e-05,
+          0.38423503,
+          -0.00768184,
+          -0.37064264,
+          -0.23088298
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.05100689,
+            -0.04976625,
+            -0.08282629,
+            -0.00621153,
+            0.39452506,
+            -0.04560586,
+            -0.34506999,
+            -0.24135692
+          ],
+          [
+            0.52157015,
+            0.30684951,
+            0.50976503,
+            -0.0063105,
+            -1.71554662,
+            0.33036497,
+            1.60032903,
+            1.18255758
+          ]
+        ],
+        "w2": [
+          0.54157738,
+          0.31092264,
+          0.52513999,
+          -0.00553698,
+          -2.06090834,
+          0.33397153,
+          1.89424201,
+          1.33015511
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.469773
+        },
+        {
+          "epoch": 41,
+          "loss": 1.178446
+        },
+        {
+          "epoch": 81,
+          "loss": 1.147956
+        },
+        {
+          "epoch": 160,
+          "loss": 1.141843
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 0.460187,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "alibi",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          0.09684621,
+          0.00475122,
+          -0.24153471,
+          -0.12254747,
+          -0.46393798,
+          -0.24724985,
+          0.0577683,
+          -0.26513108
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.03073857,
+            0.01701625,
+            -0.27045578,
+            -0.16731272,
+            -0.44267433,
+            -0.15070945,
+            0.07803478,
+            -0.29085082
+          ],
+          [
+            -0.60116498,
+            -0.24885679,
+            1.14407307,
+            0.83193,
+            1.56836502,
+            0.98475211,
+            -0.56707027,
+            1.21139385
+          ],
+          [
+            -0.44499453,
+            -0.09494402,
+            0.81642033,
+            0.54188073,
+            1.2444041,
+            0.73695953,
+            -0.327045,
+            0.83132935
+          ],
+          [
+            -0.15709452,
+            -0.01193899,
+            0.26825782,
+            0.1781744,
+            0.43625811,
+            0.23248607,
+            -0.21175326,
+            0.27524512
+          ]
+        ],
+        "w2": [
+          -0.80336792,
+          -0.26416875,
+          1.62718992,
+          1.09008329,
+          2.54418597,
+          1.39451908,
+          -0.71031322,
+          1.72082971
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.465451
+        },
+        {
+          "epoch": 41,
+          "loss": 0.604734
+        },
+        {
+          "epoch": 81,
+          "loss": 0.481518
+        },
+        {
+          "epoch": 160,
+          "loss": 0.460187
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 0.460156,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "alibi",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          -0.38713838,
+          0.01420387,
+          0.32312234,
+          0.21857579,
+          -0.08003971,
+          0.31128748,
+          0.04180695,
+          -0.0296587
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.44239736,
+            0.01491564,
+            0.28099488,
+            0.23216088,
+            -0.06525411,
+            0.34291168,
+            -0.02493449,
+            0.02917234
+          ],
+          [
+            1.4777642,
+            -0.34104876,
+            -1.24171179,
+            -1.1069618,
+            0.63070549,
+            -1.39505726,
+            -0.43168431,
+            0.37441629
+          ],
+          [
+            1.23934953,
+            -0.13865384,
+            -0.94832471,
+            -0.697899,
+            0.33309138,
+            -0.88213806,
+            -0.21713499,
+            0.14588082
+          ],
+          [
+            0.51900032,
+            -0.03292504,
+            -0.42330302,
+            -0.19104314,
+            0.09127114,
+            -0.28815166,
+            -0.04677822,
+            0.12659881
+          ]
+        ],
+        "w2": [
+          2.41908661,
+          -0.37359762,
+          -1.87096099,
+          -1.49407175,
+          0.758986,
+          -1.99185496,
+          -0.50074812,
+          0.4236219
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.461368
+        },
+        {
+          "epoch": 41,
+          "loss": 0.588549
+        },
+        {
+          "epoch": 81,
+          "loss": 0.481178
+        },
+        {
+          "epoch": 160,
+          "loss": 0.460156
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 0.462321,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "alibi",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          -0.00546179,
+          -0.24813228,
+          -0.31994993,
+          0.30519681,
+          -0.01390322,
+          -0.03103894,
+          -0.41453061,
+          0.00084499
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.04493743,
+            -0.25135492,
+            -0.27377371,
+            0.33551942,
+            0.00858366,
+            -0.02285378,
+            -0.43230428,
+            -0.01273762
+          ],
+          [
+            0.29181935,
+            1.17398653,
+            1.28059131,
+            -1.36346652,
+            0.3094093,
+            0.43385865,
+            1.52289947,
+            -0.11249381
+          ],
+          [
+            0.17214169,
+            0.76133709,
+            0.89522932,
+            -0.92588542,
+            0.14770275,
+            0.24942327,
+            1.2786489,
+            -0.11581232
+          ],
+          [
+            0.07382988,
+            0.25668179,
+            0.3309275,
+            -0.30876725,
+            0.05490628,
+            0.08018325,
+            0.43533358,
+            -0.0281626
+          ]
+        ],
+        "w2": [
+          0.34868152,
+          1.62588204,
+          1.86428462,
+          -1.98440085,
+          0.35280113,
+          0.52086132,
+          2.49920484,
+          -0.1562821
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.465223
+        },
+        {
+          "epoch": 41,
+          "loss": 0.615122
+        },
+        {
+          "epoch": 81,
+          "loss": 0.484843
+        },
+        {
+          "epoch": 160,
+          "loss": 0.462321
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 0.459665,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "alibi",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          0.29092385,
+          0.14034873,
+          0.15487979,
+          -5.32e-06,
+          0.04765212,
+          -0.26785596,
+          0.33181678,
+          0.40428876
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.24770996,
+            0.13547001,
+            0.11453014,
+            -0.0139247,
+            -0.03795704,
+            -0.21595154,
+            0.33466311,
+            0.33576765
+          ],
+          [
+            -1.16596386,
+            -0.78804157,
+            -0.82331578,
+            0.0454783,
+            -0.42223044,
+            1.10404935,
+            -1.31756877,
+            -1.34279006
+          ],
+          [
+            -0.82952241,
+            -0.50903942,
+            -0.52521614,
+            0.01588209,
+            -0.25247463,
+            0.78808406,
+            -0.99888045,
+            -1.09232464
+          ],
+          [
+            -0.27008559,
+            -0.28113141,
+            -0.08597296,
+            0.00398209,
+            -0.08952633,
+            0.21405151,
+            -0.30258435,
+            -0.47317118
+          ]
+        ],
+        "w2": [
+          -1.66975532,
+          -1.05011243,
+          -1.06370916,
+          0.04761673,
+          -0.51811263,
+          1.55719367,
+          -1.97838884,
+          -2.11909172
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.465792
+        },
+        {
+          "epoch": 41,
+          "loss": 0.601501
+        },
+        {
+          "epoch": 81,
+          "loss": 0.480099
+        },
+        {
+          "epoch": 160,
+          "loss": 0.459665
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 0.459221,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "alibi",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          -0.11420545,
+          0.4790171,
+          -0.20590359,
+          0.23642374,
+          0.08317086,
+          0.00014281,
+          0.02979009,
+          -0.27882926
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.10780718,
+            0.4864399,
+            -0.11471473,
+            0.25325996,
+            0.13722657,
+            -0.02115414,
+            0.03718801,
+            -0.25321563
+          ],
+          [
+            0.75869434,
+            -1.66367631,
+            0.92429406,
+            -1.1740666,
+            -0.73261834,
+            -0.06524089,
+            -0.45408831,
+            1.20659944
+          ],
+          [
+            0.35590668,
+            -1.3930925,
+            0.61708309,
+            -0.74823575,
+            -0.39988285,
+            -0.03708971,
+            -0.28122922,
+            0.82034464
+          ],
+          [
+            0.13536031,
+            -0.59208559,
+            0.14164755,
+            -0.23603544,
+            -0.15245293,
+            0.04500495,
+            -0.01486367,
+            0.34056481
+          ]
+        ],
+        "w2": [
+          0.90832941,
+          -2.82960871,
+          1.23591762,
+          -1.6106197,
+          -0.90120863,
+          -0.06805383,
+          -0.54582403,
+          1.71734836
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.465847
+        },
+        {
+          "epoch": 41,
+          "loss": 0.60635
+        },
+        {
+          "epoch": 81,
+          "loss": 0.483151
+        },
+        {
+          "epoch": 160,
+          "loss": 0.459221
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 35,
+      "final_training_loss": 0.261017,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "rope_relative",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          -0.16344398,
+          0.21829895,
+          0.0852451,
+          -0.18756729,
+          -0.12771031,
+          -0.21781716,
+          -0.22979859,
+          0.16100826
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.16251048,
+            0.18543722,
+            0.08801567,
+            -0.2123028,
+            -0.16446651,
+            -0.18004937,
+            -0.21929228,
+            0.16059509
+          ],
+          [
+            0.26231775,
+            -0.1439654,
+            -0.09349808,
+            0.30062843,
+            0.17620808,
+            0.09271769,
+            0.1909876,
+            -0.2246873
+          ],
+          [
+            0.1617357,
+            -0.20693911,
+            -0.12288759,
+            0.20974301,
+            0.16782583,
+            0.24049573,
+            0.26705942,
+            -0.1928971
+          ],
+          [
+            0.10872704,
+            -0.00900193,
+            -0.12053139,
+            0.02030967,
+            -0.18212058,
+            -0.2268923,
+            -0.36715192,
+            -0.0707636
+          ],
+          [
+            -0.08430856,
+            -0.15838514,
+            0.03426095,
+            0.01040578,
+            -0.04080647,
+            0.0203992,
+            -0.03292695,
+            0.02809552
+          ],
+          [
+            0.26289984,
+            -0.06140663,
+            -0.19824039,
+            0.12760136,
+            -0.06832831,
+            -0.08940636,
+            -0.19766268,
+            0.09721761
+          ],
+          [
+            0.06441234,
+            -0.05089267,
+            0.05927227,
+            0.14156807,
+            -0.06358883,
+            0.05806613,
+            0.17063089,
+            0.04394963
+          ],
+          [
+            -0.19590597,
+            -0.13552197,
+            -0.0491857,
+            -0.04813778,
+            0.01507264,
+            0.04611499,
+            -0.02088812,
+            -0.08713596
+          ],
+          [
+            -0.05126143,
+            -0.15123261,
+            -0.03887412,
+            0.03723529,
+            0.09984062,
+            0.0685736,
+            0.00388783,
+            -0.04747405
+          ],
+          [
+            0.0188535,
+            -0.36851862,
+            -0.08473375,
+            0.06178696,
+            0.09333095,
+            0.29015452,
+            -0.02968312,
+            0.01001089
+          ],
+          [
+            -0.18225684,
+            -0.14655072,
+            -0.09634226,
+            0.00932252,
+            0.11736891,
+            0.08768098,
+            0.04641219,
+            0.2049886
+          ],
+          [
+            0.02284734,
+            -0.22540795,
+            -0.04258366,
+            0.02674147,
+            0.08668553,
+            0.26536616,
+            0.17709712,
+            -0.06396406
+          ],
+          [
+            0.24090566,
+            -0.2772286,
+            -0.14844467,
+            0.27512784,
+            0.15317109,
+            0.16912779,
+            0.29479405,
+            -0.25652369
+          ],
+          [
+            -0.05108247,
+            0.02509329,
+            0.06048908,
+            0.03578579,
+            0.036946,
+            -0.11185817,
+            0.01054495,
+            -0.08725531
+          ],
+          [
+            -0.14668885,
+            0.21532833,
+            0.0629501,
+            -0.10884283,
+            -0.08643253,
+            -0.16136309,
+            -0.15690453,
+            0.16479583
+          ],
+          [
+            -0.18558516,
+            0.19973249,
+            0.13255124,
+            -0.20724304,
+            -0.0714891,
+            -0.18544443,
+            -0.22950054,
+            0.16715635
+          ],
+          [
+            -0.12313872,
+            0.23545184,
+            0.03806265,
+            -0.2191661,
+            -0.12590152,
+            -0.15184929,
+            -0.22608259,
+            0.15346415
+          ],
+          [
+            -0.23303499,
+            0.26311114,
+            0.08618808,
+            -0.18173774,
+            -0.08508427,
+            -0.17204835,
+            -0.19758601,
+            0.16641969
+          ],
+          [
+            -0.12098042,
+            0.2218994,
+            0.13867058,
+            -0.18348948,
+            -0.13809554,
+            -0.27779028,
+            -0.28736724,
+            0.13428606
+          ],
+          [
+            0.10264431,
+            0.02737312,
+            -0.12563291,
+            -0.08289704,
+            -0.14176707,
+            -0.26143586,
+            -0.33321286,
+            -0.10369147
+          ],
+          [
+            -0.05394951,
+            -0.153431,
+            0.08924016,
+            0.02440762,
+            -0.08069014,
+            0.01192354,
+            -0.04862182,
+            0.01154942
+          ],
+          [
+            0.19612129,
+            -0.17681761,
+            -0.08803982,
+            0.07956612,
+            -0.08245088,
+            -0.02024823,
+            -0.19624753,
+            0.184129
+          ],
+          [
+            0.06562283,
+            -0.07503211,
+            0.05367002,
+            0.13247101,
+            -0.01043965,
+            0.01537891,
+            0.09314986,
+            -0.02180477
+          ],
+          [
+            -0.32230089,
+            -0.15000211,
+            -0.00114577,
+            -0.13335577,
+            0.10080852,
+            0.02709642,
+            -0.01443109,
+            -0.12855475
+          ],
+          [
+            -0.09388047,
+            -0.13765723,
+            -0.00284328,
+            0.04427924,
+            0.01546936,
+            -0.02242412,
+            0.04715571,
+            0.01934695
+          ],
+          [
+            0.06882091,
+            -0.4249698,
+            -0.09790213,
+            0.04857032,
+            0.03290029,
+            0.25830943,
+            0.02246337,
+            0.05091676
+          ],
+          [
+            -0.14718097,
+            -0.17647145,
+            -0.08075035,
+            -0.03797268,
+            0.07447859,
+            0.13099,
+            0.13829189,
+            0.08964597
+          ],
+          [
+            0.06201641,
+            -0.21021365,
+            -0.0611052,
+            0.17189666,
+            0.13547469,
+            0.25910742,
+            0.28702043,
+            -0.22563977
+          ],
+          [
+            0.41373758,
+            -0.42112916,
+            -0.14546499,
+            0.48463259,
+            0.28449282,
+            0.40998647,
+            0.55747039,
+            -0.51697012
+          ],
+          [
+            0.33590756,
+            -0.30173371,
+            -0.10100721,
+            0.35508238,
+            0.19500746,
+            0.2730036,
+            0.37354674,
+            -0.36547499
+          ],
+          [
+            0.27478649,
+            -0.21287856,
+            -0.08288551,
+            0.22325791,
+            0.10409037,
+            0.2174073,
+            0.29679549,
+            -0.30455955
+          ],
+          [
+            0.19985775,
+            -0.1884455,
+            -0.05105048,
+            0.26544949,
+            0.16683445,
+            0.15125839,
+            0.20047496,
+            -0.26317274
+          ],
+          [
+            0.23386633,
+            -0.19568837,
+            -0.06629812,
+            0.20450833,
+            0.06824993,
+            0.14491839,
+            0.21775282,
+            -0.20008191
+          ],
+          [
+            0.23727083,
+            -0.20144137,
+            0.02073531,
+            0.21319546,
+            0.04864848,
+            0.15991319,
+            0.17038621,
+            -0.28890005
+          ],
+          [
+            0.25424412,
+            -0.15968979,
+            -0.03848494,
+            0.30822972,
+            0.06625898,
+            0.10143713,
+            0.20279011,
+            -0.30257288
+          ]
+        ],
+        "w2": [
+          1.3452529,
+          -1.52772056,
+          -0.55547354,
+          1.44228947,
+          0.73977495,
+          1.23846785,
+          1.58301623,
+          -1.36176047
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.463524
+        },
+        {
+          "epoch": 41,
+          "loss": 0.41744
+        },
+        {
+          "epoch": 81,
+          "loss": 0.350813
+        },
+        {
+          "epoch": 160,
+          "loss": 0.261017
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 35,
+      "final_training_loss": 0.250114,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "rope_relative",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          -0.27259813,
+          0.25036289,
+          0.25304877,
+          0.05923846,
+          0.03855192,
+          0.21257315,
+          -0.20336216,
+          -0.01521872
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.29901589,
+            0.24583575,
+            0.24996246,
+            0.10488092,
+            0.082022,
+            0.26045966,
+            -0.19091539,
+            -0.01941196
+          ],
+          [
+            0.28625796,
+            -0.17234624,
+            -0.34540978,
+            -0.02791424,
+            -0.08013565,
+            -0.22066078,
+            0.10405357,
+            -0.0307229
+          ],
+          [
+            0.32273325,
+            -0.16759534,
+            -0.30536455,
+            -0.0523226,
+            -0.07890655,
+            -0.15026079,
+            0.17459662,
+            0.02367808
+          ],
+          [
+            -0.43856045,
+            0.27558341,
+            0.00675175,
+            -0.12919032,
+            0.03251313,
+            -0.34710789,
+            -0.15712695,
+            0.03349139
+          ],
+          [
+            -0.15313172,
+            0.03280815,
+            0.03273376,
+            0.06403911,
+            -0.01355913,
+            -0.22917757,
+            0.03615364,
+            -0.00190457
+          ],
+          [
+            -0.15853302,
+            -0.04296287,
+            -0.02226375,
+            -0.12376498,
+            0.01205844,
+            -0.09556831,
+            0.09833772,
+            0.02910586
+          ],
+          [
+            0.08204279,
+            -0.05378203,
+            -0.09367144,
+            0.07607706,
+            -0.02107321,
+            0.00236047,
+            0.13046774,
+            -0.01797111
+          ],
+          [
+            -0.01200339,
+            -0.1320186,
+            0.1068997,
+            -0.01875703,
+            -0.0506118,
+            -0.07310413,
+            0.04183016,
+            -0.02249599
+          ],
+          [
+            0.01225529,
+            -0.15402282,
+            0.07445498,
+            -0.01223679,
+            0.02739688,
+            -0.00025178,
+            0.09017021,
+            0.03338443
+          ],
+          [
+            -0.00335712,
+            -0.1750598,
+            0.02844789,
+            -0.039269,
+            -0.08479482,
+            -0.38296877,
+            0.26384164,
+            0.03568339
+          ],
+          [
+            0.05930588,
+            -0.11984023,
+            0.20133499,
+            -0.0230875,
+            -0.06690373,
+            0.11934596,
+            0.18471665,
+            0.00233251
+          ],
+          [
+            0.24766354,
+            -0.26238008,
+            -0.11648476,
+            -0.05074551,
+            -0.12074323,
+            -0.0279861,
+            0.19875673,
+            0.15418978
+          ],
+          [
+            0.34386216,
+            -0.26180754,
+            -0.3740977,
+            -0.0925311,
+            -0.10981359,
+            -0.27879698,
+            0.24120352,
+            0.09418338
+          ],
+          [
+            -0.03379421,
+            0.01219965,
+            0.00221881,
+            -0.05506274,
+            -0.03423636,
+            -0.07075739,
+            -0.03003358,
+            0.00854177
+          ],
+          [
+            -0.15216552,
+            0.18307808,
+            0.08936977,
+            0.02479445,
+            0.01633668,
+            0.12665766,
+            -0.17877078,
+            0.01735706
+          ],
+          [
+            -0.20722527,
+            0.18865231,
+            0.20246159,
+            0.1333154,
+            0.04591256,
+            0.2424796,
+            -0.16225745,
+            0.00759662
+          ],
+          [
+            -0.23251332,
+            0.21531602,
+            0.20720663,
+            0.08654348,
+            -0.05036879,
+            0.18677665,
+            -0.21674488,
+            -0.02014303
+          ],
+          [
+            -0.24300469,
+            0.23675366,
+            0.25253287,
+            0.11526669,
+            0.01104651,
+            0.23347843,
+            -0.19343409,
+            -0.10450244
+          ],
+          [
+            -0.23362871,
+            0.19111469,
+            0.27364838,
+            0.11002641,
+            0.04107362,
+            0.24930954,
+            -0.14150048,
+            0.02293196
+          ],
+          [
+            -0.51153808,
+            0.32182592,
+            0.05999008,
+            -0.14652511,
+            -0.06533422,
+            -0.31442058,
+            -0.16269193,
+            0.05913705
+          ],
+          [
+            -0.10800638,
+            0.10095209,
+            0.01014238,
+            0.01089493,
+            -0.0291305,
+            -0.25417308,
+            0.03660617,
+            -0.02476061
+          ],
+          [
+            -0.21310759,
+            0.00317642,
+            -0.06751039,
+            -0.14695014,
+            0.05329439,
+            -0.01797438,
+            0.07055428,
+            0.03348553
+          ],
+          [
+            0.12995193,
+            -0.12314091,
+            -0.07431178,
+            0.07568445,
+            0.0141756,
+            0.07810669,
+            0.08629949,
+            -0.05967097
+          ],
+          [
+            -0.07261321,
+            -0.05864921,
+            0.16427945,
+            0.07151403,
+            -0.02817856,
+            -0.0903453,
+            0.05817709,
+            -0.00691816
+          ],
+          [
+            -0.03029968,
+            -0.16140336,
+            0.12411415,
+            -0.01229873,
+            0.07212011,
+            -0.10900962,
+            0.08651633,
+            0.03753125
+          ],
+          [
+            -0.02084085,
+            -0.257009,
+            0.15448414,
+            -0.08766293,
+            -0.10670009,
+            -0.40159206,
+            0.2889326,
+            0.09269983
+          ],
+          [
+            0.11177955,
+            -0.22866924,
+            0.20489541,
+            -0.03454703,
+            -0.11004115,
+            0.09239234,
+            0.22673456,
+            0.02219348
+          ],
+          [
+            0.35006709,
+            -0.32897274,
+            -0.18157165,
+            -0.00105077,
+            -0.08585708,
+            -0.14859834,
+            0.26688985,
+            0.04976352
+          ],
+          [
+            0.55054909,
+            -0.43608275,
+            -0.65346455,
+            -0.18797273,
+            -0.17894223,
+            -0.40295431,
+            0.3710061,
+            0.06692148
+          ],
+          [
+            0.38907483,
+            -0.25876605,
+            -0.46180212,
+            -0.13482839,
+            -0.07759481,
+            -0.36248521,
+            0.27416974,
+            0.06647756
+          ],
+          [
+            0.21612449,
+            -0.24074924,
+            -0.42645034,
+            -0.03300685,
+            -0.10252842,
+            -0.24680629,
+            0.2001149,
+            0.05450082
+          ],
+          [
+            0.22533334,
+            -0.14391782,
+            -0.37893672,
+            -0.08077122,
+            -0.05318413,
+            -0.29066801,
+            0.16485623,
+            0.01255893
+          ],
+          [
+            0.2598191,
+            -0.15966506,
+            -0.33282351,
+            -0.11634652,
+            -0.01320408,
+            -0.24023912,
+            0.18962561,
+            0.00465988
+          ],
+          [
+            0.17992528,
+            -0.23257201,
+            -0.29640486,
+            -0.07683377,
+            -0.1569386,
+            -0.20310997,
+            0.16021969,
+            0.07084435
+          ],
+          [
+            0.25116256,
+            -0.10525608,
+            -0.36720054,
+            -0.0290976,
+            -0.05384082,
+            -0.28877907,
+            0.12066615,
+            -0.00531777
+          ]
+        ],
+        "w2": [
+          1.81734859,
+          -1.40511817,
+          -2.07446249,
+          -0.5314073,
+          -0.41465155,
+          -1.62459455,
+          1.21471955,
+          0.22649818
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.469364
+        },
+        {
+          "epoch": 41,
+          "loss": 0.42528
+        },
+        {
+          "epoch": 81,
+          "loss": 0.349564
+        },
+        {
+          "epoch": 160,
+          "loss": 0.250114
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 35,
+      "final_training_loss": 0.233206,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "rope_relative",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          0.06330409,
+          0.26671027,
+          0.10564293,
+          -0.22599333,
+          0.21094274,
+          -0.25871529,
+          0.07571939,
+          0.10465134
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.1333392,
+            0.25341673,
+            0.0670092,
+            -0.22820279,
+            0.12634275,
+            -0.29147163,
+            0.09116542,
+            0.18493225
+          ],
+          [
+            -0.13311262,
+            -0.13632119,
+            -0.07867848,
+            0.06607244,
+            -0.28071444,
+            0.30303916,
+            -0.14850875,
+            -0.15373112
+          ],
+          [
+            -0.05007302,
+            -0.23685331,
+            -0.11373194,
+            0.25450871,
+            -0.27740482,
+            0.31063235,
+            -0.05117569,
+            -0.09873792
+          ],
+          [
+            -0.06319326,
+            0.59358052,
+            -0.17849201,
+            0.23758286,
+            0.18177424,
+            -0.11337762,
+            -0.1557227,
+            -0.09884714
+          ],
+          [
+            -0.06243492,
+            0.16043824,
+            0.06418528,
+            0.0317579,
+            0.01706748,
+            0.16671895,
+            0.09819424,
+            -0.08505445
+          ],
+          [
+            -0.06325457,
+            0.33556105,
+            -0.15804528,
+            0.20285467,
+            -0.22851954,
+            -0.15442595,
+            -0.19793353,
+            -0.03760521
+          ],
+          [
+            0.02386938,
+            -0.15189389,
+            0.0008547,
+            -0.01912978,
+            0.02210787,
+            0.08516854,
+            -0.10128223,
+            -0.04668745
+          ],
+          [
+            -0.02795148,
+            -0.22809952,
+            -0.02658733,
+            0.08716155,
+            0.22504616,
+            -0.07367128,
+            0.02169231,
+            0.00552019
+          ],
+          [
+            0.0033652,
+            -0.02868138,
+            -0.0538131,
+            0.00068748,
+            -0.12923484,
+            -0.17105214,
+            -0.03793617,
+            0.01037976
+          ],
+          [
+            -0.22102696,
+            -0.15058964,
+            -0.16558505,
+            0.11985462,
+            0.13892164,
+            0.0621429,
+            -0.18078008,
+            -0.20380115
+          ],
+          [
+            -0.04006149,
+            -0.19606114,
+            0.02683624,
+            0.17030314,
+            0.04482952,
+            -0.10872931,
+            0.04251075,
+            -0.01591811
+          ],
+          [
+            -0.06950935,
+            -0.29782289,
+            -0.09932666,
+            0.20851916,
+            -0.02385855,
+            0.06331801,
+            -0.07072114,
+            -0.07884067
+          ],
+          [
+            -0.16496326,
+            -0.27745952,
+            -0.11547675,
+            0.14738795,
+            -0.25981066,
+            0.39005713,
+            -0.08213302,
+            -0.11941144
+          ],
+          [
+            0.04949932,
+            0.00354465,
+            0.03063095,
+            -0.03944559,
+            -0.01760438,
+            0.11890337,
+            0.01257138,
+            -0.02440418
+          ],
+          [
+            0.00415752,
+            0.14967541,
+            0.10727322,
+            -0.18721691,
+            0.18658412,
+            -0.19900395,
+            0.05432006,
+            0.06870474
+          ],
+          [
+            0.0760921,
+            0.21098709,
+            0.08527955,
+            -0.17425796,
+            0.16631519,
+            -0.15432614,
+            0.14556054,
+            0.07790565
+          ],
+          [
+            0.05391061,
+            0.28232886,
+            0.07117649,
+            -0.22661695,
+            0.25170333,
+            -0.2502455,
+            0.08668666,
+            0.10478169
+          ],
+          [
+            0.07291446,
+            0.29190359,
+            0.11242593,
+            -0.24324319,
+            0.14597103,
+            -0.25892902,
+            0.07766976,
+            0.0863093
+          ],
+          [
+            0.12370139,
+            0.24929424,
+            0.11072288,
+            -0.25899656,
+            0.2416204,
+            -0.37351137,
+            0.06903377,
+            0.08414053
+          ],
+          [
+            -0.06871763,
+            0.65279634,
+            -0.15147528,
+            0.20847199,
+            0.23043957,
+            -0.10059543,
+            -0.16341433,
+            -0.17829574
+          ],
+          [
+            -0.02086346,
+            0.18348155,
+            -0.03256057,
+            0.17524129,
+            0.05375178,
+            0.13319725,
+            -0.03424885,
+            -0.13244889
+          ],
+          [
+            -0.07222322,
+            0.28751076,
+            -0.09916587,
+            0.23968771,
+            -0.20496232,
+            -0.14725763,
+            -0.17427204,
+            -0.04184204
+          ],
+          [
+            -0.07280047,
+            -0.15425822,
+            0.02134443,
+            -0.06652432,
+            0.09100745,
+            0.12284479,
+            -0.02676612,
+            -0.01619032
+          ],
+          [
+            0.00080392,
+            -0.16762139,
+            0.00665855,
+            0.07919478,
+            0.26916455,
+            -0.08039461,
+            0.07125567,
+            -0.0182853
+          ],
+          [
+            0.06598937,
+            -0.13760786,
+            -0.04894889,
+            -0.07985535,
+            -0.19142678,
+            -0.1626314,
+            0.01722184,
+            0.02482563
+          ],
+          [
+            -0.16571727,
+            -0.16386351,
+            -0.08158549,
+            0.09502836,
+            0.07589679,
+            0.06465638,
+            -0.10416403,
+            -0.25691303
+          ],
+          [
+            -0.05059252,
+            -0.15659561,
+            0.01149155,
+            0.20857588,
+            0.01427821,
+            -0.11500431,
+            -0.00438209,
+            0.00882182
+          ],
+          [
+            -0.13593715,
+            -0.40418872,
+            -0.0553872,
+            0.31372948,
+            -0.05089005,
+            0.2599003,
+            -0.09750999,
+            -0.12522896
+          ],
+          [
+            -0.20256244,
+            -0.51570844,
+            -0.23810204,
+            0.24756413,
+            -0.44883533,
+            0.66598051,
+            -0.15929304,
+            -0.29021107
+          ],
+          [
+            -0.20687027,
+            -0.33091759,
+            -0.10839832,
+            0.1875158,
+            -0.3888021,
+            0.46323107,
+            -0.20774461,
+            -0.23796459
+          ],
+          [
+            -0.11667994,
+            -0.18011203,
+            -0.12550404,
+            0.19399153,
+            -0.31838724,
+            0.34906629,
+            -0.10762977,
+            -0.16989502
+          ],
+          [
+            -0.07677119,
+            -0.16681622,
+            -0.10797195,
+            0.19312318,
+            -0.28150639,
+            0.33928516,
+            -0.14109518,
+            -0.11757125
+          ],
+          [
+            -0.12384162,
+            -0.17394282,
+            -0.11542215,
+            0.10084989,
+            -0.2667425,
+            0.29485365,
+            -0.07672601,
+            -0.13027483
+          ],
+          [
+            -0.04283449,
+            -0.1485085,
+            -0.10401986,
+            0.12067091,
+            -0.30157925,
+            0.26402667,
+            -0.08794825,
+            -0.1571706
+          ],
+          [
+            -0.08295888,
+            -0.17828497,
+            -0.07146366,
+            0.03401139,
+            -0.31629008,
+            0.31685809,
+            -0.08017142,
+            -0.1380303
+          ]
+        ],
+        "w2": [
+          -0.62758975,
+          -1.80235645,
+          -0.69361415,
+          1.22737495,
+          -1.66283785,
+          2.14204316,
+          -0.67733565,
+          -0.81971271
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.474717
+        },
+        {
+          "epoch": 41,
+          "loss": 0.419054
+        },
+        {
+          "epoch": 81,
+          "loss": 0.336404
+        },
+        {
+          "epoch": 160,
+          "loss": 0.233206
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 35,
+      "final_training_loss": 0.201909,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "rope_relative",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          0.19574014,
+          -0.23105494,
+          0.21496152,
+          0.23927447,
+          -0.07518551,
+          -0.06195547,
+          0.17501434,
+          -0.24973916
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.19112227,
+            -0.22171609,
+            0.19669047,
+            0.20112623,
+            -0.05616876,
+            -0.09371083,
+            0.12724298,
+            -0.22986813
+          ],
+          [
+            -0.20904494,
+            0.15836107,
+            -0.16995144,
+            -0.20772123,
+            0.07892705,
+            0.0629559,
+            -0.12883693,
+            0.29765448
+          ],
+          [
+            -0.16931897,
+            0.1967446,
+            -0.21548507,
+            -0.30581969,
+            0.03283073,
+            0.03111188,
+            -0.15654102,
+            0.31353086
+          ],
+          [
+            -0.18750165,
+            -0.36935407,
+            0.49111994,
+            0.34661059,
+            0.01210572,
+            -0.01688493,
+            -0.0612581,
+            0.18575677
+          ],
+          [
+            -0.16226937,
+            0.00621734,
+            0.22741692,
+            0.04683534,
+            -0.03049275,
+            0.05983752,
+            -0.06850006,
+            -0.12250668
+          ],
+          [
+            -0.11245124,
+            -0.14100631,
+            0.26289811,
+            0.05980324,
+            0.08655672,
+            -0.0398094,
+            -0.11559675,
+            0.36278148
+          ],
+          [
+            -0.00072814,
+            0.20554909,
+            -0.02874069,
+            -0.02287649,
+            -0.09357277,
+            -0.08621622,
+            0.09535136,
+            0.18014606
+          ],
+          [
+            -0.26988337,
+            0.1585908,
+            -0.14046131,
+            0.09115873,
+            -0.05870946,
+            0.02422791,
+            -0.079847,
+            -0.35417695
+          ],
+          [
+            -0.19764781,
+            -0.04277832,
+            -0.21490692,
+            0.08132977,
+            0.02150526,
+            -0.02572503,
+            -0.03328866,
+            -0.15400712
+          ],
+          [
+            -0.3388357,
+            0.25697703,
+            0.09052654,
+            -0.00423175,
+            0.0682937,
+            0.10533642,
+            -0.16651831,
+            0.07925632
+          ],
+          [
+            -0.01764349,
+            0.19303159,
+            -0.08909106,
+            -0.04299367,
+            0.0041087,
+            0.10364715,
+            -0.04663513,
+            -0.29960546
+          ],
+          [
+            -0.09873868,
+            0.19806348,
+            -0.24831484,
+            -0.22852513,
+            0.01146254,
+            0.0680508,
+            -0.05179904,
+            -0.01927907
+          ],
+          [
+            -0.19407554,
+            0.25458946,
+            -0.29025342,
+            -0.333508,
+            0.05232543,
+            0.09631514,
+            -0.18011062,
+            0.2610505
+          ],
+          [
+            0.0315822,
+            -0.09014203,
+            0.06612504,
+            0.05678157,
+            -0.00551317,
+            0.03639651,
+            0.06439364,
+            0.03237577
+          ],
+          [
+            0.10378562,
+            -0.14375283,
+            0.07757846,
+            0.13907589,
+            -0.09828843,
+            -0.05298841,
+            0.13382792,
+            -0.16293262
+          ],
+          [
+            0.19973323,
+            -0.15134759,
+            0.18140205,
+            0.19207155,
+            -0.0348863,
+            -0.07062466,
+            0.1290096,
+            -0.21620252
+          ],
+          [
+            0.22831189,
+            -0.14011367,
+            0.22302782,
+            0.19598651,
+            -0.0658679,
+            -0.10182971,
+            0.14524948,
+            -0.23086499
+          ],
+          [
+            0.21045515,
+            -0.25620939,
+            0.1979978,
+            0.21385827,
+            -0.04483187,
+            -0.0104352,
+            0.15561718,
+            -0.24910902
+          ],
+          [
+            0.19147297,
+            -0.22016277,
+            0.18819222,
+            0.26343359,
+            -0.04944144,
+            -0.07251245,
+            0.21259481,
+            -0.1879932
+          ],
+          [
+            -0.12873675,
+            -0.34555408,
+            0.50010882,
+            0.29856472,
+            0.08679018,
+            0.01451672,
+            -0.17616653,
+            0.12414739
+          ],
+          [
+            -0.16129114,
+            0.06538293,
+            0.15122515,
+            0.00321344,
+            0.04577525,
+            0.11668489,
+            -0.00674124,
+            -0.09025558
+          ],
+          [
+            -0.09614229,
+            -0.2185082,
+            0.24377136,
+            0.11391826,
+            0.06798167,
+            -0.03804098,
+            -0.13415072,
+            0.3530212
+          ],
+          [
+            0.02882874,
+            0.17825643,
+            -0.01836938,
+            -0.13227066,
+            -0.04649731,
+            -0.00700754,
+            0.06591093,
+            0.19639377
+          ],
+          [
+            -0.20222148,
+            0.08714718,
+            -0.17135455,
+            0.15119211,
+            -0.04303916,
+            0.03521626,
+            -0.02261153,
+            -0.35476028
+          ],
+          [
+            -0.17555125,
+            -0.00624611,
+            -0.15563339,
+            -0.03071238,
+            0.02258535,
+            0.03940858,
+            0.00876637,
+            -0.10340535
+          ],
+          [
+            -0.38989382,
+            0.2351232,
+            0.090365,
+            -0.08737613,
+            0.10569131,
+            0.07448544,
+            -0.20368191,
+            0.11957266
+          ],
+          [
+            -0.02479687,
+            0.22075421,
+            -0.06656747,
+            -0.09205678,
+            0.046742,
+            0.07298225,
+            -0.05843709,
+            -0.26951296
+          ],
+          [
+            -0.11540636,
+            0.28691607,
+            -0.36821545,
+            -0.29318865,
+            0.1185951,
+            0.16529683,
+            -0.13257896,
+            0.08675939
+          ],
+          [
+            -0.45720964,
+            0.36516039,
+            -0.43625515,
+            -0.47309295,
+            0.13413177,
+            0.14156529,
+            -0.27792786,
+            0.62707864
+          ],
+          [
+            -0.27180952,
+            0.32450258,
+            -0.36371537,
+            -0.3883918,
+            0.15192621,
+            0.1423113,
+            -0.10990163,
+            0.43134097
+          ],
+          [
+            -0.21238608,
+            0.17185342,
+            -0.12960521,
+            -0.23333338,
+            0.07398348,
+            0.01031059,
+            -0.11629473,
+            0.39433521
+          ],
+          [
+            -0.19542841,
+            0.10050024,
+            -0.19255221,
+            -0.23822828,
+            0.10040495,
+            0.12183414,
+            -0.16935119,
+            0.25951983
+          ],
+          [
+            -0.204779,
+            0.11049283,
+            -0.16787925,
+            -0.19608581,
+            0.12613195,
+            0.10423744,
+            -0.03182086,
+            0.28923356
+          ],
+          [
+            -0.15311965,
+            0.1483746,
+            -0.18813061,
+            -0.21436186,
+            0.02934648,
+            0.11657551,
+            -0.14109009,
+            0.37339882
+          ],
+          [
+            -0.19988478,
+            0.19331985,
+            -0.16642569,
+            -0.27235748,
+            0.0876355,
+            0.0807449,
+            -0.17034693,
+            0.29858552
+          ]
+        ],
+        "w2": [
+          -1.50766145,
+          1.34697374,
+          -1.45571516,
+          -1.54138424,
+          0.49519718,
+          0.49638768,
+          -0.94855975,
+          2.07639328
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.471006
+        },
+        {
+          "epoch": 41,
+          "loss": 0.4187
+        },
+        {
+          "epoch": 81,
+          "loss": 0.340203
+        },
+        {
+          "epoch": 160,
+          "loss": 0.201909
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 35,
+      "final_training_loss": 0.207968,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "rope_relative",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          0.0766574,
+          0.17937277,
+          0.17684019,
+          0.31068792,
+          -0.24518661,
+          -0.22406427,
+          -0.06540148,
+          0.14272506
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.05009236,
+            0.16829046,
+            0.19062262,
+            0.3753417,
+            -0.1997147,
+            -0.25038741,
+            -0.08792284,
+            0.16110419
+          ],
+          [
+            -0.11593331,
+            -0.11083691,
+            -0.25795553,
+            -0.25900109,
+            0.17948111,
+            0.13457672,
+            0.05099197,
+            -0.22512054
+          ],
+          [
+            -0.06939361,
+            -0.18029772,
+            -0.20044516,
+            -0.38545416,
+            0.33159813,
+            0.12124985,
+            0.03951704,
+            -0.04296191
+          ],
+          [
+            -0.03437808,
+            -0.1443073,
+            0.1603184,
+            0.62031218,
+            -0.24798283,
+            0.16797285,
+            0.10034085,
+            -0.32946715
+          ],
+          [
+            0.04550927,
+            0.04094949,
+            -0.01276305,
+            0.25348561,
+            0.04998049,
+            0.26143758,
+            0.04936002,
+            0.11126508
+          ],
+          [
+            -0.14487995,
+            -0.12649003,
+            0.0526118,
+            0.24581732,
+            -0.00218698,
+            0.01174331,
+            0.07845957,
+            -0.26220215
+          ],
+          [
+            -0.05860657,
+            0.054632,
+            -0.03785089,
+            -0.07736788,
+            0.18197645,
+            -0.01868346,
+            0.00696396,
+            0.00189984
+          ],
+          [
+            0.12715327,
+            -0.03268066,
+            -0.00754578,
+            -0.11869664,
+            -0.13750199,
+            0.30580186,
+            0.00236528,
+            0.04642715
+          ],
+          [
+            0.08035048,
+            -0.03951296,
+            -0.08265773,
+            -0.05323493,
+            -0.12740586,
+            0.13597351,
+            0.06490989,
+            0.03461159
+          ],
+          [
+            -0.06388052,
+            -0.10154042,
+            0.04322315,
+            0.02316159,
+            0.11937109,
+            0.40436613,
+            0.11575231,
+            -0.23270606
+          ],
+          [
+            0.06117293,
+            -0.01228322,
+            -0.0431834,
+            -0.10547197,
+            0.06448084,
+            0.07762668,
+            0.04065178,
+            0.1626154
+          ],
+          [
+            -0.04658855,
+            -0.09169783,
+            -0.07419661,
+            -0.29320421,
+            0.11625033,
+            0.13024897,
+            0.06484532,
+            0.00192996
+          ],
+          [
+            -0.11418487,
+            -0.07066276,
+            -0.2381889,
+            -0.36981673,
+            0.31674327,
+            0.27593057,
+            0.03606098,
+            -0.15816888
+          ],
+          [
+            -0.01844544,
+            0.07216087,
+            -0.05154872,
+            0.03149292,
+            0.03414352,
+            0.05884086,
+            -0.02353268,
+            0.00213408
+          ],
+          [
+            0.0200081,
+            0.13294212,
+            0.19568789,
+            0.23972562,
+            -0.13569253,
+            -0.18584264,
+            -0.02440242,
+            0.06075677
+          ],
+          [
+            0.05347679,
+            0.0647892,
+            0.18469151,
+            0.2327848,
+            -0.29058396,
+            -0.15451144,
+            -0.0217661,
+            0.11514598
+          ],
+          [
+            0.12104719,
+            0.16928057,
+            0.15308656,
+            0.23990051,
+            -0.24704287,
+            -0.20233799,
+            0.0254043,
+            0.13586838
+          ],
+          [
+            0.04763645,
+            0.1675418,
+            0.17337825,
+            0.25989368,
+            -0.23969823,
+            -0.22837561,
+            -0.09673315,
+            0.13911372
+          ],
+          [
+            0.13258902,
+            0.15707789,
+            0.14871735,
+            0.29704429,
+            -0.24437117,
+            -0.20420883,
+            -0.08898697,
+            0.16802863
+          ],
+          [
+            -0.05155987,
+            -0.15239307,
+            0.22014833,
+            0.67968562,
+            -0.18324705,
+            0.18376709,
+            0.0367202,
+            -0.28577868
+          ],
+          [
+            0.04054841,
+            -0.10191545,
+            0.03098072,
+            0.28900358,
+            0.11592688,
+            0.28880601,
+            0.02253875,
+            0.0681116
+          ],
+          [
+            -0.21362454,
+            -0.09584225,
+            0.04010728,
+            0.2771806,
+            -0.11607546,
+            0.04032636,
+            0.08474065,
+            -0.31120645
+          ],
+          [
+            -0.0309376,
+            0.0301536,
+            -0.0269436,
+            -0.04436138,
+            0.1150206,
+            -0.01386661,
+            0.01310162,
+            -0.00819441
+          ],
+          [
+            0.14492615,
+            -0.07477346,
+            0.01019179,
+            -0.11298201,
+            -0.2224592,
+            0.26641308,
+            0.04666419,
+            0.08727123
+          ],
+          [
+            -0.0474955,
+            -0.00908578,
+            -0.10995588,
+            -0.11445077,
+            -0.13316116,
+            0.19285439,
+            -0.01614836,
+            -0.01352103
+          ],
+          [
+            0.00393166,
+            -0.05959987,
+            0.00541172,
+            -0.01977943,
+            0.17425529,
+            0.50034471,
+            0.10925919,
+            -0.25042744
+          ],
+          [
+            0.07401886,
+            -0.08348214,
+            -0.06705962,
+            -0.11340031,
+            0.13607068,
+            0.05213493,
+            0.01220234,
+            0.15288979
+          ],
+          [
+            -0.08380734,
+            -0.06051315,
+            -0.24907058,
+            -0.39080107,
+            0.17078647,
+            0.14767335,
+            0.10204142,
+            0.0049797
+          ],
+          [
+            -0.28990492,
+            -0.23832723,
+            -0.41892706,
+            -0.57363146,
+            0.57342526,
+            0.54939605,
+            0.23244359,
+            -0.31357674
+          ],
+          [
+            -0.1876109,
+            -0.24199614,
+            -0.33495072,
+            -0.38568935,
+            0.41950686,
+            0.31893495,
+            0.09465986,
+            -0.17749704
+          ],
+          [
+            -0.17658755,
+            -0.15748124,
+            -0.23961852,
+            -0.26551196,
+            0.31609285,
+            0.20854856,
+            0.09512059,
+            -0.18664595
+          ],
+          [
+            -0.11998428,
+            -0.08100729,
+            -0.14414058,
+            -0.22931023,
+            0.22037796,
+            0.22389259,
+            0.05236104,
+            -0.15765351
+          ],
+          [
+            -0.03661643,
+            -0.11310845,
+            -0.21616137,
+            -0.2275451,
+            0.29607283,
+            0.23322166,
+            0.10180362,
+            -0.13237009
+          ],
+          [
+            -0.10737713,
+            -0.15213588,
+            -0.18829129,
+            -0.25231395,
+            0.23136576,
+            0.20055552,
+            0.05605646,
+            -0.16731923
+          ],
+          [
+            -0.17694435,
+            -0.13071752,
+            -0.20648655,
+            -0.2150197,
+            0.1961122,
+            0.21540766,
+            0.12413266,
+            -0.1097854
+          ]
+        ],
+        "w2": [
+          -0.69076265,
+          -0.89771707,
+          -1.24623616,
+          -2.12875586,
+          1.73192435,
+          1.62918712,
+          0.47649983,
+          -1.06557652
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.460463
+        },
+        {
+          "epoch": 41,
+          "loss": 0.413112
+        },
+        {
+          "epoch": 81,
+          "loss": 0.335186
+        },
+        {
+          "epoch": 160,
+          "loss": 0.207968
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 13,
+      "final_training_loss": 0.344984,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "sinusoidal",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          0.00872394,
+          0.47700626,
+          -0.1314197,
+          -0.04363604,
+          0.1054965,
+          -0.23384568,
+          0.14208644,
+          9.128e-05
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.03624385,
+            0.47775765,
+            -0.06681725,
+            -0.05708931,
+            0.10115772,
+            -0.25998746,
+            0.15498572,
+            -0.08867113
+          ],
+          [
+            -0.20672098,
+            -1.49620373,
+            1.16115563,
+            0.52956609,
+            -0.90630253,
+            1.3204787,
+            -0.85147875,
+            0.25586116
+          ],
+          [
+            -0.22098312,
+            -1.75223102,
+            0.77588532,
+            0.31181196,
+            -0.63037175,
+            1.14012877,
+            -0.78126574,
+            0.13077648
+          ],
+          [
+            -0.00240096,
+            -0.12764875,
+            0.37261755,
+            0.09209968,
+            0.27056283,
+            -0.08958378,
+            0.23668593,
+            -0.01413084
+          ],
+          [
+            -0.06074301,
+            0.07589949,
+            0.08555773,
+            0.09532318,
+            -7.414e-05,
+            0.0171322,
+            -0.04880519,
+            0.03841152
+          ],
+          [
+            0.03608755,
+            -0.15917912,
+            -0.26418095,
+            -0.08127447,
+            -0.0588309,
+            -0.09081238,
+            0.02918866,
+            0.02015541
+          ],
+          [
+            -0.04310172,
+            -0.1361991,
+            -0.21636183,
+            -0.02433041,
+            -0.11649463,
+            -0.09918982,
+            -0.11824338,
+            0.06476318
+          ],
+          [
+            -0.05265923,
+            -0.16922748,
+            -0.26325881,
+            -0.01421524,
+            -0.08963956,
+            -0.11205705,
+            -0.09885766,
+            -0.04088491
+          ],
+          [
+            0.04647313,
+            -0.1626154,
+            0.42990538,
+            0.08956568,
+            0.34346126,
+            -0.13826723,
+            0.15336961,
+            0.00612411
+          ],
+          [
+            -0.02139107,
+            -0.0518914,
+            0.18245589,
+            0.09456599,
+            -0.09761656,
+            0.11202466,
+            -0.05362208,
+            0.01876168
+          ],
+          [
+            0.01981393,
+            -0.10287132,
+            -0.39455555,
+            -0.07695904,
+            0.00417021,
+            -0.13137572,
+            0.0182475,
+            -0.03072055
+          ],
+          [
+            -0.05781834,
+            -0.05639142,
+            -0.28465116,
+            -0.00116649,
+            -0.03871477,
+            -0.11163438,
+            -0.01987824,
+            -0.06270278
+          ],
+          [
+            -0.03031597,
+            -0.18400038,
+            -0.3828967,
+            -0.03179715,
+            -0.05321505,
+            -0.13089348,
+            0.0185085,
+            -0.00942882
+          ]
+        ],
+        "w2": [
+          -0.321511,
+          -2.81447376,
+          1.72339188,
+          0.66259048,
+          -1.23832626,
+          2.00793638,
+          -1.28824479,
+          0.28347695
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467496
+        },
+        {
+          "epoch": 41,
+          "loss": 0.620384
+        },
+        {
+          "epoch": 81,
+          "loss": 0.459905
+        },
+        {
+          "epoch": 160,
+          "loss": 0.344984
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 13,
+      "final_training_loss": 0.358492,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "sinusoidal",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          0.24386751,
+          0.44374208,
+          0.09928733,
+          -0.16650122,
+          0.05074352,
+          -0.16727103,
+          -0.09904591,
+          0.11028796
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.23564137,
+            0.38989839,
+            0.12938655,
+            -0.17789041,
+            0.05519735,
+            -0.14684165,
+            -0.07451031,
+            0.12619445
+          ],
+          [
+            -1.05209165,
+            -1.25209532,
+            -1.23522748,
+            1.12615178,
+            -0.60584628,
+            0.68310052,
+            0.63279661,
+            -0.63945201
+          ],
+          [
+            -1.0194519,
+            -1.45980965,
+            -0.82588362,
+            0.97364042,
+            -0.49401844,
+            0.70651639,
+            0.55024616,
+            -0.55125789
+          ],
+          [
+            0.0977908,
+            -0.09212944,
+            -0.32246194,
+            -0.31075523,
+            -0.06523291,
+            0.00506568,
+            0.07349414,
+            0.01696909
+          ],
+          [
+            0.02010779,
+            0.03243151,
+            -0.09020711,
+            0.02313225,
+            -0.08913497,
+            -0.01959431,
+            0.05971995,
+            -0.0187345
+          ],
+          [
+            -0.00178803,
+            -0.14644756,
+            0.27007568,
+            0.00755032,
+            0.09756901,
+            0.07321541,
+            -0.05912653,
+            -0.00719398
+          ],
+          [
+            -0.04302617,
+            -0.13981085,
+            0.26877869,
+            0.07701461,
+            0.03077243,
+            0.09026837,
+            0.025771,
+            -0.02231704
+          ],
+          [
+            -0.01420111,
+            -0.11542545,
+            0.28564831,
+            0.05045253,
+            0.0130746,
+            0.10325234,
+            -0.01265451,
+            -0.04338723
+          ],
+          [
+            0.0634659,
+            -0.0828588,
+            -0.36887577,
+            -0.29240083,
+            -0.11627041,
+            -0.03123687,
+            0.03583496,
+            -0.03371322
+          ],
+          [
+            -0.03235659,
+            -0.04107946,
+            -0.25080136,
+            0.10130829,
+            -0.03705242,
+            0.02170646,
+            0.04976201,
+            -0.07527644
+          ],
+          [
+            0.06354368,
+            -0.07880278,
+            0.32128201,
+            0.03512237,
+            0.07029712,
+            -0.05364079,
+            -0.06541515,
+            0.10233196
+          ],
+          [
+            -0.02586092,
+            0.00967831,
+            0.34513353,
+            0.02198661,
+            0.04471193,
+            0.05090613,
+            -0.06379514,
+            0.00713951
+          ],
+          [
+            0.00393117,
+            -0.16232408,
+            0.36318529,
+            0.01609226,
+            0.09861747,
+            0.06389297,
+            -0.04317972,
+            0.04102903
+          ]
+        ],
+        "w2": [
+          -1.64335714,
+          -2.26685938,
+          -1.79213087,
+          1.67482075,
+          -0.82389549,
+          1.08388109,
+          0.90064619,
+          -0.92144174
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.470949
+        },
+        {
+          "epoch": 41,
+          "loss": 0.616067
+        },
+        {
+          "epoch": 81,
+          "loss": 0.457883
+        },
+        {
+          "epoch": 160,
+          "loss": 0.358492
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 13,
+      "final_training_loss": 0.36977,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "sinusoidal",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          0.31430628,
+          -0.08464911,
+          -0.30196948,
+          -0.17692396,
+          0.07596634,
+          0.00346438,
+          -0.08163131,
+          -0.25636991
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.36717285,
+            -0.08449101,
+            -0.27950493,
+            -0.14296785,
+            0.13707235,
+            0.03989072,
+            -0.10826768,
+            -0.26577797
+          ],
+          [
+            -1.07248868,
+            0.77187574,
+            1.3137294,
+            1.41272826,
+            -0.5101391,
+            -0.26458345,
+            0.68374423,
+            0.91101881
+          ],
+          [
+            -1.2414719,
+            0.52496487,
+            1.31339695,
+            1.0940881,
+            -0.47703455,
+            -0.17299198,
+            0.56238679,
+            0.87860008
+          ],
+          [
+            0.00163283,
+            -0.20151499,
+            -0.06724057,
+            0.27050554,
+            -0.03216808,
+            -0.01948922,
+            0.00921795,
+            0.00504934
+          ],
+          [
+            -0.0148091,
+            -0.01593664,
+            -0.02628935,
+            0.14763312,
+            -0.01651637,
+            -0.03949891,
+            0.05640017,
+            -0.04328917
+          ],
+          [
+            -0.05731771,
+            0.07137991,
+            -0.00532334,
+            -0.25528499,
+            -0.04787219,
+            -0.0672095,
+            -0.05385641,
+            0.08011113
+          ],
+          [
+            -0.08910961,
+            0.12236518,
+            0.01840131,
+            -0.25867408,
+            -0.07320008,
+            -0.0103344,
+            0.00652379,
+            0.10318433
+          ],
+          [
+            -0.09010306,
+            0.1346323,
+            0.00852753,
+            -0.26584093,
+            -0.11235515,
+            -0.00260929,
+            -0.0325861,
+            0.10576217
+          ],
+          [
+            -0.02848749,
+            -0.16890428,
+            -0.14112207,
+            0.33125887,
+            0.00270623,
+            0.02747734,
+            0.12658331,
+            0.00336938
+          ],
+          [
+            -0.0902034,
+            0.09109087,
+            0.05718716,
+            0.18525113,
+            -0.00052057,
+            -0.07167942,
+            0.07937234,
+            0.05079937
+          ],
+          [
+            -0.10590718,
+            0.03422861,
+            -0.04797019,
+            -0.31607842,
+            0.00639958,
+            0.03899237,
+            -0.12149855,
+            -0.02116482
+          ],
+          [
+            -0.04092731,
+            0.09822193,
+            -0.00411446,
+            -0.3472179,
+            -0.06386646,
+            0.05930791,
+            -0.05092083,
+            0.07303776
+          ],
+          [
+            -0.14298652,
+            0.10778107,
+            -0.05759801,
+            -0.38055308,
+            -0.06231878,
+            0.02318057,
+            -0.05527576,
+            0.12027211
+          ]
+        ],
+        "w2": [
+          -1.88498692,
+          1.03769328,
+          2.14033424,
+          2.13444691,
+          -0.7544923,
+          -0.32239128,
+          0.94888898,
+          1.44121457
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.464177
+        },
+        {
+          "epoch": 41,
+          "loss": 0.594005
+        },
+        {
+          "epoch": 81,
+          "loss": 0.458561
+        },
+        {
+          "epoch": 160,
+          "loss": 0.36977
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 13,
+      "final_training_loss": 0.378261,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "sinusoidal",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          0.0009435,
+          -0.00188572,
+          0.16745772,
+          -0.2901656,
+          0.23452625,
+          -0.0657134,
+          -0.01906237,
+          -0.34227197
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.04005039,
+            -0.02866864,
+            0.22800857,
+            -0.25236375,
+            0.22271717,
+            -0.0868139,
+            0.05027942,
+            -0.36732908
+          ],
+          [
+            -0.1875879,
+            0.11491282,
+            -0.99136141,
+            1.11879914,
+            -1.63997448,
+            0.89989659,
+            0.3391827,
+            1.14863305
+          ],
+          [
+            -0.0989422,
+            0.02954459,
+            -0.87916928,
+            1.17146017,
+            -1.36695625,
+            0.6633407,
+            0.23467438,
+            1.25808471
+          ],
+          [
+            -0.02193275,
+            0.04101914,
+            0.23568557,
+            -0.10524507,
+            -0.09156152,
+            0.23772438,
+            0.06672457,
+            0.07055632
+          ],
+          [
+            0.0190892,
+            0.03508175,
+            -0.04486207,
+            0.01933461,
+            -0.05414788,
+            0.12031317,
+            -0.00170728,
+            -0.05503544
+          ],
+          [
+            0.06099209,
+            0.03641025,
+            -0.07315928,
+            0.04892451,
+            0.15852274,
+            -0.15261776,
+            -0.10065296,
+            0.14895574
+          ],
+          [
+            0.04701017,
+            0.04886899,
+            -0.06480668,
+            0.12755782,
+            0.19522151,
+            -0.07710279,
+            -0.02085595,
+            0.18263953
+          ],
+          [
+            0.00924795,
+            0.03124727,
+            -0.02769147,
+            0.10818823,
+            0.19486317,
+            -0.1046356,
+            0.00791122,
+            0.21366758
+          ],
+          [
+            0.01701747,
+            -0.00946754,
+            0.17421414,
+            -0.12036435,
+            -0.17236477,
+            0.14099499,
+            0.05343693,
+            0.08370433
+          ],
+          [
+            -0.00227273,
+            0.06148669,
+            -0.11846464,
+            0.05221315,
+            -0.1465492,
+            0.20816476,
+            0.12116876,
+            -0.00828872
+          ],
+          [
+            0.01552688,
+            -0.05795046,
+            -0.01774945,
+            0.01481559,
+            0.27400079,
+            -0.11667528,
+            -0.01847684,
+            0.0385339
+          ],
+          [
+            -0.0422218,
+            0.02522425,
+            0.02458008,
+            0.11073138,
+            0.23997021,
+            -0.17084547,
+            0.02658579,
+            0.07241911
+          ],
+          [
+            -0.04459339,
+            0.0033941,
+            -0.02938612,
+            0.08569366,
+            0.28331966,
+            -0.14323884,
+            -0.0312266,
+            0.16084375
+          ]
+        ],
+        "w2": [
+          -0.195007,
+          0.13270156,
+          -1.49271721,
+          1.86044405,
+          -2.52858463,
+          1.24739928,
+          0.43272932,
+          1.99814265
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.466053
+        },
+        {
+          "epoch": 41,
+          "loss": 0.576371
+        },
+        {
+          "epoch": 81,
+          "loss": 0.459527
+        },
+        {
+          "epoch": 160,
+          "loss": 0.378261
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 13,
+      "final_training_loss": 0.383256,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "sinusoidal",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          0.03439303,
+          -0.3242171,
+          -0.09353044,
+          -0.26319599,
+          -0.2242202,
+          -0.02694997,
+          0.00963308,
+          0.31928685
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.04060296,
+            -0.29132828,
+            -0.13765865,
+            -0.24525595,
+            -0.226324,
+            0.01463053,
+            0.01238645,
+            0.32990392
+          ],
+          [
+            -0.29644949,
+            0.92386586,
+            1.16163985,
+            1.01492069,
+            1.07457056,
+            0.33594628,
+            -0.29832246,
+            -1.53074412
+          ],
+          [
+            -0.21646682,
+            1.04258312,
+            0.7168861,
+            1.02319757,
+            1.01215143,
+            0.32777695,
+            -0.14775036,
+            -1.44950405
+          ],
+          [
+            -0.00523659,
+            0.0811111,
+            0.27025817,
+            -0.06020309,
+            0.10895416,
+            -0.07691268,
+            0.00189041,
+            0.22899549
+          ],
+          [
+            -0.01408781,
+            0.00467234,
+            0.17491421,
+            -0.02799992,
+            -0.08414616,
+            0.05932576,
+            -0.03601993,
+            0.0126265
+          ],
+          [
+            0.00018341,
+            0.08582615,
+            -0.18057008,
+            0.05425757,
+            -0.05512398,
+            0.01100542,
+            0.01273961,
+            -0.00172802
+          ],
+          [
+            -0.05394414,
+            0.06899295,
+            -0.25015081,
+            0.0818576,
+            0.06566267,
+            0.06614956,
+            -0.10372093,
+            -0.03243634
+          ],
+          [
+            -0.01685252,
+            0.14502799,
+            -0.23281192,
+            0.08425829,
+            0.02072832,
+            0.00993032,
+            -0.04702608,
+            0.01112895
+          ],
+          [
+            0.03632617,
+            0.08205647,
+            0.33559045,
+            -0.0648928,
+            0.15944832,
+            -0.01329746,
+            -0.02388795,
+            0.20157569
+          ],
+          [
+            -0.12333237,
+            0.03744052,
+            0.17990779,
+            0.07532909,
+            0.03868749,
+            0.08255601,
+            -0.05249769,
+            -0.10577328
+          ],
+          [
+            -0.02729168,
+            0.11914443,
+            -0.28807974,
+            -0.0053294,
+            -0.06979699,
+            -0.01916112,
+            0.01755109,
+            0.06053908
+          ],
+          [
+            0.01853946,
+            0.00092135,
+            -0.22168857,
+            0.10026997,
+            -0.03999449,
+            -0.09843524,
+            0.12063532,
+            0.04172243
+          ],
+          [
+            -0.04510945,
+            0.11733108,
+            -0.22824763,
+            0.10177745,
+            -0.05715338,
+            -0.00755392,
+            0.05228289,
+            0.08341337
+          ]
+        ],
+        "w2": [
+          -0.40184087,
+          1.60127364,
+          1.59795569,
+          1.63902598,
+          1.66820086,
+          0.48811593,
+          -0.34108848,
+          -2.51547042
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.466776
+        },
+        {
+          "epoch": 41,
+          "loss": 0.594322
+        },
+        {
+          "epoch": 81,
+          "loss": 0.460944
+        },
+        {
+          "epoch": 160,
+          "loss": 0.383256
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 1.131926,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_score",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          -0.3520416,
+          0.00281058,
+          -0.09795371,
+          0.03152184,
+          -0.12870814,
+          0.10319416,
+          0.2878857,
+          0.00318781
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.41193273,
+            -0.02778466,
+            -0.10791416,
+            -0.02548625,
+            -0.17802694,
+            0.10396792,
+            0.31296592,
+            -0.0033968
+          ],
+          [
+            1.71700562,
+            -0.17857394,
+            0.7622484,
+            -0.488097,
+            0.92747174,
+            -0.77448678,
+            -1.38816768,
+            -0.20464438
+          ],
+          [
+            -0.35553095,
+            0.05367175,
+            -0.1200171,
+            0.15717437,
+            -0.16652694,
+            0.15214293,
+            0.14216984,
+            0.01923708
+          ],
+          [
+            0.22770177,
+            -0.04438575,
+            0.11949705,
+            0.076399,
+            0.11398098,
+            -0.1052105,
+            -0.3858679,
+            -0.02506501
+          ]
+        ],
+        "w2": [
+          2.13483297,
+          -0.19059631,
+          0.83391412,
+          -0.50599538,
+          1.02842972,
+          -0.84977151,
+          -1.67122574,
+          -0.20764129
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.466765
+        },
+        {
+          "epoch": 41,
+          "loss": 1.168282
+        },
+        {
+          "epoch": 81,
+          "loss": 1.13931
+        },
+        {
+          "epoch": 160,
+          "loss": 1.131926
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 1.131271,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_score",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          -0.45069763,
+          0.00469818,
+          0.21817721,
+          0.0943402,
+          0.05567545,
+          -0.13740988,
+          0.02618913,
+          -0.00233553
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.46540094,
+            0.02919327,
+            0.15733067,
+            0.06166495,
+            0.12829105,
+            -0.18385233,
+            0.05861934,
+            0.02611986
+          ],
+          [
+            1.92873854,
+            -0.28169113,
+            -1.08893393,
+            -0.69625456,
+            -0.69577096,
+            0.95107777,
+            -0.51759927,
+            0.16380872
+          ],
+          [
+            -0.1880991,
+            -0.04760893,
+            0.34701555,
+            0.11086334,
+            0.13665802,
+            -0.15944049,
+            0.1592769,
+            -0.02699854
+          ],
+          [
+            0.50417319,
+            -0.07092004,
+            -0.05805421,
+            -0.1113434,
+            -0.10001758,
+            0.12915575,
+            -0.04961672,
+            0.04002689
+          ]
+        ],
+        "w2": [
+          2.51917822,
+          -0.28182398,
+          -1.26086972,
+          -0.75908945,
+          -0.75142099,
+          1.05833233,
+          -0.55481869,
+          0.17081687
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467738
+        },
+        {
+          "epoch": 41,
+          "loss": 1.177756
+        },
+        {
+          "epoch": 81,
+          "loss": 1.140419
+        },
+        {
+          "epoch": 160,
+          "loss": 1.131271
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 1.132552,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_score",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          -0.27280433,
+          0.12070399,
+          0.00023537,
+          -0.00019722,
+          0.0072942,
+          -0.24426549,
+          -0.25296448,
+          0.1932124
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.32794806,
+            0.16991977,
+            0.0021199,
+            -0.02144965,
+            0.02556021,
+            -0.24515656,
+            -0.27258241,
+            0.18879001
+          ],
+          [
+            1.42078615,
+            -0.90054877,
+            -0.11614375,
+            0.11929712,
+            -0.31446395,
+            1.21985298,
+            1.289605,
+            -1.0576251
+          ],
+          [
+            -0.28178171,
+            0.16689593,
+            0.03919195,
+            -0.02012027,
+            0.0896093,
+            -0.18412217,
+            -0.23945607,
+            0.20524828
+          ],
+          [
+            0.18350604,
+            -0.10293832,
+            0.00010391,
+            0.00389791,
+            -0.10294705,
+            0.2934366,
+            0.21878385,
+            -0.11943382
+          ]
+        ],
+        "w2": [
+          1.6849806,
+          -0.99461931,
+          -0.11891578,
+          0.12014669,
+          -0.34056965,
+          1.43208481,
+          1.51240596,
+          -1.1976116
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.461884
+        },
+        {
+          "epoch": 41,
+          "loss": 1.164857
+        },
+        {
+          "epoch": 81,
+          "loss": 1.138517
+        },
+        {
+          "epoch": 160,
+          "loss": 1.132552
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 1.133373,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_score",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          -0.1491578,
+          0.04804284,
+          -0.04575245,
+          0.14006291,
+          0.11100439,
+          -0.01865456,
+          -0.45199983,
+          0.00454598
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.21907465,
+            0.02473909,
+            -0.06050947,
+            0.19544624,
+            0.10271342,
+            0.0103582,
+            -0.43623604,
+            0.00587441
+          ],
+          [
+            1.0248148,
+            -0.53203633,
+            0.59239685,
+            -0.96751506,
+            -0.79230496,
+            0.36250991,
+            1.94298275,
+            -0.27574244
+          ],
+          [
+            -0.18159692,
+            0.08612191,
+            -0.16016299,
+            0.14468518,
+            0.16921428,
+            -0.05613978,
+            -0.39056455,
+            0.09048018
+          ],
+          [
+            0.2923981,
+            -0.06667621,
+            0.03752159,
+            -0.20384247,
+            -0.0924776,
+            0.04744362,
+            0.28093744,
+            -0.01380962
+          ]
+        ],
+        "w2": [
+          1.18034402,
+          -0.56547915,
+          0.63614184,
+          -1.08693719,
+          -0.87227418,
+          0.37780433,
+          2.50732921,
+          -0.28868049
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.456994
+        },
+        {
+          "epoch": 41,
+          "loss": 1.167968
+        },
+        {
+          "epoch": 81,
+          "loss": 1.140128
+        },
+        {
+          "epoch": 160,
+          "loss": 1.133373
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 4,
+      "final_training_loss": 1.131457,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_score",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          0.21458794,
+          0.00206099,
+          -0.1416615,
+          -1.96e-06,
+          0.30055507,
+          0.00884984,
+          0.29131826,
+          -0.21289998
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.16140218,
+            0.00606758,
+            -0.0720804,
+            -0.01573702,
+            0.27481497,
+            0.02191411,
+            0.33190005,
+            -0.23188943
+          ],
+          [
+            -1.05634519,
+            -0.24305799,
+            0.80657945,
+            -0.0058545,
+            -1.38278843,
+            -0.31750012,
+            -1.42404578,
+            1.15851501
+          ],
+          [
+            0.21497221,
+            0.09112839,
+            -0.16366144,
+            0.01547193,
+            0.3065949,
+            -0.03436992,
+            0.16125052,
+            -0.21571734
+          ],
+          [
+            -0.10313294,
+            -0.0008344,
+            0.14646282,
+            -0.02138448,
+            -0.1666176,
+            -0.06272919,
+            -0.39580392,
+            0.1394684
+          ]
+        ],
+        "w2": [
+          -1.19987943,
+          -0.25186299,
+          0.90411796,
+          -0.01130185,
+          -1.64208205,
+          -0.32110633,
+          -1.72453232,
+          1.32775745
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.459837
+        },
+        {
+          "epoch": 41,
+          "loss": 1.162494
+        },
+        {
+          "epoch": 81,
+          "loss": 1.138205
+        },
+        {
+          "epoch": 160,
+          "loss": 1.131457
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 11,
+      "final_training_loss": 0.445638,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          0.02579005,
+          0.17468514,
+          -0.09973543,
+          -0.39532371,
+          -0.15851881,
+          0.15133576,
+          0.1093664,
+          0.08301159
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.01391004,
+            0.11504246,
+            -0.13902245,
+            -0.35468788,
+            -0.11069995,
+            0.10392353,
+            0.1408061,
+            0.02110181
+          ],
+          [
+            -0.33528095,
+            -1.08885158,
+            0.78452264,
+            1.35519132,
+            1.07957892,
+            -0.66440508,
+            -0.7442841,
+            -0.74405012
+          ],
+          [
+            -0.32808868,
+            -1.00758237,
+            0.68811779,
+            1.86099355,
+            1.07950338,
+            -0.8005204,
+            -0.68873719,
+            -0.71401836
+          ],
+          [
+            0.05040039,
+            0.18258432,
+            -0.09537844,
+            -0.06236538,
+            -0.09186865,
+            0.0846052,
+            0.04386433,
+            0.20896235
+          ],
+          [
+            -0.06792495,
+            0.08647028,
+            -0.02680062,
+            0.07976643,
+            -0.22226993,
+            -0.01698236,
+            0.05725236,
+            0.04288942
+          ],
+          [
+            -0.00069542,
+            0.01338437,
+            0.02616087,
+            0.07804875,
+            0.0849007,
+            0.04973956,
+            0.01439705,
+            0.06288166
+          ],
+          [
+            0.00662961,
+            0.05746399,
+            -0.13467183,
+            0.21277062,
+            -0.17511,
+            0.02965942,
+            0.08861935,
+            0.15953384
+          ],
+          [
+            -0.09305895,
+            -0.15489829,
+            0.13400067,
+            0.47011862,
+            0.23401946,
+            -0.17708441,
+            -0.2200941,
+            -0.10567892
+          ],
+          [
+            -0.08676766,
+            0.0014257,
+            0.10235015,
+            0.28147407,
+            -0.09895019,
+            -0.22885233,
+            0.02911684,
+            -0.09307022
+          ],
+          [
+            0.03061725,
+            -0.149383,
+            0.04560374,
+            0.1931669,
+            0.13985017,
+            -0.02113512,
+            -0.03376931,
+            0.01389906
+          ],
+          [
+            0.02828506,
+            0.25632087,
+            -0.19225747,
+            0.05872728,
+            -0.37096481,
+            0.08828231,
+            0.17097483,
+            0.29646766
+          ]
+        ],
+        "w2": [
+          -0.44670205,
+          -1.47743163,
+          1.02588,
+          2.49018834,
+          1.55647315,
+          -1.03021284,
+          -1.02896737,
+          -1.03952683
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467319
+        },
+        {
+          "epoch": 41,
+          "loss": 0.613556
+        },
+        {
+          "epoch": 81,
+          "loss": 0.468352
+        },
+        {
+          "epoch": 160,
+          "loss": 0.445638
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 11,
+      "final_training_loss": 0.439969,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          -0.17102262,
+          -0.13639469,
+          0.14643535,
+          0.30155886,
+          0.10228451,
+          -0.16463698,
+          -6.846e-05,
+          -0.03454775
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.23981758,
+            -0.12464792,
+            0.15921419,
+            0.31867265,
+            0.04536954,
+            -0.1621966,
+            0.05032452,
+            -0.07517293
+          ],
+          [
+            0.97428816,
+            1.09969886,
+            -1.2469527,
+            -1.14779803,
+            -0.6559728,
+            0.90474518,
+            -0.21606356,
+            0.52938709
+          ],
+          [
+            1.09203933,
+            1.08681056,
+            -1.26465483,
+            -1.54391149,
+            -0.65088759,
+            0.90198905,
+            -0.28855648,
+            0.53712261
+          ],
+          [
+            -0.14168652,
+            -0.26544076,
+            0.15492446,
+            0.11755687,
+            0.15800572,
+            -0.12767651,
+            0.0247686,
+            -0.12655232
+          ],
+          [
+            0.05067648,
+            -0.13778782,
+            0.2830098,
+            -0.10306735,
+            -0.1397713,
+            -0.08518766,
+            -0.0606816,
+            0.03575998
+          ],
+          [
+            -0.00655549,
+            0.07459138,
+            -0.09116927,
+            0.00093914,
+            0.07183891,
+            -0.01046232,
+            -0.02626145,
+            -0.05203359
+          ],
+          [
+            0.018937,
+            -0.20506524,
+            0.13137093,
+            -0.22462722,
+            -0.0088811,
+            -0.04106248,
+            -0.00548268,
+            -0.11680459
+          ],
+          [
+            0.20666188,
+            0.12338588,
+            -0.25270897,
+            -0.32163522,
+            -0.06247111,
+            0.2421539,
+            -0.02856532,
+            0.07393534
+          ],
+          [
+            0.18550975,
+            -0.03160042,
+            0.11605223,
+            -0.31996727,
+            -0.16002936,
+            0.11478422,
+            0.00160889,
+            0.10162784
+          ],
+          [
+            0.07281729,
+            0.09568275,
+            -0.17998068,
+            -0.13553763,
+            -0.01288664,
+            0.11386917,
+            0.01333931,
+            0.06180586
+          ],
+          [
+            -0.20293341,
+            -0.31618091,
+            0.30136287,
+            -0.04944289,
+            0.14056715,
+            -0.12295575,
+            0.0842155,
+            -0.15727172
+          ]
+        ],
+        "w2": [
+          1.46837373,
+          1.53724855,
+          -1.82122965,
+          -1.98368084,
+          -0.91298497,
+          1.28954584,
+          -0.31881609,
+          0.73121255
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.460951
+        },
+        {
+          "epoch": 41,
+          "loss": 0.601667
+        },
+        {
+          "epoch": 81,
+          "loss": 0.466411
+        },
+        {
+          "epoch": 160,
+          "loss": 0.439969
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 11,
+      "final_training_loss": 0.45266,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          0.0188389,
+          0.17489593,
+          0.21353239,
+          -0.09938334,
+          0.26189063,
+          -0.20221686,
+          0.00034074,
+          -0.08266632
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.00536768,
+            0.17962238,
+            0.22534415,
+            -0.12171338,
+            0.2579343,
+            -0.19037629,
+            -0.02068941,
+            -0.05890099
+          ],
+          [
+            -0.27967746,
+            -1.0188413,
+            -1.05022244,
+            0.89483938,
+            -1.1233629,
+            1.27401422,
+            0.16777788,
+            0.58793414
+          ],
+          [
+            -0.26590335,
+            -1.11103148,
+            -1.26023839,
+            0.81687275,
+            -1.24226153,
+            1.46260895,
+            0.13212985,
+            0.61459172
+          ],
+          [
+            -0.00055248,
+            0.19176413,
+            0.13399405,
+            -0.03055225,
+            0.18198605,
+            -0.15119584,
+            -0.09068228,
+            -0.14403387
+          ],
+          [
+            0.02474888,
+            -0.01537188,
+            -0.01976392,
+            -0.18719817,
+            -0.08370446,
+            -0.13550286,
+            0.07791098,
+            0.07109133
+          ],
+          [
+            0.03490548,
+            0.03272474,
+            -0.06216096,
+            0.03880004,
+            0.03497244,
+            0.13477627,
+            0.00607348,
+            -0.08696086
+          ],
+          [
+            -0.04266885,
+            0.03838276,
+            0.05976075,
+            -0.01318725,
+            0.04127455,
+            -0.02617275,
+            0.05101506,
+            0.00654732
+          ],
+          [
+            -0.04881292,
+            -0.1553128,
+            -0.27145976,
+            0.36099526,
+            -0.25979942,
+            0.34449147,
+            0.11000267,
+            0.06679547
+          ],
+          [
+            -0.11234662,
+            -0.19484159,
+            -0.14998999,
+            -0.01859868,
+            -0.25161057,
+            0.05396902,
+            0.028966,
+            0.23285163
+          ],
+          [
+            0.03627878,
+            -0.06952546,
+            -0.09150564,
+            0.16571162,
+            -0.09960001,
+            0.29034951,
+            -0.00149408,
+            -0.03757265
+          ],
+          [
+            0.07225275,
+            0.22488296,
+            0.24064635,
+            -0.18280853,
+            0.16274292,
+            -0.23644242,
+            -0.08971918,
+            -0.1372355
+          ]
+        ],
+        "w2": [
+          -0.37277179,
+          -1.52771889,
+          -1.68927161,
+          1.25681628,
+          -1.75409822,
+          2.04816232,
+          0.2211821,
+          0.85836896
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.465231
+        },
+        {
+          "epoch": 41,
+          "loss": 0.603996
+        },
+        {
+          "epoch": 81,
+          "loss": 0.469474
+        },
+        {
+          "epoch": 160,
+          "loss": 0.45266
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 11,
+      "final_training_loss": 0.438125,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          -0.06378181,
+          0.12256959,
+          -0.0380346,
+          0.00037452,
+          0.31143846,
+          0.40406934,
+          -0.00022979,
+          0.0322222
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.11896036,
+            0.03256898,
+            -7.117e-05,
+            0.02788085,
+            0.17680191,
+            0.42797595,
+            0.03933083,
+            0.0064741
+          ],
+          [
+            0.66385744,
+            -0.67786144,
+            0.42684037,
+            -0.29390629,
+            -1.50198347,
+            -1.60826059,
+            -0.10744989,
+            -0.50817527
+          ],
+          [
+            0.5531454,
+            -0.57641554,
+            0.3720999,
+            -0.19321928,
+            -1.55492267,
+            -2.00205389,
+            -0.17328,
+            -0.40958139
+          ],
+          [
+            -0.15750656,
+            0.13422844,
+            -0.08546861,
+            0.03811512,
+            0.18645265,
+            0.12866435,
+            0.01069333,
+            0.10030301
+          ],
+          [
+            0.01923513,
+            -0.0936548,
+            0.02173033,
+            -0.04627644,
+            0.32702086,
+            -0.01438493,
+            0.02127916,
+            -0.11423729
+          ],
+          [
+            -0.12458529,
+            0.14607358,
+            -0.07553088,
+            -0.00766676,
+            -0.1325656,
+            -0.0773051,
+            0.00988707,
+            0.06619769
+          ],
+          [
+            -0.09468591,
+            0.1413478,
+            -0.09999337,
+            0.03906689,
+            0.20357642,
+            -0.17944098,
+            0.05583128,
+            -0.03019619
+          ],
+          [
+            0.10913095,
+            -0.10405323,
+            0.08522534,
+            0.03056407,
+            -0.36266669,
+            -0.47226078,
+            -0.03260652,
+            -0.05230233
+          ],
+          [
+            0.16516429,
+            -0.19897895,
+            0.04158906,
+            -0.03149878,
+            0.14427896,
+            -0.27115268,
+            -0.02726512,
+            -0.17572628
+          ],
+          [
+            -0.07590215,
+            0.00554776,
+            0.02566214,
+            0.05754118,
+            -0.21107192,
+            -0.22432077,
+            0.04926259,
+            -0.019603
+          ],
+          [
+            -0.21799442,
+            0.18803504,
+            -0.14621651,
+            0.04897835,
+            0.43748604,
+            0.06178157,
+            -0.01282322,
+            0.09649064
+          ]
+        ],
+        "w2": [
+          0.90951454,
+          -0.94659543,
+          0.57442711,
+          -0.31941717,
+          -2.46261049,
+          -2.97785972,
+          -0.1824659,
+          -0.64937946
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.468274
+        },
+        {
+          "epoch": 41,
+          "loss": 0.618517
+        },
+        {
+          "epoch": 81,
+          "loss": 0.557819
+        },
+        {
+          "epoch": 160,
+          "loss": 0.438125
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 11,
+      "final_training_loss": 0.433758,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_residual_adapter",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          -0.17505676,
+          -0.0002444,
+          -0.00043909,
+          0.02392982,
+          -0.21208652,
+          0.13165969,
+          -0.26510656,
+          0.27097514
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.09079842,
+            0.03808449,
+            -0.03246623,
+            -0.01256727,
+            -0.20938227,
+            0.1443309,
+            -0.22973625,
+            0.18767011
+          ],
+          [
+            0.68249769,
+            -0.05253192,
+            -0.02492353,
+            -0.35441988,
+            1.31690975,
+            -0.70964902,
+            1.55943274,
+            -1.05818651
+          ],
+          [
+            0.69208808,
+            -0.05755874,
+            0.04900304,
+            -0.25767463,
+            1.48636509,
+            -0.7796066,
+            1.68032442,
+            -1.28211108
+          ],
+          [
+            -0.10838982,
+            -0.01392941,
+            -0.0260327,
+            0.07544288,
+            -0.22219964,
+            0.13784961,
+            -0.18684166,
+            0.17084033
+          ],
+          [
+            -0.02323892,
+            0.01080657,
+            0.05130064,
+            -0.03554267,
+            -0.12432786,
+            -0.10191072,
+            -0.28608406,
+            -0.23115331
+          ],
+          [
+            -0.0823838,
+            0.06172659,
+            0.00344119,
+            0.10963479,
+            0.08949286,
+            0.05826191,
+            0.14583219,
+            0.09241998
+          ],
+          [
+            -0.11686899,
+            0.03822456,
+            -0.02201932,
+            0.04611031,
+            -0.0469795,
+            0.09893389,
+            -0.08495246,
+            -0.10188463
+          ],
+          [
+            0.18689423,
+            -0.0054033,
+            -0.06381903,
+            -0.0517881,
+            0.22064939,
+            -0.15433183,
+            0.39342779,
+            -0.25169979
+          ],
+          [
+            0.17522068,
+            -0.05025186,
+            -0.02385344,
+            -0.03018508,
+            0.10362948,
+            -0.25722802,
+            -0.1072419,
+            -0.40344213
+          ],
+          [
+            0.04675525,
+            -0.01117893,
+            -0.00145642,
+            0.00335211,
+            0.16330979,
+            0.060719,
+            0.40004337,
+            -0.02098553
+          ],
+          [
+            -0.15486711,
+            0.03982343,
+            -0.00897026,
+            0.16241937,
+            -0.31254394,
+            0.13576902,
+            -0.37379116,
+            0.02054896
+          ]
+        ],
+        "w2": [
+          1.02679891,
+          -0.08734529,
+          0.00957729,
+          -0.44719403,
+          2.10757441,
+          -1.09225339,
+          2.57820776,
+          -1.74546528
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.456522
+        },
+        {
+          "epoch": 41,
+          "loss": 0.587768
+        },
+        {
+          "epoch": 81,
+          "loss": 0.605549
+        },
+        {
+          "epoch": 160,
+          "loss": 0.433758
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 14,
+      "final_training_loss": 0.400929,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2701,
+      "params": {
+        "b1": [
+          -0.02206253,
+          0.06232636,
+          0.35316914,
+          0.04398839,
+          0.25512766,
+          0.20610276,
+          -0.08788296,
+          -0.13201384
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.02972733,
+            0.05036118,
+            0.33044263,
+            0.01428026,
+            0.21274447,
+            0.17274255,
+            -0.09319461,
+            -0.13373003
+          ],
+          [
+            0.37955623,
+            -0.50278914,
+            -1.28878286,
+            -0.42776523,
+            -1.49758147,
+            -1.21682851,
+            0.47988869,
+            0.98531702
+          ],
+          [
+            0.02525067,
+            0.01446551,
+            0.04488186,
+            0.03506123,
+            0.27374385,
+            0.17416247,
+            -0.04811057,
+            -0.16323195
+          ],
+          [
+            0.00903653,
+            -0.05100929,
+            -0.17286974,
+            0.07125743,
+            0.25300599,
+            0.06659576,
+            -0.01855048,
+            -0.06181893
+          ],
+          [
+            -0.05010145,
+            -0.00865598,
+            0.0180966,
+            0.07080318,
+            -0.14461552,
+            -0.02032901,
+            -0.08465961,
+            -0.00307134
+          ],
+          [
+            0.0329133,
+            0.04242503,
+            -0.23740443,
+            0.03482634,
+            0.21103574,
+            0.04294651,
+            -0.00495832,
+            -0.10533967
+          ],
+          [
+            0.16865829,
+            -0.18764709,
+            -0.76625685,
+            -0.16390064,
+            -0.65135183,
+            -0.58267307,
+            0.24012456,
+            0.47588949
+          ],
+          [
+            -0.11918698,
+            0.21632522,
+            0.83943119,
+            0.22543445,
+            0.73634202,
+            0.54278433,
+            -0.30192697,
+            -0.46912982
+          ],
+          [
+            0.08183943,
+            -0.16122841,
+            -0.33084274,
+            -0.10440436,
+            -0.29508993,
+            -0.24011618,
+            0.14616206,
+            0.20903448
+          ],
+          [
+            0.04786348,
+            -0.04045417,
+            -0.30823847,
+            -0.10186527,
+            0.01157109,
+            -0.14991706,
+            0.12710939,
+            0.03906334
+          ],
+          [
+            0.063684,
+            0.00192838,
+            -0.12591607,
+            0.04025445,
+            -0.31853424,
+            -0.20079616,
+            -0.08297356,
+            0.09189939
+          ],
+          [
+            -0.09715813,
+            0.13491658,
+            -0.04956111,
+            0.10961061,
+            0.46739335,
+            0.26239294,
+            -0.12622184,
+            -0.29823077
+          ],
+          [
+            0.05191635,
+            0.02020246,
+            -0.28680533,
+            0.05310907,
+            -0.02091961,
+            -0.04191675,
+            0.08522451,
+            0.05198934
+          ],
+          [
+            -0.0472487,
+            0.04731912,
+            0.25780039,
+            0.00097951,
+            0.13717255,
+            0.0511011,
+            -0.09876709,
+            0.00045524
+          ]
+        ],
+        "w2": [
+          0.46033052,
+          -0.64792185,
+          -2.09396043,
+          -0.56981443,
+          -2.23731007,
+          -1.7391449,
+          0.71989452,
+          1.38846346
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467186
+        },
+        {
+          "epoch": 41,
+          "loss": 0.534258
+        },
+        {
+          "epoch": 81,
+          "loss": 0.453564
+        },
+        {
+          "epoch": 160,
+          "loss": 0.400929
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 14,
+      "final_training_loss": 0.399757,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2711,
+      "params": {
+        "b1": [
+          0.32646113,
+          -0.13758832,
+          0.22316094,
+          -0.00352904,
+          0.05266942,
+          -0.16280511,
+          0.11559562,
+          -0.28366338
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            0.29778591,
+            -0.08952088,
+            0.21443519,
+            0.00371842,
+            0.031348,
+            -0.11500032,
+            0.15001327,
+            -0.29679116
+          ],
+          [
+            -1.23434302,
+            0.86386288,
+            -1.42224498,
+            -0.09667937,
+            -0.67564093,
+            0.68191416,
+            -1.10629259,
+            0.87854646
+          ],
+          [
+            0.09161136,
+            -0.15411273,
+            0.21915957,
+            -0.08168547,
+            0.13825432,
+            -0.07647043,
+            0.09826439,
+            -0.14372792
+          ],
+          [
+            -0.0968766,
+            -0.02495796,
+            0.24981086,
+            0.05665069,
+            0.04774292,
+            0.02531737,
+            0.13361623,
+            0.04121822
+          ],
+          [
+            -0.02795902,
+            -0.04732798,
+            -0.14586454,
+            -0.02769075,
+            0.03857971,
+            -0.07909517,
+            -0.13461837,
+            -0.15476878
+          ],
+          [
+            -0.21735978,
+            -0.08516097,
+            0.17768231,
+            -0.01066457,
+            0.20380213,
+            0.05407015,
+            0.0757586,
+            0.08168985
+          ],
+          [
+            -0.79959822,
+            0.35830517,
+            -0.59755898,
+            -0.08802637,
+            -0.24110591,
+            0.31127543,
+            -0.50260584,
+            0.58754602
+          ],
+          [
+            0.7032349,
+            -0.34070251,
+            0.66335318,
+            0.00196647,
+            0.29802852,
+            -0.38468634,
+            0.5211047,
+            -0.45787599
+          ],
+          [
+            -0.33260133,
+            0.12969171,
+            -0.21209313,
+            -0.05157043,
+            -0.15075162,
+            0.20160441,
+            -0.18497551,
+            0.32122568
+          ],
+          [
+            -0.29895773,
+            0.13441445,
+            0.03801638,
+            0.05287564,
+            0.10115667,
+            0.1231185,
+            -0.0250331,
+            0.25474119
+          ],
+          [
+            -0.13663404,
+            0.02747983,
+            -0.3445082,
+            -0.01276794,
+            0.00087352,
+            0.07337196,
+            -0.2303529,
+            -0.07219747
+          ],
+          [
+            0.04540612,
+            -0.20286122,
+            0.42895227,
+            0.03959607,
+            0.2569492,
+            -0.02732514,
+            0.33002411,
+            -0.11547114
+          ],
+          [
+            -0.19440356,
+            -0.04187329,
+            -0.17226088,
+            -0.01087104,
+            -0.02683067,
+            0.01338012,
+            -0.10924256,
+            0.20837112
+          ],
+          [
+            0.22991203,
+            -0.04835687,
+            0.05666571,
+            -0.07721943,
+            -0.0409621,
+            -0.05221225,
+            0.05687455,
+            -0.14843978
+          ]
+        ],
+        "w2": [
+          -1.9691247,
+          1.13426469,
+          -2.03212865,
+          -0.11746563,
+          -0.87456611,
+          0.96474991,
+          -1.5148544,
+          1.43590221
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.459584
+        },
+        {
+          "epoch": 41,
+          "loss": 0.520054
+        },
+        {
+          "epoch": 81,
+          "loss": 0.44927
+        },
+        {
+          "epoch": 160,
+          "loss": 0.399757
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 14,
+      "final_training_loss": 0.412889,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2729,
+      "params": {
+        "b1": [
+          -0.21176844,
+          0.07256437,
+          0.17789912,
+          0.13362264,
+          -0.19744782,
+          0.23686237,
+          0.00658222,
+          -0.2188343
+        ],
+        "b2": [
+          -0.0
+        ],
+        "w1": [
+          [
+            -0.22517348,
+            0.09197551,
+            0.17792628,
+            0.13819676,
+            -0.08752499,
+            0.25734393,
+            0.00902341,
+            -0.26603842
+          ],
+          [
+            1.02532993,
+            -0.70484504,
+            -0.73154834,
+            -0.82233889,
+            0.75740948,
+            -1.65495756,
+            -0.25362472,
+            1.01251633
+          ],
+          [
+            -0.12851154,
+            -0.01701725,
+            0.07735264,
+            0.13753553,
+            -0.09814203,
+            0.18324749,
+            0.00732339,
+            -0.07610145
+          ],
+          [
+            0.01327055,
+            0.11884422,
+            -0.085567,
+            0.05427533,
+            0.09695566,
+            0.2047333,
+            0.00025891,
+            0.08111785
+          ],
+          [
+            -0.04151898,
+            0.03558472,
+            0.09529497,
+            0.03316753,
+            -0.05398724,
+            -0.32692963,
+            0.00510315,
+            -0.04693268
+          ],
+          [
+            -0.0060902,
+            0.07290984,
+            -0.0206086,
+            0.11162608,
+            -0.01923495,
+            0.09067503,
+            0.04192155,
+            -0.04975958
+          ],
+          [
+            0.49471455,
+            -0.28546134,
+            -0.40619583,
+            -0.31199846,
+            0.38721303,
+            -0.77457054,
+            -0.14024364,
+            0.51907194
+          ],
+          [
+            -0.65183622,
+            0.23240868,
+            0.41542648,
+            0.29226024,
+            -0.30652774,
+            0.83419714,
+            0.15132258,
+            -0.53981547
+          ],
+          [
+            0.24355074,
+            -0.22182353,
+            -0.16067681,
+            -0.18760584,
+            0.18210673,
+            -0.32630305,
+            -0.07295702,
+            0.22817497
+          ],
+          [
+            0.2015236,
+            0.08758775,
+            -0.14651652,
+            -0.0600304,
+            0.1108449,
+            -0.02582291,
+            -0.03195648,
+            0.26793719
+          ],
+          [
+            0.06458983,
+            -0.03628115,
+            0.08854682,
+            0.03057069,
+            0.03223105,
+            -0.49599708,
+            0.02775051,
+            0.04869772
+          ],
+          [
+            -0.21181666,
+            0.13790751,
+            0.11603744,
+            0.27340501,
+            -0.10852121,
+            0.26750062,
+            0.080392,
+            -0.1586341
+          ],
+          [
+            0.04660315,
+            0.02382746,
+            -0.11541712,
+            -0.00160205,
+            0.09714983,
+            -0.1525314,
+            -0.02525822,
+            0.08255597
+          ],
+          [
+            -0.14373236,
+            0.01567419,
+            0.12435784,
+            0.05374554,
+            -0.14299627,
+            0.20540427,
+            0.0393677,
+            -0.11420905
+          ]
+        ],
+        "w2": [
+          1.56525928,
+          -0.88375115,
+          -1.09045579,
+          -1.09453523,
+          1.04985817,
+          -2.50619413,
+          -0.34818852,
+          1.50928533
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.467626
+        },
+        {
+          "epoch": 41,
+          "loss": 0.5407
+        },
+        {
+          "epoch": 81,
+          "loss": 0.452453
+        },
+        {
+          "epoch": 160,
+          "loss": 0.412889
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 14,
+      "final_training_loss": 0.405934,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2731,
+      "params": {
+        "b1": [
+          -0.13531,
+          0.13911774,
+          0.00888211,
+          -0.18959564,
+          0.21348341,
+          -0.06113469,
+          0.18195337,
+          0.27633845
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            -0.10779653,
+            0.15156149,
+            -0.08686461,
+            -0.16468688,
+            0.22187656,
+            -0.02524251,
+            0.14006056,
+            0.21933962
+          ],
+          [
+            0.71932448,
+            -0.92270144,
+            -0.14745455,
+            1.30962691,
+            -1.49997569,
+            0.46497669,
+            -0.88923369,
+            -0.9598373
+          ],
+          [
+            -0.09433862,
+            0.13668999,
+            -0.03453646,
+            -0.20921589,
+            0.1950884,
+            -0.01512634,
+            0.15926388,
+            0.07159516
+          ],
+          [
+            0.04859329,
+            0.02424183,
+            0.01772439,
+            -0.2241282,
+            0.14574904,
+            -0.00256364,
+            0.05313716,
+            -0.11714347
+          ],
+          [
+            -0.09190362,
+            0.07233944,
+            0.06143765,
+            0.11475616,
+            -0.17490959,
+            -0.05693836,
+            0.10495239,
+            0.0850784
+          ],
+          [
+            -0.01882549,
+            0.10670619,
+            -0.04690942,
+            -0.14229837,
+            0.0499234,
+            0.03580042,
+            0.01694391,
+            -0.22519033
+          ],
+          [
+            0.38253887,
+            -0.40112174,
+            -0.05142618,
+            0.56570781,
+            -0.65802419,
+            0.20065095,
+            -0.37672733,
+            -0.69055705
+          ],
+          [
+            -0.33490507,
+            0.39540729,
+            0.10651322,
+            -0.66688213,
+            0.68109109,
+            -0.26836113,
+            0.41869072,
+            0.68635458
+          ],
+          [
+            0.12814886,
+            -0.17118346,
+            -0.04796663,
+            0.30347161,
+            -0.26946626,
+            0.18780857,
+            -0.21856709,
+            -0.29779263
+          ],
+          [
+            0.12548079,
+            -0.12736902,
+            -0.06773721,
+            -0.01106942,
+            -0.12969467,
+            0.03215343,
+            -0.08697898,
+            -0.29742956
+          ],
+          [
+            -0.05122013,
+            -0.04685103,
+            0.05124754,
+            0.334218,
+            -0.39155327,
+            0.04174365,
+            -0.06106094,
+            0.02147398
+          ],
+          [
+            -0.1653075,
+            0.23500242,
+            0.05542614,
+            -0.40026514,
+            0.31433055,
+            -0.04798404,
+            0.21894458,
+            -0.04872615
+          ],
+          [
+            0.05922777,
+            -0.10491551,
+            0.03251525,
+            0.11657506,
+            -0.12995108,
+            0.07748517,
+            -0.14657469,
+            -0.22750583
+          ],
+          [
+            -0.03885164,
+            0.05146535,
+            -0.01994105,
+            -0.07128632,
+            0.08919606,
+            -0.04483851,
+            0.04709924,
+            0.26863529
+          ]
+        ],
+        "w2": [
+          1.00914797,
+          -1.26556884,
+          -0.21560522,
+          1.88804392,
+          -2.1593987,
+          0.63720969,
+          -1.25270372,
+          -1.62288566
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.464371
+        },
+        {
+          "epoch": 41,
+          "loss": 0.523563
+        },
+        {
+          "epoch": 81,
+          "loss": 0.449505
+        },
+        {
+          "epoch": 160,
+          "loss": 0.405934
+        }
+      ]
+    },
+    {
+      "epochs": 160,
+      "feature_dim": 14,
+      "final_training_loss": 0.386995,
+      "hidden_dim": 8,
+      "l2": 0.001,
+      "learning_rate": 0.2,
+      "method": "phasewrap_distance_adapter",
+      "model_seed": 2741,
+      "params": {
+        "b1": [
+          0.08127423,
+          0.17252897,
+          -0.13684455,
+          0.0018543,
+          0.0183922,
+          0.09436829,
+          0.16408196,
+          0.31496184
+        ],
+        "b2": [
+          0.0
+        ],
+        "w1": [
+          [
+            0.09778234,
+            0.24850221,
+            -0.17031305,
+            0.00158972,
+            0.00917483,
+            0.04195731,
+            0.20990911,
+            0.32830376
+          ],
+          [
+            -0.77544868,
+            -1.43614751,
+            0.95114008,
+            -0.190187,
+            -0.38077425,
+            -0.56801713,
+            -1.20490016,
+            -1.37185926
+          ],
+          [
+            0.1266174,
+            0.17233542,
+            -0.12317278,
+            0.01009038,
+            0.02682551,
+            0.03741548,
+            0.14600962,
+            0.0893139
+          ],
+          [
+            0.05737189,
+            0.24263055,
+            -0.0013094,
+            0.04485411,
+            0.00251321,
+            -0.00075621,
+            0.09334373,
+            -0.18688876
+          ],
+          [
+            0.08020886,
+            -0.11964162,
+            -0.03340537,
+            0.0241929,
+            0.13217628,
+            0.04581037,
+            -0.0888286,
+            -0.03509265
+          ],
+          [
+            0.16843787,
+            0.18006648,
+            -0.12554911,
+            -0.02890481,
+            0.04789438,
+            0.0899157,
+            0.15631335,
+            -0.31838634
+          ],
+          [
+            -0.25299313,
+            -0.65492336,
+            0.36114639,
+            -0.01927931,
+            -0.150483,
+            -0.21412914,
+            -0.4844541,
+            -1.01494698
+          ],
+          [
+            0.31679288,
+            0.67020517,
+            -0.40440208,
+            0.12810886,
+            0.12088237,
+            0.18921698,
+            0.4671976,
+            0.90284705
+          ],
+          [
+            -0.13256077,
+            -0.21522999,
+            0.1722161,
+            -0.0403318,
+            -0.05261328,
+            -0.21275523,
+            -0.26730769,
+            -0.42890947
+          ],
+          [
+            -0.15154932,
+            0.10124401,
+            0.16394439,
+            0.01308051,
+            -0.10427809,
+            -0.00878467,
+            -0.00974685,
+            -0.44670712
+          ],
+          [
+            -0.01164682,
+            -0.33686095,
+            0.03095137,
+            0.03714915,
+            -0.07850568,
+            -0.04854958,
+            -0.21596742,
+            -0.13146277
+          ],
+          [
+            0.33639699,
+            0.48902249,
+            -0.30539561,
+            0.01225337,
+            0.05066805,
+            0.12662586,
+            0.28668676,
+            -0.09186183
+          ],
+          [
+            -0.02256597,
+            -0.10722111,
+            -0.01001627,
+            0.04986024,
+            -0.01573738,
+            -0.03314542,
+            -0.070076,
+            -0.27384328
+          ],
+          [
+            -0.05817163,
+            0.1431243,
+            -0.00699029,
+            0.03583744,
+            0.06044213,
+            0.01361646,
+            0.12809078,
+            0.28656525
+          ]
+        ],
+        "w2": [
+          -1.02612157,
+          -2.08160825,
+          1.2887015,
+          -0.21598386,
+          -0.45906449,
+          -0.73770669,
+          -1.63905619,
+          -2.38806407
+        ]
+      },
+      "training_history": [
+        {
+          "epoch": 1,
+          "loss": 3.459649
+        },
+        {
+          "epoch": 41,
+          "loss": 0.523634
+        },
+        {
+          "epoch": 81,
+          "loss": 0.448778
+        },
+        {
+          "epoch": 160,
+          "loss": 0.386995
+        }
+      ]
+    }
+  ],
+  "validation_lengths": [
+    1024
+  ],
+  "validation_row_count": 20,
+  "weak_runs": [
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "no_position",
+      "model_seed": 2701,
+      "mrr": 0.325,
+      "top1_accuracy": 0.0
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "no_position",
+      "model_seed": 2711,
+      "mrr": 0.325,
+      "top1_accuracy": 0.0
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "no_position",
+      "model_seed": 2729,
+      "mrr": 0.325,
+      "top1_accuracy": 0.0
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "no_position",
+      "model_seed": 2731,
+      "mrr": 0.325,
+      "top1_accuracy": 0.0
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "no_position",
+      "model_seed": 2741,
+      "mrr": 0.325,
+      "top1_accuracy": 0.0
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "rope_relative",
+      "model_seed": 2701,
+      "mrr": 0.555417,
+      "top1_accuracy": 0.35
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "rope_relative",
+      "model_seed": 2711,
+      "mrr": 0.534722,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "rope_relative",
+      "model_seed": 2729,
+      "mrr": 0.562083,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "rope_relative",
+      "model_seed": 2731,
+      "mrr": 0.506806,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "rope_relative",
+      "model_seed": 2741,
+      "mrr": 0.547879,
+      "top1_accuracy": 0.35
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "phasewrap_score",
+      "model_seed": 2701,
+      "mrr": 0.608333,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "phasewrap_score",
+      "model_seed": 2711,
+      "mrr": 0.616667,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "phasewrap_score",
+      "model_seed": 2729,
+      "mrr": 0.608333,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "phasewrap_score",
+      "model_seed": 2731,
+      "mrr": 0.608333,
+      "top1_accuracy": 0.3
+    },
+    {
+      "criterion": "test_top1_accuracy_below_0.5",
+      "method": "phasewrap_score",
+      "model_seed": 2741,
+      "mrr": 0.608333,
+      "top1_accuracy": 0.3
+    }
+  ]
+}

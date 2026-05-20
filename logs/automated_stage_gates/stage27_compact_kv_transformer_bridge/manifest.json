@@ -1,0 +1,71 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage",
+      "general cross-backend robustness",
+      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+    ],
+    "supported": [
+      "A deterministic multi-initialization attention-bridge comparison on the Stage 26 compact QA packet.",
+      "Evidence about whether learned nonlinear attention over PhaseWrap-derived candidate features is competitive on this compact non-PhaseWrap-labeled task.",
+      "Confidence intervals over initialization seeds and explicit weak-run reporting."
+    ]
+  },
+  "data_seeds": [
+    2601,
+    2611,
+    2621,
+    2633,
+    2647
+  ],
+  "dataset": "stage26_compact_key_value_qa_retrieval_v1",
+  "method_names": [
+    "no_position",
+    "alibi",
+    "rope_relative",
+    "sinusoidal",
+    "phasewrap_score",
+    "phasewrap_residual_adapter",
+    "phasewrap_distance_adapter"
+  ],
+  "model": {
+    "epochs": 160,
+    "hidden_dim": 8,
+    "trained_parameters": "feature-to-hidden weights, hidden bias, hidden-to-attention-logit weights, logit bias",
+    "type": "one_hidden_layer_attention_bridge_over_stage26_candidate_features"
+  },
+  "model_seeds": [
+    2701,
+    2711,
+    2729,
+    2731,
+    2741
+  ],
+  "no_hardware_submission": true,
+  "per_run_csv_path": "logs/automated_stage_gates/stage27_compact_kv_transformer_bridge/per_run_results.csv",
+  "result_path": "logs/automated_stage_gates/stage27_compact_kv_transformer_bridge/results.json",
+  "schema_version": "qrope_stage27_compact_kv_transformer_bridge_v1",
+  "stage": "stage27_compact_kv_transformer_bridge",
+  "summary_csv_path": "logs/automated_stage_gates/stage27_compact_kv_transformer_bridge/summary.csv",
+  "task": {
+    "description": "Compact train-short/test-long key-value QA attention bridge with explicit content keys.",
+    "scope": "This is a compact attention/value bridge, not a full decoder-only language-model benchmark.",
+    "target_construction": "The target is the latest candidate with the matching content key; it is not selected by the PhaseWrap score."
+  },
+  "test_lengths": [
+    2048
+  ],
+  "test_row_count": 20,
+  "train_lengths": [
+    256,
+    512
+  ],
+  "train_row_count": 40,
+  "validation_lengths": [
+    1024
+  ],
+  "validation_row_count": 20,
+  "weak_runs_path": "logs/automated_stage_gates/stage27_compact_kv_transformer_bridge/weak_runs.json"
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "no_position",
+    "model_seed": 2701,
+    "mrr": 0.325,
+    "top1_accuracy": 0.0
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "no_position",
+    "model_seed": 2711,
+    "mrr": 0.325,
+    "top1_accuracy": 0.0
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "no_position",
+    "model_seed": 2729,
+    "mrr": 0.325,
+    "top1_accuracy": 0.0
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "no_position",
+    "model_seed": 2731,
+    "mrr": 0.325,
+    "top1_accuracy": 0.0
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "no_position",
+    "model_seed": 2741,
+    "mrr": 0.325,
+    "top1_accuracy": 0.0
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "rope_relative",
+    "model_seed": 2701,
+    "mrr": 0.555417,
+    "top1_accuracy": 0.35
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "rope_relative",
+    "model_seed": 2711,
+    "mrr": 0.534722,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "rope_relative",
+    "model_seed": 2729,
+    "mrr": 0.562083,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "rope_relative",
+    "model_seed": 2731,
+    "mrr": 0.506806,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "rope_relative",
+    "model_seed": 2741,
+    "mrr": 0.547879,
+    "top1_accuracy": 0.35
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "phasewrap_score",
+    "model_seed": 2701,
+    "mrr": 0.608333,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "phasewrap_score",
+    "model_seed": 2711,
+    "mrr": 0.616667,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "phasewrap_score",
+    "model_seed": 2729,
+    "mrr": 0.608333,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "phasewrap_score",
+    "model_seed": 2731,
+    "mrr": 0.608333,
+    "top1_accuracy": 0.3
+  },
+  {
+    "criterion": "test_top1_accuracy_below_0.5",
+    "method": "phasewrap_score",
+    "model_seed": 2741,
+    "mrr": 0.608333,
+    "top1_accuracy": 0.3
+  }
+]

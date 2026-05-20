@@ -63,7 +63,7 @@ Preferred task lanes:
 | Compact QA or language modeling | controlled text-fact QA, small natural-language corpus | Checks whether the mechanism survives a non-synthetic text setting. |
 | Synthetic diagnostics | phase-cued retrieval, alias/adversarial rows | Preserves interpretability, but cannot be the sole success criterion. |
 
-Stage 26 provides a useful compact content-key QA packet. The next step is to move that structure into a stronger small decoder-only transformer or a standard retrieval harness while preserving matched compute, multiple seeds, and failed-run reporting.
+Stage 26 provides a useful compact content-key QA packet. Stage 27 adds a compact attention bridge over that packet with five deterministic model initialization seeds. The next step is to move that structure into a stronger small decoder-only transformer or a standard retrieval harness while preserving matched compute, multiple seeds, and failed-run reporting.
 
 ## PhaseWrap Mechanism Requirements
 
