@@ -54,6 +54,7 @@ The public claim frame excludes:
 - [Stage 4 real-hardware validation result](docs/research/q-rope-stage4-real-hardware-validation-result-v1.md)
 - [Stage 4 CX portability diagnostic](docs/research/q-rope-stage4-cx-portability-diagnostic-v1.md)
 - [Stage 5 attention baseline result](docs/research/q-rope-stage5-attention-baselines-v1.md)
+- [Stage 6 downstream attention result](docs/research/q-rope-stage6-downstream-attention-v1.md)
 - [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
@@ -140,6 +141,14 @@ python scripts/run_stage5_attention_baselines.py
 
 Stage 5 compares the phase-wrap scoring rule against mod-24 lookup, `m8`/`m12`/`m8*m12`, a shallow regression tree, RoPE-style, sinusoidal, and ALiBI-style attention-scoring baselines. The current synthetic label is exactly recoverable by mod-24 lookup and the direct `m8*m12` feature baseline, so this closes the requested baseline gap but does not support transformer-scale superiority.
 
+Run the deterministic Stage 6 toy downstream attention benchmark:
+
+```bash
+python scripts/run_stage6_downstream_attention.py
+```
+
+Stage 6 mixes token/content compatibility with phase-wrap positional signal so mod-24 lookup and direct `m8/m12/m8*m12` baselines are no longer exact. On the fixed packet, `phasewrap_rope_attention` has the lowest MAE, while the claim remains limited to this toy downstream benchmark.
+
 ## Reviewer path in 10 minutes
 
 - Read the claim boundary in this README.
@@ -178,7 +187,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | --- | --- | --- |
 | 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
 | 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
-| 3 | Toy transformer or non-tautological downstream benchmark | Use a task that is not exactly recoverable from exposed mod-24 or direct `m8*m12` features. |
+| 3 | Toy downstream attention benchmark | Complete for a fixed synthetic packet; PhaseWrap-RoPE gives the best score calibration, but broader claims require harder tasks and more seeds. |
 | 4 | Independent hardware replication | Add new packet/date/backend records, confidence or bootstrap intervals for MAE/rank correlations, and IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
 | 5 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
 

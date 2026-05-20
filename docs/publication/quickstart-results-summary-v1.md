@@ -61,6 +61,14 @@ python scripts/run_stage5_attention_baselines.py
 
 This writes `logs/automated_stage_gates/stage5_attention_baselines/manifest.json`, `results.json`, and `summary.csv`.
 
+Run the Stage 6 no-credential downstream attention benchmark:
+
+```bash
+python scripts/run_stage6_downstream_attention.py
+```
+
+This writes `logs/automated_stage_gates/stage6_downstream_attention/manifest.json`, `results.json`, and `summary.csv`.
+
 ## What This Supports
 
 - A bounded phase-wrap scoring method using mod-8 and mod-12 wrapped residual margins.
@@ -68,6 +76,7 @@ This writes `logs/automated_stage_gates/stage5_attention_baselines/manifest.json
 - Small-circuit hardware validation that the witness/control ordering holds for the recorded packet/backend/date/calibration contexts listed above.
 - A provider-aware Amazon Braket correction that is auditable from the saved raw counts.
 - A deterministic Stage 5 attention-scoring baseline suite showing that the current synthetic label is exactly recoverable by mod-24 lookup and direct `m8*m12` exposed features.
+- A deterministic Stage 6 toy downstream attention benchmark where the target is not exactly recoverable by mod-24 lookup or direct phase features alone, and `phasewrap_rope_attention` has the lowest MAE on the fixed packet.
 
 ## What This Does Not Support
 
@@ -78,6 +87,7 @@ This writes `logs/automated_stage_gates/stage5_attention_baselines/manifest.json
 - a claim that product-state readout is entanglement evidence;
 - a claim that the result generalizes to unrun packets, dates, providers, or calibration windows.
 - a claim that Stage 5 establishes production transformer or full transformer-scale superiority.
+- a claim that Stage 6 establishes production transformer or full transformer-scale superiority.
 
 ## Open Questions
 
@@ -92,6 +102,6 @@ This writes `logs/automated_stage_gates/stage5_attention_baselines/manifest.json
 | --- | --- | --- |
 | Stage 4 | Hardware evidence packaging | Complete for the active sweep. |
 | Stage 5 | Attention-scoring baselines | Complete for the current synthetic task; the label is exactly recoverable by mod-24 lookup and direct `m8*m12` features. |
-| Stage 6 | Toy downstream ML comparison | Compare PhaseWrap-RoPE/PhaseWrap scoring against RoPE on a concrete task that is not reducible to exposed mod-24 or direct product features. |
+| Stage 6 | Toy downstream attention comparison | Complete for one fixed synthetic packet; broader downstream claims require harder tasks and more seeds. |
 | Stage 7 | Independent hardware replication | Add new packet/date/backend records with raw counts, verifier output, and confidence or bootstrap intervals. |
 | Stage 8 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after Stage 6/7 evidence justifies it. |
