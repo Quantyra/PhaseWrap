@@ -23,6 +23,7 @@ TEST_LENGTHS = (256, 512)
 EXAMPLES_PER_LENGTH = 16
 VALUE_VOCAB_SIZE = 64
 DEFAULT_PERIOD_PAIR = (8, 12)
+TASK_NAMES = ("phase_cued", "exact_offset_passkey")
 METHOD_NAMES = (
     "phasewrap_bias",
     "phasewrap_adapter",
@@ -37,6 +38,7 @@ METHOD_NAMES = (
 class Stage9Example:
     example_id: str
     seed: int
+    task: str
     split: str
     sequence_length: int
     query_pos: int
@@ -57,11 +59,21 @@ def _target_delta(reference_delta: int, sequence_length: int, rng: np.random.Gen
     return int(candidates[-1])
 
 
+def _passkey_target_delta(sequence_length: int, rng: np.random.Generator) -> int:
+    query_pos = sequence_length - 1
+    low = max(3, query_pos // 8)
+    high = max(low + 1, query_pos - 2)
+    return int(rng.integers(low, high))
+
+
 def make_stage9_splits(
     *,
     seeds: tuple[int, ...] = DEFAULT_SEEDS,
     examples_per_length: int = EXAMPLES_PER_LENGTH,
+    task_name: str = "phase_cued",
 ) -> dict[str, list[Stage9Example]]:
+    if task_name not in TASK_NAMES:
+        raise ValueError(f"unknown task_name: {task_name}")
     splits: dict[str, list[Stage9Example]] = {"train": [], "validation": [], "test": []}
     split_lengths = {
         "train": TRAIN_LENGTHS,
@@ -75,18 +87,26 @@ def make_stage9_splits(
             for sequence_length in lengths:
                 query_pos = sequence_length - 1
                 for item_index in range(examples_per_length):
-                    reference_delta = int(reference_deltas[(seed + sequence_length + item_index) % len(reference_deltas)])
-                    target_delta = _target_delta(reference_delta, sequence_length, rng)
+                    if task_name == "phase_cued":
+                        reference_delta = int(reference_deltas[(seed + sequence_length + item_index) % len(reference_deltas)])
+                        target_delta = _target_delta(reference_delta, sequence_length, rng)
+                    else:
+                        target_delta = _passkey_target_delta(sequence_length, rng)
+                        reference_delta = target_delta
                     target_pos = query_pos - target_delta
                     tokens = [int(value) for value in rng.permutation(VALUE_VOCAB_SIZE).tolist()]
                     while len(tokens) < sequence_length:
                         tokens.extend(int(value) for value in rng.permutation(VALUE_VOCAB_SIZE).tolist())
                     tokens = tokens[:sequence_length]
-                    tokens[query_pos] = VALUE_VOCAB_SIZE + reference_deltas.index(reference_delta)
+                    if task_name == "phase_cued":
+                        tokens[query_pos] = VALUE_VOCAB_SIZE + reference_deltas.index(reference_delta)
+                    else:
+                        tokens[query_pos] = VALUE_VOCAB_SIZE + int(reference_delta % VALUE_VOCAB_SIZE)
                     splits[split].append(
                         Stage9Example(
                             example_id=f"{split}_seed{seed}_L{sequence_length}_{item_index:03d}",
                             seed=seed,
+                            task=task_name,
                             split=split,
                             sequence_length=sequence_length,
                             query_pos=query_pos,
@@ -246,69 +266,87 @@ def run_stage9_ablation(
     examples_per_length: int = EXAMPLES_PER_LENGTH,
     epochs: int = 160,
 ) -> dict[str, Any]:
-    splits = make_stage9_splits(seeds=seeds, examples_per_length=examples_per_length)
+    splits_by_task = {
+        task_name: make_stage9_splits(seeds=seeds, examples_per_length=examples_per_length, task_name=task_name)
+        for task_name in TASK_NAMES
+    }
     seed_tables: list[dict[str, Any]] = []
     failed_runs: list[dict[str, Any]] = []
-    for seed in seeds:
-        train_rows = [row for row in splits["train"] if row.seed == seed]
-        validation_rows = [row for row in splits["validation"] if row.seed == seed]
-        test_rows = [row for row in splits["test"] if row.seed == seed]
-        for method_name in METHOD_NAMES:
-            try:
-                trained = train_positional_attention(train_rows, method_name, epochs=epochs)
-                weights = np.array(trained["weights"], dtype=float)
-                validation_metrics = evaluate_positional_attention(validation_rows, method_name, weights)
-                test_metrics = evaluate_positional_attention(test_rows, method_name, weights)
-                seed_tables.append(
-                    {
-                        "seed": seed,
-                        "method": method_name,
-                        "epochs": epochs,
-                        "train_row_count": len(train_rows),
-                        "validation_loss": validation_metrics["loss"],
-                        "test_loss": test_metrics["loss"],
-                        "test_perplexity": test_metrics["perplexity"],
-                        "test_top1_accuracy": test_metrics["top1_accuracy"],
-                        "test_mrr": test_metrics["mrr"],
-                        "test_mean_target_probability": test_metrics["mean_target_probability"],
-                        "test_mean_rank": test_metrics["mean_rank"],
-                        "weights": trained["weights"],
-                        "training_history": trained["training_history"],
-                    }
-                )
-            except Exception as exc:  # pragma: no cover - retained for artifact completeness.
-                failed_runs.append({"seed": seed, "method": method_name, "error": str(exc)})
+    for task_name, splits in splits_by_task.items():
+        for seed in seeds:
+            train_rows = [row for row in splits["train"] if row.seed == seed]
+            validation_rows = [row for row in splits["validation"] if row.seed == seed]
+            test_rows = [row for row in splits["test"] if row.seed == seed]
+            for method_name in METHOD_NAMES:
+                try:
+                    trained = train_positional_attention(train_rows, method_name, epochs=epochs)
+                    weights = np.array(trained["weights"], dtype=float)
+                    validation_metrics = evaluate_positional_attention(validation_rows, method_name, weights)
+                    test_metrics = evaluate_positional_attention(test_rows, method_name, weights)
+                    seed_tables.append(
+                        {
+                            "task": task_name,
+                            "seed": seed,
+                            "method": method_name,
+                            "epochs": epochs,
+                            "train_row_count": len(train_rows),
+                            "validation_loss": validation_metrics["loss"],
+                            "test_loss": test_metrics["loss"],
+                            "test_perplexity": test_metrics["perplexity"],
+                            "test_top1_accuracy": test_metrics["top1_accuracy"],
+                            "test_mrr": test_metrics["mrr"],
+                            "test_mean_target_probability": test_metrics["mean_target_probability"],
+                            "test_mean_rank": test_metrics["mean_rank"],
+                            "weights": trained["weights"],
+                            "training_history": trained["training_history"],
+                        }
+                    )
+                except Exception as exc:  # pragma: no cover - retained for artifact completeness.
+                    failed_runs.append({"task": task_name, "seed": seed, "method": method_name, "error": str(exc)})
 
     aggregate_table: list[dict[str, Any]] = []
-    for method_name in METHOD_NAMES:
-        rows = [row for row in seed_tables if row["method"] == method_name]
-        if not rows:
-            continue
-        for metric_name in ("test_loss", "test_perplexity", "test_top1_accuracy", "test_mrr", "test_mean_target_probability"):
-            values = [float(row[metric_name]) for row in rows]
-            ci = _bootstrap_ci(values, seed_text=f"stage9:{method_name}:{metric_name}", iterations=1000)
-            if metric_name == "test_loss":
-                method_record: dict[str, Any] = {
-                    "method": method_name,
-                    "seed_count": len(rows),
-                    "failed_run_count": len([run for run in failed_runs if run["method"] == method_name]),
-                    "test_sequence_length_min": min(TEST_LENGTHS),
-                    "test_sequence_length_max": max(TEST_LENGTHS),
-                }
-                aggregate_table.append(method_record)
-            aggregate_table[-1][f"{metric_name}_mean"] = round(float(np.mean(values)), 6)
-            aggregate_table[-1][f"{metric_name}_ci_low"] = ci["low"]
-            aggregate_table[-1][f"{metric_name}_ci_high"] = ci["high"]
+    for task_name in TASK_NAMES:
+        for method_name in METHOD_NAMES:
+            rows = [row for row in seed_tables if row["task"] == task_name and row["method"] == method_name]
+            if not rows:
+                continue
+            for metric_name in ("test_loss", "test_perplexity", "test_top1_accuracy", "test_mrr", "test_mean_target_probability"):
+                values = [float(row[metric_name]) for row in rows]
+                ci = _bootstrap_ci(values, seed_text=f"stage9:{task_name}:{method_name}:{metric_name}", iterations=1000)
+                if metric_name == "test_loss":
+                    method_record: dict[str, Any] = {
+                        "task": task_name,
+                        "method": method_name,
+                        "seed_count": len(rows),
+                        "failed_run_count": len(
+                            [run for run in failed_runs if run["task"] == task_name and run["method"] == method_name]
+                        ),
+                        "test_sequence_length_min": min(TEST_LENGTHS),
+                        "test_sequence_length_max": max(TEST_LENGTHS),
+                    }
+                    aggregate_table.append(method_record)
+                aggregate_table[-1][f"{metric_name}_mean"] = round(float(np.mean(values)), 6)
+                aggregate_table[-1][f"{metric_name}_ci_low"] = ci["low"]
+                aggregate_table[-1][f"{metric_name}_ci_high"] = ci["high"]
 
     ranking_table = sorted(
         aggregate_table,
-        key=lambda row: (row["test_mrr_mean"], row["test_top1_accuracy_mean"], -row["test_loss_mean"], row["method"]),
+        key=lambda row: (row["task"], row["test_mrr_mean"], row["test_top1_accuracy_mean"], -row["test_loss_mean"], row["method"]),
         reverse=True,
     )
+    best_method_by_task = {
+        task_name: sorted(
+            [row for row in aggregate_table if row["task"] == task_name],
+            key=lambda row: (row["test_mrr_mean"], row["test_top1_accuracy_mean"], -row["test_loss_mean"], row["method"]),
+            reverse=True,
+        )[0]["method"]
+        for task_name in TASK_NAMES
+    }
     return {
         "schema_version": STAGE9_SCHEMA_VERSION,
         "stage": "stage9_trained_transformer_ablation",
-        "dataset": "synthetic_train_short_test_long_phase_retrieval_v1",
+        "dataset": "synthetic_train_short_test_long_retrieval_v2",
+        "tasks": list(TASK_NAMES),
         "no_hardware_submission": True,
         "seeds": list(seeds),
         "seed_count": len(seeds),
@@ -319,7 +357,7 @@ def run_stage9_ablation(
         "method_names": list(METHOD_NAMES),
         "task": {
             "description": "Trained decoder-style positional attention ablation with short-context training and longer-context retrieval evaluation.",
-            "note": "This is the first executable Stage 9 subset. It trains positional attention mechanisms under matched controls, but it is not a full language-model benchmark and not a production transformer result.",
+            "note": "This is an executable Stage 9 subset. It trains positional attention mechanisms under matched controls on one phase-cued packet and one exact-offset passkey packet, but it is not a full language-model benchmark and not a production transformer result.",
         },
         "training_controls": {
             "matched_seeds": list(seeds),
@@ -332,7 +370,8 @@ def run_stage9_ablation(
             "supported": [
                 "A no-credential trained positional attention ablation under matched seeds, data budget, optimizer, and epochs.",
                 "Train-short/test-long retrieval evaluation with confidence intervals over seeds.",
-                "A first executable Stage 9 artifact for the RoPE-replacement research lane.",
+                "A phase-cued task and an exact-offset passkey task whose target is not selected by the PhaseWrap score.",
+                "An executable Stage 9 artifact for the RoPE-replacement research lane.",
             ],
             "excluded": [
                 "production transformer superiority",
@@ -342,12 +381,19 @@ def run_stage9_ablation(
                 "general cross-backend robustness",
             ],
         },
-        "splits": {name: {"row_count": len(rows), "lengths": sorted({row.sequence_length for row in rows})} for name, rows in splits.items()},
+        "splits": {
+            task_name: {
+                name: {"row_count": len(rows), "lengths": sorted({row.sequence_length for row in rows})}
+                for name, rows in splits.items()
+            }
+            for task_name, splits in splits_by_task.items()
+        },
         "failed_runs": failed_runs,
         "per_seed_table": seed_tables,
         "aggregate_table": aggregate_table,
         "ranking_table": ranking_table,
-        "best_method_by_mrr": ranking_table[0]["method"] if ranking_table else None,
+        "best_method_by_task": best_method_by_task,
+        "best_method_by_mrr": best_method_by_task["phase_cued"],
     }
 
 
@@ -357,6 +403,7 @@ def write_stage9_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OUTP
         "schema_version": result["schema_version"],
         "stage": result["stage"],
         "dataset": result["dataset"],
+        "tasks": result["tasks"],
         "no_hardware_submission": result["no_hardware_submission"],
         "seeds": result["seeds"],
         "train_lengths": result["train_lengths"],
@@ -394,6 +441,7 @@ def write_stage9_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OUTP
 
 def print_stage9_table(result: dict[str, Any]) -> None:
     columns = (
+        "task",
         "method",
         "seed_count",
         "failed_run_count",

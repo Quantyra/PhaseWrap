@@ -10,10 +10,11 @@
     "supported": [
       "A no-credential trained positional attention ablation under matched seeds, data budget, optimizer, and epochs.",
       "Train-short/test-long retrieval evaluation with confidence intervals over seeds.",
-      "A first executable Stage 9 artifact for the RoPE-replacement research lane."
+      "A phase-cued task and an exact-offset passkey task whose target is not selected by the PhaseWrap score.",
+      "An executable Stage 9 artifact for the RoPE-replacement research lane."
     ]
   },
-  "dataset": "synthetic_train_short_test_long_phase_retrieval_v1",
+  "dataset": "synthetic_train_short_test_long_retrieval_v2",
   "examples_per_length": 16,
   "failed_runs_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/failed_runs.json",
   "method_names": [
@@ -37,6 +38,10 @@
   ],
   "stage": "stage9_trained_transformer_ablation",
   "summary_csv_path": "logs/automated_stage_gates/stage9_trained_transformer_ablation/summary.csv",
+  "tasks": [
+    "phase_cued",
+    "exact_offset_passkey"
+  ],
   "test_lengths": [
     256,
     512

@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
     result = run_stage9_ablation(seeds=args.seeds, examples_per_length=args.examples_per_length, epochs=args.epochs)
     paths = write_stage9_outputs(result, args.output_dir)
     print_stage9_table(result)
-    print(f"best_method_by_mrr: {result['best_method_by_mrr']}")
+    print(f"best_method_by_task: {result['best_method_by_task']}")
     print(f"failed_run_count: {len(result['failed_runs'])}")
     print(f"wrote {paths['manifest']}")
     print(f"wrote {paths['results']}")

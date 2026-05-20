@@ -6,6 +6,7 @@ import numpy as np
 
 from qrope.stage9_trained_transformer_ablation import (
     METHOD_NAMES,
+    TASK_NAMES,
     evaluate_positional_attention,
     make_stage9_splits,
     positional_features,
@@ -24,6 +25,14 @@ def test_stage9_splits_are_deterministic_and_extrapolate() -> None:
     for row in first["test"]:
         assert row.target_pos < row.query_pos
         assert row.query_pos - row.target_pos == row.target_delta
+
+
+def test_stage9_passkey_splits_are_not_phase_selected() -> None:
+    splits = make_stage9_splits(seeds=(211,), examples_per_length=4, task_name="exact_offset_passkey")
+    assert {row.task for row in splits["test"]} == {"exact_offset_passkey"}
+    for row in splits["test"]:
+        assert row.reference_delta == row.target_delta
+        assert row.target_pos == row.query_pos - row.reference_delta
 
 
 def test_stage9_positional_features_have_expected_shapes() -> None:
@@ -52,10 +61,13 @@ def test_stage9_ablation_reports_all_methods_and_failed_runs() -> None:
     result = run_stage9_ablation(seeds=(211, 223), examples_per_length=2, epochs=12)
     assert result["stage"] == "stage9_trained_transformer_ablation"
     assert result["no_hardware_submission"] is True
+    assert result["tasks"] == list(TASK_NAMES)
     assert result["failed_runs"] == []
-    assert [row["method"] for row in result["aggregate_table"]] == list(METHOD_NAMES)
-    assert len(result["per_seed_table"]) == len(METHOD_NAMES) * 2
-    assert result["best_method_by_mrr"] in METHOD_NAMES
+    assert [row["method"] for row in result["aggregate_table"] if row["task"] == "phase_cued"] == list(METHOD_NAMES)
+    assert len(result["per_seed_table"]) == len(METHOD_NAMES) * 2 * len(TASK_NAMES)
+    assert set(result["best_method_by_task"]) == set(TASK_NAMES)
+    assert result["best_method_by_task"]["phase_cued"] in METHOD_NAMES
+    assert result["best_method_by_task"]["exact_offset_passkey"] in METHOD_NAMES
 
 
 def test_stage9_outputs_are_written(tmp_path) -> None:
@@ -66,6 +78,7 @@ def test_stage9_outputs_are_written(tmp_path) -> None:
     failed = json.loads((tmp_path / "failed_runs.json").read_text(encoding="utf-8"))
     assert set(paths) == {"manifest", "results", "summary_csv", "per_seed_csv", "failed_runs"}
     assert manifest["stage"] == "stage9_trained_transformer_ablation"
+    assert manifest["tasks"] == list(TASK_NAMES)
     assert saved["aggregate_table"] == result["aggregate_table"]
     assert failed == []
     assert (tmp_path / "summary.csv").exists()
