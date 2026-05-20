@@ -122,6 +122,12 @@ The classical recomputation cost estimate is:
 
 It estimates the local verifier-side recomputation of the six active Stage 4 records at `4096` static arithmetic-scale operations over `163072` recorded hardware shots, with zero incremental local verifier cost. This is not provider billing reconstruction and is not a hardware queue-time predictor.
 
+Future replication row sets are preregistered at:
+
+`logs/automated_stage_gates/stage4_preregistered_replication_packets/manifest.json`
+
+Those artifacts freeze future IBM-style and Amazon Braket-style product-state/CX row sets before any future submission. They are not hardware evidence.
+
 Current repository state distinguishes active sweep records from deferred or excluded targets:
 
 - The IBM Fez 4096-shot artifact is present and recomputable from raw counts.
@@ -171,7 +177,10 @@ The active evidence packaging goals are complete:
 4. add a no-hardware CX ideal-count rehearsal
 5. add a completed IBM Fez CX hardware artifact with raw counts and verifier recomputation
 6. add completed Braket CX artifacts with raw counts and provider-aware verifier recomputation
-7. keep additional IBM hardware execution lanes deferred unless real artifacts are later added
+7. add deterministic row-bootstrap and shot-resampling intervals from committed artifacts
+8. add a deterministic local classical recomputation cost estimate
+9. preregister future replication packet row sets before additional execution
+10. keep additional IBM hardware execution lanes deferred unless real artifacts are later added
 
 ## Evidence Pointers
 
@@ -187,6 +196,7 @@ The active evidence packaging goals are complete:
 - Stage 4 sweep verifier output: `logs/automated_stage_gates/stage4_hardware_sweep/offline_verification.json`
 - Stage 4 sweep verifier: `scripts/verify_stage4_hardware_sweep.py`
 - Stage 4 sweep runner: `scripts/run_stage4_hardware_sweep.py`
+- Stage 4 preregistered replication packets: `logs/automated_stage_gates/stage4_preregistered_replication_packets/manifest.json`
 
 ## Recommendation
 

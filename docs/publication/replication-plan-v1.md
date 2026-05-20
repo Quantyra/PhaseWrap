@@ -54,6 +54,20 @@ Current provider posture (2026-05-19): IBM Fez and Amazon Braket/Rigetti have ac
 
 Before promoting new provider-level bitstring decoding claims, add a known-state calibration packet for each provider/device path with `|00>`, `|01>`, `|10>`, and `|11>` preparations, raw counts, task or job IDs, backend metadata, timestamps, and offline verifier output.
 
+## Preregistered Future Packet Sets
+
+Future replication row sets are preregistered without submitting hardware:
+
+```bash
+python scripts/preregister_stage4_replication_packets.py
+```
+
+Manifest:
+
+`logs/automated_stage_gates/stage4_preregistered_replication_packets/manifest.json`
+
+The preregistered lanes fix seeds, witness families, row counts, shot counts, and row-set hashes for future IBM-style and Amazon Braket-style product-state and CX reruns. They are not hardware evidence. A future run should preserve the row-set hash, then add real backend metadata, job or task IDs, raw counts, timestamps, and verifier output before promotion.
+
 ```bash
 python -m pip install -e ".[ibm]"
 ```
