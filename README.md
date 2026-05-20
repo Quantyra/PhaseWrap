@@ -53,6 +53,7 @@ The public claim frame excludes:
 - [Patent notice](PATENTS.md)
 - [Stage 4 real-hardware validation result](docs/research/q-rope-stage4-real-hardware-validation-result-v1.md)
 - [Stage 4 CX portability diagnostic](docs/research/q-rope-stage4-cx-portability-diagnostic-v1.md)
+- [Stage 5 attention baseline result](docs/research/q-rope-stage5-attention-baselines-v1.md)
 - [Amazon Braket hardware runbook](docs/evidence/E002-braket-hardware-runbook.md)
 - [Automated terminal human-review packet](docs/evidence/review-packets/qrope-automated-terminal-v1/qrope-terminal-human-review-packet-v1.md)
 - [Phase-wrap algorithm note](docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md)
@@ -131,6 +132,14 @@ python scripts/diagnose_stage4_cx_portability.py
 
 The diagnostic documents why the earlier generic `q1q0` Braket CX classification was corrected in the provider-aware sweep verifier.
 
+Run the deterministic Stage 5 attention-scoring baselines:
+
+```bash
+python scripts/run_stage5_attention_baselines.py
+```
+
+Stage 5 compares the phase-wrap scoring rule against mod-24 lookup, `m8`/`m12`/`m8*m12`, a shallow regression tree, RoPE-style, sinusoidal, and ALiBI-style attention-scoring baselines. The current synthetic label is exactly recoverable by mod-24 lookup and the direct `m8*m12` feature baseline, so this closes the requested baseline gap but does not support transformer-scale superiority.
+
 ## Reviewer path in 10 minutes
 
 - Read the claim boundary in this README.
@@ -167,9 +176,9 @@ The current release is ready for bounded repository/preprint publication. The ne
 
 | Priority | Work item | Purpose |
 | --- | --- | --- |
-| 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Test downstream impact on a concrete metric such as length extrapolation or attention-score stability. |
+| 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
 | 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
-| 3 | Stronger classical and attention baselines | Add a 24-way lookup baseline on `(reference_delta - candidate_delta) mod 24`, a classical feature baseline using `m8`, `m12`, and `m8*m12`, a small MLP or regression tree on exposed deltas, and RoPE/ALiBi/sinusoidal comparisons in a concrete attention task. |
+| 3 | Toy transformer or non-tautological downstream benchmark | Use a task that is not exactly recoverable from exposed mod-24 or direct `m8*m12` features. |
 | 4 | Independent hardware replication | Add new packet/date/backend records, confidence or bootstrap intervals for MAE/rank correlations, and IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
 | 5 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
 

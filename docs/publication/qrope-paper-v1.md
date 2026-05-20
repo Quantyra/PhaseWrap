@@ -144,6 +144,16 @@ This variant has a completed IBM Fez hardware-positive artifact in the active pu
 
 Implementation reference: `src/qrope/automated_stage_gates.py`.
 
+### Stage 5 attention-scoring baselines
+
+The repository also includes a deterministic Stage 5 attention-scoring baseline suite:
+
+```bash
+python scripts/run_stage5_attention_baselines.py
+```
+
+This suite compares the phase-wrap score against a 24-way lookup on `(reference_delta - candidate_delta) mod 24`, a direct `m8`/`m12`/`m8*m12` feature baseline, a shallow regression tree on exposed deltas, and RoPE-style, sinusoidal, and ALiBI-style scoring rules. On the current synthetic task, the mod-24 lookup and direct product-feature baselines recover the label exactly. This is reported as a baseline closure and limitation: the task validates the current scoring construction, but it does not establish transformer-scale superiority or production language-model improvement.
+
 ## 4. Validation protocol
 
 ![PhaseWrap-RoPE deterministic validation pipeline](figures/qrope-validation-pipeline-v1.svg)
@@ -251,6 +261,12 @@ witness = clamp(0.5 + 0.5 * score_scale * E[Z0 Z1], 0, 1)
 
 The completed IBM Fez and Braket/Rigetti product-state records support the Stage 4 packet outcome under the recorded conditions. The completed Braket CX records support bounded provider-aware recomputation for their recorded packet/backend/date/calibration contexts. They do not support a general CX cross-backend claim. Backend calibration, queue conditions, transpilation details, result-key conventions, and packet composition can affect replication results. The result therefore remains scoped to the stated packet, backend, date, calibration window, and metrics.
 
+The Stage 5 attention-scoring baseline artifacts are:
+
+- `logs/automated_stage_gates/stage5_attention_baselines/manifest.json`
+- `logs/automated_stage_gates/stage5_attention_baselines/results.json`
+- `logs/automated_stage_gates/stage5_attention_baselines/summary.csv`
+
 Deferred IBM comparison rows are not promoted to machine-verifiable public evidence until their real packet, raw-count, job-ID, backend-metadata, and verifier-output files are present in the repository. For IonQ, any future evidence should be recorded as a new dated Amazon Braket/IonQ run when a Braket IonQ device is available, and then added as a new active sweep record.
 
 ## 6. Reproducibility artifacts
@@ -263,6 +279,7 @@ The repository prioritizes evidence files over narrative-only claims. The minimu
 - inspect `docs/publication/manuscript-to-provisional-support-audit-v1.md`;
 - run or inspect `scripts/verify_stage4_hardware_packet.py`;
 - run or inspect `scripts/verify_stage4_hardware_sweep.py`;
+- run or inspect `scripts/run_stage5_attention_baselines.py`;
 - compare the verifier output with `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`.
 - inspect `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json` and the sweep verifier output.
 
@@ -285,7 +302,7 @@ The present result has important limitations:
 - The Stage 4 evidence is still bounded to a small set of recorded packet/backend/date/calibration contexts rather than a broad backend survey.
 - The paper does not report transformer-scale training or evaluation.
 - The paper reports bounded IBM Fez and Braket hardware records, including provider-aware Braket CX recomputations, but it does not claim that these few backends establish general cross-backend robustness; IonQ was unavailable/not-run in the current Amazon Braket check.
-- The paper does not compare against production language-model baselines.
+- The Stage 5 benchmark compares against classical and positional attention-scoring baselines, but the paper does not compare against production language-model baselines.
 - The paper does not establish quantum advantage.
 
 These limitations define the scientific scope of the current release.
@@ -296,13 +313,13 @@ The next scientific step is not broader rhetoric about the current hardware reco
 
 | Priority | Work item | Evidence required before promotion |
 | --- | --- | --- |
-| 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Fixed task, fixed metric, fixed seeds, and a reported comparison on length extrapolation or attention-score stability. |
+| 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
 | 2 | DOI/preprint release packaging | Release tag, archived snapshot, DOI metadata, and unchanged bounded claim language. |
-| 3 | Stronger classical and attention baselines | 24-way lookup on `(reference_delta - candidate_delta) mod 24`, classical `m8`/`m12`/`m8*m12` feature baseline, small MLP or regression tree on exposed deltas, and RoPE/ALiBi/sinusoidal comparisons in a concrete attention task. |
+| 3 | Toy transformer or non-tautological downstream benchmark | Fixed task, fixed metric, fixed seeds, and a task definition not exactly recoverable from exposed mod-24 or direct `m8*m12` features. |
 | 4 | Independent hardware replication | New packet/date/backend records with raw counts, backend metadata, verifier output, and confidence or bootstrap intervals for MAE/rank correlations. |
 | 5 | Larger or error-aware witnesses | Larger witness families or mitigation analysis with explicit controls and no unsupported quantum-advantage claim. |
 
-The highest-impact research gap is downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts. It does not yet show that PhaseWrap-RoPE improves a classical attention model. A small transformer-adjacent benchmark against standard RoPE is therefore the preferred Stage 5 experiment.
+The highest-impact research gap is downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts and that the current synthetic attention-scoring label is recoverable by simple exposed-feature baselines. A less tautological transformer-adjacent benchmark against standard RoPE is therefore the preferred next experiment.
 
 Broader hardware expansion is useful but secondary. IonQ should be added only through a dated Amazon Braket/IonQ record when a device is available. Quandela, AQT, or larger-qubit witnesses should be added only when credentials, provider cost, and artifact capture support the same manifest/verifier discipline as Stage 4.
 
@@ -315,11 +332,13 @@ PhaseWrap-RoPE provides an open-source research lane for phase-wrap positional s
 - `src/qrope/automated_stage_gates.py`
 - `scripts/verify_stage4_hardware_packet.py`
 - `scripts/verify_stage4_hardware_sweep.py`
+- `scripts/run_stage5_attention_baselines.py`
 - `logs/automated_stage_gates/stage4_hardware_packet/frozen_packet.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/execution.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/evaluation.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`
 - `logs/automated_stage_gates/stage4_hardware_sweep/manifest.json`
+- `logs/automated_stage_gates/stage5_attention_baselines/manifest.json`
 - `docs/research/q-rope-phase-wrap-qrope-algorithm-v1.md`
 - `docs/research/q-rope-stage4-real-hardware-validation-result-v1.md`
 - `docs/research/q-rope-stage4-hardware-comparison-v1.md`

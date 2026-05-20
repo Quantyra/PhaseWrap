@@ -53,12 +53,21 @@ python scripts/diagnose_stage4_cx_portability.py
 
 These commands recompute from saved artifacts. They do not submit hardware jobs and do not require IBM, AWS, IonQ, Quandela, or AQT credentials.
 
+Run the Stage 5 no-credential attention-scoring baselines:
+
+```bash
+python scripts/run_stage5_attention_baselines.py
+```
+
+This writes `logs/automated_stage_gates/stage5_attention_baselines/manifest.json`, `results.json`, and `summary.csv`.
+
 ## What This Supports
 
 - A bounded phase-wrap scoring method using mod-8 and mod-12 wrapped residual margins.
 - A deterministic evidence lane with frozen packets, raw counts, backend metadata, and offline recomputation.
 - Small-circuit hardware validation that the witness/control ordering holds for the recorded packet/backend/date/calibration contexts listed above.
 - A provider-aware Amazon Braket correction that is auditable from the saved raw counts.
+- A deterministic Stage 5 attention-scoring baseline suite showing that the current synthetic label is exactly recoverable by mod-24 lookup and direct `m8*m12` exposed features.
 
 ## What This Does Not Support
 
@@ -68,11 +77,12 @@ These commands recompute from saved artifacts. They do not submit hardware jobs 
 - general cross-backend robustness;
 - a claim that product-state readout is entanglement evidence;
 - a claim that the result generalizes to unrun packets, dates, providers, or calibration windows.
+- a claim that Stage 5 establishes production transformer or full transformer-scale superiority.
 
 ## Open Questions
 
 - **Why mod-8 and mod-12?** They provide two distinct wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band interaction through the product of signed margins. Other period pairs remain an ablation target.
-- **Does PhaseWrap-RoPE help a classical ML task?** Not yet shown in this release. The next scientific step is a toy transformer or attention-scoring benchmark against standard RoPE on length extrapolation or attention stability.
+- **Does PhaseWrap-RoPE help a classical ML task?** The Stage 5 attention-scoring benchmark is now present, but it shows the current synthetic label is exactly recoverable by simple exposed-feature baselines. The next scientific step is a less tautological toy transformer or downstream attention task.
 - **Should more hardware be run?** Yes, but as independent replication: new dates, new frozen packets, and cost-justified provider targets. IonQ was unavailable through Amazon Braket during the checked window; Quandela/AQT require separate execution and budget decisions.
 - **Should the release go to arXiv or DOI archive?** Yes. The current repository is suitable for a bounded methods/evidence preprint and a Zenodo-style archived release after final release hygiene.
 
@@ -81,7 +91,7 @@ These commands recompute from saved artifacts. They do not submit hardware jobs 
 | Stage | Goal | Promotion condition |
 | --- | --- | --- |
 | Stage 4 | Hardware evidence packaging | Complete for the active sweep. |
-| Stage 5 | Toy downstream ML comparison | Compare PhaseWrap-RoPE/PhaseWrap scoring against RoPE on a concrete small task with fixed metrics. |
-| Stage 6 | Stronger baselines | Add 24-way lookup, `m8`/`m12`/`m8*m12`, small MLP or regression-tree, and RoPE/ALiBi/sinusoidal attention-task baselines. |
+| Stage 5 | Attention-scoring baselines | Complete for the current synthetic task; the label is exactly recoverable by mod-24 lookup and direct `m8*m12` features. |
+| Stage 6 | Toy downstream ML comparison | Compare PhaseWrap-RoPE/PhaseWrap scoring against RoPE on a concrete task that is not reducible to exposed mod-24 or direct product features. |
 | Stage 7 | Independent hardware replication | Add new packet/date/backend records with raw counts, verifier output, and confidence or bootstrap intervals. |
-| Stage 8 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after Stage 5/7 evidence justifies it. |
+| Stage 8 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after Stage 6/7 evidence justifies it. |
