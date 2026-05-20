@@ -1,7 +1,7 @@
 {
-  "title": "PhaseWrap-RoPE: Phase-Wrap Positional Encoding Evidence and Hardware-Validation Tooling",
+  "title": "PhaseWrap-RoPE: Bounded Phase-Wrap Positional Scoring Evidence and Hardware-Validation Tooling",
   "upload_type": "software",
-  "description": "Open-source bounded evidence repository for Quantum Rotary Positional Encoding, including phase-wrap scoring, deterministic validation packets, a product-state Stage 4 hardware readout result, and an implemented entangling CX witness variant awaiting replication.",
+  "description": "Open-source bounded evidence repository for PhaseWrap-RoPE, including a phase-wrap positional scoring rule, deterministic validation packets, a machine-verifiable Stage 4 hardware sweep, provider-aware IBM Runtime and Amazon Braket artifacts, Stage 5 classical attention baselines, Stage 6 downstream attention benchmark, and Stage 7 toy transformer ablation. The release does not claim broad quantum advantage, production transformer superiority, full transformer-scale validation, or general cross-backend robustness.",
   "creators": [
     {
       "name": "Fredriksen, Daniel Eric"
@@ -10,12 +10,13 @@
   "access_right": "open",
   "license": "agpl-3.0",
   "keywords": [
-    "quantum positional encoding",
+    "phase-wrap positional scoring",
     "rotary positional encoding",
     "phase-wrap scoring",
     "quantum circuits",
     "hardware validation",
-    "reproducibility"
+    "reproducibility",
+    "deterministic evidence packets"
   ],
   "related_identifiers": [
     {
