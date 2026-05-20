@@ -70,4 +70,4 @@ The public repository has been created and published:
 | Confirm the public repository metadata. | Done |
 | Tag the public release after final manuscript approval. | Done |
 | Enable Zenodo integration and mint the release DOI. | Done |
-| Preserve latest archive handle in public docs. | Done: concept DOI `10.5281/zenodo.20306786`; current version DOI `10.5281/zenodo.20311738`. |
+| Preserve latest archive handle in public docs. | Done: concept DOI `10.5281/zenodo.20306786`. |
