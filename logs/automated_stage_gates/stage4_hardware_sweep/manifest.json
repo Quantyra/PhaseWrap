@@ -124,27 +124,27 @@
       "backend": "ibm_fez",
       "backend_label": "IBM Fez",
       "bitstring_order": "q1q0",
-      "calibration_metadata_path": "logs/automated_stage_gates/stage4_hardware_packet/execution.json#/calibration_metadata",
+      "calibration_metadata_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/execution.json#/calibration_metadata",
       "completed_at_utc": "2026-05-17T03:29:05Z",
-      "evaluation_path": "logs/automated_stage_gates/stage4_hardware_packet/evaluation.json",
-      "execution_path": "logs/automated_stage_gates/stage4_hardware_packet/execution.json",
+      "evaluation_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/evaluation.json",
+      "execution_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/execution.json",
       "family": "two_qubit_zz_expectation_phase_wrap_v1",
       "job_ids": [
         "d84jbq00bvlc73d4krr0"
       ],
       "packet_id": "qrope-hardware-73c61893576297ff",
-      "packet_path": "logs/automated_stage_gates/stage4_hardware_packet/frozen_packet.json",
+      "packet_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/frozen_packet.json",
       "provider": "ibm_runtime",
       "raw_count_file_paths": [
-        "logs/automated_stage_gates/stage4_hardware_packet/execution.json#/jobs/0/raw_counts_by_row"
+        "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/execution.json#/jobs/0/raw_counts_by_row"
       ],
       "record_id": "ibm_fez__two_qubit_zz_expectation_phase_wrap_v1__20260517T032905Z",
       "row_count": 16,
       "shots": 4096,
       "status": "completed",
       "submitted_at_utc": "2026-05-17T03:28:38Z",
-      "summary_path": "logs/automated_stage_gates/stage4_hardware_sweep/ibm_runtime__ibm_fez/two_qubit_zz_expectation_phase_wrap_v1/summary.json",
-      "verifier_output_path": "logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json"
+      "summary_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/summary.json",
+      "verifier_output_path": "logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/offline_verification.json"
     },
     {
       "backend": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",

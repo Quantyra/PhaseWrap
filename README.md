@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml)
 
-PhaseWrap-RoPE is Quantyra's public research repository for phase-wrapped positional scoring and small-circuit hardware validation.
+PhaseWrap-RoPE is Quantyra's public research repository for a phase-wrap positional scoring rule with two-qubit hardware readout.
 
-This repository is intended for open scientific review of the PhaseWrap-RoPE method, validation scripts, evidence packets, and publication materials. It is not a claim of general quantum advantage, full transformer-scale superiority, entanglement-based advantage, or cross-backend hardware robustness.
+This repository is intended for open scientific review of the PhaseWrap-RoPE scoring rule, validation scripts, evidence packets, and publication materials. It is not a claim of general quantum advantage, full transformer-scale superiority, entanglement-based advantage, or cross-backend hardware robustness.
 
 Repository naming note: public materials use `PhaseWrap-RoPE`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem.
 
@@ -15,6 +15,7 @@ Repository naming note: public materials use `PhaseWrap-RoPE`; Python imports, s
 - `Publication posture`: bounded, reproducible, evidence-disciplined.
 - `Current evidence posture`: Stage 4 real-noisy-hardware results for bounded frozen packet/backend/date/calibration contexts, including IBM Fez positives, Amazon Braket/Rigetti product-state positive evidence, and provider-aware Amazon Braket CX positive recomputations from committed raw counts.
 - `Hardware posture`: IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and Amazon Braket CX lanes have completed active Stage 4 hardware artifacts; additional IBM machines are deferred from the active sweep; Amazon Braket/IonQ was checked on 2026-05-19 and was not run because Forte devices were `OFFLINE` and Aria 1 was `RETIRED`; AQT IBEX Q1 is deferred due cost.
+- `Evidence tree posture`: `logs/automated_stage_gates/stage4_hardware_packet/` remains the default single-packet verifier path. The same IBM Fez 2026-05-17 product-state pass is also preserved as an immutable named run under `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/` for the sweep manifest.
 
 ## Claim boundary
 
@@ -116,6 +117,12 @@ python scripts/verify_stage4_hardware_sweep.py
 
 This verifier recomputes metrics for the active sweep records whose packet/execution/evaluation artifacts are present. The current active sweep covers the committed IBM Fez product-state packet, IBM Fez CX packet, Amazon Braket/Rigetti product-state artifact, and Amazon Braket CX artifacts on Rigetti Cepheus, IQM Garnet, and IQM Emerald. The verifier is provider-aware: IBM records use `q1q0` bitstring decoding and Amazon Braket records use `q0q1` decoding as declared in the manifest. Additional IBM backends and Amazon Braket/IonQ are documented as deferred or excluded targets unless real raw-count artifacts are later added.
 
+The default single-packet verifier output is checked in CI against the README expected summary:
+
+```bash
+python scripts/check_readme_verifier_output.py
+```
+
 Audit the earlier Braket CX generic-decoder failure from saved raw counts:
 
 ```bash
@@ -137,19 +144,20 @@ The diagnostic documents why the earlier generic `q1q0` Braket CX classification
 
 ## CI and test coverage
 
-GitHub Actions runs the public-review Stage 4/verifier test subset on Python `3.11` and `3.12`:
+GitHub Actions runs the full unit suite on Python `3.11` and `3.12` without hardware-provider credentials:
 
 ```bash
-pytest tests/test_automated_stage_gates.py -k "not quandela" --cov=qrope --cov-report=term-missing --cov-report=xml
+pytest --cov=qrope --cov-report=term-missing --cov-report=xml
+python scripts/check_readme_verifier_output.py
 ```
 
-Coverage XML is uploaded as a workflow artifact. The broader local test suite remains useful, but it includes optional provider-specific paths that should not be treated as the public-review badge gate until those optional dependencies are standardized.
+Coverage XML is uploaded as a workflow artifact. Optional provider SDK tests use mocks or skip paths when optional packages such as Perceval are not installed.
 
 ## Publication use
 
 If you cite or discuss this work, use the bounded posture:
 
-> PhaseWrap-RoPE is a phase-wrap positional-encoding and validation method with repository-backed deterministic evidence packets, including a bounded Stage 4 real-hardware validation result.
+> PhaseWrap-RoPE is a phase-wrap positional scoring rule with two-qubit hardware readout and repository-backed deterministic evidence packets, including bounded Stage 4 real-hardware validation records.
 
 Do not restate the result as a proof of broad quantum transformer superiority.
 
@@ -161,8 +169,9 @@ The current release is ready for bounded repository/preprint publication. The ne
 | --- | --- | --- |
 | 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Test downstream impact on a concrete metric such as length extrapolation or attention-score stability. |
 | 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
-| 3 | Independent hardware replication | Add new packet/date/backend records, including IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
-| 4 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
+| 3 | Stronger classical and attention baselines | Add a 24-way lookup baseline on `(reference_delta - candidate_delta) mod 24`, a classical feature baseline using `m8`, `m12`, and `m8*m12`, a small MLP or regression tree on exposed deltas, and RoPE/ALiBi/sinusoidal comparisons in a concrete attention task. |
+| 4 | Independent hardware replication | Add new packet/date/backend records, confidence or bootstrap intervals for MAE/rank correlations, and IonQ or Quandela only when provider availability, credentials, and budget support real artifacts. |
+| 5 | Larger or error-aware witnesses | Explore larger qubit witnesses or mitigation analysis after downstream and replication evidence justify the added complexity. |
 
 The mod-8/mod-12 choice is a fixed first-release design: two wrapped residual bases with one-step thresholds at `pi/4` and `pi/6`, producing a cross-band product signal. Other period pairs are future ablation targets, not current evidence.
 

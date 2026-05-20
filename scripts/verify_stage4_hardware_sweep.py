@@ -304,19 +304,21 @@ def verify_record(manifest_path: Path, record: dict[str, Any]) -> dict[str, Any]
     evaluation = read_json(REPO_ROOT / resolved_paths["evaluation_path"])
     summary = read_json(REPO_ROOT / resolved_paths["summary_path"])
     recomputed = evaluate_hardware_execution(packet, execution, bitstring_order=record.get("bitstring_order"))
+    summary_result = summary.get("result", summary)
+    summary_evaluation = summary_result.get("evaluation", summary_result)
     checks = _record_metric_checks(evaluation, recomputed, record.get("expected_outcome"))
     checks.extend(
         [
             {
                 "name": "summary_status_matches_recomputed",
-                "pass": summary.get("status") == recomputed.get("status"),
-                "recorded": summary.get("status"),
+                "pass": summary_result.get("status") == recomputed.get("status"),
+                "recorded": summary_result.get("status"),
                 "recomputed": recomputed.get("status"),
             },
             {
                 "name": "summary_outcome_matches_recomputed",
-                "pass": summary.get("outcome") == recomputed.get("outcome"),
-                "recorded": summary.get("outcome"),
+                "pass": summary_evaluation.get("outcome") == recomputed.get("outcome"),
+                "recorded": summary_evaluation.get("outcome"),
                 "recomputed": recomputed.get("outcome"),
             },
             {

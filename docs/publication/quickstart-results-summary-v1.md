@@ -23,6 +23,8 @@ The active Stage 4 hardware sweep is machine-verifiable from committed packet, e
 
 For every active completed record, the witness has lower MAE than the control and higher rank correlation than the control under the manifest-declared verifier. Amazon Braket records use `q0q1` bitstring decoding; IBM records use `q1q0`.
 
+The default single-packet path `logs/automated_stage_gates/stage4_hardware_packet/` remains the reviewer entry point for the original IBM Fez product-state packet. The same run is also preserved as `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/` so the sweep manifest can refer to an immutable named run directory.
+
 ## Reproduce
 
 Install local development dependencies:
@@ -80,5 +82,6 @@ These commands recompute from saved artifacts. They do not submit hardware jobs 
 | --- | --- | --- |
 | Stage 4 | Hardware evidence packaging | Complete for the active sweep. |
 | Stage 5 | Toy downstream ML comparison | Compare PhaseWrap-RoPE/PhaseWrap scoring against RoPE on a concrete small task with fixed metrics. |
-| Stage 6 | Independent hardware replication | Add new packet/date/backend records with raw counts and verifier output. |
-| Stage 7 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after Stage 5/6 evidence justifies it. |
+| Stage 6 | Stronger baselines | Add 24-way lookup, `m8`/`m12`/`m8*m12`, small MLP or regression-tree, and RoPE/ALiBi/sinusoidal attention-task baselines. |
+| Stage 7 | Independent hardware replication | Add new packet/date/backend records with raw counts, verifier output, and confidence or bootstrap intervals. |
+| Stage 8 | Larger/error-aware witnesses | Add larger witness families or mitigation analysis only after Stage 5/7 evidence justifies it. |

@@ -36,6 +36,9 @@ braket = [
   "amazon-braket-sdk>=1.90",
   "boto3>=1.34",
 ]
+quandela = [
+  "perceval-quandela>=0.12",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

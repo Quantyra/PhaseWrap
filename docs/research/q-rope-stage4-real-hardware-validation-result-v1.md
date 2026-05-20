@@ -102,6 +102,8 @@ Stage 4 real-hardware validation also completed on IBM Runtime and passed the de
 - verifier result: `pass`
 - output: `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`
 
+The default `stage4_hardware_packet/` directory is the single-packet reviewer entry point. The same IBM Fez 2026-05-17 product-state pass is also preserved as immutable named evidence under `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/`; the sweep manifest points to that named directory.
+
 ## Boundary
 
 These are bounded real-noisy-hardware results for frozen Stage 4 packets on IBM `ibm_fez`, Amazon Braket/Rigetti `Cepheus-1-108Q`, Amazon Braket/IQM `Garnet`, and Amazon Braket/IQM `Emerald`. They support the Stage 4 claim boundary produced by the automated ladder: bounded real-noisy-hardware packets. They do not generalize beyond the frozen packets, backends, dates, calibration windows, provider result-key conventions, and declared metrics. They do not establish quantum advantage, production transformer superiority, full transformer-scale validation, or general cross-backend robustness.

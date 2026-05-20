@@ -30,7 +30,8 @@ Patent notice: USPTO provisional submission received `2026-05-18`; Electronic Ac
 | `src/qrope/automated_stage_gates.py` | Prepared | Public implementation reference for formulas, packet generation, and hardware evaluation. |
 | `scripts/verify_stage4_hardware_packet.py` | Prepared | Offline verifier for saved Stage 4 packet arithmetic. |
 | `scripts/verify_stage4_hardware_sweep.py` | Prepared | Provider-aware offline verifier for the Stage 4 sweep manifest; verifies active committed hardware evidence and keeps deferred/unavailable targets out of the required verifier path. |
-| `logs/automated_stage_gates/stage4_hardware_packet/*.json` | Prepared | Frozen packet, execution, evaluation, summary, and offline verification evidence. |
+| `logs/automated_stage_gates/stage4_hardware_packet/*.json` | Prepared | Default single-packet verifier path for the original IBM Fez product-state pass. |
+| `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/*.json` | Prepared | Immutable named copy of the IBM Fez 2026-05-17 product-state pass used by the sweep manifest. |
 | `docs/publication/figures/qrope-method-schematic-v1.svg` | Prepared | Publication-grade method schematic. |
 | `docs/publication/figures/qrope-validation-pipeline-v1.svg` | Prepared | Publication-grade validation pipeline diagram. |
 | `docs/publication/figures/qrope-stage4-comparison-v1.svg` | Prepared | Publication-grade Stage 4 hardware comparison chart. |

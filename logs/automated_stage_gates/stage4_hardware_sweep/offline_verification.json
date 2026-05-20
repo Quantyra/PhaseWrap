@@ -144,10 +144,10 @@
       "packet_id": "qrope-hardware-73c61893576297ff",
       "pass": true,
       "paths": {
-        "evaluation_path": "logs\\automated_stage_gates\\stage4_hardware_packet\\evaluation.json",
-        "execution_path": "logs\\automated_stage_gates\\stage4_hardware_packet\\execution.json",
-        "packet_path": "logs\\automated_stage_gates\\stage4_hardware_packet\\frozen_packet.json",
-        "summary_path": "logs\\automated_stage_gates\\stage4_hardware_sweep\\ibm_runtime__ibm_fez\\two_qubit_zz_expectation_phase_wrap_v1\\summary.json"
+        "evaluation_path": "logs\\automated_stage_gates\\stage4_hardware_packet_ibm_fez_20260517_pass\\evaluation.json",
+        "execution_path": "logs\\automated_stage_gates\\stage4_hardware_packet_ibm_fez_20260517_pass\\execution.json",
+        "packet_path": "logs\\automated_stage_gates\\stage4_hardware_packet_ibm_fez_20260517_pass\\frozen_packet.json",
+        "summary_path": "logs\\automated_stage_gates\\stage4_hardware_packet_ibm_fez_20260517_pass\\summary.json"
       },
       "provider": "ibm_runtime",
       "recomputed_evaluation": {

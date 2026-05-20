@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE: A Patent-Pending Phase-Wrap Positional Encoding Method with Bounded Hardware Validation
+# PhaseWrap-RoPE: A Patent-Pending Phase-Wrap Positional Scoring Rule with Two-Qubit Hardware Readout
 
 Manuscript status: `repository-paper-v1`
 
@@ -10,7 +10,7 @@ License context: repository software released under `AGPL-3.0-only`
 
 ## Abstract
 
-PhaseWrap-RoPE is a positional-encoding research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins through an SQR score. This repository paper presents the PhaseWrap-RoPE method, its deterministic validation protocol, a machine-verifiable Stage 4 packet, a machine-verifiable Amazon Braket/Rigetti product-state replication artifact, and provider-aware machine-verifiable Braket CX artifacts.
+PhaseWrap-RoPE is a positional-scoring research method based on phase-wrap residual structure. The method computes wrapped residuals in two modular bases, derives signed margins from cosine thresholds, and combines the margins through an SQR score. This repository paper presents the PhaseWrap-RoPE scoring rule, its deterministic validation protocol, a machine-verifiable Stage 4 packet, a machine-verifiable Amazon Braket/Rigetti product-state replication artifact, and provider-aware machine-verifiable Braket CX artifacts.
 
 The result should be read as a bounded evidence claim. It supports the reported packet/backend/date/calibration-specific validation outcome, not broad quantum advantage, not transformer-scale superiority, and not general cross-backend robustness. The contribution is a reproducible review path: fixed packets, fixed shot counts, raw measurement counts, backend metadata, offline recomputation, and explicit claim boundaries.
 
@@ -28,7 +28,7 @@ This paper documents the first public PhaseWrap-RoPE release under Quantyra. The
 
 The contribution is threefold:
 
-- A PhaseWrap-RoPE phase-wrap scoring method using mod-8 and mod-12 signed margins.
+- A PhaseWrap-RoPE phase-wrap scoring rule using mod-8 and mod-12 signed margins.
 - A deterministic validation protocol based on frozen packets, fixed rows, fixed shot counts, raw counts, backend metadata, and offline recomputation.
 - A Stage 4 real-noisy-hardware comparison report across committed IBM Fez product-state, IBM Fez CX, Amazon Braket/Rigetti product-state, and provider-aware Amazon Braket CX artifacts, with additional IBM targets deferred and Amazon Braket/IonQ documented as an excluded unavailable target during the 2026-05-19 check.
 
@@ -182,6 +182,14 @@ The default verifier inputs are:
 - `logs/automated_stage_gates/stage4_hardware_packet/evaluation.json`
 - `logs/automated_stage_gates/stage4_hardware_packet/summary.json`
 
+The default single-packet path is the reviewer convenience path. The same IBM Fez 2026-05-17 product-state pass is also preserved as the immutable named run:
+
+- `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/frozen_packet.json`
+- `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/execution.json`
+- `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/evaluation.json`
+- `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/summary.json`
+- `logs/automated_stage_gates/stage4_hardware_packet_ibm_fez_20260517_pass/offline_verification.json`
+
 The default verifier output is:
 
 - `logs/automated_stage_gates/stage4_hardware_packet/offline_verification.json`
@@ -290,8 +298,9 @@ The next scientific step is not broader rhetoric about the current hardware reco
 | --- | --- | --- |
 | 1 | Toy transformer or attention-scoring benchmark against standard RoPE | Fixed task, fixed metric, fixed seeds, and a reported comparison on length extrapolation or attention-score stability. |
 | 2 | DOI/preprint release packaging | Release tag, archived snapshot, DOI metadata, and unchanged bounded claim language. |
-| 3 | Independent hardware replication | New packet/date/backend records with raw counts, backend metadata, and verifier output. |
-| 4 | Larger or error-aware witnesses | Larger witness families or mitigation analysis with explicit controls and no unsupported quantum-advantage claim. |
+| 3 | Stronger classical and attention baselines | 24-way lookup on `(reference_delta - candidate_delta) mod 24`, classical `m8`/`m12`/`m8*m12` feature baseline, small MLP or regression tree on exposed deltas, and RoPE/ALiBi/sinusoidal comparisons in a concrete attention task. |
+| 4 | Independent hardware replication | New packet/date/backend records with raw counts, backend metadata, verifier output, and confidence or bootstrap intervals for MAE/rank correlations. |
+| 5 | Larger or error-aware witnesses | Larger witness families or mitigation analysis with explicit controls and no unsupported quantum-advantage claim. |
 
 The highest-impact research gap is downstream relevance. The current release shows that the phase-wrap witness/control ordering is machine-verifiable in recorded small-circuit hardware contexts. It does not yet show that PhaseWrap-RoPE improves a classical attention model. A small transformer-adjacent benchmark against standard RoPE is therefore the preferred Stage 5 experiment.
 

@@ -17,6 +17,8 @@ Date: `2026-05-18`
 | Reproducibility was really recomputation. | Paper now distinguishes saved-count recomputation from independent replication. |
 | README lacked quickstart. | README now includes a no-credential local method check, verifier command, expected verifier output, and reviewer path. |
 | Paper referenced verifier/evidence artifacts that were not staged for public review. | The public evidence bundle is prepared for publication: `src/qrope/automated_stage_gates.py`, `scripts/verify_stage4_hardware_packet.py`, `scripts/verify_stage4_hardware_sweep.py`, Stage 4 JSON packet files under `logs/automated_stage_gates/stage4_hardware_packet/`, and a provider-aware sweep manifest that passes for active IBM Fez product-state, Amazon Braket/Rigetti product-state, IBM Fez CX, and Amazon Braket CX records on Rigetti Cepheus, IQM Garnet, and IQM Emerald while listing additional IBM targets as deferred and IonQ as an excluded unavailable target. |
+| Default packet and sweep evidence paths could be confused. | `stage4_hardware_packet/` remains the default single-packet reviewer path, and the same IBM Fez 2026-05-17 pass is also preserved under `stage4_hardware_packet_ibm_fez_20260517_pass/`; the sweep manifest points to the immutable named directory. |
+| CI did not run the full unit suite or check README verifier drift. | CI now runs the full unit suite, skips optional Perceval-dependent tests when Perceval is unavailable, and checks the README expected single-packet verifier summary against the actual verifier output. |
 | AGENTS.md rendered a literal `\r\n`. | Fixed. |
 
 ## Not yet done
@@ -25,5 +27,7 @@ Date: `2026-05-18`
 - Move internal process/governance materials into a cleaner public structure.
 - Wait for CI to complete on GitHub and respond to any failures.
 - Post an arXiv/OSF preprint and mint a Zenodo DOI.
+- Add stronger baselines: 24-way lookup on `(reference_delta - candidate_delta) mod 24`, classical `m8`/`m12`/`m8*m12`, small MLP or regression tree on exposed deltas, and RoPE/ALiBi/sinusoidal comparisons in a concrete attention task.
+- Add repeated hardware evidence across dates/calibration windows and confidence or bootstrap intervals for MAE/rank correlations.
 
 These remaining items require new execution, repo restructuring, or external publication steps and should not be represented as complete.

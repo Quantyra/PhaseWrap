@@ -147,6 +147,14 @@ def test_product_state_witness_metric_recomputation(tmp_path: Path) -> None:
     assert row["witness_mae"] < row["control_mae"]
 
 
+def test_nested_packet_summary_is_accepted(tmp_path: Path) -> None:
+    result_dir, record = _synthetic_result(tmp_path, PRODUCT_STATE_CIRCUIT_FAMILY)
+    evaluation = json.loads((result_dir / "evaluation.json").read_text(encoding="utf-8"))
+    _write_json(result_dir / "summary.json", {"result": {"status": evaluation["status"], "evaluation": evaluation}})
+    verification = verify_manifest(_manifest(tmp_path, [record]))
+    assert verification["pass"] is True
+
+
 def test_cx_witness_metric_recomputation(tmp_path: Path) -> None:
     _, record = _synthetic_result(tmp_path, ENTANGLING_CX_CIRCUIT_FAMILY)
     verification = verify_manifest(_manifest(tmp_path, [record]))
