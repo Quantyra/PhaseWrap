@@ -1,0 +1,41 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage",
+      "general cross-backend robustness",
+      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+    ],
+    "supported": [
+      "A deterministic train-short/test-long learned value-token readout over non-phase-cued key-value rows.",
+      "Evidence about whether PhaseWrap-derived features survive a learned embedding/output readout."
+    ]
+  },
+  "dataset": "deterministic_non_phase_cued_small_decoder_value_model_v1",
+  "method_names": [
+    "no_position",
+    "alibi",
+    "rope_relative",
+    "sinusoidal",
+    "phasewrap_score",
+    "phasewrap_residual_adapter",
+    "phasewrap_distance_adapter"
+  ],
+  "model": {
+    "embed_dim": 12,
+    "epochs": 140,
+    "trained_parameters": "attention feature weights, value embeddings, output projection, output bias",
+    "type": "single_attention_readout_with_learned_value_embeddings_and_output_projection",
+    "value_vocab_size": 257
+  },
+  "no_hardware_submission": true,
+  "result_path": "logs/automated_stage_gates/stage17_small_decoder_value_model/results.json",
+  "schema_version": "qrope_stage17_small_decoder_value_model_v1",
+  "stage": "stage17_small_decoder_value_model",
+  "summary_csv_path": "logs/automated_stage_gates/stage17_small_decoder_value_model/summary.csv",
+  "task_summary_csv_path": "logs/automated_stage_gates/stage17_small_decoder_value_model/task_summary.csv",
+  "test_row_count": 60,
+  "train_row_count": 120,
+  "validation_row_count": 60
+}
