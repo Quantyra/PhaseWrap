@@ -43,6 +43,7 @@ Supported now:
 - Stage 54 adds target-attention supervision to the Stage 52/53 two-block path and records `ATTENTION_SUPERVISION_RETRIEVAL_REPAIR_FAILED`; training attention can be raised, but held-out retrieval target attention and top-1 remain unrepaired.
 - Stage 55 adds explicit row-metadata cue-copy features and records `ROW_METADATA_CUE_COPY_UPPER_BOUND_SOLVES_RETRIEVAL_NOT_PROMOTION`; the row family is solvable when the target-distance/congruence cue is handed to every method, including `no_position`, so this is not positional-method promotion evidence.
 - Stage 56 restricts cue-copy to visible input tokens and records `STANDARD_INPUT_CUE_COPY_PARTIAL_RETRIEVAL`; exact-offset passkey is partially repaired for `rope_relative`, but phase-cued retrieval remains weak.
+- Stage 57 adds a known support prior to visible query-token cue decoding and records `SUPPORT_AWARE_QUERY_CUE_SOLVES_PHASE_CUED_NOT_PROMOTION`; phase-cued retrieval is solvable from the query cue plus support prior, but `no_position` solves too.
 
 Not supported now:
 
@@ -65,6 +66,7 @@ Not supported now:
 - a claim that Stage 54 attention supervision repairs retrieval, proves a value-output-only bottleneck, or validates the two-block auxiliary-loss path for promotion.
 - a claim that Stage 55 is positional-method promotion evidence or that explicit row metadata is a standard decoder-only input feature.
 - a claim that Stage 56 solves the phase-cued retrieval blocker or validates a learned decoder-only transformer.
+- a claim that Stage 57 is positional-method promotion evidence or that the known support prior is a learned decoder-only transformer capability.
 
 ## Decision Outcomes
 
@@ -78,12 +80,12 @@ Until a matched transformer-style benchmark satisfies the evidence standard, the
 
 ## Next Gate
 
-The next gate should redesign the stronger matched decoder-only implementation beyond Stage 56 so the phase-cued retrieval rule is inferred from standard inputs, under the same fair RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap comparison.
+The next gate should redesign the stronger matched decoder-only implementation beyond Stage 57 so the support-aware phase-cued retrieval rule is learned from standard inputs rather than supplied as a prior, under the same fair RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap comparison.
 
 Preferred next direction:
 
 - keep RoPE/ALiBI/sinusoidal/no-position/PhaseWrap comparisons matched;
-- move from the partially generalizing one-block decoder-only gate, bounded copy-output repair, failed learned pointer-generator repair, Stage 51 plateau, Stage 52 feasibility result, Stage 53 failed hardening result, Stage 54 failed attention-supervision result, Stage 55 metadata upper bound, and Stage 56 standard-input partial repair into a redesigned retrieval-targeted decoder-only harness;
+- move from the partially generalizing one-block decoder-only gate, bounded copy-output repair, failed learned pointer-generator repair, Stage 51 plateau, Stage 52 feasibility result, Stage 53 failed hardening result, Stage 54 failed attention-supervision result, Stage 55 metadata upper bound, Stage 56 standard-input partial repair, and Stage 57 support-aware cue upper bound into a redesigned retrieval-targeted decoder-only harness;
 - report ranking and calibration even if the PhaseWrap result weakens.
 
-Because Stage 44 records the compact plateau and Stage 51 records the decoder-path plateau, another diagnostic should be justified only if it directly improves retrieval generalization in a materially stronger matched decoder-only transformer implementation. Stage 52 starts that stronger path, Stage 53 hardens it, Stage 54 adds target-attention supervision, Stage 55 proves metadata-cue solvability, and Stage 56 tests visible-token cues, but none establishes fair positional-method promotion.
+Because Stage 44 records the compact plateau and Stage 51 records the decoder-path plateau, another diagnostic should be justified only if it directly improves retrieval generalization in a materially stronger matched decoder-only transformer implementation. Stage 52 starts that stronger path, Stage 53 hardens it, Stage 54 adds target-attention supervision, Stage 55 proves metadata-cue solvability, Stage 56 tests visible-token cues, and Stage 57 adds the known support prior, but none establishes fair positional-method promotion.
