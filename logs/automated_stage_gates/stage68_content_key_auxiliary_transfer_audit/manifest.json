@@ -1,0 +1,64 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that content-key auxiliary success is equivalent to solving the original phase-cued retrieval gate",
+      "a claim that auxiliary data transfer is positional-method promotion evidence by itself",
+      "broad quantum advantage"
+    ],
+    "supported": [
+      "A no-credential auxiliary-training transfer audit for the two-block learned pointer-generator path.",
+      "Evidence about whether Stage67 visible content-key training helps the original Stage10 held-out retrieval rows.",
+      "Fair RoPE/ALiBI/sinusoidal/no-position/PhaseWrap comparisons with failed-run retention."
+    ]
+  },
+  "decision": {
+    "auxiliary_task": "content_key_retrieval",
+    "base_capacity_train_top1_threshold": 0.75,
+    "best_train_method": "sinusoidal",
+    "best_train_task": "tiny_text_fact_qa",
+    "best_train_top1": 1.0,
+    "capacity_established": true,
+    "capacity_train_top1_threshold": 0.75,
+    "claim_boundary": "Content-key auxiliary training preserves capacity but does not transfer to original held-out retrieval rows.",
+    "decision": "CONTENT_KEY_AUXILIARY_TRANSFER_WITHOUT_RETRIEVAL_GENERALIZATION",
+    "generalization_top1_threshold": 0.5,
+    "generalized_original_retrieval_tasks": [],
+    "phasewrap_retrieval_generalized_tasks": [],
+    "retrieval_best_methods": {
+      "exact_offset_passkey": "sinusoidal",
+      "phase_cued_retrieval": "alibi"
+    },
+    "retrieval_best_top1": {
+      "exact_offset_passkey": 0.033333,
+      "phase_cued_retrieval": 0.016667
+    },
+    "retrieval_generalized_tasks": [],
+    "tiny_text_best_method": "sinusoidal",
+    "tiny_text_best_top1": 0.566667
+  },
+  "failed_runs_path": "logs/automated_stage_gates/stage68_content_key_auxiliary_transfer_audit/failed_runs.json",
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope_relative",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "no_hardware_submission": true,
+  "per_run_csv_path": "logs/automated_stage_gates/stage68_content_key_auxiliary_transfer_audit/per_run_results.csv",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage68_content_key_auxiliary_transfer_audit/results.json",
+  "schema_version": "qrope_stage68_content_key_auxiliary_transfer_audit_v1",
+  "stage": "stage68_content_key_auxiliary_transfer_audit",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage68_content_key_auxiliary_transfer_audit/summary.csv",
+  "tasks": [
+    "phase_cued_retrieval",
+    "exact_offset_passkey",
+    "tiny_text_fact_qa"
+  ]
+}
