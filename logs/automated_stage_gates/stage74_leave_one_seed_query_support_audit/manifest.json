@@ -1,0 +1,67 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that a leave-one-seed lookup is a matched decoder-only transformer",
+      "a claim that cross-seed query-support recovery is positional-method promotion evidence",
+      "broad quantum advantage"
+    ],
+    "supported": [
+      "A no-credential leave-one-seed-out visible query-support diagnostic over original Stage10 rows.",
+      "Evidence about whether phase-cued support can be recovered from other seeds' standard train rows.",
+      "Fair RoPE/ALiBI/sinusoidal/no-position/PhaseWrap reporting with failed-run retention."
+    ]
+  },
+  "decision": {
+    "claim_boundary": "Cross-seed visible query-support recovery solves phase-cued retrieval for no-position too; this is not positional-method promotion.",
+    "decision": "LEAVE_ONE_SEED_QUERY_SUPPORT_SOLVES_PHASE_CUED_NOT_PROMOTION",
+    "generalization_top1_threshold": 0.5,
+    "mean_phase_cued_test_support_coverage": 1.0,
+    "no_position_solved_retrieval_tasks": [
+      "phase_cued_retrieval"
+    ],
+    "phasewrap_best_retrieval_tasks": [],
+    "retrieval_best_methods": {
+      "exact_offset_passkey": "rope_relative",
+      "phase_cued_retrieval": "rope_relative"
+    },
+    "retrieval_best_target_probability": {
+      "exact_offset_passkey": 0.401723,
+      "phase_cued_retrieval": 0.471171
+    },
+    "retrieval_best_top1": {
+      "exact_offset_passkey": 0.8,
+      "phase_cued_retrieval": 0.9
+    },
+    "retrieval_solved_tasks": [
+      "phase_cued_retrieval",
+      "exact_offset_passkey"
+    ],
+    "tiny_text_best_method": "rope_relative",
+    "tiny_text_best_top1": 1.0
+  },
+  "failed_runs_path": "logs/automated_stage_gates/stage74_leave_one_seed_query_support_audit/failed_runs.json",
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope_relative",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "no_hardware_submission": true,
+  "per_run_csv_path": "logs/automated_stage_gates/stage74_leave_one_seed_query_support_audit/per_run_results.csv",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage74_leave_one_seed_query_support_audit/results.json",
+  "schema_version": "qrope_stage74_leave_one_seed_query_support_audit_v1",
+  "stage": "stage74_leave_one_seed_query_support_audit",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage74_leave_one_seed_query_support_audit/summary.csv",
+  "tasks": [
+    "phase_cued_retrieval",
+    "exact_offset_passkey",
+    "tiny_text_fact_qa"
+  ]
+}
