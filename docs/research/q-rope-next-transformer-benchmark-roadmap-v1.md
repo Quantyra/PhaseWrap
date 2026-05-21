@@ -206,7 +206,9 @@ Stage 74 learns visible query-support maps from other seeds' train rows. It stil
 
 Until then, the supported claim remains narrower: PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible classical analyses, bounded hardware readout witnesses, and mixed but useful toy downstream evidence.
 
-The next gate should redesign the stronger matched decoder-only transformer beyond Stage 75 enough to integrate learned visible-cue recovery into the decoder path before testing positional-method promotion. Hardware witness hardening remains a separate replication track and should not displace the fair-comparison promotion path.
+Stage 76 integrates support/copy training into the token-copy objective and records `INTEGRATED_SUPPORT_COPY_HEAD_PARTIAL_RETRIEVAL`: exact-offset is partially repaired for `rope_relative`, but phase-cued retrieval returns to `0.000000` for every method.
+
+The next gate should redesign the stronger matched decoder-only transformer beyond Stage 76 enough to preserve learned visible-cue recovery inside the decoder path before testing positional-method promotion. Hardware witness hardening remains a separate replication track and should not displace the fair-comparison promotion path.
 
 ## Researcher Use Context
 
