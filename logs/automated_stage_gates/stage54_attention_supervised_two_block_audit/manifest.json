@@ -1,0 +1,62 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that target-attention supervision is standard free decoder generation",
+      "a claim that a one-seed diagnostic satisfies the five-seed promotion standard",
+      "broad quantum advantage"
+    ],
+    "supported": [
+      "A target-attention-supervised diagnostic for the Stage 52/53 two-block decoder path.",
+      "Evidence separating attention-selection repair from learned value-output retrieval success.",
+      "Fair RoPE/ALiBI/sinusoidal/no-position/PhaseWrap comparisons with train/validation/test metrics and failed-run retention."
+    ]
+  },
+  "decision": {
+    "attention_repair_threshold": 0.5,
+    "attention_repaired_tasks": [],
+    "claim_boundary": "Target-attention supervision does not establish retrieval generalization or attention repair.",
+    "decision": "ATTENTION_SUPERVISION_RETRIEVAL_REPAIR_FAILED",
+    "generalization_top1_threshold": 0.5,
+    "phasewrap_retrieval_generalized_tasks": [],
+    "retrieval_best_methods": {
+      "exact_offset_passkey": "phasewrap_bias",
+      "phase_cued_retrieval": "rope_relative"
+    },
+    "retrieval_best_target_attention": {
+      "exact_offset_passkey": 0.030917,
+      "phase_cued_retrieval": 0.01269
+    },
+    "retrieval_best_top1": {
+      "exact_offset_passkey": 0.0,
+      "phase_cued_retrieval": 0.0
+    },
+    "retrieval_generalized_tasks": [],
+    "tiny_text_best_method": "alibi",
+    "tiny_text_best_top1": 0.5
+  },
+  "failed_runs_path": "logs/automated_stage_gates/stage54_attention_supervised_two_block_audit/failed_runs.json",
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope_relative",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "no_hardware_submission": true,
+  "per_run_csv_path": "logs/automated_stage_gates/stage54_attention_supervised_two_block_audit/per_run_results.csv",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage54_attention_supervised_two_block_audit/results.json",
+  "schema_version": "qrope_stage54_attention_supervised_two_block_audit_v1",
+  "stage": "stage54_attention_supervised_two_block_audit",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage54_attention_supervised_two_block_audit/summary.csv",
+  "tasks": [
+    "phase_cued_retrieval",
+    "exact_offset_passkey",
+    "tiny_text_fact_qa"
+  ]
+}

@@ -40,6 +40,7 @@ Supported now:
 - Stage 51 audits Stages 45-50 and records `BOUND_DECODER_PATH_PLATEAU`; optimizer and output-path repairs are useful bottleneck diagnostics, but learned decoder retrieval generalization is not established and PhaseWrap does not lead a repaired retrieval lane.
 - Stage 52 moves beyond the Stage 51 plateau with a two-block residual decoder feasibility audit and records `TWO_BLOCK_TRAIN_FIT_WITHOUT_RETRIEVAL_GENERALIZATION`; train fit and tiny text-fact QA improve on the one-seed feasibility packet, but retrieval generalization remains zero.
 - Stage 53 hardens Stage 52 with more retrieval exposure and training budget and records `TWO_BLOCK_RETRIEVAL_HARDENING_FAILED`; held-out retrieval top-1 remains zero and the hardening direction weakens the tiny text-fact QA positive.
+- Stage 54 adds target-attention supervision to the Stage 52/53 two-block path and records `ATTENTION_SUPERVISION_RETRIEVAL_REPAIR_FAILED`; training attention can be raised, but held-out retrieval target attention and top-1 remain unrepaired.
 
 Not supported now:
 
@@ -59,6 +60,7 @@ Not supported now:
 - a claim that the Stage 45-50 decoder path should broaden the claim boundary after the Stage 51 plateau audit.
 - a claim that Stage 52 satisfies the five-seed promotion standard or establishes retrieval generalization.
 - a claim that Stage 53 repairs retrieval or validates the two-block hardening path for promotion.
+- a claim that Stage 54 attention supervision repairs retrieval, proves a value-output-only bottleneck, or validates the two-block auxiliary-loss path for promotion.
 
 ## Decision Outcomes
 
@@ -72,12 +74,12 @@ Until a matched transformer-style benchmark satisfies the evidence standard, the
 
 ## Next Gate
 
-The next gate should redesign the stronger matched decoder-only implementation beyond Stage 53 so retrieval generalization, not just train fit and tiny text-fact QA, can be tested under the same fair RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap comparison.
+The next gate should redesign the stronger matched decoder-only implementation beyond Stage 54 so retrieval generalization, not just train fit, tiny text-fact QA, or supervised training attention, can be tested under the same fair RoPE, ALiBI, sinusoidal, no-position, and PhaseWrap comparison.
 
 Preferred next direction:
 
 - keep RoPE/ALiBI/sinusoidal/no-position/PhaseWrap comparisons matched;
-- move from the partially generalizing one-block decoder-only gate, bounded copy-output repair, failed learned pointer-generator repair, Stage 51 plateau, Stage 52 feasibility result, and Stage 53 failed hardening result into a redesigned retrieval-targeted decoder-only harness;
+- move from the partially generalizing one-block decoder-only gate, bounded copy-output repair, failed learned pointer-generator repair, Stage 51 plateau, Stage 52 feasibility result, Stage 53 failed hardening result, and Stage 54 failed attention-supervision result into a redesigned retrieval-targeted decoder-only harness;
 - report ranking and calibration even if the PhaseWrap result weakens.
 
-Because Stage 44 records the compact plateau and Stage 51 records the decoder-path plateau, another diagnostic should be justified only if it directly improves retrieval generalization in a materially stronger matched decoder-only transformer implementation. Stage 52 starts that stronger path and Stage 53 hardens it, but neither solves retrieval.
+Because Stage 44 records the compact plateau and Stage 51 records the decoder-path plateau, another diagnostic should be justified only if it directly improves retrieval generalization in a materially stronger matched decoder-only transformer implementation. Stage 52 starts that stronger path, Stage 53 hardens it, and Stage 54 adds target-attention supervision, but none solves held-out retrieval.
