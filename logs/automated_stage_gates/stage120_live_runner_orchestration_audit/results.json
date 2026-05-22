@@ -1,0 +1,87 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "real provider result records",
+      "Stage 113 evidence assembly",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "runner orchestration can load Stage 118 payload inputs before live submission",
+      "runner guard has a result-contract validation path before writing Stage 114 provider results",
+      "CLI still refuses live submission without an explicit provider adapter"
+    ]
+  },
+  "decision": "LIVE_RUNNER_ORCHESTRATION_READY_ADAPTER_REQUIRED",
+  "job_count": 496,
+  "missing_source_artifacts": [],
+  "next_gate": "Implement provider SDK adapters for IBM Runtime and Amazon Braket, clear Stage 106/111 readiness, then run guarded live submissions with --allow-live-submit.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "ready_runner_count": 4,
+  "runner_count": 4,
+  "runner_records": [
+    {
+      "accepts_stage118_results": true,
+      "has_allow_live_submit_flag": true,
+      "job_count": 84,
+      "missing_evidence": [],
+      "provider": "amazon_braket",
+      "ready": true,
+      "runner_command": "python scripts/provider_runners/run_amazon_braket_stage112_jobs.py --job-shard logs/automated_stage_gates/stage114_provider_result_capture_contract/job_shards/amazon_braket/amazon_braket__independent_window_00/jobs.jsonl --provider-results logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_00/provider_job_results.jsonl",
+      "runner_script": "scripts/provider_runners/run_amazon_braket_stage112_jobs.py",
+      "stage116_status": "blocked",
+      "window_id": "amazon_braket__independent_window_00"
+    },
+    {
+      "accepts_stage118_results": true,
+      "has_allow_live_submit_flag": true,
+      "job_count": 84,
+      "missing_evidence": [],
+      "provider": "amazon_braket",
+      "ready": true,
+      "runner_command": "python scripts/provider_runners/run_amazon_braket_stage112_jobs.py --job-shard logs/automated_stage_gates/stage114_provider_result_capture_contract/job_shards/amazon_braket/amazon_braket__independent_window_01/jobs.jsonl --provider-results logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_01/provider_job_results.jsonl",
+      "runner_script": "scripts/provider_runners/run_amazon_braket_stage112_jobs.py",
+      "stage116_status": "blocked",
+      "window_id": "amazon_braket__independent_window_01"
+    },
+    {
+      "accepts_stage118_results": true,
+      "has_allow_live_submit_flag": true,
+      "job_count": 164,
+      "missing_evidence": [],
+      "provider": "ibm_runtime",
+      "ready": true,
+      "runner_command": "python scripts/provider_runners/run_ibm_runtime_stage112_jobs.py --job-shard logs/automated_stage_gates/stage114_provider_result_capture_contract/job_shards/ibm_runtime/ibm_runtime__independent_window_00/jobs.jsonl --provider-results logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_00/provider_job_results.jsonl",
+      "runner_script": "scripts/provider_runners/run_ibm_runtime_stage112_jobs.py",
+      "stage116_status": "blocked",
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "accepts_stage118_results": true,
+      "has_allow_live_submit_flag": true,
+      "job_count": 164,
+      "missing_evidence": [],
+      "provider": "ibm_runtime",
+      "ready": true,
+      "runner_command": "python scripts/provider_runners/run_ibm_runtime_stage112_jobs.py --job-shard logs/automated_stage_gates/stage114_provider_result_capture_contract/job_shards/ibm_runtime/ibm_runtime__independent_window_01/jobs.jsonl --provider-results logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_01/provider_job_results.jsonl",
+      "runner_script": "scripts/provider_runners/run_ibm_runtime_stage112_jobs.py",
+      "stage116_status": "blocked",
+      "window_id": "ibm_runtime__independent_window_01"
+    }
+  ],
+  "schema_version": "qrope_stage120_live_runner_orchestration_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage116_provider_runner_plan/results.json",
+    "logs/automated_stage_gates/stage118_provider_payload_dry_run_audit/results.json",
+    "logs/automated_stage_gates/stage119_provider_result_rehearsal_audit/results.json"
+  ],
+  "stage": "stage120_live_runner_orchestration_audit",
+  "stage116_decision": "PROVIDER_RUNNER_PLAN_PREPARED_EXECUTION_BLOCKED",
+  "stage118_decision": "PROVIDER_PAYLOAD_DRY_RUN_COMPILED_EXECUTION_BLOCKED",
+  "stage119_decision": "PROVIDER_RESULT_REHEARSAL_READY_EXECUTION_BLOCKED",
+  "status": "completed"
+}
