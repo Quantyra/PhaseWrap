@@ -1,0 +1,41 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "Stage 113 evidence assembly",
+      "Stage 101 calibration verification",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "validation and collection of Stage 114 provider/window result JSONL shards",
+      "duplicate, unknown, missing, and empty-count result detection before Stage 113 assembly",
+      "optional generation of the single Stage 113 provider_job_results.jsonl input"
+    ]
+  },
+  "decision": "PROVIDER_RESULTS_COLLECTION_BLOCKED_RESULTS_MISSING",
+  "expected_job_count": 496,
+  "invalid_result_record_count": 0,
+  "missing_job_count": 496,
+  "missing_source_artifacts": [],
+  "next_gate": "Populate every Stage 114 provider result shard, rerun this collector with --write-stage113-input, then run Stage 113 with --write-evidence.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "ready_shard_count": 0,
+  "result_path": "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+  "result_record_count": 0,
+  "schema_version": "qrope_stage115_provider_result_collector_v1",
+  "secret_values_recorded": false,
+  "shard_count": 4,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage114_provider_result_capture_contract/manifest.json"
+  ],
+  "stage": "stage115_provider_result_collector",
+  "stage113_provider_results_path": "logs/automated_stage_gates/stage113_job_result_evidence_assembler/provider_job_results.jsonl",
+  "stage114_decision": "PROVIDER_RESULT_CAPTURE_CONTRACT_PREPARED_RESULTS_REQUIRED",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage115_provider_result_collector/summary.csv",
+  "write_stage113_input": false,
+  "wrote_stage113_input": false
+}
