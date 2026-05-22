@@ -1,0 +1,47 @@
+{
+  "approval_phrase_matches": false,
+  "approval_phrase_required": "APPROVE IBM RUNTIME REDUCED SCOPE STAGE199 LIVE RUN",
+  "blockers": [
+    "reduced_scope_credit_attestation_not_accepted"
+  ],
+  "budget_cap_usd": 25.0,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider-side IBM credit balance verification",
+      "creation of a runnable live-submit command",
+      "approval for the original full 4096-shot scope",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "reduced-scope exact approval phrase is isolated from credit attestation",
+      "approval phrase matching is only accepted after Stage200 records exact credit attestation",
+      "successful review permits only later reduced-scope live-runner preparation review"
+    ]
+  },
+  "decision": "REDUCED_SCOPE_EXACT_APPROVAL_REVIEW_BLOCKED_CREDIT_ATTESTATION_REQUIRED",
+  "estimated_total_job_count": 324,
+  "estimated_total_shots": 659360,
+  "explicit_user_approval_required": true,
+  "hardware_scope_label": "reduced_precision_all_lanes_2048_shots_v1",
+  "human_credit_allowance_verified": false,
+  "live_submit_command_created": false,
+  "missing_source_artifacts": [],
+  "next_gate": "Resolve Stage200 credit attestation first. If the exact reduced-scope approval phrase is then provided, rerun Stage201 and proceed only to reduced-scope live-runner preparation review, not direct submission.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provided_approval_phrase_present": false,
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage201_reduced_scope_exact_approval_review/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage201_reduced_scope_exact_approval_review_v1",
+  "scope_id": "all_lanes_half_shots_2048",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage200_reduced_scope_attestation_intake/results.json"
+  ],
+  "stage": "stage201_reduced_scope_exact_approval_review",
+  "stage200_decision": "REDUCED_SCOPE_ATTESTATION_INTAKE_AWAITING_EXACT_PHRASE",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage201_reduced_scope_exact_approval_review/summary.csv"
+}
