@@ -1,0 +1,37 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "completed provider result records",
+      "Stage 113 evidence assembly",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "a provider/window runner plan over Stage 114 job shards",
+      "explicit execution blockers inherited from Stage 111 provider readiness",
+      "stable provider result output paths for Stage 115 collection"
+    ]
+  },
+  "decision": "PROVIDER_RUNNER_PLAN_PREPARED_EXECUTION_BLOCKED",
+  "job_count": 496,
+  "missing_source_artifacts": [],
+  "next_gate": "Clear Stage 111 provider readiness, then execute only the declared runner commands and collect their result files through Stage 115.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "ready_runner_count": 0,
+  "result_path": "logs/automated_stage_gates/stage116_provider_runner_plan/results.json",
+  "runner_count": 4,
+  "schema_version": "qrope_stage116_provider_runner_plan_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage111_provider_sdk_backend_discovery/results.json",
+    "logs/automated_stage_gates/stage114_provider_result_capture_contract/manifest.json"
+  ],
+  "stage": "stage116_provider_runner_plan",
+  "stage111_decision": "PROVIDER_SDK_BACKEND_DISCOVERY_BLOCKED",
+  "stage114_decision": "PROVIDER_RESULT_CAPTURE_CONTRACT_PREPARED_RESULTS_REQUIRED",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage116_provider_runner_plan/summary.csv"
+}
