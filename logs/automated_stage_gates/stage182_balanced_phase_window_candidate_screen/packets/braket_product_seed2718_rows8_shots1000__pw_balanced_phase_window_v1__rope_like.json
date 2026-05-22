@@ -1,0 +1,309 @@
+{
+  "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+  "claim_boundary": "Balanced phase-window candidate packet for simulated IBM-informed screening only; not a hardware robustness result.",
+  "design_family_id": "pw_balanced_phase_window_v1",
+  "encoding_family": "rope_like",
+  "execution_status": "not_submitted",
+  "fixed_width": {
+    "active_qubits": 2,
+    "circuit_template": "two_ry_product_state_z_readout_v1",
+    "entangling_gate": null,
+    "measured_qubits": 2,
+    "readout": "computational_basis",
+    "score_observable": "0.5 + 0.25 * (E[Z0] + E[Z1])"
+  },
+  "matching_policy": {
+    "component_transform": "balanced normalized delta window applied before RY preparation",
+    "control_policy": "no-position control remains the preregistered zero-component control",
+    "hardware_scope": "simulated candidate screen only; not hardware evidence",
+    "qubit_count": "fixed at two measured qubits",
+    "row_set": "identical source rows across all encoding families within each redesigned lane"
+  },
+  "no_hardware_submission": true,
+  "packet_hash": "676616721aadb346c24d2eb0c03064a2bc0ec11df67f68e9c78ccc09a88f8590",
+  "packet_id": "braket_product_seed2718_rows8_shots1000__pw_balanced_phase_window_v1__rope_like",
+  "packet_version": "qrope_stage182_balanced_phase_window_candidate_packet_v1",
+  "provider": "amazon_braket",
+  "provider_credentials_required": false,
+  "row_count": 8,
+  "rows": [
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.07853981634,
+        "ry_q1": 0.03926990817,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.996917333733,
+        "z1_target": 0.999229036241
+      },
+      "components": {
+        "component_a": 0.996917333733,
+        "component_b": 0.999229036241
+      },
+      "delta": -6.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.999036592493
+      },
+      "normalized_delta": -0.1,
+      "row_hash": "63e84fdc2035c4d5820c6329dd9f428d7eb866805ec9ac46ab1591e1a1b31ca5",
+      "row_id": "hwrow-000",
+      "source": {
+        "candidate_delta": -16,
+        "context_id": "s2718_r025_1",
+        "quadrant": "00",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:0 q_pos:69 ref_key_pos:91 cand_key_pos:85 ref_delta:-22 cand_delta:-16 q_tok:C ref_tok:D cand_tok:A"
+      },
+      "source_row_hash": "40e07c42cbb37f5a54eab9d9679e8d7be3621b53b11e24c30e27bb3cf4d0a2b3"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.157079632679,
+        "ry_q1": 0.07853981634,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.987688340595,
+        "z1_target": 0.996917333733
+      },
+      "components": {
+        "component_a": 0.987688340595,
+        "component_b": 0.996917333733
+      },
+      "delta": -12.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.996151418582
+      },
+      "normalized_delta": -0.2,
+      "row_hash": "6617bfbecef0ab5f89c09bae570a461c03eb6508567541e62bc90e07dc863218",
+      "row_id": "hwrow-001",
+      "source": {
+        "candidate_delta": -10,
+        "context_id": "s2718_r025_1",
+        "quadrant": "01",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:1 q_pos:69 ref_key_pos:91 cand_key_pos:79 ref_delta:-22 cand_delta:-10 q_tok:C ref_tok:D cand_tok:B"
+      },
+      "source_row_hash": "1accfdbf8160d8d1fc07d1a41f4b10277f0293500b6b0d1aeaaa1ba1387fc3b4"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.10471975512,
+        "ry_q1": 0.05235987756,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.994521895368,
+        "z1_target": 0.998629534755
+      },
+      "components": {
+        "component_a": 0.994521895368,
+        "component_b": 0.998629534755
+      },
+      "delta": 8.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.998287857531
+      },
+      "normalized_delta": 0.133333333333,
+      "row_hash": "66527f1d76516a11947240e4026e38edad6b0f47a9874da1f282def89c92b3f9",
+      "row_id": "hwrow-002",
+      "source": {
+        "candidate_delta": -30,
+        "context_id": "s2718_r025_1",
+        "quadrant": "10",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:2 q_pos:69 ref_key_pos:91 cand_key_pos:99 ref_delta:-22 cand_delta:-30 q_tok:C ref_tok:D cand_tok:C"
+      },
+      "source_row_hash": "39674c90d631c91e0d7a38f99b96765e582800a7f25239b29a369f62db37753a"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.314159265359,
+        "ry_q1": 0.157079632679,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.951056516295,
+        "z1_target": 0.987688340595
+      },
+      "components": {
+        "component_a": 0.951056516295,
+        "component_b": 0.987688340595
+      },
+      "delta": 24.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.984686214223
+      },
+      "normalized_delta": 0.4,
+      "row_hash": "8c209bfdc7c80debd7328d5c4d36464be39213f0ac8ea78b66d5c6ec1aaa7629",
+      "row_id": "hwrow-003",
+      "source": {
+        "candidate_delta": -46,
+        "context_id": "s2718_r025_1",
+        "quadrant": "11",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:3 q_pos:69 ref_key_pos:91 cand_key_pos:115 ref_delta:-22 cand_delta:-46 q_tok:C ref_tok:D cand_tok:D"
+      },
+      "source_row_hash": "907ebca92293117718d292b9d2d9b3cb99458a577a057c1a855686df834ec08d"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.379609112309,
+        "ry_q1": 0.189804556154,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.928809552872,
+        "z1_target": 0.98204112767
+      },
+      "components": {
+        "component_a": 0.928809552872,
+        "component_b": 0.98204112767
+      },
+      "delta": 29.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.977712670136
+      },
+      "normalized_delta": 0.483333333333,
+      "row_hash": "34812b3679f64a65f978dec5683432f5c29017d7e5c0ffa48200519edeb87119",
+      "row_id": "hwrow-004",
+      "source": {
+        "candidate_delta": -44,
+        "context_id": "s2718_r032_0",
+        "quadrant": "00",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:0 q_pos:68 ref_key_pos:83 cand_key_pos:112 ref_delta:-15 cand_delta:-44 q_tok:A ref_tok:B cand_tok:C"
+      },
+      "source_row_hash": "4878cc997ae79fb8bb4c2e4f7985afb97edf780a3f23db120ae71b43effe599c"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.785398163397,
+        "ry_q1": 0.392699081699,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.707106781187,
+        "z1_target": 0.923879532511
+      },
+      "components": {
+        "component_a": 0.707106781187,
+        "component_b": 0.923879532511
+      },
+      "delta": -60.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.907746578424
+      },
+      "normalized_delta": -1.0,
+      "row_hash": "e97bba6f542d87bc25ce2d3bbc441f398dca323afa2f7c48df4af15d8a1c3402",
+      "row_id": "hwrow-005",
+      "source": {
+        "candidate_delta": 45,
+        "context_id": "s2718_r032_0",
+        "quadrant": "01",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:1 q_pos:68 ref_key_pos:83 cand_key_pos:23 ref_delta:-15 cand_delta:45 q_tok:A ref_tok:B cand_tok:D"
+      },
+      "source_row_hash": "e69de7399d7800eeb95b2f899a3742eaf117b13d2ba8a49c2b788b220e2494d0"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.10471975512,
+        "ry_q1": 0.05235987756,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.994521895368,
+        "z1_target": 0.998629534755
+      },
+      "components": {
+        "component_a": 0.994521895368,
+        "component_b": 0.998629534755
+      },
+      "delta": 8.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.998287857531
+      },
+      "normalized_delta": 0.133333333333,
+      "row_hash": "13fcc0143c4402d75b917d7f13213daed71779ad16ea3e88526b6243fd9ca572",
+      "row_id": "hwrow-006",
+      "source": {
+        "candidate_delta": -23,
+        "context_id": "s2718_r032_0",
+        "quadrant": "10",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:2 q_pos:68 ref_key_pos:83 cand_key_pos:91 ref_delta:-15 cand_delta:-23 q_tok:A ref_tok:B cand_tok:A"
+      },
+      "source_row_hash": "17139a45f7fdf260bbc7037507b45a8fe9664a0e7d0a0bfb35f8d3a6322bd2cc"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.628318530718,
+        "ry_q1": 0.314159265359,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.809016994375,
+        "z1_target": 0.951056516295
+      },
+      "components": {
+        "component_a": 0.809016994375,
+        "component_b": 0.951056516295
+      },
+      "delta": -48.0,
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "encoding_family": "rope_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.940018377668
+      },
+      "normalized_delta": -0.8,
+      "row_hash": "e4c7319f490c3836a51f8e4d07482150193a70f19048e4618d53d0e368376bc7",
+      "row_id": "hwrow-007",
+      "source": {
+        "candidate_delta": 33,
+        "context_id": "s2718_r032_0",
+        "quadrant": "11",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:3 q_pos:68 ref_key_pos:83 cand_key_pos:35 ref_delta:-15 cand_delta:33 q_tok:A ref_tok:B cand_tok:B"
+      },
+      "source_row_hash": "9c5f244fd71332b37e033dcf1a4ff1c8d2048251a29120789a89c1614066e768"
+    }
+  ],
+  "schema_version": "qrope_stage182_balanced_phase_window_candidate_screen_v1",
+  "shot_count": 1000,
+  "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+  "source_packet_path": "logs/automated_stage_gates/stage4_preregistered_replication_packets/braket_product_seed2718_rows8_shots1000.json",
+  "source_row_set_hash": "68afb1a5d75f0b5bbc2327d81163c19372a379e90accba3e0be086d54357d293",
+  "source_stage": "stage4_preregistered_replication_packets"
+}
