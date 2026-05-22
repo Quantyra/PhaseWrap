@@ -69,6 +69,8 @@ Stage 26 provides a useful compact content-key QA packet. Stage 27 adds a compac
 
 Stage 80 update: recovered support routed into farthest-congruent token selection repairs phase-cued retrieval at top-1 `1.000000` for every method, including `no_position`. This is support-to-token coupling evidence, not positional-method promotion; the next learned decoder gate must learn that routing from standard inputs and loss rather than hard-coding it.
 
+Stage 81 update: learned support probabilities can replace Stage 80's hard support argmax and still repair phase-cued retrieval at top-1 `1.000000` for every method, including `no_position`. The remaining non-learned part is the farthest-congruent routing rule itself, so the next gate should learn that routing inside a matched decoder path.
+
 ## PhaseWrap Mechanism Requirements
 
 The PhaseWrap variant should be implemented as a positional mechanism comparable to RoPE or ALiBI, not as a scalar oracle feature.
@@ -218,7 +220,9 @@ Stage 79 restores same-seed support-complete exposure and records `SUPPORT_COMPL
 
 Stage 80 routes recovered support into farthest-congruent token selection and records `SUPPORT_ROUTED_TOKEN_SELECTOR_SOLVES_PHASE_CUED_NOT_PROMOTION`: phase-cued retrieval is repaired for every method, including `no_position`, so the repair is a coupling diagnostic rather than positional-method promotion.
 
-The next gate should redesign the stronger matched decoder-only transformer so it learns the support-to-token routing from standard inputs and loss before testing positional-method promotion. Hardware witness hardening remains a separate replication track and should not displace the fair-comparison promotion path.
+Stage 81 routes learned support probabilities into farthest-congruent token selection and records `SOFT_SUPPORT_ROUTED_TOKEN_SELECTOR_SOLVES_PHASE_CUED_NOT_PROMOTION`: the repair survives soft support uncertainty, but still solves for `no_position`.
+
+The next gate should redesign the stronger matched decoder-only transformer so it learns the farthest-congruent support-to-token routing from standard inputs and loss before testing positional-method promotion. Hardware witness hardening remains a separate replication track and should not displace the fair-comparison promotion path.
 
 ## Researcher Use Context
 
