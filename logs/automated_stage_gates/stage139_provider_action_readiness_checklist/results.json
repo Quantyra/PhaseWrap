@@ -1,0 +1,121 @@
+{
+  "authorized_runner_count": 0,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "live provider SDK client creation",
+      "real provider result records",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "provider-level non-secret action checklist derived from Stage 130 remediation and Stage 133 runner commands",
+      "ready/not-ready live-runner execution status per provider",
+      "explicit preservation of the Stage 138 no-claim boundary while provider execution is blocked"
+    ]
+  },
+  "decision": "PROVIDER_ACTION_CHECKLIST_READY_EXECUTION_BLOCKED",
+  "live_ready_provider_count": 0,
+  "missing_source_artifacts": [],
+  "next_gate": "Complete the listed provider actions, rerun the remediation sequence, then execute only Stage 133 commands that report command_authorized=true before Stage 115 collection and Stage 138 objective gating.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "prepared_job_count": 496,
+  "prepared_runner_count": 4,
+  "provider_count": 2,
+  "provider_credentials_required": true,
+  "provider_records": [
+    {
+      "action_count": 6,
+      "actions": [
+        "Set or verify non-committed provider configuration for Stage 106.",
+        "Required provider env groups: AWS_ACCESS_KEY_ID or AWS_PROFILE; QROPE_BRAKET_DEVICE_ARN or QROPE_BRAKET_DEVICE_ARNS; QROPE_BRAKET_OUTPUT_S3_BUCKET; QROPE_BRAKET_AWS_REGION or AWS_REGION.",
+        "Required common env groups: QROPE_HARDWARE_BUDGET_USD_CAP; QROPE_HARDWARE_QUEUE_DEPTH_CAP.",
+        "Install or expose missing provider SDK modules: boto3, braket.",
+        "Rerun Stage 129 and execute only Stage 133 command records with command_authorized=true for this provider.",
+        "After remediation reruns, execute only Stage 133 command records with command_authorized=true."
+      ],
+      "authorized_runner_command_count": 0,
+      "cutover_authorized": false,
+      "first_blocker": "stage106:backend_selection_missing",
+      "prepared_job_count": 168,
+      "provider": "amazon_braket",
+      "ready_for_live_runner_execution": false,
+      "required_common_env": [
+        "QROPE_HARDWARE_BUDGET_USD_CAP",
+        "QROPE_HARDWARE_QUEUE_DEPTH_CAP"
+      ],
+      "required_provider_env": [
+        "AWS_ACCESS_KEY_ID or AWS_PROFILE",
+        "QROPE_BRAKET_DEVICE_ARN or QROPE_BRAKET_DEVICE_ARNS",
+        "QROPE_BRAKET_OUTPUT_S3_BUCKET",
+        "QROPE_BRAKET_AWS_REGION or AWS_REGION"
+      ],
+      "runner_command_count": 2,
+      "sdk_modules": {
+        "boto3": false,
+        "braket": false
+      },
+      "stage106_status": "blocked",
+      "stage111_status": "blocked",
+      "stage128_ready": true
+    },
+    {
+      "action_count": 5,
+      "actions": [
+        "Set or verify non-committed provider configuration for Stage 106.",
+        "Required provider env groups: IBM_QUANTUM_TOKEN or QISKIT_IBM_TOKEN; QROPE_IBM_BACKEND or QROPE_HARDWARE_BACKEND; IBM_QUANTUM_INSTANCE_CRN.",
+        "Required common env groups: QROPE_HARDWARE_BUDGET_USD_CAP; QROPE_HARDWARE_QUEUE_DEPTH_CAP.",
+        "Rerun Stage 129 and execute only Stage 133 command records with command_authorized=true for this provider.",
+        "After remediation reruns, execute only Stage 133 command records with command_authorized=true."
+      ],
+      "authorized_runner_command_count": 0,
+      "cutover_authorized": false,
+      "first_blocker": "stage106:ibm_instance_crn_missing",
+      "prepared_job_count": 328,
+      "provider": "ibm_runtime",
+      "ready_for_live_runner_execution": false,
+      "required_common_env": [
+        "QROPE_HARDWARE_BUDGET_USD_CAP",
+        "QROPE_HARDWARE_QUEUE_DEPTH_CAP"
+      ],
+      "required_provider_env": [
+        "IBM_QUANTUM_TOKEN or QISKIT_IBM_TOKEN",
+        "QROPE_IBM_BACKEND or QROPE_HARDWARE_BACKEND",
+        "IBM_QUANTUM_INSTANCE_CRN"
+      ],
+      "runner_command_count": 2,
+      "sdk_modules": {
+        "qiskit": true,
+        "qiskit_ibm_runtime": true
+      },
+      "stage106_status": "blocked",
+      "stage111_status": "blocked",
+      "stage128_ready": true
+    }
+  ],
+  "rerun_sequence": [
+    "python scripts/run_stage106_hardware_execution_preflight.py",
+    "python scripts/run_stage111_provider_sdk_backend_discovery.py",
+    "python scripts/run_stage128_sdk_client_factory_audit.py",
+    "python scripts/run_stage129_live_cutover_authorization_audit.py",
+    "python scripts/run_stage130_live_cutover_remediation_packet.py",
+    "python scripts/run_stage132_guarded_sdk_factory_implementation_audit.py",
+    "python scripts/run_stage116_provider_runner_plan.py",
+    "python scripts/run_stage120_live_runner_orchestration_audit.py",
+    "python scripts/run_stage133_authorized_runner_command_packet.py"
+  ],
+  "schema_version": "qrope_stage139_provider_action_readiness_checklist_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage130_live_cutover_remediation_packet/results.json",
+    "logs/automated_stage_gates/stage133_authorized_runner_command_packet/results.json",
+    "logs/automated_stage_gates/stage138_objective_claim_gate/results.json"
+  ],
+  "stage": "stage139_provider_action_readiness_checklist",
+  "stage130_decision": "LIVE_CUTOVER_REMEDIATION_PACKET_READY_EXECUTION_BLOCKED",
+  "stage133_decision": "AUTHORIZED_RUNNER_COMMANDS_PREPARED_EXECUTION_BLOCKED",
+  "stage138_decision": "OBJECTIVE_CLAIM_GATE_BLOCKED_EVIDENCE_INCOMPLETE",
+  "status": "completed",
+  "total_action_count": 11
+}
