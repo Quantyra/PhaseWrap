@@ -1,0 +1,90 @@
+{
+  "blockers": [],
+  "candidate_group_count": 6,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "a final noisy-hardware robustness or auditability conclusion",
+      "credit, billing, or provider-account validation"
+    ],
+    "supported": [
+      "fixed-width replacement-semantics packet generation and simulated IBM-informed screen",
+      "matched nonzero null/control exposure replaced the zero-component no-position control",
+      "hardware GO/NO-GO evidence under the preregistered normalized noise-sensitivity metric"
+    ]
+  },
+  "comparison_group_count": 12,
+  "decision": "REPLACEMENT_SEMANTICS_SIM_SUPPORTS_HARDWARE_REOPEN",
+  "expected_packet_count": 30,
+  "hardware_path_status": "current_ibm_328_job_run_remains_archived",
+  "ibm_backend_properties_informed": true,
+  "metric_record_count": 60,
+  "missing_source_artifacts": [],
+  "missing_source_packets": [],
+  "next_gate": "If this simulated screen fails, keep hardware archived and reassess whether to stop the fixed-width hardware path; if it passes, perform a separate human-reviewed hardware readiness gate before any provider action.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "packet_count": 30,
+  "packet_paths": [
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_product_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/ibm_cx_seed577_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_cx_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__phasewrap.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_cx_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__rope_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_cx_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_cx_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__alibi_like.json",
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/packets/braket_cx_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control.json"
+  ],
+  "primary_noise_model_ids": [
+    "ibm_backend_median_stochastic",
+    "ibm_backend_p75_stochastic"
+  ],
+  "provider_credentials_required": false,
+  "reopen_candidate_count": 5,
+  "result_path": "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage188_replacement_semantics_packet_screen_v1",
+  "secret_values_recorded": false,
+  "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+  "simulated_only": true,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage177_ibm_backend_informed_noise_probe/results.json",
+    "logs/automated_stage_gates/stage187_replacement_semantics_preregistration/results.json"
+  ],
+  "stability_thresholds": {
+    "coherent_proxy_only_may_reopen_hardware": false,
+    "min_best_positional_margin_shot_quanta": 2.0,
+    "min_independent_seed_pairs": 2,
+    "min_matched_null_margin_shot_quanta": 2.0,
+    "min_stable_templates": 2,
+    "required_primary_noise_models": [
+      "ibm_backend_median_stochastic",
+      "ibm_backend_p75_stochastic"
+    ]
+  },
+  "stage": "stage188_replacement_semantics_packet_screen",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/summary.csv"
+}

@@ -1,0 +1,579 @@
+{
+  "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+  "encoding_family": "alibi_like",
+  "execution_status": "not_submitted",
+  "fixed_width": {
+    "active_qubits": 2,
+    "circuit_template": "two_ry_product_state_z_readout_v1",
+    "entangling_gate": null,
+    "measured_qubits": 2,
+    "readout": "computational_basis",
+    "score_observable": "0.5 + 0.25 * (E[Z0] + E[Z1])"
+  },
+  "matching_policy": {
+    "control_policy": "matched nonzero null exposure using PhaseWrap absolute exposure with frozen row-hash signs",
+    "hardware_scope": "simulated packet screen only; not hardware evidence",
+    "metric_policy": "normalized noise-sensitivity delta and matched-null margin",
+    "row_set": "identical source rows across all encoding families within each replacement-semantics lane"
+  },
+  "no_hardware_submission": true,
+  "packet_hash": "c8d397f00f7529a952fa7b15101bf351b607405e8964d05050a8573d38d9b07b",
+  "packet_id": "ibm_product_seed314_rows16_shots4096__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
+  "packet_version": "qrope_stage188_replacement_semantics_packet_v1",
+  "provider": "ibm_runtime",
+  "provider_credentials_required": false,
+  "row_count": 16,
+  "rows": [
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.161624711583,
+        "ry_q1": 1.161624711583,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.397849462366,
+        "z1_target": 0.397849462366
+      },
+      "component_exposure": 0.198924731183,
+      "components": {
+        "component_a": 0.397849462366,
+        "component_b": 0.397849462366
+      },
+      "delta": 28.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.698924731183
+      },
+      "row_hash": "c28b8682e085cbe60cc80b6c97fca0ae07889002bee843c02e1aa8398b4d8868",
+      "row_id": "hwrow-000",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -47,
+        "context_id": "s314_r028_1",
+        "quadrant": "00",
+        "reference_delta": -19,
+        "seed": 314,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s314_r028_1 slot:0 q_pos:65 ref_key_pos:84 cand_key_pos:112 ref_delta:-19 cand_delta:-47 q_tok:B ref_tok:C cand_tok:D"
+      },
+      "source_row_hash": "6f4ec996df3ec22a125f2cf32d3382c32fed82657af52963b4289cb0026fc621"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.365046656808,
+        "ry_q1": 1.365046656808,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.204301075269,
+        "z1_target": 0.204301075269
+      },
+      "component_exposure": 0.102150537634,
+      "components": {
+        "component_a": 0.204301075269,
+        "component_b": 0.204301075269
+      },
+      "delta": -37.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.602150537634
+      },
+      "row_hash": "41044dc108ad4fad05f4c0d474e7003e6d3a1929c800d6ea2944ebd708595f37",
+      "row_id": "hwrow-001",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 18,
+        "context_id": "s314_r028_1",
+        "quadrant": "01",
+        "reference_delta": -19,
+        "seed": 314,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s314_r028_1 slot:1 q_pos:65 ref_key_pos:84 cand_key_pos:47 ref_delta:-19 cand_delta:18 q_tok:B ref_tok:C cand_tok:A"
+      },
+      "source_row_hash": "32f30f2da41de9bfdf2fd81760b127cf1ccb8cc2d1e6eff0dc9934abc3cf783a"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.253680015556,
+        "ry_q1": 1.253680015556,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.311827956989,
+        "z1_target": 0.311827956989
+      },
+      "component_exposure": 0.155913978495,
+      "components": {
+        "component_a": 0.311827956989,
+        "component_b": 0.311827956989
+      },
+      "delta": -32.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.655913978495
+      },
+      "row_hash": "d118728f3f04da601ee0bb2577be774cd84e5f44575dda0308b9bea787276c81",
+      "row_id": "hwrow-002",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 13,
+        "context_id": "s314_r028_1",
+        "quadrant": "10",
+        "reference_delta": -19,
+        "seed": 314,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s314_r028_1 slot:2 q_pos:65 ref_key_pos:84 cand_key_pos:52 ref_delta:-19 cand_delta:13 q_tok:B ref_tok:C cand_tok:B"
+      },
+      "source_row_hash": "93b00e353d1dfa0f6237f0fbb535cc3657a775569c219cae348409db9f7b22c9"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.603059988463,
+        "ry_q1": 1.603059988463,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -0.032258064516,
+        "z1_target": -0.032258064516
+      },
+      "component_exposure": 0.016129032258,
+      "components": {
+        "component_a": -0.032258064516,
+        "component_b": -0.032258064516
+      },
+      "delta": -48.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.483870967742
+      },
+      "row_hash": "c61dbd1152888bda54c53c1c4efea4083deae8421d700effe951fd16196b9bb2",
+      "row_id": "hwrow-003",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 29,
+        "context_id": "s314_r028_1",
+        "quadrant": "11",
+        "reference_delta": -19,
+        "seed": 314,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s314_r028_1 slot:3 q_pos:65 ref_key_pos:84 cand_key_pos:36 ref_delta:-19 cand_delta:29 q_tok:B ref_tok:C cand_tok:C"
+      },
+      "source_row_hash": "4a713610876407d37fe3479beb3c69d673581020abc2fbda05b26d0425e55217"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 3.14159265359,
+        "ry_q1": 3.14159265359,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -1.0,
+        "z1_target": -1.0
+      },
+      "component_exposure": 0.5,
+      "components": {
+        "component_a": -1.0,
+        "component_b": -1.0
+      },
+      "delta": -93.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.0
+      },
+      "row_hash": "9ed0b8e6e9da41c0dbc9197d8d7a97294f53765e26fe535b7fae8940ad9fec59",
+      "row_id": "hwrow-004",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 46,
+        "context_id": "s314_r000_0",
+        "quadrant": "00",
+        "reference_delta": -47,
+        "seed": 314,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s314_r000_0 slot:0 q_pos:64 ref_key_pos:111 cand_key_pos:18 ref_delta:-47 cand_delta:46 q_tok:A ref_tok:B cand_tok:C"
+      },
+      "source_row_hash": "33c348f333f9cd4cb7ff8a162147f4f7d2eae4df53b9dc85d5f13f93976f22ac"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.320891412973,
+        "ry_q1": 1.320891412973,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.247311827957,
+        "z1_target": 0.247311827957
+      },
+      "component_exposure": 0.123655913978,
+      "components": {
+        "component_a": 0.247311827957,
+        "component_b": 0.247311827957
+      },
+      "delta": -35.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.623655913978
+      },
+      "row_hash": "75c75b037d7425228d14670882cf1f6eebe5a375836221dd5c8581f1f390b286",
+      "row_id": "hwrow-005",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -12,
+        "context_id": "s314_r000_0",
+        "quadrant": "01",
+        "reference_delta": -47,
+        "seed": 314,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s314_r000_0 slot:1 q_pos:64 ref_key_pos:111 cand_key_pos:76 ref_delta:-47 cand_delta:-12 q_tok:A ref_tok:B cand_tok:D"
+      },
+      "source_row_hash": "8ecb9d49f3767fe19b81797175c7d4c83c94538815f9d309f70b3f0a9a5e4f85"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.59534158482,
+        "ry_q1": 0.59534158482,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.827956989247,
+        "z1_target": 0.827956989247
+      },
+      "component_exposure": 0.413978494624,
+      "components": {
+        "component_a": 0.827956989247,
+        "component_b": 0.827956989247
+      },
+      "delta": -8.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.913978494624
+      },
+      "row_hash": "1075b9ccce4b7caabb9bb274a4bcd9bc74472ea9ad1c312033f8d97421d9383c",
+      "row_id": "hwrow-006",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -39,
+        "context_id": "s314_r000_0",
+        "quadrant": "10",
+        "reference_delta": -47,
+        "seed": 314,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s314_r000_0 slot:2 q_pos:64 ref_key_pos:111 cand_key_pos:103 ref_delta:-47 cand_delta:-39 q_tok:A ref_tok:B cand_tok:A"
+      },
+      "source_row_hash": "a7e4b61b4715c2d2bfe9c743a0007c2290f0d63ad5d1f886316de5a11309180c"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.0,
+        "ry_q1": 0.0,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 1.0,
+        "z1_target": 1.0
+      },
+      "component_exposure": 0.5,
+      "components": {
+        "component_a": 1.0,
+        "component_b": 1.0
+      },
+      "delta": 0.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 1.0
+      },
+      "row_hash": "6b287d289c89f1c3e01d89a7a27aec2ae72bc8c2581e1ea13c574c693f3841fb",
+      "row_id": "hwrow-007",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -47,
+        "context_id": "s314_r000_0",
+        "quadrant": "11",
+        "reference_delta": -47,
+        "seed": 314,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s314_r000_0 slot:3 q_pos:64 ref_key_pos:111 cand_key_pos:111 ref_delta:-47 cand_delta:-47 q_tok:A ref_tok:B cand_tok:B"
+      },
+      "source_row_hash": "870a0342c94aa5feb2064252242ba27b16dbfbfcb4ec2f6258124d006481b80b"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.361170428381,
+        "ry_q1": 0.361170428381,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.935483870968,
+        "z1_target": 0.935483870968
+      },
+      "component_exposure": 0.467741935484,
+      "components": {
+        "component_a": 0.935483870968,
+        "component_b": 0.935483870968
+      },
+      "delta": -3.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.967741935484
+      },
+      "row_hash": "e91e12ca0e9e0cc779e9ac67265135e2fd50d80cf95934be555d0aba0d71c775",
+      "row_id": "hwrow-008",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 37,
+        "context_id": "s314_r080_1",
+        "quadrant": "00",
+        "reference_delta": 34,
+        "seed": 314,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s314_r080_1 slot:0 q_pos:68 ref_key_pos:34 cand_key_pos:31 ref_delta:34 cand_delta:37 q_tok:B ref_tok:C cand_tok:D"
+      },
+      "source_row_hash": "e7cd70538a8bc2a26439d7b5875487852091f5ba08e25e3a0341aa0c78c1a0f6"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.73484380924,
+        "ry_q1": 0.73484380924,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.741935483871,
+        "z1_target": 0.741935483871
+      },
+      "component_exposure": 0.370967741935,
+      "components": {
+        "component_a": 0.741935483871,
+        "component_b": 0.741935483871
+      },
+      "delta": 12.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.870967741935
+      },
+      "row_hash": "078f6d46eb90e231726731b5a83bd686fde9a80b1bf539aebf9b7e5ae7fabc08",
+      "row_id": "hwrow-009",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 22,
+        "context_id": "s314_r080_1",
+        "quadrant": "01",
+        "reference_delta": 34,
+        "seed": 314,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s314_r080_1 slot:1 q_pos:68 ref_key_pos:34 cand_key_pos:46 ref_delta:34 cand_delta:22 q_tok:B ref_tok:C cand_tok:A"
+      },
+      "source_row_hash": "33b54f17a04e3f7f40cf8a15263e329bd6baab99377ddc63fee25d14457fe7dc"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.59534158482,
+        "ry_q1": 0.59534158482,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.827956989247,
+        "z1_target": 0.827956989247
+      },
+      "component_exposure": 0.413978494624,
+      "components": {
+        "component_a": 0.827956989247,
+        "component_b": 0.827956989247
+      },
+      "delta": -8.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.913978494624
+      },
+      "row_hash": "3809e4bbcd27cefe1eedfdf16a3c2ca4e2a10ab4b6ace966f6f238664717ad35",
+      "row_id": "hwrow-010",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 42,
+        "context_id": "s314_r080_1",
+        "quadrant": "10",
+        "reference_delta": 34,
+        "seed": 314,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s314_r080_1 slot:2 q_pos:68 ref_key_pos:34 cand_key_pos:26 ref_delta:34 cand_delta:42 q_tok:B ref_tok:C cand_tok:B"
+      },
+      "source_row_hash": "629a609e9d8595587e8e193ecff85e698a07e9a22a35c431d7334ea50661e2e0"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.581549222183,
+        "ry_q1": 1.581549222183,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -0.010752688172,
+        "z1_target": -0.010752688172
+      },
+      "component_exposure": 0.005376344086,
+      "components": {
+        "component_a": -0.010752688172,
+        "component_b": -0.010752688172
+      },
+      "delta": 47.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.494623655914
+      },
+      "row_hash": "7dc505c45e18e63edf16aa3eed0123bb428bfdffca560e744bd90b1ff268eb5d",
+      "row_id": "hwrow-011",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -13,
+        "context_id": "s314_r080_1",
+        "quadrant": "11",
+        "reference_delta": 34,
+        "seed": 314,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s314_r080_1 slot:3 q_pos:68 ref_key_pos:34 cand_key_pos:81 ref_delta:34 cand_delta:-13 q_tok:B ref_tok:C cand_tok:C"
+      },
+      "source_row_hash": "e84ea14cee804b255313ec0693da7972d4c1173f800de39f9ec9e8364624ca87"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.417813082441,
+        "ry_q1": 0.417813082441,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.913978494624,
+        "z1_target": 0.913978494624
+      },
+      "component_exposure": 0.456989247312,
+      "components": {
+        "component_a": 0.913978494624,
+        "component_b": 0.913978494624
+      },
+      "delta": -4.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.956989247312
+      },
+      "row_hash": "fd8073cf8a07cdab3a484f8fa1e7c3902cc47578146d9f3976538de22d08fc18",
+      "row_id": "hwrow-012",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -4,
+        "context_id": "s314_r039_0",
+        "quadrant": "00",
+        "reference_delta": -8,
+        "seed": 314,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s314_r039_0 slot:0 q_pos:68 ref_key_pos:76 cand_key_pos:72 ref_delta:-8 cand_delta:-4 q_tok:D ref_tok:A cand_tok:B"
+      },
+      "source_row_hash": "b6545fde38e523ef2294356a62b15a8c7715ea8a835a9e9a62095218dc620e81"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.343025537208,
+        "ry_q1": 1.343025537208,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.225806451613,
+        "z1_target": 0.225806451613
+      },
+      "component_exposure": 0.112903225806,
+      "components": {
+        "component_a": 0.225806451613,
+        "component_b": 0.225806451613
+      },
+      "delta": 36.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.612903225806
+      },
+      "row_hash": "518df4ab662a88d3b2aada4ae4d5d29b7e048b01c023f9a4573d1904b65da377",
+      "row_id": "hwrow-013",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -44,
+        "context_id": "s314_r039_0",
+        "quadrant": "01",
+        "reference_delta": -8,
+        "seed": 314,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s314_r039_0 slot:1 q_pos:68 ref_key_pos:76 cand_key_pos:112 ref_delta:-8 cand_delta:-44 q_tok:D ref_tok:A cand_tok:C"
+      },
+      "source_row_hash": "5f703a972dab86e282e0210b8cd679d2cc3416a008c32355156cd066a261979e"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.883553117646,
+        "ry_q1": 0.883553117646,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.634408602151,
+        "z1_target": 0.634408602151
+      },
+      "component_exposure": 0.317204301075,
+      "components": {
+        "component_a": 0.634408602151,
+        "component_b": 0.634408602151
+      },
+      "delta": -17.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.817204301075
+      },
+      "row_hash": "2dd35dc47dbbdfd41f128c4eba93353e9b7346e5fb4787b3ac6b9ca028ea7373",
+      "row_id": "hwrow-014",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 9,
+        "context_id": "s314_r039_0",
+        "quadrant": "10",
+        "reference_delta": -8,
+        "seed": 314,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s314_r039_0 slot:2 q_pos:68 ref_key_pos:76 cand_key_pos:59 ref_delta:-8 cand_delta:9 q_tok:D ref_tok:A cand_tok:D"
+      },
+      "source_row_hash": "4fd98e5f644da9432ef930da2c852e67c49cc8fc7bcd0f2eb869507eedb2bff4"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.603059988463,
+        "ry_q1": 1.603059988463,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -0.032258064516,
+        "z1_target": -0.032258064516
+      },
+      "component_exposure": 0.016129032258,
+      "components": {
+        "component_a": -0.032258064516,
+        "component_b": -0.032258064516
+      },
+      "delta": -48.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.483870967742
+      },
+      "row_hash": "c90b887c748b068322d9f480c4bf108d022373ded73f2f8f9cc7601322a9cd33",
+      "row_id": "hwrow-015",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 40,
+        "context_id": "s314_r039_0",
+        "quadrant": "11",
+        "reference_delta": -8,
+        "seed": 314,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s314_r039_0 slot:3 q_pos:68 ref_key_pos:76 cand_key_pos:28 ref_delta:-8 cand_delta:40 q_tok:D ref_tok:A cand_tok:A"
+      },
+      "source_row_hash": "b9223eca956a94df392215b7cca127d4fea54f83d8bea0a3b36a8d02bb3177d6"
+    }
+  ],
+  "schema_version": "qrope_stage188_replacement_semantics_packet_screen_v1",
+  "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+  "shot_count": 4096,
+  "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+  "source_packet_path": "logs/automated_stage_gates/stage4_preregistered_replication_packets/ibm_product_seed314_rows16_shots4096.json",
+  "source_row_set_hash": "09434634dbe29dfbfd29abd7b8efb65c0df15198681224cc6d2dbc3bbb91267a",
+  "source_stage": "stage4_preregistered_replication_packets"
+}

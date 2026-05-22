@@ -1,0 +1,307 @@
+{
+  "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+  "encoding_family": "alibi_like",
+  "execution_status": "not_submitted",
+  "fixed_width": {
+    "active_qubits": 2,
+    "circuit_template": "two_ry_product_state_z_readout_v1",
+    "entangling_gate": null,
+    "measured_qubits": 2,
+    "readout": "computational_basis",
+    "score_observable": "0.5 + 0.25 * (E[Z0] + E[Z1])"
+  },
+  "matching_policy": {
+    "control_policy": "matched nonzero null exposure using PhaseWrap absolute exposure with frozen row-hash signs",
+    "hardware_scope": "simulated packet screen only; not hardware evidence",
+    "metric_policy": "normalized noise-sensitivity delta and matched-null margin",
+    "row_set": "identical source rows across all encoding families within each replacement-semantics lane"
+  },
+  "no_hardware_submission": true,
+  "packet_hash": "72925bcaf3cded35a87834929e42adf9454489d4131bc81d70e2a3d384a51d50",
+  "packet_id": "braket_product_seed2718_rows8_shots1000__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
+  "packet_version": "qrope_stage188_replacement_semantics_packet_v1",
+  "provider": "amazon_braket",
+  "provider_credentials_required": false,
+  "row_count": 8,
+  "rows": [
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.643501108793,
+        "ry_q1": 0.643501108793,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.8,
+        "z1_target": 0.8
+      },
+      "component_exposure": 0.4,
+      "components": {
+        "component_a": 0.8,
+        "component_b": 0.8
+      },
+      "delta": -6.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.9
+      },
+      "row_hash": "5ef6d65faa9bc0eb56e4a8f982da3dfbc13efb1d047070de205bb856bda05c46",
+      "row_id": "hwrow-000",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -16,
+        "context_id": "s2718_r025_1",
+        "quadrant": "00",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:0 q_pos:69 ref_key_pos:91 cand_key_pos:85 ref_delta:-22 cand_delta:-16 q_tok:C ref_tok:D cand_tok:A"
+      },
+      "source_row_hash": "40e07c42cbb37f5a54eab9d9679e8d7be3621b53b11e24c30e27bb3cf4d0a2b3"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.927295218002,
+        "ry_q1": 0.927295218002,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.6,
+        "z1_target": 0.6
+      },
+      "component_exposure": 0.3,
+      "components": {
+        "component_a": 0.6,
+        "component_b": 0.6
+      },
+      "delta": -12.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.8
+      },
+      "row_hash": "56a769e1f8a179f2aa6ada59aeed47a1aad7f38d1be2b243fd7751b461940499",
+      "row_id": "hwrow-001",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -10,
+        "context_id": "s2718_r025_1",
+        "quadrant": "01",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:1 q_pos:69 ref_key_pos:91 cand_key_pos:79 ref_delta:-22 cand_delta:-10 q_tok:C ref_tok:D cand_tok:B"
+      },
+      "source_row_hash": "1accfdbf8160d8d1fc07d1a41f4b10277f0293500b6b0d1aeaaa1ba1387fc3b4"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.747584349669,
+        "ry_q1": 0.747584349669,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.733333333333,
+        "z1_target": 0.733333333333
+      },
+      "component_exposure": 0.366666666667,
+      "components": {
+        "component_a": 0.733333333333,
+        "component_b": 0.733333333333
+      },
+      "delta": 8.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.866666666667
+      },
+      "row_hash": "f3fcba9758d2070e7c6c87b3a76def9b6ee2abbabad885fec9dc2baf31db8ab9",
+      "row_id": "hwrow-002",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -30,
+        "context_id": "s2718_r025_1",
+        "quadrant": "10",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:2 q_pos:69 ref_key_pos:91 cand_key_pos:99 ref_delta:-22 cand_delta:-30 q_tok:C ref_tok:D cand_tok:C"
+      },
+      "source_row_hash": "39674c90d631c91e0d7a38f99b96765e582800a7f25239b29a369f62db37753a"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.369438406005,
+        "ry_q1": 1.369438406005,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.2,
+        "z1_target": 0.2
+      },
+      "component_exposure": 0.1,
+      "components": {
+        "component_a": 0.2,
+        "component_b": 0.2
+      },
+      "delta": 24.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.6
+      },
+      "row_hash": "616c2fdcdcf9c41d1ff2375263f7f094a56a4b52ea1821e61d58f4a12d0a3f02",
+      "row_id": "hwrow-003",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -46,
+        "context_id": "s2718_r025_1",
+        "quadrant": "11",
+        "reference_delta": -22,
+        "seed": 2718,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s2718_r025_1 slot:3 q_pos:69 ref_key_pos:91 cand_key_pos:115 ref_delta:-22 cand_delta:-46 q_tok:C ref_tok:D cand_tok:D"
+      },
+      "source_row_hash": "907ebca92293117718d292b9d2d9b3cb99458a577a057c1a855686df834ec08d"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 1.537456817534,
+        "ry_q1": 1.537456817534,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.033333333333,
+        "z1_target": 0.033333333333
+      },
+      "component_exposure": 0.016666666667,
+      "components": {
+        "component_a": 0.033333333333,
+        "component_b": 0.033333333333
+      },
+      "delta": 29.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.516666666667
+      },
+      "row_hash": "1f169b395e58d5d9ccdc83cb9869e857e84ea1947b11fd617dd2a3c6c79e3fa8",
+      "row_id": "hwrow-004",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -44,
+        "context_id": "s2718_r032_0",
+        "quadrant": "00",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 0,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:0 q_pos:68 ref_key_pos:83 cand_key_pos:112 ref_delta:-15 cand_delta:-44 q_tok:A ref_tok:B cand_tok:C"
+      },
+      "source_row_hash": "4878cc997ae79fb8bb4c2e4f7985afb97edf780a3f23db120ae71b43effe599c"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 3.14159265359,
+        "ry_q1": 3.14159265359,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -1.0,
+        "z1_target": -1.0
+      },
+      "component_exposure": 0.5,
+      "components": {
+        "component_a": -1.0,
+        "component_b": -1.0
+      },
+      "delta": -60.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.0
+      },
+      "row_hash": "eed854dc6bf56ba0efa75daf939d3e323217b906aea5cdd3360e5e6a37bb7df9",
+      "row_id": "hwrow-005",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 45,
+        "context_id": "s2718_r032_0",
+        "quadrant": "01",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 1,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:1 q_pos:68 ref_key_pos:83 cand_key_pos:23 ref_delta:-15 cand_delta:45 q_tok:A ref_tok:B cand_tok:D"
+      },
+      "source_row_hash": "e69de7399d7800eeb95b2f899a3742eaf117b13d2ba8a49c2b788b220e2494d0"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 0.747584349669,
+        "ry_q1": 0.747584349669,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": 0.733333333333,
+        "z1_target": 0.733333333333
+      },
+      "component_exposure": 0.366666666667,
+      "components": {
+        "component_a": 0.733333333333,
+        "component_b": 0.733333333333
+      },
+      "delta": 8.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.866666666667
+      },
+      "row_hash": "9c65dd6e4c4c21893872f6ff17f3e3a671e305adf976e56e33acb9c8619d7a3d",
+      "row_id": "hwrow-006",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": -23,
+        "context_id": "s2718_r032_0",
+        "quadrant": "10",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 2,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:2 q_pos:68 ref_key_pos:83 cand_key_pos:91 ref_delta:-15 cand_delta:-23 q_tok:A ref_tok:B cand_tok:A"
+      },
+      "source_row_hash": "17139a45f7fdf260bbc7037507b45a8fe9664a0e7d0a0bfb35f8d3a6322bd2cc"
+    },
+    {
+      "circuit_parameters": {
+        "ry_q0": 2.214297435588,
+        "ry_q1": 2.214297435588,
+        "template": "two_ry_product_state_z_readout_v1",
+        "z0_target": -0.6,
+        "z1_target": -0.6
+      },
+      "component_exposure": 0.3,
+      "components": {
+        "component_a": -0.6,
+        "component_b": -0.6
+      },
+      "delta": -48.0,
+      "encoding_family": "alibi_like",
+      "ideal_predictions": {
+        "observable": "0.5 + 0.25 * (E[Z0] + E[Z1])",
+        "score": 0.2
+      },
+      "row_hash": "8b66d4e0162607085a558ad68c7a7f5b0f0a76cf29b3e2fdc778cdcf8cfb2f74",
+      "row_id": "hwrow-007",
+      "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+      "source": {
+        "candidate_delta": 33,
+        "context_id": "s2718_r032_0",
+        "quadrant": "11",
+        "reference_delta": -15,
+        "seed": 2718,
+        "slot": 3,
+        "split": "test",
+        "text": "ctx:s2718_r032_0 slot:3 q_pos:68 ref_key_pos:83 cand_key_pos:35 ref_delta:-15 cand_delta:33 q_tok:A ref_tok:B cand_tok:B"
+      },
+      "source_row_hash": "9c5f244fd71332b37e033dcf1a4ff1c8d2048251a29120789a89c1614066e768"
+    }
+  ],
+  "schema_version": "qrope_stage188_replacement_semantics_packet_screen_v1",
+  "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+  "shot_count": 1000,
+  "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+  "source_packet_path": "logs/automated_stage_gates/stage4_preregistered_replication_packets/braket_product_seed2718_rows8_shots1000.json",
+  "source_row_set_hash": "68afb1a5d75f0b5bbc2327d81163c19372a379e90accba3e0be086d54357d293",
+  "source_stage": "stage4_preregistered_replication_packets"
+}
