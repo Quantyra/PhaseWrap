@@ -1,0 +1,41 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "real noisy-hardware evidence",
+      "credit or provider availability validation",
+      "hardware job submission",
+      "a Stage 110, Stage 138, or publication-ready noisy-hardware advantage claim"
+    ],
+    "supported": [
+      "simulated-only go/no-go interpretation of Stage 153 matched-packet noise rehearsal",
+      "target selection for any later live-provider spend based on strict simulated wins",
+      "explicit separation between targeted hardware follow-up and broad simulated advantage"
+    ]
+  },
+  "decision": "SIMULATED_NOISE_TARGETED_HARDWARE_FOLLOWUP_RECOMMENDED",
+  "missing_source_artifacts": [],
+  "next_gate": "If targeted follow-up is accepted, clear IBM configuration and run only the selected Stage 107/112/133 first-provider windows through the guarded live path; otherwise broaden simulator stress tests first.",
+  "no_hardware_submission": true,
+  "noisy_comparison_group_count": 32,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "phasewrap_positional_advantage_fraction": 0.34375,
+  "phasewrap_positional_advantage_group_count": 11,
+  "phasewrap_strict_advantage_fraction": 0.1875,
+  "phasewrap_strict_advantage_group_count": 6,
+  "provider_count": 2,
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage154_simulated_hardware_go_no_go/results.json",
+  "schema_version": "qrope_stage154_simulated_hardware_go_no_go_v1",
+  "secret_values_recorded": false,
+  "simulated_only": true,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage153_simulated_noise_rehearsal/results.json"
+  ],
+  "stage": "stage154_simulated_hardware_go_no_go",
+  "stage153_decision": "SIMULATED_NOISE_PHASEWRAP_STRICT_ADVANTAGE_OBSERVED",
+  "status": "completed",
+  "strict_advantage_provider_count": 2,
+  "strict_advantage_template_count": 2,
+  "summary_csv_path": "logs/automated_stage_gates/stage154_simulated_hardware_go_no_go/summary.csv",
+  "template_count": 2
+}
