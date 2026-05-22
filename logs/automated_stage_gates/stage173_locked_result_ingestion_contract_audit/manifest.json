@@ -1,0 +1,44 @@
+{
+  "blockers": [],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "completed provider results",
+      "Stage115 collection or Stage113 evidence assembly",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "no-submit verification that locked IBM job shards match the Stage163 pre-run lock",
+      "no-submit verification that locked jobs have the target evidence fields needed for Stage115/113 ingestion",
+      "no-submit verification that Stage114 result stubs match locked job ids and required result fields",
+      "confirmation that provider result files are still absent before live execution"
+    ]
+  },
+  "decision": "LOCKED_RESULT_INGESTION_CONTRACT_READY_AWAITING_PROVIDER_RESULTS",
+  "locked_job_count": 328,
+  "locked_total_shots": 1318720,
+  "missing_source_artifacts": [],
+  "next_gate": "After exact approval and provider execution, populate the locked Stage114 provider result JSONL files, rerun Stage164 and Stage115, then assemble Stage113 evidence.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "ready_window_count": 2,
+  "result_path": "logs/automated_stage_gates/stage173_locked_result_ingestion_contract_audit/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage173_locked_result_ingestion_contract_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage114_provider_result_capture_contract/manifest.json",
+    "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_job_result_schema.json",
+    "logs/automated_stage_gates/stage163_first_provider_prerun_lock/results.json",
+    "logs/automated_stage_gates/stage172_objective_evidence_gap_audit/results.json"
+  ],
+  "stage": "stage173_locked_result_ingestion_contract_audit",
+  "stage114_decision": "PROVIDER_RESULT_CAPTURE_CONTRACT_PREPARED_RESULTS_REQUIRED",
+  "stage163_decision": "FIRST_PROVIDER_PRERUN_LOCK_READY_AWAITING_APPROVAL",
+  "stage172_decision": "OBJECTIVE_EVIDENCE_GAP_AUDIT_HARDWARE_RESULTS_REQUIRED",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage173_locked_result_ingestion_contract_audit/summary.csv",
+  "window_count": 2
+}
