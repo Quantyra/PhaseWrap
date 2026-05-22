@@ -54,6 +54,8 @@
   "stage148_stage103_stage104_matched_surface_lane_count": 0,
   "stage148_stage103_stage113_live_submit_provenance_lane_count": 0,
   "stage148_stage113_live_submit_provenance_ready": false,
+  "stage148_stage113_provider_scope": "all",
+  "stage148_stage113_provider_scope_matches_provider": false,
   "stage148_stage113_stage115_stage152_all_first_provider_commands_authorized": false,
   "stage148_stage113_stage115_stage152_all_first_provider_commands_live_submit_ready": false,
   "stage148_stage146_ready": true,

@@ -15,6 +15,7 @@ def _stage113_ready(path) -> None:
         path,
         {
             "decision": "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE",
+            "provider_scope": "ibm_runtime",
             "stage115_write_ready": True,
             "stage115_write_blockers": [],
             "stage115_stage152_first_provider_runner_command_count": 1,
@@ -164,6 +165,7 @@ def test_stage148_requires_stage113_live_submit_provenance(tmp_path) -> None:
         stage113,
         {
             "decision": "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE",
+            "provider_scope": "ibm_runtime",
             "stage115_write_ready": True,
             "stage115_write_blockers": [],
             "stage115_stage152_first_provider_runner_command_count": 2,
@@ -187,6 +189,25 @@ def test_stage148_requires_stage113_live_submit_provenance(tmp_path) -> None:
     assert result["stage113_live_submit_provenance_ready"] is False
     assert result["stage113_stage115_stage152_all_first_provider_commands_authorized"] is False
     assert result["stage113_stage115_stage152_all_first_provider_commands_live_submit_ready"] is False
+
+
+def test_stage148_requires_stage113_provider_scope_to_match_provider(tmp_path) -> None:
+    plans, stage146, stage147, stage113 = _fixture(tmp_path, ready=True)
+    payload = json.loads(stage113.read_text(encoding="utf-8"))
+    payload["provider_scope"] = "all"
+    _write_json(stage113, payload)
+
+    result = run_stage148_gate(
+        stage107_window_plans_path=plans,
+        stage146_results_path=stage146,
+        stage147_results_path=stage147,
+        stage113_results_path=stage113,
+    )
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["stage113_provider_scope"] == "all"
+    assert result["stage113_provider_scope_matches_provider"] is False
+    assert result["stage113_live_submit_provenance_ready"] is False
 
 
 def test_stage148_blocks_complete_calibration_counts_without_stage113_status(tmp_path) -> None:

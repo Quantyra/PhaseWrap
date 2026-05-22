@@ -70,7 +70,11 @@ def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
     return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
 
 
-def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None) -> bool:
+def _stage113_provider_scope_matches(stage113: dict[str, Any] | None, provider: str) -> bool:
+    return bool(isinstance(stage113, dict) and provider and stage113.get("provider_scope") == provider)
+
+
+def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None, provider: str) -> bool:
     if not isinstance(stage113, dict):
         return False
     runner_count = int(stage113.get("stage115_stage152_first_provider_runner_command_count") or 0)
@@ -78,6 +82,7 @@ def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None) -> b
     live_submit_ready_count = int(stage113.get("stage115_stage152_first_provider_live_submit_ready_count") or 0)
     return bool(
         stage113.get("decision") == "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE"
+        and _stage113_provider_scope_matches(stage113, provider)
         and stage113.get("stage115_write_ready") is True
         and not stage113.get("stage115_write_blockers")
         and stage113.get("stage115_stage152_all_first_provider_commands_authorized") is True
@@ -283,7 +288,8 @@ def run_stage148_gate(
     ready_calibration_count = sum(1 for record in calibration_records if record["ready"])
     lower_mae_count = sum(1 for record in lane_records if record["passes_stage103_lower_mae_rule"])
     shot_separated_count = sum(1 for record in lane_records if record["passes_stage146_shot_noise_separation"])
-    stage113_live_submit_ready = _stage113_live_submit_provenance_ready(stage113)
+    stage113_provider_scope_matches = _stage113_provider_scope_matches(stage113, provider)
+    stage113_live_submit_ready = _stage113_live_submit_provenance_ready(stage113, provider)
     ready = (
         bool(provider)
         and stage146_ready
@@ -315,6 +321,8 @@ def run_stage148_gate(
         "stage147_ready": stage147_ready,
         "stage113_results_path": str(stage113_results_path.as_posix()),
         "stage113_decision": stage113.get("decision") if isinstance(stage113, dict) else None,
+        "stage113_provider_scope": stage113.get("provider_scope") if isinstance(stage113, dict) else None,
+        "stage113_provider_scope_matches_provider": stage113_provider_scope_matches,
         "stage113_stage115_write_ready": stage113.get("stage115_write_ready") if isinstance(stage113, dict) else None,
         "stage113_stage115_write_blockers": stage113.get("stage115_write_blockers") if isinstance(stage113, dict) else None,
         "stage113_stage115_stage152_first_provider_runner_command_count": (
@@ -385,6 +393,8 @@ def write_stage148_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage147_ready": result["stage147_ready"],
         "stage113_results_path": result["stage113_results_path"],
         "stage113_decision": result["stage113_decision"],
+        "stage113_provider_scope": result["stage113_provider_scope"],
+        "stage113_provider_scope_matches_provider": result["stage113_provider_scope_matches_provider"],
         "stage113_stage115_write_ready": result["stage113_stage115_write_ready"],
         "stage113_stage115_write_blockers": result["stage113_stage115_write_blockers"],
         "stage113_stage115_stage152_first_provider_runner_command_count": result[

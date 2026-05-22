@@ -151,6 +151,7 @@ def _stage148_ready_for_claim(stage148: dict[str, Any] | None) -> bool:
         and stage148.get("decision") == STATISTICAL_READY
         and stage148.get("stage146_ready") is True
         and stage148.get("stage147_ready") is True
+        and stage148.get("stage113_provider_scope_matches_provider") is True
         and stage148.get("stage113_live_submit_provenance_ready") is True
         and stage148.get("stage113_stage115_stage152_all_first_provider_commands_authorized") is True
         and stage148.get("stage113_stage115_stage152_all_first_provider_commands_live_submit_ready") is True
@@ -210,6 +211,10 @@ def run_stage138_claim_gate(
         "stage148_stage146_ready": stage148.get("stage146_ready") if isinstance(stage148, dict) else None,
         "stage148_stage147_ready": stage148.get("stage147_ready") if isinstance(stage148, dict) else None,
         "stage148_stage113_live_submit_provenance_ready": stage148.get("stage113_live_submit_provenance_ready")
+        if isinstance(stage148, dict)
+        else None,
+        "stage148_stage113_provider_scope": stage148.get("stage113_provider_scope") if isinstance(stage148, dict) else None,
+        "stage148_stage113_provider_scope_matches_provider": stage148.get("stage113_provider_scope_matches_provider")
         if isinstance(stage148, dict)
         else None,
         "stage148_stage113_stage115_stage152_all_first_provider_commands_authorized": stage148.get(
@@ -293,6 +298,8 @@ def write_stage138_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage148_stage146_ready": result["stage148_stage146_ready"],
         "stage148_stage147_ready": result["stage148_stage147_ready"],
         "stage148_stage113_live_submit_provenance_ready": result["stage148_stage113_live_submit_provenance_ready"],
+        "stage148_stage113_provider_scope": result["stage148_stage113_provider_scope"],
+        "stage148_stage113_provider_scope_matches_provider": result["stage148_stage113_provider_scope_matches_provider"],
         "stage148_stage113_stage115_stage152_all_first_provider_commands_authorized": result[
             "stage148_stage113_stage115_stage152_all_first_provider_commands_authorized"
         ],
