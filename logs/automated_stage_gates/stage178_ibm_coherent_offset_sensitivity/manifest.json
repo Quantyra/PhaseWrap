@@ -1,0 +1,66 @@
+{
+  "base_noise_model_ids": [
+    "ibm_backend_median_stochastic",
+    "ibm_backend_p75_stochastic"
+  ],
+  "blockers": [],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "IBM credit or billing verification",
+      "direct measurement of signed coherent RY offset on IBM hardware",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "simulated signed coherent-offset sensitivity map on top of IBM backend-property stochastic noise",
+      "screening evidence for whether a cheaper coherent-offset calibration probe is worth designing",
+      "explicit non-submitting separation from the full 328-job IBM hardware run"
+    ]
+  },
+  "comparison_group_count": 108,
+  "decision": "IBM_COHERENT_OFFSET_SENSITIVITY_DOES_NOT_RECOVER_TARGETED_SIGNAL",
+  "ibm_backend_properties_informed": true,
+  "locked_offset_record_count": 18,
+  "locked_target_lanes": [
+    "ibm_cx_seed314_rows16_shots4096",
+    "ibm_product_seed314_rows16_shots4096"
+  ],
+  "missing_source_artifacts": [],
+  "next_gate": "If a stable signed-offset region exists, design a small calibration probe for signed coherent bias before any full hardware run. If not, archive the current IBM hardware path or redesign the encoding target.",
+  "no_hardware_submission": true,
+  "noise_model_count": 18,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage178_ibm_coherent_offset_sensitivity/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage178_ibm_coherent_offset_sensitivity_v1",
+  "secret_values_recorded": false,
+  "signed_offsets_radians": [
+    -0.04,
+    -0.03,
+    -0.02,
+    -0.01,
+    0.0,
+    0.01,
+    0.02,
+    0.03,
+    0.04
+  ],
+  "simulated_only": true,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage177_ibm_backend_informed_noise_probe/results.json",
+    "logs/automated_stage_gates/stage169_targeted_probe_scope_selection/results.json",
+    "logs/automated_stage_gates/stage99_matched_fixed_width_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage100_matched_cx_encoding_packets/manifest.json"
+  ],
+  "stability_thresholds": {
+    "min_control_margin_shot_quanta": 2.0,
+    "min_positional_margin_shot_quanta": 2.0,
+    "min_stable_template_count": 2
+  },
+  "stable_offset_count": 0,
+  "stable_offsets": [],
+  "stage": "stage178_ibm_coherent_offset_sensitivity",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage178_ibm_coherent_offset_sensitivity/summary.csv"
+}
