@@ -10,10 +10,10 @@
     ],
     "supported": [
       "declared live-submit command templates include Stage 111, Stage 118, and Stage 129 evidence inputs",
-      "live-submit command strings require source-level Stage 116 runner-plan readiness and Stage 129 cutover authorization",
+      "live-submit command strings require source-level Stage 116 per-runner readiness and Stage 129 cutover authorization",
       "provider submitter import paths are attached to each provider/window runner command",
       "live-submit command strings are emitted only for records with command_authorized=true",
-      "current commands remain blocked until Stage 116 readiness, Stage 129 cutover, and Stage 132 factory readiness all align"
+      "current commands remain blocked until per-runner Stage 116 readiness, Stage 129 cutover, and Stage 132 factory readiness all align"
     ]
   },
   "command_records": [
@@ -22,7 +22,6 @@
         "stage116:provider_not_ready",
         "stage116:provider_sdk_missing",
         "stage116:runner_not_ready",
-        "stage116:runner_plan_not_ready",
         "stage116:stage106_provider_preflight_not_ready",
         "stage116:stage111_provider_not_ready",
         "stage129:cutover_not_authorized",
@@ -51,7 +50,6 @@
         "stage116:provider_not_ready",
         "stage116:provider_sdk_missing",
         "stage116:runner_not_ready",
-        "stage116:runner_plan_not_ready",
         "stage116:stage106_provider_preflight_not_ready",
         "stage116:stage111_provider_not_ready",
         "stage129:cutover_not_authorized",
@@ -79,7 +77,6 @@
       "blockers": [
         "stage116:provider_not_ready",
         "stage116:runner_not_ready",
-        "stage116:runner_plan_not_ready",
         "stage116:stage106_provider_preflight_not_ready",
         "stage116:stage111_provider_not_ready",
         "stage129:cutover_not_authorized",
@@ -103,7 +100,6 @@
       "blockers": [
         "stage116:provider_not_ready",
         "stage116:runner_not_ready",
-        "stage116:runner_plan_not_ready",
         "stage116:stage106_provider_preflight_not_ready",
         "stage116:stage111_provider_not_ready",
         "stage129:cutover_not_authorized",

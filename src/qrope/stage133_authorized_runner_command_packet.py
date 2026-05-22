@@ -52,8 +52,8 @@ def _command_record(
     stage132_record = _provider_record(stage132, provider)
     runner_command = str(runner.get("runner_command", ""))
     blockers = []
-    if not isinstance(stage116, dict) or stage116.get("decision") != STAGE116_READY:
-        blockers.append("stage116:runner_plan_not_ready")
+    if not isinstance(stage116, dict):
+        blockers.append("stage116:runner_plan_missing")
     if not isinstance(stage129, dict) or stage129.get("decision") != STAGE129_AUTHORIZED:
         blockers.append("stage129:live_cutover_not_authorized")
     if not isinstance(stage132, dict) or stage132.get("decision") != STAGE132_READY:
@@ -138,10 +138,10 @@ def run_stage133_packet(
         "claim_boundary": {
             "supported": [
                 "declared live-submit command templates include Stage 111, Stage 118, and Stage 129 evidence inputs",
-                "live-submit command strings require source-level Stage 116 runner-plan readiness and Stage 129 cutover authorization",
+                "live-submit command strings require source-level Stage 116 per-runner readiness and Stage 129 cutover authorization",
                 "provider submitter import paths are attached to each provider/window runner command",
                 "live-submit command strings are emitted only for records with command_authorized=true",
-                "current commands remain blocked until Stage 116 readiness, Stage 129 cutover, and Stage 132 factory readiness all align",
+                "current commands remain blocked until per-runner Stage 116 readiness, Stage 129 cutover, and Stage 132 factory readiness all align",
             ],
             "excluded": [
                 "hardware job submission",

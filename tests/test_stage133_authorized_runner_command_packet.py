@@ -83,7 +83,7 @@ def test_stage133_authorizes_only_complete_command_records(tmp_path) -> None:
     assert "--submitter qrope.provider_adapters.ibm_runtime:submit" in result["command_records"][0]["live_submit_command"]
 
 
-def test_stage133_blocks_record_ready_without_stage116_ready_decision(tmp_path) -> None:
+def test_stage133_allows_record_ready_when_only_stage116_global_decision_is_blocked(tmp_path) -> None:
     stage116, stage129, stage132 = _fixture(tmp_path, authorized=True)
     payload = json.loads(stage116.read_text(encoding="utf-8"))
     payload["decision"] = "PROVIDER_RUNNER_PLAN_PREPARED_EXECUTION_BLOCKED"
@@ -91,10 +91,52 @@ def test_stage133_blocks_record_ready_without_stage116_ready_decision(tmp_path) 
 
     result = run_stage133_packet(stage116_results_path=stage116, stage129_results_path=stage129, stage132_results_path=stage132)
 
+    assert result["decision"] == "AUTHORIZED_RUNNER_COMMANDS_READY"
+    assert result["authorized_runner_count"] == 1
+    assert result["command_records"][0]["command_authorized"] is True
+    assert result["command_records"][0]["live_submit_command"] != ""
+
+
+def test_stage133_authorizes_ready_first_provider_record_when_other_provider_blocked(tmp_path) -> None:
+    stage116, stage129, stage132 = _fixture(tmp_path, authorized=True)
+    stage116_payload = json.loads(stage116.read_text(encoding="utf-8"))
+    stage116_payload["decision"] = "PROVIDER_RUNNER_PLAN_PREPARED_EXECUTION_BLOCKED"
+    stage116_payload["runner_records"].append(
+        {
+            "provider": "amazon_braket",
+            "window_id": "braket_window_0",
+            "status": "blocked",
+            "provider_ready": False,
+            "job_count": 2,
+            "blockers": ["provider_sdk_missing"],
+            "runner_command": (
+                "python scripts/provider_runners/run_amazon_braket_stage112_jobs.py "
+                "--job-shard braket_jobs.jsonl --provider-results braket_results.jsonl "
+                "--stage111-results stage111.json --stage118-results stage118.json --stage129-results stage129.json"
+            ),
+        }
+    )
+    _write_json(stage116, stage116_payload)
+    stage129_payload = json.loads(stage129.read_text(encoding="utf-8"))
+    stage129_payload["provider_records"].append(
+        {"provider": "amazon_braket", "cutover_authorized": False, "blockers": ["stage106:not_ready"]}
+    )
+    _write_json(stage129, stage129_payload)
+    stage132_payload = json.loads(stage132.read_text(encoding="utf-8"))
+    stage132_payload["provider_records"].append(
+        {"provider": "amazon_braket", "ready": True, "cutover_authorized": False}
+    )
+    _write_json(stage132, stage132_payload)
+
+    result = run_stage133_packet(stage116_results_path=stage116, stage129_results_path=stage129, stage132_results_path=stage132)
+    records = {record["provider"]: record for record in result["command_records"]}
+
     assert result["decision"] == "AUTHORIZED_RUNNER_COMMANDS_PREPARED_EXECUTION_BLOCKED"
-    assert result["authorized_runner_count"] == 0
-    assert "stage116:runner_plan_not_ready" in result["command_records"][0]["blockers"]
-    assert result["command_records"][0]["live_submit_command"] == ""
+    assert result["authorized_runner_count"] == 1
+    assert records["ibm_runtime"]["command_authorized"] is True
+    assert records["ibm_runtime"]["live_submit_command"] != ""
+    assert records["amazon_braket"]["command_authorized"] is False
+    assert "stage116:provider_sdk_missing" in records["amazon_braket"]["blockers"]
 
 
 def test_stage133_blocks_cutover_record_authorized_without_stage129_authorized_decision(tmp_path) -> None:
