@@ -1,0 +1,54 @@
+{
+  "blockers": [],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "IBM credit balance or dollar cost verification",
+      "provider result records",
+      "Stage103/137/148/138 interpretation",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "single no-submit synthesis of the current first-provider pre-result readiness chain",
+      "cross-check that Stage163/170/173 agree on locked IBM job and shot exposure",
+      "cross-check that Stage170 and Stage174 agree on the stable locked interpretation lanes",
+      "explicit separation between readiness to resolve IBM credit/provider state and a noisy-hardware conclusion"
+    ]
+  },
+  "credit_balance_verified": false,
+  "decision": "FIRST_PROVIDER_PRERESULT_READY_FOR_CREDIT_PROVIDER_RESOLUTION",
+  "explicit_user_approval_required": true,
+  "first_unlock_provider": "ibm_runtime",
+  "locked_job_count": 328,
+  "locked_total_shots": 1318720,
+  "matched_packet_job_count": 320,
+  "missing_source_artifacts": [],
+  "next_gate": "Resolve IBM credit/provider state with the user. Only after a final human GO and exact approval phrase, execute the locked IBM run, collect provider results, and run the validated post-result sequence through Stage138.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "provider_results_missing": true,
+  "ready_stage_count": 7,
+  "result_path": "logs/automated_stage_gates/stage175_first_provider_preresult_readiness_synthesis/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage175_first_provider_preresult_readiness_synthesis_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage160_first_provider_post_run_analysis_packet/results.json",
+    "logs/automated_stage_gates/stage163_first_provider_prerun_lock/results.json",
+    "logs/automated_stage_gates/stage170_ibm_hardware_pause_resolution_packet/results.json",
+    "logs/automated_stage_gates/stage171_post_result_analysis_dry_run_audit/results.json",
+    "logs/automated_stage_gates/stage172_objective_evidence_gap_audit/results.json",
+    "logs/automated_stage_gates/stage173_locked_result_ingestion_contract_audit/results.json",
+    "logs/automated_stage_gates/stage174_locked_interpretation_surface_audit/results.json"
+  ],
+  "stable_target_lanes": [
+    "ibm_cx_seed314_rows16_shots4096",
+    "ibm_product_seed314_rows16_shots4096"
+  ],
+  "stage": "stage175_first_provider_preresult_readiness_synthesis",
+  "stage_count": 7,
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage175_first_provider_preresult_readiness_synthesis/summary.csv"
+}

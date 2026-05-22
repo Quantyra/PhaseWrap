@@ -1,0 +1,8 @@
+stage_id,decision,ready,purpose,blockers
+stage160,FIRST_PROVIDER_POST_RUN_ANALYSIS_PACKET_READY_AWAITING_PROVIDER_RESULTS,True,post-result analysis command packet is ready and awaiting provider results,provider_result_records_missing; stage164_provider_result_records_missing
+stage163,FIRST_PROVIDER_PRERUN_LOCK_READY_AWAITING_APPROVAL,True,first-provider IBM job shards are hash-locked before execution,
+stage170,IBM_HARDWARE_PAUSE_READY_FOR_CREDIT_PROVIDER_RESOLUTION,True,IBM hardware pause packet is ready for credit/provider resolution,
+stage171,POST_RESULT_ANALYSIS_DRY_RUN_READY_AWAITING_PROVIDER_RESULTS,True,post-result analysis command sequence has a no-submit dry-run readiness audit,
+stage172,OBJECTIVE_EVIDENCE_GAP_AUDIT_HARDWARE_RESULTS_REQUIRED,True,objective evidence-gap audit is correctly waiting on hardware results,auditability_gate_not_terminal; hardware_result_counts_missing; objective_gate_not_terminal; robustness_gate_not_terminal; statistical_interpretation_not_ready
+stage173,LOCKED_RESULT_INGESTION_CONTRACT_READY_AWAITING_PROVIDER_RESULTS,True,locked result-ingestion contract is ready for provider result JSONL records,
+stage174,LOCKED_INTERPRETATION_SURFACE_READY_AWAITING_PROVIDER_RESULTS,True,locked jobs cover the fixed-width interpretation surface for stable lanes,
