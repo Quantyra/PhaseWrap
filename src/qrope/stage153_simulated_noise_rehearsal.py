@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -33,24 +34,90 @@ DEFAULT_NOISE_MODELS: tuple[dict[str, Any], ...] = (
         "noise_family": "ideal",
         "readout_bitflip_probability": 0.0,
         "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
     },
     {
         "noise_model_id": "readout_bitflip_1pct",
         "noise_family": "symmetric_readout_bitflip",
         "readout_bitflip_probability": 0.01,
         "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
     },
     {
         "noise_model_id": "readout_bitflip_3pct",
         "noise_family": "symmetric_readout_bitflip",
         "readout_bitflip_probability": 0.03,
         "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
     },
     {
         "noise_model_id": "observable_depolarizing_5pct",
         "noise_family": "observable_depolarizing",
         "readout_bitflip_probability": 0.0,
         "depolarizing_observable_shrink": 0.05,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
+    },
+    {
+        "noise_model_id": "ry_overrotation_2pct",
+        "noise_family": "coherent_ry_angle_scale",
+        "readout_bitflip_probability": 0.0,
+        "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.02,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
+    },
+    {
+        "noise_model_id": "ry_underrotation_2pct",
+        "noise_family": "coherent_ry_angle_scale",
+        "readout_bitflip_probability": 0.0,
+        "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": -0.02,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
+    },
+    {
+        "noise_model_id": "ry_offset_0p02rad",
+        "noise_family": "coherent_ry_angle_offset",
+        "readout_bitflip_probability": 0.0,
+        "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.02,
+        "observable_bias_component_a": 0.0,
+        "observable_bias_component_b": 0.0,
+    },
+    {
+        "noise_model_id": "biased_observable_plus_2pct",
+        "noise_family": "observable_bias",
+        "readout_bitflip_probability": 0.0,
+        "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.0,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.02,
+        "observable_bias_component_b": 0.02,
+    },
+    {
+        "noise_model_id": "readout1pct_ry_overrotation1pct_bias1pct",
+        "noise_family": "combined_readout_coherent_bias",
+        "readout_bitflip_probability": 0.01,
+        "depolarizing_observable_shrink": 0.0,
+        "ry_angle_scale_error": 0.01,
+        "ry_angle_offset_radians": 0.0,
+        "observable_bias_component_a": 0.01,
+        "observable_bias_component_b": 0.01,
     },
 )
 
@@ -85,17 +152,32 @@ def _clamp_component(value: float) -> float:
     return max(-1.0, min(1.0, float(value)))
 
 
+def _prepared_component(component: float, noise_model: dict[str, Any]) -> float:
+    angle = math.acos(_clamp_component(component))
+    scale = 1.0 + float(noise_model.get("ry_angle_scale_error") or 0.0)
+    offset = float(noise_model.get("ry_angle_offset_radians") or 0.0)
+    return _clamp_component(math.cos(angle * scale + offset))
+
+
 def _noisy_components(row: dict[str, Any], noise_model: dict[str, Any], circuit_template: str) -> tuple[float, float]:
     components = row.get("components", {})
-    component_a = _clamp_component(float(components.get("component_a", 0.0)))
-    component_b = _clamp_component(float(components.get("component_b", 0.0)))
+    component_a = _prepared_component(float(components.get("component_a", 0.0)), noise_model)
+    component_b = _prepared_component(float(components.get("component_b", 0.0)), noise_model)
     bitflip = float(noise_model.get("readout_bitflip_probability") or 0.0)
     depolarizing = float(noise_model.get("depolarizing_observable_shrink") or 0.0)
+    bias_a = float(noise_model.get("observable_bias_component_a") or 0.0)
+    bias_b = float(noise_model.get("observable_bias_component_b") or 0.0)
     z_shrink = max(0.0, 1.0 - 2.0 * bitflip)
     depol_shrink = max(0.0, 1.0 - depolarizing)
     if circuit_template == "two_ry_cx_parity_z_readout_v1":
-        return component_a * z_shrink * depol_shrink, component_b * (z_shrink**2) * depol_shrink
-    return component_a * z_shrink * depol_shrink, component_b * z_shrink * depol_shrink
+        return (
+            _clamp_component(component_a * z_shrink * depol_shrink + bias_a),
+            _clamp_component(component_b * (z_shrink**2) * depol_shrink + bias_b),
+        )
+    return (
+        _clamp_component(component_a * z_shrink * depol_shrink + bias_a),
+        _clamp_component(component_b * z_shrink * depol_shrink + bias_b),
+    )
 
 
 def _row_counts(row: dict[str, Any], circuit_template: str, shots: int, noise_model: dict[str, Any]) -> dict[str, int]:
@@ -160,6 +242,10 @@ def _metric_records(packet_paths: list[Path], noise_models: tuple[dict[str, Any]
                     "noise_family": noise_model["noise_family"],
                     "readout_bitflip_probability": noise_model["readout_bitflip_probability"],
                     "depolarizing_observable_shrink": noise_model["depolarizing_observable_shrink"],
+                    "ry_angle_scale_error": noise_model["ry_angle_scale_error"],
+                    "ry_angle_offset_radians": noise_model["ry_angle_offset_radians"],
+                    "observable_bias_component_a": noise_model["observable_bias_component_a"],
+                    "observable_bias_component_b": noise_model["observable_bias_component_b"],
                     "simulated_only": True,
                 }
             )

@@ -74,9 +74,9 @@ def test_stage153_reports_no_advantage_when_control_is_best(tmp_path) -> None:
         tmp_path,
         {
             "phasewrap": (1.0, 1.0),
-            "rope_like": (0.8, 0.8),
-            "sinusoidal_like": (0.6, 0.6),
-            "alibi_like": (0.4, 0.4),
+            "rope_like": (1.0, 1.0),
+            "sinusoidal_like": (1.0, 1.0),
+            "alibi_like": (1.0, 1.0),
             "no_position_control": (0.0, 0.0),
         },
     )
