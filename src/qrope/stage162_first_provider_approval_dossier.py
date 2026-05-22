@@ -15,6 +15,7 @@ DEFAULT_STAGE160_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage160_first_provider_post
 DEFAULT_STAGE161_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage161_first_provider_exposure_packet" / "results.json"
 DEFAULT_STAGE165_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage165_simulated_noise_margin_stability_audit" / "results.json"
 DEFAULT_STAGE166_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage166_simulated_evidence_sufficiency_audit" / "results.json"
+DEFAULT_STAGE167_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage167_expanded_simulated_seed_stress_audit" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage162_first_provider_approval_dossier"
 OBJECTIVE = (
     "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
@@ -28,6 +29,7 @@ STAGE160_READY = "FIRST_PROVIDER_POST_RUN_ANALYSIS_PACKET_READY_AWAITING_PROVIDE
 STAGE161_READY = "FIRST_PROVIDER_EXPOSURE_PACKET_READY_AWAITING_APPROVAL"
 STAGE165_READY = "SIMULATED_NOISE_STABLE_TARGETED_HARDWARE_PROBE_RECOMMENDED"
 STAGE166_READY = "SIMULATED_EVIDENCE_TARGETED_PROBE_READY_BROAD_CLAIM_INSUFFICIENT"
+STAGE167_READY = "EXPANDED_SIMULATED_SEED_STRESS_DOES_NOT_SUPPORT_BROADENED_HARDWARE_PROBE"
 APPROVAL_PHRASE = "APPROVE IBM RUNTIME STAGE133 LIVE RUN"
 
 
@@ -82,6 +84,7 @@ def run_stage162_approval_dossier(
     stage161_results_path: Path = DEFAULT_STAGE161_RESULTS,
     stage165_results_path: Path = DEFAULT_STAGE165_RESULTS,
     stage166_results_path: Path = DEFAULT_STAGE166_RESULTS,
+    stage167_results_path: Path = DEFAULT_STAGE167_RESULTS,
 ) -> dict[str, Any]:
     stage154 = _load_json(stage154_results_path)
     stage157 = _load_json(stage157_results_path)
@@ -90,6 +93,7 @@ def run_stage162_approval_dossier(
     stage161 = _load_json(stage161_results_path)
     stage165 = _load_json(stage165_results_path)
     stage166 = _load_json(stage166_results_path)
+    stage167 = _load_json(stage167_results_path)
     sources = [
         (stage154_results_path, stage154),
         (stage157_results_path, stage157),
@@ -98,6 +102,7 @@ def run_stage162_approval_dossier(
         (stage161_results_path, stage161),
         (stage165_results_path, stage165),
         (stage166_results_path, stage166),
+        (stage167_results_path, stage167),
     ]
     missing_sources = [str(path.as_posix()) for path, payload in sources if not isinstance(payload, dict)]
     provider = str(stage157.get("first_unlock_provider") if isinstance(stage157, dict) else "ibm_runtime")
@@ -109,6 +114,7 @@ def run_stage162_approval_dossier(
         _decision_record("stage161", stage161, STAGE161_READY, "job and shot exposure is quantified before approval"),
         _decision_record("stage165", stage165, STAGE165_READY, "simulated targets clear shot-resolution margin stability audit"),
         _decision_record("stage166", stage166, STAGE166_READY, "simulated evidence supports targeted probe but not broad claim"),
+        _decision_record("stage167", stage167, STAGE167_READY, "expanded synthetic seed stress does not broaden hardware scope"),
     ]
     blockers: list[str] = []
     if missing_sources:
@@ -152,6 +158,7 @@ def run_stage162_approval_dossier(
         "Stage154 simulated-only rehearsal recommends targeted hardware follow-up, not broad hardware spend.",
         "Stage165 narrows that recommendation to targets whose margins clear a two-shot-quanta stability screen.",
         "Stage166 confirms the current evidence supports a targeted IBM probe, not a broad simulated robustness claim.",
+        "Stage167 expanded synthetic seed stress does not broaden the scope beyond the targeted probe.",
         "Stage159 read-only backend preflight is ready.",
         "Stage161 quantifies the pending first-provider run before approval.",
         "Stage160 defines the no-submit post-result analysis sequence needed to answer supported/not-supported.",
@@ -178,6 +185,9 @@ def run_stage162_approval_dossier(
         "stage166_targeted_probe_ready_for_provider": stage166_provider_record.get("targeted_probe_ready"),
         "stage166_broad_simulated_claim_ready_for_provider": stage166_provider_record.get("broad_simulated_claim_ready"),
         "stage166_broad_claim_blockers_for_provider": stage166_provider_record.get("broad_claim_blockers", []),
+        "stage167_stable_seed_count": stage167.get("stable_seed_count") if isinstance(stage167, dict) else None,
+        "stage167_stable_noise_model_count": stage167.get("stable_noise_model_count") if isinstance(stage167, dict) else None,
+        "stage167_stable_template_count": stage167.get("stable_template_count") if isinstance(stage167, dict) else None,
         "authorized_first_provider_runner_count": (
             stage157.get("authorized_first_provider_runner_count") if isinstance(stage157, dict) else None
         ),
@@ -205,6 +215,7 @@ def run_stage162_approval_dossier(
                 "a single no-submit dossier joining simulated GO, approval packet readiness, backend preflight, post-run sequence, and exposure totals",
                 "Stage165 shot-resolution stability is included before human GO/NO-GO readiness",
                 "Stage166 simulated-evidence sufficiency bounds approval readiness to a targeted IBM probe",
+                "Stage167 expanded synthetic seed stress is included as a scope boundary before approval",
                 "human GO/NO-GO readiness for the first-provider IBM Runtime run under the exact approval phrase",
                 "explicit separation between approval readiness and a noisy-hardware advantage conclusion",
             ],
@@ -240,6 +251,9 @@ def write_stage162_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage166_targeted_probe_ready_for_provider": result["stage166_targeted_probe_ready_for_provider"],
         "stage166_broad_simulated_claim_ready_for_provider": result["stage166_broad_simulated_claim_ready_for_provider"],
         "stage166_broad_claim_blockers_for_provider": result["stage166_broad_claim_blockers_for_provider"],
+        "stage167_stable_seed_count": result["stage167_stable_seed_count"],
+        "stage167_stable_noise_model_count": result["stage167_stable_noise_model_count"],
+        "stage167_stable_template_count": result["stage167_stable_template_count"],
         "authorized_first_provider_runner_count": result["authorized_first_provider_runner_count"],
         "authorized_first_provider_job_count": result["authorized_first_provider_job_count"],
         "exposure_job_count": result["exposure_job_count"],

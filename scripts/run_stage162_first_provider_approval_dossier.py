@@ -17,6 +17,7 @@ from qrope.stage162_first_provider_approval_dossier import (  # noqa: E402
     DEFAULT_STAGE161_RESULTS,
     DEFAULT_STAGE165_RESULTS,
     DEFAULT_STAGE166_RESULTS,
+    DEFAULT_STAGE167_RESULTS,
     print_stage162_summary,
     run_stage162_approval_dossier,
     write_stage162_outputs,
@@ -32,6 +33,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--stage161-results", type=Path, default=DEFAULT_STAGE161_RESULTS)
     parser.add_argument("--stage165-results", type=Path, default=DEFAULT_STAGE165_RESULTS)
     parser.add_argument("--stage166-results", type=Path, default=DEFAULT_STAGE166_RESULTS)
+    parser.add_argument("--stage167-results", type=Path, default=DEFAULT_STAGE167_RESULTS)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     args = parser.parse_args(argv)
 
@@ -43,6 +45,7 @@ def main(argv: list[str] | None = None) -> int:
         stage161_results_path=args.stage161_results,
         stage165_results_path=args.stage165_results,
         stage166_results_path=args.stage166_results,
+        stage167_results_path=args.stage167_results,
     )
     paths = write_stage162_outputs(result, args.output_dir)
     print_stage162_summary(result)

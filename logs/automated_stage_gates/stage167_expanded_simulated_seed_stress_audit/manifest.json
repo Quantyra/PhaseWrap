@@ -1,0 +1,49 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "real noisy-hardware evidence",
+      "provider credit or queue availability validation",
+      "hardware job submission",
+      "a publication-ready noisy-hardware robustness or auditability conclusion",
+      "evidence from real Stage4 source rows beyond the frozen seed314 and seed2718 packets"
+    ],
+    "supported": [
+      "expanded simulated-only stress over independent synthetic row seeds using the Stage99/100 fixed-width formulas",
+      "shot-resolution-stable strict advantage counts across seeds, noise models, and fixed-width templates",
+      "pre-hardware screening of whether the Stage165 IBM signal generalizes beyond one frozen source seed"
+    ]
+  },
+  "comparison_group_count": 72,
+  "decision": "EXPANDED_SIMULATED_SEED_STRESS_DOES_NOT_SUPPORT_BROADENED_HARDWARE_PROBE",
+  "next_gate": "If expanded simulation is supportive, keep the IBM run scoped as a targeted probe and resolve credit/provider state before hardware. If not, add real frozen source seeds before live spend.",
+  "no_hardware_submission": true,
+  "noise_model_count": 9,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage167_expanded_simulated_seed_stress_audit/results.json",
+  "row_count_per_seed": 16,
+  "schema_version": "qrope_stage167_expanded_simulated_seed_stress_audit_v1",
+  "secret_values_recorded": false,
+  "shot_count": 4096,
+  "simulated_only": true,
+  "stability_thresholds": {
+    "min_margin_shot_quanta": 2.0,
+    "min_stable_noise_model_count_for_expanded_signal": 2,
+    "min_stable_seed_count_for_expanded_signal": 2,
+    "min_stable_template_count_for_expanded_signal": 2
+  },
+  "stable_noise_model_count": 1,
+  "stable_seed_count": 1,
+  "stable_target_count": 2,
+  "stable_template_count": 2,
+  "stage": "stage167_expanded_simulated_seed_stress_audit",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage167_expanded_simulated_seed_stress_audit/summary.csv",
+  "synthetic_rows_only": true,
+  "synthetic_seeds": [
+    314,
+    577,
+    1618,
+    2718
+  ]
+}
