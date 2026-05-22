@@ -1,0 +1,50 @@
+{
+  "blockers": [
+    "credit_billing_runtime_allowance_unverified",
+    "current_ibm_configuration_missing_or_incomplete"
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "Sampler or Estimator runtime execution",
+      "provider credentials, token values, CRN values, or account secrets",
+      "IBM credit balance, billing plan, or dollar-cost verification",
+      "runnable live-submit command strings",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "replacement-run credit/provider readiness is assessed against current non-secret local configuration",
+      "old Stage133 backend evidence is separated from the Stage188 replacement approval path",
+      "the remaining credit/provider and exact-approval blockers are recorded before any read-only refresh or live action"
+    ]
+  },
+  "credit_balance_verified": false,
+  "current_local_ibm_configuration_complete": false,
+  "decision": "REPLACEMENT_PROVIDER_CREDIT_PREFLIGHT_BLOCKED",
+  "estimated_total_job_count": 324,
+  "estimated_total_shots": 1314720,
+  "explicit_user_approval_required": true,
+  "ibm_backend_env_present": false,
+  "ibm_instance_crn_present": false,
+  "ibm_token_present": false,
+  "missing_source_artifacts": [],
+  "next_gate": "Restore IBM token, instance, and backend environment variables, then perform a replacement-scoped read-only backend refresh and human credit/billing/Runtime allowance check before any exact live-run approval is considered.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "prior_backend_lookup_ready": true,
+  "provider_credentials_required": true,
+  "read_only_backend_lookup_attempted": false,
+  "replacement_approval_phrase_required": "APPROVE IBM RUNTIME STAGE188 REPLACEMENT LIVE RUN",
+  "result_path": "logs/automated_stage_gates/stage192_replacement_provider_credit_preflight/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage192_replacement_provider_credit_preflight_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage159_first_provider_backend_preflight/results.json",
+    "logs/automated_stage_gates/stage176_ibm_credit_provider_resolution_handoff/results.json",
+    "logs/automated_stage_gates/stage191_replacement_approval_dossier/results.json"
+  ],
+  "stage": "stage192_replacement_provider_credit_preflight",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage192_replacement_provider_credit_preflight/summary.csv"
+}
