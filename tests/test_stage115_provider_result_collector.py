@@ -35,6 +35,7 @@ def _multi_provider_stage114_fixture(tmp_path):
     ibm_shard = root / "job_shards" / "ibm_runtime" / "window_0" / "jobs.jsonl"
     braket_shard = root / "job_shards" / "amazon_braket" / "window_0" / "jobs.jsonl"
     ibm_result = root / "provider_results" / "ibm_runtime" / "window_0" / "provider_job_results.jsonl"
+    braket_result = root / "provider_results" / "amazon_braket" / "window_0" / "provider_job_results.jsonl"
     _write_jsonl(ibm_shard, [{"job_id": "ibm_job"}])
     _write_jsonl(braket_shard, [{"job_id": "braket_job"}])
     _write_json(
@@ -44,7 +45,7 @@ def _multi_provider_stage114_fixture(tmp_path):
             "job_shard_paths": [str(ibm_shard.as_posix()), str(braket_shard.as_posix())],
         },
     )
-    return root, ibm_result
+    return root, ibm_result, braket_result
 
 
 def _result(job_id: str) -> dict[str, object]:
@@ -286,7 +287,7 @@ def test_stage115_blocks_stage113_input_write_when_stage152_blockers_remain(tmp_
 
 
 def test_stage115_can_collect_provider_scoped_shards(tmp_path) -> None:
-    root, ibm_result = _multi_provider_stage114_fixture(tmp_path)
+    root, ibm_result, _ = _multi_provider_stage114_fixture(tmp_path)
     _write_jsonl(ibm_result, [_result("ibm_job")])
     _stage152_ready(tmp_path / "stage152.json")
 
@@ -303,6 +304,48 @@ def test_stage115_can_collect_provider_scoped_shards(tmp_path) -> None:
     assert result["available_shard_count"] == 2
     assert result["shard_count"] == 1
     assert result["decision"] == "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113"
+
+
+def test_stage115_blocks_stage113_input_write_for_non_first_provider_scope(tmp_path) -> None:
+    root, _, braket_result = _multi_provider_stage114_fixture(tmp_path)
+    _write_jsonl(braket_result, [_result("braket_job")])
+    _stage152_ready(tmp_path / "stage152.json")
+
+    result = run_stage115_collector(
+        stage114_manifest_path=root / "manifest.json",
+        stage114_output_dir=root,
+        stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
+        write_stage113_input=True,
+        provider="amazon_braket",
+    )
+
+    assert result["provider_scope"] == "amazon_braket"
+    assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+    assert result["wrote_stage113_input"] is False
+    assert "stage152_selected_provider_scope_not_first_provider" in result["stage152_write_blockers"]
+    assert not (tmp_path / "stage113.jsonl").exists()
+
+
+def test_stage115_blocks_stage113_input_write_for_mixed_provider_scope_under_first_provider_guard(tmp_path) -> None:
+    root, ibm_result, braket_result = _multi_provider_stage114_fixture(tmp_path)
+    _write_jsonl(ibm_result, [_result("ibm_job")])
+    _write_jsonl(braket_result, [_result("braket_job")])
+    _stage152_ready(tmp_path / "stage152.json")
+
+    result = run_stage115_collector(
+        stage114_manifest_path=root / "manifest.json",
+        stage114_output_dir=root,
+        stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
+        write_stage113_input=True,
+    )
+
+    assert result["provider_scope"] == "all"
+    assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+    assert result["wrote_stage113_input"] is False
+    assert "stage152_selected_provider_scope_not_first_provider" in result["stage152_write_blockers"]
+    assert not (tmp_path / "stage113.jsonl").exists()
 
 
 def test_stage115_outputs_are_written(tmp_path) -> None:

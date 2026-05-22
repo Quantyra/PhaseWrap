@@ -133,9 +133,11 @@ def _stage152_write_ready(stage152: dict[str, Any] | None, selected_providers: s
     if not isinstance(stage152, dict):
         return False, ["stage152_live_execution_guard_missing"]
     first_provider = str(stage152.get("first_unlock_provider", ""))
-    if first_provider and first_provider not in selected_providers:
-        return True, []
     blockers = []
+    if not first_provider:
+        blockers.append("stage152_first_provider_missing")
+    elif selected_providers != {first_provider}:
+        blockers.append("stage152_selected_provider_scope_not_first_provider")
     if stage152.get("decision") != "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER":
         blockers.append("stage152_live_execution_guard_not_ready")
     if stage152.get("missing_source_artifacts"):
