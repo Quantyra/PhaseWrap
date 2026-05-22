@@ -1,8 +1,6 @@
 {
-  "attestation_phrase_matches": false,
-  "blockers": [
-    "exact_reduced_scope_attestation_phrase_required"
-  ],
+  "attestation_phrase_matches": true,
+  "blockers": [],
   "break_even_microseconds_per_shot": 94.78888619267168,
   "budget_cap_usd": 100.0,
   "claim_boundary": {
@@ -19,12 +17,12 @@
       "attestation remains separate from exact live approval and live-runner preparation"
     ]
   },
-  "decision": "REDUCED_SCOPE_ATTESTATION_INTAKE_AWAITING_EXACT_PHRASE",
+  "decision": "REDUCED_SCOPE_CREDIT_ATTESTATION_ACCEPTED_READY_FOR_EXACT_APPROVAL_REVIEW",
   "estimated_total_job_count": 324,
   "estimated_total_shots": 659360,
   "explicit_user_approval_required": true,
   "hardware_scope_label": "reduced_precision_all_lanes_2048_shots_v1",
-  "human_credit_allowance_verified": false,
+  "human_credit_allowance_verified": true,
   "intake_items": [
     {
       "description": "Stage199 must present the reduced-scope cost estimate before any attestation phrase can be accepted.",
@@ -40,12 +38,12 @@
     {
       "description": "Only the exact reduced-scope credit attestation phrase can record human credit allowance verification.",
       "evidence": {
-        "attestation_phrase_matches": false,
-        "provided_attestation_phrase_present": false,
+        "attestation_phrase_matches": true,
+        "provided_attestation_phrase_present": true,
         "required_attestation_phrase": "ATTEST IBM CREDIT FOR REDUCED SCOPE STAGE199 WITH 100 USD CAP"
       },
       "item_id": "exact_attestation_phrase",
-      "status": "awaiting_exact_phrase"
+      "status": "accepted"
     },
     {
       "description": "Accepted attestation means IBM account allowance and willingness to spend within the reduced-scope cap only.",
@@ -73,7 +71,7 @@
   "next_gate": "If the exact attestation phrase is accepted, rerun Stage199 with human_credit_allowance_verified=true and then perform reduced-scope exact approval review. Do not prepare a live runner from this gate alone.",
   "no_hardware_submission": true,
   "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
-  "provided_attestation_phrase_present": false,
+  "provided_attestation_phrase_present": true,
   "provider_credentials_required": false,
   "required_attestation_phrase": "ATTEST IBM CREDIT FOR REDUCED SCOPE STAGE199 WITH 100 USD CAP",
   "runnable_commands_recorded": false,
