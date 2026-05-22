@@ -23,6 +23,8 @@ def _fixture(tmp_path, *, authorized: bool = False, metadata_ready: bool = True)
                     "window_id": "window_0",
                     "job_count": 164,
                     "command_authorized": authorized,
+                    "live_submit_command": "python run.py --allow-live-submit" if authorized else "",
+                    "live_submit_command_available": authorized,
                     "blockers": [] if authorized else ["stage129:cutover_not_authorized"],
                 }
             ]
@@ -62,6 +64,9 @@ def test_stage152_blocks_when_first_provider_command_is_not_authorized(tmp_path)
     assert result["stage151_metadata_guard_ready"] is True
     assert result["stage144_ready_for_authorized_runner"] is False
     assert result["first_provider_authorized_runner_count"] == 0
+    assert result["first_provider_live_submit_ready_count"] == 0
+    assert result["all_first_provider_commands_authorized"] is False
+    assert result["all_first_provider_commands_live_submit_ready"] is False
     assert "stage144_post_configuration_chain_not_ready" in result["blockers"]
     assert "stage133_no_authorized_first_provider_commands" in result["blockers"]
 
@@ -96,7 +101,50 @@ def test_stage152_reports_ready_when_command_and_metadata_guard_are_ready(tmp_pa
     assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER"
     assert result["first_provider_authorized_runner_count"] == 1
     assert result["stage144_ready_for_authorized_runner"] is True
+    assert result["all_first_provider_commands_authorized"] is True
+    assert result["all_first_provider_commands_live_submit_ready"] is True
     assert result["blockers"] == []
+
+
+def test_stage152_requires_all_first_provider_commands_authorized(tmp_path) -> None:
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=True)
+    payload = json.loads(stage133.read_text(encoding="utf-8"))
+    payload["command_records"].append(
+        {
+            "provider": "ibm_runtime",
+            "window_id": "window_1",
+            "job_count": 164,
+            "command_authorized": False,
+            "live_submit_command": "",
+            "live_submit_command_available": False,
+            "blockers": ["stage129:cutover_not_authorized"],
+        }
+    )
+    _write_json(stage133, payload)
+
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
+
+    assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED"
+    assert result["first_provider_authorized_runner_count"] == 1
+    assert result["first_provider_runner_command_count"] == 2
+    assert result["all_first_provider_commands_authorized"] is False
+    assert "stage133_not_all_first_provider_commands_authorized" in result["blockers"]
+
+
+def test_stage152_requires_live_submit_command_for_authorized_records(tmp_path) -> None:
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=True)
+    payload = json.loads(stage133.read_text(encoding="utf-8"))
+    payload["command_records"][0]["live_submit_command"] = ""
+    payload["command_records"][0]["live_submit_command_available"] = False
+    _write_json(stage133, payload)
+
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
+
+    assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED"
+    assert result["first_provider_authorized_runner_count"] == 1
+    assert result["first_provider_live_submit_ready_count"] == 0
+    assert result["all_first_provider_commands_live_submit_ready"] is False
+    assert "stage133_not_all_first_provider_commands_live_submit_ready" in result["blockers"]
 
 
 def test_stage152_outputs_are_written(tmp_path) -> None:

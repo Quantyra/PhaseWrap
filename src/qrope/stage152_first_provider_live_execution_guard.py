@@ -31,6 +31,14 @@ def _commands_for_provider(stage133: dict[str, Any] | None, provider: str) -> li
     return [record for record in stage133.get("command_records", []) if record.get("provider") == provider]
 
 
+def _command_live_submit_ready(record: dict[str, Any]) -> bool:
+    return bool(
+        record.get("command_authorized") is True
+        and record.get("live_submit_command_available") is True
+        and str(record.get("live_submit_command", "")).strip()
+    )
+
+
 def _stage144_ready(stage144: dict[str, Any] | None, provider: str) -> bool:
     return bool(
         isinstance(stage144, dict)
@@ -62,7 +70,17 @@ def run_stage152_guard(
     )
     commands = _commands_for_provider(stage133, provider)
     authorized_commands = [record for record in commands if record.get("command_authorized") is True]
-    ready = bool(provider) and stage144_ready and metadata_guard_ready and bool(authorized_commands) and not missing_sources
+    live_submit_ready_commands = [record for record in commands if _command_live_submit_ready(record)]
+    all_commands_authorized = bool(commands) and len(authorized_commands) == len(commands)
+    all_commands_live_submit_ready = bool(commands) and len(live_submit_ready_commands) == len(commands)
+    ready = (
+        bool(provider)
+        and stage144_ready
+        and metadata_guard_ready
+        and all_commands_authorized
+        and all_commands_live_submit_ready
+        and not missing_sources
+    )
     blockers = []
     if not provider:
         blockers.append("first_unlock_provider_missing")
@@ -72,6 +90,10 @@ def run_stage152_guard(
         blockers.append("stage151_metadata_guard_not_ready")
     if not authorized_commands:
         blockers.append("stage133_no_authorized_first_provider_commands")
+    elif not all_commands_authorized:
+        blockers.append("stage133_not_all_first_provider_commands_authorized")
+    if not all_commands_live_submit_ready:
+        blockers.append("stage133_not_all_first_provider_commands_live_submit_ready")
     return {
         "schema_version": STAGE152_SCHEMA_VERSION,
         "stage": "stage152_first_provider_live_execution_guard",
@@ -93,6 +115,9 @@ def run_stage152_guard(
         "stage151_metadata_guard_ready": metadata_guard_ready,
         "first_provider_runner_command_count": len(commands),
         "first_provider_authorized_runner_count": len(authorized_commands),
+        "first_provider_live_submit_ready_count": len(live_submit_ready_commands),
+        "all_first_provider_commands_authorized": all_commands_authorized,
+        "all_first_provider_commands_live_submit_ready": all_commands_live_submit_ready,
         "blockers": sorted(set(blockers)),
         "command_records": commands,
         "no_hardware_submission": True,
@@ -102,6 +127,7 @@ def run_stage152_guard(
             "supported": [
                 "final non-live guard requiring the Stage 144 post-configuration chain to be ready",
                 "final non-live guard tying Stage 133 first-provider command authorization to Stage 151 metadata write-path readiness",
+                "final non-live guard requiring all first-provider Stage 133 commands to be authorized and expose emitted live-submit command strings",
                 "blocked outcome unless first-provider commands are authorized and the result metadata guard is ready",
                 "explicit separation between command preparation and permission to run guarded live provider execution",
             ],
@@ -139,6 +165,9 @@ def write_stage152_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage151_metadata_guard_ready": result["stage151_metadata_guard_ready"],
         "first_provider_runner_command_count": result["first_provider_runner_command_count"],
         "first_provider_authorized_runner_count": result["first_provider_authorized_runner_count"],
+        "first_provider_live_submit_ready_count": result["first_provider_live_submit_ready_count"],
+        "all_first_provider_commands_authorized": result["all_first_provider_commands_authorized"],
+        "all_first_provider_commands_live_submit_ready": result["all_first_provider_commands_live_submit_ready"],
         "blockers": result["blockers"],
         "no_hardware_submission": result["no_hardware_submission"],
         "provider_credentials_required": result["provider_credentials_required"],
@@ -179,5 +208,8 @@ def print_stage152_summary(result: dict[str, Any]) -> None:
     print(f"stage144_ready_for_authorized_runner: {result['stage144_ready_for_authorized_runner']}")
     print(f"stage151_metadata_guard_ready: {result['stage151_metadata_guard_ready']}")
     print(f"first_provider_authorized_runner_count: {result['first_provider_authorized_runner_count']}/{result['first_provider_runner_command_count']}")
+    print(f"first_provider_live_submit_ready_count: {result['first_provider_live_submit_ready_count']}/{result['first_provider_runner_command_count']}")
+    print(f"all_first_provider_commands_authorized: {result['all_first_provider_commands_authorized']}")
+    print(f"all_first_provider_commands_live_submit_ready: {result['all_first_provider_commands_live_submit_ready']}")
     print(f"blockers: {', '.join(result['blockers'])}")
     print(f"next_gate: {result['next_gate']}")

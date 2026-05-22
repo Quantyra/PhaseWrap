@@ -1,6 +1,9 @@
 {
+  "all_first_provider_commands_authorized": false,
+  "all_first_provider_commands_live_submit_ready": false,
   "blockers": [
     "stage133_no_authorized_first_provider_commands",
+    "stage133_not_all_first_provider_commands_live_submit_ready",
     "stage144_post_configuration_chain_not_ready"
   ],
   "claim_boundary": {
@@ -14,6 +17,7 @@
     "supported": [
       "final non-live guard requiring the Stage 144 post-configuration chain to be ready",
       "final non-live guard tying Stage 133 first-provider command authorization to Stage 151 metadata write-path readiness",
+      "final non-live guard requiring all first-provider Stage 133 commands to be authorized and expose emitted live-submit command strings",
       "blocked outcome unless first-provider commands are authorized and the result metadata guard is ready",
       "explicit separation between command preparation and permission to run guarded live provider execution"
     ]
@@ -64,6 +68,7 @@
   ],
   "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED",
   "first_provider_authorized_runner_count": 0,
+  "first_provider_live_submit_ready_count": 0,
   "first_provider_runner_command_count": 2,
   "first_unlock_provider": "ibm_runtime",
   "missing_source_artifacts": [],
