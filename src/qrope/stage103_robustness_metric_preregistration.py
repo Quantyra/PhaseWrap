@@ -175,6 +175,10 @@ def _execution_for_packet(execution_dir: Path | None, packet_id: str) -> dict[st
     return _load_json(execution_dir / f"{packet_id}.json")
 
 
+def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
+    return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
+
+
 def _metrics_records(packet_paths: list[Path], execution_dir: Path | None) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     records: list[dict[str, Any]] = []
     missing_execution: list[dict[str, Any]] = []
@@ -191,6 +195,16 @@ def _metrics_records(packet_paths: list[Path], execution_dir: Path | None) -> tu
                     "provider": packet.get("provider"),
                     "encoding_family": packet.get("encoding_family"),
                     "reason": "missing_packet_execution_counts",
+                }
+            )
+            continue
+        if not _assembled_from_stage113(execution):
+            missing_execution.append(
+                {
+                    "packet_id": packet["packet_id"],
+                    "provider": packet.get("provider"),
+                    "encoding_family": packet.get("encoding_family"),
+                    "reason": "stage113_assembled_status_missing",
                 }
             )
             continue
@@ -302,6 +316,7 @@ def run_stage103_preregistration(
             "supported": [
                 "predeclared robustness and auditability metrics for future calibrated Stage 99 and Stage 100 packet executions",
                 "fixed score reconstruction formulas for product-state and CX/parity packet families",
+                "metric interpretation requires Stage 113-assembled packet evidence",
                 "a hard separation between metric preregistration and any future hardware advantage claim",
             ],
             "excluded": [

@@ -9,6 +9,7 @@
     "supported": [
       "predeclared robustness and auditability metrics for future calibrated Stage 99 and Stage 100 packet executions",
       "fixed score reconstruction formulas for product-state and CX/parity packet families",
+      "metric interpretation requires Stage 113-assembled packet evidence",
       "a hard separation between metric preregistration and any future hardware advantage claim"
     ]
   },

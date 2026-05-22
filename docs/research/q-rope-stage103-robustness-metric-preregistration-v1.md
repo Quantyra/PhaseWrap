@@ -49,7 +49,7 @@ Score reconstruction:
 - Product-state packets: `0.5 + 0.25 * (E[Z0] + E[Z1])`
 - CX/parity packets: `0.5 + 0.25 * (E[Z0 after CX] + E[Z0 Z1 after CX])`
 
-Counts must be canonical `q0q1` decoded after Stage 101 calibration.
+Counts must be canonical `q0q1` decoded after Stage 101 calibration and must come from Stage 113-assembled packet evidence.
 
 ## Advantage Rule
 
@@ -68,6 +68,7 @@ Supported:
 
 - predeclared robustness and auditability metrics for future calibrated Stage 99 and Stage 100 packet executions;
 - fixed score reconstruction formulas for product-state and CX/parity packet families;
+- a hard block against non-Stage-113 packet evidence;
 - a hard separation between metric preregistration and any future hardware advantage claim.
 
 Excluded:

@@ -44,6 +44,10 @@ def _counts_by_state(execution: dict[str, Any]) -> dict[str, dict[str, int]]:
     }
 
 
+def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
+    return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
+
+
 def _dominant(counts: dict[str, int]) -> tuple[str | None, int, int, float]:
     if not counts:
         return None, 0, 0, 0.0
@@ -116,6 +120,8 @@ def verify_provider_execution(
             "missing_evidence": required_fields,
         }
     missing_fields = [field for field in required_fields if field not in execution or execution.get(field) in (None, "", [])]
+    if not _assembled_from_stage113(execution):
+        missing_fields.append("stage113_assembled_status")
     if missing_fields:
         return {
             "provider": provider,
@@ -236,6 +242,7 @@ def run_stage101_gate(
             "supported": [
                 "an executable known-state calibration evidence gate for Stage 99 and Stage 100 matched packet interpretation",
                 "explicit bitstring-order inference over |00>, |01>, |10>, and |11> raw counts",
+                "calibration interpretation requires Stage 113-assembled provider evidence",
                 "a hard block against interpreting matched hardware packets before calibration evidence passes",
             ],
             "excluded": [

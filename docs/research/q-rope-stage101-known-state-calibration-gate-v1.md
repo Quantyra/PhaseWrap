@@ -33,7 +33,7 @@ and run:
 python scripts/run_stage101_known_state_calibration_gate.py --execution-dir PATH_TO_EXECUTION_DIR
 ```
 
-Each execution file must include `job_or_task_ids`, `backend_metadata`, `submitted_at_utc`, `completed_at_utc`, and `raw_counts_by_state`.
+Each execution file must include Stage 113 assembly status plus `job_or_task_ids`, `backend_metadata`, `submitted_at_utc`, `completed_at_utc`, and `raw_counts_by_state`.
 
 ## Result
 
@@ -58,6 +58,7 @@ Supported:
 
 - an executable known-state calibration evidence gate for Stage 99 and Stage 100 matched packet interpretation;
 - explicit bitstring-order inference over `|00>`, `|01>`, `|10>`, and `|11>` raw counts;
+- a hard block against non-Stage-113 calibration evidence;
 - a hard block against interpreting matched hardware packets before calibration evidence passes.
 
 Excluded:

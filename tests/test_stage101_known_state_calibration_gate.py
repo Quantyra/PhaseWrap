@@ -49,6 +49,8 @@ def _execution_for_order(order: str) -> dict[str, object]:
             {"state": "11", "counts": {"11": 97, "10": 3}},
         ]
     return {
+        "status": "assembled_from_stage113_results",
+        "no_hardware_submission": False,
         "job_or_task_ids": ["job-1"],
         "backend_metadata": {"backend": "test"},
         "submitted_at_utc": "2026-05-21T00:00:00Z",
@@ -70,6 +72,17 @@ def test_verify_provider_execution_rejects_missing_fields() -> None:
     assert result["pass"] is False
     assert result["outcome"] == "missing_required_fields"
     assert "job_or_task_ids" in result["missing_evidence"]
+
+
+def test_verify_provider_execution_rejects_non_stage113_evidence() -> None:
+    execution = _execution_for_order("q1q0")
+    execution.pop("status")
+
+    result = verify_provider_execution("ibm_runtime", "q1q0", execution)
+
+    assert result["pass"] is False
+    assert result["outcome"] == "missing_required_fields"
+    assert "stage113_assembled_status" in result["missing_evidence"]
 
 
 def test_stage101_blocks_without_real_execution_counts(tmp_path) -> None:

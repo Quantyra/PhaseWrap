@@ -8,6 +8,7 @@
     "supported": [
       "an executable known-state calibration evidence gate for Stage 99 and Stage 100 matched packet interpretation",
       "explicit bitstring-order inference over |00>, |01>, |10>, and |11> raw counts",
+      "calibration interpretation requires Stage 113-assembled provider evidence",
       "a hard block against interpreting matched hardware packets before calibration evidence passes"
     ]
   },
