@@ -1,0 +1,89 @@
+{
+  "all_control_margins_negative": true,
+  "blockers": [],
+  "candidate_family_count": 3,
+  "candidate_family_records": [
+    {
+      "candidate_group_count": 6,
+      "control_margin_all_negative": true,
+      "decision": "BALANCED_PHASE_WINDOW_CANDIDATE_DOES_NOT_SUPPORT_HARDWARE_REOPEN",
+      "design_family_id": "pw_balanced_phase_window_v1",
+      "negative_control_margin_group_count": 6,
+      "negative_positional_margin_group_count": 6,
+      "reopen_candidate_count": 0,
+      "result_path": "logs/automated_stage_gates/stage182_balanced_phase_window_candidate_screen/results.json"
+    },
+    {
+      "candidate_group_count": 6,
+      "control_margin_all_negative": true,
+      "decision": "CONTRAST_AMPLIFIED_DELTA_CANDIDATE_DOES_NOT_SUPPORT_HARDWARE_REOPEN",
+      "design_family_id": "pw_contrast_amplified_delta_v1",
+      "negative_control_margin_group_count": 6,
+      "negative_positional_margin_group_count": 6,
+      "reopen_candidate_count": 0,
+      "result_path": "logs/automated_stage_gates/stage183_contrast_amplified_delta_candidate_screen/results.json"
+    },
+    {
+      "candidate_group_count": 6,
+      "control_margin_all_negative": true,
+      "decision": "ERROR_ORTHOGONALIZED_COMPONENTS_CANDIDATE_DOES_NOT_SUPPORT_HARDWARE_REOPEN",
+      "design_family_id": "pw_error_orthogonalized_components_v1",
+      "negative_control_margin_group_count": 6,
+      "negative_positional_margin_group_count": 6,
+      "reopen_candidate_count": 0,
+      "result_path": "logs/automated_stage_gates/stage184_error_orthogonalized_components_candidate_screen/results.json"
+    }
+  ],
+  "candidate_group_count": 18,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "a final noisy-hardware robustness or auditability conclusion",
+      "a claim that PhaseWrap-RoPE has no possible value under future fair semantics",
+      "a replacement packet freeze or simulation result"
+    ],
+    "supported": [
+      "the current raw-MAE plus zero-control semantics produced universal negative control margins across the Stage182-184 redesign sweep",
+      "the current preregistered semantics should not be used to reopen IBM hardware",
+      "a replacement target/control plan must be preregistered before any further hardware consideration"
+    ]
+  },
+  "decision": "TARGET_CONTROL_SEMANTICS_REVISION_REQUIRED_BEFORE_HARDWARE",
+  "hardware_path_status": "current_ibm_328_job_run_remains_archived",
+  "ibm_backend_properties_informed": true,
+  "missing_source_artifacts": [],
+  "negative_control_margin_group_count": 18,
+  "negative_positional_margin_group_count": 18,
+  "next_gate": "Create a replacement target/control preregistration that keeps fixed width but gives controls matched nonzero noise exposure, then run simulated IBM-informed screening before reconsidering hardware.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "raw_mae_control_dominance_observed": true,
+  "replacement_semantics_requirements": [
+    "preregister a nonzero matched null/control exposure or a paired-delta null that experiences the same readout/shrink channel",
+    "preserve fixed width at two measured qubits and keep product plus CX templates unless a new plan explicitly supersedes them",
+    "keep PhaseWrap, RoPE-like, sinusoidal-like, ALIBI-like, and control families present in every comparison group",
+    "use a metric that separates absolute task score error from noise sensitivity, such as normalized shrink error or slope retention",
+    "freeze thresholds before simulation or hardware selection and require both IBM-informed simulated stability and independent seed stability",
+    "forbid using live hardware results to tune the replacement target/control semantics"
+  ],
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage186_target_control_semantics_audit_v1",
+  "secret_values_recorded": false,
+  "semantics_finding": {
+    "current_control": "zero-component no-position control",
+    "current_primary_metric": "mean absolute score error against each family own ideal score",
+    "interpretation": "the failed redesign sweep is a valid hardware NO-GO for the current preregistered semantics, but it does not settle whether PhaseWrap has value under a metric that compares noise sensitivity or auditability at matched nonzero signal exposure",
+    "observed_failure_mode": "under symmetric stochastic shrink/readout, the zero-component control remains close to its own ideal while nonzero positional encodings incur score shrinkage, so strict raw-MAE wins over control are structurally hard"
+  },
+  "simulated_only": true,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage182_balanced_phase_window_candidate_screen/results.json",
+    "logs/automated_stage_gates/stage183_contrast_amplified_delta_candidate_screen/results.json",
+    "logs/automated_stage_gates/stage184_error_orthogonalized_components_candidate_screen/results.json",
+    "logs/automated_stage_gates/stage185_redesign_sweep_disposition/results.json"
+  ],
+  "stage": "stage186_target_control_semantics_audit",
+  "status": "completed",
+  "total_reopen_candidate_count": 0
+}
