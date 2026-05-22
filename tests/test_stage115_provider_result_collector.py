@@ -58,6 +58,28 @@ def _result(job_id: str) -> dict[str, object]:
     }
 
 
+def _stage152_ready(path) -> None:
+    _write_json(
+        path,
+        {
+            "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER",
+            "first_unlock_provider": "ibm_runtime",
+            "first_provider_authorized_runner_count": 1,
+        },
+    )
+
+
+def _stage152_blocked(path) -> None:
+    _write_json(
+        path,
+        {
+            "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED",
+            "first_unlock_provider": "ibm_runtime",
+            "first_provider_authorized_runner_count": 0,
+        },
+    )
+
+
 def test_stage115_reports_missing_manifest(tmp_path) -> None:
     result = run_stage115_collector(stage114_manifest_path=tmp_path / "missing.json")
 
@@ -90,11 +112,13 @@ def test_stage115_detects_complete_shard_without_writing_by_default(tmp_path) ->
 def test_stage115_writes_stage113_input_when_enabled(tmp_path) -> None:
     root, result_path = _stage114_fixture(tmp_path)
     _write_jsonl(result_path, [_result("job_a"), _result("job_b")])
+    _stage152_ready(tmp_path / "stage152.json")
 
     result = run_stage115_collector(
         stage114_manifest_path=root / "manifest.json",
         stage114_output_dir=root,
         stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
         write_stage113_input=True,
     )
 
@@ -103,14 +127,35 @@ def test_stage115_writes_stage113_input_when_enabled(tmp_path) -> None:
     assert len((tmp_path / "stage113.jsonl").read_text(encoding="utf-8").splitlines()) == 2
 
 
-def test_stage115_can_collect_provider_scoped_shards(tmp_path) -> None:
-    root, ibm_result = _multi_provider_stage114_fixture(tmp_path)
-    _write_jsonl(ibm_result, [_result("ibm_job")])
+def test_stage115_blocks_stage113_input_write_when_stage152_not_ready(tmp_path) -> None:
+    root, result_path = _stage114_fixture(tmp_path)
+    _write_jsonl(result_path, [_result("job_a"), _result("job_b")])
+    _stage152_blocked(tmp_path / "stage152.json")
 
     result = run_stage115_collector(
         stage114_manifest_path=root / "manifest.json",
         stage114_output_dir=root,
         stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
+        write_stage113_input=True,
+    )
+
+    assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+    assert result["wrote_stage113_input"] is False
+    assert "stage152_live_execution_guard_not_ready" in result["stage152_write_blockers"]
+    assert not (tmp_path / "stage113.jsonl").exists()
+
+
+def test_stage115_can_collect_provider_scoped_shards(tmp_path) -> None:
+    root, ibm_result = _multi_provider_stage114_fixture(tmp_path)
+    _write_jsonl(ibm_result, [_result("ibm_job")])
+    _stage152_ready(tmp_path / "stage152.json")
+
+    result = run_stage115_collector(
+        stage114_manifest_path=root / "manifest.json",
+        stage114_output_dir=root,
+        stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
         write_stage113_input=True,
         provider="ibm_runtime",
     )

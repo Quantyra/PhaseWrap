@@ -11,6 +11,7 @@ DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_STAGE114_MANIFEST = DEFAULT_ARTIFACT_ROOT / "stage114_provider_result_capture_contract" / "manifest.json"
 DEFAULT_STAGE114_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage114_provider_result_capture_contract"
 DEFAULT_STAGE113_PROVIDER_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage113_job_result_evidence_assembler" / "provider_job_results.jsonl"
+DEFAULT_STAGE152_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage152_first_provider_live_execution_guard" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage115_provider_result_collector"
 OBJECTIVE = (
     "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
@@ -126,15 +127,33 @@ def _validate_shard(record: dict[str, Any]) -> tuple[dict[str, Any], list[dict[s
     return shard_summary, result_records
 
 
+def _stage152_write_ready(stage152: dict[str, Any] | None, selected_providers: set[str]) -> tuple[bool, list[str]]:
+    if not selected_providers:
+        return False, ["selected_provider_missing"]
+    if not isinstance(stage152, dict):
+        return False, ["stage152_live_execution_guard_missing"]
+    first_provider = str(stage152.get("first_unlock_provider", ""))
+    if first_provider and first_provider not in selected_providers:
+        return True, []
+    blockers = []
+    if stage152.get("decision") != "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER":
+        blockers.append("stage152_live_execution_guard_not_ready")
+    if first_provider and int(stage152.get("first_provider_authorized_runner_count") or 0) <= 0:
+        blockers.append("stage152_no_authorized_first_provider_runner")
+    return not blockers, sorted(set(blockers))
+
+
 def run_stage115_collector(
     *,
     stage114_manifest_path: Path = DEFAULT_STAGE114_MANIFEST,
     stage114_output_dir: Path = DEFAULT_STAGE114_OUTPUT_DIR,
     stage113_provider_results_path: Path = DEFAULT_STAGE113_PROVIDER_RESULTS,
+    stage152_results_path: Path = DEFAULT_STAGE152_RESULTS,
     write_stage113_input: bool = False,
     provider: str | None = None,
 ) -> dict[str, Any]:
     stage114 = _load_json(stage114_manifest_path)
+    stage152 = _load_json(stage152_results_path)
     missing_sources = [] if isinstance(stage114, dict) else [str(stage114_manifest_path.as_posix())]
     shard_summaries = []
     invalid_records = []
@@ -147,8 +166,13 @@ def run_stage115_collector(
         shard_summaries.append(summary)
         invalid_records.extend(records)
     ready = bool(shard_summaries) and all(record["ready"] for record in shard_summaries) and not missing_sources
+    selected_providers = {str(record.get("provider")) for record in selected_shard_records if record.get("provider")}
+    stage152_write_ready = True
+    stage152_write_blockers: list[str] = []
+    if write_stage113_input:
+        stage152_write_ready, stage152_write_blockers = _stage152_write_ready(stage152, selected_providers)
     wrote_stage113_input = False
-    if ready and write_stage113_input:
+    if ready and write_stage113_input and stage152_write_ready:
         stage113_provider_results_path.parent.mkdir(parents=True, exist_ok=True)
         with stage113_provider_results_path.open("w", encoding="utf-8") as handle:
             for shard in shard_summaries:
@@ -163,6 +187,8 @@ def run_stage115_collector(
         "decision": (
             "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113"
             if wrote_stage113_input
+            else "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+            if ready and write_stage113_input and not stage152_write_ready
             else "PROVIDER_RESULTS_READY_TO_COLLECT"
             if ready
             else "PROVIDER_RESULTS_COLLECTION_BLOCKED_RESULTS_MISSING"
@@ -170,6 +196,10 @@ def run_stage115_collector(
         "source_artifacts": [str(stage114_manifest_path.as_posix())],
         "missing_source_artifacts": missing_sources,
         "stage114_decision": stage114.get("decision") if isinstance(stage114, dict) else None,
+        "stage152_results_path": str(stage152_results_path.as_posix()),
+        "stage152_decision": stage152.get("decision") if isinstance(stage152, dict) else None,
+        "stage152_write_ready": stage152_write_ready,
+        "stage152_write_blockers": stage152_write_blockers,
         "provider_scope": provider or "all",
         "write_stage113_input": write_stage113_input,
         "stage113_provider_results_path": str(stage113_provider_results_path.as_posix()),
@@ -190,6 +220,7 @@ def run_stage115_collector(
             "supported": [
                 "validation and collection of Stage 114 provider/window result JSONL shards",
                 "optional provider-scoped collection for first-provider execution without requiring other providers first",
+                "Stage 113 input writing is blocked until Stage 152 authorizes the first-provider guarded live runner",
                 "duplicate, unknown, missing, and empty-count result detection before Stage 113 assembly",
                 "optional generation of the single Stage 113 provider_job_results.jsonl input",
             ],
@@ -202,8 +233,8 @@ def run_stage115_collector(
             ],
         },
         "next_gate": (
-            "Populate every selected Stage 114 provider result shard, rerun this collector with --write-stage113-input, then run "
-            "Stage 113 with --write-evidence."
+            "Populate every selected Stage 114 provider result shard after Stage 152 readiness, rerun this collector "
+            "with --write-stage113-input, then run Stage 113 with --write-evidence."
         ),
     }
 
@@ -219,6 +250,10 @@ def write_stage115_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "source_artifacts": result["source_artifacts"],
         "missing_source_artifacts": result["missing_source_artifacts"],
         "stage114_decision": result["stage114_decision"],
+        "stage152_results_path": result["stage152_results_path"],
+        "stage152_decision": result["stage152_decision"],
+        "stage152_write_ready": result["stage152_write_ready"],
+        "stage152_write_blockers": result["stage152_write_blockers"],
         "provider_scope": result["provider_scope"],
         "write_stage113_input": result["write_stage113_input"],
         "stage113_provider_results_path": result["stage113_provider_results_path"],
@@ -278,5 +313,6 @@ def print_stage115_summary(result: dict[str, Any]) -> None:
     print(f"expected_job_count: {result['expected_job_count']}")
     print(f"result_record_count: {result['result_record_count']}")
     print(f"missing_job_count: {result['missing_job_count']}")
+    print(f"stage152_write_ready: {result['stage152_write_ready']}")
     print(f"wrote_stage113_input: {result['wrote_stage113_input']}")
     print(f"next_gate: {result['next_gate']}")

@@ -13,6 +13,7 @@ from qrope.stage115_provider_result_collector import (  # noqa: E402
     DEFAULT_STAGE113_PROVIDER_RESULTS,
     DEFAULT_STAGE114_MANIFEST,
     DEFAULT_STAGE114_OUTPUT_DIR,
+    DEFAULT_STAGE152_RESULTS,
     print_stage115_summary,
     run_stage115_collector,
     write_stage115_outputs,
@@ -24,6 +25,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--stage114-manifest", type=Path, default=DEFAULT_STAGE114_MANIFEST)
     parser.add_argument("--stage114-output-dir", type=Path, default=DEFAULT_STAGE114_OUTPUT_DIR)
     parser.add_argument("--stage113-provider-results", type=Path, default=DEFAULT_STAGE113_PROVIDER_RESULTS)
+    parser.add_argument("--stage152-results", type=Path, default=DEFAULT_STAGE152_RESULTS)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--write-stage113-input", action="store_true")
     parser.add_argument("--provider", default=None)
@@ -33,6 +35,7 @@ def main(argv: list[str] | None = None) -> int:
         stage114_manifest_path=args.stage114_manifest,
         stage114_output_dir=args.stage114_output_dir,
         stage113_provider_results_path=args.stage113_provider_results,
+        stage152_results_path=args.stage152_results,
         write_stage113_input=args.write_stage113_input,
         provider=args.provider,
     )
