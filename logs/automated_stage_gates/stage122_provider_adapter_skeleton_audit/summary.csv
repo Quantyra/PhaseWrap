@@ -1,0 +1,3 @@
+provider,submitter_import_path,adapter_module_imported,submitter_callable,adapter_status_callable,ready,missing_evidence
+amazon_braket,qrope.provider_adapters.amazon_braket:submit,True,True,True,True,
+ibm_runtime,qrope.provider_adapters.ibm_runtime:submit,True,True,True,True,

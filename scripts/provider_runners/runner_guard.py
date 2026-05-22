@@ -132,7 +132,12 @@ def run_guarded_provider_runner(provider: str, argv: list[str] | None = None, su
     if submitter is None:
         print("decision: PROVIDER_RUNNER_LIVE_SUBMISSION_ADAPTER_REQUIRED")
         return 4
-    results = submitter(provider=provider, jobs=jobs, payloads=payloads)
+    try:
+        results = submitter(provider=provider, jobs=jobs, payloads=payloads)
+    except Exception as exc:  # noqa: BLE001 - provider adapters must fail closed without partial writes.
+        print("decision: PROVIDER_RUNNER_BLOCKED_SUBMITTER_FAILED")
+        print(f"submitter_error: {exc}")
+        return 5
     if not isinstance(results, list):
         print("decision: PROVIDER_RUNNER_BLOCKED_SUBMITTER_RETURNED_NON_LIST")
         return 5
