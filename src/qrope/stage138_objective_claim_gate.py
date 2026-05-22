@@ -84,6 +84,8 @@ def _stage137_ready_for_claim(stage137: dict[str, Any] | None) -> bool:
         isinstance(stage137, dict)
         and stage137.get("decision") == AUDITABILITY_READY
         and stage137.get("stage136_ready") is True
+        and stage137.get("stage113_provider_scope_matches_provider") is True
+        and stage137.get("stage113_live_submit_provenance_ready") is True
         and stage137.get("ready_window_count") == stage137.get("window_count")
         and int(stage137.get("window_count") or 0) > 0
     )
@@ -230,6 +232,13 @@ def run_stage138_claim_gate(
         "stage110_ready_for_stage105_aggregation": stage110.get("ready_for_stage105_aggregation") if isinstance(stage110, dict) else None,
         "stage137_ready_window_count": stage137.get("ready_window_count") if isinstance(stage137, dict) else None,
         "stage137_window_count": stage137.get("window_count") if isinstance(stage137, dict) else None,
+        "stage137_stage113_provider_scope": stage137.get("stage113_provider_scope") if isinstance(stage137, dict) else None,
+        "stage137_stage113_provider_scope_matches_provider": stage137.get("stage113_provider_scope_matches_provider")
+        if isinstance(stage137, dict)
+        else None,
+        "stage137_stage113_live_submit_provenance_ready": stage137.get("stage113_live_submit_provenance_ready")
+        if isinstance(stage137, dict)
+        else None,
         "stage148_ready_calibration_record_count": stage148.get("ready_calibration_record_count") if isinstance(stage148, dict) else None,
         "stage148_calibration_record_count": stage148.get("calibration_record_count") if isinstance(stage148, dict) else None,
         "stage148_stage103_lower_mae_lane_count": stage148.get("stage103_lower_mae_lane_count") if isinstance(stage148, dict) else None,
@@ -309,6 +318,9 @@ def write_stage138_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage110_ready_for_stage105_aggregation": result["stage110_ready_for_stage105_aggregation"],
         "stage137_ready_window_count": result["stage137_ready_window_count"],
         "stage137_window_count": result["stage137_window_count"],
+        "stage137_stage113_provider_scope": result["stage137_stage113_provider_scope"],
+        "stage137_stage113_provider_scope_matches_provider": result["stage137_stage113_provider_scope_matches_provider"],
+        "stage137_stage113_live_submit_provenance_ready": result["stage137_stage113_live_submit_provenance_ready"],
         "stage148_ready_calibration_record_count": result["stage148_ready_calibration_record_count"],
         "stage148_calibration_record_count": result["stage148_calibration_record_count"],
         "stage148_stage103_lower_mae_lane_count": result["stage148_stage103_lower_mae_lane_count"],

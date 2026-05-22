@@ -50,6 +50,7 @@ def _stage113_ready(path) -> None:
         path,
         {
             "decision": "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE",
+            "provider_scope": "all",
             "stage115_write_ready": True,
             "stage115_write_blockers": [],
             "stage115_stage152_first_provider_runner_command_count": 1,
@@ -138,6 +139,7 @@ def test_stage137_computes_component_reconstruction_advantage_when_counts_are_re
     result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136, stage113_results_path=stage113)
 
     assert result["decision"] == "AUDITABILITY_METRICS_READY_FOR_CLAIM_GATE"
+    assert result["stage113_provider_scope_matches_provider"] is True
     assert result["stage113_live_submit_provenance_ready"] is True
     assert result["ready_window_count"] == 1
     assert result["comparison_summary_count"] == 1
@@ -155,6 +157,7 @@ def test_stage137_requires_stage113_live_submit_provenance_for_claim_gate(tmp_pa
         stage113,
         {
             "decision": "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE",
+            "provider_scope": "all",
             "stage115_write_ready": True,
             "stage115_write_blockers": [],
             "stage115_stage152_first_provider_runner_command_count": 2,
@@ -169,6 +172,27 @@ def test_stage137_requires_stage113_live_submit_provenance_for_claim_gate(tmp_pa
 
     assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
     assert result["ready_window_count"] == 0
+    assert result["stage113_live_submit_provenance_ready"] is False
+    assert "stage113_live_submit_provenance_not_ready" in result["window_records"][0]["missing_evidence"]
+
+
+def test_stage137_requires_stage113_provider_scope_to_match_selected_provider(tmp_path) -> None:
+    plans, stage136, stage113 = _ready_fixture(tmp_path)
+    payload = json.loads(stage113.read_text(encoding="utf-8"))
+    payload["provider_scope"] = "all"
+    _write_json(stage113, payload)
+
+    result = run_stage137_evaluator(
+        stage107_window_plans_path=plans,
+        stage136_results_path=stage136,
+        stage113_results_path=stage113,
+        provider="ibm_runtime",
+    )
+
+    assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
+    assert result["provider_scope"] == "ibm_runtime"
+    assert result["stage113_provider_scope"] == "all"
+    assert result["stage113_provider_scope_matches_provider"] is False
     assert result["stage113_live_submit_provenance_ready"] is False
     assert "stage113_live_submit_provenance_not_ready" in result["window_records"][0]["missing_evidence"]
 

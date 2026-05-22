@@ -224,7 +224,14 @@ def _stage136_ready_for_auditability(stage136: dict[str, Any] | None) -> bool:
     )
 
 
-def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None) -> bool:
+def _stage113_provider_scope_matches(stage113: dict[str, Any] | None, provider: str | None) -> bool:
+    if not isinstance(stage113, dict):
+        return False
+    expected_scope = provider or "all"
+    return bool(stage113.get("provider_scope") == expected_scope)
+
+
+def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None, provider: str | None) -> bool:
     if not isinstance(stage113, dict):
         return False
     runner_count = int(stage113.get("stage115_stage152_first_provider_runner_command_count") or 0)
@@ -232,6 +239,7 @@ def _stage113_live_submit_provenance_ready(stage113: dict[str, Any] | None) -> b
     live_submit_ready_count = int(stage113.get("stage115_stage152_first_provider_live_submit_ready_count") or 0)
     return bool(
         stage113.get("decision") == "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE"
+        and _stage113_provider_scope_matches(stage113, provider)
         and stage113.get("stage115_write_ready") is True
         and not stage113.get("stage115_write_blockers")
         and stage113.get("stage115_stage152_all_first_provider_commands_authorized") is True
@@ -301,7 +309,8 @@ def run_stage137_evaluator(
         plan for plan in all_window_plans if provider is None or plan.get("provider") == provider
     ]
     stage136_ready = _stage136_ready_for_auditability(stage136)
-    stage113_live_submit_ready = _stage113_live_submit_provenance_ready(stage113)
+    stage113_provider_scope_matches = _stage113_provider_scope_matches(stage113, provider)
+    stage113_live_submit_ready = _stage113_live_submit_provenance_ready(stage113, provider)
     window_records = [_window_record(plan, stage136_ready, stage113_live_submit_ready) for plan in window_plans]
     ready_window_count = sum(1 for record in window_records if record["ready"])
     comparison_summary = [item for window in window_records for item in window["comparison_summary"]]
@@ -326,6 +335,8 @@ def run_stage137_evaluator(
         "stage136_lane_family_record_count": stage136.get("lane_family_record_count") if isinstance(stage136, dict) else None,
         "stage113_results_path": str(stage113_results_path.as_posix()),
         "stage113_decision": stage113.get("decision") if isinstance(stage113, dict) else None,
+        "stage113_provider_scope": stage113.get("provider_scope") if isinstance(stage113, dict) else None,
+        "stage113_provider_scope_matches_provider": stage113_provider_scope_matches,
         "stage113_stage115_write_ready": stage113.get("stage115_write_ready") if isinstance(stage113, dict) else None,
         "stage113_stage115_write_blockers": stage113.get("stage115_write_blockers") if isinstance(stage113, dict) else None,
         "stage113_stage115_stage152_first_provider_runner_command_count": (
@@ -398,6 +409,8 @@ def write_stage137_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage136_lane_family_record_count": result["stage136_lane_family_record_count"],
         "stage113_results_path": result["stage113_results_path"],
         "stage113_decision": result["stage113_decision"],
+        "stage113_provider_scope": result["stage113_provider_scope"],
+        "stage113_provider_scope_matches_provider": result["stage113_provider_scope_matches_provider"],
         "stage113_stage115_write_ready": result["stage113_stage115_write_ready"],
         "stage113_stage115_write_blockers": result["stage113_stage115_write_blockers"],
         "stage113_stage115_stage152_first_provider_runner_command_count": result[

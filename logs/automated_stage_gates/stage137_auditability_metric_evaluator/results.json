@@ -145,6 +145,8 @@
   "stage": "stage137_auditability_metric_evaluator",
   "stage113_decision": "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_RESULTS_MISSING",
   "stage113_live_submit_provenance_ready": false,
+  "stage113_provider_scope": "all",
+  "stage113_provider_scope_matches_provider": true,
   "stage113_results_path": "logs/automated_stage_gates/stage113_job_result_evidence_assembler/results.json",
   "stage113_stage115_stage152_all_first_provider_commands_authorized": false,
   "stage113_stage115_stage152_all_first_provider_commands_live_submit_ready": false,
