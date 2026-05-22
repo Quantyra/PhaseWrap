@@ -1,0 +1,182 @@
+{
+  "calibration_record_count": 2,
+  "calibration_records": [
+    {
+      "calibration_execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/calibration/ibm_runtime_known_state_execution.json",
+      "missing_evidence": [
+        "calibration_execution_json",
+        "stage101_calibration_pass",
+        "stage147_wilson95_thresholds"
+      ],
+      "passing_state_count": 0,
+      "provider": "ibm_runtime",
+      "ready": false,
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/calibration/stage101/results.json",
+      "state_count": 4,
+      "state_records": [
+        {
+          "expected_dominant_key": "00",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "00"
+        },
+        {
+          "expected_dominant_key": "10",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "01"
+        },
+        {
+          "expected_dominant_key": "01",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "10"
+        },
+        {
+          "expected_dominant_key": "11",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "11"
+        }
+      ],
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "calibration_execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/calibration/ibm_runtime_known_state_execution.json",
+      "missing_evidence": [
+        "calibration_execution_json",
+        "stage101_calibration_pass",
+        "stage147_wilson95_thresholds"
+      ],
+      "passing_state_count": 0,
+      "provider": "ibm_runtime",
+      "ready": false,
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/calibration/stage101/results.json",
+      "state_count": 4,
+      "state_records": [
+        {
+          "expected_dominant_key": "00",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "00"
+        },
+        {
+          "expected_dominant_key": "10",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "01"
+        },
+        {
+          "expected_dominant_key": "01",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "10"
+        },
+        {
+          "expected_dominant_key": "11",
+          "minimum_wilson95_dominant_count": 825,
+          "observed_dominant_count": 0,
+          "passes_confidence_threshold": false,
+          "state": "11"
+        }
+      ],
+      "window_id": "ibm_runtime__independent_window_01"
+    }
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "provider credential values",
+      "hardware job submission",
+      "new provider result records",
+      "readout mitigation or correction",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "binding of later IBM interpretation to Stage 147 calibration-confidence thresholds",
+      "binding of later IBM PhaseWrap MAE margins to Stage 146 shot-noise separation thresholds",
+      "a blocked outcome until observed provider evidence satisfies both statistical guardrails"
+    ]
+  },
+  "decision": "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED",
+  "lane_record_count": 4,
+  "lane_records": [
+    {
+      "best_comparator_mean_absolute_score_error": null,
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "minimum_shot_noise_separation_margin": 0.003828125,
+      "passes_stage103_lower_mae_rule": false,
+      "passes_stage146_shot_noise_separation": false,
+      "phasewrap_mae_margin": null,
+      "phasewrap_mean_absolute_score_error": null,
+      "provider": "ibm_runtime",
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "stage103_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/stage103/results.json",
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "best_comparator_mean_absolute_score_error": null,
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "minimum_shot_noise_separation_margin": 0.003828125,
+      "passes_stage103_lower_mae_rule": false,
+      "passes_stage146_shot_noise_separation": false,
+      "phasewrap_mae_margin": null,
+      "phasewrap_mean_absolute_score_error": null,
+      "provider": "ibm_runtime",
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "stage103_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/stage103/results.json",
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "best_comparator_mean_absolute_score_error": null,
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "minimum_shot_noise_separation_margin": 0.003828125,
+      "passes_stage103_lower_mae_rule": false,
+      "passes_stage146_shot_noise_separation": false,
+      "phasewrap_mae_margin": null,
+      "phasewrap_mean_absolute_score_error": null,
+      "provider": "ibm_runtime",
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "stage103_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/stage103/results.json",
+      "window_id": "ibm_runtime__independent_window_01"
+    },
+    {
+      "best_comparator_mean_absolute_score_error": null,
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "minimum_shot_noise_separation_margin": 0.003828125,
+      "passes_stage103_lower_mae_rule": false,
+      "passes_stage146_shot_noise_separation": false,
+      "phasewrap_mae_margin": null,
+      "phasewrap_mean_absolute_score_error": null,
+      "provider": "ibm_runtime",
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "stage103_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/stage103/results.json",
+      "window_id": "ibm_runtime__independent_window_01"
+    }
+  ],
+  "missing_source_artifacts": [],
+  "next_gate": "After IBM Runtime evidence is assembled, rerun per-window Stage 101 and Stage 103, then rerun this gate before any Stage 110 or Stage 138 advantage wording.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "provider_scope": "ibm_runtime",
+  "ready_calibration_record_count": 0,
+  "schema_version": "qrope_stage148_first_provider_statistical_interpretation_gate_v1",
+  "secret_values_recorded": false,
+  "shot_noise_separated_lane_count": 0,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage107_window_execution_orchestrator/window_execution_plans.json",
+    "logs/automated_stage_gates/stage146_first_provider_shot_uncertainty_audit/results.json",
+    "logs/automated_stage_gates/stage147_first_provider_calibration_confidence_audit/results.json"
+  ],
+  "stage": "stage148_first_provider_statistical_interpretation_gate",
+  "stage103_lower_mae_lane_count": 0,
+  "status": "completed",
+  "window_count": 2
+}
