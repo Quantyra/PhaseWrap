@@ -1,0 +1,135 @@
+{
+  "blocked_gate_count": 7,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "new provider result records",
+      "a noisy-hardware robustness conclusion before Stage 110 reaches a terminal supported/not-supported decision",
+      "provider-wide or transformer-scale superiority beyond the matched fixed-width evidence gates"
+    ],
+    "supported": [
+      "an explicit post-collection rerun sequence from Stage 115 collection through Stage 110 final claim gating",
+      "a deterministic no-claim boundary when any downstream collection, assembly, calibration, metric, intake, or claim gate is blocked",
+      "a terminal decision distinction between replicated PhaseWrap advantage supported and not supported by the preregistered rule"
+    ]
+  },
+  "decision": "POST_COLLECTION_CLAIM_GATE_SEQUENCE_PREPARED_EXECUTION_BLOCKED",
+  "final_claim_gate_terminal": false,
+  "gate_count": 7,
+  "gate_records": [
+    {
+      "blockers": [
+        "stage115_provider_results_not_collected_for_stage113"
+      ],
+      "command": "python scripts/run_stage115_provider_result_collector.py --write-stage113-input",
+      "decision": "PROVIDER_RESULTS_COLLECTION_BLOCKED_RESULTS_MISSING",
+      "name": "provider result collector handoff",
+      "purpose": "collect every Stage 114 provider/window shard into the Stage 113 provider_job_results.jsonl input",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+      "stage_id": "stage115"
+    },
+    {
+      "blockers": [
+        "stage134_runner_result_intake_not_ready"
+      ],
+      "command": "python scripts/run_stage134_runner_result_intake_alignment_audit.py",
+      "decision": "RUNNER_RESULT_INTAKE_ALIGNED_EXECUTION_BLOCKED",
+      "name": "runner result intake alignment",
+      "purpose": "confirm Stage 133 runner output paths and Stage 115 collector shards are aligned and ready",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage134_runner_result_intake_alignment_audit/results.json",
+      "stage_id": "stage134"
+    },
+    {
+      "blockers": [
+        "stage113_evidence_not_assembled"
+      ],
+      "command": "python scripts/run_stage113_job_result_evidence_assembler.py --write-evidence",
+      "decision": "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_RESULTS_MISSING",
+      "name": "job result evidence assembler",
+      "purpose": "assemble provider job counts into the declared Stage 107 evidence files used by Stage 109",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage113_job_result_evidence_assembler/results.json",
+      "stage_id": "stage113"
+    },
+    {
+      "blockers": [
+        "stage101_calibration_not_verified"
+      ],
+      "command": "python scripts/run_stage101_known_state_calibration_gate.py",
+      "decision": "KNOWN_STATE_CALIBRATION_COUNTS_REQUIRED_BEFORE_HARDWARE_INTERPRETATION",
+      "name": "known-state calibration gate",
+      "purpose": "verify bitstring order and known-state calibration before interpreting packet counts",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage101_known_state_calibration_gate/results.json",
+      "stage_id": "stage101"
+    },
+    {
+      "blockers": [
+        "stage103_metrics_not_ready_for_interpretation"
+      ],
+      "command": "python scripts/run_stage103_robustness_metric_preregistration.py",
+      "decision": "ROBUSTNESS_METRICS_PREREGISTERED_HARDWARE_COUNTS_REQUIRED",
+      "name": "robustness metric recomputation",
+      "purpose": "recompute preregistered lower-MAE score errors for PhaseWrap and every comparator family",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage103_robustness_metric_preregistration/results.json",
+      "stage_id": "stage103"
+    },
+    {
+      "blockers": [
+        "stage109_window_evidence_not_ready"
+      ],
+      "command": "python scripts/run_stage109_window_evidence_intake_validator.py",
+      "decision": "WINDOW_EVIDENCE_INTAKE_BLOCKED_EVIDENCE_MISSING",
+      "name": "window evidence intake validator",
+      "purpose": "verify every independent window has calibration evidence, packet counts, and Stage 103 outputs",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage109_window_evidence_intake_validator/results.json",
+      "stage_id": "stage109"
+    },
+    {
+      "blockers": [
+        "stage110_final_claim_gate_not_terminal"
+      ],
+      "command": "python scripts/run_stage110_replicated_advantage_claim_gate.py",
+      "decision": "REPLICATED_ADVANTAGE_CLAIM_BLOCKED_EVIDENCE_INTAKE_INCOMPLETE",
+      "name": "replicated advantage claim gate",
+      "purpose": "apply the final all-window replicated advantage rule before any robustness conclusion",
+      "ready": false,
+      "result_path": "logs/automated_stage_gates/stage110_replicated_advantage_claim_gate/results.json",
+      "stage_id": "stage110"
+    }
+  ],
+  "missing_source_artifacts": [],
+  "next_gate": "Clear the first blocked gate in order. No noisy-hardware robustness or auditability advantage conclusion is allowed until Stage 110 reaches a terminal supported/not-supported decision after Stage 115, Stage 134, Stage 113, Stage 101, Stage 103, and Stage 109 are ready.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "ordered_command_sequence": [
+    "python scripts/run_stage115_provider_result_collector.py --write-stage113-input",
+    "python scripts/run_stage134_runner_result_intake_alignment_audit.py",
+    "python scripts/run_stage113_job_result_evidence_assembler.py --write-evidence",
+    "python scripts/run_stage101_known_state_calibration_gate.py",
+    "python scripts/run_stage103_robustness_metric_preregistration.py",
+    "python scripts/run_stage109_window_evidence_intake_validator.py",
+    "python scripts/run_stage110_replicated_advantage_claim_gate.py"
+  ],
+  "provider_credentials_required": false,
+  "ready_gate_count": 0,
+  "replicated_advantage_count": 0,
+  "schema_version": "qrope_stage135_post_collection_claim_gate_sequence_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+    "logs/automated_stage_gates/stage134_runner_result_intake_alignment_audit/results.json",
+    "logs/automated_stage_gates/stage113_job_result_evidence_assembler/results.json",
+    "logs/automated_stage_gates/stage101_known_state_calibration_gate/results.json",
+    "logs/automated_stage_gates/stage103_robustness_metric_preregistration/results.json",
+    "logs/automated_stage_gates/stage109_window_evidence_intake_validator/results.json",
+    "logs/automated_stage_gates/stage110_replicated_advantage_claim_gate/results.json"
+  ],
+  "stage": "stage135_post_collection_claim_gate_sequence",
+  "status": "completed"
+}
