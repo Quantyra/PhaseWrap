@@ -62,6 +62,26 @@ def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
     return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
 
 
+def _execution_live_submit_provenance_ready(execution: dict[str, Any], provider: str) -> bool:
+    provenance = execution.get("stage113_live_submit_provenance")
+    if not isinstance(provenance, dict):
+        return False
+    runner_count = int(provenance.get("stage152_first_provider_runner_command_count") or 0)
+    authorized_count = int(provenance.get("stage152_first_provider_authorized_runner_count") or 0)
+    live_submit_ready_count = int(provenance.get("stage152_first_provider_live_submit_ready_count") or 0)
+    return bool(
+        provenance.get("ready") is True
+        and provenance.get("stage115_provider_scope") == provider
+        and provenance.get("stage152_write_ready") is True
+        and not provenance.get("stage152_write_blockers")
+        and provenance.get("stage152_all_first_provider_commands_authorized") is True
+        and provenance.get("stage152_all_first_provider_commands_live_submit_ready") is True
+        and runner_count > 0
+        and authorized_count == runner_count
+        and live_submit_ready_count == runner_count
+    )
+
+
 def _components_from_counts(counts: dict[str, int], circuit_template: str) -> tuple[float, float]:
     component_a = expectation_from_counts(counts, "z0")
     if circuit_template == "two_ry_product_state_z_readout_v1":
@@ -81,7 +101,9 @@ def _counts_by_row(execution: dict[str, Any]) -> dict[str, dict[str, int]]:
     }
 
 
-def _packet_template_metrics(packet_template: dict[str, Any], execution_dir: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def _packet_template_metrics(
+    packet_template: dict[str, Any], execution_dir: Path, provider: str
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     packet_id = str(packet_template["packet_id"])
     packet_path = Path(str(packet_template["template_path"]))
     execution_path = execution_dir / f"{packet_id}.json"
@@ -98,6 +120,8 @@ def _packet_template_metrics(packet_template: dict[str, Any], execution_dir: Pat
         execution = {}
     elif not _assembled_from_stage113(execution):
         missing.append("stage113_assembled_status")
+    elif not _execution_live_submit_provenance_ready(execution, provider):
+        missing.append("stage113_live_submit_provenance")
     if execution_present:
         for field in REQUIRED_EXECUTION_FIELDS:
             if field not in execution or execution.get(field) in (None, "", []):
@@ -259,7 +283,7 @@ def _window_record(plan: dict[str, Any], stage136_ready: bool, stage113_live_sub
     packet_records = []
     row_records = []
     for packet_template in packet_step.get("packet_templates", []):
-        packet_record, rows = _packet_template_metrics(packet_template, execution_dir)
+        packet_record, rows = _packet_template_metrics(packet_template, execution_dir, str(plan.get("provider")))
         packet_record["provider"] = plan.get("provider")
         packet_record["window_id"] = plan.get("window_id")
         packet_records.append(packet_record)

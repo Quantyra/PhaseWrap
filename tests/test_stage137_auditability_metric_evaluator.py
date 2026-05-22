@@ -35,6 +35,19 @@ def _execution(path, packet_id, counts) -> None:
         {
             "status": "assembled_from_stage113_results",
             "no_hardware_submission": False,
+            "stage113_live_submit_provenance": {
+                "ready": True,
+                "stage115_results_path": "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+                "stage115_decision": "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113",
+                "stage115_provider_scope": "ibm_runtime",
+                "stage152_write_ready": True,
+                "stage152_write_blockers": [],
+                "stage152_first_provider_runner_command_count": 1,
+                "stage152_first_provider_authorized_runner_count": 1,
+                "stage152_first_provider_live_submit_ready_count": 1,
+                "stage152_all_first_provider_commands_authorized": True,
+                "stage152_all_first_provider_commands_live_submit_ready": True,
+            },
             "packet_id": packet_id,
             "job_or_task_ids": [f"job-{packet_id}"],
             "backend_metadata": {"provider": "ibm_runtime", "backend": "backend_a"},
@@ -232,6 +245,38 @@ def test_stage137_rejects_complete_counts_without_stage113_status(tmp_path) -> N
     phasewrap_packet = result["window_records"][0]["packet_records"][0]
     assert phasewrap_packet["ready"] is False
     assert "stage113_assembled_status" in phasewrap_packet["missing_evidence"]
+
+
+def test_stage137_rejects_packet_counts_without_execution_live_submit_provenance(tmp_path) -> None:
+    plans, stage136, stage113 = _ready_fixture(tmp_path)
+    execution_path = tmp_path / "executions" / "lane_0__phasewrap.json"
+    execution = json.loads(execution_path.read_text(encoding="utf-8"))
+    execution.pop("stage113_live_submit_provenance")
+    _write_json(execution_path, execution)
+
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136, stage113_results_path=stage113)
+
+    assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
+    assert result["ready_window_count"] == 0
+    phasewrap_packet = result["window_records"][0]["packet_records"][0]
+    assert phasewrap_packet["ready"] is False
+    assert "stage113_live_submit_provenance" in phasewrap_packet["missing_evidence"]
+
+
+def test_stage137_rejects_packet_counts_with_wrong_execution_provider_scope(tmp_path) -> None:
+    plans, stage136, stage113 = _ready_fixture(tmp_path)
+    execution_path = tmp_path / "executions" / "lane_0__phasewrap.json"
+    execution = json.loads(execution_path.read_text(encoding="utf-8"))
+    execution["stage113_live_submit_provenance"]["stage115_provider_scope"] = "all"
+    _write_json(execution_path, execution)
+
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136, stage113_results_path=stage113)
+
+    assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
+    assert result["ready_window_count"] == 0
+    phasewrap_packet = result["window_records"][0]["packet_records"][0]
+    assert phasewrap_packet["ready"] is False
+    assert "stage113_live_submit_provenance" in phasewrap_packet["missing_evidence"]
 
 
 def test_stage137_rejects_counts_without_result_lineage_metadata(tmp_path) -> None:
