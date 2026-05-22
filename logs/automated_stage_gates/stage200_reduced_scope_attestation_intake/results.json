@@ -1,0 +1,88 @@
+{
+  "attestation_phrase_matches": false,
+  "blockers": [
+    "exact_reduced_scope_attestation_phrase_required"
+  ],
+  "break_even_microseconds_per_shot": 23.69722154816792,
+  "budget_cap_usd": 25.0,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider-side IBM credit balance verification",
+      "acceptance of exact live-run approval",
+      "creation of a runnable live-submit command",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "exact reduced-scope credit attestation phrase intake",
+      "credit attestation is bounded to Stage199 reduced scope and 25 USD cap",
+      "attestation remains separate from exact live approval and live-runner preparation"
+    ]
+  },
+  "decision": "REDUCED_SCOPE_ATTESTATION_INTAKE_AWAITING_EXACT_PHRASE",
+  "estimated_total_job_count": 324,
+  "estimated_total_shots": 659360,
+  "explicit_user_approval_required": true,
+  "hardware_scope_label": "reduced_precision_all_lanes_2048_shots_v1",
+  "human_credit_allowance_verified": false,
+  "intake_items": [
+    {
+      "description": "Stage199 must present the reduced-scope cost estimate before any attestation phrase can be accepted.",
+      "evidence": {
+        "break_even_microseconds_per_shot": 23.69722154816792,
+        "estimated_total_shots": 659360,
+        "scope_id": "all_lanes_half_shots_2048",
+        "stage199_decision": "REDUCED_SCOPE_ATTESTATION_READY_FOR_USER_REVIEW_NOT_LIVE"
+      },
+      "item_id": "stage199_attestation_packet",
+      "status": "ready"
+    },
+    {
+      "description": "Only the exact reduced-scope credit attestation phrase can record human credit allowance verification.",
+      "evidence": {
+        "attestation_phrase_matches": false,
+        "provided_attestation_phrase_present": false,
+        "required_attestation_phrase": "ATTEST IBM CREDIT FOR REDUCED SCOPE STAGE199 WITH 25 USD CAP"
+      },
+      "item_id": "exact_attestation_phrase",
+      "status": "awaiting_exact_phrase"
+    },
+    {
+      "description": "Accepted attestation means IBM account allowance and willingness to spend within the reduced-scope cap only.",
+      "evidence": {
+        "budget_cap_usd": 25.0,
+        "does_not_accept_exact_live_approval_phrase": true,
+        "does_not_approve_live_submission": true,
+        "scope_id": "all_lanes_half_shots_2048"
+      },
+      "item_id": "attestation_meaning",
+      "status": "bounded_credit_attestation_only"
+    },
+    {
+      "description": "This gate never prepares or runs hardware; exact live approval remains a later separate gate.",
+      "evidence": {
+        "hardware_submitted_here": false,
+        "live_submit_command_created_here": false
+      },
+      "item_id": "live_execution_boundary",
+      "status": "live_run_disallowed"
+    }
+  ],
+  "live_submit_command_created": false,
+  "missing_source_artifacts": [],
+  "next_gate": "If the exact attestation phrase is accepted, rerun Stage199 with human_credit_allowance_verified=true and then perform reduced-scope exact approval review. Do not prepare a live runner from this gate alone.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provided_attestation_phrase_present": false,
+  "provider_credentials_required": false,
+  "required_attestation_phrase": "ATTEST IBM CREDIT FOR REDUCED SCOPE STAGE199 WITH 25 USD CAP",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage200_reduced_scope_attestation_intake_v1",
+  "scope_id": "all_lanes_half_shots_2048",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage199_reduced_scope_attestation_packet/results.json"
+  ],
+  "stage": "stage200_reduced_scope_attestation_intake",
+  "status": "completed"
+}
