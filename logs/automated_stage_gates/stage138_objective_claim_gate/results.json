@@ -14,6 +14,7 @@
       "a terminal objective-level gate for robustness or auditability outcomes",
       "separate preservation of the Stage 110 robustness rule and Stage 137 auditability rule with readiness flags checked",
       "Stage 148 statistical guardrail decision, Stage 113 live-submit provenance, and readiness-counter enforcement before supported advantage wording",
+      "independent Stage 138 inspection of Stage 148 lane-level Stage 103 provider alignment, Stage 104 matched-surface readiness, and Stage 113 live-submit provenance",
       "blocked output until both robustness and auditability evidence surfaces are terminal"
     ]
   },
@@ -48,6 +49,10 @@
   "stage148_ready_calibration_record_count": 0,
   "stage148_shot_noise_separated_lane_count": 0,
   "stage148_stage103_lower_mae_lane_count": 0,
+  "stage148_stage103_provider_aligned_lane_count": 0,
+  "stage148_stage103_source_ready_lane_count": 0,
+  "stage148_stage103_stage104_matched_surface_lane_count": 0,
+  "stage148_stage103_stage113_live_submit_provenance_lane_count": 0,
   "stage148_stage113_live_submit_provenance_ready": false,
   "stage148_stage113_stage115_stage152_all_first_provider_commands_authorized": false,
   "stage148_stage113_stage115_stage152_all_first_provider_commands_live_submit_ready": false,

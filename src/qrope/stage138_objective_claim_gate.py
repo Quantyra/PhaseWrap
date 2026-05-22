@@ -89,7 +89,63 @@ def _stage137_ready_for_claim(stage137: dict[str, Any] | None) -> bool:
     )
 
 
+def _stage148_lane_source_counts(stage148: dict[str, Any] | None) -> dict[str, int]:
+    if not isinstance(stage148, dict):
+        return {
+            "stage103_source_ready_lane_count": 0,
+            "stage103_provider_aligned_lane_count": 0,
+            "stage103_stage104_matched_surface_lane_count": 0,
+            "stage103_stage113_live_submit_provenance_lane_count": 0,
+        }
+    provider_scope = stage148.get("provider_scope")
+    lane_records = stage148.get("lane_records", [])
+    if not isinstance(lane_records, list):
+        lane_records = []
+    provider_aligned = 0
+    stage104_ready = 0
+    stage113_ready = 0
+    source_ready = 0
+    for record in lane_records:
+        if not isinstance(record, dict):
+            continue
+        record_provider_aligned = bool(
+            provider_scope
+            and record.get("provider") == provider_scope
+            and record.get("stage103_summary_provider") == provider_scope
+            and record.get("stage103_summary_provider_matches_window") is True
+        )
+        record_stage104_ready = bool(
+            record.get("stage103_stage104_matched_surface_ready") is True
+            and int(record.get("stage103_stage104_complete_matched_group_count") or 0) > 0
+        )
+        record_stage113_ready = record.get("stage103_stage113_live_submit_provenance_ready") is True
+        if record_provider_aligned:
+            provider_aligned += 1
+        if record_stage104_ready:
+            stage104_ready += 1
+        if record_stage113_ready:
+            stage113_ready += 1
+        if (
+            record_provider_aligned
+            and record_stage104_ready
+            and record_stage113_ready
+            and record.get("stage103_ready_for_interpretation") is True
+            and record.get("stage103_ready_to_interpret_hardware_metrics") is True
+            and record.get("stage103_comparison_groups_complete") is True
+            and int(record.get("stage103_missing_execution_count") or 0) == 0
+            and int(record.get("stage103_metric_record_count") or 0) > 0
+        ):
+            source_ready += 1
+    return {
+        "stage103_source_ready_lane_count": source_ready,
+        "stage103_provider_aligned_lane_count": provider_aligned,
+        "stage103_stage104_matched_surface_lane_count": stage104_ready,
+        "stage103_stage113_live_submit_provenance_lane_count": stage113_ready,
+    }
+
+
 def _stage148_ready_for_claim(stage148: dict[str, Any] | None) -> bool:
+    lane_source_counts = _stage148_lane_source_counts(stage148)
     return bool(
         isinstance(stage148, dict)
         and stage148.get("decision") == STATISTICAL_READY
@@ -101,6 +157,10 @@ def _stage148_ready_for_claim(stage148: dict[str, Any] | None) -> bool:
         and stage148.get("ready_calibration_record_count") == stage148.get("calibration_record_count")
         and stage148.get("stage103_lower_mae_lane_count") == stage148.get("lane_record_count")
         and stage148.get("shot_noise_separated_lane_count") == stage148.get("lane_record_count")
+        and lane_source_counts["stage103_source_ready_lane_count"] == stage148.get("lane_record_count")
+        and lane_source_counts["stage103_provider_aligned_lane_count"] == stage148.get("lane_record_count")
+        and lane_source_counts["stage103_stage104_matched_surface_lane_count"] == stage148.get("lane_record_count")
+        and lane_source_counts["stage103_stage113_live_submit_provenance_lane_count"] == stage148.get("lane_record_count")
         and int(stage148.get("calibration_record_count") or 0) > 0
         and int(stage148.get("lane_record_count") or 0) > 0
     )
@@ -122,6 +182,7 @@ def run_stage138_claim_gate(
     auditability_ready = _stage137_ready_for_claim(stage137)
     auditability_replication = _auditability_replication_records(stage137)
     auditability_supported = any(record["replicated_phasewrap_auditability_advantage"] for record in auditability_replication)
+    stage148_lane_source_counts = _stage148_lane_source_counts(stage148)
     statistical_ready = _stage148_ready_for_claim(stage148)
     statistical_required = bool(robustness_supported or auditability_supported)
     objective_terminal = robustness_terminal and auditability_ready and not missing_sources and (not statistical_required or statistical_ready)
@@ -169,6 +230,14 @@ def run_stage138_claim_gate(
         "stage148_stage103_lower_mae_lane_count": stage148.get("stage103_lower_mae_lane_count") if isinstance(stage148, dict) else None,
         "stage148_shot_noise_separated_lane_count": stage148.get("shot_noise_separated_lane_count") if isinstance(stage148, dict) else None,
         "stage148_lane_record_count": stage148.get("lane_record_count") if isinstance(stage148, dict) else None,
+        "stage148_stage103_source_ready_lane_count": stage148_lane_source_counts["stage103_source_ready_lane_count"],
+        "stage148_stage103_provider_aligned_lane_count": stage148_lane_source_counts["stage103_provider_aligned_lane_count"],
+        "stage148_stage103_stage104_matched_surface_lane_count": stage148_lane_source_counts[
+            "stage103_stage104_matched_surface_lane_count"
+        ],
+        "stage148_stage103_stage113_live_submit_provenance_lane_count": stage148_lane_source_counts[
+            "stage103_stage113_live_submit_provenance_lane_count"
+        ],
         "robustness_terminal": robustness_terminal,
         "robustness_supported": robustness_supported,
         "auditability_ready": auditability_ready,
@@ -190,6 +259,7 @@ def run_stage138_claim_gate(
                 "a terminal objective-level gate for robustness or auditability outcomes",
                 "separate preservation of the Stage 110 robustness rule and Stage 137 auditability rule with readiness flags checked",
                 "Stage 148 statistical guardrail decision, Stage 113 live-submit provenance, and readiness-counter enforcement before supported advantage wording",
+                "independent Stage 138 inspection of Stage 148 lane-level Stage 103 provider alignment, Stage 104 matched-surface readiness, and Stage 113 live-submit provenance",
                 "blocked output until both robustness and auditability evidence surfaces are terminal",
             ],
             "excluded": [
@@ -237,6 +307,14 @@ def write_stage138_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage148_stage103_lower_mae_lane_count": result["stage148_stage103_lower_mae_lane_count"],
         "stage148_shot_noise_separated_lane_count": result["stage148_shot_noise_separated_lane_count"],
         "stage148_lane_record_count": result["stage148_lane_record_count"],
+        "stage148_stage103_source_ready_lane_count": result["stage148_stage103_source_ready_lane_count"],
+        "stage148_stage103_provider_aligned_lane_count": result["stage148_stage103_provider_aligned_lane_count"],
+        "stage148_stage103_stage104_matched_surface_lane_count": result[
+            "stage148_stage103_stage104_matched_surface_lane_count"
+        ],
+        "stage148_stage103_stage113_live_submit_provenance_lane_count": result[
+            "stage148_stage103_stage113_live_submit_provenance_lane_count"
+        ],
         "robustness_terminal": result["robustness_terminal"],
         "robustness_supported": result["robustness_supported"],
         "auditability_ready": result["auditability_ready"],
