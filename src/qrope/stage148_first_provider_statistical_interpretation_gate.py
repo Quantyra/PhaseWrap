@@ -70,6 +70,26 @@ def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
     return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
 
 
+def _execution_live_submit_provenance_ready(execution: dict[str, Any], provider: str) -> bool:
+    provenance = execution.get("stage113_live_submit_provenance")
+    if not isinstance(provenance, dict):
+        return False
+    runner_count = int(provenance.get("stage152_first_provider_runner_command_count") or 0)
+    authorized_count = int(provenance.get("stage152_first_provider_authorized_runner_count") or 0)
+    live_submit_ready_count = int(provenance.get("stage152_first_provider_live_submit_ready_count") or 0)
+    return bool(
+        provenance.get("ready") is True
+        and provenance.get("stage115_provider_scope") == provider
+        and provenance.get("stage152_write_ready") is True
+        and not provenance.get("stage152_write_blockers")
+        and provenance.get("stage152_all_first_provider_commands_authorized") is True
+        and provenance.get("stage152_all_first_provider_commands_live_submit_ready") is True
+        and runner_count > 0
+        and authorized_count == runner_count
+        and live_submit_ready_count == runner_count
+    )
+
+
 def _stage113_provider_scope_matches(stage113: dict[str, Any] | None, provider: str) -> bool:
     return bool(isinstance(stage113, dict) and provider and stage113.get("provider_scope") == provider)
 
@@ -105,6 +125,8 @@ def _calibration_record(plan: dict[str, Any], thresholds: dict[str, dict[str, An
         missing.append("calibration_execution_json")
     elif not _assembled_from_stage113(calibration):
         missing.append("stage113_assembled_calibration_status")
+    elif not _execution_live_submit_provenance_ready(calibration, str(plan.get("provider"))):
+        missing.append("calibration_stage113_live_submit_provenance")
     if isinstance(calibration, dict):
         for field in REQUIRED_CALIBRATION_FIELDS:
             if field not in calibration or calibration.get(field) in (None, "", []):

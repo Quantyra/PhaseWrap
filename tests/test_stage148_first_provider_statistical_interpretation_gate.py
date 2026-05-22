@@ -82,6 +82,19 @@ def _fixture(tmp_path, *, ready: bool) -> tuple[object, object, object, object]:
             {
                 "status": "assembled_from_stage113_results",
                 "no_hardware_submission": False,
+                "stage113_live_submit_provenance": {
+                    "ready": True,
+                    "stage115_results_path": "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+                    "stage115_decision": "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113",
+                    "stage115_provider_scope": "ibm_runtime",
+                    "stage152_write_ready": True,
+                    "stage152_write_blockers": [],
+                    "stage152_first_provider_runner_command_count": 1,
+                    "stage152_first_provider_authorized_runner_count": 1,
+                    "stage152_first_provider_live_submit_ready_count": 1,
+                    "stage152_all_first_provider_commands_authorized": True,
+                    "stage152_all_first_provider_commands_live_submit_ready": True,
+                },
                 "job_or_task_ids": ["cal-job-0", "cal-job-1"],
                 "backend_metadata": {"provider": "ibm_runtime", "backend": "backend_a"},
                 "submitted_at_utc": "2026-05-21T00:00:00Z",
@@ -227,6 +240,44 @@ def test_stage148_blocks_complete_calibration_counts_without_stage113_status(tmp
     assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
     assert result["ready_calibration_record_count"] == 0
     assert "stage113_assembled_calibration_status" in result["calibration_records"][0]["missing_evidence"]
+
+
+def test_stage148_blocks_calibration_counts_without_execution_live_submit_provenance(tmp_path) -> None:
+    plans, stage146, stage147, stage113 = _fixture(tmp_path, ready=True)
+    calibration_path = tmp_path / "window" / "calibration" / "ibm_runtime_known_state_execution.json"
+    calibration = json.loads(calibration_path.read_text(encoding="utf-8"))
+    calibration.pop("stage113_live_submit_provenance")
+    _write_json(calibration_path, calibration)
+
+    result = run_stage148_gate(
+        stage107_window_plans_path=plans,
+        stage146_results_path=stage146,
+        stage147_results_path=stage147,
+        stage113_results_path=stage113,
+    )
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["ready_calibration_record_count"] == 0
+    assert "calibration_stage113_live_submit_provenance" in result["calibration_records"][0]["missing_evidence"]
+
+
+def test_stage148_blocks_calibration_counts_with_wrong_execution_provider_scope(tmp_path) -> None:
+    plans, stage146, stage147, stage113 = _fixture(tmp_path, ready=True)
+    calibration_path = tmp_path / "window" / "calibration" / "ibm_runtime_known_state_execution.json"
+    calibration = json.loads(calibration_path.read_text(encoding="utf-8"))
+    calibration["stage113_live_submit_provenance"]["stage115_provider_scope"] = "all"
+    _write_json(calibration_path, calibration)
+
+    result = run_stage148_gate(
+        stage107_window_plans_path=plans,
+        stage146_results_path=stage146,
+        stage147_results_path=stage147,
+        stage113_results_path=stage113,
+    )
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["ready_calibration_record_count"] == 0
+    assert "calibration_stage113_live_submit_provenance" in result["calibration_records"][0]["missing_evidence"]
 
 
 def test_stage148_blocks_calibration_counts_without_result_lineage_metadata(tmp_path) -> None:
