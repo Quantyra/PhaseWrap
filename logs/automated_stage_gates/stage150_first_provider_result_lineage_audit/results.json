@@ -11,7 +11,8 @@
     "supported": [
       "first-provider job lineage from Stage 112 jobs to Stage 114 shards, result fields, and Stage 107 target evidence paths",
       "window-level IBM calibration and matched-packet job completeness before provider result interpretation",
-      "binding of expected result lineage to Stage 148 statistical interpretation and Stage 149 guarded runner checks"
+      "binding of expected result lineage to Stage 148 statistical interpretation and Stage 149 guarded runner checks",
+      "binding of expected result lineage to Stage 148 provider scope and Stage 146/147 source-contract readiness"
     ]
   },
   "decision": "FIRST_PROVIDER_RESULT_LINEAGE_CONTRACT_READY_EXECUTION_BLOCKED",
@@ -3670,6 +3671,9 @@
   "stage114_result_fields_ready": true,
   "stage114_shard_assignment_count": 328,
   "stage148_provider_bound": true,
+  "stage148_stage146_ready": true,
+  "stage148_stage147_ready": true,
+  "stage148_statistical_source_contract_ready": true,
   "stage148_window_ids": [
     "ibm_runtime__independent_window_00",
     "ibm_runtime__independent_window_01"

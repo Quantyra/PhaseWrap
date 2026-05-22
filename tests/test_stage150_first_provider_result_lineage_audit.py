@@ -91,6 +91,10 @@ def _fixture(tmp_path, paths, jobs=None) -> None:
         paths["stage148_results_path"],
         {
             "provider_scope": "ibm_runtime",
+            "stage146_decision": "FIRST_PROVIDER_SHOT_UNCERTAINTY_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED",
+            "stage146_ready": True,
+            "stage147_decision": "FIRST_PROVIDER_CALIBRATION_CONFIDENCE_CONTRACT_READY_COUNTS_REQUIRED",
+            "stage147_ready": True,
             "calibration_records": [{"provider": "ibm_runtime", "window_id": "ibm_runtime__independent_window_00"}],
             "lane_records": [{"provider": "ibm_runtime", "window_id": "ibm_runtime__independent_window_00"}],
         },
@@ -118,7 +122,24 @@ def test_stage150_readies_first_provider_result_lineage_contract(tmp_path) -> No
     assert result["packet_job_count"] == 1
     assert result["stage114_shard_assignment_count"] == 2
     assert result["required_backend_metadata_fields"] == ["provider", "backend", "window_id", "job_kind"]
+    assert result["stage148_statistical_source_contract_ready"] is True
     assert result["no_hardware_submission"] is True
+
+
+def test_stage150_requires_stage148_statistical_source_contract_readiness(tmp_path) -> None:
+    paths = _paths(tmp_path)
+    _fixture(tmp_path, paths)
+    stage148 = json.loads(paths["stage148_results_path"].read_text(encoding="utf-8"))
+    stage148["stage146_ready"] = False
+    _write_json(paths["stage148_results_path"], stage148)
+
+    result = run_stage150_audit(**paths)
+
+    assert result["decision"] == "FIRST_PROVIDER_RESULT_LINEAGE_CONTRACT_INCOMPLETE"
+    assert result["stage148_provider_bound"] is True
+    assert result["stage148_stage146_ready"] is False
+    assert result["stage148_stage147_ready"] is True
+    assert result["stage148_statistical_source_contract_ready"] is False
 
 
 def test_stage150_fails_closed_on_duplicate_or_incomplete_packet_lineage(tmp_path) -> None:

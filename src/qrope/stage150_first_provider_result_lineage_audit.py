@@ -219,6 +219,9 @@ def run_stage150_audit(
     stage114_fields = list(stage114.get("required_result_fields", [])) if isinstance(stage114, dict) else []
     result_fields_ready = all(field in stage114_fields for field in REQUIRED_RESULT_FIELDS)
     stage148_bound = bool(isinstance(stage148, dict) and stage148.get("provider_scope") == provider)
+    stage148_stage146_ready = bool(isinstance(stage148, dict) and stage148.get("stage146_ready") is True)
+    stage148_stage147_ready = bool(isinstance(stage148, dict) and stage148.get("stage147_ready") is True)
+    stage148_contract_ready = stage148_bound and stage148_stage146_ready and stage148_stage147_ready
     stage149_ready = bool(
         isinstance(stage149, dict)
         and stage149.get("decision") == "FIRST_PROVIDER_GUARDED_RUNNER_CONTRACT_READY_CUTOVER_BLOCKED"
@@ -232,6 +235,7 @@ def run_stage150_audit(
         and all(record["ready"] for record in windows)
         and result_fields_ready
         and stage148_bound
+        and stage148_contract_ready
         and bool(stage148_window_ids)
         and stage149_ready
     )
@@ -262,6 +266,9 @@ def run_stage150_audit(
         "required_backend_metadata_fields": list(REQUIRED_BACKEND_METADATA_FIELDS),
         "stage114_result_fields_ready": result_fields_ready,
         "stage148_provider_bound": stage148_bound,
+        "stage148_stage146_ready": stage148_stage146_ready,
+        "stage148_stage147_ready": stage148_stage147_ready,
+        "stage148_statistical_source_contract_ready": stage148_contract_ready,
         "stage148_window_ids": sorted(stage148_window_ids),
         "stage149_guarded_runner_contract_ready": stage149_ready,
         "job_records": records,
@@ -274,6 +281,7 @@ def run_stage150_audit(
                 "first-provider job lineage from Stage 112 jobs to Stage 114 shards, result fields, and Stage 107 target evidence paths",
                 "window-level IBM calibration and matched-packet job completeness before provider result interpretation",
                 "binding of expected result lineage to Stage 148 statistical interpretation and Stage 149 guarded runner checks",
+                "binding of expected result lineage to Stage 148 provider scope and Stage 146/147 source-contract readiness",
             ],
             "excluded": [
                 "provider credential values",
@@ -311,6 +319,9 @@ def write_stage150_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage114_shard_assignment_count": result["stage114_shard_assignment_count"],
         "stage114_result_fields_ready": result["stage114_result_fields_ready"],
         "stage148_provider_bound": result["stage148_provider_bound"],
+        "stage148_stage146_ready": result["stage148_stage146_ready"],
+        "stage148_stage147_ready": result["stage148_stage147_ready"],
+        "stage148_statistical_source_contract_ready": result["stage148_statistical_source_contract_ready"],
         "stage148_window_ids": result["stage148_window_ids"],
         "stage149_guarded_runner_contract_ready": result["stage149_guarded_runner_contract_ready"],
         "required_result_fields": result["required_result_fields"],
@@ -348,5 +359,6 @@ def print_stage150_summary(result: dict[str, Any]) -> None:
     print(f"packet_job_count: {result['packet_job_count']}")
     print(f"ready_window_count: {result['ready_window_count']}/{result['window_count']}")
     print(f"stage148_provider_bound: {result['stage148_provider_bound']}")
+    print(f"stage148_statistical_source_contract_ready: {result['stage148_statistical_source_contract_ready']}")
     print(f"stage149_guarded_runner_contract_ready: {result['stage149_guarded_runner_contract_ready']}")
     print(f"next_gate: {result['next_gate']}")
