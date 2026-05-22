@@ -61,6 +61,8 @@ def _handoff_markdown(result: dict[str, Any]) -> str:
     lines.extend(f"- `{group}`" for group in result["missing_env_groups"] or ["none"])
     lines.extend(["", "## Missing SDK Modules"])
     lines.extend(f"- `{module}`" for module in result["missing_sdk_modules"] or ["none"])
+    lines.extend(["", "## Stage 139 Context Blockers"])
+    lines.extend(f"- `{blocker}`" for blocker in result["stage139_context_blockers"] or ["none"])
     lines.extend(["", "## Rerun Commands"])
     lines.extend(f"- `{command}`" for command in result["rerun_commands"])
     lines.extend(
@@ -84,7 +86,8 @@ def run_stage142_handoff(*, stage141_results_path: Path = DEFAULT_STAGE141_RESUL
     top_level_actions = stage141.get("first_unlock_minimal_actions", []) if isinstance(stage141, dict) else []
     missing_env = list(top_level_missing_env or (first.get("missing_env_groups", []) if first else []))
     missing_sdk = list(top_level_missing_sdk or (first.get("missing_sdk_modules", []) if first else []))
-    ready = bool(first and first.get("ready_for_preflight_rerun") is True)
+    stage139_context_blockers = list(first.get("stage139_context_blockers", []) if first else [])
+    ready = bool(first and first.get("ready_for_preflight_rerun") is True and not stage139_context_blockers)
     provider = first.get("provider") if first else None
     rerun_commands = [
         "python scripts/run_stage140_local_provider_configuration_readiness.py --load-dotenv",
@@ -114,6 +117,7 @@ def run_stage142_handoff(*, stage141_results_path: Path = DEFAULT_STAGE141_RESUL
         "priority_score": first.get("priority_score") if first else None,
         "missing_env_groups": missing_env,
         "missing_sdk_modules": missing_sdk,
+        "stage139_context_blockers": stage139_context_blockers,
         "prepared_job_count": first.get("prepared_job_count") if first else None,
         "runner_command_count": first.get("runner_command_count") if first else None,
         "minimal_unlock_actions": list(top_level_actions or (first.get("minimal_unlock_actions", []) if first else [])),
@@ -126,6 +130,7 @@ def run_stage142_handoff(*, stage141_results_path: Path = DEFAULT_STAGE141_RESUL
         "claim_boundary": {
             "supported": [
                 "first-provider unlock handoff using Stage 141 priority evidence",
+                "Stage 139 action-checklist context blockers are preserved before local preflight rerun readiness",
                 "non-secret environment placeholder template for the first provider",
                 "ordered rerun commands after local configuration is filled",
             ],
@@ -165,6 +170,7 @@ def write_stage142_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "priority_score": result["priority_score"],
         "missing_env_groups": result["missing_env_groups"],
         "missing_sdk_modules": result["missing_sdk_modules"],
+        "stage139_context_blockers": result["stage139_context_blockers"],
         "minimal_unlock_actions": result["minimal_unlock_actions"],
         "prepared_job_count": result["prepared_job_count"],
         "runner_command_count": result["runner_command_count"],

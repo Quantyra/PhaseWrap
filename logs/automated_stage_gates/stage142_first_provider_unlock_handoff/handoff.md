@@ -9,6 +9,9 @@ Decision: `FIRST_PROVIDER_UNLOCK_HANDOFF_READY_ENV_OR_SDK_REQUIRED`
 ## Missing SDK Modules
 - `none`
 
+## Stage 139 Context Blockers
+- `none`
+
 ## Rerun Commands
 - `python scripts/run_stage140_local_provider_configuration_readiness.py --load-dotenv`
 - `python scripts/run_stage106_hardware_execution_preflight.py --load-dotenv`

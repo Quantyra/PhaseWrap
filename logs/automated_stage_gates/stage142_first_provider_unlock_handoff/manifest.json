@@ -9,6 +9,7 @@
     ],
     "supported": [
       "first-provider unlock handoff using Stage 141 priority evidence",
+      "Stage 139 action-checklist context blockers are preserved before local preflight rerun readiness",
       "non-secret environment placeholder template for the first provider",
       "ordered rerun commands after local configuration is filled"
     ]
@@ -40,6 +41,7 @@
     "logs/automated_stage_gates/stage141_provider_unlock_priority/results.json"
   ],
   "stage": "stage142_first_provider_unlock_handoff",
+  "stage139_context_blockers": [],
   "stage141_decision": "PROVIDER_UNLOCK_PRIORITY_PREPARED_EXECUTION_BLOCKED",
   "status": "completed"
 }

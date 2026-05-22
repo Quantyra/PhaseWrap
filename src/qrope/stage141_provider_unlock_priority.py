@@ -33,12 +33,14 @@ def _by_provider(payload: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
 def _priority_record(provider: str, stage139_record: dict[str, Any], stage140_record: dict[str, Any]) -> dict[str, Any]:
     missing_env = list(stage140_record.get("missing_env_groups", []))
     missing_sdk = list(stage140_record.get("missing_sdk_modules", []))
+    stage139_context_blockers = list(stage140_record.get("stage139_context_blockers", []))
     prepared_jobs = int(stage139_record.get("prepared_job_count") or 0)
     runner_count = int(stage139_record.get("runner_command_count") or 0)
     authorized_runner_count = int(stage139_record.get("authorized_runner_command_count") or 0)
     env_missing_count = len(missing_env)
     sdk_missing_count = len(missing_sdk)
-    already_ready_bonus = 1000 if stage140_record.get("ready_for_preflight_rerun") is True else 0
+    ready_for_preflight_rerun = bool(stage140_record.get("ready_for_preflight_rerun") is True and not stage139_context_blockers)
+    already_ready_bonus = 1000 if ready_for_preflight_rerun else 0
     # Lower score is better; already-ready providers sort first.
     priority_score = env_missing_count + (3 * sdk_missing_count) - already_ready_bonus
     minimal_unlock_actions: list[str] = []
@@ -46,12 +48,16 @@ def _priority_record(provider: str, stage139_record: dict[str, Any], stage140_re
         minimal_unlock_actions.append("Set local env groups without committing values: " + "; ".join(missing_env) + ".")
     if missing_sdk:
         minimal_unlock_actions.append("Install or expose SDK modules: " + ", ".join(missing_sdk) + ".")
+    if stage139_context_blockers:
+        minimal_unlock_actions.append("Rerun Stage 139 action checklist context before preflight: " + "; ".join(stage139_context_blockers) + ".")
     if not minimal_unlock_actions:
         minimal_unlock_actions.append("Rerun Stage 106/111/128/129/130/139; then execute only authorized Stage 133 commands.")
     return {
         "provider": provider,
         "priority_score": priority_score,
-        "ready_for_preflight_rerun": stage140_record.get("ready_for_preflight_rerun") is True,
+        "ready_for_preflight_rerun": ready_for_preflight_rerun,
+        "stage139_source_ready_for_remediation": stage140_record.get("stage139_source_ready_for_remediation"),
+        "stage139_context_blockers": stage139_context_blockers,
         "env_missing_count": env_missing_count,
         "sdk_missing_count": sdk_missing_count,
         "missing_env_groups": missing_env,
@@ -111,6 +117,7 @@ def run_stage141_priority(
         "claim_boundary": {
             "supported": [
                 "provider unlock ordering based on non-secret env-key and SDK readiness evidence",
+                "Stage 140 Stage 139 action-checklist context blockers are preserved in provider priority records",
                 "minimal first-provider unlock actions before Stage 106/111/129 reruns",
                 "explicit separation from live provider submission and Stage 138 objective claims",
             ],

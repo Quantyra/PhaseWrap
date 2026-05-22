@@ -9,6 +9,7 @@
     ],
     "supported": [
       "provider unlock ordering based on non-secret env-key and SDK readiness evidence",
+      "Stage 140 Stage 139 action-checklist context blockers are preserved in provider priority records",
       "minimal first-provider unlock actions before Stage 106/111/129 reruns",
       "explicit separation from live provider submission and Stage 138 objective claims"
     ]

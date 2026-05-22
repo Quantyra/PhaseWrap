@@ -30,6 +30,7 @@ def _stage141(path, *, ready: bool = False) -> None:
                     "ready_for_preflight_rerun": ready,
                     "missing_env_groups": [] if ready else ["IBM_QUANTUM_TOKEN or QISKIT_IBM_TOKEN", "IBM_QUANTUM_INSTANCE_CRN"],
                     "missing_sdk_modules": [],
+                    "stage139_context_blockers": [],
                     "prepared_job_count": 328,
                     "runner_command_count": 2,
                     "minimal_unlock_actions": ["Set local env groups without committing values."],
@@ -67,6 +68,20 @@ def test_stage142_reports_ready_when_stage141_first_provider_is_ready(tmp_path) 
     assert result["missing_env_groups"] == []
 
 
+def test_stage142_blocks_ready_handoff_with_stage139_context_blocker(tmp_path) -> None:
+    stage141 = tmp_path / "stage141.json"
+    _stage141(stage141, ready=True)
+    payload = json.loads(stage141.read_text(encoding="utf-8"))
+    payload["priority_records"][0]["stage139_context_blockers"] = ["stage139_action_checklist_not_ready"]
+    _write_json(stage141, payload)
+
+    result = run_stage142_handoff(stage141_results_path=stage141)
+
+    assert result["decision"] == "FIRST_PROVIDER_UNLOCK_HANDOFF_READY_ENV_OR_SDK_REQUIRED"
+    assert result["first_unlock_ready_for_preflight_rerun"] is False
+    assert result["stage139_context_blockers"] == ["stage139_action_checklist_not_ready"]
+
+
 def test_stage142_outputs_are_written(tmp_path) -> None:
     stage141 = tmp_path / "stage141.json"
     _stage141(stage141)
@@ -80,6 +95,7 @@ def test_stage142_outputs_are_written(tmp_path) -> None:
     assert set(paths) == {"manifest", "result", "handoff", "env_template"}
     assert manifest["first_unlock_provider"] == "ibm_runtime"
     assert manifest["missing_env_groups"] == ["IBM_QUANTUM_INSTANCE_CRN"]
+    assert manifest["stage139_context_blockers"] == []
     assert "QRoPE Stage 142" in handoff
     assert "IBM_QUANTUM_INSTANCE_CRN=" in template
     assert "IBM_QUANTUM_TOKEN=" not in template

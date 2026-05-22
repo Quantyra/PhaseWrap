@@ -4,7 +4,7 @@
 Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
-Stage 141 prioritizes the first provider unlock path using non-secret Stage 139 and Stage 140 evidence.
+Stage 141 prioritizes the first provider unlock path using non-secret Stage 139 and Stage 140 evidence. It also preserves any Stage 140 Stage139-context blockers so a provider cannot be treated as ready for preflight rerun when the action-checklist source is stale or missing runner context.
 
 Current decision: `PROVIDER_UNLOCK_PRIORITY_PREPARED_EXECUTION_BLOCKED`.
 
@@ -14,6 +14,7 @@ Current first unlock provider: `ibm_runtime`, because the IBM SDK modules are pr
 Supported:
 
 - provider unlock ordering based on non-secret env-key and SDK readiness evidence
+- Stage 140 Stage 139 action-checklist context blockers are preserved in provider priority records
 - top-level first-provider missing env groups, missing SDK modules, and minimal unlock actions
 - minimal first-provider unlock actions before Stage 106/111/129 reruns
 - explicit separation from live provider submission and Stage 138 objective claims

@@ -29,12 +29,16 @@ def _fixture(tmp_path, *, ibm_ready: bool = False):
                 {
                     "provider": "amazon_braket",
                     "ready_for_preflight_rerun": False,
+                    "stage139_source_ready_for_remediation": True,
+                    "stage139_context_blockers": [],
                     "missing_env_groups": ["AWS_ACCESS_KEY_ID or AWS_PROFILE", "QROPE_BRAKET_DEVICE_ARN or QROPE_BRAKET_DEVICE_ARNS"],
                     "missing_sdk_modules": ["boto3", "braket"],
                 },
                 {
                     "provider": "ibm_runtime",
                     "ready_for_preflight_rerun": ibm_ready,
+                    "stage139_source_ready_for_remediation": True,
+                    "stage139_context_blockers": [],
                     "missing_env_groups": [] if ibm_ready else ["IBM_QUANTUM_INSTANCE_CRN"],
                     "missing_sdk_modules": [],
                 },
@@ -72,6 +76,23 @@ def test_stage141_reports_ready_when_first_provider_can_rerun_preflight(tmp_path
     assert result["first_unlock_missing_env_groups"] == []
     assert result["first_unlock_minimal_actions"] == [
         "Rerun Stage 106/111/128/129/130/139; then execute only authorized Stage 133 commands."
+    ]
+
+
+def test_stage141_blocks_ready_provider_with_stage139_context_blocker(tmp_path) -> None:
+    stage139, stage140 = _fixture(tmp_path, ibm_ready=True)
+    payload = json.loads(stage140.read_text(encoding="utf-8"))
+    payload["provider_records"][1]["stage139_context_blockers"] = ["stage139_runner_commands_missing"]
+    _write_json(stage140, payload)
+
+    result = run_stage141_priority(stage139_results_path=stage139, stage140_results_path=stage140)
+
+    assert result["decision"] == "PROVIDER_UNLOCK_PRIORITY_PREPARED_EXECUTION_BLOCKED"
+    assert result["first_unlock_provider"] == "ibm_runtime"
+    assert result["first_unlock_ready_for_preflight_rerun"] is False
+    assert result["priority_records"][0]["stage139_context_blockers"] == ["stage139_runner_commands_missing"]
+    assert result["first_unlock_minimal_actions"] == [
+        "Rerun Stage 139 action checklist context before preflight: stage139_runner_commands_missing."
     ]
 
 
