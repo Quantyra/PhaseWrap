@@ -33,6 +33,8 @@ def _execution(path, packet_id, counts) -> None:
     _write_json(
         path,
         {
+            "status": "assembled_from_stage113_results",
+            "no_hardware_submission": False,
             "packet_id": packet_id,
             "raw_counts_by_row": [{"row_id": "row_0", "counts": counts}],
         },
@@ -111,6 +113,22 @@ def test_stage137_computes_component_reconstruction_advantage_when_counts_are_re
     summary = result["comparison_summary"][0]
     assert summary["passes_auditability_advantage_rule"] is True
     assert summary["phasewrap_lower_error_than"] == ["rope_like", "sinusoidal_like", "alibi_like"]
+
+
+def test_stage137_rejects_complete_counts_without_stage113_status(tmp_path) -> None:
+    plans, stage136 = _ready_fixture(tmp_path)
+    execution_path = tmp_path / "executions" / "lane_0__phasewrap.json"
+    execution = json.loads(execution_path.read_text(encoding="utf-8"))
+    execution.pop("status")
+    _write_json(execution_path, execution)
+
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136)
+
+    assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
+    assert result["ready_window_count"] == 0
+    phasewrap_packet = result["window_records"][0]["packet_records"][0]
+    assert phasewrap_packet["ready"] is False
+    assert "stage113_assembled_status" in phasewrap_packet["missing_evidence"]
 
 
 def test_stage137_outputs_are_written(tmp_path) -> None:

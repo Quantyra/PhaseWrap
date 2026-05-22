@@ -43,6 +43,10 @@ def _stage101_ready(path: Path) -> bool:
     )
 
 
+def _assembled_from_stage113(execution: dict[str, Any]) -> bool:
+    return execution.get("status") == "assembled_from_stage113_results" and execution.get("no_hardware_submission") is False
+
+
 def _components_from_counts(counts: dict[str, int], circuit_template: str) -> tuple[float, float]:
     component_a = expectation_from_counts(counts, "z0")
     if circuit_template == "two_ry_product_state_z_readout_v1":
@@ -76,6 +80,8 @@ def _packet_template_metrics(packet_template: dict[str, Any], execution_dir: Pat
     if not isinstance(execution, dict):
         missing.append("packet_execution_json")
         execution = {}
+    elif not _assembled_from_stage113(execution):
+        missing.append("stage113_assembled_status")
     circuit_template = str(packet_template.get("circuit_template") or packet.get("fixed_width", {}).get("circuit_template"))
     counts_by_row = _counts_by_row(execution)
     errors: list[float] = []

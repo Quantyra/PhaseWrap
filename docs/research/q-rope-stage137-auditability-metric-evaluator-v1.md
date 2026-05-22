@@ -8,7 +8,7 @@ Stage 137 implements the hardware-count-dependent auditability evaluator preregi
 
 Current decision: `AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED`.
 
-The evaluator reads the Stage 107 independent-window plan, requires each window's Stage 101 calibration result to pass, then reconstructs `component_a` and `component_b` from the same packet execution counts used by Stage 103:
+The evaluator reads the Stage 107 independent-window plan, requires each window's Stage 101 calibration result to pass, requires packet execution files to carry Stage 113 assembly status, then reconstructs `component_a` and `component_b` from the same packet execution counts used by Stage 103:
 
 - product-state template: `component_a = E[Z0]`, `component_b = E[Z1]`
 - CX/parity template: `component_a = E[Z0]`, `component_b = E[Z0 Z1]`
@@ -20,6 +20,7 @@ Supported:
 
 - deterministic component-reconstruction auditability evaluator
 - same-window binding to Stage 107 packet counts and Stage 101 calibration results
+- auditability interpretation requires Stage 113-assembled packet evidence
 - blocked output while real provider packet counts are missing
 
 Excluded:
