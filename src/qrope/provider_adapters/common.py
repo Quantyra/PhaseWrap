@@ -117,6 +117,7 @@ def build_stage114_result_record(
         **backend_metadata,
         "provider": plan.get("provider"),
         "window_id": plan.get("window_id"),
+        "job_kind": plan.get("job_kind"),
         "provider_submission_kind": plan.get("provider_submission_kind"),
         "openqasm3_sha256": plan.get("openqasm3_sha256"),
         "target_counts_key": plan.get("target_counts_key"),

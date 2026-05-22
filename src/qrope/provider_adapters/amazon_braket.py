@@ -121,6 +121,7 @@ class AmazonBraketOpenQASM3Client:
             return {
                 "job_or_task_id": str(task.id if not callable(getattr(task, "id", None)) else task.id()),
                 "backend_metadata": {
+                    "backend": self._device_arn,
                     "device_arn": self._device_arn,
                     "region": self._region,
                     "provider": PROVIDER,
@@ -191,6 +192,7 @@ def build_submission_plan(*, jobs: list[dict[str, Any]], payloads: list[dict[str
             {
                 "provider": PROVIDER,
                 "job_id": job.get("job_id"),
+                "job_kind": job.get("job_kind"),
                 "window_id": job.get("window_id"),
                 "provider_submission_kind": "amazon_braket_openqasm3_task",
                 "credential_env": "AWS_ACCESS_KEY_ID or AWS_PROFILE",

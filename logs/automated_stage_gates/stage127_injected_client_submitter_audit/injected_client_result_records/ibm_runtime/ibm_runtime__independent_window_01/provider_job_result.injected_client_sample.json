@@ -2,6 +2,7 @@
   "backend_metadata": {
     "backend": "fake-client-backend",
     "client_mode": "injected_fake_not_hardware",
+    "job_kind": "known_state_calibration",
     "openqasm3_sha256": "9092744f08e6f8554dacfd0a5d3a05531f1346fffab900ca0982473805c02376",
     "provider": "ibm_runtime",
     "provider_submission_kind": "ibm_runtime_openqasm3_sampler",

@@ -1,0 +1,41 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "provider credential values",
+      "hardware job submission",
+      "live provider SDK client creation",
+      "real provider result records",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "guarded runner rejects missing backend metadata before provider result writes",
+      "guarded runner rejects window and job-kind metadata mismatches against the Stage 112 job shard",
+      "complete Stage 150 backend metadata is required on the write path before live IBM result capture"
+    ]
+  },
+  "decision": "FIRST_PROVIDER_RESULT_METADATA_GUARD_READY_EXECUTION_BLOCKED",
+  "first_unlock_provider": "ibm_runtime",
+  "missing_source_artifacts": [],
+  "next_gate": "After IBM cutover and Stage 133 authorization, live provider submitters must pass this metadata guard before any Stage 114 provider result JSONL is written.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "required_backend_metadata_fields": [
+    "provider",
+    "backend",
+    "window_id",
+    "job_kind"
+  ],
+  "result_path": "logs/automated_stage_gates/stage151_first_provider_result_metadata_guard_audit/results.json",
+  "schema_version": "qrope_stage151_first_provider_result_metadata_guard_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage150_first_provider_result_lineage_audit/results.json"
+  ],
+  "stage": "stage151_first_provider_result_metadata_guard_audit",
+  "stage150_lineage_contract_ready": true,
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage151_first_provider_result_metadata_guard_audit/summary.csv",
+  "synthetic_guard_check_count": 4,
+  "synthetic_guard_ready_count": 4
+}

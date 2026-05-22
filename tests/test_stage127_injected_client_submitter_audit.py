@@ -37,6 +37,7 @@ class FakeClient:
 def _plan(provider: str):
     return {
         "job_id": "job_0",
+        "job_kind": "known_state_calibration",
         "openqasm3_sha256": "abc",
         "provider": provider,
         "provider_submission_kind": f"{provider}_submission",

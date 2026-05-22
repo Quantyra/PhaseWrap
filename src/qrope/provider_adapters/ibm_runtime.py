@@ -119,7 +119,7 @@ class IBMRuntimeOpenQASM3Client:
             return {
                 "job_or_task_id": str(job.job_id() if callable(getattr(job, "job_id", None)) else getattr(job, "job_id", "")),
                 "backend_metadata": {
-                    "backend_name": self._backend_name,
+                    "backend": self._backend_name,
                     "provider": PROVIDER,
                 },
                 "submitted_at_utc": submitted_at,
@@ -190,6 +190,7 @@ def build_submission_plan(*, jobs: list[dict[str, Any]], payloads: list[dict[str
             {
                 "provider": PROVIDER,
                 "job_id": job.get("job_id"),
+                "job_kind": job.get("job_kind"),
                 "window_id": job.get("window_id"),
                 "provider_submission_kind": "ibm_runtime_openqasm3_sampler",
                 "backend_env": "QROPE_IBM_BACKEND or QROPE_HARDWARE_BACKEND",

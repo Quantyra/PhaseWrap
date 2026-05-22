@@ -21,6 +21,7 @@ def _write_jsonl(path, records) -> None:
 def _plan(provider: str = "ibm_runtime") -> dict:
     return {
         "job_id": "job_0",
+        "job_kind": "known_state_calibration",
         "openqasm3_sha256": "abc",
         "provider": provider,
         "provider_submission_kind": "ibm_runtime_openqasm3_sampler",
@@ -43,6 +44,7 @@ def test_build_stage114_result_record_has_required_fields() -> None:
     assert record["job_or_task_id"] == "task_0"
     assert record["counts"] == {"00": 10}
     assert record["backend_metadata"]["openqasm3_sha256"] == "abc"
+    assert record["backend_metadata"]["job_kind"] == "known_state_calibration"
 
 
 def test_build_stage114_result_record_rejects_bad_timestamp() -> None:

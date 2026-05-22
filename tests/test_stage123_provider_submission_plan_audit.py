@@ -49,6 +49,8 @@ def test_provider_submission_plan_builders_preserve_contract_fields() -> None:
 
     assert ibm_plan["provider_submission_kind"] == "ibm_runtime_openqasm3_sampler"
     assert braket_plan["provider_submission_kind"] == "amazon_braket_openqasm3_task"
+    assert ibm_plan["job_kind"] == "known_state_calibration"
+    assert braket_plan["job_kind"] == "known_state_calibration"
     assert ibm_plan["openqasm3_sha256"] == "abc"
     assert braket_plan["openqasm3_sha256"] == "abc"
     assert ibm_plan["no_hardware_submission"] is True

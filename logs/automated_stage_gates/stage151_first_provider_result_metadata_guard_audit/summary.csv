@@ -1,0 +1,5 @@
+check,exit_code,expected_exit_code,result_file_written,expected_result_file_written,ready
+complete_backend_metadata_writes_result,0,0,True,True,True
+missing_backend_field_rejected,5,5,False,False,True
+wrong_window_metadata_rejected,5,5,False,False,True
+wrong_job_kind_metadata_rejected,5,5,False,False,True

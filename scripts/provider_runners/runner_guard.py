@@ -64,13 +64,29 @@ def _window_id_from_jobs(jobs: list[dict[str, Any]]) -> str:
     return ""
 
 
-def _validate_result_record(record: dict[str, Any], expected_job_ids: set[str]) -> list[str]:
+def _validate_result_record(record: dict[str, Any], expected_jobs: dict[str, dict[str, Any]], provider: str) -> list[str]:
     missing = []
     for field in ("job_id", "job_or_task_id", "backend_metadata", "submitted_at_utc", "completed_at_utc", "counts"):
         if field not in record or record.get(field) in (None, "", []):
             missing.append(field)
-    if record.get("job_id") not in expected_job_ids:
+    job_id = str(record.get("job_id", ""))
+    expected_job = expected_jobs.get(job_id)
+    if expected_job is None:
         missing.append("unknown_job_id")
+    metadata = record.get("backend_metadata")
+    if not isinstance(metadata, dict) or not metadata:
+        missing.append("backend_metadata")
+    else:
+        for field in ("provider", "backend", "window_id", "job_kind"):
+            if metadata.get(field) in (None, "", []):
+                missing.append(f"backend_metadata.{field}")
+        if metadata.get("provider") not in (None, "", provider):
+            missing.append("backend_metadata.provider_match")
+        if expected_job:
+            if metadata.get("window_id") not in (None, "", expected_job.get("window_id")):
+                missing.append("backend_metadata.window_id_match")
+            if metadata.get("job_kind") not in (None, "", expected_job.get("job_kind")):
+                missing.append("backend_metadata.job_kind_match")
     counts = record.get("counts")
     if not isinstance(counts, dict) or not counts:
         missing.append("counts")
@@ -170,7 +186,8 @@ def run_guarded_provider_runner(provider: str, argv: list[str] | None = None, su
     if not isinstance(results, list):
         print("decision: PROVIDER_RUNNER_BLOCKED_SUBMITTER_RETURNED_NON_LIST")
         return 5
-    expected_job_ids = {str(job.get("job_id")) for job in jobs}
+    expected_jobs = {str(job.get("job_id")): job for job in jobs}
+    expected_job_ids = set(expected_jobs)
     invalid = []
     seen = set()
     for result in results:
@@ -178,7 +195,7 @@ def run_guarded_provider_runner(provider: str, argv: list[str] | None = None, su
         if job_id in seen:
             invalid.append({"job_id": job_id, "missing_evidence": ["duplicate_job_id"]})
         seen.add(job_id)
-        problems = _validate_result_record(result, expected_job_ids)
+        problems = _validate_result_record(result, expected_jobs, provider)
         if problems:
             invalid.append({"job_id": job_id, "missing_evidence": problems})
     missing_job_ids = sorted(expected_job_ids - seen)

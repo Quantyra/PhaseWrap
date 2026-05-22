@@ -50,7 +50,7 @@ def test_runner_guard_loads_submitter_import_path(tmp_path, monkeypatch) -> None
         "\n".join(
             [
                 "def submit(*, provider, jobs, payloads):",
-                "    return [{'job_id': jobs[0]['job_id'], 'job_or_task_id': 'task_0', 'backend_metadata': {'provider': provider}, 'submitted_at_utc': '2026-01-01T00:00:00Z', 'completed_at_utc': '2026-01-01T00:00:01Z', 'counts': {'00': 1000}}]",
+                "    return [{'job_id': jobs[0]['job_id'], 'job_or_task_id': 'task_0', 'backend_metadata': {'provider': provider, 'backend': 'backend_0', 'window_id': jobs[0]['window_id'], 'job_kind': jobs[0]['job_kind']}, 'submitted_at_utc': '2026-01-01T00:00:00Z', 'completed_at_utc': '2026-01-01T00:00:01Z', 'counts': {'00': 1000}}]",
             ]
         ),
         encoding="utf-8",

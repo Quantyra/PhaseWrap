@@ -103,7 +103,12 @@ def test_runner_guard_writes_results_with_injected_submitter(tmp_path) -> None:
             {
                 "job_id": "job_0",
                 "job_or_task_id": "task_0",
-                "backend_metadata": {"provider": provider},
+                "backend_metadata": {
+                    "provider": provider,
+                    "backend": "backend_0",
+                    "window_id": jobs[0]["window_id"],
+                    "job_kind": jobs[0]["job_kind"],
+                },
                 "submitted_at_utc": "2026-01-01T00:00:00Z",
                 "completed_at_utc": "2026-01-01T00:00:01Z",
                 "counts": {"00": 1000},

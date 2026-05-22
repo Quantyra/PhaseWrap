@@ -120,7 +120,12 @@ def _valid_submitter(*, provider: str, jobs: list[dict[str, Any]], payloads: lis
         {
             "job_id": str(jobs[0]["job_id"]),
             "job_or_task_id": "SYNTHETIC_TASK_0",
-            "backend_metadata": {"provider": provider, "backend": "synthetic_backend"},
+            "backend_metadata": {
+                "provider": provider,
+                "backend": "synthetic_backend",
+                "window_id": jobs[0]["window_id"],
+                "job_kind": jobs[0]["job_kind"],
+            },
             "submitted_at_utc": "1970-01-01T00:00:00Z",
             "completed_at_utc": "1970-01-01T00:00:01Z",
             "counts": {"00": 1000},
