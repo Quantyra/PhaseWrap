@@ -16,6 +16,13 @@ def _stage141(path, *, ready: bool = False) -> None:
         {
             "decision": "PROVIDER_UNLOCK_PRIORITY_READY_FOR_PREFLIGHT_RERUN" if ready else "PROVIDER_UNLOCK_PRIORITY_PREPARED_EXECUTION_BLOCKED",
             "first_unlock_provider": "ibm_runtime",
+            "first_unlock_missing_env_groups": [] if ready else ["IBM_QUANTUM_INSTANCE_CRN"],
+            "first_unlock_missing_sdk_modules": [],
+            "first_unlock_minimal_actions": [
+                "Rerun Stage 106/111/128/129/130/139; then execute only authorized Stage 133 commands."
+            ]
+            if ready
+            else ["Set local env groups without committing values: IBM_QUANTUM_INSTANCE_CRN."],
             "priority_records": [
                 {
                     "provider": "ibm_runtime",
@@ -40,8 +47,12 @@ def test_stage142_builds_first_provider_unlock_handoff_without_secrets(tmp_path)
 
     assert result["decision"] == "FIRST_PROVIDER_UNLOCK_HANDOFF_READY_ENV_OR_SDK_REQUIRED"
     assert result["first_unlock_provider"] == "ibm_runtime"
-    assert "IBM_QUANTUM_INSTANCE_CRN" in result["missing_env_groups"]
-    assert "IBM_QUANTUM_TOKEN=" in result["env_template"]
+    assert result["missing_env_groups"] == ["IBM_QUANTUM_INSTANCE_CRN"]
+    assert "IBM_QUANTUM_INSTANCE_CRN=" in result["env_template"]
+    assert "IBM_QUANTUM_TOKEN=" not in result["env_template"]
+    assert result["minimal_unlock_actions"] == [
+        "Set local env groups without committing values: IBM_QUANTUM_INSTANCE_CRN."
+    ]
     assert result["secret_values_recorded"] is False
 
 
@@ -68,5 +79,7 @@ def test_stage142_outputs_are_written(tmp_path) -> None:
 
     assert set(paths) == {"manifest", "result", "handoff", "env_template"}
     assert manifest["first_unlock_provider"] == "ibm_runtime"
+    assert manifest["missing_env_groups"] == ["IBM_QUANTUM_INSTANCE_CRN"]
     assert "QRoPE Stage 142" in handoff
-    assert "IBM_QUANTUM_TOKEN=" in template
+    assert "IBM_QUANTUM_INSTANCE_CRN=" in template
+    assert "IBM_QUANTUM_TOKEN=" not in template

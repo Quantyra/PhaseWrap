@@ -79,8 +79,11 @@ def run_stage142_handoff(*, stage141_results_path: Path = DEFAULT_STAGE141_RESUL
     stage141 = _load_json(stage141_results_path)
     missing_sources = [] if isinstance(stage141, dict) else [str(stage141_results_path.as_posix())]
     first = _first_record(stage141)
-    missing_env = list(first.get("missing_env_groups", [])) if first else []
-    missing_sdk = list(first.get("missing_sdk_modules", [])) if first else []
+    top_level_missing_env = stage141.get("first_unlock_missing_env_groups", []) if isinstance(stage141, dict) else []
+    top_level_missing_sdk = stage141.get("first_unlock_missing_sdk_modules", []) if isinstance(stage141, dict) else []
+    top_level_actions = stage141.get("first_unlock_minimal_actions", []) if isinstance(stage141, dict) else []
+    missing_env = list(top_level_missing_env or (first.get("missing_env_groups", []) if first else []))
+    missing_sdk = list(top_level_missing_sdk or (first.get("missing_sdk_modules", []) if first else []))
     ready = bool(first and first.get("ready_for_preflight_rerun") is True)
     provider = first.get("provider") if first else None
     rerun_commands = [
@@ -113,7 +116,7 @@ def run_stage142_handoff(*, stage141_results_path: Path = DEFAULT_STAGE141_RESUL
         "missing_sdk_modules": missing_sdk,
         "prepared_job_count": first.get("prepared_job_count") if first else None,
         "runner_command_count": first.get("runner_command_count") if first else None,
-        "minimal_unlock_actions": first.get("minimal_unlock_actions", []) if first else [],
+        "minimal_unlock_actions": list(top_level_actions or (first.get("minimal_unlock_actions", []) if first else [])),
         "rerun_commands": rerun_commands,
         "env_template_file": f"{provider}_first_unlock.env.template" if provider else None,
         "env_template": "\n".join(_template_lines(str(provider), missing_env)) if provider else "",
@@ -160,6 +163,9 @@ def write_stage142_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "first_unlock_provider": result["first_unlock_provider"],
         "first_unlock_ready_for_preflight_rerun": result["first_unlock_ready_for_preflight_rerun"],
         "priority_score": result["priority_score"],
+        "missing_env_groups": result["missing_env_groups"],
+        "missing_sdk_modules": result["missing_sdk_modules"],
+        "minimal_unlock_actions": result["minimal_unlock_actions"],
         "prepared_job_count": result["prepared_job_count"],
         "runner_command_count": result["runner_command_count"],
         "env_template_path": str(template_path.as_posix()) if result["env_template_file"] else None,

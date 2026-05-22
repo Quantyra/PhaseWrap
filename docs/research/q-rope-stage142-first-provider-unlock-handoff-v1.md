@@ -12,8 +12,8 @@ Current first provider: `ibm_runtime`.
 
 The handoff includes:
 
-- missing IBM Runtime environment groups
-- a non-secret local placeholder template
+- the exposed missing IBM Runtime environment group: `IBM_QUANTUM_INSTANCE_CRN`
+- a non-secret local placeholder template scoped to that missing group
 - the ordered rerun commands from Stage 140 through Stage 141
 - the no-submission and no-secret claim boundary
 
@@ -21,6 +21,7 @@ The handoff includes:
 Supported:
 
 - first-provider unlock handoff using Stage 141 priority evidence
+- top-level Stage 141 first-unlock missing groups/actions when available
 - non-secret environment placeholder template for the first provider
 - ordered rerun commands after local configuration is filled
 

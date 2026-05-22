@@ -18,6 +18,13 @@
   "first_unlock_provider": "ibm_runtime",
   "first_unlock_ready_for_preflight_rerun": false,
   "handoff_path": "logs/automated_stage_gates/stage142_first_provider_unlock_handoff/handoff.md",
+  "minimal_unlock_actions": [
+    "Set local env groups without committing values: IBM_QUANTUM_INSTANCE_CRN."
+  ],
+  "missing_env_groups": [
+    "IBM_QUANTUM_INSTANCE_CRN"
+  ],
+  "missing_sdk_modules": [],
   "missing_source_artifacts": [],
   "next_gate": "Fill the first-provider local environment outside git, rerun Stage 142/140, then follow the listed rerun commands before any Stage 133 live runner command.",
   "no_hardware_submission": true,
