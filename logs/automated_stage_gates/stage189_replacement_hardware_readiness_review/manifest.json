@@ -1,0 +1,66 @@
+{
+  "blockers": [
+    "replacement_hardware_readiness_requirements_open"
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials, token values, CRN values, or account secrets",
+      "runnable live-submit command strings",
+      "IBM credit balance or dollar cost verification",
+      "a final noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "Stage188 replacement-semantics simulation is strong enough to reopen human hardware-readiness review",
+      "the old Stage176/Stage133 live path cannot be reused for the replacement semantics",
+      "new execution packaging, calibration, credit verification, and exact approval remain required before provider action"
+    ]
+  },
+  "decision": "REPLACEMENT_HARDWARE_REVIEW_REOPENED_BUT_NOT_READY_FOR_LIVE_RUN",
+  "estimated_packet_row_job_count_before_calibration": 320,
+  "explicit_user_approval_required": true,
+  "hardware_path_status": "human_review_reopened_by_simulation_but_live_run_disallowed",
+  "ibm_seed_pairs_by_noise_model": {
+    "ibm_backend_median_stochastic": [
+      "ibm:314",
+      "ibm:577"
+    ],
+    "ibm_backend_p75_stochastic": [
+      "ibm:314",
+      "ibm:577"
+    ]
+  },
+  "missing_source_artifacts": [],
+  "next_gate": "Build a replacement-semantics execution package and calibration/result-ingestion contract for the selected IBM lanes; then perform credit/provider and exact-approval review before any live run.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "primary_noise_model_ids": [
+    "ibm_backend_median_stochastic",
+    "ibm_backend_p75_stochastic"
+  ],
+  "provider_credentials_required": false,
+  "replacement_approval_phrase_required": "APPROVE IBM RUNTIME STAGE188 REPLACEMENT LIVE RUN",
+  "result_path": "logs/automated_stage_gates/stage189_replacement_hardware_readiness_review/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage189_replacement_hardware_readiness_review_v1",
+  "secret_values_recorded": false,
+  "selected_lane_count": 4,
+  "selected_lanes": [
+    "ibm_cx_seed314_rows16_shots4096",
+    "ibm_cx_seed577_rows16_shots4096",
+    "ibm_product_seed314_rows16_shots4096",
+    "ibm_product_seed577_rows16_shots4096"
+  ],
+  "selected_packet_count": 20,
+  "semantics_id": "matched_nonzero_null_noise_sensitivity_v1",
+  "simulated_only": true,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage188_replacement_semantics_packet_screen/results.json",
+    "logs/automated_stage_gates/stage176_ibm_credit_provider_resolution_handoff/results.json"
+  ],
+  "stage": "stage189_replacement_hardware_readiness_review",
+  "stage176_decision": "IBM_CREDIT_PROVIDER_RESOLUTION_HANDOFF_READY_FOR_HUMAN_CHECK",
+  "stage188_decision": "REPLACEMENT_SEMANTICS_SIM_SUPPORTS_HARDWARE_REOPEN",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage189_replacement_hardware_readiness_review/summary.csv"
+}

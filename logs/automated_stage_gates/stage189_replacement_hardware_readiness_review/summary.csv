@@ -1,0 +1,6 @@
+item_id,status,description
+replacement_simulation_gate,passed,Stage188 replacement-semantics IBM-informed simulation must support hardware reopen.
+replacement_execution_package,required_new_artifact,"A new Stage190-style execution package is required because Stage188 changes semantics, control family, metric, and selected lanes."
+calibration_and_result_contract,required_new_artifact,Known-state calibration and result-ingestion contracts must be regenerated for the replacement semantics before any run.
+credit_billing_runtime_allowance,human_verification_required,"IBM credit, billing, and Runtime allowance must be checked by the user before any live run."
+exact_human_approval,awaiting_exact_phrase,Live execution remains disallowed unless the replacement-run approval phrase is provided after readiness is complete.
