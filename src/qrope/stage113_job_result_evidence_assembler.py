@@ -11,6 +11,7 @@ DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_STAGE112_JOB_MANIFEST = DEFAULT_ARTIFACT_ROOT / "stage112_provider_execution_manifest" / "job_manifest.jsonl"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage113_job_result_evidence_assembler"
 DEFAULT_PROVIDER_RESULTS = DEFAULT_OUTPUT_DIR / "provider_job_results.jsonl"
+DEFAULT_STAGE115_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage115_provider_result_collector" / "results.json"
 OBJECTIVE = (
     "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
@@ -124,15 +125,30 @@ def _apply_results(jobs: list[dict[str, Any]], results_by_job: dict[str, dict[st
     return assembled
 
 
+def _stage115_write_ready(stage115: dict[str, Any] | None, provider_results_path: Path) -> tuple[bool, list[str]]:
+    if not isinstance(stage115, dict):
+        return False, ["stage115_results_missing"]
+    blockers = []
+    if stage115.get("decision") != "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113":
+        blockers.append("stage115_not_collected_for_stage113")
+    if stage115.get("wrote_stage113_input") is not True:
+        blockers.append("stage115_did_not_write_stage113_input")
+    if Path(str(stage115.get("stage113_provider_results_path", ""))).as_posix() != provider_results_path.as_posix():
+        blockers.append("stage115_provider_results_path_mismatch")
+    return not blockers, sorted(set(blockers))
+
+
 def run_stage113_assembler(
     *,
     stage112_job_manifest_path: Path = DEFAULT_STAGE112_JOB_MANIFEST,
     provider_results_path: Path = DEFAULT_PROVIDER_RESULTS,
+    stage115_results_path: Path = DEFAULT_STAGE115_RESULTS,
     write_evidence: bool = False,
     provider: str | None = None,
 ) -> dict[str, Any]:
     jobs = _load_jsonl(stage112_job_manifest_path)
     results = _load_jsonl(provider_results_path)
+    stage115 = _load_json(stage115_results_path)
     sources = [
         (stage112_job_manifest_path, jobs),
         (provider_results_path, results),
@@ -151,8 +167,12 @@ def run_stage113_assembler(
         and not missing_job_records
         and len(selected_results) >= len(selected_jobs)
     )
+    stage115_write_ready = True
+    stage115_write_blockers: list[str] = []
+    if write_evidence:
+        stage115_write_ready, stage115_write_blockers = _stage115_write_ready(stage115, provider_results_path)
     assembled_paths: list[str] = []
-    if ready and write_evidence:
+    if ready and write_evidence and stage115_write_ready:
         results_by_job = {str(record["job_id"]): record for record in selected_results}
         for path_text, payload in _apply_results(selected_jobs, results_by_job).items():
             path = Path(path_text)
@@ -166,13 +186,19 @@ def run_stage113_assembler(
         "objective": OBJECTIVE,
         "decision": (
             "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE"
-            if ready and write_evidence
+            if ready and write_evidence and stage115_write_ready
+            else "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_STAGE115_COLLECTION_REQUIRED"
+            if ready and write_evidence and not stage115_write_ready
             else "JOB_RESULTS_READY_FOR_STAGE109_EVIDENCE_ASSEMBLY"
             if ready
             else "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_RESULTS_MISSING"
         ),
         "source_artifacts": [str(path.as_posix()) for path, _ in sources],
         "missing_source_artifacts": missing_sources,
+        "stage115_results_path": str(stage115_results_path.as_posix()),
+        "stage115_decision": stage115.get("decision") if isinstance(stage115, dict) else None,
+        "stage115_write_ready": stage115_write_ready,
+        "stage115_write_blockers": stage115_write_blockers,
         "write_evidence": write_evidence,
         "provider_scope": provider or "all",
         "job_count": len(selected_jobs),
@@ -192,6 +218,7 @@ def run_stage113_assembler(
             "supported": [
                 "a deterministic assembler from Stage 112 job results into Stage 109-compatible evidence files",
                 "optional provider-scoped evidence assembly for first-provider execution",
+                "evidence writing is blocked until Stage 115 has collected and written the matching Stage 113 input",
                 "per-job missing count detection before evidence files are written",
                 "a non-submitting bridge between provider runners and calibration/packet evidence intake",
             ],
@@ -204,8 +231,8 @@ def run_stage113_assembler(
             ],
         },
         "next_gate": (
-            "Produce provider_job_results.jsonl for every selected Stage 112 job, rerun this assembler with --write-evidence, "
-            "then run Stage 101, Stage 103, Stage 109, and Stage 110 in order."
+            "Produce provider_job_results.jsonl for every selected Stage 112 job through Stage 115, rerun this assembler "
+            "with --write-evidence, then run Stage 101, Stage 103, Stage 109, and Stage 110 in order."
         ),
     }
 
@@ -220,6 +247,10 @@ def write_stage113_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "decision": result["decision"],
         "source_artifacts": result["source_artifacts"],
         "missing_source_artifacts": result["missing_source_artifacts"],
+        "stage115_results_path": result["stage115_results_path"],
+        "stage115_decision": result["stage115_decision"],
+        "stage115_write_ready": result["stage115_write_ready"],
+        "stage115_write_blockers": result["stage115_write_blockers"],
         "write_evidence": result["write_evidence"],
         "provider_scope": result["provider_scope"],
         "job_count": result["job_count"],
@@ -274,5 +305,6 @@ def print_stage113_summary(result: dict[str, Any]) -> None:
     print(f"provider_result_count: {result['provider_result_count']}")
     print(f"ready_job_result_count: {result['ready_job_result_count']}")
     print(f"missing_job_result_count: {result['missing_job_result_count']}")
+    print(f"stage115_write_ready: {result['stage115_write_ready']}")
     print(f"assembled_evidence_count: {result['assembled_evidence_count']}")
     print(f"next_gate: {result['next_gate']}")

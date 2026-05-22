@@ -15,7 +15,7 @@ Each provider result record must include:
 - backend metadata;
 - submitted and completed timestamps.
 
-When every Stage 112 job has counts, Stage 113 can be rerun with `--write-evidence` to fill the declared calibration and matched-packet evidence files. By default it only validates readiness and writes no evidence files.
+When every Stage 112 job has counts, Stage 113 can be rerun with `--write-evidence` to fill the declared calibration and matched-packet evidence files only after Stage 115 reports that it collected and wrote the matching Stage 113 provider-result input. By default it only validates readiness and writes no evidence files.
 
 Current expected decision before provider execution:
 

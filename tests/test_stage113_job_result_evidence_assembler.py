@@ -86,6 +86,28 @@ def _fixture(tmp_path):
     return jobs, results, calibration_target, packet_target
 
 
+def _stage115_collected(path, provider_results_path) -> None:
+    _write_json(
+        path,
+        {
+            "decision": "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113",
+            "wrote_stage113_input": True,
+            "stage113_provider_results_path": str(provider_results_path.as_posix()),
+        },
+    )
+
+
+def _stage115_blocked(path, provider_results_path) -> None:
+    _write_json(
+        path,
+        {
+            "decision": "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED",
+            "wrote_stage113_input": False,
+            "stage113_provider_results_path": str(provider_results_path.as_posix()),
+        },
+    )
+
+
 def test_stage113_reports_missing_sources(tmp_path) -> None:
     result = run_stage113_assembler(stage112_job_manifest_path=tmp_path / "missing_jobs.jsonl", provider_results_path=tmp_path / "missing_results.jsonl")
 
@@ -122,8 +144,14 @@ def test_stage113_writes_evidence_when_explicitly_enabled(tmp_path) -> None:
     jobs, results, calibration_target, packet_target = _fixture(tmp_path)
     _write_jsonl(tmp_path / "jobs.jsonl", jobs)
     _write_jsonl(tmp_path / "results.jsonl", results)
+    _stage115_collected(tmp_path / "stage115.json", tmp_path / "results.jsonl")
 
-    result = run_stage113_assembler(stage112_job_manifest_path=tmp_path / "jobs.jsonl", provider_results_path=tmp_path / "results.jsonl", write_evidence=True)
+    result = run_stage113_assembler(
+        stage112_job_manifest_path=tmp_path / "jobs.jsonl",
+        provider_results_path=tmp_path / "results.jsonl",
+        stage115_results_path=tmp_path / "stage115.json",
+        write_evidence=True,
+    )
 
     calibration = json.loads(calibration_target.read_text(encoding="utf-8"))
     packet = json.loads(packet_target.read_text(encoding="utf-8"))
@@ -132,6 +160,25 @@ def test_stage113_writes_evidence_when_explicitly_enabled(tmp_path) -> None:
     assert calibration["raw_counts_by_state"][0]["counts"] == {"00": 100}
     assert packet["raw_counts_by_row"][0]["counts"] == {"10": 10, "11": 90}
     assert packet["no_hardware_submission"] is False
+
+
+def test_stage113_blocks_evidence_write_without_stage115_collection(tmp_path) -> None:
+    jobs, results, calibration_target, packet_target = _fixture(tmp_path)
+    _write_jsonl(tmp_path / "jobs.jsonl", jobs)
+    _write_jsonl(tmp_path / "results.jsonl", results)
+    _stage115_blocked(tmp_path / "stage115.json", tmp_path / "results.jsonl")
+
+    result = run_stage113_assembler(
+        stage112_job_manifest_path=tmp_path / "jobs.jsonl",
+        provider_results_path=tmp_path / "results.jsonl",
+        stage115_results_path=tmp_path / "stage115.json",
+        write_evidence=True,
+    )
+
+    assert result["decision"] == "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_STAGE115_COLLECTION_REQUIRED"
+    assert "stage115_not_collected_for_stage113" in result["stage115_write_blockers"]
+    assert not calibration_target.exists()
+    assert not packet_target.exists()
 
 
 def test_stage113_can_assemble_provider_scoped_results(tmp_path) -> None:
@@ -159,10 +206,12 @@ def test_stage113_can_assemble_provider_scoped_results(tmp_path) -> None:
     )
     _write_jsonl(tmp_path / "jobs.jsonl", jobs)
     _write_jsonl(tmp_path / "results.jsonl", results)
+    _stage115_collected(tmp_path / "stage115.json", tmp_path / "results.jsonl")
 
     result = run_stage113_assembler(
         stage112_job_manifest_path=tmp_path / "jobs.jsonl",
         provider_results_path=tmp_path / "results.jsonl",
+        stage115_results_path=tmp_path / "stage115.json",
         write_evidence=True,
         provider="ibm_runtime",
     )

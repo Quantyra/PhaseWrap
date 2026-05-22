@@ -12,6 +12,7 @@ from qrope.stage113_job_result_evidence_assembler import (  # noqa: E402
     DEFAULT_OUTPUT_DIR,
     DEFAULT_PROVIDER_RESULTS,
     DEFAULT_STAGE112_JOB_MANIFEST,
+    DEFAULT_STAGE115_RESULTS,
     print_stage113_summary,
     run_stage113_assembler,
     write_stage113_outputs,
@@ -22,6 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Assemble Stage 112 provider job results into Stage 109 evidence files.")
     parser.add_argument("--stage112-job-manifest", type=Path, default=DEFAULT_STAGE112_JOB_MANIFEST)
     parser.add_argument("--provider-results", type=Path, default=DEFAULT_PROVIDER_RESULTS)
+    parser.add_argument("--stage115-results", type=Path, default=DEFAULT_STAGE115_RESULTS)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--write-evidence", action="store_true")
     parser.add_argument("--provider", default=None)
@@ -30,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     result = run_stage113_assembler(
         stage112_job_manifest_path=args.stage112_job_manifest,
         provider_results_path=args.provider_results,
+        stage115_results_path=args.stage115_results,
         write_evidence=args.write_evidence,
         provider=args.provider,
     )
