@@ -12,6 +12,8 @@ DEFAULT_STAGE105_MANIFEST = DEFAULT_ARTIFACT_ROOT / "stage105_independent_rerun_
 DEFAULT_STAGE109_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage109_window_evidence_intake_validator" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage110_replicated_advantage_claim_gate"
 COMPARATOR_FAMILIES = ("rope_like", "sinusoidal_like", "alibi_like", "no_position_control")
+STAGE105_PREREGISTERED = "INDEPENDENT_RERUN_PROTOCOL_PREREGISTERED_EXECUTION_REQUIRED"
+STAGE103_READY = "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION"
 OBJECTIVE = (
     "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
@@ -37,6 +39,7 @@ def _window_metric_records(stage109: dict[str, Any] | None) -> list[dict[str, An
     for window in stage109.get("window_records", []):
         stage103_path = Path(str(window.get("stage103_results_path", "")))
         stage103 = _load_json(stage103_path)
+        stage103_ready = bool(isinstance(stage103, dict) and stage103.get("decision") == STAGE103_READY)
         for summary in stage103.get("comparison_summary", []) if isinstance(stage103, dict) else []:
             records.append(
                 {
@@ -48,8 +51,9 @@ def _window_metric_records(stage109: dict[str, Any] | None) -> list[dict[str, An
                     "best_comparator_mean_absolute_score_error": summary.get("best_comparator_mean_absolute_score_error"),
                     "phasewrap_lower_error_than": summary.get("phasewrap_lower_error_than", []),
                     "all_families_present": summary.get("all_families_present"),
+                    "stage103_ready_for_interpretation": stage103_ready,
                     "stage103_results_path": str(stage103_path.as_posix()),
-                    "passes_stage103_advantage_rule": _comparison_pass(summary),
+                    "passes_stage103_advantage_rule": stage103_ready and _comparison_pass(summary),
                 }
             )
     return records
@@ -101,14 +105,16 @@ def run_stage110_claim_gate(
         (stage109_results_path, stage109),
     ]
     missing_sources = [str(path.as_posix()) for path, payload in sources if payload is None]
+    stage105_preregistered = bool(isinstance(stage105, dict) and stage105.get("decision") == STAGE105_PREREGISTERED)
     stage109_ready = bool(stage109 and stage109.get("decision") == "WINDOW_EVIDENCE_INTAKE_READY_FOR_STAGE105_AGGREGATION")
-    window_metrics = _window_metric_records(stage109 if stage109_ready else None)
-    replication = _replication_records(window_metrics, stage109 if stage109_ready else None)
+    aggregation_ready = stage105_preregistered and stage109_ready
+    window_metrics = _window_metric_records(stage109 if aggregation_ready else None)
+    replication = _replication_records(window_metrics, stage109 if aggregation_ready else None)
     replicated = [record for record in replication if record["replicated_phasewrap_advantage"]]
 
     if missing_sources:
         decision = "REPLICATED_ADVANTAGE_CLAIM_GATE_INCOMPLETE"
-    elif not stage109_ready:
+    elif not aggregation_ready:
         decision = "REPLICATED_ADVANTAGE_CLAIM_BLOCKED_EVIDENCE_INTAKE_INCOMPLETE"
     elif replicated:
         decision = "PHASEWRAP_REPLICATED_ADVANTAGE_SUPPORTED_BY_STAGE105_RULE"
@@ -125,7 +131,9 @@ def run_stage110_claim_gate(
         "missing_source_artifacts": missing_sources,
         "stage105_decision": stage105.get("decision") if isinstance(stage105, dict) else None,
         "stage109_decision": stage109.get("decision") if isinstance(stage109, dict) else None,
+        "stage105_preregistered": stage105_preregistered,
         "stage109_ready_for_aggregation": stage109_ready,
+        "ready_for_stage105_aggregation": aggregation_ready,
         "window_metric_record_count": len(window_metrics),
         "replication_record_count": len(replication),
         "replicated_advantage_count": len(replicated),
@@ -137,6 +145,8 @@ def run_stage110_claim_gate(
         "claim_boundary": {
             "supported": [
                 "a deterministic gate that binds any replicated PhaseWrap claim to Stage 109 readiness",
+                "enforcement of the Stage 105 independent-rerun preregistration decision before aggregation",
+                "enforcement of Stage 103 ready-for-interpretation decisions before applying comparison summaries",
                 "application of the preregistered Stage 103 lower-MAE rule across Stage 105 independent windows",
                 "explicit reporting of not-supported outcomes when any required window fails the advantage rule",
             ],
@@ -166,7 +176,9 @@ def write_stage110_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "missing_source_artifacts": result["missing_source_artifacts"],
         "stage105_decision": result["stage105_decision"],
         "stage109_decision": result["stage109_decision"],
+        "stage105_preregistered": result["stage105_preregistered"],
         "stage109_ready_for_aggregation": result["stage109_ready_for_aggregation"],
+        "ready_for_stage105_aggregation": result["ready_for_stage105_aggregation"],
         "window_metric_record_count": result["window_metric_record_count"],
         "replication_record_count": result["replication_record_count"],
         "replicated_advantage_count": result["replicated_advantage_count"],

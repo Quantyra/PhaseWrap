@@ -8,6 +8,8 @@
     ],
     "supported": [
       "a deterministic gate that binds any replicated PhaseWrap claim to Stage 109 readiness",
+      "enforcement of the Stage 105 independent-rerun preregistration decision before aggregation",
+      "enforcement of Stage 103 ready-for-interpretation decisions before applying comparison summaries",
       "application of the preregistered Stage 103 lower-MAE rule across Stage 105 independent windows",
       "explicit reporting of not-supported outcomes when any required window fails the advantage rule"
     ]
@@ -18,6 +20,7 @@
   "no_hardware_submission": true,
   "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
+  "ready_for_stage105_aggregation": false,
   "replicated_advantage_count": 0,
   "replication_record_count": 0,
   "replication_records": [],
@@ -29,6 +32,7 @@
   ],
   "stage": "stage110_replicated_advantage_claim_gate",
   "stage105_decision": "INDEPENDENT_RERUN_PROTOCOL_PREREGISTERED_EXECUTION_REQUIRED",
+  "stage105_preregistered": true,
   "stage109_decision": "WINDOW_EVIDENCE_INTAKE_BLOCKED_EVIDENCE_MISSING",
   "stage109_ready_for_aggregation": false,
   "status": "completed",
