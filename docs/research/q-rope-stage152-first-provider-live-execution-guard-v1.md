@@ -8,14 +8,16 @@ Stage 152 is the final non-live guard before any first-provider live-submit comm
 
 Current decision: `FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED`.
 
-The guard requires both:
+The guard requires all of:
 
+- Stage 144 post-configuration chain readiness
 - Stage 151 result metadata guard readiness
 - at least one Stage 133 command-authorized runner command for the first provider
 
 Current IBM Runtime status:
 
 - Stage 151 metadata guard is ready
+- Stage 144 is still blocked before authorized-runner readiness
 - Stage 133 has no authorized IBM Runtime runner commands
 - live execution remains blocked
 
@@ -23,6 +25,7 @@ Current IBM Runtime status:
 Supported:
 
 - final non-live guard tying Stage 133 first-provider command authorization to Stage 151 metadata write-path readiness
+- final non-live guard requiring Stage 144 post-configuration chain readiness
 - blocked outcome unless first-provider commands are authorized and the result metadata guard is ready
 - explicit separation between command preparation and permission to run guarded live provider execution
 

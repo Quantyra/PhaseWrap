@@ -9,6 +9,7 @@ from typing import Any
 STAGE152_SCHEMA_VERSION = "qrope_stage152_first_provider_live_execution_guard_v1"
 DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_STAGE133_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage133_authorized_runner_command_packet" / "results.json"
+DEFAULT_STAGE144_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage144_post_configuration_rerun_chain_audit" / "results.json"
 DEFAULT_STAGE151_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage151_first_provider_result_metadata_guard_audit" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage152_first_provider_live_execution_guard"
 OBJECTIVE = (
@@ -30,26 +31,43 @@ def _commands_for_provider(stage133: dict[str, Any] | None, provider: str) -> li
     return [record for record in stage133.get("command_records", []) if record.get("provider") == provider]
 
 
+def _stage144_ready(stage144: dict[str, Any] | None, provider: str) -> bool:
+    return bool(
+        isinstance(stage144, dict)
+        and stage144.get("decision") == "POST_CONFIGURATION_RERUN_CHAIN_READY_FOR_AUTHORIZED_RUNNER"
+        and stage144.get("first_unlock_provider") == provider
+        and stage144.get("first_blocked_transition") is None
+        and stage144.get("ready_transition_count") == stage144.get("transition_count")
+        and int(stage144.get("transition_count") or 0) > 0
+        and int(stage144.get("first_provider_authorized_runner_count") or 0) > 0
+    )
+
+
 def run_stage152_guard(
     *,
     stage133_results_path: Path = DEFAULT_STAGE133_RESULTS,
+    stage144_results_path: Path = DEFAULT_STAGE144_RESULTS,
     stage151_results_path: Path = DEFAULT_STAGE151_RESULTS,
 ) -> dict[str, Any]:
     stage133 = _load_json(stage133_results_path)
+    stage144 = _load_json(stage144_results_path)
     stage151 = _load_json(stage151_results_path)
-    sources = [(stage133_results_path, stage133), (stage151_results_path, stage151)]
+    sources = [(stage133_results_path, stage133), (stage144_results_path, stage144), (stage151_results_path, stage151)]
     missing_sources = [str(path.as_posix()) for path, payload in sources if payload is None]
     provider = str(stage151.get("first_unlock_provider", "")) if isinstance(stage151, dict) else ""
+    stage144_ready = _stage144_ready(stage144, provider)
     metadata_guard_ready = bool(
         isinstance(stage151, dict)
         and stage151.get("decision") == "FIRST_PROVIDER_RESULT_METADATA_GUARD_READY_EXECUTION_BLOCKED"
     )
     commands = _commands_for_provider(stage133, provider)
     authorized_commands = [record for record in commands if record.get("command_authorized") is True]
-    ready = bool(provider) and metadata_guard_ready and bool(authorized_commands) and not missing_sources
+    ready = bool(provider) and stage144_ready and metadata_guard_ready and bool(authorized_commands) and not missing_sources
     blockers = []
     if not provider:
         blockers.append("first_unlock_provider_missing")
+    if not stage144_ready:
+        blockers.append("stage144_post_configuration_chain_not_ready")
     if not metadata_guard_ready:
         blockers.append("stage151_metadata_guard_not_ready")
     if not authorized_commands:
@@ -67,6 +85,11 @@ def run_stage152_guard(
         "source_artifacts": [str(path.as_posix()) for path, _ in sources],
         "missing_source_artifacts": missing_sources,
         "first_unlock_provider": provider,
+        "stage144_ready_for_authorized_runner": stage144_ready,
+        "stage144_decision": stage144.get("decision") if isinstance(stage144, dict) else None,
+        "stage144_ready_transition_count": stage144.get("ready_transition_count") if isinstance(stage144, dict) else None,
+        "stage144_transition_count": stage144.get("transition_count") if isinstance(stage144, dict) else None,
+        "stage144_first_blocked_transition": stage144.get("first_blocked_transition") if isinstance(stage144, dict) else None,
         "stage151_metadata_guard_ready": metadata_guard_ready,
         "first_provider_runner_command_count": len(commands),
         "first_provider_authorized_runner_count": len(authorized_commands),
@@ -77,6 +100,7 @@ def run_stage152_guard(
         "secret_values_recorded": False,
         "claim_boundary": {
             "supported": [
+                "final non-live guard requiring the Stage 144 post-configuration chain to be ready",
                 "final non-live guard tying Stage 133 first-provider command authorization to Stage 151 metadata write-path readiness",
                 "blocked outcome unless first-provider commands are authorized and the result metadata guard is ready",
                 "explicit separation between command preparation and permission to run guarded live provider execution",
@@ -107,6 +131,11 @@ def write_stage152_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "source_artifacts": result["source_artifacts"],
         "missing_source_artifacts": result["missing_source_artifacts"],
         "first_unlock_provider": result["first_unlock_provider"],
+        "stage144_ready_for_authorized_runner": result["stage144_ready_for_authorized_runner"],
+        "stage144_decision": result["stage144_decision"],
+        "stage144_ready_transition_count": result["stage144_ready_transition_count"],
+        "stage144_transition_count": result["stage144_transition_count"],
+        "stage144_first_blocked_transition": result["stage144_first_blocked_transition"],
         "stage151_metadata_guard_ready": result["stage151_metadata_guard_ready"],
         "first_provider_runner_command_count": result["first_provider_runner_command_count"],
         "first_provider_authorized_runner_count": result["first_provider_authorized_runner_count"],
@@ -147,6 +176,7 @@ def print_stage152_summary(result: dict[str, Any]) -> None:
     print(f"status: {result['status']}")
     print(f"decision: {result['decision']}")
     print(f"first_unlock_provider: {result['first_unlock_provider']}")
+    print(f"stage144_ready_for_authorized_runner: {result['stage144_ready_for_authorized_runner']}")
     print(f"stage151_metadata_guard_ready: {result['stage151_metadata_guard_ready']}")
     print(f"first_provider_authorized_runner_count: {result['first_provider_authorized_runner_count']}/{result['first_provider_runner_command_count']}")
     print(f"blockers: {', '.join(result['blockers'])}")

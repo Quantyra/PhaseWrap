@@ -12,6 +12,7 @@ def _write_json(path, payload) -> None:
 
 def _fixture(tmp_path, *, authorized: bool = False, metadata_ready: bool = True):
     stage133 = tmp_path / "stage133.json"
+    stage144 = tmp_path / "stage144.json"
     stage151 = tmp_path / "stage151.json"
     _write_json(
         stage133,
@@ -28,6 +29,17 @@ def _fixture(tmp_path, *, authorized: bool = False, metadata_ready: bool = True)
         },
     )
     _write_json(
+        stage144,
+        {
+            "decision": "POST_CONFIGURATION_RERUN_CHAIN_READY_FOR_AUTHORIZED_RUNNER",
+            "first_unlock_provider": "ibm_runtime",
+            "ready_transition_count": 9,
+            "transition_count": 9,
+            "first_blocked_transition": None,
+            "first_provider_authorized_runner_count": 1 if authorized else 0,
+        },
+    )
+    _write_json(
         stage151,
         {
             "decision": (
@@ -38,42 +50,58 @@ def _fixture(tmp_path, *, authorized: bool = False, metadata_ready: bool = True)
             "first_unlock_provider": "ibm_runtime",
         },
     )
-    return stage133, stage151
+    return stage133, stage144, stage151
 
 
 def test_stage152_blocks_when_first_provider_command_is_not_authorized(tmp_path) -> None:
-    stage133, stage151 = _fixture(tmp_path, authorized=False, metadata_ready=True)
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=False, metadata_ready=True)
 
-    result = run_stage152_guard(stage133_results_path=stage133, stage151_results_path=stage151)
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
 
     assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED"
     assert result["stage151_metadata_guard_ready"] is True
+    assert result["stage144_ready_for_authorized_runner"] is False
     assert result["first_provider_authorized_runner_count"] == 0
+    assert "stage144_post_configuration_chain_not_ready" in result["blockers"]
     assert "stage133_no_authorized_first_provider_commands" in result["blockers"]
 
 
 def test_stage152_requires_metadata_guard_even_when_command_authorized(tmp_path) -> None:
-    stage133, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=False)
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=False)
 
-    result = run_stage152_guard(stage133_results_path=stage133, stage151_results_path=stage151)
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
 
     assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED"
     assert "stage151_metadata_guard_not_ready" in result["blockers"]
 
 
-def test_stage152_reports_ready_when_command_and_metadata_guard_are_ready(tmp_path) -> None:
-    stage133, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=True)
+def test_stage152_requires_stage144_chain_even_when_command_authorized(tmp_path) -> None:
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=True)
+    payload = json.loads(stage144.read_text(encoding="utf-8"))
+    payload["ready_transition_count"] = 8
+    _write_json(stage144, payload)
 
-    result = run_stage152_guard(stage133_results_path=stage133, stage151_results_path=stage151)
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
+
+    assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED"
+    assert result["stage144_ready_for_authorized_runner"] is False
+    assert "stage144_post_configuration_chain_not_ready" in result["blockers"]
+
+
+def test_stage152_reports_ready_when_command_and_metadata_guard_are_ready(tmp_path) -> None:
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=True, metadata_ready=True)
+
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
 
     assert result["decision"] == "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER"
     assert result["first_provider_authorized_runner_count"] == 1
+    assert result["stage144_ready_for_authorized_runner"] is True
     assert result["blockers"] == []
 
 
 def test_stage152_outputs_are_written(tmp_path) -> None:
-    stage133, stage151 = _fixture(tmp_path, authorized=False, metadata_ready=True)
-    result = run_stage152_guard(stage133_results_path=stage133, stage151_results_path=stage151)
+    stage133, stage144, stage151 = _fixture(tmp_path, authorized=False, metadata_ready=True)
+    result = run_stage152_guard(stage133_results_path=stage133, stage144_results_path=stage144, stage151_results_path=stage151)
 
     written = write_stage152_outputs(result, tmp_path / "out")
     manifest = json.loads((tmp_path / "out" / "manifest.json").read_text(encoding="utf-8"))
