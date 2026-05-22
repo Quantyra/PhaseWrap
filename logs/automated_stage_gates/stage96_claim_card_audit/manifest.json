@@ -1,0 +1,63 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+      "a claim that structural copy experts are standard free decoder-only language modeling",
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage"
+    ],
+    "supported": [
+      "A no-credential claim-card package for the current strongest honest PhaseWrap-RoPE claim.",
+      "A compact mapping from the claim to positive evidence, failure modes, unsupported claims, and next gate.",
+      "A publication-facing guardrail artifact that preserves bounded wording from Stage70/94/95."
+    ]
+  },
+  "decision": {
+    "claim_boundary": "The current strongest honest claim is bounded and reportable with intervals, but promotion remains unsupported.",
+    "decision": "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM",
+    "headline_intervals_present": true,
+    "missing_source_artifact_count": 0,
+    "promotion_failed_requirements": [
+      "free_learned_phasewrap_original_retrieval_solve"
+    ],
+    "promotion_gate_ready": false
+  },
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope_relative",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "missing_source_artifacts": [],
+  "no_hardware_submission": true,
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage96_claim_card_audit/results.json",
+  "schema_version": "qrope_stage96_claim_card_audit_v1",
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage70_strongest_honest_claim_synthesis/results.json",
+    "logs/automated_stage_gates/stage94_promotion_gate_readiness_audit/results.json",
+    "logs/automated_stage_gates/stage95_headline_interval_audit/results.json"
+  ],
+  "source_stage": "stage95_headline_interval_audit",
+  "stage": "stage96_claim_card_audit",
+  "status": "completed",
+  "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
+  "summary_csv_path": "logs/automated_stage_gates/stage96_claim_card_audit/summary.csv",
+  "tasks": [
+    "phase_cued_retrieval",
+    "exact_offset_passkey",
+    "content_key_retrieval",
+    "tiny_text_fact_qa"
+  ],
+  "unsupported_claims": [
+    "PhaseWrap-RoPE replaces RoPE.",
+    "PhaseWrap-RoPE is better than RoPE under current fair matched transformer comparisons.",
+    "Content-key retrieval success is PhaseWrap-specific evidence.",
+    "Tiny-text QA gains establish original retrieval generalization.",
+    "Bounded hardware/readout witnesses establish production language-model quality gains."
+  ]
+}

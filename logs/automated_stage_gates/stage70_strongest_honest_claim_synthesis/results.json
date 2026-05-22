@@ -66,6 +66,15 @@
       "stage": "stage95_headline_interval_audit"
     },
     {
+      "decision": "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM",
+      "evidence": "The current strongest honest claim is bounded and reportable with intervals, but promotion remains unsupported.",
+      "failure": "The claim-card packaging still records promotion as unsupported.",
+      "promotion_failed_requirements": [
+        "free_learned_phasewrap_original_retrieval_solve"
+      ],
+      "stage": "stage96_claim_card_audit"
+    },
+    {
       "capacity_established": null,
       "decision": null,
       "evidence": "At least one original retrieval task remains below the generalization threshold.",
@@ -502,9 +511,18 @@
       "retrieval_best_methods": {},
       "retrieval_best_top1": {},
       "stage": "stage95_headline_interval_audit"
+    },
+    {
+      "capacity_established": null,
+      "decision": "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM",
+      "evidence": "At least one original retrieval task remains below the generalization threshold.",
+      "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+      "retrieval_best_methods": {},
+      "retrieval_best_top1": {},
+      "stage": "stage96_claim_card_audit"
     }
   ],
-  "loaded_source_stage_count": 37,
+  "loaded_source_stage_count": 38,
   "loaded_source_stages": [
     "stage44_compact_diagnostic_plateau_audit",
     "stage45_matched_decoder_only_gate",
@@ -542,7 +560,8 @@
     "stage92_support_binding_teacher_pointer_generator_audit",
     "stage93_toy_decoder_lane_boundary_audit",
     "stage94_promotion_gate_readiness_audit",
-    "stage95_headline_interval_audit"
+    "stage95_headline_interval_audit",
+    "stage96_claim_card_audit"
   ],
   "method_names": [
     "no_position",
@@ -596,6 +615,11 @@
       "source": "stage95_headline_interval_audit"
     },
     {
+      "claim_limit": "The claim card is a reporting guardrail and does not expand the underlying evidence.",
+      "evidence": "Stage 96 packages the current strongest honest claim, unsupported claims, failure modes, next gate, and headline intervals into one claim-card artifact.",
+      "source": "stage96_claim_card_audit"
+    },
+    {
       "claim_limit": "Tiny-text QA positives are mixed downstream evidence, not original retrieval generalization.",
       "evidence": "Recent pointer-generator variants preserve capacity and reach tiny-text held-out top-1 0.950000.",
       "method": "sinusoidal",
@@ -643,6 +667,7 @@
     "logs/automated_stage_gates/stage93_toy_decoder_lane_boundary_audit/manifest.json",
     "logs/automated_stage_gates/stage94_promotion_gate_readiness_audit/manifest.json",
     "logs/automated_stage_gates/stage95_headline_interval_audit/manifest.json",
+    "logs/automated_stage_gates/stage96_claim_card_audit/manifest.json",
     "docs/research/q-rope-stage44-compact-diagnostic-plateau-audit-v1.md",
     "docs/research/q-rope-stage45-matched-decoder-only-gate-v1.md",
     "docs/research/q-rope-stage48-adam-decoder-stability-audit-v1.md",
@@ -673,12 +698,13 @@
     "docs/research/q-rope-stage92-support-binding-teacher-pointer-generator-audit-v1.md",
     "docs/research/q-rope-stage93-toy-decoder-lane-boundary-audit-v1.md",
     "docs/research/q-rope-stage94-promotion-gate-readiness-audit-v1.md",
-    "docs/research/q-rope-stage95-headline-interval-audit-v1.md"
+    "docs/research/q-rope-stage95-headline-interval-audit-v1.md",
+    "docs/research/q-rope-stage96-claim-card-audit-v1.md"
   ],
-  "source_stage": "stage95_headline_interval_audit",
+  "source_stage": "stage96_claim_card_audit",
   "stage": "stage70_strongest_honest_claim_synthesis",
   "status": "completed",
-  "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
+  "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Stage 96 packages this as a claim card to reduce publication-facing over-read risk. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
   "tasks": [
     "phase_cued_retrieval",
     "exact_offset_passkey",

@@ -53,6 +53,7 @@ SOURCE_STAGE_DIRS: tuple[str, ...] = (
     "stage93_toy_decoder_lane_boundary_audit",
     "stage94_promotion_gate_readiness_audit",
     "stage95_headline_interval_audit",
+    "stage96_claim_card_audit",
 )
 
 DOCUMENTED_SOURCE_ARTIFACTS: tuple[str, ...] = (
@@ -87,6 +88,7 @@ DOCUMENTED_SOURCE_ARTIFACTS: tuple[str, ...] = (
     "docs/research/q-rope-stage93-toy-decoder-lane-boundary-audit-v1.md",
     "docs/research/q-rope-stage94-promotion-gate-readiness-audit-v1.md",
     "docs/research/q-rope-stage95-headline-interval-audit-v1.md",
+    "docs/research/q-rope-stage96-claim-card-audit-v1.md",
 )
 
 
@@ -306,6 +308,18 @@ def _positive_evidence(manifests: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "source": "stage95_headline_interval_audit",
                 }
             )
+    for manifest in manifests:
+        if manifest.get("stage") != "stage96_claim_card_audit":
+            continue
+        decision = manifest.get("decision", {})
+        if decision.get("decision") == "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM":
+            positives.append(
+                {
+                    "evidence": "Stage 96 packages the current strongest honest claim, unsupported claims, failure modes, next gate, and headline intervals into one claim-card artifact.",
+                    "claim_limit": "The claim card is a reporting guardrail and does not expand the underlying evidence.",
+                    "source": "stage96_claim_card_audit",
+                }
+            )
     tiny_text = _best_tiny_text(manifests)
     if tiny_text is not None:
         positives.append(
@@ -373,6 +387,20 @@ def _failure_modes(manifests: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "confidence_interval_coverage": decision.get("confidence_interval_coverage"),
                 }
             )
+    for manifest in manifests:
+        if manifest.get("stage") != "stage96_claim_card_audit":
+            continue
+        decision = manifest.get("decision", {})
+        if decision.get("promotion_gate_ready") is False:
+            failures.append(
+                {
+                    "failure": "The claim-card packaging still records promotion as unsupported.",
+                    "evidence": decision.get("claim_boundary"),
+                    "stage": "stage96_claim_card_audit",
+                    "decision": decision.get("decision"),
+                    "promotion_failed_requirements": decision.get("promotion_failed_requirements"),
+                }
+            )
     for row in rows:
         top1_values = [value for value in row["retrieval_best_top1"].values() if isinstance(value, int | float)]
         solved_but_not_promotional = len(top1_values) == len(ORIGINAL_RETRIEVAL_TASKS) and all(
@@ -430,7 +458,7 @@ def run_stage70_synthesis(
         "schema_version": STAGE70_SCHEMA_VERSION,
         "stage": "stage70_strongest_honest_claim_synthesis",
         "status": "completed",
-        "source_stage": "stage95_headline_interval_audit",
+        "source_stage": "stage96_claim_card_audit",
         "source_artifacts": source_artifacts,
         "missing_source_artifacts": missing_source_artifacts,
         "no_hardware_submission": True,
@@ -446,6 +474,7 @@ def run_stage70_synthesis(
             "Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. "
             "Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. "
             "Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. "
+            "Stage 96 packages this as a claim card to reduce publication-facing over-read risk. "
             "Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits "
             "do not yet support RoPE replacement or positional-method promotion."
         ),

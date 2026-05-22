@@ -1,0 +1,665 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+      "a claim that structural copy experts are standard free decoder-only language modeling",
+      "production transformer superiority",
+      "full transformer-scale validation",
+      "broad quantum advantage"
+    ],
+    "supported": [
+      "A no-credential claim-card package for the current strongest honest PhaseWrap-RoPE claim.",
+      "A compact mapping from the claim to positive evidence, failure modes, unsupported claims, and next gate.",
+      "A publication-facing guardrail artifact that preserves bounded wording from Stage70/94/95."
+    ]
+  },
+  "claim_card": {
+    "decision": "BOUND_STRONGEST_HONEST_CLAIM_WITH_RETRIEVAL_FAILURES",
+    "failure_modes": [
+      {
+        "evidence": "Recent original-row audits do not make PhaseWrap lead and generalize both original retrieval tasks.",
+        "failure": "No fair matched decoder/pointer-generator artifact currently supports RoPE replacement or positional-method promotion."
+      },
+      {
+        "evidence": "Stage 68 preserves capacity but reports no generalized original retrieval tasks.",
+        "failure": "Content-key retrieval success does not transfer back to original phase-cued or exact-offset retrieval."
+      },
+      {
+        "decision": "TOY_DECODER_LANE_BOUND_FREE_RETRIEVAL_UNSOLVED",
+        "evidence": "Structural copy routes solve the row family, but current free learned toy pointer-generators do not generalize both original retrieval tasks.",
+        "failure": "The current toy pointer-generator lane is bounded as insufficient for free held-out original retrieval.",
+        "free_learned_best_top1_by_task": {
+          "exact_offset_passkey": {
+            "method": "sinusoidal",
+            "stage": "stage90_three_block_teacher_distilled_pointer_generator_audit",
+            "top1": 0.433333
+          },
+          "phase_cued_retrieval": {
+            "method": "sinusoidal",
+            "stage": "stage85_dual_auxiliary_pointer_generator_audit",
+            "top1": 0.05
+          }
+        },
+        "stage": "stage93_toy_decoder_lane_boundary_audit"
+      },
+      {
+        "decision": "PROMOTION_GATE_NOT_READY_STRONGEST_CLAIM_BOUNDED",
+        "evidence": "Current evidence still lacks a free learned PhaseWrap-led solve of both original retrieval tasks, so the strongest claim remains bounded.",
+        "failed_requirements": [
+          "free_learned_phasewrap_original_retrieval_solve"
+        ],
+        "failure": "The predeclared promotion gate remains unmet.",
+        "stage": "stage94_promotion_gate_readiness_audit"
+      },
+      {
+        "confidence_interval_coverage": true,
+        "decision": "HEADLINE_INTERVALS_ADDED_PROMOTION_STILL_BOUND",
+        "evidence": "Headline seed intervals are now surfaced, but free learned retrieval still does not support PhaseWrap promotion.",
+        "failure": "Headline intervals preserve the free learned retrieval failure rather than reversing it.",
+        "stage": "stage95_headline_interval_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": null,
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage45_matched_decoder_only_gate"
+      },
+      {
+        "capacity_established": null,
+        "decision": "TINY_QA_POSITIVE_NOT_PHASEWRAP_STABLE_RETRIEVAL_FAILED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "phasewrap_adapter"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.0,
+          "phase_cued_retrieval": 0.0
+        },
+        "stage": "stage48_adam_decoder_stability_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "ROW_METADATA_CUE_COPY_UPPER_BOUND_SOLVES_RETRIEVAL_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 1.0,
+          "phase_cued_retrieval": 0.9
+        },
+        "stage": "stage55_row_metadata_cue_copy_upper_bound_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "FALLBACK_DEPENDENT_PHASE_CUED_RETRIEVAL_NOT_PROMOTION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage60_support_fallback_strictness_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "TWO_BLOCK_POINTER_GENERATOR_CAPACITY_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "phasewrap_adapter"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.05,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage64_two_block_pointer_generator_capacity_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "POINTER_GENERATOR_LENGTH_CURRICULUM_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.033333,
+          "phase_cued_retrieval": 0.033333
+        },
+        "stage": "stage65_pointer_generator_length_curriculum_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "POSITIONAL_COPY_EXPERT_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.05,
+          "phase_cued_retrieval": 0.033333
+        },
+        "stage": "stage66_positional_copy_expert_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "CONTENT_KEY_AUXILIARY_TRANSFER_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "alibi"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.033333,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage68_content_key_auxiliary_transfer_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "ORIGINAL_MULTITASK_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "no_position"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.033333,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage69_original_multitask_pointer_generator_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "POSITIONAL_BIAS_COPY_PARTIAL_ORIGINAL_RETRIEVAL_UPPER_BOUND",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 1.0,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage71_positional_bias_copy_upper_bound_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "LEAVE_ONE_SEED_QUERY_SUPPORT_SOLVES_PHASE_CUED_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.8,
+          "phase_cued_retrieval": 0.9
+        },
+        "stage": "stage74_leave_one_seed_query_support_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "LEARNED_QUERY_SUPPORT_HEAD_SOLVES_PHASE_CUED_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "phasewrap_bias"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.6,
+          "phase_cued_retrieval": 0.9
+        },
+        "stage": "stage75_learned_query_support_head_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "INTEGRATED_SUPPORT_COPY_HEAD_PARTIAL_RETRIEVAL",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.6,
+          "phase_cued_retrieval": 0.0
+        },
+        "stage": "stage76_integrated_support_copy_head_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "AUXILIARY_SUPPORT_COPY_HEAD_PARTIAL_RETRIEVAL",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.6,
+          "phase_cued_retrieval": 0.0
+        },
+        "stage": "stage77_auxiliary_support_copy_head_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "SAME_SEED_SUPPORT_COVERAGE_SPLIT_EXPLAINS_STAGE77_FAILURE",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage78_support_coverage_split_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "SUPPORT_COMPLETE_AUXILIARY_COPY_HEAD_SUPPORT_RECOVERED_RETRIEVAL_FAILED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "phasewrap_adapter"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.65,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage79_support_complete_auxiliary_copy_head_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "SUPPORT_ROUTED_TOKEN_SELECTOR_SOLVES_PHASE_CUED_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.65,
+          "phase_cued_retrieval": 1.0
+        },
+        "stage": "stage80_support_routed_token_selector_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "SOFT_SUPPORT_ROUTED_TOKEN_SELECTOR_SOLVES_PHASE_CUED_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.65,
+          "phase_cued_retrieval": 1.0
+        },
+        "stage": "stage81_soft_support_routed_token_selector_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "LEARNED_SUPPORT_ROUTING_HEAD_SUPPORT_RECOVERED_RETRIEVAL_FAILED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.65,
+          "phase_cued_retrieval": 0.333333
+        },
+        "stage": "stage82_learned_support_routing_head_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "NONLINEAR_SUPPORT_ROUTING_BRIDGE_SUPPORT_RECOVERED_RETRIEVAL_FAILED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "phasewrap_adapter"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.65,
+          "phase_cued_retrieval": 0.283333
+        },
+        "stage": "stage83_nonlinear_support_routing_bridge_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "SUPPORT_AUXILIARY_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.033333,
+          "phase_cued_retrieval": 0.016667
+        },
+        "stage": "stage84_support_auxiliary_pointer_generator_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "DUAL_AUXILIARY_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.416667,
+          "phase_cued_retrieval": 0.05
+        },
+        "stage": "stage85_dual_auxiliary_pointer_generator_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "DUAL_AUXILIARY_BUDGET_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage86_dual_auxiliary_budget_sensitivity_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "IN_DECODER_SUPPORT_ROUTED_COPY_EXPERT_SOLVES_PHASE_CUED_NOT_PROMOTION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.416667,
+          "phase_cued_retrieval": 0.783333
+        },
+        "stage": "stage87_in_decoder_support_routed_copy_expert_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "STRUCTURAL_RETRIEVAL_ROUTED_COPY_EXPERT_SOLVES_RETRIEVAL_NOT_PROMOTION",
+        "evidence": "The artifact crosses retrieval thresholds, but does not make a PhaseWrap-led fair learned decoder claim.",
+        "failure": "Original held-out retrieval is solved only as a non-promotional or method-nonspecific diagnostic.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "rope_relative",
+          "phase_cued_retrieval": "rope_relative"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 1.0,
+          "phase_cued_retrieval": 0.783333
+        },
+        "stage": "stage88_structural_retrieval_routed_copy_expert_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "STRUCTURAL_TEACHER_DISTILLED_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.366667,
+          "phase_cued_retrieval": 0.05
+        },
+        "stage": "stage89_structural_teacher_distilled_pointer_generator_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "THREE_BLOCK_TEACHER_DISTILLED_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.433333,
+          "phase_cued_retrieval": 0.033333
+        },
+        "stage": "stage90_three_block_teacher_distilled_pointer_generator_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "CURRICULUM_TEACHER_DISTILLED_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "sinusoidal"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.333333,
+          "phase_cued_retrieval": 0.033333
+        },
+        "stage": "stage91_curriculum_teacher_distilled_pointer_generator_audit"
+      },
+      {
+        "capacity_established": true,
+        "decision": "SUPPORT_BINDING_TEACHER_POINTER_GENERATOR_WITHOUT_RETRIEVAL_GENERALIZATION",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {
+          "exact_offset_passkey": "sinusoidal",
+          "phase_cued_retrieval": "alibi"
+        },
+        "retrieval_best_top1": {
+          "exact_offset_passkey": 0.366667,
+          "phase_cued_retrieval": 0.05
+        },
+        "stage": "stage92_support_binding_teacher_pointer_generator_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "TOY_DECODER_LANE_BOUND_FREE_RETRIEVAL_UNSOLVED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage93_toy_decoder_lane_boundary_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "PROMOTION_GATE_NOT_READY_STRONGEST_CLAIM_BOUNDED",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage94_promotion_gate_readiness_audit"
+      },
+      {
+        "capacity_established": null,
+        "decision": "HEADLINE_INTERVALS_ADDED_PROMOTION_STILL_BOUND",
+        "evidence": "At least one original retrieval task remains below the generalization threshold.",
+        "failure": "Original held-out retrieval remains unrepaired in a recent fair-comparison audit.",
+        "retrieval_best_methods": {},
+        "retrieval_best_top1": {},
+        "stage": "stage95_headline_interval_audit"
+      }
+    ],
+    "headline_intervals": [
+      {
+        "headline": "structural_phase_cued_solve",
+        "lane": "structural_copy_route",
+        "method": "rope_relative",
+        "stage_dir": "stage88_structural_retrieval_routed_copy_expert_audit",
+        "task": "phase_cued_retrieval",
+        "top1_ci_high": 0.816666,
+        "top1_ci_low": 0.75,
+        "top1_mean": 0.783333
+      },
+      {
+        "headline": "structural_exact_offset_solve",
+        "lane": "structural_copy_route",
+        "method": "rope_relative",
+        "stage_dir": "stage88_structural_retrieval_routed_copy_expert_audit",
+        "task": "exact_offset_passkey",
+        "top1_ci_high": 1.0,
+        "top1_ci_low": 1.0,
+        "top1_mean": 1.0
+      },
+      {
+        "headline": "free_learned_best_phase_cued",
+        "lane": "free_learned_pointer_generator",
+        "method": "sinusoidal",
+        "stage_dir": "stage85_dual_auxiliary_pointer_generator_audit",
+        "task": "phase_cued_retrieval",
+        "top1_ci_high": 0.116667,
+        "top1_ci_low": 0.0,
+        "top1_mean": 0.05
+      },
+      {
+        "headline": "free_learned_best_exact_offset",
+        "lane": "free_learned_pointer_generator",
+        "method": "sinusoidal",
+        "stage_dir": "stage90_three_block_teacher_distilled_pointer_generator_audit",
+        "task": "exact_offset_passkey",
+        "top1_ci_high": 0.516667,
+        "top1_ci_low": 0.316667,
+        "top1_mean": 0.433333
+      },
+      {
+        "headline": "recent_support_binding_phase_cued",
+        "lane": "free_learned_pointer_generator",
+        "method": "alibi",
+        "stage_dir": "stage92_support_binding_teacher_pointer_generator_audit",
+        "task": "phase_cued_retrieval",
+        "top1_ci_high": 0.083333,
+        "top1_ci_low": 0.016667,
+        "top1_mean": 0.05
+      },
+      {
+        "headline": "recent_support_binding_exact_offset",
+        "lane": "free_learned_pointer_generator",
+        "method": "sinusoidal",
+        "stage_dir": "stage92_support_binding_teacher_pointer_generator_audit",
+        "task": "exact_offset_passkey",
+        "top1_ci_high": 0.45,
+        "top1_ci_low": 0.3,
+        "top1_mean": 0.366667
+      }
+    ],
+    "promotion_gate_status": {
+      "claim_boundary": "Current evidence still lacks a free learned PhaseWrap-led solve of both original retrieval tasks, so the strongest claim remains bounded.",
+      "decision": "PROMOTION_GATE_NOT_READY_STRONGEST_CLAIM_BOUNDED",
+      "failed_requirements": [
+        "free_learned_phasewrap_original_retrieval_solve"
+      ],
+      "ready": false
+    },
+    "reviewer_next_gate": "Run a stronger learned matched decoder-only transformer or original-row mechanism that improves held-out support-to-token retrieval for phase-cued and exact-offset rows without structural copy routing before evaluating positional-method promotion; avoid treating more small pointer-generator variants as claim-expanding evidence without a materially different binding mechanism.",
+    "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
+    "supported_evidence": [
+      {
+        "claim_limit": "This is not transformer-scale superiority, broad quantum advantage, or cross-backend generalization without additional replication.",
+        "evidence": "Stage 4 hardware/readout witnesses remain bounded positive evidence for committed packet/backend/date/calibration contexts.",
+        "source": "docs/publication/quickstart-results-summary-v1.md"
+      },
+      {
+        "claim_limit": "Compact diagnostics do not establish decoder-only transformer replacement.",
+        "evidence": "Stage 44 records selected compact diagnostic recovery as a plateau rather than a promotion claim.",
+        "source": "docs/research/q-rope-stage44-compact-diagnostic-plateau-audit-v1.md"
+      },
+      {
+        "claim_limit": "Because all methods solve it, this validates the harness and row design but is not PhaseWrap-specific promotion evidence.",
+        "evidence": "Stage 67 solves visible content-key retrieval at held-out lengths for every tested method, including no_position.",
+        "source": "stage67_content_key_retrieval_audit"
+      },
+      {
+        "claim_limit": "This is support-to-token coupling evidence, not positional-method promotion or standard free decoder-only language modeling.",
+        "evidence": "Stage 87 repairs phase-cued retrieval with a structural support-routed copy expert, and no_position solves too.",
+        "source": "stage87_in_decoder_support_routed_copy_expert_audit"
+      },
+      {
+        "claim_limit": "The composed repair is structural and not PhaseWrap-led, so it is row-solvability evidence rather than RoPE replacement evidence.",
+        "evidence": "Stage 88 jointly solves original phase-cued and exact-offset retrieval by composing structural support-routed and positional-bias copy experts.",
+        "source": "stage88_structural_retrieval_routed_copy_expert_audit"
+      },
+      {
+        "claim_limit": "This is a lane-boundary result and next-gate recommendation, not a RoPE replacement or PhaseWrap promotion claim.",
+        "evidence": "Stage 93 consolidates the current toy-decoder lane: structural routes solve original retrieval while free learned pointer-generators remain below the full retrieval gate.",
+        "source": "stage93_toy_decoder_lane_boundary_audit"
+      },
+      {
+        "claim_limit": "Readiness auditing is not new model performance; it preserves the boundary until a free learned PhaseWrap-led solve and confidence intervals exist.",
+        "evidence": "Stage 94 audits the predeclared promotion-gate requirements and ties the bounded claim to explicit missing proof.",
+        "source": "stage94_promotion_gate_readiness_audit"
+      },
+      {
+        "claim_limit": "The intervals improve reporting rigor but do not create the missing free learned PhaseWrap-led solve.",
+        "evidence": "Stage 95 surfaces seed confidence intervals for selected headline structural positives and free learned retrieval failures.",
+        "source": "stage95_headline_interval_audit"
+      },
+      {
+        "claim_limit": "Tiny-text QA positives are mixed downstream evidence, not original retrieval generalization.",
+        "evidence": "Recent pointer-generator variants preserve capacity and reach tiny-text held-out top-1 0.950000.",
+        "method": "sinusoidal",
+        "source": "stage91_curriculum_teacher_distilled_pointer_generator_audit"
+      }
+    ],
+    "unsupported_claims": [
+      "PhaseWrap-RoPE replaces RoPE.",
+      "PhaseWrap-RoPE is better than RoPE under current fair matched transformer comparisons.",
+      "Content-key retrieval success is PhaseWrap-specific evidence.",
+      "Tiny-text QA gains establish original retrieval generalization.",
+      "Bounded hardware/readout witnesses establish production language-model quality gains."
+    ]
+  },
+  "decision": {
+    "claim_boundary": "The current strongest honest claim is bounded and reportable with intervals, but promotion remains unsupported.",
+    "decision": "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM",
+    "headline_intervals_present": true,
+    "missing_source_artifact_count": 0,
+    "promotion_failed_requirements": [
+      "free_learned_phasewrap_original_retrieval_solve"
+    ],
+    "promotion_gate_ready": false
+  },
+  "method_names": [
+    "no_position",
+    "sinusoidal",
+    "alibi",
+    "rope_relative",
+    "phasewrap_bias",
+    "phasewrap_adapter"
+  ],
+  "missing_source_artifacts": [],
+  "no_hardware_submission": true,
+  "provider_credentials_required": false,
+  "schema_version": "qrope_stage96_claim_card_audit_v1",
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage70_strongest_honest_claim_synthesis/results.json",
+    "logs/automated_stage_gates/stage94_promotion_gate_readiness_audit/results.json",
+    "logs/automated_stage_gates/stage95_headline_interval_audit/results.json"
+  ],
+  "source_stage": "stage95_headline_interval_audit",
+  "stage": "stage96_claim_card_audit",
+  "status": "completed",
+  "tasks": [
+    "phase_cued_retrieval",
+    "exact_offset_passkey",
+    "content_key_retrieval",
+    "tiny_text_fact_qa"
+  ]
+}
