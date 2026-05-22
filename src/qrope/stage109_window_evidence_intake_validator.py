@@ -63,6 +63,10 @@ def _stage103_ready(stage103: dict[str, Any] | None) -> bool:
     return bool(stage103 and stage103.get("ready_to_interpret_hardware_metrics") is True)
 
 
+def _assembled_from_stage113(payload: dict[str, Any]) -> bool:
+    return payload.get("status") == "assembled_from_stage113_results" and payload.get("no_hardware_submission") is False
+
+
 def _packet_record(packet_template: dict[str, Any], packet_output_dir: Path) -> dict[str, Any]:
     packet_id = str(packet_template["packet_id"])
     execution_path = packet_output_dir / f"{packet_id}.json"
@@ -74,6 +78,8 @@ def _packet_record(packet_template: dict[str, Any], packet_output_dir: Path) -> 
     if not isinstance(execution, dict):
         missing.append("packet_execution_json")
     else:
+        if not _assembled_from_stage113(execution):
+            missing.append("stage113_assembled_status")
         for field in ("job_or_task_ids", "backend_metadata", "submitted_at_utc", "completed_at_utc", "raw_counts_by_row"):
             if field not in execution or execution.get(field) in (None, "", []):
                 missing.append(field)
@@ -121,6 +127,8 @@ def _window_record(plan: dict[str, Any]) -> dict[str, Any]:
     missing: list[str] = []
     if not isinstance(calibration_execution, dict):
         missing.append("calibration_execution_json")
+    elif not _assembled_from_stage113(calibration_execution):
+        missing.append("calibration_stage113_assembled_status")
     if not _stage101_ready(stage101):
         missing.append("stage101_results_json")
     if any(not record["ready"] for record in packet_records):
@@ -185,6 +193,7 @@ def run_stage109_intake_validator(
             "supported": [
                 "a deterministic intake check for filled Stage 107 independent-window evidence",
                 "optional provider-scoped intake for first-provider replicated-window evaluation",
+                "verification that calibration and packet evidence files were assembled by Stage 113",
                 "per-window verification that calibration, packet counts, and Stage 103 metric readiness are present",
                 "a no-submission guard before any Stage 105 aggregation claim",
             ],

@@ -77,7 +77,14 @@ def test_stage109_accepts_synthetic_complete_window_evidence(tmp_path) -> None:
     plan = _window_plan(tmp_path)
     _write_json(tmp_path / "window_execution_plans.json", [plan])
     window_dir = tmp_path / "windows" / "provider__window_00"
-    _write_json(window_dir / "calibration" / "ibm_runtime_known_state_execution.json", {"job_or_task_ids": ["job-1"]})
+    _write_json(
+        window_dir / "calibration" / "ibm_runtime_known_state_execution.json",
+        {
+            "status": "assembled_from_stage113_results",
+            "no_hardware_submission": False,
+            "job_or_task_ids": ["job-1"],
+        },
+    )
     _write_json(
         window_dir / "calibration" / "stage101" / "results.json",
         {
@@ -88,6 +95,8 @@ def test_stage109_accepts_synthetic_complete_window_evidence(tmp_path) -> None:
     _write_json(
         window_dir / "packet_executions" / "packet_alpha.json",
         {
+            "status": "assembled_from_stage113_results",
+            "no_hardware_submission": False,
             "job_or_task_ids": ["job-2"],
             "backend_metadata": {"backend": "backend_a"},
             "submitted_at_utc": "2026-05-21T00:00:00Z",
@@ -105,6 +114,41 @@ def test_stage109_accepts_synthetic_complete_window_evidence(tmp_path) -> None:
     assert result["decision"] == "WINDOW_EVIDENCE_INTAKE_READY_FOR_STAGE105_AGGREGATION"
     assert result["ready_window_count"] == 1
     assert result["window_records"][0]["ready_packet_count"] == 1
+
+
+def test_stage109_rejects_complete_looking_evidence_without_stage113_status(tmp_path) -> None:
+    plan = _window_plan(tmp_path)
+    _write_json(tmp_path / "window_execution_plans.json", [plan])
+    window_dir = tmp_path / "windows" / "provider__window_00"
+    _write_json(window_dir / "calibration" / "ibm_runtime_known_state_execution.json", {"job_or_task_ids": ["job-1"]})
+    _write_json(
+        window_dir / "calibration" / "stage101" / "results.json",
+        {
+            "decision": "KNOWN_STATE_CALIBRATION_VERIFIED_READY_FOR_MATCHED_HARDWARE_EXECUTION",
+            "known_state_calibration_pass": True,
+        },
+    )
+    _write_json(
+        window_dir / "packet_executions" / "packet_alpha.json",
+        {
+            "job_or_task_ids": ["job-2"],
+            "backend_metadata": {"backend": "backend_a"},
+            "submitted_at_utc": "2026-05-21T00:00:00Z",
+            "completed_at_utc": "2026-05-21T00:10:00Z",
+            "raw_counts_by_row": [
+                {"row_id": "hwrow-000", "counts": {"00": 900}},
+                {"row_id": "hwrow-001", "counts": {"10": 875}},
+            ],
+        },
+    )
+    _write_json(window_dir / "stage103" / "results.json", {"ready_to_interpret_hardware_metrics": True})
+
+    result = run_stage109_intake_validator(stage107_window_plans_path=tmp_path / "window_execution_plans.json")
+
+    assert result["decision"] == "WINDOW_EVIDENCE_INTAKE_BLOCKED_EVIDENCE_MISSING"
+    record = result["window_records"][0]
+    assert "calibration_stage113_assembled_status" in record["missing_evidence"]
+    assert "stage113_assembled_status" in record["packet_records"][0]["missing_evidence"]
 
 
 def test_stage109_outputs_are_written(tmp_path) -> None:
