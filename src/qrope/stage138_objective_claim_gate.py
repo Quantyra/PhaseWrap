@@ -93,6 +93,8 @@ def _stage148_ready_for_claim(stage148: dict[str, Any] | None) -> bool:
     return bool(
         isinstance(stage148, dict)
         and stage148.get("decision") == STATISTICAL_READY
+        and stage148.get("stage146_ready") is True
+        and stage148.get("stage147_ready") is True
         and stage148.get("ready_calibration_record_count") == stage148.get("calibration_record_count")
         and stage148.get("stage103_lower_mae_lane_count") == stage148.get("lane_record_count")
         and stage148.get("shot_noise_separated_lane_count") == stage148.get("lane_record_count")
@@ -141,6 +143,8 @@ def run_stage138_claim_gate(
         "stage110_decision": stage110.get("decision") if isinstance(stage110, dict) else None,
         "stage137_decision": stage137.get("decision") if isinstance(stage137, dict) else None,
         "stage148_decision": stage148.get("decision") if isinstance(stage148, dict) else None,
+        "stage148_stage146_ready": stage148.get("stage146_ready") if isinstance(stage148, dict) else None,
+        "stage148_stage147_ready": stage148.get("stage147_ready") if isinstance(stage148, dict) else None,
         "stage110_ready_for_stage105_aggregation": stage110.get("ready_for_stage105_aggregation") if isinstance(stage110, dict) else None,
         "stage137_ready_window_count": stage137.get("ready_window_count") if isinstance(stage137, dict) else None,
         "stage137_window_count": stage137.get("window_count") if isinstance(stage137, dict) else None,
@@ -200,6 +204,8 @@ def write_stage138_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage110_decision": result["stage110_decision"],
         "stage137_decision": result["stage137_decision"],
         "stage148_decision": result["stage148_decision"],
+        "stage148_stage146_ready": result["stage148_stage146_ready"],
+        "stage148_stage147_ready": result["stage148_stage147_ready"],
         "stage110_ready_for_stage105_aggregation": result["stage110_ready_for_stage105_aggregation"],
         "stage137_ready_window_count": result["stage137_ready_window_count"],
         "stage137_window_count": result["stage137_window_count"],

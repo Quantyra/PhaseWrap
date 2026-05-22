@@ -17,6 +17,15 @@ OBJECTIVE = (
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )
+REQUIRED_CALIBRATION_FIELDS: tuple[str, ...] = (
+    "job_or_task_ids",
+    "backend_metadata",
+    "submitted_at_utc",
+    "completed_at_utc",
+    "raw_counts_by_state",
+)
+STAGE146_READY = "FIRST_PROVIDER_SHOT_UNCERTAINTY_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED"
+STAGE147_READY = "FIRST_PROVIDER_CALIBRATION_CONFIDENCE_CONTRACT_READY_COUNTS_REQUIRED"
 
 
 def _load_json(path: Path) -> Any | None:
@@ -72,6 +81,10 @@ def _calibration_record(plan: dict[str, Any], thresholds: dict[str, dict[str, An
         missing.append("calibration_execution_json")
     elif not _assembled_from_stage113(calibration):
         missing.append("stage113_assembled_calibration_status")
+    if isinstance(calibration, dict):
+        for field in REQUIRED_CALIBRATION_FIELDS:
+            if field not in calibration or calibration.get(field) in (None, "", []):
+                missing.append(field)
     if not (
         isinstance(stage101, dict)
         and stage101.get("decision") == "KNOWN_STATE_CALIBRATION_VERIFIED_READY_FOR_MATCHED_HARDWARE_EXECUTION"
@@ -114,7 +127,12 @@ def _stage103_records(plan: dict[str, Any], thresholds: dict[tuple[str, str, str
     stage103_path = Path(str(packet_step.get("output_dir", ""))).parent / "stage103" / "results.json"
     stage103 = _load_json(stage103_path)
     stage103_ready = bool(
-        isinstance(stage103, dict) and stage103.get("decision") == "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION"
+        isinstance(stage103, dict)
+        and stage103.get("decision") == "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION"
+        and stage103.get("ready_to_interpret_hardware_metrics") is True
+        and stage103.get("comparison_groups_complete") is True
+        and int(stage103.get("missing_execution_count") or 0) == 0
+        and int(stage103.get("metric_record_count") or 0) > 0
     )
     records = []
     for summary in stage103.get("comparison_summary", []) if isinstance(stage103, dict) else []:
@@ -150,6 +168,12 @@ def _stage103_records(plan: dict[str, Any], thresholds: dict[tuple[str, str, str
                 ),
                 "passes_stage146_shot_noise_separation": shot_separated,
                 "stage103_ready_for_interpretation": stage103_ready,
+                "stage103_ready_to_interpret_hardware_metrics": (
+                    stage103.get("ready_to_interpret_hardware_metrics") if isinstance(stage103, dict) else None
+                ),
+                "stage103_comparison_groups_complete": stage103.get("comparison_groups_complete") if isinstance(stage103, dict) else None,
+                "stage103_missing_execution_count": stage103.get("missing_execution_count") if isinstance(stage103, dict) else None,
+                "stage103_metric_record_count": stage103.get("metric_record_count") if isinstance(stage103, dict) else None,
                 "stage103_results_path": str(stage103_path.as_posix()),
             }
         )
@@ -172,6 +196,12 @@ def _stage103_records(plan: dict[str, Any], thresholds: dict[tuple[str, str, str
                         "passes_stage103_lower_mae_rule": False,
                         "passes_stage146_shot_noise_separation": False,
                         "stage103_ready_for_interpretation": stage103_ready,
+                        "stage103_ready_to_interpret_hardware_metrics": (
+                            stage103.get("ready_to_interpret_hardware_metrics") if isinstance(stage103, dict) else None
+                        ),
+                        "stage103_comparison_groups_complete": stage103.get("comparison_groups_complete") if isinstance(stage103, dict) else None,
+                        "stage103_missing_execution_count": stage103.get("missing_execution_count") if isinstance(stage103, dict) else None,
+                        "stage103_metric_record_count": stage103.get("metric_record_count") if isinstance(stage103, dict) else None,
                         "stage103_results_path": str(stage103_path.as_posix()),
                     }
                 )
@@ -190,6 +220,8 @@ def run_stage148_gate(
     sources = [(stage107_window_plans_path, plans), (stage146_results_path, stage146), (stage147_results_path, stage147)]
     missing_sources = [str(path.as_posix()) for path, payload in sources if payload is None]
     provider = str(stage147.get("provider_scope", "")) if isinstance(stage147, dict) else ""
+    stage146_ready = bool(isinstance(stage146, dict) and stage146.get("decision") == STAGE146_READY)
+    stage147_ready = bool(isinstance(stage147, dict) and stage147.get("decision") == STAGE147_READY)
     window_plans = [
         plan for plan in plans or [] if isinstance(plan, dict) and (not provider or plan.get("provider") == provider)
     ] if isinstance(plans, list) else []
@@ -200,6 +232,8 @@ def run_stage148_gate(
     shot_separated_count = sum(1 for record in lane_records if record["passes_stage146_shot_noise_separation"])
     ready = (
         bool(provider)
+        and stage146_ready
+        and stage147_ready
         and bool(calibration_records)
         and bool(lane_records)
         and not missing_sources
@@ -220,6 +254,10 @@ def run_stage148_gate(
         "source_artifacts": [str(path.as_posix()) for path, _ in sources],
         "missing_source_artifacts": missing_sources,
         "provider_scope": provider,
+        "stage146_decision": stage146.get("decision") if isinstance(stage146, dict) else None,
+        "stage147_decision": stage147.get("decision") if isinstance(stage147, dict) else None,
+        "stage146_ready": stage146_ready,
+        "stage147_ready": stage147_ready,
         "window_count": len(window_plans),
         "calibration_record_count": len(calibration_records),
         "ready_calibration_record_count": ready_calibration_count,
@@ -235,7 +273,8 @@ def run_stage148_gate(
             "supported": [
                 "binding of later IBM interpretation to Stage 147 calibration-confidence thresholds",
                 "binding of later IBM PhaseWrap MAE margins to Stage 146 shot-noise separation thresholds",
-                "binding of final statistical interpretation to Stage 113-assembled calibration evidence and Stage 103 ready decisions",
+                "binding of final statistical interpretation to Stage 113-assembled calibration evidence with result lineage metadata",
+                "binding of final statistical interpretation to Stage 103 ready decisions, readiness counters, and complete comparison groups",
                 "a blocked outcome until observed provider evidence satisfies both statistical guardrails",
             ],
             "excluded": [
@@ -264,6 +303,10 @@ def write_stage148_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "source_artifacts": result["source_artifacts"],
         "missing_source_artifacts": result["missing_source_artifacts"],
         "provider_scope": result["provider_scope"],
+        "stage146_decision": result["stage146_decision"],
+        "stage147_decision": result["stage147_decision"],
+        "stage146_ready": result["stage146_ready"],
+        "stage147_ready": result["stage147_ready"],
         "window_count": result["window_count"],
         "calibration_record_count": result["calibration_record_count"],
         "ready_calibration_record_count": result["ready_calibration_record_count"],

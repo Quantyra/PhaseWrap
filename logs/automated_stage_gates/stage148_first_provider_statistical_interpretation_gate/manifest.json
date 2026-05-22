@@ -11,7 +11,8 @@
     "supported": [
       "binding of later IBM interpretation to Stage 147 calibration-confidence thresholds",
       "binding of later IBM PhaseWrap MAE margins to Stage 146 shot-noise separation thresholds",
-      "binding of final statistical interpretation to Stage 113-assembled calibration evidence and Stage 103 ready decisions",
+      "binding of final statistical interpretation to Stage 113-assembled calibration evidence with result lineage metadata",
+      "binding of final statistical interpretation to Stage 103 ready decisions, readiness counters, and complete comparison groups",
       "a blocked outcome until observed provider evidence satisfies both statistical guardrails"
     ]
   },
@@ -35,6 +36,10 @@
   ],
   "stage": "stage148_first_provider_statistical_interpretation_gate",
   "stage103_lower_mae_lane_count": 0,
+  "stage146_decision": "FIRST_PROVIDER_SHOT_UNCERTAINTY_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED",
+  "stage146_ready": true,
+  "stage147_decision": "FIRST_PROVIDER_CALIBRATION_CONFIDENCE_CONTRACT_READY_COUNTS_REQUIRED",
+  "stage147_ready": true,
   "status": "completed",
   "summary_csv_path": "logs/automated_stage_gates/stage148_first_provider_statistical_interpretation_gate/summary.csv",
   "window_count": 2

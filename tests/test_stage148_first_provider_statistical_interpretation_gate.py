@@ -35,6 +35,7 @@ def _fixture(tmp_path, *, ready: bool) -> tuple[object, object, object]:
     _write_json(
         stage147,
         {
+            "decision": "FIRST_PROVIDER_CALIBRATION_CONFIDENCE_CONTRACT_READY_COUNTS_REQUIRED",
             "provider_scope": "ibm_runtime",
             "state_records": [
                 {"state": "00", "expected_dominant_key": "00", "minimum_wilson95_dominant_count": 825},
@@ -45,6 +46,7 @@ def _fixture(tmp_path, *, ready: bool) -> tuple[object, object, object]:
     _write_json(
         stage146,
         {
+            "decision": "FIRST_PROVIDER_SHOT_UNCERTAINTY_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED",
             "lane_summaries": [
                 {
                     "provider": "ibm_runtime",
@@ -62,6 +64,10 @@ def _fixture(tmp_path, *, ready: bool) -> tuple[object, object, object]:
             {
                 "status": "assembled_from_stage113_results",
                 "no_hardware_submission": False,
+                "job_or_task_ids": ["cal-job-0", "cal-job-1"],
+                "backend_metadata": {"provider": "ibm_runtime", "backend": "backend_a"},
+                "submitted_at_utc": "2026-05-21T00:00:00Z",
+                "completed_at_utc": "2026-05-21T00:01:00Z",
                 "raw_counts_by_state": [
                     {"state": "00", "counts": {"00": 900, "01": 100}},
                     {"state": "01", "counts": {"10": 900, "00": 100}},
@@ -79,6 +85,10 @@ def _fixture(tmp_path, *, ready: bool) -> tuple[object, object, object]:
             stage103_path,
             {
                 "decision": "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION",
+                "ready_to_interpret_hardware_metrics": True,
+                "comparison_groups_complete": True,
+                "missing_execution_count": 0,
+                "metric_record_count": 5,
                 "comparison_summary": [
                     {
                         "source_lane_id": "lane_a",
@@ -129,6 +139,20 @@ def test_stage148_blocks_complete_calibration_counts_without_stage113_status(tmp
     assert "stage113_assembled_calibration_status" in result["calibration_records"][0]["missing_evidence"]
 
 
+def test_stage148_blocks_calibration_counts_without_result_lineage_metadata(tmp_path) -> None:
+    plans, stage146, stage147 = _fixture(tmp_path, ready=True)
+    calibration_path = tmp_path / "window" / "calibration" / "ibm_runtime_known_state_execution.json"
+    calibration = json.loads(calibration_path.read_text(encoding="utf-8"))
+    calibration.pop("backend_metadata")
+    _write_json(calibration_path, calibration)
+
+    result = run_stage148_gate(stage107_window_plans_path=plans, stage146_results_path=stage146, stage147_results_path=stage147)
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["ready_calibration_record_count"] == 0
+    assert "backend_metadata" in result["calibration_records"][0]["missing_evidence"]
+
+
 def test_stage148_blocks_summary_shaped_stage103_without_ready_decision(tmp_path) -> None:
     plans, stage146, stage147 = _fixture(tmp_path, ready=True)
     stage103_path = tmp_path / "window" / "stage103" / "results.json"
@@ -141,6 +165,34 @@ def test_stage148_blocks_summary_shaped_stage103_without_ready_decision(tmp_path
     assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
     assert result["stage103_lower_mae_lane_count"] == 0
     assert result["lane_records"][0]["stage103_ready_for_interpretation"] is False
+
+
+def test_stage148_blocks_stage103_without_readiness_counters(tmp_path) -> None:
+    plans, stage146, stage147 = _fixture(tmp_path, ready=True)
+    stage103_path = tmp_path / "window" / "stage103" / "results.json"
+    stage103 = json.loads(stage103_path.read_text(encoding="utf-8"))
+    stage103["comparison_groups_complete"] = False
+    _write_json(stage103_path, stage103)
+
+    result = run_stage148_gate(stage107_window_plans_path=plans, stage146_results_path=stage146, stage147_results_path=stage147)
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["stage103_lower_mae_lane_count"] == 0
+    assert result["lane_records"][0]["stage103_ready_for_interpretation"] is False
+    assert result["lane_records"][0]["stage103_comparison_groups_complete"] is False
+
+
+def test_stage148_blocks_when_statistical_contract_sources_are_not_ready(tmp_path) -> None:
+    plans, stage146, stage147 = _fixture(tmp_path, ready=True)
+    payload = json.loads(stage146.read_text(encoding="utf-8"))
+    payload["decision"] = "FIRST_PROVIDER_SHOT_UNCERTAINTY_CONTRACT_INCOMPLETE"
+    _write_json(stage146, payload)
+
+    result = run_stage148_gate(stage107_window_plans_path=plans, stage146_results_path=stage146, stage147_results_path=stage147)
+
+    assert result["decision"] == "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED"
+    assert result["stage146_ready"] is False
+    assert result["shot_noise_separated_lane_count"] == 1
 
 
 def test_stage148_outputs_are_written(tmp_path) -> None:
