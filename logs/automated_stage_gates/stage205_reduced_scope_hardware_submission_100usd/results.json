@@ -1,9 +1,7 @@
 {
-  "allow_live_submit": false,
+  "allow_live_submit": true,
   "backend": "ibm_fez",
-  "blockers": [
-    "allow_live_submit_flag_required"
-  ],
+  "blockers": [],
   "budget_cap_usd": 100.0,
   "claim_boundary": {
     "excluded": [
@@ -18,14 +16,14 @@
       "submission remains separate from result retrieval, calibration pass/fail, and robustness interpretation"
     ]
   },
-  "decision": "REDUCED_SCOPE_HARDWARE_SUBMISSION_BLOCKED_OR_PARTIAL",
+  "decision": "REDUCED_SCOPE_HARDWARE_SUBMITTED_AWAITING_RESULTS",
   "estimated_total_job_count": 324,
   "estimated_total_shots": 659360,
   "expected_runtime_job_count": 21,
-  "hardware_submission_performed": false,
+  "hardware_submission_performed": true,
   "missing_source_artifacts": [],
   "next_gate": "Collect Runtime job results, populate Stage203 raw counts, run calibration validation, then recompute robustness and auditability metrics.",
-  "no_hardware_submission": true,
+  "no_hardware_submission": false,
   "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "runnable_commands_recorded": false,
@@ -38,10 +36,14 @@
   ],
   "stage": "stage205_reduced_scope_hardware_submission",
   "status": "completed",
-  "submission_attempted": false,
+  "submission_attempted": true,
   "submission_records": [
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -49,15 +51,19 @@
       "encoding_family": "alibi_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dh88p0eas73dnac7g",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:28:48.405642+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -65,15 +71,19 @@
       "encoding_family": "matched_nonzero_null_control",
       "error_type": "",
       "packet_id": "ibm_cx_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dha1789is739215dg",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:28:56.054552+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -81,15 +91,19 @@
       "encoding_family": "phasewrap",
       "error_type": "",
       "packet_id": "ibm_cx_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__phasewrap",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhbtg7okc73endjhg",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:02.875315+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -97,15 +111,19 @@
       "encoding_family": "rope_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__rope_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhdlg7okc73endjk0",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:09.781120+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -113,15 +131,19 @@
       "encoding_family": "sinusoidal_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhflg7okc73endjm0",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:17.358694+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -129,15 +151,19 @@
       "encoding_family": "alibi_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhhas46sc73f9amfg",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:24.011297+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -145,15 +171,19 @@
       "encoding_family": "matched_nonzero_null_control",
       "error_type": "",
       "packet_id": "ibm_cx_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhip789is739215ng",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:30.501704+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -161,15 +191,19 @@
       "encoding_family": "phasewrap",
       "error_type": "",
       "packet_id": "ibm_cx_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__phasewrap",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhk8p0eas73dnacn0",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:36.782168+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -177,15 +211,19 @@
       "encoding_family": "rope_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__rope_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhm1789is739215s0",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:43.375445+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_cx_parity_z_readout_v1",
       "completed_at_utc": "",
@@ -193,15 +231,19 @@
       "encoding_family": "sinusoidal_like",
       "error_type": "",
       "packet_id": "ibm_cx_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhnop0eas73dnacqg",
       "shots": 2048,
       "source_lane_id": "ibm_cx_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:50.275736+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -209,15 +251,19 @@
       "encoding_family": "alibi_like",
       "error_type": "",
       "packet_id": "ibm_product_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhp9789is73921600",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:29:56.929601+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -225,15 +271,19 @@
       "encoding_family": "matched_nonzero_null_control",
       "error_type": "",
       "packet_id": "ibm_product_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhr0p0eas73dnad00",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:03.736552+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -241,15 +291,19 @@
       "encoding_family": "phasewrap",
       "error_type": "",
       "packet_id": "ibm_product_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__phasewrap",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dht1789is73921640",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:11.268455+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -257,15 +311,19 @@
       "encoding_family": "rope_like",
       "error_type": "",
       "packet_id": "ibm_product_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__rope_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dhuqs46sc73f9amu0",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:18.295784+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -273,15 +331,19 @@
       "encoding_family": "sinusoidal_like",
       "error_type": "",
       "packet_id": "ibm_product_seed314_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di0p789is73921680",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed314_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:26.531591+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -289,15 +351,19 @@
       "encoding_family": "alibi_like",
       "error_type": "",
       "packet_id": "ibm_product_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__alibi_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di2gp0eas73dnad80",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:33.089503+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -305,15 +371,19 @@
       "encoding_family": "matched_nonzero_null_control",
       "error_type": "",
       "packet_id": "ibm_product_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__matched_nonzero_null_control",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di49789is739216c0",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:40.236583+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -321,15 +391,19 @@
       "encoding_family": "phasewrap",
       "error_type": "",
       "packet_id": "ibm_product_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__phasewrap",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di61789is739216f0",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:47.070754+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -337,15 +411,19 @@
       "encoding_family": "rope_like",
       "error_type": "",
       "packet_id": "ibm_product_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__rope_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di7op0eas73dnadfg",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:30:53.971777+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 16,
       "circuit_template": "two_ry_product_state_z_readout_v1",
       "completed_at_utc": "",
@@ -353,15 +431,19 @@
       "encoding_family": "sinusoidal_like",
       "error_type": "",
       "packet_id": "ibm_product_seed577_rows16_shots2048__matched_nonzero_null_noise_sensitivity_v1__sinusoidal_like",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88di99789is739216lg",
       "shots": 2048,
       "source_lane_id": "ibm_product_seed577_rows16_shots2048",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:31:00.575227+00:00",
       "template_type": "reduced_scope_packet_execution_counts"
     },
     {
-      "backend_metadata": {},
+      "backend_metadata": {
+        "backend": "ibm_fez",
+        "provider": "ibm_runtime",
+        "runtime_submission_kind": "sampler_v2_async_packet_batch"
+      },
       "circuit_count": 4,
       "circuit_template": "known_state_calibration",
       "completed_at_utc": "",
@@ -369,13 +451,13 @@
       "encoding_family": "",
       "error_type": "",
       "packet_id": "",
-      "runtime_job_id": "",
+      "runtime_job_id": "d88dib0p0eas73dnadl0",
       "shots": 1000,
       "source_lane_id": "",
-      "status": "not_submitted",
-      "submitted_at_utc": "",
+      "status": "submitted_awaiting_results",
+      "submitted_at_utc": "2026-05-22T22:31:07.304735+00:00",
       "template_type": "reduced_scope_known_state_calibration_counts"
     }
   ],
-  "submitted_runtime_job_count": 0
+  "submitted_runtime_job_count": 21
 }
