@@ -138,6 +138,20 @@ def _stage152_write_ready(stage152: dict[str, Any] | None, selected_providers: s
     blockers = []
     if stage152.get("decision") != "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER":
         blockers.append("stage152_live_execution_guard_not_ready")
+    if stage152.get("missing_source_artifacts"):
+        blockers.append("stage152_missing_source_artifacts")
+    if stage152.get("blockers"):
+        blockers.append("stage152_blockers_present")
+    if stage152.get("stage144_ready_for_authorized_runner") is not True:
+        blockers.append("stage152_stage144_not_ready")
+    if stage152.get("stage144_first_blocked_transition") not in (None, "", {}):
+        blockers.append("stage152_stage144_blocked_transition_present")
+    stage144_ready_transition_count = int(stage152.get("stage144_ready_transition_count") or 0)
+    stage144_transition_count = int(stage152.get("stage144_transition_count") or 0)
+    if stage144_transition_count <= 0 or stage144_ready_transition_count != stage144_transition_count:
+        blockers.append("stage152_stage144_transition_counts_incomplete")
+    if stage152.get("stage151_metadata_guard_ready") is not True:
+        blockers.append("stage152_stage151_metadata_guard_not_ready")
     if first_provider and int(stage152.get("first_provider_authorized_runner_count") or 0) <= 0:
         blockers.append("stage152_no_authorized_first_provider_runner")
     return not blockers, sorted(set(blockers))
@@ -167,10 +181,7 @@ def run_stage115_collector(
         invalid_records.extend(records)
     ready = bool(shard_summaries) and all(record["ready"] for record in shard_summaries) and not missing_sources
     selected_providers = {str(record.get("provider")) for record in selected_shard_records if record.get("provider")}
-    stage152_write_ready = True
-    stage152_write_blockers: list[str] = []
-    if write_stage113_input:
-        stage152_write_ready, stage152_write_blockers = _stage152_write_ready(stage152, selected_providers)
+    stage152_write_ready, stage152_write_blockers = _stage152_write_ready(stage152, selected_providers)
     wrote_stage113_input = False
     if ready and write_stage113_input and stage152_write_ready:
         stage113_provider_results_path.parent.mkdir(parents=True, exist_ok=True)
@@ -198,6 +209,25 @@ def run_stage115_collector(
         "stage114_decision": stage114.get("decision") if isinstance(stage114, dict) else None,
         "stage152_results_path": str(stage152_results_path.as_posix()),
         "stage152_decision": stage152.get("decision") if isinstance(stage152, dict) else None,
+        "stage152_missing_source_artifacts": stage152.get("missing_source_artifacts") if isinstance(stage152, dict) else None,
+        "stage152_blockers": stage152.get("blockers") if isinstance(stage152, dict) else None,
+        "stage152_stage144_ready_for_authorized_runner": (
+            stage152.get("stage144_ready_for_authorized_runner") if isinstance(stage152, dict) else None
+        ),
+        "stage152_stage144_ready_transition_count": (
+            stage152.get("stage144_ready_transition_count") if isinstance(stage152, dict) else None
+        ),
+        "stage152_stage144_transition_count": stage152.get("stage144_transition_count") if isinstance(stage152, dict) else None,
+        "stage152_stage144_first_blocked_transition": (
+            stage152.get("stage144_first_blocked_transition") if isinstance(stage152, dict) else None
+        ),
+        "stage152_stage151_metadata_guard_ready": stage152.get("stage151_metadata_guard_ready") if isinstance(stage152, dict) else None,
+        "stage152_first_provider_runner_command_count": (
+            stage152.get("first_provider_runner_command_count") if isinstance(stage152, dict) else None
+        ),
+        "stage152_first_provider_authorized_runner_count": (
+            stage152.get("first_provider_authorized_runner_count") if isinstance(stage152, dict) else None
+        ),
         "stage152_write_ready": stage152_write_ready,
         "stage152_write_blockers": stage152_write_blockers,
         "provider_scope": provider or "all",
@@ -252,6 +282,15 @@ def write_stage115_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
         "stage114_decision": result["stage114_decision"],
         "stage152_results_path": result["stage152_results_path"],
         "stage152_decision": result["stage152_decision"],
+        "stage152_missing_source_artifacts": result["stage152_missing_source_artifacts"],
+        "stage152_blockers": result["stage152_blockers"],
+        "stage152_stage144_ready_for_authorized_runner": result["stage152_stage144_ready_for_authorized_runner"],
+        "stage152_stage144_ready_transition_count": result["stage152_stage144_ready_transition_count"],
+        "stage152_stage144_transition_count": result["stage152_stage144_transition_count"],
+        "stage152_stage144_first_blocked_transition": result["stage152_stage144_first_blocked_transition"],
+        "stage152_stage151_metadata_guard_ready": result["stage152_stage151_metadata_guard_ready"],
+        "stage152_first_provider_runner_command_count": result["stage152_first_provider_runner_command_count"],
+        "stage152_first_provider_authorized_runner_count": result["stage152_first_provider_authorized_runner_count"],
         "stage152_write_ready": result["stage152_write_ready"],
         "stage152_write_blockers": result["stage152_write_blockers"],
         "provider_scope": result["provider_scope"],

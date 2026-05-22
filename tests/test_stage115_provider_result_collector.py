@@ -64,6 +64,14 @@ def _stage152_ready(path) -> None:
         {
             "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER",
             "first_unlock_provider": "ibm_runtime",
+            "missing_source_artifacts": [],
+            "blockers": [],
+            "stage144_ready_for_authorized_runner": True,
+            "stage144_ready_transition_count": 9,
+            "stage144_transition_count": 9,
+            "stage144_first_blocked_transition": None,
+            "stage151_metadata_guard_ready": True,
+            "first_provider_runner_command_count": 1,
             "first_provider_authorized_runner_count": 1,
         },
     )
@@ -75,6 +83,14 @@ def _stage152_blocked(path) -> None:
         {
             "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED",
             "first_unlock_provider": "ibm_runtime",
+            "missing_source_artifacts": [],
+            "blockers": ["stage144_post_configuration_chain_not_ready"],
+            "stage144_ready_for_authorized_runner": False,
+            "stage144_ready_transition_count": 8,
+            "stage144_transition_count": 9,
+            "stage144_first_blocked_transition": {"stage": "stage140_local_provider_configuration_readiness"},
+            "stage151_metadata_guard_ready": True,
+            "first_provider_runner_command_count": 1,
             "first_provider_authorized_runner_count": 0,
         },
     )
@@ -143,6 +159,77 @@ def test_stage115_blocks_stage113_input_write_when_stage152_not_ready(tmp_path) 
     assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
     assert result["wrote_stage113_input"] is False
     assert "stage152_live_execution_guard_not_ready" in result["stage152_write_blockers"]
+    assert not (tmp_path / "stage113.jsonl").exists()
+
+
+def test_stage115_blocks_stage113_input_write_when_stage152_ready_decision_lacks_stage144_evidence(tmp_path) -> None:
+    root, result_path = _stage114_fixture(tmp_path)
+    _write_jsonl(result_path, [_result("job_a"), _result("job_b")])
+    _write_json(
+        tmp_path / "stage152.json",
+        {
+            "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER",
+            "first_unlock_provider": "ibm_runtime",
+            "missing_source_artifacts": [],
+            "blockers": [],
+            "stage144_ready_for_authorized_runner": False,
+            "stage144_ready_transition_count": 8,
+            "stage144_transition_count": 9,
+            "stage144_first_blocked_transition": {"stage": "stage140_local_provider_configuration_readiness"},
+            "stage151_metadata_guard_ready": True,
+            "first_provider_runner_command_count": 1,
+            "first_provider_authorized_runner_count": 1,
+        },
+    )
+
+    result = run_stage115_collector(
+        stage114_manifest_path=root / "manifest.json",
+        stage114_output_dir=root,
+        stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
+        write_stage113_input=True,
+    )
+
+    assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+    assert result["wrote_stage113_input"] is False
+    assert "stage152_stage144_not_ready" in result["stage152_write_blockers"]
+    assert "stage152_stage144_blocked_transition_present" in result["stage152_write_blockers"]
+    assert "stage152_stage144_transition_counts_incomplete" in result["stage152_write_blockers"]
+    assert not (tmp_path / "stage113.jsonl").exists()
+
+
+def test_stage115_blocks_stage113_input_write_when_stage152_blockers_remain(tmp_path) -> None:
+    root, result_path = _stage114_fixture(tmp_path)
+    _write_jsonl(result_path, [_result("job_a"), _result("job_b")])
+    _write_json(
+        tmp_path / "stage152.json",
+        {
+            "decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_READY_FOR_GUARDED_RUNNER",
+            "first_unlock_provider": "ibm_runtime",
+            "missing_source_artifacts": [],
+            "blockers": ["stage133_no_authorized_first_provider_commands"],
+            "stage144_ready_for_authorized_runner": True,
+            "stage144_ready_transition_count": 9,
+            "stage144_transition_count": 9,
+            "stage144_first_blocked_transition": None,
+            "stage151_metadata_guard_ready": True,
+            "first_provider_runner_command_count": 1,
+            "first_provider_authorized_runner_count": 1,
+        },
+    )
+
+    result = run_stage115_collector(
+        stage114_manifest_path=root / "manifest.json",
+        stage114_output_dir=root,
+        stage113_provider_results_path=tmp_path / "stage113.jsonl",
+        stage152_results_path=tmp_path / "stage152.json",
+        write_stage113_input=True,
+    )
+
+    assert result["decision"] == "PROVIDER_RESULTS_COLLECTION_BLOCKED_LIVE_GUARD_REQUIRED"
+    assert result["wrote_stage113_input"] is False
+    assert result["stage152_blockers"] == ["stage133_no_authorized_first_provider_commands"]
+    assert "stage152_blockers_present" in result["stage152_write_blockers"]
     assert not (tmp_path / "stage113.jsonl").exists()
 
 

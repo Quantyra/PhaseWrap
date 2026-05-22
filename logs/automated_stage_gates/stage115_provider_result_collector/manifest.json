@@ -38,10 +38,39 @@
   "stage": "stage115_provider_result_collector",
   "stage113_provider_results_path": "logs/automated_stage_gates/stage113_job_result_evidence_assembler/provider_job_results.jsonl",
   "stage114_decision": "PROVIDER_RESULT_CAPTURE_CONTRACT_PREPARED_RESULTS_REQUIRED",
+  "stage152_blockers": [
+    "stage133_no_authorized_first_provider_commands",
+    "stage144_post_configuration_chain_not_ready"
+  ],
   "stage152_decision": "FIRST_PROVIDER_LIVE_EXECUTION_GUARD_PREPARED_EXECUTION_BLOCKED",
+  "stage152_first_provider_authorized_runner_count": 0,
+  "stage152_first_provider_runner_command_count": 2,
+  "stage152_missing_source_artifacts": [],
   "stage152_results_path": "logs/automated_stage_gates/stage152_first_provider_live_execution_guard/results.json",
-  "stage152_write_blockers": [],
-  "stage152_write_ready": true,
+  "stage152_stage144_first_blocked_transition": {
+    "blockers": [
+      "IBM_QUANTUM_INSTANCE_CRN"
+    ],
+    "label": "first provider ready for preflight rerun",
+    "next_command": "python scripts/run_stage140_local_provider_configuration_readiness.py --load-dotenv",
+    "observed": false,
+    "ready": false,
+    "required": true,
+    "stage": "stage140_local_provider_configuration_readiness"
+  },
+  "stage152_stage144_ready_for_authorized_runner": false,
+  "stage152_stage144_ready_transition_count": 2,
+  "stage152_stage144_transition_count": 9,
+  "stage152_stage151_metadata_guard_ready": true,
+  "stage152_write_blockers": [
+    "stage152_blockers_present",
+    "stage152_live_execution_guard_not_ready",
+    "stage152_no_authorized_first_provider_runner",
+    "stage152_stage144_blocked_transition_present",
+    "stage152_stage144_not_ready",
+    "stage152_stage144_transition_counts_incomplete"
+  ],
+  "stage152_write_ready": false,
   "status": "completed",
   "summary_csv_path": "logs/automated_stage_gates/stage115_provider_result_collector/summary.csv",
   "write_stage113_input": false,
