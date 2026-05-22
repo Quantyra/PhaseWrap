@@ -1,0 +1,82 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "backend availability discovery",
+      "real hardware submission",
+      "completed calibration or matched packet execution",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "a no-submission hardware execution configuration preflight for the Stage 105 rerun protocol",
+      "provider-level readiness/blocker reporting without recording secret values",
+      "a gate preventing ad hoc hardware attempts without backend, budget, queue, and artifact destination configuration"
+    ]
+  },
+  "decision": "HARDWARE_EXECUTION_PREFLIGHT_BLOCKED_CONFIGURATION_REQUIRED",
+  "missing_source_artifacts": [],
+  "next_gate": "Set provider credentials, backend selections, budget caps, queue caps, and artifact destinations; rerun Stage 106, then execute Stage 101/104 only if the preflight is ready.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "provider_records": [
+    {
+      "backend_env_present": [],
+      "blockers": [
+        "provider_credentials_missing",
+        "backend_selection_missing",
+        "braket_output_s3_bucket_missing",
+        "braket_region_missing"
+      ],
+      "budget_cap_present": true,
+      "credential_env_present": [],
+      "provider": "amazon_braket",
+      "queue_depth_cap_present": true,
+      "status": "blocked"
+    },
+    {
+      "backend_env_present": [
+        "QROPE_HARDWARE_BACKEND"
+      ],
+      "blockers": [
+        "ibm_instance_crn_missing"
+      ],
+      "budget_cap_present": true,
+      "credential_env_present": [
+        "IBM_QUANTUM_TOKEN"
+      ],
+      "provider": "ibm_runtime",
+      "queue_depth_cap_present": true,
+      "status": "blocked"
+    }
+  ],
+  "providers": [
+    "amazon_braket",
+    "ibm_runtime"
+  ],
+  "ready_for_hardware_submission": false,
+  "required_common_env": [
+    "QROPE_HARDWARE_BUDGET_USD_CAP",
+    "QROPE_HARDWARE_QUEUE_DEPTH_CAP"
+  ],
+  "required_provider_env": {
+    "amazon_braket": [
+      "AWS_ACCESS_KEY_ID or AWS_PROFILE",
+      "QROPE_BRAKET_DEVICE_ARN or QROPE_BRAKET_DEVICE_ARNS",
+      "QROPE_BRAKET_OUTPUT_S3_BUCKET",
+      "QROPE_BRAKET_AWS_REGION or AWS_REGION"
+    ],
+    "ibm_runtime": [
+      "IBM_QUANTUM_TOKEN or QISKIT_IBM_TOKEN",
+      "QROPE_IBM_BACKEND or QROPE_HARDWARE_BACKEND",
+      "IBM_QUANTUM_INSTANCE_CRN"
+    ]
+  },
+  "schema_version": "qrope_stage106_hardware_execution_preflight_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage105_independent_rerun_protocol/manifest.json"
+  ],
+  "stage": "stage106_hardware_execution_preflight",
+  "stage105_decision": "INDEPENDENT_RERUN_PROTOCOL_PREREGISTERED_EXECUTION_REQUIRED",
+  "status": "completed"
+}

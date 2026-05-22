@@ -1,0 +1,36 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "backend availability discovery",
+      "real hardware submission",
+      "completed calibration or matched packet execution",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "a no-submission hardware execution configuration preflight for the Stage 105 rerun protocol",
+      "provider-level readiness/blocker reporting without recording secret values",
+      "a gate preventing ad hoc hardware attempts without backend, budget, queue, and artifact destination configuration"
+    ]
+  },
+  "decision": "HARDWARE_EXECUTION_PREFLIGHT_BLOCKED_CONFIGURATION_REQUIRED",
+  "missing_source_artifacts": [],
+  "next_gate": "Set provider credentials, backend selections, budget caps, queue caps, and artifact destinations; rerun Stage 106, then execute Stage 101/104 only if the preflight is ready.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "providers": [
+    "amazon_braket",
+    "ibm_runtime"
+  ],
+  "ready_for_hardware_submission": false,
+  "result_path": "logs/automated_stage_gates/stage106_hardware_execution_preflight/results.json",
+  "schema_version": "qrope_stage106_hardware_execution_preflight_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage105_independent_rerun_protocol/manifest.json"
+  ],
+  "stage": "stage106_hardware_execution_preflight",
+  "stage105_decision": "INDEPENDENT_RERUN_PROTOCOL_PREREGISTERED_EXECUTION_REQUIRED",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage106_hardware_execution_preflight/summary.csv"
+}
