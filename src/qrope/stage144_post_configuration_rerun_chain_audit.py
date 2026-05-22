@@ -94,6 +94,20 @@ def _bool(value: Any) -> bool:
     return value is True
 
 
+def _stage143_scoped_safety_ready(stage143: dict[str, Any] | None) -> bool:
+    return bool(
+        isinstance(stage143, dict)
+        and stage143.get("decision") == "FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION"
+        and stage143.get("template_placeholders_only") is True
+        and stage143.get("template_key_scope_ready") is True
+        and stage143.get("rerun_commands_non_live") is True
+        and stage143.get("boundary_ready") is True
+        and int(stage143.get("template_assignment_count") or 0) > 0
+        and not stage143.get("unexpected_template_keys", [])
+        and not stage143.get("missing_template_keys", [])
+    )
+
+
 def run_stage144_audit(
     *,
     stage106_results_path: Path = DEFAULT_STAGE106_RESULTS,
@@ -142,10 +156,20 @@ def run_stage144_audit(
         _transition(
             stage="stage143_first_provider_handoff_safety_audit",
             label="first-provider handoff safety verified",
-            ready=payloads["stage143"] is not None
-            and payloads["stage143"].get("decision") == "FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION",
+            ready=_stage143_scoped_safety_ready(payloads["stage143"]),
             observed=payloads["stage143"].get("decision") if isinstance(payloads["stage143"], dict) else None,
-            required="FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION",
+            required="FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION with scoped empty template and non-live rerun commands",
+            blockers=[
+                blocker
+                for blocker, blocked in (
+                    ("stage143_decision_not_verified", not isinstance(payloads["stage143"], dict) or payloads["stage143"].get("decision") != "FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION"),
+                    ("template_assignments_not_placeholders", isinstance(payloads["stage143"], dict) and payloads["stage143"].get("template_placeholders_only") is not True),
+                    ("template_key_scope_not_ready", isinstance(payloads["stage143"], dict) and payloads["stage143"].get("template_key_scope_ready") is not True),
+                    ("rerun_commands_not_non_live", isinstance(payloads["stage143"], dict) and payloads["stage143"].get("rerun_commands_non_live") is not True),
+                    ("boundary_not_ready", isinstance(payloads["stage143"], dict) and payloads["stage143"].get("boundary_ready") is not True),
+                )
+                if blocked
+            ],
             next_command="python scripts/run_stage143_first_provider_handoff_safety_audit.py",
         ),
         _transition(
@@ -275,6 +299,7 @@ def run_stage144_audit(
         "claim_boundary": {
             "supported": [
                 "provider-level post-configuration transition audit from Stage 140 through Stage 133",
+                "Stage 143 scoped-template and non-live handoff safety enforcement before provider preflight reruns",
                 "the first incomplete transition and exact non-live rerun command after local provider configuration changes",
                 "preservation of the Stage 138 no-claim boundary until downstream hardware result gates clear",
             ],

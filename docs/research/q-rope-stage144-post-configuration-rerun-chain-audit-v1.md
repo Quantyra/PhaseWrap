@@ -20,6 +20,7 @@ python scripts/run_stage140_local_provider_configuration_readiness.py --load-dot
 Supported:
 
 - provider-level post-configuration transition audit from Stage 140 through Stage 133
+- Stage 143 scoped-template and non-live handoff safety enforcement before provider preflight reruns
 - the first incomplete transition and exact non-live rerun command after local provider configuration changes
 - preservation of the Stage 138 no-claim boundary until downstream hardware result gates clear
 

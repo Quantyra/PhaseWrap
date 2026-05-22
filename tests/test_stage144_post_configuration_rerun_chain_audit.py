@@ -34,6 +34,13 @@ def _write_fixture(paths, *, ready: bool) -> None:
         {
             "decision": "FIRST_PROVIDER_HANDOFF_SAFETY_VERIFIED_NO_SUBMISSION",
             "first_unlock_provider": provider,
+            "template_assignment_count": 1,
+            "template_placeholders_only": True,
+            "template_key_scope_ready": True,
+            "unexpected_template_keys": [],
+            "missing_template_keys": [],
+            "rerun_commands_non_live": True,
+            "boundary_ready": True,
         },
     )
     _write_json(paths["stage142_results_path"], {"first_unlock_provider": provider})
@@ -115,6 +122,22 @@ def test_stage144_blocks_at_stage140_when_first_provider_local_config_not_ready(
     assert result["next_command"] == "python scripts/run_stage140_local_provider_configuration_readiness.py --load-dotenv"
     assert result["no_hardware_submission"] is True
     assert result["secret_values_recorded"] is False
+
+
+def test_stage144_blocks_when_stage143_did_not_verify_scoped_template(tmp_path) -> None:
+    paths = _stage_paths(tmp_path)
+    _write_fixture(paths, ready=True)
+    stage143 = json.loads(paths["stage143_results_path"].read_text(encoding="utf-8"))
+    stage143["template_key_scope_ready"] = False
+    stage143["unexpected_template_keys"] = ["IBM_QUANTUM_TOKEN"]
+    _write_json(paths["stage143_results_path"], stage143)
+
+    result = run_stage144_audit(**paths)
+
+    assert result["decision"] == "POST_CONFIGURATION_RERUN_CHAIN_PREPARED_EXECUTION_BLOCKED"
+    assert result["first_blocked_transition"]["stage"] == "stage143_first_provider_handoff_safety_audit"
+    assert "template_key_scope_not_ready" in result["first_blocked_transition"]["blockers"]
+    assert result["next_command"] == "python scripts/run_stage143_first_provider_handoff_safety_audit.py"
 
 
 def test_stage144_reports_ready_when_first_provider_chain_and_runner_commands_authorized(tmp_path) -> None:
