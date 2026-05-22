@@ -1,0 +1,5 @@
+item_id,status,description
+stage203_reduced_scope_package,ready,"The approved reduced-scope execution package must match the frozen 2048-shot, 324-job, 659360-shot contract."
+fresh_read_only_backend_refresh,ready,A fresh read-only IBM backend refresh must succeed and match the packaged backend before guarded execution.
+runner_execution_boundary,final_execution_step_required,This gate does not emit a runnable command or submit hardware; it only clears package/backend readiness for the final guarded execution step.
+post_result_contract,required_after_execution,"Provider results must later populate raw counts, job IDs, timestamps, backend metadata, and calibration counts before interpretation."

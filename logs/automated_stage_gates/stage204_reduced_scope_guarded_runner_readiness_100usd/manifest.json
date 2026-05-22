@@ -1,0 +1,55 @@
+{
+  "backend": "ibm_fez",
+  "blockers": [],
+  "budget_cap_usd": 100.0,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "creation or recording of a runnable live-submit command",
+      "provider-side result retrieval",
+      "calibration pass/fail or robustness interpretation",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "reduced-scope package and fresh read-only backend metadata are ready for a final guarded execution step",
+      "backend target matches the approved Stage203 package",
+      "no-submit readiness is separated from live hardware execution and result interpretation"
+    ]
+  },
+  "decision": "REDUCED_SCOPE_GUARDED_RUNNER_READY_FOR_FINAL_EXECUTION_STEP_NOT_LIVE",
+  "estimated_total_job_count": 324,
+  "estimated_total_shots": 659360,
+  "explicit_user_approval_recorded": true,
+  "fresh_backend_matches_package": true,
+  "fresh_backend_metadata": {
+    "backend": "ibm_fez",
+    "basis_gate_count": 5,
+    "coupling_edge_count": 352,
+    "num_qubits": 156,
+    "operational": true,
+    "pending_jobs": 22,
+    "simulator": false,
+    "version": "2"
+  },
+  "fresh_backend_ready": true,
+  "live_submit_command_created": false,
+  "missing_source_artifacts": [],
+  "next_gate": "Run the final guarded reduced-scope execution step only from this ready state; after execution, ingest provider counts and run calibration, robustness, auditability, and final objective interpretation gates.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "package_contract_ready": true,
+  "provider_credentials_required": true,
+  "result_path": "logs/automated_stage_gates/stage204_reduced_scope_guarded_runner_readiness_100usd/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage204_reduced_scope_guarded_runner_readiness_v1",
+  "scope_id": "all_lanes_half_shots_2048",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage203_reduced_scope_execution_package_100usd/results.json",
+    "logs/automated_stage_gates/stage193_reduced_scope_fresh_backend_refresh_100usd/results.json"
+  ],
+  "stage": "stage204_reduced_scope_guarded_runner_readiness",
+  "stage203_ready": true,
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage204_reduced_scope_guarded_runner_readiness_100usd/summary.csv"
+}
