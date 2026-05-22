@@ -1,0 +1,2507 @@
+{
+  "all_or_none_interpretation_rule": "Stage 103 interpretation requires Stage 101 calibration pass and canonical q0q1 raw_counts_by_row files for every Stage 99 and Stage 100 matched packet.",
+  "claim_boundary": {
+    "excluded": [
+      "real matched packet hardware counts",
+      "completed Stage 101 calibration",
+      "a noisy-hardware robustness result",
+      "a PhaseWrap advantage claim"
+    ],
+    "supported": [
+      "per-packet execution JSON templates for all matched Stage 99 and Stage 100 packets",
+      "a complete handoff contract for calibrated raw_counts_by_row evidence",
+      "an all-or-none interpretation guard for the matched fixed-width hardware comparison"
+    ]
+  },
+  "decision": "MATCHED_PACKET_EXECUTION_TEMPLATES_PREPARED_CALIBRATION_AND_COUNTS_REQUIRED",
+  "evidence_records": [
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "phasewrap",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_product_seed314_rows16_shots4096__phasewrap",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "template_file": "ibm_product_seed314_rows16_shots4096__phasewrap.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "rope_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_product_seed314_rows16_shots4096__rope_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "template_file": "ibm_product_seed314_rows16_shots4096__rope_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "sinusoidal_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_product_seed314_rows16_shots4096__sinusoidal_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "template_file": "ibm_product_seed314_rows16_shots4096__sinusoidal_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "alibi_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_product_seed314_rows16_shots4096__alibi_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "template_file": "ibm_product_seed314_rows16_shots4096__alibi_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "no_position_control",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_product_seed314_rows16_shots4096__no_position_control",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "template_file": "ibm_product_seed314_rows16_shots4096__no_position_control.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "phasewrap",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_product_seed2718_rows8_shots1000__phasewrap",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "template_file": "braket_product_seed2718_rows8_shots1000__phasewrap.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "rope_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_product_seed2718_rows8_shots1000__rope_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "template_file": "braket_product_seed2718_rows8_shots1000__rope_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "sinusoidal_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_product_seed2718_rows8_shots1000__sinusoidal_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "template_file": "braket_product_seed2718_rows8_shots1000__sinusoidal_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "alibi_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_product_seed2718_rows8_shots1000__alibi_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "template_file": "braket_product_seed2718_rows8_shots1000__alibi_like.json"
+    },
+    {
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "encoding_family": "no_position_control",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_product_seed2718_rows8_shots1000__no_position_control",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "template_file": "braket_product_seed2718_rows8_shots1000__no_position_control.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "phasewrap",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__phasewrap",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "template_file": "ibm_cx_seed314_rows16_shots4096__phasewrap.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "rope_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__rope_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "template_file": "ibm_cx_seed314_rows16_shots4096__rope_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "sinusoidal_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__sinusoidal_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "template_file": "ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "alibi_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__alibi_like",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "template_file": "ibm_cx_seed314_rows16_shots4096__alibi_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "no_position_control",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__no_position_control",
+      "provider": "ibm_runtime",
+      "ready_for_stage103": false,
+      "row_count": 16,
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "template_file": "ibm_cx_seed314_rows16_shots4096__no_position_control.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "phasewrap",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__phasewrap",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "template_file": "braket_cx_seed2718_rows8_shots1000__phasewrap.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "rope_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__rope_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "template_file": "braket_cx_seed2718_rows8_shots1000__rope_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "sinusoidal_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__sinusoidal_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "template_file": "braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "alibi_like",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__alibi_like",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "template_file": "braket_cx_seed2718_rows8_shots1000__alibi_like.json"
+    },
+    {
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "encoding_family": "no_position_control",
+      "missing_evidence": [
+        "job_or_task_ids",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "backend_metadata",
+        "raw_counts_by_row"
+      ],
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__no_position_control",
+      "provider": "amazon_braket",
+      "ready_for_stage103": false,
+      "row_count": 8,
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "template_file": "braket_cx_seed2718_rows8_shots1000__no_position_control.json"
+    }
+  ],
+  "expected_packet_count": 20,
+  "missing_packet_artifacts": [],
+  "missing_source_artifacts": [],
+  "next_gate": "After Stage 101 calibration passes, execute all Stage 99 and Stage 100 matched packets, fill every Stage 104 template with canonical q0q1 row counts and metadata, then rerun Stage 103 with --execution-dir.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "required_execution_fields": [
+    "job_or_task_ids",
+    "backend_metadata",
+    "submitted_at_utc",
+    "completed_at_utc",
+    "raw_counts_by_row"
+  ],
+  "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage99_matched_fixed_width_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage100_matched_cx_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage101_known_state_calibration_gate/results.json",
+    "logs/automated_stage_gates/stage103_robustness_metric_preregistration/manifest.json"
+  ],
+  "stage": "stage104_matched_packet_execution_package",
+  "stage101_known_state_calibration_pass": false,
+  "stage103_decision": "ROBUSTNESS_METRICS_PREREGISTERED_HARDWARE_COUNTS_REQUIRED",
+  "status": "completed",
+  "template_count": 20,
+  "templates": [
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "phasewrap",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "a15ddc328ab6b09a7ad0cdfa6b513a145e614bf57c3f5cac724cf13ed9174c15",
+      "packet_id": "ibm_product_seed314_rows16_shots4096__phasewrap",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.125,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.539729655649,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(0.523598775598) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.539729655649,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(0.523598775598) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.893283046243,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.523598775598) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.125,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.460270344351,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.617993877991) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "rope_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "f8c6907ffa743a24c494f6ac8cd7b1bc1f35a8796ea8ffafb901bbe8fa2a9068",
+      "packet_id": "ibm_product_seed314_rows16_shots4096__rope_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.445806812169,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.748893571891) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418412242168,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.981747704247) q[0];\nry(2.650718801466) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.947102487009,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(0.294524311274) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418894162795,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.230299394817,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.94524311274) q[0];\nry(1.66897109722) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.907746578424,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.392699081699) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.445806812169,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.748893571891) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.230299394817,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.94524311274) q[0];\nry(1.66897109722) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "sinusoidal_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "c8cd56548405662f70a0cb6aef05f176146a5f2627b91d384cd84c1b62ba73a1",
+      "packet_id": "ibm_product_seed314_rows16_shots4096__sinusoidal_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.404329141909,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.963495408494) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.730969883128,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.392699081699) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.730969883128,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.392699081699) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "alibi_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "abd1d77310c0715befa057002424beea34c6e6b3d890a5a816aedf26bacf085a",
+      "packet_id": "ibm_product_seed314_rows16_shots4096__alibi_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.698924731183,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.161624711583) q[0];\nry(1.161624711583) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.602150537634,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.365046656808) q[0];\nry(1.365046656808) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.655913978495,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.253680015556) q[0];\nry(1.253680015556) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.483870967742,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.603059988463) q[0];\nry(1.603059988463) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.623655913978,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.320891412973) q[0];\nry(1.320891412973) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.913978494624,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.59534158482) q[0];\nry(0.59534158482) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.967741935484,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.361170428381) q[0];\nry(0.361170428381) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.870967741935,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.73484380924) q[0];\nry(0.73484380924) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.913978494624,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.59534158482) q[0];\nry(0.59534158482) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.494623655914,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.581549222183) q[0];\nry(1.581549222183) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.956989247312,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.417813082441) q[0];\nry(0.417813082441) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.612903225806,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.343025537208) q[0];\nry(1.343025537208) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.817204301075,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.883553117646) q[0];\nry(0.883553117646) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.483870967742,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.603059988463) q[0];\nry(1.603059988463) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "no_position_control",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "0e8c53364f129f3733f598c651b2f4f67412bbf0017faf2f28cc7f1112d8026d",
+      "packet_id": "ibm_product_seed314_rows16_shots4096__no_position_control",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "phasewrap",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "98833901e841dd5d1d79bacc27c7e889669cbb370aa878ff6602c4377f13aebc",
+      "packet_id": "braket_product_seed2718_rows8_shots1000__phasewrap",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.106716953757,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(2.617993877991) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "rope_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "50cff045fc562b14138ebbe7632e371790cb78b6f2e5d14c1d801a344ae7ec6e",
+      "packet_id": "braket_product_seed2718_rows8_shots1000__rope_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.803538261167,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.178097245096) q[0];\nry(0.589048622548) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418894162795,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(2.356194490192) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.907746578424,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.392699081699) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "sinusoidal_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "b4ce96fa001071b116d74756d7dd25eb24e72e45b7302f46ce5110016a281e1c",
+      "packet_id": "braket_product_seed2718_rows8_shots1000__sinusoidal_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.073223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.356194490192) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "alibi_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "148e1ec4a592a90f834ad0849bf5eb70054d0cea20ad33b18932d23cfe72bf2f",
+      "packet_id": "braket_product_seed2718_rows8_shots1000__alibi_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.9,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.643501108793) q[0];\nry(0.643501108793) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.8,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.927295218002) q[0];\nry(0.927295218002) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.866666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.6,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.369438406005) q[0];\nry(1.369438406005) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.516666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.537456817534) q[0];\nry(1.537456817534) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.866666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.2,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.214297435588) q[0];\nry(2.214297435588) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_product_state_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "no_position_control",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "a8b0294d66e726b9eddde72ddf78222a86d2d31a0cfd25eb84d669380c442d8e",
+      "packet_id": "braket_product_seed2718_rows8_shots1000__no_position_control",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "phasewrap",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "1e04dd8ca6ad128ac32dc74630b5e0606d2406d09462f34273025a69bc333b44",
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__phasewrap",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.125,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.539729655649,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(0.523598775598) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.539729655649,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(0.523598775598) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.893283046243,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.523598775598) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.125,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.460270344351,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.617993877991) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "rope_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "2c9481be0670cfaeb335d221b8051c32a99b0c6b7148e95a9aa83a283b330e50",
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__rope_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.445806812169,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.748893571891) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418412242168,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.981747704247) q[0];\nry(2.650718801466) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.947102487009,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(0.294524311274) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418894162795,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.230299394817,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.94524311274) q[0];\nry(1.66897109722) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.907746578424,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.392699081699) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.445806812169,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(2.748893571891) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.230299394817,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.94524311274) q[0];\nry(1.66897109722) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "sinusoidal_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "b15b6a06374b72450fe0685fdf3ce1200cfc5d0dc119ff0624a98902b0fbafb1",
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__sinusoidal_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.404329141909,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.963495408494) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.730969883128,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.392699081699) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.730969883128,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.392699081699) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "alibi_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "82cdc23bd5f8ff2cca3891f1913785e4785b142826e5cb9ec24f56415d4cc5e5",
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__alibi_like",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.698924731183,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.161624711583) q[0];\nry(1.161624711583) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.602150537634,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.365046656808) q[0];\nry(1.365046656808) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.655913978495,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.253680015556) q[0];\nry(1.253680015556) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.483870967742,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.603059988463) q[0];\nry(1.603059988463) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.623655913978,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.320891412973) q[0];\nry(1.320891412973) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.913978494624,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.59534158482) q[0];\nry(0.59534158482) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.967741935484,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.361170428381) q[0];\nry(0.361170428381) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.870967741935,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.73484380924) q[0];\nry(0.73484380924) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.913978494624,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.59534158482) q[0];\nry(0.59534158482) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.494623655914,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.581549222183) q[0];\nry(1.581549222183) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.956989247312,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.417813082441) q[0];\nry(0.417813082441) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.612903225806,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.343025537208) q[0];\nry(1.343025537208) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.817204301075,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.883553117646) q[0];\nry(0.883553117646) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.483870967742,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.603059988463) q[0];\nry(1.603059988463) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "PREREGISTERED_IBM_BACKEND_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "ibm_runtime",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "no_position_control",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "c874939e195b84bede733154bd61c9a0a0b058b4cfd680c9907ff1b7596d17c6",
+      "packet_id": "ibm_cx_seed314_rows16_shots4096__no_position_control",
+      "provider": "ibm_runtime",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-008"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-009"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-010"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-011"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-012"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-013"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-014"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-015"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 4096,
+      "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "phasewrap",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "8f198aff6a4c415978870eef7c179a415b389ee5c6f67efd1c23c9756bb097f1",
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__phasewrap",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.106716953757,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(2.617993877991) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.625,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(2.094395102393) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "rope_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "fccba30b03137a0eb82891754d3ed6c9824cfb8b67a3830dd2d86edaa48e49b4",
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__rope_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.803538261167,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.178097245096) q[0];\nry(0.589048622548) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.418894162795,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.356194490192) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.323223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(2.356194490192) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.468632319143,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.589048622548) q[0];\nry(2.847068342316) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.907746578424,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.785398163397) q[0];\nry(0.392699081699) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.676776695297,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(0.785398163397) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.25,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "sinusoidal_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "e3ad028f22887f34e204fb16e84f66ab30a50139ea74665ca393a03c8a2233f0",
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__sinusoidal_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.073223304703,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(2.356194490192) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.595670858091,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.178097245096) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.75,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 1.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.0) q[0];\nry(0.0) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "alibi_like",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "d5f082102b92706b47f61ccd033a777a881447a70740fc65658cb7b38b205f1f",
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__alibi_like",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.9,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.643501108793) q[0];\nry(0.643501108793) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.8,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.927295218002) q[0];\nry(0.927295218002) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.866666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.6,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.369438406005) q[0];\nry(1.369438406005) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.516666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.537456817534) q[0];\nry(1.537456817534) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.0,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(3.14159265359) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.866666666667,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.2,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.214297435588) q[0];\nry(2.214297435588) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    },
+    {
+      "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+      "backend_metadata": {
+        "additional_metadata": {},
+        "backend": "",
+        "calibration_timestamp_utc": "",
+        "provider": "amazon_braket",
+        "stage101_result_path": ""
+      },
+      "circuit_template": "two_ry_cx_parity_z_readout_v1",
+      "completed_at_utc": "",
+      "encoding_family": "no_position_control",
+      "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+      "job_or_task_ids": [],
+      "no_hardware_submission": true,
+      "packet_hash": "62f5f550cbcb2dda522e539fa4f8eb053a3fa5718de0098a83adb5802ecc0896",
+      "packet_id": "braket_cx_seed2718_rows8_shots1000__no_position_control",
+      "provider": "amazon_braket",
+      "raw_counts_by_row": [
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-000"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-001"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-002"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-003"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-004"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-005"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-006"
+        },
+        {
+          "counts": {},
+          "ideal_score": 0.5,
+          "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.570796326795) q[0];\nry(1.570796326795) q[1];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+          "row_id": "hwrow-007"
+        }
+      ],
+      "required_execution_fields": [
+        "job_or_task_ids",
+        "backend_metadata",
+        "submitted_at_utc",
+        "completed_at_utc",
+        "raw_counts_by_row"
+      ],
+      "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+      "shot_count": 1000,
+      "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+      "status": "template_counts_required",
+      "submitted_at_utc": ""
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "all_or_none_interpretation_rule": "Stage 103 interpretation requires Stage 101 calibration pass and canonical q0q1 raw_counts_by_row files for every Stage 99 and Stage 100 matched packet.",
+  "claim_boundary": {
+    "excluded": [
+      "real matched packet hardware counts",
+      "completed Stage 101 calibration",
+      "a noisy-hardware robustness result",
+      "a PhaseWrap advantage claim"
+    ],
+    "supported": [
+      "per-packet execution JSON templates for all matched Stage 99 and Stage 100 packets",
+      "a complete handoff contract for calibrated raw_counts_by_row evidence",
+      "an all-or-none interpretation guard for the matched fixed-width hardware comparison"
+    ]
+  },
+  "decision": "MATCHED_PACKET_EXECUTION_TEMPLATES_PREPARED_CALIBRATION_AND_COUNTS_REQUIRED",
+  "expected_packet_count": 20,
+  "missing_packet_artifacts": [],
+  "missing_source_artifacts": [],
+  "next_gate": "After Stage 101 calibration passes, execute all Stage 99 and Stage 100 matched packets, fill every Stage 104 template with canonical q0q1 row counts and metadata, then rerun Stage 103 with --execution-dir.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/results.json",
+  "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage99_matched_fixed_width_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage100_matched_cx_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage101_known_state_calibration_gate/results.json",
+    "logs/automated_stage_gates/stage103_robustness_metric_preregistration/manifest.json"
+  ],
+  "stage": "stage104_matched_packet_execution_package",
+  "stage101_known_state_calibration_pass": false,
+  "stage103_decision": "ROBUSTNESS_METRICS_PREREGISTERED_HARDWARE_COUNTS_REQUIRED",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/summary.csv",
+  "template_count": 20,
+  "template_paths": [
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__phasewrap.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__rope_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__alibi_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__no_position_control.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__phasewrap.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__rope_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__alibi_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__no_position_control.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__phasewrap.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__rope_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__alibi_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__no_position_control.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__phasewrap.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__rope_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__alibi_like.json",
+    "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__no_position_control.json"
+  ]
+}

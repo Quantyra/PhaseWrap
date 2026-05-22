@@ -1,0 +1,81 @@
+{
+  "backend": "arn:aws:braket:REGION::device/qpu/PROVIDER/DEVICE_TO_BE_SELECTED",
+  "backend_metadata": {
+    "additional_metadata": {},
+    "backend": "",
+    "calibration_timestamp_utc": "",
+    "provider": "amazon_braket",
+    "stage101_result_path": ""
+  },
+  "circuit_template": "two_ry_product_state_z_readout_v1",
+  "completed_at_utc": "",
+  "encoding_family": "alibi_like",
+  "instructions": "Replace placeholders with real calibrated provider/backend/date execution evidence after Stage 101 passes. Counts must use canonical q0q1 keys.",
+  "job_or_task_ids": [],
+  "no_hardware_submission": true,
+  "packet_hash": "148e1ec4a592a90f834ad0849bf5eb70054d0cea20ad33b18932d23cfe72bf2f",
+  "packet_id": "braket_product_seed2718_rows8_shots1000__alibi_like",
+  "provider": "amazon_braket",
+  "raw_counts_by_row": [
+    {
+      "counts": {},
+      "ideal_score": 0.9,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.643501108793) q[0];\nry(0.643501108793) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-000"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.8,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.927295218002) q[0];\nry(0.927295218002) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-001"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.866666666667,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-002"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.6,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.369438406005) q[0];\nry(1.369438406005) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-003"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.516666666667,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(1.537456817534) q[0];\nry(1.537456817534) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-004"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.0,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(3.14159265359) q[0];\nry(3.14159265359) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-005"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.866666666667,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(0.747584349669) q[0];\nry(0.747584349669) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-006"
+    },
+    {
+      "counts": {},
+      "ideal_score": 0.2,
+      "openqasm3": "OPENQASM 3.0;\nqubit[2] q;\nbit[2] c;\nry(2.214297435588) q[0];\nry(2.214297435588) q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+      "row_id": "hwrow-007"
+    }
+  ],
+  "required_execution_fields": [
+    "job_or_task_ids",
+    "backend_metadata",
+    "submitted_at_utc",
+    "completed_at_utc",
+    "raw_counts_by_row"
+  ],
+  "schema_version": "qrope_stage104_matched_packet_execution_package_v1",
+  "shot_count": 1000,
+  "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+  "status": "template_counts_required",
+  "submitted_at_utc": ""
+}
