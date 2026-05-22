@@ -1,0 +1,126 @@
+from __future__ import annotations
+
+import json
+
+from qrope.stage137_auditability_metric_evaluator import run_stage137_evaluator, write_stage137_outputs
+
+
+def _write_json(path, payload) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def _packet(path, packet_id, family, component_a, component_b) -> None:
+    _write_json(
+        path,
+        {
+            "packet_id": packet_id,
+            "source_lane_id": "lane_0",
+            "encoding_family": family,
+            "fixed_width": {"circuit_template": "two_ry_product_state_z_readout_v1"},
+            "row_count": 1,
+            "rows": [
+                {
+                    "row_id": "row_0",
+                    "components": {"component_a": component_a, "component_b": component_b},
+                }
+            ],
+        },
+    )
+
+
+def _execution(path, packet_id, counts) -> None:
+    _write_json(
+        path,
+        {
+            "packet_id": packet_id,
+            "raw_counts_by_row": [{"row_id": "row_0", "counts": counts}],
+        },
+    )
+
+
+def _ready_fixture(tmp_path):
+    packet_dir = tmp_path / "packets"
+    execution_dir = tmp_path / "executions"
+    calibration_dir = tmp_path / "calibration"
+    families = {
+        "phasewrap": {"target": (1.0, 1.0), "counts": {"00": 100}},
+        "rope_like": {"target": (1.0, 1.0), "counts": {"00": 80, "11": 20}},
+        "sinusoidal_like": {"target": (1.0, 1.0), "counts": {"00": 70, "11": 30}},
+        "alibi_like": {"target": (1.0, 1.0), "counts": {"00": 60, "11": 40}},
+    }
+    packet_templates = []
+    for family, spec in families.items():
+        packet_id = f"lane_0__{family}"
+        packet_path = packet_dir / f"{packet_id}.json"
+        _packet(packet_path, packet_id, family, *spec["target"])
+        _execution(execution_dir / f"{packet_id}.json", packet_id, spec["counts"])
+        packet_templates.append(
+            {
+                "packet_id": packet_id,
+                "encoding_family": family,
+                "source_lane_id": "lane_0",
+                "circuit_template": "two_ry_product_state_z_readout_v1",
+                "row_count": 1,
+                "template_path": str(packet_path.as_posix()),
+            }
+        )
+    _write_json(
+        calibration_dir / "stage101" / "results.json",
+        {
+            "decision": "KNOWN_STATE_CALIBRATION_VERIFIED_READY_FOR_MATCHED_HARDWARE_EXECUTION",
+            "known_state_calibration_pass": True,
+        },
+    )
+    plans = [
+        {
+            "window_id": "window_0",
+            "provider": "ibm_runtime",
+            "steps": [
+                {"step_id": "known_state_calibration_execution", "output_path": str((calibration_dir / "ibm_runtime_known_state_execution.json").as_posix())},
+                {"step_id": "matched_packet_execution", "output_dir": str(execution_dir.as_posix()), "packet_templates": packet_templates},
+            ],
+        }
+    ]
+    _write_json(tmp_path / "plans.json", plans)
+    _write_json(tmp_path / "stage136.json", {"decision": "AUDITABILITY_METRIC_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED"})
+    return tmp_path / "plans.json", tmp_path / "stage136.json"
+
+
+def test_stage137_blocks_when_hardware_counts_are_missing(tmp_path) -> None:
+    plans, stage136 = _ready_fixture(tmp_path)
+    execution_to_remove = tmp_path / "executions" / "lane_0__phasewrap.json"
+    execution_to_remove.unlink()
+
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136)
+
+    assert result["decision"] == "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"
+    assert result["ready_window_count"] == 0
+    assert "packet_execution_counts_missing" in result["window_records"][0]["missing_evidence"]
+
+
+def test_stage137_computes_component_reconstruction_advantage_when_counts_are_ready(tmp_path) -> None:
+    plans, stage136 = _ready_fixture(tmp_path)
+
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136)
+
+    assert result["decision"] == "AUDITABILITY_METRICS_READY_FOR_CLAIM_GATE"
+    assert result["ready_window_count"] == 1
+    assert result["comparison_summary_count"] == 1
+    assert result["auditability_advantage_count"] == 1
+    summary = result["comparison_summary"][0]
+    assert summary["passes_auditability_advantage_rule"] is True
+    assert summary["phasewrap_lower_error_than"] == ["rope_like", "sinusoidal_like", "alibi_like"]
+
+
+def test_stage137_outputs_are_written(tmp_path) -> None:
+    plans, stage136 = _ready_fixture(tmp_path)
+    result = run_stage137_evaluator(stage107_window_plans_path=plans, stage136_results_path=stage136)
+
+    paths = write_stage137_outputs(result, tmp_path / "out")
+    manifest = json.loads((tmp_path / "out" / "manifest.json").read_text(encoding="utf-8"))
+    summary = (tmp_path / "out" / "summary.csv").read_text(encoding="utf-8")
+
+    assert set(paths) == {"manifest", "result", "summary_csv"}
+    assert manifest["auditability_advantage_count"] == 1
+    assert "window_0" in summary

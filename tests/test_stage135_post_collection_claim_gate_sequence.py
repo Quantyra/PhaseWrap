@@ -20,6 +20,7 @@ def _paths(tmp_path):
         "stage109": tmp_path / "stage109.json",
         "stage110": tmp_path / "stage110.json",
         "stage136": tmp_path / "stage136.json",
+        "stage137": tmp_path / "stage137.json",
     }
 
 
@@ -33,6 +34,7 @@ def _run(paths):
         stage109_results_path=paths["stage109"],
         stage110_results_path=paths["stage110"],
         stage136_results_path=paths["stage136"],
+        stage137_results_path=paths["stage137"],
     )
 
 
@@ -45,6 +47,7 @@ def _write_blocked_fixture(paths) -> None:
     _write_json(paths["stage109"], {"decision": "WINDOW_EVIDENCE_INTAKE_BLOCKED_EVIDENCE_MISSING"})
     _write_json(paths["stage110"], {"decision": "REPLICATED_ADVANTAGE_CLAIM_BLOCKED_EVIDENCE_INTAKE_INCOMPLETE"})
     _write_json(paths["stage136"], {"decision": "AUDITABILITY_METRIC_CONTRACT_INCOMPLETE"})
+    _write_json(paths["stage137"], {"decision": "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED"})
 
 
 def _write_ready_fixture(paths, *, replicated_advantage_count: int = 0) -> None:
@@ -55,6 +58,7 @@ def _write_ready_fixture(paths, *, replicated_advantage_count: int = 0) -> None:
     _write_json(paths["stage103"], {"decision": "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION"})
     _write_json(paths["stage109"], {"decision": "WINDOW_EVIDENCE_INTAKE_READY_FOR_STAGE105_AGGREGATION"})
     _write_json(paths["stage136"], {"decision": "AUDITABILITY_METRIC_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED"})
+    _write_json(paths["stage137"], {"decision": "AUDITABILITY_METRICS_READY_FOR_CLAIM_GATE"})
     _write_json(
         paths["stage110"],
         {
@@ -74,11 +78,12 @@ def test_stage135_blocks_and_preserves_ordered_command_sequence(tmp_path) -> Non
 
     assert result["decision"] == "POST_COLLECTION_CLAIM_GATE_SEQUENCE_PREPARED_EXECUTION_BLOCKED"
     assert result["ready_gate_count"] == 0
-    assert result["blocked_gate_count"] == 8
+    assert result["blocked_gate_count"] == 9
     assert result["final_claim_gate_terminal"] is False
     assert result["ordered_command_sequence"][0] == "python scripts/run_stage115_provider_result_collector.py --write-stage113-input"
     assert result["ordered_command_sequence"][-1] == "python scripts/run_stage110_replicated_advantage_claim_gate.py"
     assert "python scripts/run_stage136_auditability_metric_preregistration.py" in result["ordered_command_sequence"]
+    assert "python scripts/run_stage137_auditability_metric_evaluator.py" in result["ordered_command_sequence"]
     assert result["no_hardware_submission"] is True
 
 
@@ -89,7 +94,7 @@ def test_stage135_reports_complete_after_terminal_not_supported_claim_gate(tmp_p
     result = _run(paths)
 
     assert result["decision"] == "POST_COLLECTION_CLAIM_GATE_SEQUENCE_COMPLETE_TERMINAL_CLAIM_REACHED"
-    assert result["ready_gate_count"] == 8
+    assert result["ready_gate_count"] == 9
     assert result["final_claim_gate_terminal"] is True
     assert result["replicated_advantage_count"] == 0
 
@@ -101,7 +106,7 @@ def test_stage135_reports_complete_after_terminal_supported_claim_gate(tmp_path)
     result = _run(paths)
 
     assert result["decision"] == "POST_COLLECTION_CLAIM_GATE_SEQUENCE_COMPLETE_TERMINAL_CLAIM_REACHED"
-    assert result["ready_gate_count"] == 8
+    assert result["ready_gate_count"] == 9
     assert result["final_claim_gate_terminal"] is True
     assert result["replicated_advantage_count"] == 1
 
@@ -116,5 +121,5 @@ def test_stage135_outputs_are_written(tmp_path) -> None:
     summary = (tmp_path / "out" / "summary.csv").read_text(encoding="utf-8")
 
     assert set(written) == {"manifest", "result", "summary_csv"}
-    assert manifest["gate_count"] == 8
+    assert manifest["gate_count"] == 9
     assert "stage110" in summary

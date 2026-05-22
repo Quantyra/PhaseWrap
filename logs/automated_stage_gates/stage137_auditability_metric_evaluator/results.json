@@ -1,0 +1,827 @@
+{
+  "auditability_advantage_count": 0,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "new provider result records",
+      "a current auditability advantage claim unless this gate is ready and the advantage rule passes",
+      "a robustness advantage claim"
+    ],
+    "supported": [
+      "a deterministic evaluator for component reconstruction auditability metrics",
+      "binding of auditability evaluation to Stage 107 packet execution counts and Stage 101 calibration results",
+      "a blocked outcome when real provider packet counts are missing"
+    ]
+  },
+  "comparison_summary": [],
+  "comparison_summary_count": 0,
+  "decision": "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED",
+  "missing_source_artifacts": [],
+  "next_gate": "Populate Stage 107 packet execution counts via Stage 113 assembly and pass per-window Stage 101 calibration, then rerun this evaluator before any auditability advantage wording.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "ready_window_count": 0,
+  "schema_version": "qrope_stage137_auditability_metric_evaluator_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage107_window_execution_orchestrator/window_execution_plans.json",
+    "logs/automated_stage_gates/stage136_auditability_metric_preregistration/results.json"
+  ],
+  "stage": "stage137_auditability_metric_evaluator",
+  "stage136_decision": "AUDITABILITY_METRIC_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED",
+  "stage136_ready": true,
+  "status": "completed",
+  "window_count": 4,
+  "window_records": [
+    {
+      "comparison_summary": [],
+      "missing_evidence": [
+        "packet_execution_counts_missing",
+        "stage101_calibration_not_verified"
+      ],
+      "packet_count": 10,
+      "packet_execution_dir": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions",
+      "packet_records": [
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_product_seed2718_rows8_shots1000__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__phasewrap.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_product_seed2718_rows8_shots1000__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__rope_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_product_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_product_seed2718_rows8_shots1000__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__alibi_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_product_seed2718_rows8_shots1000__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__no_position_control.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_cx_seed2718_rows8_shots1000__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__phasewrap.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_cx_seed2718_rows8_shots1000__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__rope_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_cx_seed2718_rows8_shots1000__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__alibi_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/packet_executions/braket_cx_seed2718_rows8_shots1000__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__no_position_control.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_00"
+        }
+      ],
+      "provider": "amazon_braket",
+      "ready": false,
+      "ready_packet_count": 0,
+      "row_records": [],
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_00/calibration/stage101/results.json",
+      "window_id": "amazon_braket__independent_window_00"
+    },
+    {
+      "comparison_summary": [],
+      "missing_evidence": [
+        "packet_execution_counts_missing",
+        "stage101_calibration_not_verified"
+      ],
+      "packet_count": 10,
+      "packet_execution_dir": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions",
+      "packet_records": [
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_product_seed2718_rows8_shots1000__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__phasewrap.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_product_seed2718_rows8_shots1000__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__rope_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_product_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_product_seed2718_rows8_shots1000__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__alibi_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_product_seed2718_rows8_shots1000__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_product_seed2718_rows8_shots1000__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_product_seed2718_rows8_shots1000__no_position_control.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_product_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_cx_seed2718_rows8_shots1000__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__phasewrap.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_cx_seed2718_rows8_shots1000__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__rope_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__sinusoidal_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_cx_seed2718_rows8_shots1000__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__alibi_like.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/packet_executions/braket_cx_seed2718_rows8_shots1000__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "braket_cx_seed2718_rows8_shots1000__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/braket_cx_seed2718_rows8_shots1000__no_position_control.json",
+          "provider": "amazon_braket",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 8,
+          "source_lane_id": "braket_cx_seed2718_rows8_shots1000",
+          "window_id": "amazon_braket__independent_window_01"
+        }
+      ],
+      "provider": "amazon_braket",
+      "ready": false,
+      "ready_packet_count": 0,
+      "row_records": [],
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/amazon_braket__independent_window_01/calibration/stage101/results.json",
+      "window_id": "amazon_braket__independent_window_01"
+    },
+    {
+      "comparison_summary": [],
+      "missing_evidence": [
+        "packet_execution_counts_missing",
+        "stage101_calibration_not_verified"
+      ],
+      "packet_count": 10,
+      "packet_execution_dir": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions",
+      "packet_records": [
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_product_seed314_rows16_shots4096__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__phasewrap.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_product_seed314_rows16_shots4096__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__rope_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_product_seed314_rows16_shots4096__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__sinusoidal_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_product_seed314_rows16_shots4096__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__alibi_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_product_seed314_rows16_shots4096__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__no_position_control.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_cx_seed314_rows16_shots4096__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__phasewrap.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_cx_seed314_rows16_shots4096__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__rope_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_cx_seed314_rows16_shots4096__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__alibi_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/packet_executions/ibm_cx_seed314_rows16_shots4096__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__no_position_control.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_00"
+        }
+      ],
+      "provider": "ibm_runtime",
+      "ready": false,
+      "ready_packet_count": 0,
+      "row_records": [],
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_00/calibration/stage101/results.json",
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "comparison_summary": [],
+      "missing_evidence": [
+        "packet_execution_counts_missing",
+        "stage101_calibration_not_verified"
+      ],
+      "packet_count": 10,
+      "packet_execution_dir": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions",
+      "packet_records": [
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_product_seed314_rows16_shots4096__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__phasewrap.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_product_seed314_rows16_shots4096__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__rope_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_product_seed314_rows16_shots4096__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__sinusoidal_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_product_seed314_rows16_shots4096__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__alibi_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_product_state_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_product_seed314_rows16_shots4096__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_product_seed314_rows16_shots4096__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_product_seed314_rows16_shots4096__no_position_control.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_product_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "phasewrap",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_cx_seed314_rows16_shots4096__phasewrap.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__phasewrap",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__phasewrap.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "rope_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_cx_seed314_rows16_shots4096__rope_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__rope_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__rope_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "sinusoidal_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__sinusoidal_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__sinusoidal_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "alibi_like",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_cx_seed314_rows16_shots4096__alibi_like.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__alibi_like",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__alibi_like.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        },
+        {
+          "circuit_template": "two_ry_cx_parity_z_readout_v1",
+          "component_reconstruction_mean_absolute_error": null,
+          "encoding_family": "no_position_control",
+          "execution_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/packet_executions/ibm_cx_seed314_rows16_shots4096__no_position_control.json",
+          "missing_evidence": [
+            "packet_execution_json",
+            "row_counts_or_targets_missing"
+          ],
+          "packet_id": "ibm_cx_seed314_rows16_shots4096__no_position_control",
+          "packet_template_path": "logs/automated_stage_gates/stage104_matched_packet_execution_package/packet_execution_templates/ibm_cx_seed314_rows16_shots4096__no_position_control.json",
+          "provider": "ibm_runtime",
+          "ready": false,
+          "ready_row_count": 0,
+          "row_count": 16,
+          "source_lane_id": "ibm_cx_seed314_rows16_shots4096",
+          "window_id": "ibm_runtime__independent_window_01"
+        }
+      ],
+      "provider": "ibm_runtime",
+      "ready": false,
+      "ready_packet_count": 0,
+      "row_records": [],
+      "stage101_results_path": "logs/automated_stage_gates/stage107_window_execution_orchestrator/windows/ibm_runtime__independent_window_01/calibration/stage101/results.json",
+      "window_id": "ibm_runtime__independent_window_01"
+    }
+  ]
+}
