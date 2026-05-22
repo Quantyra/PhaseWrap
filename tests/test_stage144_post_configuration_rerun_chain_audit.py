@@ -55,6 +55,7 @@ def _write_fixture(paths, *, ready: bool) -> None:
                     "ready_for_preflight_rerun": ready,
                     "missing_env_groups": [] if ready else ["IBM_QUANTUM_INSTANCE_CRN"],
                     "missing_sdk_modules": [],
+                    "stage139_context_blockers": [],
                 }
             ]
         },
@@ -154,6 +155,21 @@ def test_stage144_blocks_when_stage143_reports_stage139_context_not_ready(tmp_pa
     assert result["decision"] == "POST_CONFIGURATION_RERUN_CHAIN_PREPARED_EXECUTION_BLOCKED"
     assert result["first_blocked_transition"]["stage"] == "stage143_first_provider_handoff_safety_audit"
     assert "stage139_context_not_ready" in result["first_blocked_transition"]["blockers"]
+
+
+def test_stage144_preserves_stage140_context_blockers(tmp_path) -> None:
+    paths = _stage_paths(tmp_path)
+    _write_fixture(paths, ready=True)
+    stage140 = json.loads(paths["stage140_results_path"].read_text(encoding="utf-8"))
+    stage140["provider_records"][0]["ready_for_preflight_rerun"] = False
+    stage140["provider_records"][0]["stage139_context_blockers"] = ["stage139_runner_commands_missing"]
+    _write_json(paths["stage140_results_path"], stage140)
+
+    result = run_stage144_audit(**paths)
+
+    assert result["decision"] == "POST_CONFIGURATION_RERUN_CHAIN_PREPARED_EXECUTION_BLOCKED"
+    assert result["first_blocked_transition"]["stage"] == "stage140_local_provider_configuration_readiness"
+    assert "stage139_runner_commands_missing" in result["first_blocked_transition"]["blockers"]
 
 
 def test_stage144_reports_ready_when_first_provider_chain_and_runner_commands_authorized(tmp_path) -> None:

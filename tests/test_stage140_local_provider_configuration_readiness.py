@@ -133,3 +133,4 @@ def test_stage140_outputs_are_written(tmp_path) -> None:
     assert set(paths) == {"manifest", "result", "summary_csv"}
     assert manifest["provider_count"] == 1
     assert "ibm_runtime" in summary
+    assert "stage139_context_blockers" in summary

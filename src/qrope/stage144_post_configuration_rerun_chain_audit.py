@@ -180,7 +180,11 @@ def run_stage144_audit(
             ready=_bool(stage140_provider.get("ready_for_preflight_rerun")) if stage140_provider else False,
             observed=stage140_provider.get("ready_for_preflight_rerun") if stage140_provider else None,
             required=True,
-            blockers=list(stage140_provider.get("missing_env_groups", [])) + list(stage140_provider.get("missing_sdk_modules", []))
+            blockers=(
+                list(stage140_provider.get("missing_env_groups", []))
+                + list(stage140_provider.get("missing_sdk_modules", []))
+                + list(stage140_provider.get("stage139_context_blockers", []))
+            )
             if stage140_provider
             else ["provider_record_missing"],
             next_command=RERUN_COMMANDS[0],

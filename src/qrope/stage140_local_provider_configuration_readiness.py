@@ -219,6 +219,7 @@ def write_stage140_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
                 "missing_env_groups",
                 "present_env_keys",
                 "missing_sdk_modules",
+                "stage139_context_blockers",
             ),
         )
         writer.writeheader()
@@ -232,6 +233,7 @@ def write_stage140_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
                     "missing_env_groups": "; ".join(record["missing_env_groups"]),
                     "present_env_keys": "; ".join(record["present_env_keys"]),
                     "missing_sdk_modules": "; ".join(record["missing_sdk_modules"]),
+                    "stage139_context_blockers": "; ".join(record["stage139_context_blockers"]),
                 }
             )
     return paths
