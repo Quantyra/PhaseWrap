@@ -1,0 +1,128 @@
+{
+  "blockers": [
+    "auditability_gate_not_terminal",
+    "hardware_result_counts_missing",
+    "objective_gate_not_terminal",
+    "robustness_gate_not_terminal",
+    "statistical_interpretation_not_ready"
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "IBM credit balance or dollar cost verification",
+      "execution of post-result analysis commands",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "requirement-by-requirement evidence map for the persistent noisy-hardware objective",
+      "explicit distinction between simulated/pre-hardware readiness and terminal noisy-hardware evidence",
+      "confirmation that the fixed-width matched comparator surface is ready while real hardware counts remain absent"
+    ]
+  },
+  "decision": "OBJECTIVE_EVIDENCE_GAP_AUDIT_HARDWARE_RESULTS_REQUIRED",
+  "missing_source_artifacts": [],
+  "next_gate": "Resolve IBM credit/provider state, execute only after exact approval, collect locked provider results, run the validated Stage160 sequence, and require Stage138 to become terminal before answering the objective.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective_supported": false,
+  "objective_terminal": false,
+  "provider_credentials_required": false,
+  "provider_results_missing": true,
+  "requirement_records": [
+    {
+      "blocker": null,
+      "description": "Fixed-width matched PhaseWrap/RoPE-like/sinusoidal-like/ALIBI-like/no-position comparator surface is prepared.",
+      "evidence": {
+        "stage103_decision": "ROBUSTNESS_METRICS_PREREGISTERED_HARDWARE_COUNTS_REQUIRED",
+        "stage104_complete_matched_group_count": 4,
+        "stage104_matched_surface_ready": true
+      },
+      "requirement_id": "fixed_width_matched_surface",
+      "satisfied": true
+    },
+    {
+      "blocker": "hardware_result_counts_missing",
+      "description": "Real provider packet/calibration counts exist for the locked first-provider hardware scope.",
+      "evidence": {
+        "stage103_missing_execution_count": 20,
+        "stage171_missing_job_count": 328,
+        "stage171_provider_results_missing": true
+      },
+      "requirement_id": "hardware_result_counts",
+      "satisfied": false
+    },
+    {
+      "blocker": "statistical_interpretation_not_ready",
+      "description": "First-provider statistical interpretation has calibrated lane evidence and shot-noise separation where needed.",
+      "evidence": {
+        "ready_calibration_record_count": 0,
+        "shot_noise_separated_lane_count": 0,
+        "stage148_decision": "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_BLOCKED_EVIDENCE_REQUIRED",
+        "statistical_interpretation_ready": false
+      },
+      "requirement_id": "statistical_interpretation",
+      "satisfied": false
+    },
+    {
+      "blocker": "robustness_gate_not_terminal",
+      "description": "Robustness gate is terminal for the objective, either supported or not supported from complete evidence.",
+      "evidence": {
+        "robustness_supported": false,
+        "robustness_terminal": false,
+        "stage138_stage110_decision": "REPLICATED_ADVANTAGE_CLAIM_BLOCKED_EVIDENCE_INTAKE_INCOMPLETE"
+      },
+      "requirement_id": "robustness_terminal",
+      "satisfied": false
+    },
+    {
+      "blocker": "auditability_gate_not_terminal",
+      "description": "Auditability gate is terminal for the objective, either supported or not supported from complete evidence.",
+      "evidence": {
+        "stage137_decision": "AUDITABILITY_METRICS_BLOCKED_HARDWARE_COUNTS_REQUIRED",
+        "stage137_ready_window_count": 0,
+        "stage138_auditability_ready": false
+      },
+      "requirement_id": "auditability_terminal",
+      "satisfied": false
+    },
+    {
+      "blocker": "objective_gate_not_terminal",
+      "description": "Objective-level Stage138 claim gate is terminal before any final conclusion is stated.",
+      "evidence": {
+        "objective_supported": false,
+        "objective_terminal": false,
+        "stage138_decision": "OBJECTIVE_CLAIM_GATE_BLOCKED_EVIDENCE_INCOMPLETE"
+      },
+      "requirement_id": "objective_terminal",
+      "satisfied": false
+    },
+    {
+      "blocker": null,
+      "description": "IBM credit/provider pause packet and post-result analysis dry-run are ready before live execution.",
+      "evidence": {
+        "stage170_decision": "IBM_HARDWARE_PAUSE_READY_FOR_CREDIT_PROVIDER_RESOLUTION",
+        "stage171_decision": "POST_RESULT_ANALYSIS_DRY_RUN_READY_AWAITING_PROVIDER_RESULTS"
+      },
+      "requirement_id": "pre_hardware_pause_ready",
+      "satisfied": true
+    }
+  ],
+  "runnable_commands_recorded": false,
+  "satisfied_requirement_count": 2,
+  "schema_version": "qrope_stage172_objective_evidence_gap_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage103_robustness_metric_preregistration/results.json",
+    "logs/automated_stage_gates/stage137_auditability_metric_evaluator/results.json",
+    "logs/automated_stage_gates/stage138_objective_claim_gate/results.json",
+    "logs/automated_stage_gates/stage148_first_provider_statistical_interpretation_gate/results.json",
+    "logs/automated_stage_gates/stage170_ibm_hardware_pause_resolution_packet/results.json",
+    "logs/automated_stage_gates/stage171_post_result_analysis_dry_run_audit/results.json"
+  ],
+  "stage": "stage172_objective_evidence_gap_audit",
+  "stage170_ready": true,
+  "stage171_ready": true,
+  "status": "completed",
+  "unsatisfied_requirement_count": 5
+}

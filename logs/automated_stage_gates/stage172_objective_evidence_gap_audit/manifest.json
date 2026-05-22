@@ -1,0 +1,51 @@
+{
+  "blockers": [
+    "auditability_gate_not_terminal",
+    "hardware_result_counts_missing",
+    "objective_gate_not_terminal",
+    "robustness_gate_not_terminal",
+    "statistical_interpretation_not_ready"
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "IBM credit balance or dollar cost verification",
+      "execution of post-result analysis commands",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "requirement-by-requirement evidence map for the persistent noisy-hardware objective",
+      "explicit distinction between simulated/pre-hardware readiness and terminal noisy-hardware evidence",
+      "confirmation that the fixed-width matched comparator surface is ready while real hardware counts remain absent"
+    ]
+  },
+  "decision": "OBJECTIVE_EVIDENCE_GAP_AUDIT_HARDWARE_RESULTS_REQUIRED",
+  "missing_source_artifacts": [],
+  "next_gate": "Resolve IBM credit/provider state, execute only after exact approval, collect locked provider results, run the validated Stage160 sequence, and require Stage138 to become terminal before answering the objective.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective_supported": false,
+  "objective_terminal": false,
+  "provider_credentials_required": false,
+  "provider_results_missing": true,
+  "result_path": "logs/automated_stage_gates/stage172_objective_evidence_gap_audit/results.json",
+  "runnable_commands_recorded": false,
+  "satisfied_requirement_count": 2,
+  "schema_version": "qrope_stage172_objective_evidence_gap_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage103_robustness_metric_preregistration/results.json",
+    "logs/automated_stage_gates/stage137_auditability_metric_evaluator/results.json",
+    "logs/automated_stage_gates/stage138_objective_claim_gate/results.json",
+    "logs/automated_stage_gates/stage148_first_provider_statistical_interpretation_gate/results.json",
+    "logs/automated_stage_gates/stage170_ibm_hardware_pause_resolution_packet/results.json",
+    "logs/automated_stage_gates/stage171_post_result_analysis_dry_run_audit/results.json"
+  ],
+  "stage": "stage172_objective_evidence_gap_audit",
+  "stage170_ready": true,
+  "stage171_ready": true,
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage172_objective_evidence_gap_audit/summary.csv",
+  "unsatisfied_requirement_count": 5
+}

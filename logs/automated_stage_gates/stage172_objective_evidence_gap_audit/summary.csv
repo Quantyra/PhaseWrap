@@ -1,0 +1,8 @@
+requirement_id,satisfied,blocker,description
+fixed_width_matched_surface,True,,Fixed-width matched PhaseWrap/RoPE-like/sinusoidal-like/ALIBI-like/no-position comparator surface is prepared.
+hardware_result_counts,False,hardware_result_counts_missing,Real provider packet/calibration counts exist for the locked first-provider hardware scope.
+statistical_interpretation,False,statistical_interpretation_not_ready,First-provider statistical interpretation has calibrated lane evidence and shot-noise separation where needed.
+robustness_terminal,False,robustness_gate_not_terminal,"Robustness gate is terminal for the objective, either supported or not supported from complete evidence."
+auditability_terminal,False,auditability_gate_not_terminal,"Auditability gate is terminal for the objective, either supported or not supported from complete evidence."
+objective_terminal,False,objective_gate_not_terminal,Objective-level Stage138 claim gate is terminal before any final conclusion is stated.
+pre_hardware_pause_ready,True,,IBM credit/provider pause packet and post-result analysis dry-run are ready before live execution.
