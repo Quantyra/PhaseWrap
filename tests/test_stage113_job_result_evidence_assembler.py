@@ -234,6 +234,7 @@ def test_stage113_writes_evidence_when_explicitly_enabled(tmp_path) -> None:
     assert packet["raw_counts_by_row"][0]["counts"] == {"10": 10, "11": 90}
     assert packet["no_hardware_submission"] is False
     assert packet["stage113_live_submit_provenance"]["ready"] is True
+    assert packet["stage113_live_submit_provenance"]["stage115_provider_scope"] == "all"
     assert packet["stage113_live_submit_provenance"]["stage152_all_first_provider_commands_authorized"] is True
     assert packet["stage113_live_submit_provenance"]["stage152_all_first_provider_commands_live_submit_ready"] is True
 
@@ -343,6 +344,8 @@ def test_stage113_can_assemble_provider_scoped_results(tmp_path) -> None:
     assert result["job_count"] == 2
     assert result["decision"] == "JOB_RESULTS_ASSEMBLED_INTO_STAGE109_EVIDENCE"
     assert calibration_target.exists()
+    calibration = json.loads(calibration_target.read_text(encoding="utf-8"))
+    assert calibration["stage113_live_submit_provenance"]["stage115_provider_scope"] == "ibm_runtime"
     assert not braket_target.exists()
 
 

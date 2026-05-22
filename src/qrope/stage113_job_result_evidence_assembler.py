@@ -126,6 +126,7 @@ def _stage115_live_submit_provenance(stage115: dict[str, Any], stage115_results_
         "ready": True,
         "stage115_results_path": str(stage115_results_path.as_posix()),
         "stage115_decision": stage115.get("decision"),
+        "stage115_provider_scope": stage115.get("provider_scope"),
         "stage152_write_ready": stage115.get("stage152_write_ready"),
         "stage152_write_blockers": stage115.get("stage152_write_blockers", []),
         "stage152_first_provider_runner_command_count": runner_count,

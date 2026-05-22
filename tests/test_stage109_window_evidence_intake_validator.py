@@ -57,6 +57,7 @@ def _live_submit_provenance() -> dict[str, object]:
         "ready": True,
         "stage115_results_path": "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
         "stage115_decision": "PROVIDER_RESULTS_COLLECTED_FOR_STAGE113",
+        "stage115_provider_scope": "ibm_runtime",
         "stage152_write_ready": True,
         "stage152_write_blockers": [],
         "stage152_first_provider_runner_command_count": 1,
@@ -157,6 +158,54 @@ def test_stage109_rejects_stage113_evidence_without_live_submit_provenance(tmp_p
         {
             "status": "assembled_from_stage113_results",
             "no_hardware_submission": False,
+            "job_or_task_ids": ["job-2"],
+            "backend_metadata": {"backend": "backend_a"},
+            "submitted_at_utc": "2026-05-21T00:00:00Z",
+            "completed_at_utc": "2026-05-21T00:10:00Z",
+            "raw_counts_by_row": [
+                {"row_id": "hwrow-000", "counts": {"00": 900}},
+                {"row_id": "hwrow-001", "counts": {"10": 875}},
+            ],
+        },
+    )
+    _write_json(window_dir / "stage103" / "results.json", {"ready_to_interpret_hardware_metrics": True})
+
+    result = run_stage109_intake_validator(stage107_window_plans_path=tmp_path / "window_execution_plans.json")
+
+    assert result["decision"] == "WINDOW_EVIDENCE_INTAKE_BLOCKED_EVIDENCE_MISSING"
+    record = result["window_records"][0]
+    assert "calibration_stage113_live_submit_provenance" in record["missing_evidence"]
+    assert "stage113_live_submit_provenance" in record["packet_records"][0]["missing_evidence"]
+
+
+def test_stage109_rejects_stage113_evidence_with_wrong_provider_scope(tmp_path) -> None:
+    plan = _window_plan(tmp_path)
+    _write_json(tmp_path / "window_execution_plans.json", [plan])
+    window_dir = tmp_path / "windows" / "provider__window_00"
+    wrong_provenance = _live_submit_provenance()
+    wrong_provenance["stage115_provider_scope"] = "all"
+    _write_json(
+        window_dir / "calibration" / "ibm_runtime_known_state_execution.json",
+        {
+            "status": "assembled_from_stage113_results",
+            "no_hardware_submission": False,
+            "stage113_live_submit_provenance": wrong_provenance,
+            "job_or_task_ids": ["job-1"],
+        },
+    )
+    _write_json(
+        window_dir / "calibration" / "stage101" / "results.json",
+        {
+            "decision": "KNOWN_STATE_CALIBRATION_VERIFIED_READY_FOR_MATCHED_HARDWARE_EXECUTION",
+            "known_state_calibration_pass": True,
+        },
+    )
+    _write_json(
+        window_dir / "packet_executions" / "packet_alpha.json",
+        {
+            "status": "assembled_from_stage113_results",
+            "no_hardware_submission": False,
+            "stage113_live_submit_provenance": wrong_provenance,
             "job_or_task_ids": ["job-2"],
             "backend_metadata": {"backend": "backend_a"},
             "submitted_at_utc": "2026-05-21T00:00:00Z",
