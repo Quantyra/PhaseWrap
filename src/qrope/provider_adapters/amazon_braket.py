@@ -2,7 +2,14 @@ from __future__ import annotations
 
 from typing import Any
 
-from qrope.provider_adapters.common import ProviderAdapterBlocked, ProviderAdapterStatus, canonicalize_counts, env_present, module_available
+from qrope.provider_adapters.common import (
+    ProviderAdapterBlocked,
+    ProviderAdapterStatus,
+    build_stage114_result_record,
+    canonicalize_counts,
+    env_present,
+    module_available,
+)
 
 
 PROVIDER = "amazon_braket"
@@ -72,6 +79,34 @@ def normalize_result_counts(raw_result: Any) -> dict[str, int]:
         if "counts" in raw_result:
             return canonicalize_counts(raw_result["counts"])
     raise ProviderAdapterBlocked("unsupported Amazon Braket result shape")
+
+
+def execute_submission_plans(
+    *,
+    plans: list[dict[str, Any]],
+    client: Any,
+    submitted_at_utc: str,
+    completed_at_utc: str,
+) -> list[dict[str, Any]]:
+    records = []
+    if not hasattr(client, "run_openqasm3"):
+        raise ProviderAdapterBlocked("Amazon Braket client missing run_openqasm3")
+    for plan in plans:
+        response = client.run_openqasm3(plan)
+        if not isinstance(response, dict):
+            raise ProviderAdapterBlocked("Amazon Braket client response is not a dict")
+        counts = normalize_result_counts(response.get("raw_result", response))
+        records.append(
+            build_stage114_result_record(
+                plan=plan,
+                job_or_task_id=str(response.get("job_or_task_id", "")),
+                backend_metadata=response.get("backend_metadata", {}),
+                submitted_at_utc=str(response.get("submitted_at_utc", submitted_at_utc)),
+                completed_at_utc=str(response.get("completed_at_utc", completed_at_utc)),
+                counts=counts,
+            )
+        )
+    return records
 
 
 def submit(*, provider: str, jobs: list[dict[str, Any]], payloads: list[dict[str, Any]]) -> list[dict[str, Any]]:
