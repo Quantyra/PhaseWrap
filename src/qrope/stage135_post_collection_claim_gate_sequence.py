@@ -15,6 +15,7 @@ DEFAULT_STAGE101_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage101_known_state_calibra
 DEFAULT_STAGE103_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage103_robustness_metric_preregistration" / "results.json"
 DEFAULT_STAGE109_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage109_window_evidence_intake_validator" / "results.json"
 DEFAULT_STAGE110_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage110_replicated_advantage_claim_gate" / "results.json"
+DEFAULT_STAGE136_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage136_auditability_metric_preregistration" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage135_post_collection_claim_gate_sequence"
 OBJECTIVE = (
     "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
@@ -78,6 +79,7 @@ def run_stage135_sequence_audit(
     stage103_results_path: Path = DEFAULT_STAGE103_RESULTS,
     stage109_results_path: Path = DEFAULT_STAGE109_RESULTS,
     stage110_results_path: Path = DEFAULT_STAGE110_RESULTS,
+    stage136_results_path: Path = DEFAULT_STAGE136_RESULTS,
 ) -> dict[str, Any]:
     stage115 = _load_json(stage115_results_path)
     stage134 = _load_json(stage134_results_path)
@@ -86,12 +88,14 @@ def run_stage135_sequence_audit(
     stage103 = _load_json(stage103_results_path)
     stage109 = _load_json(stage109_results_path)
     stage110 = _load_json(stage110_results_path)
+    stage136 = _load_json(stage136_results_path)
     sources = [
         (stage115_results_path, stage115),
         (stage134_results_path, stage134),
         (stage113_results_path, stage113),
         (stage101_results_path, stage101),
         (stage103_results_path, stage103),
+        (stage136_results_path, stage136),
         (stage109_results_path, stage109),
         (stage110_results_path, stage110),
     ]
@@ -159,6 +163,16 @@ def run_stage135_sequence_audit(
             blocker_hint="stage109_window_evidence_not_ready",
         ),
         _gate_record(
+            stage_id="stage136",
+            name="auditability metric preregistration",
+            result_path=stage136_results_path,
+            payload=stage136,
+            ready_decisions={"AUDITABILITY_METRIC_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED"},
+            purpose="bind any auditability wording to complete packet trace coverage and component reconstruction metrics",
+            command="python scripts/run_stage136_auditability_metric_preregistration.py",
+            blocker_hint="stage136_auditability_metric_contract_not_ready",
+        ),
+        _gate_record(
             stage_id="stage110",
             name="replicated advantage claim gate",
             result_path=stage110_results_path,
@@ -214,7 +228,7 @@ def run_stage135_sequence_audit(
         "next_gate": (
             "Clear the first blocked gate in order. No noisy-hardware robustness or auditability advantage conclusion is "
             "allowed until Stage 110 reaches a terminal supported/not-supported decision after Stage 115, Stage 134, "
-            "Stage 113, Stage 101, Stage 103, and Stage 109 are ready."
+            "Stage 113, Stage 101, Stage 103, Stage 136, and Stage 109 are ready."
         ),
     }
 

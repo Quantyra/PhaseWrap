@@ -1,0 +1,53 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "new provider result records",
+      "a current auditability advantage claim",
+      "a robustness advantage claim"
+    ],
+    "supported": [
+      "a preregistered auditability metric contract for Stage 99 product-state and Stage 100 CX/parity packets",
+      "static trace coverage validation across every matched packet family",
+      "a hardware-count-dependent component reconstruction rule that can be evaluated after Stage 113 evidence assembly"
+    ]
+  },
+  "decision": "AUDITABILITY_METRIC_CONTRACT_READY_HARDWARE_COUNTS_REQUIRED",
+  "lane_family_record_count": 4,
+  "matched_encoding_families": [
+    "phasewrap",
+    "rope_like",
+    "sinusoidal_like",
+    "alibi_like",
+    "no_position_control"
+  ],
+  "metric_specification": {
+    "advantage_rule": "PhaseWrap may be described as having an auditability advantage only for a provider, source lane, and circuit template where trace coverage is complete for every matched family and PhaseWrap's component reconstruction MAE is lower than every named positional comparator family in the same calibrated hardware evidence window. The no-position/control family remains a control, not a positional method that PhaseWrap must beat for an auditability-specific wording.",
+    "fixed_width_binding": "Auditability metrics must use the same two measured qubits, same row set, same circuit template, same shot budget, and same Stage 101 calibration evidence as the robustness metric gate.",
+    "hardware_auditability_metric": "component_reconstruction_mean_absolute_error: after Stage 101 calibration, reconstruct component_a and component_b from the same calibrated observables used by Stage 103 and compute per-row absolute error against the frozen packet components.",
+    "static_trace_metric": "trace_coverage_fraction: fraction of rows with source-row hash, source deltas, two ideal score components, circuit parameters, ideal score prediction, and row hash present."
+  },
+  "missing_source_artifacts": [],
+  "next_gate": "After Stage 113 assembles provider counts and Stage 101 calibration passes, compute component reconstruction MAE per family/window and bind any auditability wording to the preregistered advantage rule.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "packet_count": 20,
+  "positional_comparator_families": [
+    "rope_like",
+    "sinusoidal_like",
+    "alibi_like"
+  ],
+  "provider_credentials_required": false,
+  "ready_packet_count": 20,
+  "result_path": "logs/automated_stage_gates/stage136_auditability_metric_preregistration/results.json",
+  "schema_version": "qrope_stage136_auditability_metric_preregistration_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage99_matched_fixed_width_encoding_packets/manifest.json",
+    "logs/automated_stage_gates/stage100_matched_cx_encoding_packets/manifest.json"
+  ],
+  "stage": "stage136_auditability_metric_preregistration",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage136_auditability_metric_preregistration/summary.csv"
+}

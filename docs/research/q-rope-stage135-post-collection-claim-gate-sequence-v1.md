@@ -12,7 +12,8 @@ Stage 135 records the ordered post-collection evidence sequence that must pass b
 4. `python scripts/run_stage101_known_state_calibration_gate.py`
 5. `python scripts/run_stage103_robustness_metric_preregistration.py`
 6. `python scripts/run_stage109_window_evidence_intake_validator.py`
-7. `python scripts/run_stage110_replicated_advantage_claim_gate.py`
+7. `python scripts/run_stage136_auditability_metric_preregistration.py`
+8. `python scripts/run_stage110_replicated_advantage_claim_gate.py`
 
 Current decision: `POST_COLLECTION_CLAIM_GATE_SEQUENCE_PREPARED_EXECUTION_BLOCKED`.
 
