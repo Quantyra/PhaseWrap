@@ -2,6 +2,14 @@
   "adapter_count": 2,
   "adapter_records": [
     {
+      "adapter_helper_callables": {
+        "adapter_status": true,
+        "build_client_config": true,
+        "build_live_client_factory_contract": true,
+        "build_submission_plan": true,
+        "execute_submission_plans": true,
+        "normalize_result_counts": true
+      },
       "adapter_module_imported": true,
       "adapter_status": {
         "blockers": [
@@ -38,9 +46,18 @@
       "provider": "amazon_braket",
       "ready": true,
       "submitter_callable": true,
-      "submitter_import_path": "qrope.provider_adapters.amazon_braket:submit"
+      "submitter_import_path": "qrope.provider_adapters.amazon_braket:submit",
+      "synthetic_result_contract_ready": true
     },
     {
+      "adapter_helper_callables": {
+        "adapter_status": true,
+        "build_client_config": true,
+        "build_live_client_factory_contract": true,
+        "build_submission_plan": true,
+        "execute_submission_plans": true,
+        "normalize_result_counts": true
+      },
       "adapter_module_imported": true,
       "adapter_status": {
         "blockers": [
@@ -73,7 +90,8 @@
       "provider": "ibm_runtime",
       "ready": true,
       "submitter_callable": true,
-      "submitter_import_path": "qrope.provider_adapters.ibm_runtime:submit"
+      "submitter_import_path": "qrope.provider_adapters.ibm_runtime:submit",
+      "synthetic_result_contract_ready": true
     }
   ],
   "claim_boundary": {
@@ -88,6 +106,8 @@
     "supported": [
       "canonical IBM Runtime and Amazon Braket adapter import paths exist",
       "adapter modules expose callable submitters and non-secret readiness metadata",
+      "adapter modules expose local planning/count-normalization/result-construction helpers",
+      "adapter helpers can synthesize Stage 114-compatible result records without provider SDK submission",
       "adapter submitters fail closed under current provider readiness blockers"
     ]
   },

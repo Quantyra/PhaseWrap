@@ -20,6 +20,14 @@ ADAPTER_IMPORTS = {
     "amazon_braket": "qrope.provider_adapters.amazon_braket:submit",
     "ibm_runtime": "qrope.provider_adapters.ibm_runtime:submit",
 }
+REQUIRED_ADAPTER_HELPERS = (
+    "adapter_status",
+    "build_client_config",
+    "build_live_client_factory_contract",
+    "build_submission_plan",
+    "execute_submission_plans",
+    "normalize_result_counts",
+)
 
 
 def _load_json(path: Path) -> Any | None:
@@ -35,13 +43,19 @@ def _adapter_record(provider: str, import_path: str) -> dict[str, Any]:
     module_imported = False
     submitter_callable = False
     status_callable = False
+    helper_callables: dict[str, bool] = {}
+    synthetic_result_contract_ready = False
+    synthetic_result_contract_missing: list[str] = []
     try:
         module = importlib.import_module(module_name)
         module_imported = True
         submitter_callable = callable(getattr(module, attr_name, None))
         status_callable = callable(getattr(module, "adapter_status", None))
+        helper_callables = {name: callable(getattr(module, name, None)) for name in REQUIRED_ADAPTER_HELPERS}
         if status_callable:
             status = module.adapter_status()
+        if all(helper_callables.values()):
+            synthetic_result_contract_ready, synthetic_result_contract_missing = _synthetic_result_contract(module, provider)
     except Exception as exc:  # noqa: BLE001 - audit reports import failures as blockers.
         missing.append(f"adapter_import_failed:{exc}")
     if not module_imported:
@@ -50,20 +64,88 @@ def _adapter_record(provider: str, import_path: str) -> dict[str, Any]:
         missing.append("submitter_not_callable")
     if not status_callable:
         missing.append("adapter_status_not_callable")
+    for helper, present in helper_callables.items():
+        if not present:
+            missing.append(f"adapter_helper_not_callable:{helper}")
     if status and status.get("provider") != provider:
         missing.append("adapter_provider_mismatch")
     if status and status.get("secret_values_recorded") is True:
         missing.append("adapter_secret_boundary_missing")
+    missing.extend(synthetic_result_contract_missing)
     return {
         "provider": provider,
         "submitter_import_path": import_path,
         "adapter_module_imported": module_imported,
         "submitter_callable": submitter_callable,
         "adapter_status_callable": status_callable,
+        "adapter_helper_callables": helper_callables,
+        "synthetic_result_contract_ready": synthetic_result_contract_ready,
         "adapter_status": status,
         "missing_evidence": sorted(set(missing)),
-        "ready": not missing and module_imported and submitter_callable and status_callable,
+        "ready": not missing and module_imported and submitter_callable and status_callable and synthetic_result_contract_ready,
     }
+
+
+def _synthetic_result_contract(module: Any, provider: str) -> tuple[bool, list[str]]:
+    job = {
+        "job_id": f"{provider}__synthetic_job_0",
+        "job_kind": "known_state_calibration",
+        "provider": provider,
+        "shots": 1000,
+        "state": "00",
+        "target_counts_key": "00",
+        "window_id": f"{provider}__synthetic_window_0",
+    }
+    payload = {
+        "job_id": job["job_id"],
+        "openqasm3": "OPENQASM 3.0;\n",
+        "openqasm3_sha256": "synthetic",
+        "provider": provider,
+        "shots": 1000,
+        "target_counts_key": "00",
+        "window_id": job["window_id"],
+    }
+
+    class SyntheticClient:
+        def run_openqasm3(self, plan: dict[str, Any]) -> dict[str, Any]:
+            return {
+                "job_or_task_id": "synthetic_task_0",
+                "backend_metadata": {"backend": "synthetic_backend", "provider": provider},
+                "submitted_at_utc": "2026-01-01T00:00:00Z",
+                "completed_at_utc": "2026-01-01T00:00:01Z",
+                "raw_result": {"counts": {"00": 1000}},
+            }
+
+    missing = []
+    try:
+        plans = module.build_submission_plan(jobs=[job], payloads=[payload])
+        records = module.execute_submission_plans(
+            plans=plans,
+            client=SyntheticClient(),
+            submitted_at_utc="2026-01-01T00:00:00Z",
+            completed_at_utc="2026-01-01T00:00:01Z",
+        )
+    except Exception as exc:  # noqa: BLE001 - contract audit should surface adapter failure text.
+        return False, [f"synthetic_result_contract_failed:{exc}"]
+    if len(records) != 1:
+        missing.append("synthetic_result_contract_record_count")
+        return False, missing
+    record = records[0]
+    for field in ("job_id", "job_or_task_id", "backend_metadata", "submitted_at_utc", "completed_at_utc", "counts"):
+        if record.get(field) in (None, "", [], {}):
+            missing.append(f"synthetic_result_missing:{field}")
+    metadata = record.get("backend_metadata", {})
+    if not isinstance(metadata, dict):
+        missing.append("synthetic_result_backend_metadata")
+    else:
+        for field in ("provider", "backend", "window_id", "job_kind"):
+            if metadata.get(field) in (None, "", []):
+                missing.append(f"synthetic_result_backend_metadata:{field}")
+        if metadata.get("provider") != provider:
+            missing.append("synthetic_result_provider_scope")
+    if record.get("counts") != {"00": 1000}:
+        missing.append("synthetic_result_counts")
+    return not missing, missing
 
 
 def run_stage122_audit(*, stage121_results_path: Path = DEFAULT_STAGE121_RESULTS) -> dict[str, Any]:
@@ -94,6 +176,8 @@ def run_stage122_audit(*, stage121_results_path: Path = DEFAULT_STAGE121_RESULTS
             "supported": [
                 "canonical IBM Runtime and Amazon Braket adapter import paths exist",
                 "adapter modules expose callable submitters and non-secret readiness metadata",
+                "adapter modules expose local planning/count-normalization/result-construction helpers",
+                "adapter helpers can synthesize Stage 114-compatible result records without provider SDK submission",
                 "adapter submitters fail closed under current provider readiness blockers",
             ],
             "excluded": [
@@ -142,7 +226,16 @@ def write_stage122_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
     with (output_dir / "summary.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
             handle,
-            fieldnames=("provider", "submitter_import_path", "adapter_module_imported", "submitter_callable", "adapter_status_callable", "ready", "missing_evidence"),
+            fieldnames=(
+                "provider",
+                "submitter_import_path",
+                "adapter_module_imported",
+                "submitter_callable",
+                "adapter_status_callable",
+                "synthetic_result_contract_ready",
+                "ready",
+                "missing_evidence",
+            ),
         )
         writer.writeheader()
         for record in result["adapter_records"]:
@@ -153,6 +246,7 @@ def write_stage122_outputs(result: dict[str, Any], output_dir: Path = DEFAULT_OU
                     "adapter_module_imported": record["adapter_module_imported"],
                     "submitter_callable": record["submitter_callable"],
                     "adapter_status_callable": record["adapter_status_callable"],
+                    "synthetic_result_contract_ready": record["synthetic_result_contract_ready"],
                     "ready": record["ready"],
                     "missing_evidence": "; ".join(record["missing_evidence"]),
                 }

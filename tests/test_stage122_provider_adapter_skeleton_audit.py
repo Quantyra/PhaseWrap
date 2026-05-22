@@ -97,6 +97,8 @@ def test_stage122_reports_adapter_skeletons_ready(tmp_path) -> None:
     assert result["decision"] == "PROVIDER_ADAPTER_SKELETONS_READY_EXECUTION_BLOCKED"
     assert result["ready_adapter_count"] == 2
     assert {record["provider"] for record in result["adapter_records"]} == {"amazon_braket", "ibm_runtime"}
+    assert all(record["synthetic_result_contract_ready"] is True for record in result["adapter_records"])
+    assert all(record["adapter_helper_callables"]["execute_submission_plans"] is True for record in result["adapter_records"])
 
 
 def test_stage122_outputs_are_written(tmp_path) -> None:
@@ -110,3 +112,4 @@ def test_stage122_outputs_are_written(tmp_path) -> None:
     assert set(paths) == {"manifest", "result", "summary_csv"}
     assert manifest["adapter_count"] == 2
     assert "ibm_runtime" in summary
+    assert "synthetic_result_contract_ready" in summary
