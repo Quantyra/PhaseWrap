@@ -1,0 +1,50 @@
+{
+  "backend_lookup_ready": true,
+  "blockers": [
+    "provider_result_records_missing"
+  ],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "new provider result records",
+      "credit balance verification",
+      "a noisy-hardware robustness or auditability conclusion before the post-result sequence reaches terminal gates"
+    ],
+    "supported": [
+      "a deterministic no-submit analysis sequence to run after IBM provider result JSONL files exist",
+      "binding of the post-result analysis packet to Stage 159 backend-readiness evidence",
+      "a guard that the packet contains no Stage 133 live-submit command",
+      "an explicit missing-result boundary while IBM provider result records are absent"
+    ]
+  },
+  "command_count": 11,
+  "decision": "FIRST_PROVIDER_POST_RUN_ANALYSIS_PACKET_READY_AWAITING_PROVIDER_RESULTS",
+  "expected_job_count": 328,
+  "explicit_user_approval_required_for_hardware_submission": true,
+  "first_unlock_provider": "ibm_runtime",
+  "missing_job_count": 328,
+  "missing_source_artifacts": [],
+  "next_gate": "After explicit hardware approval and Stage 133 execution produce IBM provider result records, run this packet's command sequence in order to refresh Stage 115 through Stage 138 evidence and determine whether the objective is supported or not supported.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "result_path": "logs/automated_stage_gates/stage160_first_provider_post_run_analysis_packet/results.json",
+  "result_record_count": 0,
+  "runnable_hardware_commands_recorded": false,
+  "schema_version": "qrope_stage160_first_provider_post_run_analysis_packet_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage159_first_provider_backend_preflight/results.json",
+    "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+    "logs/automated_stage_gates/stage113_job_result_evidence_assembler/results.json",
+    "logs/automated_stage_gates/stage135_post_collection_claim_gate_sequence/results.json"
+  ],
+  "stage": "stage160_first_provider_post_run_analysis_packet",
+  "stage113_decision": "JOB_RESULT_EVIDENCE_ASSEMBLY_BLOCKED_RESULTS_MISSING",
+  "stage115_decision": "PROVIDER_RESULTS_COLLECTION_BLOCKED_RESULTS_MISSING",
+  "stage135_decision": "POST_COLLECTION_CLAIM_GATE_SEQUENCE_PREPARED_EXECUTION_BLOCKED",
+  "stage159_decision": "FIRST_PROVIDER_BACKEND_PREFLIGHT_READY_AWAITING_APPROVAL",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage160_first_provider_post_run_analysis_packet/summary.csv"
+}
