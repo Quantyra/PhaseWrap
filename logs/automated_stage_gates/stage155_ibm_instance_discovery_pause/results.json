@@ -1,0 +1,50 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "recording IBM token or CRN values",
+      "hardware job submission",
+      "credit balance verification",
+      "backend queue or calibration validation",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "post-Stage154 pause-point check for whether IBM instance discovery can identify a configured instance",
+      "non-secret evidence that the blocker is local CRN population rather than proven credit exhaustion",
+      "explicit separation between instance discovery and hardware job submission"
+    ]
+  },
+  "credit_exhaustion_proven": false,
+  "decision": "IBM_INSTANCE_CRN_DISCOVERED_LOCAL_DOTENV_UPDATE_REQUIRED",
+  "discovered_crn_count": 1,
+  "discovered_instance_count": 1,
+  "discovered_instances": [
+    {
+      "crn_discovered": true,
+      "name": "open-instance",
+      "plan": "open",
+      "region": null
+    }
+  ],
+  "discovery_error": null,
+  "ibm_instance_crn_present": false,
+  "ibm_token_present": true,
+  "live_discovery_allowed": true,
+  "live_discovery_attempted": true,
+  "missing_source_artifacts": [],
+  "next_gate": "Populate IBM_QUANTUM_INSTANCE_CRN locally, then rerun Stage 140 with --load-dotenv followed by Stage 106, Stage 111, Stage 128, Stage 129, Stage 130, Stage 139, Stage 144, and Stage 152 before any guarded Stage 133 live-submit command.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "qiskit_sdk_ready": true,
+  "schema_version": "qrope_stage155_ibm_instance_discovery_pause_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage154_simulated_hardware_go_no_go/results.json",
+    "logs/automated_stage_gates/stage140_local_provider_configuration_readiness/results.json"
+  ],
+  "stage": "stage155_ibm_instance_discovery_pause",
+  "stage140_decision": "LOCAL_PROVIDER_CONFIGURATION_BLOCKED_ENV_OR_SDK_REQUIRED",
+  "stage154_decision": "SIMULATED_NOISE_TARGETED_HARDWARE_FOLLOWUP_RECOMMENDED",
+  "stage154_targeted_hardware_followup_recommended": true,
+  "status": "completed"
+}
