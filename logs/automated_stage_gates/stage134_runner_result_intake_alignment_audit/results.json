@@ -1,0 +1,102 @@
+{
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "live provider SDK client creation",
+      "Stage 113 evidence assembly",
+      "a noisy-hardware robustness result"
+    ],
+    "supported": [
+      "Stage 133 provider result output paths align with Stage 115 collector shard paths",
+      "post-run intake remains blocked until command_authorized=true and every collector shard is ready",
+      "the Stage 115 to Stage 113 handoff is explicit before evidence assembly"
+    ]
+  },
+  "decision": "RUNNER_RESULT_INTAKE_ALIGNED_EXECUTION_BLOCKED",
+  "expected_job_count": 496,
+  "intake_records": [
+    {
+      "blockers": [
+        "stage115:job_results_missing",
+        "stage115:provider_result_file_missing",
+        "stage133_command_not_authorized"
+      ],
+      "collector_missing_job_count": 84,
+      "collector_ready": false,
+      "collector_result_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_00/provider_job_results.jsonl",
+      "command_authorized": false,
+      "command_output_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_00/provider_job_results.jsonl",
+      "job_count": 84,
+      "provider": "amazon_braket",
+      "stage113_ready_after_collection": false,
+      "window_id": "amazon_braket__independent_window_00"
+    },
+    {
+      "blockers": [
+        "stage115:job_results_missing",
+        "stage115:provider_result_file_missing",
+        "stage133_command_not_authorized"
+      ],
+      "collector_missing_job_count": 84,
+      "collector_ready": false,
+      "collector_result_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_01/provider_job_results.jsonl",
+      "command_authorized": false,
+      "command_output_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/amazon_braket/amazon_braket__independent_window_01/provider_job_results.jsonl",
+      "job_count": 84,
+      "provider": "amazon_braket",
+      "stage113_ready_after_collection": false,
+      "window_id": "amazon_braket__independent_window_01"
+    },
+    {
+      "blockers": [
+        "stage115:job_results_missing",
+        "stage115:provider_result_file_missing",
+        "stage133_command_not_authorized"
+      ],
+      "collector_missing_job_count": 164,
+      "collector_ready": false,
+      "collector_result_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_00/provider_job_results.jsonl",
+      "command_authorized": false,
+      "command_output_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_00/provider_job_results.jsonl",
+      "job_count": 164,
+      "provider": "ibm_runtime",
+      "stage113_ready_after_collection": false,
+      "window_id": "ibm_runtime__independent_window_00"
+    },
+    {
+      "blockers": [
+        "stage115:job_results_missing",
+        "stage115:provider_result_file_missing",
+        "stage133_command_not_authorized"
+      ],
+      "collector_missing_job_count": 164,
+      "collector_ready": false,
+      "collector_result_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_01/provider_job_results.jsonl",
+      "command_authorized": false,
+      "command_output_path": "logs/automated_stage_gates/stage114_provider_result_capture_contract/provider_results/ibm_runtime/ibm_runtime__independent_window_01/provider_job_results.jsonl",
+      "job_count": 164,
+      "provider": "ibm_runtime",
+      "stage113_ready_after_collection": false,
+      "window_id": "ibm_runtime__independent_window_01"
+    }
+  ],
+  "missing_job_count": 496,
+  "missing_source_artifacts": [],
+  "next_gate": "Execute only Stage 133 authorized commands, rerun Stage 115 with --write-stage113-input after result shards are complete, then rerun this audit before Stage 113 --write-evidence.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "ready_intake_count": 0,
+  "runner_count": 4,
+  "schema_version": "qrope_stage134_runner_result_intake_alignment_audit_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage115_provider_result_collector/results.json",
+    "logs/automated_stage_gates/stage133_authorized_runner_command_packet/results.json"
+  ],
+  "stage": "stage134_runner_result_intake_alignment_audit",
+  "stage115_decision": "PROVIDER_RESULTS_COLLECTION_BLOCKED_RESULTS_MISSING",
+  "stage133_decision": "AUTHORIZED_RUNNER_COMMANDS_PREPARED_EXECUTION_BLOCKED",
+  "status": "completed"
+}
