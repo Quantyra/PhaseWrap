@@ -1,0 +1,50 @@
+{
+  "approved_job_count": 328,
+  "backend_lookup_ready": true,
+  "backend_pending_jobs_at_preflight": 3,
+  "blockers": [],
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "provider credentials or secret values",
+      "runnable Stage 133 live-submit command strings",
+      "IBM credit balance or dollar cost verification",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "exact no-submit IBM job and shot exposure from Stage 114 job shards",
+      "per-window job-kind, encoding-family, and target-evidence path counts before any approved live run",
+      "binding of exposure totals to Stage 157 approval, Stage 159 backend preflight, and Stage 160 analysis readiness",
+      "an explicit missing-result count before post-run analysis can start"
+    ]
+  },
+  "credit_balance_verified": false,
+  "decision": "FIRST_PROVIDER_EXPOSURE_PACKET_READY_AWAITING_APPROVAL",
+  "explicit_user_approval_required": true,
+  "first_unlock_provider": "ibm_runtime",
+  "job_count": 328,
+  "missing_result_record_count": 328,
+  "missing_source_artifacts": [],
+  "next_gate": "Use this exposure packet when deciding whether to approve the live IBM run. If approved, submit only the Stage 157 first-provider windows, then expect the same job count in provider result records before Stage 160 analysis.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": false,
+  "provider_result_record_count": 0,
+  "result_path": "logs/automated_stage_gates/stage161_first_provider_exposure_packet/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage161_first_provider_exposure_packet_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage157_first_provider_live_run_approval_packet/results.json",
+    "logs/automated_stage_gates/stage159_first_provider_backend_preflight/results.json",
+    "logs/automated_stage_gates/stage160_first_provider_post_run_analysis_packet/results.json"
+  ],
+  "stage": "stage161_first_provider_exposure_packet",
+  "stage157_decision": "FIRST_PROVIDER_LIVE_RUN_APPROVAL_PACKET_READY",
+  "stage159_decision": "FIRST_PROVIDER_BACKEND_PREFLIGHT_READY_AWAITING_APPROVAL",
+  "stage160_decision": "FIRST_PROVIDER_POST_RUN_ANALYSIS_PACKET_READY_AWAITING_PROVIDER_RESULTS",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage161_first_provider_exposure_packet/summary.csv",
+  "total_shots": 1318720,
+  "window_count": 2
+}

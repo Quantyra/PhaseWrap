@@ -1,0 +1,3 @@
+provider,window_id,job_count,total_shots,provider_result_record_count,missing_result_records,ready,blockers
+ibm_runtime,ibm_runtime__independent_window_00,164,659360,0,164,True,
+ibm_runtime,ibm_runtime__independent_window_01,164,659360,0,164,True,
