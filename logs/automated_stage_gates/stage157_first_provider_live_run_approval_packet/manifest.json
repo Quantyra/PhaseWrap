@@ -1,0 +1,40 @@
+{
+  "approval_packet_path": "logs/automated_stage_gates/stage157_first_provider_live_run_approval_packet/approval_packet.md",
+  "approval_phrase_required": "APPROVE IBM RUNTIME STAGE133 LIVE RUN",
+  "authorized_first_provider_job_count": 328,
+  "authorized_first_provider_runner_count": 2,
+  "claim_boundary": {
+    "excluded": [
+      "hardware job submission",
+      "runnable live-submit command strings",
+      "provider credential values",
+      "provider result records",
+      "credit balance verification",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "non-secret approval packet for the first IBM Runtime guarded live run",
+      "authorized command counts, job counts, and source artifact references",
+      "explicit approval phrase required before any hardware job submission"
+    ]
+  },
+  "decision": "FIRST_PROVIDER_LIVE_RUN_APPROVAL_PACKET_READY",
+  "explicit_user_approval_required": true,
+  "first_unlock_provider": "ibm_runtime",
+  "missing_source_artifacts": [],
+  "next_gate": "Only after the user explicitly says `APPROVE IBM RUNTIME STAGE133 LIVE RUN`, read the runnable live-submit commands from Stage 133, execute only the authorized first-provider commands, then collect Stage 114 shards through Stage 115 and assemble Stage 113 evidence.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "result_path": "logs/automated_stage_gates/stage157_first_provider_live_run_approval_packet/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage157_first_provider_live_run_approval_packet_v1",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage133_authorized_runner_command_packet/results.json",
+    "logs/automated_stage_gates/stage152_first_provider_live_execution_guard/results.json",
+    "logs/automated_stage_gates/stage156_first_provider_live_run_pause/results.json"
+  ],
+  "stage": "stage157_first_provider_live_run_approval_packet",
+  "status": "completed",
+  "summary_csv_path": "logs/automated_stage_gates/stage157_first_provider_live_run_approval_packet/summary.csv"
+}
