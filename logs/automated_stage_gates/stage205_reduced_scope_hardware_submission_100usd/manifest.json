@@ -1,0 +1,45 @@
+{
+  "allow_live_submit": false,
+  "backend": "ibm_fez",
+  "blockers": [
+    "allow_live_submit_flag_required"
+  ],
+  "budget_cap_usd": 100.0,
+  "claim_boundary": {
+    "excluded": [
+      "provider-side result counts unless a later collector retrieves them",
+      "calibration pass/fail",
+      "robustness or auditability interpretation",
+      "a noisy-hardware robustness or auditability conclusion"
+    ],
+    "supported": [
+      "guarded asynchronous submission of reduced-scope packet/calibration templates to IBM Runtime",
+      "runtime job IDs are recorded for later result collection when submission succeeds",
+      "submission remains separate from result retrieval, calibration pass/fail, and robustness interpretation"
+    ]
+  },
+  "decision": "REDUCED_SCOPE_HARDWARE_SUBMISSION_BLOCKED_OR_PARTIAL",
+  "estimated_total_job_count": 324,
+  "estimated_total_shots": 659360,
+  "expected_runtime_job_count": 21,
+  "hardware_submission_performed": false,
+  "missing_source_artifacts": [],
+  "next_gate": "Collect Runtime job results, populate Stage203 raw counts, run calibration validation, then recompute robustness and auditability metrics.",
+  "no_hardware_submission": true,
+  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "provider_credentials_required": true,
+  "result_path": "logs/automated_stage_gates/stage205_reduced_scope_hardware_submission_100usd/results.json",
+  "runnable_commands_recorded": false,
+  "schema_version": "qrope_stage205_reduced_scope_hardware_submission_v1",
+  "scope_id": "all_lanes_half_shots_2048",
+  "secret_values_recorded": false,
+  "source_artifacts": [
+    "logs/automated_stage_gates/stage204_reduced_scope_guarded_runner_readiness_100usd/results.json",
+    "logs/automated_stage_gates/stage203_reduced_scope_execution_package_100usd/results.json"
+  ],
+  "stage": "stage205_reduced_scope_hardware_submission",
+  "status": "completed",
+  "submission_attempted": false,
+  "submitted_runtime_job_count": 0,
+  "summary_csv_path": "logs/automated_stage_gates/stage205_reduced_scope_hardware_submission_100usd/summary.csv"
+}
