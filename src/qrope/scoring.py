@@ -16,6 +16,7 @@ def _wrap_to_pi(angle: float) -> float:
 
 
 def phase_residual(reference_delta: int, candidate_delta: int, period: int) -> float:
+    """Return the absolute wrapped phase residual for two integer offsets."""
     if period <= 0:
         raise ValueError("period must be positive")
     reference_theta = _wrap_to_pi(2.0 * math.pi * float(reference_delta) / float(period))
@@ -28,6 +29,7 @@ def phase_margins(
     candidate_delta: int,
     period_pair: tuple[int, int] = DEFAULT_PERIOD_PAIR,
 ) -> dict[str, float]:
+    """Return the two signed residual margins used by the PhaseWrap score."""
     if len(period_pair) != 2:
         raise ValueError("period_pair must contain exactly two periods")
     first_period, second_period = period_pair
@@ -50,6 +52,7 @@ def phasewrap_score(
     candidate_delta: int,
     period_pair: tuple[int, int] = DEFAULT_PERIOD_PAIR,
 ) -> float:
+    """Return the scalar PhaseWrap score for a reference/candidate offset pair."""
     margins = phase_margins(reference_delta, candidate_delta, period_pair)
     return float(margins["first_margin"] * margins["second_margin"])
 
@@ -59,6 +62,7 @@ def phasewrap_features(
     candidate_delta: int,
     period_pair: tuple[int, int] = DEFAULT_PERIOD_PAIR,
 ) -> dict[str, Any]:
+    """Return a JSON-friendly feature record for the PhaseWrap score inputs."""
     margins = phase_margins(reference_delta, candidate_delta, period_pair)
     return {
         "reference_delta": reference_delta,
