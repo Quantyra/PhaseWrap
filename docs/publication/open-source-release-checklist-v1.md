@@ -82,4 +82,4 @@ The public repository has been created and published:
 | Confirm the public repository metadata. | Done |
 | Tag the public release after final manuscript approval. | Done for `v0.3.1-negative-results`; standalone paper remains withdrawn from current public branch. |
 | Enable Zenodo integration and mint the release DOI. | Done |
-| Preserve latest archive handle in public docs. | Done: concept DOI `10.5281/zenodo.20306786`. |
+| Preserve latest archive handle in public docs. | Done: version DOI `10.5281/zenodo.20387905`; concept DOI `10.5281/zenodo.20306786`. |

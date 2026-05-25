@@ -4,6 +4,10 @@ Status: `GITHUB_RELEASE_PUBLISHED_REPO_PUBLIC`
 
 Date: `2026-05-25`
 
+Zenodo version DOI: `10.5281/zenodo.20387905`
+
+Zenodo concept DOI: `10.5281/zenodo.20306786`
+
 ## Release Title
 
 `PhaseWrap v0.3.1-negative-results`
@@ -69,5 +73,9 @@ Expected outcomes:
 This release has been published as a GitHub release in the public repository for Zenodo archival:
 
 `https://github.com/Quantyra/PhaseWrap/releases/tag/v0.3.1-negative-results`
+
+Zenodo archive:
+
+`https://doi.org/10.5281/zenodo.20387905`
 
 Do not post arXiv, create an OSF project, publish a blog post, or make a broader public announcement until the repository owner explicitly approves that external-publication step.

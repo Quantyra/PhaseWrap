@@ -3,13 +3,13 @@ message: "If you use PhaseWrap, cite this repository and preserve the negative-r
 title: "PhaseWrap: Negative Results for Phase-Wrap Positional Scoring and Hardware-Readout Audit Tooling"
 version: "0.3.1-negative-results"
 date-released: "2026-05-25"
-doi: "10.5281/zenodo.20306786"
+doi: "10.5281/zenodo.20387905"
 license: "AGPL-3.0-only"
 authors:
   - family-names: "Fredriksen"
     given-names: "Daniel Eric"
 repository-code: "https://github.com/Quantyra/PhaseWrap"
-url: "https://doi.org/10.5281/zenodo.20306786"
+url: "https://doi.org/10.5281/zenodo.20387905"
 keywords:
   - "phase-wrap positional scoring"
   - "rotary positional encoding"

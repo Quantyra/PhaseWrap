@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Quantyra/PhaseWrap/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/PhaseWrap/actions/workflows/ci.yml)
 [![Open verification in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantyra/PhaseWrap/blob/main/docs/notebooks/phasewrap_verify.ipynb)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20306786.svg)](https://doi.org/10.5281/zenodo.20306786)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20387905.svg)](https://doi.org/10.5281/zenodo.20387905)
 
 PhaseWrap is Quantyra's negative-results research repository for a phase-wrap positional scoring rule, retrieval-benchmark diagnostics, and two-qubit hardware readout audit infrastructure.
 
@@ -93,7 +93,7 @@ Start here:
 - Prepared release notes: [v0.3.1-negative-results](docs/publication/release-notes-v0.3.1-negative-results.md)
 - Documentation landing page: [PhaseWrap documentation](docs/index.md)
 - Negative-results publication roadmap: [Negative results publication roadmap](docs/publication/negative-results-publication-roadmap-v1.md)
-- Zenodo concept DOI: [10.5281/zenodo.20306786](https://doi.org/10.5281/zenodo.20306786)
+- Zenodo version DOI: [10.5281/zenodo.20387905](https://doi.org/10.5281/zenodo.20387905); concept DOI: [10.5281/zenodo.20306786](https://doi.org/10.5281/zenodo.20306786)
 - One-page reviewer summary: [Quickstart and results summary](docs/publication/quickstart-results-summary-v1.md)
 - Scoring API reference: [qrope.scoring API](docs/api/scoring.md)
 - Reproducible review environment: [Reproducible environment](docs/reproducible-environment.md)
@@ -207,7 +207,7 @@ python scripts/verify_publication_package.py
 ## Status
 
 - `Patent/IP posture`: low-prominence legal notice only; USPTO provisional filings are not part of the scientific claim, and receipt-specific identifiers are not published. See [Patent status note](docs/publication/patent-status-note-v1.md).
-- `Archive DOI`: `10.5281/zenodo.20306786` for the latest bounded evidence release.
+- `Archive DOI`: `10.5281/zenodo.20387905` for release `v0.3.1-negative-results`; concept DOI `10.5281/zenodo.20306786`.
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: negative-results publication track; the standalone replacement paper draft is withdrawn from the current public branch and the positive replacement line is closed.
 - `Research-line disposition`: abandon PhaseWrap as a positive RoPE-replacement program; publish the failure boundary, assistance-pipeline warning, score theory, and reproducibility infrastructure.

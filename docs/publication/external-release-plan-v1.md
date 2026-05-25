@@ -65,10 +65,14 @@ Current GitHub release:
 
 Blocking items:
 
-- Zenodo account access.
-- Zenodo GitHub integration enabled for the repository.
-- GitHub release tag decision.
-- explicit owner approval before posting beyond GitHub.
+- None for the GitHub-to-Zenodo archive of `v0.3.1-negative-results`.
+- Future Zenodo versions require a new GitHub release tag.
+- Explicit owner approval remains required before posting beyond GitHub/Zenodo.
+
+Published archive:
+
+- Version DOI: `10.5281/zenodo.20387905`
+- Concept DOI: `10.5281/zenodo.20306786`
 
 ## Release tag recommendation
 
