@@ -1,7 +1,7 @@
 # QRoPE Stage 137 - Auditability Metric Evaluator
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 137 implements the hardware-count-dependent auditability evaluator preregistered in Stage 136.

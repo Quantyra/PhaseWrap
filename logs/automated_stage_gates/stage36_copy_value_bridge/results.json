@@ -6,7 +6,7 @@
       "full transformer-scale validation",
       "broad quantum advantage",
       "general cross-backend robustness",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic copy-value bridge that removes the fragile learned value-token classifier from Stage 34.",

@@ -653,7 +653,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "broad quantum advantage",
       "a claim that a one-block synthetic decoder gate is sufficient for promotion"
     ],
@@ -678,7 +678,7 @@
       "phase_cued_retrieval": 0.025,
       "tiny_text_fact_qa": 0.0
     },
-    "claim_boundary": "This matched one-block decoder-only gate does not promote PhaseWrap-RoPE beyond the bounded claim.",
+    "claim_boundary": "This matched one-block decoder-only gate does not promote PhaseWrap beyond the bounded claim.",
     "decision": "PROMOTION_NOT_SUPPORTED",
     "high_confidence_tasks": [],
     "phasewrap_best_tasks_above_threshold": [],

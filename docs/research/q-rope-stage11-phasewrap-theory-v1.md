@@ -1,10 +1,10 @@
-# PhaseWrap-RoPE Stage 11 Score Theory Analysis v1
+# PhaseWrap Stage 11 Score Theory Analysis v1
 
 Date: `2026-05-20`
 
 ## Purpose
 
-Stage 11 turns the theory feedback into machine-verifiable artifacts. It analyzes the fixed `8/12` PhaseWrap-RoPE score without hardware submission, provider credentials, or learned-model training.
+Stage 11 turns the theory feedback into machine-verifiable artifacts. It analyzes the fixed `8/12` PhaseWrap score without hardware submission, provider credentials, or learned-model training.
 
 Artifacts:
 
@@ -44,4 +44,4 @@ Fourier analysis over the mod-24 residue table gives positive frequency support 
 
 Stage 11 strengthens the mathematical audit trail but narrows the claim. The `8/12` score is compact, deterministic, and easy to verify, but it has unavoidable aliases in long contexts. Any future RoPE-replacement claim must show that a transformer mechanism can use this periodic signal beneficially despite those aliases, or combine it with other features that resolve them.
 
-The result supports continued study of PhaseWrap-RoPE as a positional scoring rule. It does not prove the `8/12` pair is globally optimal, does not prove transformer improvement, and does not provide quantum-advantage evidence.
+The result supports continued study of PhaseWrap as a positional scoring rule. It does not prove the `8/12` pair is globally optimal, does not prove transformer improvement, and does not provide quantum-advantage evidence.

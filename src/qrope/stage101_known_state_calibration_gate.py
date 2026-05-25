@@ -17,7 +17,7 @@ STATES: tuple[str, ...] = ("00", "01", "10", "11")
 BITSTRING_ORDERS: tuple[str, ...] = ("q0q1", "q1q0")
 MIN_DOMINANT_FRACTION = 0.80
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

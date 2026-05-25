@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 71 Positional-Bias Copy Upper-Bound Audit v1
+# PhaseWrap Stage 71 Positional-Bias Copy Upper-Bound Audit v1
 
 Date: `2026-05-21`
 
@@ -58,7 +58,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that deterministic argmax copy is learned decoder-only transformer behavior;
 - a claim that this upper bound is positional-method promotion evidence by itself.
 

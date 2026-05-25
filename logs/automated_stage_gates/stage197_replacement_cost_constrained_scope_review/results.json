@@ -25,7 +25,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Preregister the selected reduced-scope interpretation boundary before asking for credit attestation. Recommended default is all_lanes_half_shots_2048; use scout_512 only for operational smoke testing.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "recommended_scope_id": "all_lanes_half_shots_2048",
   "review_items": [

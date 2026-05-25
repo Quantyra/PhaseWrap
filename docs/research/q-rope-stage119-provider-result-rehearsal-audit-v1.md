@@ -1,7 +1,7 @@
 # QRoPE Stage 119 - Provider Result Rehearsal Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 119 rehearses the Stage 114 provider result-record shape from Stage 118 dry-run payloads without writing to real Stage 114 provider-result paths.

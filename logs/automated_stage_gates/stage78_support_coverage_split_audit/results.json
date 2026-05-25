@@ -53,7 +53,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that support coverage alone validates a matched decoder-only transformer",
       "a claim that cross-seed support availability is positional-method promotion evidence",
       "broad quantum advantage"

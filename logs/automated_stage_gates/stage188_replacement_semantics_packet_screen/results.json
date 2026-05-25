@@ -1378,7 +1378,7 @@
   "missing_source_packets": [],
   "next_gate": "If this simulated screen fails, keep hardware archived and reassess whether to stop the fixed-width hardware path; if it passes, perform a separate human-reviewed hardware readiness gate before any provider action.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_count": 30,
   "packets": [
     {

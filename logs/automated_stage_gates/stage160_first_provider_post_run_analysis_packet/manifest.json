@@ -29,7 +29,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After explicit hardware approval and Stage 133 execution produce IBM provider result records, run this packet's command sequence in order, starting with Stage 164 lock verification, then refresh Stage 115 through Stage 138 evidence and determine whether the objective is supported or not supported.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "result_path": "logs/automated_stage_gates/stage160_first_provider_post_run_analysis_packet/results.json",
   "result_record_count": 0,

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 19 Value-Output Hardening Probe v1
+# PhaseWrap Stage 19 Value-Output Hardening Probe v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 19 follows the Stage 18 value-output capacity probe. It keeps attention teacher-forced to the target key positions and tests whether larger learned value embeddings plus full-batch Adam optimization can fit the value-token readout.
 
-This is a local value-output hardening probe. It is not a production transformer benchmark, not a positional-mechanism comparison, and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local value-output hardening probe. It is not a production transformer benchmark, not a positional-mechanism comparison, and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -55,7 +55,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

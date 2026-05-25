@@ -36,7 +36,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Run the final guarded reduced-scope execution step only from this ready state; after execution, ingest provider counts and run calibration, robustness, auditability, and final objective interpretation gates.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "package_contract_ready": true,
   "provider_credentials_required": true,
   "readiness_items": [

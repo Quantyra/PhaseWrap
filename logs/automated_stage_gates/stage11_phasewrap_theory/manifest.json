@@ -3,7 +3,7 @@
   "claim_boundary": {
     "excluded": [
       "a proof that 8/12 is globally optimal",
-      "evidence that PhaseWrap-RoPE replaces RoPE in production transformers",
+      "evidence that PhaseWrap replaces RoPE in production transformers",
       "quantum advantage",
       "general cross-backend robustness"
     ],

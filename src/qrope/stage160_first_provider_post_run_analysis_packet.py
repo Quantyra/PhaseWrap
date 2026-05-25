@@ -15,7 +15,7 @@ DEFAULT_STAGE113_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage113_job_result_evidence
 DEFAULT_STAGE135_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage135_post_collection_claim_gate_sequence" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage160_first_provider_post_run_analysis_packet"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

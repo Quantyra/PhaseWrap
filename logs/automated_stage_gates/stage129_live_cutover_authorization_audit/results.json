@@ -19,7 +19,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Clear the listed provider blockers, rerun Stage 106, Stage 111, Stage 128, and this cutover audit, then run guarded live provider execution only for providers with cutover_authorized=true.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_count": 2,
   "provider_credentials_required": true,
   "provider_records": [

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 54 Attention-Supervised Two-Block Audit v1
+# PhaseWrap Stage 54 Attention-Supervised Two-Block Audit v1
 
 Date: `2026-05-21`
 
@@ -75,6 +75,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that target-attention supervision is standard free decoder generation;
 - a claim that Stage 54 satisfies the five-seed promotion standard.

@@ -6,7 +6,7 @@
       "full transformer-scale validation",
       "broad quantum advantage",
       "general cross-backend robustness",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic attention-readout comparison using non-phase-cued key-value retrieval targets.",
@@ -271,7 +271,7 @@
   ],
   "task": {
     "description": "Train-short/test-long decoder attention readout over key-value retrieval rows derived from Stage 12.",
-    "note": "This isolates attention readout behavior. It is not a full language-model benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+    "note": "This isolates attention readout behavior. It is not a full language-model benchmark or proof that PhaseWrap replaces RoPE.",
     "target_construction": "Targets are explicit retrieval-rule value tokens, not PhaseWrap-selected positions."
   },
   "task_names": [

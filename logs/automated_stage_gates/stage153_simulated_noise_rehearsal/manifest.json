@@ -113,7 +113,7 @@
     }
   ],
   "noisy_comparison_group_count": 48,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_count": 30,
   "phasewrap_positional_advantage_group_count": 21,
   "phasewrap_strict_advantage_group_count": 14,

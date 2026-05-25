@@ -154,7 +154,7 @@ def run_stage29_audit(
                 "production transformer superiority",
                 "full transformer-scale validation",
                 "broad quantum advantage",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "interpretation": (

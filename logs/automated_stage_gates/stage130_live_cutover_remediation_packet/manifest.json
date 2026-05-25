@@ -19,7 +19,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Complete the provider remediation actions, rerun the listed stages, and only then proceed to guarded live provider runner execution for authorized providers.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_count": 2,
   "provider_credentials_required": true,
   "remediation_packet_path": "logs/automated_stage_gates/stage130_live_cutover_remediation_packet/remediation_packet.md",

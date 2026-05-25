@@ -5,7 +5,7 @@
       "real hardware submission",
       "provider credential validation",
       "a noisy-hardware robustness result",
-      "a replicated PhaseWrap-RoPE advantage claim"
+      "a replicated PhaseWrap advantage claim"
     ],
     "supported": [
       "a deterministic intake check for filled Stage 107 independent-window evidence",
@@ -21,7 +21,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Fill each selected Stage 107 window with real calibration evidence, Stage 101 pass results, packet execution counts, and Stage 103 metric outputs; rerun this validator before Stage 105 aggregation.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_scope": "all",
   "ready_window_count": 0,

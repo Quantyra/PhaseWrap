@@ -1,7 +1,7 @@
 # QRoPE Stage 131 - SDK Factory Contract Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 131 freezes provider-specific SDK live-client factory contracts for IBM Runtime and Amazon Braket while preserving the current no-submission boundary.

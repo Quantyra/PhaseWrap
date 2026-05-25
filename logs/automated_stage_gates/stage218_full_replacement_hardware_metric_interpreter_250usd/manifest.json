@@ -24,7 +24,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Update the manuscript with the full-run calibration, metric interpretation, and bounded claim conclusion.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_template_count": 20,
   "pass_fail_policy": {
     "minimum_scaled_best_positional_margin_shot_quanta": 2.0,

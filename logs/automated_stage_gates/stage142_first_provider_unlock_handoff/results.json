@@ -29,7 +29,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Fill the first-provider local environment outside git, rerun Stage 142/140, then follow the listed rerun commands before any Stage 133 live runner command.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "prepared_job_count": 328,
   "priority_score": 1,
   "provider_credentials_required": true,

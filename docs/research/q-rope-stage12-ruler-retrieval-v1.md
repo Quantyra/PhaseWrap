@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 12 RULER-Style Retrieval Benchmark v1
+# PhaseWrap Stage 12 RULER-Style Retrieval Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 12 adds a stricter no-credential retrieval benchmark for the RoPE-replacement research lane. Unlike the Stage 8 phase-cued packet, the Stage 12 targets are selected by explicit retrieval rules and RNG offsets, not by maximizing the PhaseWrap score.
 
-This is still a local deterministic positional-scoring benchmark, not a production language-model benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is still a local deterministic positional-scoring benchmark, not a production language-model benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -47,7 +47,7 @@ All methods receive the same content signal and differ only in positional scorin
 | `phasewrap_rope_8_12` | 240 | 128-1024 | 0.020833 | 0.004167-0.041667 | 0.156865 | 0.138768-0.177360 | 0.039606 | 9.387500 |
 | `alibi` | 240 | 128-1024 | 0.000000 | 0.000000-0.000000 | 0.199182 | 0.184235-0.214622 | 0.077402 | 8.466667 |
 
-On this exact-offset retrieval packet, the RoPE-like and sinusoidal baselines solve the task, while `phasewrap_rope_8_12` does not. The benchmark therefore strengthens the evidence boundary: PhaseWrap-RoPE remains a RoPE-facing research hypothesis, not a validated replacement.
+On this exact-offset retrieval packet, the RoPE-like and sinusoidal baselines solve the task, while `phasewrap_rope_8_12` does not. The benchmark therefore strengthens the evidence boundary: PhaseWrap remains a RoPE-facing research hypothesis, not a validated replacement.
 
 ## Non-Phase-Cued Diagnostic
 
@@ -58,7 +58,7 @@ The packet records the fraction of rows where the explicit task target is also t
 Supported:
 
 - deterministic local retrieval comparison where targets are not defined by PhaseWrap score;
-- matched scoring-rule comparison across PhaseWrap-RoPE, RoPE-like, ALiBI-like, sinusoidal, and no-position baselines;
+- matched scoring-rule comparison across PhaseWrap, RoPE-like, ALiBI-like, sinusoidal, and no-position baselines;
 - bootstrap intervals over top-1, MRR, and target probability mass;
 - evidence that exact-offset retrieval currently favors RoPE-like/sinusoidal behavior over the fixed 8/12 PhaseWrap score.
 
@@ -68,7 +68,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

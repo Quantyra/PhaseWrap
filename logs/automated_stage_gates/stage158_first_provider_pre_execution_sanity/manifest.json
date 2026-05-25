@@ -23,7 +23,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Only after explicit approval, execute the authorized Stage 133 live-submit commands whose Stage 158 records are ready; after execution, rerun Stage 115 with provider_scope=ibm_runtime.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "ready_record_count": 2,
   "record_count": 2,
   "result_path": "logs/automated_stage_gates/stage158_first_provider_pre_execution_sanity/results.json",

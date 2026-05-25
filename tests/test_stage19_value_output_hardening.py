@@ -43,7 +43,7 @@ def test_run_stage19_benchmark_is_complete() -> None:
     assert result["attention_mode"] == "teacher_forced_target_attention"
     assert {row["split"] for row in result["table"]} == {"train", "validation", "test"}
     assert result["best_config_by_test_top1_mrr"] == "test_adam_embed8"
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage19_outputs_are_written_without_params(tmp_path) -> None:

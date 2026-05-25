@@ -25,7 +25,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Populate selected Stage 107 packet execution counts via Stage 113 assembly and pass per-window Stage 101 calibration, then rerun this evaluator before any auditability advantage wording.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_scope": "all",
   "ready_window_count": 0,

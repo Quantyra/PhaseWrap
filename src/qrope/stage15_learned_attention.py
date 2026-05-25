@@ -264,7 +264,7 @@ def run_stage15_benchmark(
         "task": {
             "description": "Learned attention scorer over Stage 14 non-phase-cued key-value readout rows.",
             "target_construction": "Targets are explicit retrieval-rule value tokens, not PhaseWrap-selected positions.",
-            "note": "This is a compact learned attention-readout benchmark, not a full decoder-only transformer or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This is a compact learned attention-readout benchmark, not a full decoder-only transformer or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
@@ -277,7 +277,7 @@ def run_stage15_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "training_records": training_records,

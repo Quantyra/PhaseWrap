@@ -13,7 +13,7 @@ DEFAULT_STAGE179_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage179_current_ibm_hardwar
 DEFAULT_STAGE180_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage180_existing_surface_reopen_screen" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage181_fixed_width_target_redesign_plan"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

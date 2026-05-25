@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE replication ledger v1
+# PhaseWrap replication ledger v1
 
 Status: `FULL_IBM_REPLACEMENT_AND_PROVIDER_AWARE_BRAKET_CX_RECORDED`
 
@@ -115,4 +115,4 @@ A replication lane becomes publishable only after it contains:
 
 ## Publication rule
 
-Do not describe PhaseWrap-RoPE as cross-backend robust, cross-date replicated, or entanglement-validated until the relevant lane changes from blocked/planned to completed with raw counts and verifier output. Negative or inconclusive replications should be published in this ledger rather than hidden.
+Do not describe PhaseWrap as cross-backend robust, cross-date replicated, or entanglement-validated until the relevant lane changes from blocked/planned to completed with raw counts and verifier output. Negative or inconclusive replications should be published in this ledger rather than hidden.

@@ -307,7 +307,7 @@ def run_needle_benchmark(
         },
         "claim_boundary": {
             "supported": [
-                "A deterministic local Needle-style retrieval comparison across PhaseWrap-RoPE, RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules.",
+                "A deterministic local Needle-style retrieval comparison across PhaseWrap, RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules.",
                 "A period-pair ablation over the same synthetic packet.",
                 "Bootstrap intervals over benchmark rows for ranking metrics.",
             ],

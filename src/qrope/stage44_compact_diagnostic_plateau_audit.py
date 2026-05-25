@@ -192,7 +192,7 @@ def run_stage44_audit(
             "excluded": [
                 "production transformer superiority",
                 "full transformer-scale validation",
-                "a claim that PhaseWrap-RoPE replaces RoPE",
+                "a claim that PhaseWrap replaces RoPE",
                 "broad quantum advantage",
                 "a claim that additional compact copy-path diagnostics should expand the claim boundary",
             ],

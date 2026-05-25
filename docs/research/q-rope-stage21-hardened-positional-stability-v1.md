@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 21 Hardened Positional Stability v1
+# PhaseWrap Stage 21 Hardened Positional Stability v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 21 reruns the Stage 20 hardened positional value-model benchmark across five learned-parameter initialization seeds. It tests whether the Stage 20 held-out ordering is stable or only a single-initialization artifact.
 
-This is a local multi-initialization stability benchmark. It is not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local multi-initialization stability benchmark. It is not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

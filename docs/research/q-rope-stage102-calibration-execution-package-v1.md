@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 102 Calibration Execution Package v1
+# PhaseWrap Stage 102 Calibration Execution Package v1
 
 Date: `2026-05-21`
 

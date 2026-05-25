@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 45 Matched Decoder-Only Gate v1
+# PhaseWrap Stage 45 Matched Decoder-Only Gate v1
 
 Date: `2026-05-21`
 
@@ -81,5 +81,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that Stage 45 is a reliable positional-method discriminator when the one-block decoder remains near chance.

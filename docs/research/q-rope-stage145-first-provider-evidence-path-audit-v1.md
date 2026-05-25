@@ -1,7 +1,7 @@
 # QRoPE Stage 145 - First Provider Evidence Path Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 145 audits the IBM-first evidence path that follows authorized provider execution. It also adds provider-scoped options to the non-submitting collection and evaluation entrypoints so the IBM Runtime windows can be collected and evaluated without requiring Amazon Braket result shards first.

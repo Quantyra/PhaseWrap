@@ -1,4 +1,4 @@
-"""PhaseWrap-RoPE public package surface."""
+"""PhaseWrap public package surface."""
 
 from .scoring import (
     DEFAULT_PERIOD_PAIR,

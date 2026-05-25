@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 98 Noisy Hardware Robustness Goal Audit v1
+# PhaseWrap Stage 98 Noisy Hardware Robustness Goal Audit v1
 
 Date: `2026-05-21`
 
@@ -10,7 +10,7 @@ Stage 98 opens a separate noisy-hardware readout-robustness track.
 
 Goal:
 
-> Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+> Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 This is not a transformer-performance goal. It is a hardware score/readout robustness goal.
 
@@ -50,7 +50,7 @@ The right research question is:
 
 The wrong research question is:
 
-> Does noisy quantum hardware make PhaseWrap-RoPE better for language models?
+> Does noisy quantum hardware make PhaseWrap better for language models?
 
 Stage 98 keeps those separated.
 
@@ -64,7 +64,7 @@ Supported:
 
 Excluded:
 
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that noisy quantum hardware improves language models;
 - a claim that Stage 4 already proves general noisy-hardware robustness;
 - provider-wide bitstring-order validation without known-state calibration counts;

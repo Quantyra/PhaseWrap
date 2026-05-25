@@ -1,7 +1,7 @@
 # QRoPE Stage 132 - Guarded SDK Factory Implementation Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 132 verifies that IBM Runtime and Amazon Braket SDK factories are now implemented as guarded adapter boundaries, while current live execution remains blocked by readiness and cutover gates.

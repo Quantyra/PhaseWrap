@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 66 Positional-Copy Expert Audit v1
+# PhaseWrap Stage 66 Positional-Copy Expert Audit v1
 
 Date: `2026-05-21`
 
@@ -68,6 +68,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that a direct positional-copy expert is full decoder-only language-model validation;
 - a claim that Stage 66 is positional-method promotion evidence.

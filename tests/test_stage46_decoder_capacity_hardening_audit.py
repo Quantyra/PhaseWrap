@@ -18,7 +18,7 @@ def test_stage46_blocked_result_is_machine_readable() -> None:
     assert result["no_hardware_submission"] is True
     assert result["provider_credentials_required"] is False
     assert result["method_names"] == list(METHOD_NAMES)
-    assert "a claim that PhaseWrap-RoPE replaces RoPE" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap replaces RoPE" in result["claim_boundary"]["excluded"]
 
 
 def test_stage46_smoke_audit_reports_capacity_decision() -> None:

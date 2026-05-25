@@ -58,7 +58,7 @@ def test_stage33_benchmark_and_outputs(tmp_path) -> None:
     assert "selected_temperature_mean" in result["table"][0]
     assert "delta_target_probability_mean" in result["table"][0]
     assert "uncalibrated_mean_target_probability" in result["run_table"][0]
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
     paths = write_stage33_outputs(result, tmp_path)
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))

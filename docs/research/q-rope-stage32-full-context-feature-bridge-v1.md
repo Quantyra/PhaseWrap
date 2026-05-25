@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 32 Full-Context Feature-Bridge Benchmark v1
+# PhaseWrap Stage 32 Full-Context Feature-Bridge Benchmark v1
 
 Date: `2026-05-20`
 
@@ -56,7 +56,7 @@ On the default artifact, `rope_relative`, `phasewrap_distance_adapter`, and `pha
 
 Stage 32 shows that the Stage 31 full-prefix failure was not inevitable for PhaseWrap-derived features: a nonlinear full-context feature bridge recovers argmax retrieval for PhaseWrap distance and multiscale adapters.
 
-The result remains bounded. It is still a compact feature bridge, not a full decoder-only language-model benchmark. It does not establish that PhaseWrap-RoPE replaces RoPE because RoPE-like scoring keeps stronger target probability and calibration on the same held-out rows.
+The result remains bounded. It is still a compact feature bridge, not a full decoder-only language-model benchmark. It does not establish that PhaseWrap replaces RoPE because RoPE-like scoring keeps stronger target probability and calibration on the same held-out rows.
 
 ## Claim Boundary
 
@@ -72,4 +72,4 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- a claim that PhaseWrap-RoPE is a validated RoPE replacement.
+- a claim that PhaseWrap is a validated RoPE replacement.

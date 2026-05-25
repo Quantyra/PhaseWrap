@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 103 Robustness Metric Preregistration v1
+# PhaseWrap Stage 103 Robustness Metric Preregistration v1
 
 Date: `2026-05-21`
 

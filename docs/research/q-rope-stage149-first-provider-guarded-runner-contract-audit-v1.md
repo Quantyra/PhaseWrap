@@ -1,7 +1,7 @@
 # QRoPE Stage 149 - First Provider Guarded Runner Contract Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 149 audits the IBM Runtime guarded runner contract with synthetic injected submitters. It does not submit hardware jobs, create live provider SDK clients, record credentials, or write real provider result records.

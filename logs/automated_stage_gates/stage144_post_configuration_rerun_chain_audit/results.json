@@ -24,7 +24,7 @@
   "next_command": "",
   "next_gate": "Fill first-provider local env outside git, rerun the reported command chain, and execute only Stage 133 commands that later report command_authorized=true.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "ready_transition_count": 9,
   "rerun_commands": [

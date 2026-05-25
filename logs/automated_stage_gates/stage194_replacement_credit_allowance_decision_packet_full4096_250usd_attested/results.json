@@ -91,7 +91,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Have the user verify IBM credit, billing plan, Runtime allowance, and willingness to spend within the local budget cap; if verified, rerun Stage194 with human_credit_allowance_verified=true before exact approval review.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "queue_depth_cap": 25,
   "queue_depth_within_cap": true,

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 50 Learned Pointer-Generator Decoder Audit v1
+# PhaseWrap Stage 50 Learned Pointer-Generator Decoder Audit v1
 
 Date: `2026-05-21`
 
@@ -89,5 +89,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that Stage 49 or Stage 50 solves free learned value generation.

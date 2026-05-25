@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 17 Small Decoder Value-Model Benchmark v1
+# PhaseWrap Stage 17 Small Decoder Value-Model Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 17 moves one step closer to a decoder-style model by adding learned candidate value embeddings and a learned output projection. The benchmark keeps the Stage 14 non-phase-cued key-value rows, but target value recovery must now pass through learned embeddings rather than direct attention mass.
 
-This is a compact learned readout, not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a compact learned readout, not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

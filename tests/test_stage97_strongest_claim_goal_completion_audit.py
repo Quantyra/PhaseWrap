@@ -15,12 +15,12 @@ def _write_stage96(root) -> None:
         "decision": {"headline_intervals_present": True},
         "missing_source_artifacts": [],
         "claim_card": {
-            "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule.",
+            "strongest_honest_claim": "PhaseWrap is a compact, auditable phase-wrap positional scoring rule.",
             "supported_evidence": [{"source": "a"}, {"source": "b"}, {"source": "c"}, {"source": "d"}],
             "failure_modes": [{"stage": "a"}, {"stage": "b"}, {"stage": "c"}, {"stage": "d"}],
             "unsupported_claims": [
-                "PhaseWrap-RoPE replaces RoPE.",
-                "PhaseWrap-RoPE is better than RoPE under current fair matched transformer comparisons.",
+                "PhaseWrap replaces RoPE.",
+                "PhaseWrap is better than RoPE under current fair matched transformer comparisons.",
                 "Bounded hardware/readout witnesses establish production language-model quality gains.",
             ],
             "promotion_gate_status": {

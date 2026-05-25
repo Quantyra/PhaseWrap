@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 78 Support Coverage Split Audit v1
+# PhaseWrap Stage 78 Support Coverage Split Audit v1
 
 Date: `2026-05-21`
 
@@ -52,7 +52,7 @@ Stage 78 explains the Stage 77 support failure as a split-coverage failure under
 
 This also explains why Stage 74 and Stage 75 could recover phase-cued retrieval from cross-seed rows while Stage 76 and Stage 77 could not preserve that recovery under same-seed integrated training. Cross-seed and pooled train support sources have full held-out support coverage, but the same-seed train source has none.
 
-The result does not promote PhaseWrap-RoPE. It narrows the failure mode: the next useful decoder experiment must either use a support-complete same-seed exposure design or deliberately test extrapolation to unseen support classes with a model capable of representing that extrapolation.
+The result does not promote PhaseWrap. It narrows the failure mode: the next useful decoder experiment must either use a support-complete same-seed exposure design or deliberately test extrapolation to unseen support classes with a model capable of representing that extrapolation.
 
 ## Claim Boundary
 
@@ -67,7 +67,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that support coverage alone validates a matched decoder-only transformer;
 - a claim that cross-seed support availability is positional-method promotion evidence.
 

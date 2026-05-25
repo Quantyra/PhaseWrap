@@ -31,7 +31,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Resolve IBM credit/provider state with the user. Only after a final human GO and exact approval phrase, execute the locked IBM run, collect provider results, and run the validated post-result sequence through Stage138.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_results_missing": true,
   "ready_stage_count": 7,

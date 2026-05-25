@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE roadmap
+# PhaseWrap roadmap
 
 Status: `negative_results_publication_roadmap`
 

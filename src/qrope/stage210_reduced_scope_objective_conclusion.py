@@ -99,7 +99,7 @@ def run_stage210_reduced_scope_objective_conclusion(
         decision = "REDUCED_SCOPE_OBJECTIVE_CONCLUSION_BLOCKED_OR_NOT_SUPPORTED"
 
     supported_claim = (
-        "Under the preregistered reduced-precision fixed-width protocol on IBM ibm_fez, PhaseWrap-RoPE's compact "
+        "Under the preregistered reduced-precision fixed-width protocol on IBM ibm_fez, PhaseWrap's compact "
         "phase-wrap positional score showed lower normalized noise sensitivity than matched RoPE-like, sinusoidal-like, "
         "ALIBI-like, and matched nonzero null-control encodings across two seeds and two circuit templates."
         if objective_supported

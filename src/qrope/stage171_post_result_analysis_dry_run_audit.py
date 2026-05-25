@@ -13,7 +13,7 @@ DEFAULT_STAGE170_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage170_ibm_hardware_pause_
 DEFAULT_SCRIPT_ROOT = Path("scripts")
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage171_post_result_analysis_dry_run_audit"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

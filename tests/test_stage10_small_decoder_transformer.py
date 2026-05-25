@@ -21,7 +21,7 @@ def test_stage10_blocked_result_is_machine_readable() -> None:
     assert result["no_hardware_submission"] is True
     assert result["provider_credentials_required"] is False
     assert result["method_names"] == list(METHOD_NAMES)
-    assert "proof that PhaseWrap-RoPE replaces RoPE" in result["claim_boundary"]["excluded"]
+    assert "proof that PhaseWrap replaces RoPE" in result["claim_boundary"]["excluded"]
 
 
 def test_stage10_preflight_reports_completed_or_blocked() -> None:

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Negative Results Publication Roadmap v1
+# PhaseWrap Negative Results Publication Roadmap v1
 
 Status: `NEGATIVE_RESULTS_PUBLICATION_TRACK`
 
@@ -10,7 +10,7 @@ Essential paper draft: [On the Difficulty of Isolating Positional Contributions 
 
 ## Decision
 
-The PhaseWrap-RoPE replacement line is closed as a positive-result research program. The repository should be published as a negative-results and methodology package, not as a RoPE-replacement, transformer-improvement, or quantum-advantage claim.
+The PhaseWrap replacement line is closed as a positive-result research program. The repository should be published as a negative-results and methodology package, not as a RoPE-replacement, transformer-improvement, or quantum-advantage claim.
 
 The central publication value is that the project records where a compact fixed-period positional score fails, how assistance pipelines can mask positional-method specificity, and which reproducibility practices made those conclusions auditable.
 
@@ -38,8 +38,8 @@ Assistance pipelines can repair retrieval tasks without isolating the positional
 
 Excluded claims:
 
-- PhaseWrap-RoPE improves production transformers.
-- PhaseWrap-RoPE replaces RoPE.
+- PhaseWrap improves production transformers.
+- PhaseWrap replaces RoPE.
 - Support-routed recovery is PhaseWrap-specific.
 
 ### 2. Optional Note: Evidence Hygiene for Small Quantum-ML Claims
@@ -83,7 +83,7 @@ Primary evidence:
 
 Main claim:
 
-The fixed PhaseWrap-RoPE score is a compact periodic feature with a small exact Fourier representation. This explains why it is easy to audit and why it is structurally limited as a unique long-context address.
+The fixed PhaseWrap score is a compact periodic feature with a small exact Fourier representation. This explains why it is easy to audit and why it is structurally limited as a unique long-context address.
 
 Excluded claims:
 

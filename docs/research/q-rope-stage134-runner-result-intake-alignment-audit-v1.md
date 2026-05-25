@@ -1,7 +1,7 @@
 # QRoPE Stage 134 - Runner Result Intake Alignment Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 134 verifies that Stage 133 live-submit command output paths align with Stage 115 provider result collector shard paths.

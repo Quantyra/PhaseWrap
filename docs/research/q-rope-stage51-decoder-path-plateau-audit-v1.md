@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 51 Decoder-Path Plateau Audit v1
+# PhaseWrap Stage 51 Decoder-Path Plateau Audit v1
 
 Date: `2026-05-21`
 
@@ -69,5 +69,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that the Stage 49 fixed-copy repair solves learned retrieval generation.

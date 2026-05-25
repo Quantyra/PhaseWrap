@@ -36,7 +36,7 @@ Best phase-cued test support accuracy: `0.716667`.
 
 Stage 84 establishes train capacity but does not repair held-out retrieval generalization. In-decoder support supervision improves the diagnostic strength versus standalone routing heads, but the decoder still does not learn the held-out support-to-token routing rule.
 
-The strongest honest claim remains bounded. Stage 84 does not support PhaseWrap-RoPE as a RoPE replacement, does not validate a production language model, and does not support positional-method promotion.
+The strongest honest claim remains bounded. Stage 84 does not support PhaseWrap as a RoPE replacement, does not validate a production language model, and does not support positional-method promotion.
 
 ## Next Gate
 

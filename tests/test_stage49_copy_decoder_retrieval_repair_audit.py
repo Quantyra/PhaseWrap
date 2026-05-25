@@ -41,7 +41,7 @@ def test_stage49_audit_reports_retrieval_repair_decision() -> None:
         "COPY_DECODER_PARTIALLY_REPAIRS_RETRIEVAL",
         "COPY_DECODER_RETRIEVAL_REPAIR_FAILED",
     }
-    assert "a claim that PhaseWrap-RoPE replaces RoPE" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap replaces RoPE" in result["claim_boundary"]["excluded"]
 
 
 def test_stage49_outputs_are_written(tmp_path) -> None:

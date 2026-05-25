@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 9 Trained Transformer Ablation Plan v1
+# PhaseWrap Stage 9 Trained Transformer Ablation Plan v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Status: `first_executable_subset_complete`
 
 ## Purpose
 
-Stage 9 is the next evidence milestone for the RoPE-replacement research lane. Its goal is to test PhaseWrap-RoPE inside trained small decoder-only transformers where the only intended experimental variable is the positional mechanism.
+Stage 9 is the next evidence milestone for the RoPE-replacement research lane. Its goal is to test PhaseWrap inside trained small decoder-only transformers where the only intended experimental variable is the positional mechanism.
 
 Stage 9 is not a hardware experiment. It should run without quantum-provider credentials.
 
@@ -26,7 +26,7 @@ The current executable subset supports only narrower statements: on the syntheti
 
 Stage 9 must not be reported as:
 
-- proof that PhaseWrap-RoPE replaces RoPE;
+- proof that PhaseWrap replaces RoPE;
 - production language-model superiority;
 - broad context-length generalization;
 - quantum advantage;
@@ -158,4 +158,4 @@ The current Stage 10 result is near chance across the tested phase-cued retrieva
 
 ## Promotion Gate
 
-Stage 9 can promote PhaseWrap-RoPE from "worth testing in broader RoPE-facing settings" to "competitive in the tested small trained-transformer setting" only if PhaseWrap variants are competitive against RoPE, ALiBI, sinusoidal, and no-position baselines under matched training controls across multiple seeds and at least one task whose target is not constructed from the PhaseWrap formula.
+Stage 9 can promote PhaseWrap from "worth testing in broader RoPE-facing settings" to "competitive in the tested small trained-transformer setting" only if PhaseWrap variants are competitive against RoPE, ALiBI, sinusoidal, and no-position baselines under matched training controls across multiple seeds and at least one task whose target is not constructed from the PhaseWrap formula.

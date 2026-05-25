@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 87 In-Decoder Support-Routed Copy Expert Audit v1
+# PhaseWrap Stage 87 In-Decoder Support-Routed Copy Expert Audit v1
 
 Date: `2026-05-21`
 
@@ -62,7 +62,7 @@ Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that a structural support-routed copy expert is standard free decoder-only language modeling;
 - a claim that support-routed expert success is positional-method promotion evidence when no-position also solves;
 - broad quantum advantage.

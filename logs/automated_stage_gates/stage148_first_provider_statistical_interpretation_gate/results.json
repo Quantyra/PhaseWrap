@@ -206,7 +206,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After IBM Runtime evidence is assembled, rerun per-window Stage 101 and Stage 103, then rerun this gate before any Stage 110 or Stage 138 advantage wording.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_scope": "ibm_runtime",
   "ready_calibration_record_count": 0,

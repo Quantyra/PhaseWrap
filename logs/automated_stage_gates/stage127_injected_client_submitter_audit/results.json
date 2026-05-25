@@ -18,7 +18,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Replace injected fake clients with guarded provider SDK clients after Stage 106/111 readiness clears, preserving the same plan-to-client-to-normalizer-to-Stage114-record path.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "provider_records": [
     {

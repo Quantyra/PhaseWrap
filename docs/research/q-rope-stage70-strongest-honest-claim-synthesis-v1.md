@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 70 Strongest Honest Claim Synthesis v1
+# PhaseWrap Stage 70 Strongest Honest Claim Synthesis v1
 
 Date: `2026-05-21`
 
@@ -6,7 +6,7 @@ Status: `completed`
 
 ## Purpose
 
-Stage 70 is a synthesis checkpoint for the active north-star goal: find the strongest honest claim PhaseWrap-RoPE can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons while preserving both positive evidence and failure modes.
+Stage 70 is a synthesis checkpoint for the active north-star goal: find the strongest honest claim PhaseWrap can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons while preserving both positive evidence and failure modes.
 
 It does not train another model. It reads the current stage manifests and documented source artifacts, then emits a machine-readable claim boundary.
 
@@ -28,7 +28,7 @@ Stage 70 records `BOUND_STRONGEST_HONEST_CLAIM_WITH_RETRIEVAL_FAILURES`.
 
 The generated strongest honest claim is:
 
-> PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Stage 96 packages this as a claim card to reduce publication-facing over-read risk. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.
+> PhaseWrap is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Stage 96 packages this as a claim card to reduce publication-facing over-read risk. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.
 
 The refreshed synthesis loads source manifests through Stage 96 with no missing source artifacts. It also preserves the key positive and negative evidence:
 
@@ -51,9 +51,9 @@ The refreshed synthesis loads source manifests through Stage 96 with no missing 
 
 ## Interpretation
 
-Stage 70 keeps the current posture bounded. PhaseWrap-RoPE remains RoPE-adjacent in mechanism shape because it is a phase/position scoring rule, but the current fair-comparison evidence does not justify a RoPE-replacement claim.
+Stage 70 keeps the current posture bounded. PhaseWrap remains RoPE-adjacent in mechanism shape because it is a phase/position scoring rule, but the current fair-comparison evidence does not justify a RoPE-replacement claim.
 
-The strongest defensible position is that PhaseWrap-RoPE is compact, auditable, and worth continued controlled study. The unsupported position is that it is already better than RoPE in matched transformer settings.
+The strongest defensible position is that PhaseWrap is compact, auditable, and worth continued controlled study. The unsupported position is that it is already better than RoPE in matched transformer settings.
 
 ## Claim Boundary
 
@@ -68,8 +68,8 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
-- a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings;
+- a claim that PhaseWrap replaces RoPE;
+- a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings;
 - a claim that content-key row redesign success is positional-method promotion evidence.
 
 ## Next Gate

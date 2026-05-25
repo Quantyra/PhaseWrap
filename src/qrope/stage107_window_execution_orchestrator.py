@@ -13,7 +13,7 @@ DEFAULT_STAGE105_WINDOWS = DEFAULT_ARTIFACT_ROOT / "stage105_independent_rerun_p
 DEFAULT_STAGE106_MANIFEST = DEFAULT_ARTIFACT_ROOT / "stage106_hardware_execution_preflight" / "manifest.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage107_window_execution_orchestrator"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

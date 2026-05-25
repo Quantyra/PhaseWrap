@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 75 Learned Query Support Head Audit v1
+# PhaseWrap Stage 75 Learned Query Support Head Audit v1
 
 Date: `2026-05-21`
 
@@ -42,7 +42,7 @@ Mean held-out phase-cued support-head accuracy is `1.000000`. No runs failed.
 
 Stage 75 is a real improvement over Stage 74's deterministic support lookup: the visible query cue can be learned by a small support classifier under leave-one-seed evaluation.
 
-The result still does not promote PhaseWrap-RoPE as a positional method. `no_position` reaches the same `0.900000` phase-cued top-1 as the PhaseWrap variants, and the learned component is a standalone support head feeding a deterministic copy readout rather than a matched decoder-only transformer.
+The result still does not promote PhaseWrap as a positional method. `no_position` reaches the same `0.900000` phase-cued top-1 as the PhaseWrap variants, and the learned component is a standalone support head feeding a deterministic copy readout rather than a matched decoder-only transformer.
 
 The honest positive claim is narrower: the original phase-cued row family contains a visible cue that a learned support head can internalize across seeds. The next promotion-relevant step is to integrate that recovery into a matched decoder-only model and preserve the same fair baselines.
 
@@ -59,7 +59,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that a standalone query-support head is a matched decoder-only transformer;
 - a claim that learned visible-cue recovery is positional-method promotion evidence when `no_position` solves too.
 

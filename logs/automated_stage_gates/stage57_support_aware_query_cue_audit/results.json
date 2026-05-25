@@ -1301,7 +1301,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that the known reference-delta support prior is a standard decoder-only transformer capability",
       "a claim that this deterministic cue-copy diagnostic is positional-method promotion evidence",
       "broad quantum advantage"
@@ -6560,7 +6560,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that explicit row metadata is a standard decoder-only input feature",
       "a claim that this upper bound is positional-method promotion evidence",
       "broad quantum advantage"

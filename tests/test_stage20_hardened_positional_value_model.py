@@ -38,7 +38,7 @@ def test_run_stage20_benchmark_is_complete() -> None:
     assert set(result["method_names"]) == {"no_position", "phasewrap_distance_adapter"}
     assert {row["split"] for row in result["table"]} == {"train", "validation", "test"}
     assert result["best_method_by_test_top1_mrr"] in {"no_position", "phasewrap_distance_adapter"}
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage20_outputs_are_written_without_params(tmp_path) -> None:

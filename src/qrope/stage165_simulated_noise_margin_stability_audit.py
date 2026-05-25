@@ -12,7 +12,7 @@ DEFAULT_STAGE153_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage153_simulated_noise_reh
 DEFAULT_STAGE154_RESULTS = DEFAULT_ARTIFACT_ROOT / "stage154_simulated_hardware_go_no_go" / "results.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage165_simulated_noise_margin_stability_audit"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

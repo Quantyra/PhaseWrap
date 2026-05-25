@@ -3631,7 +3631,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After IBM cutover and Stage 133 authorization, provider result records must preserve these job IDs, target evidence paths, Stage 114 result fields, and backend metadata fields provider, backend, window_id, job_kind before Stage 115 collection.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_job_count": 320,
   "provider_credentials_required": false,
   "ready_job_count": 328,

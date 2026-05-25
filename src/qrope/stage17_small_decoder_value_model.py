@@ -266,7 +266,7 @@ def run_stage17_benchmark(
         "task": {
             "description": "Small decoder-style value-token retrieval with learned candidate value embeddings and learned output projection.",
             "target_construction": "Targets are explicit retrieval-rule value tokens, not PhaseWrap-selected positions.",
-            "note": "This is a compact learned readout, not a production transformer benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This is a compact learned readout, not a production transformer benchmark or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
@@ -278,7 +278,7 @@ def run_stage17_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "training_records": training_records,

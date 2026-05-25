@@ -1,7 +1,7 @@
 # QRoPE Stage 138 - Objective Claim Gate
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 138 is the terminal objective-level claim gate for the noisy-hardware track. It keeps the robustness and auditability rules separate, then combines them only at the final wording boundary:

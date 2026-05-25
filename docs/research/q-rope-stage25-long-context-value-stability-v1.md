@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 25 Long-Context Value Stability v1
+# PhaseWrap Stage 25 Long-Context Value Stability v1
 
 Date: `2026-05-20`
 
@@ -57,7 +57,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

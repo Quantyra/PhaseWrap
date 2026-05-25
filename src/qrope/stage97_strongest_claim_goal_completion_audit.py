@@ -12,7 +12,7 @@ STAGE97_SCHEMA_VERSION = "qrope_stage97_strongest_claim_goal_completion_audit_v1
 DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage97_strongest_claim_goal_completion_audit"
 OBJECTIVE = (
-    "Find the strongest honest claim PhaseWrap-RoPE can support under fair "
+    "Find the strongest honest claim PhaseWrap can support under fair "
     "RoPE/ALiBI/sinusoidal/no-position comparisons, preserving both positive evidence and failure modes."
 )
 
@@ -25,8 +25,8 @@ def _claim_boundary() -> dict[str, list[str]]:
             "A completion decision for the research-claim boundary objective, not a promotion decision.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
-            "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+            "a claim that PhaseWrap replaces RoPE",
+            "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
             "a claim that the promotion gate is satisfied",
             "production transformer superiority",
             "full transformer-scale validation",
@@ -73,7 +73,7 @@ def _requirement_rows(stage96: dict[str, Any] | None, missing_source_artifacts: 
         },
         {
             "requirement": "strongest_honest_claim_present",
-            "status": "passed" if isinstance(strongest_claim, str) and "PhaseWrap-RoPE is a compact" in strongest_claim else "failed",
+            "status": "passed" if isinstance(strongest_claim, str) and "PhaseWrap is a compact" in strongest_claim else "failed",
             "evidence": strongest_claim or "No strongest claim text found.",
         },
         {

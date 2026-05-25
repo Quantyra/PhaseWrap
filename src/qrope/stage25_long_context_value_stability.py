@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import csv
 import json
@@ -125,7 +125,7 @@ def run_stage25_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "run_records": run_records,

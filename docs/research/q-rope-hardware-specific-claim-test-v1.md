@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Hardware-Specific Claim Test v1
+# PhaseWrap Hardware-Specific Claim Test v1
 
 Date: `2026-05-23`
 

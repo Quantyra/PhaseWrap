@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 13 Positional-Adapter Benchmark v1
+# PhaseWrap Stage 13 Positional-Adapter Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 13 tests whether a trained PhaseWrap-derived positional adapter can close the Stage 12 non-phase-cued retrieval gap. It reuses the Stage 12 passkey, multi-needle, and aggregation-style packet, trains on short contexts, and evaluates on held-out length-1024 rows.
 
-This is a local positional-adapter benchmark. It is not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local positional-adapter benchmark. It is not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -71,7 +71,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

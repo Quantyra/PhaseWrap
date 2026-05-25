@@ -29,7 +29,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Restore IBM token, instance, and backend environment variables, then perform a replacement-scoped read-only backend refresh and human credit/billing/Runtime allowance check before any exact live-run approval is considered.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "prior_backend_lookup_ready": true,
   "provider_credentials_required": true,
   "read_only_backend_lookup_attempted": false,

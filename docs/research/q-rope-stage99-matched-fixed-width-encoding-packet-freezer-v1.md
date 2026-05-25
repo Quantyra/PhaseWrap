@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 99 Matched Fixed-Width Encoding Packet Freezer v1
+# PhaseWrap Stage 99 Matched Fixed-Width Encoding Packet Freezer v1
 
 Date: `2026-05-21`
 
@@ -10,7 +10,7 @@ Stage 99 closes the first missing protocol gate from Stage 98 by freezing matche
 
 Goal:
 
-> Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+> Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 Stage 99 does not run hardware. It defines the matched packet surface that must exist before hardware execution can be treated as a fair PhaseWrap-vs-comparator robustness test.
 
@@ -64,7 +64,7 @@ Stage 99 is a setup result, not a hardware result.
 
 It supports the claim that the noisy-hardware track now has frozen matched fixed-width product-state packet specs for PhaseWrap, RoPE-like, sinusoidal-like, ALIBI-like, and no-position/control families.
 
-It does not support a claim that PhaseWrap-RoPE is more robust on hardware. That requires executing these packets after known-state bitstring calibration and then comparing measured readout stability under the declared fixed-width protocol.
+It does not support a claim that PhaseWrap is more robust on hardware. That requires executing these packets after known-state bitstring calibration and then comparing measured readout stability under the declared fixed-width protocol.
 
 ## Claim Boundary
 
@@ -77,7 +77,7 @@ Supported:
 Excluded:
 
 - a noisy-hardware robustness result;
-- a claim that PhaseWrap-RoPE outperforms RoPE on hardware;
+- a claim that PhaseWrap outperforms RoPE on hardware;
 - a transformer-performance claim;
 - provider bitstring-order validation;
 - independent backend/date/calibration robustness.

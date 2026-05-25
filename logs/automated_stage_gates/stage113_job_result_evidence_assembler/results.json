@@ -8562,7 +8562,7 @@
   ],
   "next_gate": "Produce provider_job_results.jsonl for every selected Stage 112 job through Stage 115, rerun this assembler with --write-evidence, then run Stage 101, Stage 103, Stage 109, and Stage 110 in order.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_result_count": 0,
   "provider_scope": "ibm_runtime",

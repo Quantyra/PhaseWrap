@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 57 Support-Aware Query-Cue Audit v1
+# PhaseWrap Stage 57 Support-Aware Query-Cue Audit v1
 
 Date: `2026-05-21`
 
@@ -69,6 +69,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that the known reference-delta support prior is a standard decoder-only transformer capability;
 - a claim that this deterministic cue-copy diagnostic is positional-method promotion evidence.

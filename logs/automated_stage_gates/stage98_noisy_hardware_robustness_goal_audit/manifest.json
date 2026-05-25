@@ -1,7 +1,7 @@
 {
   "claim_boundary": {
     "excluded": [
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that noisy quantum hardware improves language models",
       "a claim that Stage 4 already proves general noisy-hardware robustness",
       "provider-wide bitstring-order validation without known-state calibration counts",
@@ -30,7 +30,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Freeze matched two-qubit positional-score encoding packets for PhaseWrap, RoPE-like, sinusoidal-like, ALIBI-like, and no-position/control families before any new hardware execution.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "result_path": "logs/automated_stage_gates/stage98_noisy_hardware_robustness_goal_audit/results.json",
   "schema_version": "qrope_stage98_noisy_hardware_robustness_goal_audit_v1",

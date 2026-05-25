@@ -33,7 +33,7 @@ def test_run_stage17_benchmark_is_complete() -> None:
     assert [row["method"] for row in result["table"]] == list(METHOD_NAMES)
     assert result["best_method_by_top1_mrr"] in METHOD_NAMES
     assert result["model"]["type"] == "single_attention_readout_with_learned_value_embeddings_and_output_projection"
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage17_outputs_are_written(tmp_path) -> None:

@@ -5,7 +5,7 @@
       "production transformer superiority",
       "full transformer-scale validation",
       "broad quantum advantage",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic period-pair audit over non-phase-cued retrieval rows.",

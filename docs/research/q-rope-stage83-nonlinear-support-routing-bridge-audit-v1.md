@@ -38,7 +38,7 @@ Stage 83 preserves support recovery and raises phase-cued target probability ver
 
 This sharpens the current blocker. The issue is no longer support-label recovery, and it is not solved merely by soft support probabilities or a small nonlinear per-position bridge. The remaining blocker is learning the support-to-token routing rule from standard training signals in a stronger matched decoder path.
 
-The strongest honest claim remains bounded. Stage 83 does not support PhaseWrap-RoPE as a RoPE replacement, does not validate a matched decoder-only transformer, and does not support positional-method promotion.
+The strongest honest claim remains bounded. Stage 83 does not support PhaseWrap as a RoPE replacement, does not validate a matched decoder-only transformer, and does not support positional-method promotion.
 
 ## Next Gate
 

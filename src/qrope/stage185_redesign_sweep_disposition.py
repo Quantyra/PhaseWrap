@@ -152,7 +152,7 @@ def run_stage185_redesign_sweep_disposition(
             "excluded": [
                 "hardware job submission",
                 "a final noisy-hardware robustness or auditability conclusion",
-                "a proof that PhaseWrap-RoPE cannot show value under any future target, control, backend, or calibration model",
+                "a proof that PhaseWrap cannot show value under any future target, control, backend, or calibration model",
                 "credit, billing, or provider-account validation",
             ],
         },

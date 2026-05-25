@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE external release plan v1
+# PhaseWrap external release plan v1
 
 Status: `NEGATIVE_RESULTS_PUBLICATION_TRACK`
 
@@ -34,7 +34,7 @@ Blocking items:
 
 Recommended action:
 
-- Create an OSF project for PhaseWrap-RoPE negative results.
+- Create an OSF project for PhaseWrap negative results.
 - Upload the evidence package, figures, Stage 4 packet files, Stage216-218 full IBM Fez replacement artifacts, Stage 11 score-theory artifacts, Stage 70 synthesis artifacts, Stage 80/81 support-routing artifacts, and repository snapshot.
 - Link the OSF project from README after public posting.
 
@@ -60,7 +60,7 @@ Prepared artifact:
 
 Current GitHub release:
 
-- `https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
+- `https://github.com/Quantyra/PhaseWrap/releases/tag/v0.3.0-negative-results`
 - Repository visibility at publication time: `PRIVATE`
 
 Blocking items:

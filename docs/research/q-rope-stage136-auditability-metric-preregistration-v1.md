@@ -1,7 +1,7 @@
 # QRoPE Stage 136 - Auditability Metric Preregistration
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 136 preregisters the auditability branch of the hardware goal. It validates that the Stage 99 product-state and Stage 100 CX/parity packets carry the row-level trace fields needed to evaluate auditability after hardware counts are available, and that each provider/lane/template group preserves the same fixed-width comparator surface used by the robustness branch.

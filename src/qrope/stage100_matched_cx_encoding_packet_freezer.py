@@ -175,7 +175,7 @@ def run_stage100_freezer(
             ],
             "excluded": [
                 "a noisy-hardware robustness result",
-                "a claim that PhaseWrap-RoPE outperforms RoPE on hardware",
+                "a claim that PhaseWrap outperforms RoPE on hardware",
                 "a transformer-performance claim",
                 "provider bitstring-order validation",
                 "independent backend/date/calibration robustness",

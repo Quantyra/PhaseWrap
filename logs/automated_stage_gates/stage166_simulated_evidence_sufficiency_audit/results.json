@@ -24,7 +24,7 @@
   "missing_source_artifacts": [],
   "next_gate": "For a targeted hardware probe, pause and resolve IBM credit/provider state together before live execution. For a broader simulated claim, add independent seeds/noise models before hardware spend.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "product_lane_count": 3,
   "product_lanes": [
     "braket_product_seed2718_rows8_shots1000",

@@ -19,7 +19,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Clear Stage 111 provider readiness and Stage 129 cutover authorization, then execute only Stage 133 authorized command records and collect their result files through Stage 115.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "ready_runner_count": 2,
   "result_path": "logs/automated_stage_gates/stage116_provider_runner_plan/results.json",

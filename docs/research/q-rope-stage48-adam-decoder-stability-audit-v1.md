@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 48 Adam Decoder Stability Audit v1
+# PhaseWrap Stage 48 Adam Decoder Stability Audit v1
 
 Date: `2026-05-21`
 
@@ -59,7 +59,7 @@ This supports a more precise boundary:
 
 - PhaseWrap-derived methods remain viable enough to keep in the fair comparison set.
 - The one-seed Stage 47 PhaseWrap lead should not be cited as stable.
-- The current matched one-block decoder evidence does not promote PhaseWrap-RoPE over RoPE-like or no-position baselines.
+- The current matched one-block decoder evidence does not promote PhaseWrap over RoPE-like or no-position baselines.
 
 ## Claim Boundary
 
@@ -75,5 +75,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that the Stage 47 one-seed PhaseWrap tiny text-fact QA lead is stable.

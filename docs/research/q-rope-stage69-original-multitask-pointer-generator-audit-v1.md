@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 69 Original Multitask Pointer-Generator Audit v1
+# PhaseWrap Stage 69 Original Multitask Pointer-Generator Audit v1
 
 Date: `2026-05-21`
 
@@ -48,7 +48,7 @@ Stage 69 is negative evidence for simple original-task multitask training as the
 
 The result preserves capacity and the tiny text-fact QA positive, but original held-out retrieval remains far below the `0.500000` generalization threshold. Shared training across the original Stage 10 tasks is therefore not enough to repair the phase-cued/exact-offset retrieval blocker.
 
-This keeps the current claim boundary unchanged: PhaseWrap-RoPE has useful compact and diagnostic evidence, but no fair matched decoder result yet supports a RoPE-replacement or positional-method promotion claim.
+This keeps the current claim boundary unchanged: PhaseWrap has useful compact and diagnostic evidence, but no fair matched decoder result yet supports a RoPE-replacement or positional-method promotion claim.
 
 ## Claim Boundary
 
@@ -64,6 +64,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that original multitask training is equivalent to a larger decoder-only language model;
 - a claim that Stage 69 is positional-method promotion evidence.

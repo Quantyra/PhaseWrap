@@ -507,7 +507,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After Stage 101 calibration passes, execute all Stage 99 and Stage 100 matched packets, fill every Stage 104 template with canonical q0q1 row counts and metadata, then rerun Stage 103 with --execution-dir.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "required_circuit_templates": [
     "two_ry_product_state_z_readout_v1",

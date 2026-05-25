@@ -38,7 +38,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After Stage200 credit attestation and Stage201 exact approval are both accepted, build a reduced-scope 2048-shot execution package and result-ingestion contract. This Stage202 review does not authorize direct hardware submission.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "preparation_items": [
     {
       "description": "Live-runner preparation is disallowed until Stage201 records exact reduced-scope approval after credit attestation.",

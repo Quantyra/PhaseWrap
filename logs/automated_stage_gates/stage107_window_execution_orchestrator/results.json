@@ -16,7 +16,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Clear Stage 106, then use the Stage 107 window execution plans to run calibration, matched packet execution, and metric recomputation for each Stage 105 independent window.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_count": 2,
   "provider_credentials_required": true,
   "schema_version": "qrope_stage107_window_execution_orchestrator_v1",

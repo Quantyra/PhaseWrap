@@ -18,7 +18,7 @@
   "next_gate": "If expanded simulation is supportive, keep the IBM run scoped as a targeted probe and resolve credit/provider state before hardware. If not, add real frozen source seeds before live spend.",
   "no_hardware_submission": true,
   "noise_model_count": 9,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "result_path": "logs/automated_stage_gates/stage167_expanded_simulated_seed_stress_audit/results.json",
   "row_count_per_seed": 16,

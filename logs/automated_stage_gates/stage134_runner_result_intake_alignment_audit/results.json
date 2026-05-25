@@ -134,7 +134,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Execute only Stage 133 authorized commands, rerun Stage 115 with --write-stage113-input after result shards are complete, then rerun this audit before Stage 113 --write-evidence.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "ready_intake_count": 0,
   "runner_count": 4,

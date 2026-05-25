@@ -154,7 +154,7 @@ def run_stage51_audit(
             "excluded": [
                 "production transformer superiority",
                 "full transformer-scale validation",
-                "a claim that PhaseWrap-RoPE replaces RoPE",
+                "a claim that PhaseWrap replaces RoPE",
                 "broad quantum advantage",
                 "a claim that the Stage 49 fixed-copy repair solves learned retrieval generation",
             ],

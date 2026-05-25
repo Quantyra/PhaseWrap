@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 106 Hardware Execution Preflight v1
+# PhaseWrap Stage 106 Hardware Execution Preflight v1
 
 Date: `2026-05-21`
 

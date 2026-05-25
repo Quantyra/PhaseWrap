@@ -6,7 +6,7 @@
       "full transformer-scale validation",
       "broad quantum advantage",
       "general cross-backend robustness",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic capacity and optimization hardening probe for the Stage 17 and Stage 18 learned value-output bottleneck.",

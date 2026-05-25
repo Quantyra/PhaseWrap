@@ -28,7 +28,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Pause for the exact approval phrase before any Stage 133 live-submit command. After live execution, rerun Stage 115, Stage 113, Stage 101, Stage 103, and the claim gates against collected IBM results.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "qiskit_sdk_ready": true,
   "result_path": "logs/automated_stage_gates/stage159_first_provider_backend_preflight/results.json",
   "runnable_commands_recorded": false,

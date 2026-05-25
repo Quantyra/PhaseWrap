@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 4 Classical Compute Cost Estimate v1
+# PhaseWrap Stage 4 Classical Compute Cost Estimate v1
 
 Date: `2026-05-20`
 

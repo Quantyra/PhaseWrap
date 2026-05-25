@@ -1,8 +1,8 @@
 {
   "claim_boundary": {
     "excluded": [
-      "a claim that PhaseWrap-RoPE replaces RoPE",
-      "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+      "a claim that PhaseWrap replaces RoPE",
+      "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
       "a claim that content-key row redesign success is positional-method promotion evidence",
       "production transformer superiority",
       "full transformer-scale validation",
@@ -15,7 +15,7 @@
     ]
   },
   "decision": {
-    "claim_boundary": "The strongest honest claim remains bounded: PhaseWrap-RoPE has compact/auditable evidence and mixed diagnostics, while fair matched original retrieval does not yet support RoPE replacement.",
+    "claim_boundary": "The strongest honest claim remains bounded: PhaseWrap has compact/auditable evidence and mixed diagnostics, while fair matched original retrieval does not yet support RoPE replacement.",
     "content_key_all_method_success": true,
     "decision": "BOUND_STRONGEST_HONEST_CLAIM_WITH_RETRIEVAL_FAILURES",
     "generalization_top1_threshold": 0.5,
@@ -704,7 +704,7 @@
   "source_stage": "stage96_claim_card_audit",
   "stage": "stage70_strongest_honest_claim_synthesis",
   "status": "completed",
-  "strongest_honest_claim": "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Stage 96 packages this as a claim card to reduce publication-facing over-read risk. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
+  "strongest_honest_claim": "PhaseWrap is a compact, auditable phase-wrap positional scoring rule with reproducible hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. Stage 93 bounds the current toy pointer-generator lane as insufficient for free held-out original retrieval. Stage 94 confirms the predeclared promotion gate is still unmet because the current evidence lacks a free learned PhaseWrap-led original-retrieval solve. Stage 95 surfaces confidence intervals for selected headline structural positives and free learned failures without changing that boundary. Stage 96 packages this as a claim card to reduce publication-facing over-read risk. Structural copy-expert compositions can repair phase-cued and exact-offset retrieval, but they are method-nonspecific or not PhaseWrap-led, so fair matched decoder/pointer-generator audits do not yet support RoPE replacement or positional-method promotion.",
   "tasks": [
     "phase_cued_retrieval",
     "exact_offset_passkey",
@@ -712,8 +712,8 @@
     "tiny_text_fact_qa"
   ],
   "unsupported_claims": [
-    "PhaseWrap-RoPE replaces RoPE.",
-    "PhaseWrap-RoPE is better than RoPE under current fair matched transformer comparisons.",
+    "PhaseWrap replaces RoPE.",
+    "PhaseWrap is better than RoPE under current fair matched transformer comparisons.",
     "Content-key retrieval success is PhaseWrap-specific evidence.",
     "Tiny-text QA gains establish original retrieval generalization.",
     "Bounded hardware/readout witnesses establish production language-model quality gains."

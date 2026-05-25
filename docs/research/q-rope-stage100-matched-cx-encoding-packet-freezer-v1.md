@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 100 Matched CX Encoding Packet Freezer v1
+# PhaseWrap Stage 100 Matched CX Encoding Packet Freezer v1
 
 Date: `2026-05-21`
 
@@ -74,7 +74,7 @@ Supported:
 Excluded:
 
 - a noisy-hardware robustness result;
-- a claim that PhaseWrap-RoPE outperforms RoPE on hardware;
+- a claim that PhaseWrap outperforms RoPE on hardware;
 - a transformer-performance claim;
 - provider bitstring-order validation;
 - independent backend/date/calibration robustness.

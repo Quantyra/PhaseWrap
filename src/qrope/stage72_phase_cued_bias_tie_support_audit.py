@@ -39,7 +39,7 @@ def _claim_boundary() -> dict[str, list[str]]:
         "excluded": [
             "production transformer superiority",
             "full transformer-scale validation",
-            "a claim that PhaseWrap-RoPE replaces RoPE",
+            "a claim that PhaseWrap replaces RoPE",
             "a claim that tie-aware support is learned decoder-only transformer behavior",
             "a claim that no-position all-support ambiguity is positional-method evidence",
             "broad quantum advantage",

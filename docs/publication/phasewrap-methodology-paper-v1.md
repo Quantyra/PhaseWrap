@@ -4,7 +4,7 @@ Status: `METHODOLOGY_PAPER_DRAFT_V1`
 
 Date: `2026-05-25`
 
-Repository: `PhaseWrap-RoPE`
+Repository: `PhaseWrap`
 
 ## Abstract
 

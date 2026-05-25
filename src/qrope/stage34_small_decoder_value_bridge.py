@@ -453,7 +453,7 @@ def run_stage34_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "training_records": training_records,

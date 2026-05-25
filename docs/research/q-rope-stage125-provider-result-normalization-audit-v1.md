@@ -1,7 +1,7 @@
 # QRoPE Stage 125 - Provider Result Normalization Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 125 adds provider result-count normalizers for IBM Runtime and Amazon Braket and audits sample provider result shapes into canonical Stage 114-compatible counts.

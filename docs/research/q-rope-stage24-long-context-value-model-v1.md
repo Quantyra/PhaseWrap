@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 24 Long-Context Value Model v1
+# PhaseWrap Stage 24 Long-Context Value Model v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 24 adds a compact learned value-retrieval model on the explicit long-context rows introduced in Stage 22. It uses learned positional attention, learned value embeddings, and an output projection. The split is train on `512` and `1024` token contexts, validate on `2048`, and test on `4096`.
 
-Targets remain explicit passkey, multi-needle, and aggregation rules. They are not selected by the PhaseWrap score. This is a deterministic local compact retrieval model, not a full transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+Targets remain explicit passkey, multi-needle, and aggregation rules. They are not selected by the PhaseWrap score. This is a deterministic local compact retrieval model, not a full transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -57,7 +57,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

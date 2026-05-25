@@ -1,7 +1,7 @@
 # QRoPE Stage 123 - Provider Submission Plan Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 123 adds provider-specific submission-plan builders for IBM Runtime and Amazon Braket and audits that every Stage 118 payload maps to a deterministic no-submit SDK plan.

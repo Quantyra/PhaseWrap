@@ -122,8 +122,8 @@ def _claim_boundary() -> dict[str, list[str]]:
             "A reviewer gate for deciding whether the next step should be stronger matched transformer evidence.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
-            "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+            "a claim that PhaseWrap replaces RoPE",
+            "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
             "a claim that content-key row redesign success is positional-method promotion evidence",
             "production transformer superiority",
             "full transformer-scale validation",
@@ -434,7 +434,7 @@ def _decision(manifests: list[dict[str, Any]], missing_source_artifacts: list[st
         boundary = "At least one original-retrieval fair-comparison artifact generalizes both retrieval tasks with PhaseWrap leading; review before updating claims."
     elif _stage67_all_method_success(manifests) and not _promotion_review_supported(manifests):
         decision = "BOUND_STRONGEST_HONEST_CLAIM_WITH_RETRIEVAL_FAILURES"
-        boundary = "The strongest honest claim remains bounded: PhaseWrap-RoPE has compact/auditable evidence and mixed diagnostics, while fair matched original retrieval does not yet support RoPE replacement."
+        boundary = "The strongest honest claim remains bounded: PhaseWrap has compact/auditable evidence and mixed diagnostics, while fair matched original retrieval does not yet support RoPE replacement."
     else:
         decision = "BOUND_STRONGEST_HONEST_CLAIM_INCOMPLETE_EVIDENCE"
         boundary = "The synthesis is bounded, but key source artifacts are incomplete or insufficient for the fuller evidence summary."
@@ -467,7 +467,7 @@ def run_stage70_synthesis(
         "tasks": list(ORIGINAL_RETRIEVAL_TASKS) + ["content_key_retrieval", "tiny_text_fact_qa"],
         "claim_boundary": _claim_boundary(),
         "strongest_honest_claim": (
-            "PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible "
+            "PhaseWrap is a compact, auditable phase-wrap positional scoring rule with reproducible "
             "hardware/readout witnesses and mixed toy/diagnostic downstream evidence. Hard and soft "
             "support-routing diagnostics show the row family can be solved, but learned scalar, nonlinear, "
             "in-decoder support-supervised, dual support/target-attention, practical budget-sensitivity, structural-teacher distillation, added-depth teacher-distillation, length-curriculum, and direct support-binding routes still fail free held-out support-to-token retrieval. "
@@ -479,8 +479,8 @@ def run_stage70_synthesis(
             "do not yet support RoPE replacement or positional-method promotion."
         ),
         "unsupported_claims": [
-            "PhaseWrap-RoPE replaces RoPE.",
-            "PhaseWrap-RoPE is better than RoPE under current fair matched transformer comparisons.",
+            "PhaseWrap replaces RoPE.",
+            "PhaseWrap is better than RoPE under current fair matched transformer comparisons.",
             "Content-key retrieval success is PhaseWrap-specific evidence.",
             "Tiny-text QA gains establish original retrieval generalization.",
             "Bounded hardware/readout witnesses establish production language-model quality gains.",

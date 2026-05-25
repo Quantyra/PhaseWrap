@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 72 Phase-Cued Bias Tie-Support Audit v1
+# PhaseWrap Stage 72 Phase-Cued Bias Tie-Support Audit v1
 
 Date: `2026-05-21`
 
@@ -63,7 +63,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that tie-aware support is learned decoder-only transformer behavior;
 - a claim that no-position all-support ambiguity is positional-method evidence.
 

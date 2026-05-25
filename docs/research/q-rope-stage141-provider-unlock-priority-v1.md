@@ -1,7 +1,7 @@
 # QRoPE Stage 141 - Provider Unlock Priority
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 141 prioritizes the first provider unlock path using non-secret Stage 139 and Stage 140 evidence. It also preserves any Stage 140 Stage139-context blockers so a provider cannot be treated as ready for preflight rerun when the action-checklist source is stale or missing runner context.

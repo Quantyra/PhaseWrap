@@ -24,7 +24,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Collect Runtime job results, populate Stage203 raw counts, run calibration validation, then recompute robustness and auditability metrics.",
   "no_hardware_submission": false,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "runnable_commands_recorded": false,
   "schema_version": "qrope_stage205_reduced_scope_hardware_submission_v1",

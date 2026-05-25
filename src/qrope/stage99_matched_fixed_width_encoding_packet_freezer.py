@@ -26,7 +26,7 @@ ENCODING_FAMILIES: tuple[str, ...] = (
     "no_position_control",
 )
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )
@@ -240,7 +240,7 @@ def run_stage99_freezer(
             ],
             "excluded": [
                 "a noisy-hardware robustness result",
-                "a claim that PhaseWrap-RoPE outperforms RoPE on hardware",
+                "a claim that PhaseWrap outperforms RoPE on hardware",
                 "a transformer-performance claim",
                 "provider bitstring-order validation",
                 "independent backend/date/calibration robustness",

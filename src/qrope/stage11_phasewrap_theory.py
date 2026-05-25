@@ -247,14 +247,14 @@ def run_phasewrap_theory_analysis(
             ],
             "excluded": [
                 "a proof that 8/12 is globally optimal",
-                "evidence that PhaseWrap-RoPE replaces RoPE in production transformers",
+                "evidence that PhaseWrap replaces RoPE in production transformers",
                 "quantum advantage",
                 "general cross-backend robustness",
             ],
         },
         "interpretation": (
             "Stage 11 strengthens the mathematical audit trail for the fixed score. It also narrows the claim: "
-            "PhaseWrap-RoPE is a compact periodic positional scoring rule whose aliases and classical feature equivalent "
+            "PhaseWrap is a compact periodic positional scoring rule whose aliases and classical feature equivalent "
             "must be considered before making transformer-replacement claims."
         ),
     }

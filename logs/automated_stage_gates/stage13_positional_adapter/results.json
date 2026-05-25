@@ -6,7 +6,7 @@
       "full transformer-scale validation",
       "broad quantum advantage",
       "general cross-backend robustness",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic train-short/test-long comparison of positional feature adapters on non-phase-cued retrieval rows.",
@@ -271,7 +271,7 @@
   ],
   "task": {
     "description": "Train-short/test-long positional-adapter benchmark on the Stage 12 non-phase-cued retrieval packet.",
-    "note": "This is a compact positional-adapter experiment, not a production transformer benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+    "note": "This is a compact positional-adapter experiment, not a production transformer benchmark or proof that PhaseWrap replaces RoPE.",
     "target_construction": "Targets are inherited from Stage 12 explicit retrieval rules, not from PhaseWrap score maximization."
   },
   "task_names": [

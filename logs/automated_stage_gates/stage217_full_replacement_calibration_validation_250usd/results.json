@@ -17,7 +17,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Apply the inferred bitstring order to full 4096-shot packet counts and compute hardware metrics.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "order_records": [
     {
       "minimum_wilson95_lower_bound": 0.0,

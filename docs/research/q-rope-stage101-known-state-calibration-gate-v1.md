@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 101 Known-State Calibration Gate v1
+# PhaseWrap Stage 101 Known-State Calibration Gate v1
 
 Date: `2026-05-21`
 

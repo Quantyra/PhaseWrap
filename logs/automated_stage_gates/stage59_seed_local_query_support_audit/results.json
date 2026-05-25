@@ -1301,7 +1301,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that a seed-local lookup map is a matched decoder-only transformer",
       "a claim that this deterministic cue-copy diagnostic is positional-method promotion evidence",
       "broad quantum advantage"

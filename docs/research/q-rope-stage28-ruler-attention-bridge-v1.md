@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 28 RULER-Style Attention-Bridge Benchmark v1
+# PhaseWrap Stage 28 RULER-Style Attention-Bridge Benchmark v1
 
 Date: `2026-05-20`
 
@@ -8,7 +8,7 @@ Status: `complete`
 
 Stage 28 moves the roadmap one step closer to standard retrieval evidence. It trains a one-hidden-layer attention bridge directly on the Stage 12 non-phase-cued passkey, multi-needle, and aggregation-style retrieval rows across five deterministic model initialization seeds.
 
-Targets are selected by explicit retrieval rules, not by the PhaseWrap score. The benchmark is still compact: it is not a full decoder-only language-model benchmark and does not prove that PhaseWrap-RoPE replaces RoPE.
+Targets are selected by explicit retrieval rules, not by the PhaseWrap score. The benchmark is still compact: it is not a full decoder-only language-model benchmark and does not prove that PhaseWrap replaces RoPE.
 
 ## Command
 
@@ -55,7 +55,7 @@ Not supported:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - quantum advantage or hardware-model advantage.
 
 ## Next Step

@@ -68,7 +68,7 @@ def test_stage44_audit_declares_compact_plateau(tmp_path: Path) -> None:
     assert result["source_stages"] == list(stage_names)
     assert result["decision"]["decision"] == "BOUND_COMPACT_DIAGNOSTIC_PLATEAU"
     assert result["decision"]["final_stage_rope_strongest_on_ranking_and_probability"] is True
-    assert "a claim that PhaseWrap-RoPE replaces RoPE" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap replaces RoPE" in result["claim_boundary"]["excluded"]
 
 
 def test_stage44_outputs_are_written(tmp_path: Path) -> None:

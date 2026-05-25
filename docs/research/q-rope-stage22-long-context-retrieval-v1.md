@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 22 Long-Context Retrieval v1
+# PhaseWrap Stage 22 Long-Context Retrieval v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 22 extends the Stage 12 local RULER-style retrieval packet to longer contexts: `512`, `1024`, `2048`, and `4096` tokens. The target rules remain explicit passkey, multi-needle, and aggregation rules. Targets are not selected by the PhaseWrap score.
 
-This is a deterministic no-credential positional-scoring benchmark. It is not a trained language-model benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a deterministic no-credential positional-scoring benchmark. It is not a trained language-model benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

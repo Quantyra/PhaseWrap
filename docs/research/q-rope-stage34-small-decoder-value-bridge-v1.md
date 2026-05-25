@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 34 Small Decoder Value Bridge v1
+# PhaseWrap Stage 34 Small Decoder Value Bridge v1
 
 Date: `2026-05-20`
 
@@ -71,4 +71,4 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- a claim that PhaseWrap-RoPE is a validated RoPE replacement.
+- a claim that PhaseWrap is a validated RoPE replacement.

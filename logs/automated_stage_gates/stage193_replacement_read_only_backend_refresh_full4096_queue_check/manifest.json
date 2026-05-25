@@ -29,7 +29,7 @@
   "missing_source_artifacts": [],
   "next_gate": "If read-only backend refresh succeeds, resolve IBM credit/billing/Runtime allowance with the user, then require the exact replacement approval phrase before any live execution runner is prepared.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "qiskit_sdk_ready": true,
   "result_path": "logs/automated_stage_gates/stage193_replacement_read_only_backend_refresh_full4096_queue_check/results.json",

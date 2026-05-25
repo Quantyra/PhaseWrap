@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 27 Compact KV Transformer-Bridge Benchmark v1
+# PhaseWrap Stage 27 Compact KV Transformer-Bridge Benchmark v1
 
 Date: `2026-05-20`
 
@@ -10,7 +10,7 @@ Stage 27 is a no-credential benchmark increment toward the next transformer mile
 
 The target is not selected by the PhaseWrap score. For each row, the target is the latest candidate whose content key matches the query key. This keeps the benchmark aligned with the RoPE-facing roadmap while staying small enough to run locally without provider credentials or external datasets.
 
-Stage 27 is not a full decoder-only language-model benchmark and does not prove that PhaseWrap-RoPE replaces RoPE.
+Stage 27 is not a full decoder-only language-model benchmark and does not prove that PhaseWrap replaces RoPE.
 
 ## Command
 
@@ -49,7 +49,7 @@ Stage 27 is constructive evidence for the PhaseWrap-plus-distance adapter shape 
 - it is a compact attention bridge, not a full transformer;
 - it is a deterministic local benchmark, not hardware evidence;
 - it does not establish production transformer superiority;
-- it does not establish that PhaseWrap-RoPE replaces RoPE.
+- it does not establish that PhaseWrap replaces RoPE.
 
 ## Next Step
 

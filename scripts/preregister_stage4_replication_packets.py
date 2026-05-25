@@ -95,7 +95,7 @@ def _env_for_lane(lane: dict[str, Any]) -> dict[str, str]:
         "QROPE_HARDWARE_SHOT_COUNT": str(lane["shots"]),
         "QROPE_HARDWARE_BUDGET_USD_CAP": "0",
         "QROPE_HARDWARE_ESTIMATED_COST_USD": "0",
-        "QROPE_BRAKET_OUTPUT_S3_PREFIX": f"phasewrap-rope/preregistered/{lane['lane_id']}",
+        "QROPE_BRAKET_OUTPUT_S3_PREFIX": f"phasewrap/preregistered/{lane['lane_id']}",
     }
     if lane["provider"] == "amazon_braket":
         env.update(

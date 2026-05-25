@@ -1,18 +1,18 @@
-# PhaseWrap-RoPE
+# PhaseWrap
 
-[![CI](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/PhaseWrap-RoPE/actions/workflows/ci.yml)
-[![Open verification in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantyra/PhaseWrap-RoPE/blob/main/docs/notebooks/phasewrap_rope_verify.ipynb)
+[![CI](https://github.com/Quantyra/PhaseWrap/actions/workflows/ci.yml/badge.svg)](https://github.com/Quantyra/PhaseWrap/actions/workflows/ci.yml)
+[![Open verification in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantyra/PhaseWrap/blob/main/docs/notebooks/phasewrap_verify.ipynb)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20306786.svg)](https://doi.org/10.5281/zenodo.20306786)
 
-PhaseWrap-RoPE is Quantyra's negative-results research repository for a phase-wrap positional scoring rule, retrieval-benchmark diagnostics, and two-qubit hardware readout audit infrastructure.
+PhaseWrap is Quantyra's negative-results research repository for a phase-wrap positional scoring rule, retrieval-benchmark diagnostics, and two-qubit hardware readout audit infrastructure.
 
-This repository is intended for open scientific review of what the PhaseWrap-RoPE line did and did not support. The positive replacement thesis is closed: the evidence does not support RoPE replacement, production transformer superiority, quantum advantage, entanglement-based advantage, or broad cross-backend robustness.
+This repository is intended for open scientific review of what the PhaseWrap line did and did not support. The positive replacement thesis is closed: the evidence does not support RoPE replacement, production transformer superiority, quantum advantage, entanglement-based advantage, or broad cross-backend robustness.
 
-Repository naming note: public materials use `PhaseWrap-RoPE`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem.
+Repository naming note: public materials use `PhaseWrap`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem.
 
 ## Reviewer Fast Path
 
-**Main conclusion:** fixed-period PhaseWrap-RoPE should be published as negative results and methodology, not as a positional-encoding replacement claim.
+**Main conclusion:** fixed-period PhaseWrap should be published as negative results and methodology, not as a positional-encoding replacement claim.
 
 **Not claimed:** the repository does not prove RoPE replacement, production transformer superiority, quantum advantage, entanglement-based advantage, or broad cross-backend robustness.
 
@@ -47,7 +47,7 @@ Expected output: `PUBLICATION_PACKAGE_VERIFY_PASS`.
 
 ## Why This Matters in 60 Seconds
 
-PhaseWrap-RoPE turns relative-position offsets into two wrapped residual margins, one mod 8 and one mod 12, then multiplies them into a compact score used throughout the repository as `SQR`. That score is small enough to characterize classically, cheap enough to test against RoPE/ALiBI/sinusoidal/no-position baselines, and structured enough to map into two-qubit readout witnesses using `RY` angle encodings with optional `CX` parity readout.
+PhaseWrap turns relative-position offsets into two wrapped residual margins, one mod 8 and one mod 12, then multiplies them into a compact score used throughout the repository as `SQR`. That score is small enough to characterize classically, cheap enough to test against RoPE/ALiBI/sinusoidal/no-position baselines, and structured enough to map into two-qubit readout witnesses using `RY` angle encodings with optional `CX` parity readout.
 
 The current contribution is the negative evidence and audit discipline around that idea: frozen packets, raw counts, backend metadata, known-state calibration, offline verifiers, bounded hardware witness results, and failed retrieval/promotional gates are all kept together. The result is a falsifiable negative-results repo, not a broad positional-encoding victory lap.
 
@@ -91,13 +91,13 @@ Start here:
 - Execution audit: [PhaseWrap decision execution audit](docs/publication/phasewrap-decision-execution-audit-v1.md)
 - Methodology paper draft: [On the Difficulty of Isolating Positional Contributions in Retrieval Benchmarks](docs/publication/phasewrap-methodology-paper-v1.md)
 - Prepared release notes: [v0.3.0-negative-results](docs/publication/release-notes-v0.3.0-negative-results.md)
-- Documentation landing page: [PhaseWrap-RoPE documentation](docs/index.md)
+- Documentation landing page: [PhaseWrap documentation](docs/index.md)
 - Negative-results publication roadmap: [Negative results publication roadmap](docs/publication/negative-results-publication-roadmap-v1.md)
 - Zenodo concept DOI: [10.5281/zenodo.20306786](https://doi.org/10.5281/zenodo.20306786)
 - One-page reviewer summary: [Quickstart and results summary](docs/publication/quickstart-results-summary-v1.md)
 - Scoring API reference: [qrope.scoring API](docs/api/scoring.md)
 - Reproducible review environment: [Reproducible environment](docs/reproducible-environment.md)
-- One-cell verification notebook: [Open in Colab](https://colab.research.google.com/github/Quantyra/PhaseWrap-RoPE/blob/main/docs/notebooks/phasewrap_rope_verify.ipynb)
+- One-cell verification notebook: [Open in Colab](https://colab.research.google.com/github/Quantyra/PhaseWrap/blob/main/docs/notebooks/phasewrap_verify.ipynb)
 
 The standalone replacement paper draft has been withdrawn from the current public branch. The current canonical review path is the repository evidence package plus the negative-results publication roadmap: frozen packets, raw counts, verifier scripts, hardware sweep outputs, the full IBM Fez replacement interpretation path, classical baselines, and toy downstream ablations.
 
@@ -210,7 +210,7 @@ python scripts/verify_publication_package.py
 - `Archive DOI`: `10.5281/zenodo.20306786` for the latest bounded evidence release.
 - `License`: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`).
 - `Publication posture`: negative-results publication track; the standalone replacement paper draft is withdrawn from the current public branch and the positive replacement line is closed.
-- `Research-line disposition`: abandon PhaseWrap-RoPE as a positive RoPE-replacement program; publish the failure boundary, assistance-pipeline warning, score theory, and reproducibility infrastructure.
+- `Research-line disposition`: abandon PhaseWrap as a positive RoPE-replacement program; publish the failure boundary, assistance-pipeline warning, score theory, and reproducibility infrastructure.
 - `Current evidence posture`: Stage 4 real-noisy-hardware results for bounded frozen packet/backend/date/calibration contexts, including IBM Fez positives, Amazon Braket/Rigetti product-state positive evidence, and provider-aware Amazon Braket CX positive recomputations from committed raw counts. The full 4096-shot IBM Fez replacement run is also complete: Stages 216-218 merge `21/21` templates, validate `q1q0` calibration, and record `FULL_REPLACEMENT_HARDWARE_POSITIVE_PHASEWRAP_ADVANTAGE`.
 - `Stage 4 cost posture`: local recomputation of the committed Stage 4 sweep is covered by a deterministic classical compute estimate: 4,096 static operations over 163,072 recorded hardware shots, with zero incremental local verifier cost and no provider billing reconstruction.
 - `Stage 4 preregistration posture`: future replication lanes now have no-hardware preregistered row-set artifacts with fixed seeds, families, shots, row counts, and row-set hashes; they are not submitted hardware evidence.
@@ -225,7 +225,7 @@ python scripts/verify_publication_package.py
 
 The public claim frame for this repository is:
 
-- PhaseWrap-RoPE defines phase-wrap residual features using mod-8 and mod-12 structure.
+- PhaseWrap defines phase-wrap residual features using mod-8 and mod-12 structure.
 - The SQR score uses the product of the mod-8 and mod-12 signed margins.
 - The evidence lane includes deterministic frozen-packet validation, raw counts, backend metadata, and offline recomputation.
 - The positive replacement research line is closed; the release is a negative-results and methodology package.
@@ -241,7 +241,7 @@ The public claim frame excludes:
 - broad quantum advantage;
 - full transformer-scale validation;
 - general cross-backend superiority;
-- claims that PhaseWrap-RoPE improves production language-model quality;
+- claims that PhaseWrap improves production language-model quality;
 - claims that one backend/date/calibration result generalizes without additional evidence.
 - claims that support-routed repairs are PhaseWrap-specific when `no_position` solves under the same repair.
 
@@ -259,7 +259,7 @@ The active publication north star is to make the negative results reproducible a
 - [Reproducible review environment](docs/reproducible-environment.md)
 - [Replication plan](docs/publication/replication-plan-v1.md)
 - [External release plan](docs/publication/external-release-plan-v1.md)
-- [PhaseWrap-RoPE method schematic](docs/publication/figures/qrope-method-schematic-v1.svg)
+- [PhaseWrap method schematic](docs/publication/figures/qrope-method-schematic-v1.svg)
 - [Validation pipeline figure](docs/publication/figures/qrope-validation-pipeline-v1.svg)
 - [Stage 4 comparison figure](docs/publication/figures/qrope-stage4-comparison-v1.svg)
 - [Full IBM Fez replacement metrics figure](docs/publication/figures/qrope-full-replacement-metrics-v1.png)
@@ -502,7 +502,7 @@ Run the deterministic Stage 8 local Needle-style benchmark:
 python scripts/run_stage8_needle_benchmark.py
 ```
 
-Stage 8 compares PhaseWrap-RoPE against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules on a phase-cued synthetic retrieval packet across five seeds and context lengths up to 1024. The result supports keeping the RoPE-replacement research lane open, but it is not a RULER score or production transformer result.
+Stage 8 compares PhaseWrap against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules on a phase-cued synthetic retrieval packet across five seeds and context lengths up to 1024. The result supports keeping the RoPE-replacement research lane open, but it is not a RULER score or production transformer result.
 
 Run the deterministic Stage 9 trained positional-attention ablation:
 
@@ -510,7 +510,7 @@ Run the deterministic Stage 9 trained positional-attention ablation:
 python scripts/run_stage9_trained_transformer_ablation.py
 ```
 
-Stage 9 is an executable subset of the trained-transformer plan. It trains matched decoder-style positional attention mechanisms across five seeds, short training contexts, and longer test contexts. On the phase-cued packet, `phasewrap_adapter` has the best mean MRR and top-1 accuracy. On the exact-offset passkey packet whose answer is not selected by the PhaseWrap score, `rope_relative` is strongest. This remains a compact trained positional-attention ablation, not a full language-model benchmark or proof that PhaseWrap-RoPE replaces RoPE.
+Stage 9 is an executable subset of the trained-transformer plan. It trains matched decoder-style positional attention mechanisms across five seeds, short training contexts, and longer test contexts. On the phase-cued packet, `phasewrap_adapter` has the best mean MRR and top-1 accuracy. On the exact-offset passkey packet whose answer is not selected by the PhaseWrap score, `rope_relative` is strongest. This remains a compact trained positional-attention ablation, not a full language-model benchmark or proof that PhaseWrap replaces RoPE.
 
 Run the Stage 10 small decoder-only transformer ablation:
 
@@ -518,7 +518,7 @@ Run the Stage 10 small decoder-only transformer ablation:
 python scripts/run_stage10_small_decoder_transformer.py
 ```
 
-Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; target probabilities are near uniform (`~0.007813`) and the included capacity probe does not show strong training-set fit. The artifact now reports calibration-sensitive metrics, including target-probability MAE, top-1 confidence, and expected calibration error. This is useful as a first full-transformer sanity check, not as evidence that PhaseWrap-RoPE improves transformers.
+Stage 10 trains a small one-block decoder-only single-head transformer with matched seeds, tasks, model shape, optimizer, and epochs. The task set now includes phase-cued retrieval, exact-offset passkey retrieval, and a tiny curated text-fact QA lane. The result is weak and near chance across the tested lanes; target probabilities are near uniform (`~0.007813`) and the included capacity probe does not show strong training-set fit. The artifact now reports calibration-sensitive metrics, including target-probability MAE, top-1 confidence, and expected calibration error. This is useful as a first full-transformer sanity check, not as evidence that PhaseWrap improves transformers.
 
 Run the deterministic Stage 11 score-theory analysis:
 
@@ -526,7 +526,7 @@ Run the deterministic Stage 11 score-theory analysis:
 python scripts/run_stage11_phasewrap_theory.py
 ```
 
-Stage 11 analyzes the fixed 8/12 score directly. It verifies mod-24 periodicity, translation invariance, mirrored aliases, context-length alias growth, period-pair tradeoffs, and exact small Fourier support `[1, 2, 3, 5]` over the mod-24 residue table. This is useful theory evidence for the score, not evidence that PhaseWrap-RoPE replaces RoPE in trained transformers.
+Stage 11 analyzes the fixed 8/12 score directly. It verifies mod-24 periodicity, translation invariance, mirrored aliases, context-length alias growth, period-pair tradeoffs, and exact small Fourier support `[1, 2, 3, 5]` over the mod-24 residue table. This is useful theory evidence for the score, not evidence that PhaseWrap replaces RoPE in trained transformers.
 
 Run the deterministic Stage 12 RULER-style retrieval benchmark:
 
@@ -860,7 +860,7 @@ Coverage XML is uploaded as a workflow artifact. Optional provider SDK tests use
 
 If you cite or discuss this work, use the bounded posture:
 
-> PhaseWrap-RoPE is a phase-wrap positional scoring rule with two-qubit hardware readout and repository-backed deterministic evidence packets, including bounded Stage 4 real-hardware validation records.
+> PhaseWrap is a phase-wrap positional scoring rule with two-qubit hardware readout and repository-backed deterministic evidence packets, including bounded Stage 4 real-hardware validation records.
 
 Do not restate the result as a proof of broad quantum transformer superiority.
 
@@ -873,7 +873,7 @@ The current release is ready for bounded repository/preprint publication. The ne
 | 1 | Attention-scoring benchmark against classical and positional baselines | Complete for the current synthetic task; simple exposed-feature baselines recover the label exactly. |
 | 2 | DOI/preprint release hygiene | Make the current evidence package citable before further experiments change the repository state. |
 | 3 | Toy downstream attention benchmark | Complete for a fixed synthetic packet; Stage 6 is best read as an oracle phase-feature sanity check. |
-| 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap-RoPE has the best argmax ranking, while calibration remains mixed. |
+| 4 | Four-layer toy transformer ablation | Complete for a fixed synthetic length-extrapolation packet; PhaseWrap has the best argmax ranking, while calibration remains mixed. |
 | 5 | Local Needle-style retrieval benchmark | Complete for a phase-cued synthetic packet with five seeds, bootstrap intervals, and a period-pair ablation; use it to justify harder RoPE-facing benchmarks, not production claims. |
 | 6 | Stage 9 trained transformer ablation | Executable subset complete for phase-cued and exact-offset passkey trained positional-attention tasks. Remaining work: full small decoder-only transformer training, non-synthetic retrieval or QA tasks, and richer calibration metrics. |
 | 7 | Stage 10 full transformer ablation | Complete for a very small autograd-backed one-block decoder-only transformer with phase-cued, passkey, and tiny text-fact QA lanes, now with calibration-sensitive metrics. The result is near chance, so the next step is a stronger small-transformer implementation and harder non-synthetic retrieval or QA tasks. |

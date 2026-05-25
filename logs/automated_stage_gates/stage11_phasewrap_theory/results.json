@@ -156,7 +156,7 @@
   "claim_boundary": {
     "excluded": [
       "a proof that 8/12 is globally optimal",
-      "evidence that PhaseWrap-RoPE replaces RoPE in production transformers",
+      "evidence that PhaseWrap replaces RoPE in production transformers",
       "quantum advantage",
       "general cross-backend robustness"
     ],
@@ -252,7 +252,7 @@
     ]
   },
   "fundamental_period": 24,
-  "interpretation": "Stage 11 strengthens the mathematical audit trail for the fixed score. It also narrows the claim: PhaseWrap-RoPE is a compact periodic positional scoring rule whose aliases and classical feature equivalent must be considered before making transformer-replacement claims.",
+  "interpretation": "Stage 11 strengthens the mathematical audit trail for the fixed score. It also narrows the claim: PhaseWrap is a compact periodic positional scoring rule whose aliases and classical feature equivalent must be considered before making transformer-replacement claims.",
   "invariance_checks": {
     "alias_driver": "Scores depend only on the offset difference modulo the least common period and are symmetric under sign reversal. Longer contexts therefore contain repeated and mirrored score aliases.",
     "fundamental_period": 24,

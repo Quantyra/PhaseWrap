@@ -667,7 +667,7 @@ def build_hardware_config(env: dict[str, str] | None = None) -> dict[str, Any]:
         "output_s3_bucket": environ.get("QROPE_BRAKET_OUTPUT_S3_BUCKET", "").strip(),
         "output_s3_key_prefix": environ.get(
             "QROPE_BRAKET_OUTPUT_S3_PREFIX",
-            f"phasewrap-rope/stage4/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
+            f"phasewrap/stage4/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
         ).strip(),
         "budget_cap_usd": budget_cap,
         "estimated_packet_cost_usd": estimated_cost,

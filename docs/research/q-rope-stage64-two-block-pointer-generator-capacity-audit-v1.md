@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 64 Two-Block Pointer-Generator Capacity Audit v1
+# PhaseWrap Stage 64 Two-Block Pointer-Generator Capacity Audit v1
 
 Date: `2026-05-21`
 
@@ -70,6 +70,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that learned pointer-generation is full decoder-only language-model validation;
 - a claim that Stage 64 is positional-method promotion evidence.

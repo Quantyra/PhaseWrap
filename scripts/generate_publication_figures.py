@@ -1,4 +1,4 @@
-"""Generate PhaseWrap-RoPE publication figures from repository evidence files.
+"""Generate PhaseWrap publication figures from repository evidence files.
 
 This script is intentionally read-only with respect to evidence data. It turns
 the frozen Stage 4 packet, evaluation JSON, and replication ledger into
@@ -84,7 +84,7 @@ def draw_circuit(filename: str, *, entangling: bool) -> None:
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
-    title = "PhaseWrap-RoPE entangling CX witness circuit" if entangling else "PhaseWrap-RoPE product-state witness circuit"
+    title = "PhaseWrap entangling CX witness circuit" if entangling else "PhaseWrap product-state witness circuit"
     subtitle = "Circuit parameters shown for the first frozen Stage 4 packet row."
     ax.text(0.02, 0.94, title, ha="left", va="center", fontsize=21, fontweight="bold", color=INK)
     ax.text(0.02, 0.86, subtitle, ha="left", va="center", fontsize=11, color=MUTED)

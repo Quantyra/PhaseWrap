@@ -90,7 +90,7 @@ REQUIRED_PUBLIC_STRINGS = [
     "SQR = m8 * m12",
     "Standard Benchmark Protocol",
     "Hardware-Specific Claim Test",
-    "PhaseWrap-RoPE Documentation",
+    "PhaseWrap Documentation",
     "Publication Figures",
     "BOUNDED_PHASEWRAP_ROPE_SUBSTITUTION_SUPPORTED_WITH_MEASURED_CALIBRATION_DEGRADATION",
     "ranking-parity bridge",

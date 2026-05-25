@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 52 Two-Block Decoder Feasibility Audit v1
+# PhaseWrap Stage 52 Two-Block Decoder Feasibility Audit v1
 
 Date: `2026-05-21`
 
@@ -84,5 +84,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that one-seed feasibility satisfies the five-seed promotion standard.

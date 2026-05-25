@@ -34,7 +34,7 @@ def test_run_stage15_benchmark_is_complete() -> None:
     assert result["best_method_by_top1_mrr"] in METHOD_NAMES
     assert result["test_row_count"] == 3
     assert result["model"]["type"] == "one_hidden_layer_attention_scorer_over_positional_features"
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage15_outputs_are_written(tmp_path) -> None:

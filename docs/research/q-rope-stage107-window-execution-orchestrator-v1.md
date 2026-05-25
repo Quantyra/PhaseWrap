@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 107 Window Execution Orchestrator v1
+# PhaseWrap Stage 107 Window Execution Orchestrator v1
 
 Date: `2026-05-21`
 

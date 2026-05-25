@@ -438,12 +438,12 @@ def run_stage12_benchmark(
         "task": {
             "description": "Local RULER-style retrieval packet with passkey, multi-needle, and aggregation rows.",
             "target_construction": "Targets are selected by explicit retrieval rules and RNG offsets, not by maximizing the PhaseWrap score.",
-            "note": "This is a deterministic no-credential positional-attention benchmark, not a trained production language model or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This is a deterministic no-credential positional-attention benchmark, not a trained production language model or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
                 "A stricter local retrieval comparison where targets are not defined by the PhaseWrap score.",
-                "Matched deterministic scoring rules across PhaseWrap-RoPE, RoPE-like, ALiBI-like, sinusoidal, and no-position baselines.",
+                "Matched deterministic scoring rules across PhaseWrap, RoPE-like, ALiBI-like, sinusoidal, and no-position baselines.",
                 "Bootstrap intervals over benchmark rows for top-1, MRR, and target probability mass.",
             ],
             "excluded": [
@@ -451,7 +451,7 @@ def run_stage12_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "phasewrap_target_diagnostic": _phasewrap_target_diagnostic(examples),

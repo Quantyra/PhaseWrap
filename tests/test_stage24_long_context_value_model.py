@@ -36,7 +36,7 @@ def test_run_stage24_benchmark_is_complete() -> None:
     assert {row["split"] for row in result["table"]} == {"train", "validation", "test"}
     assert result["method_names"] == ["rope_relative", "phasewrap_distance_adapter"]
     assert result["best_method_by_test_top1_mrr"] in {"rope_relative", "phasewrap_distance_adapter"}
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage24_outputs_are_written(tmp_path) -> None:

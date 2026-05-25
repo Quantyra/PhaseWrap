@@ -58,7 +58,7 @@ def test_stage28_benchmark_and_outputs(tmp_path) -> None:
     assert "expected_calibration_error_mean" in result["table"][0]
     assert "target_probability_mae_mean" in result["table"][0]
     assert result["best_method_by_test_top1_mrr"] in {"alibi", "phasewrap_distance_adapter"}
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
     paths = write_stage28_outputs(result, tmp_path)
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 67 Content-Key Retrieval Audit v1
+# PhaseWrap Stage 67 Content-Key Retrieval Audit v1
 
 Date: `2026-05-21`
 
@@ -53,7 +53,7 @@ Stage 67 is positive evidence for the harness and negative evidence for claim ex
 
 It shows that the two-block learned pointer-generator can generalize a standard visible content-key retrieval row design to held-out lengths. That narrows the Stage 64-66 blocker: the decoder path is not globally unable to retrieve. The unsolved blocker is the original phase-cued/exact-offset row family and the mechanism needed to infer those retrieval cues from standard inputs.
 
-Because `no_position` solves the redesigned rows too, Stage 67 does not support a PhaseWrap-RoPE replacement claim or positional-method promotion.
+Because `no_position` solves the redesigned rows too, Stage 67 does not support a PhaseWrap replacement claim or positional-method promotion.
 
 ## Claim Boundary
 
@@ -69,6 +69,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that content-key retrieval is equivalent to the original phase-cued/exact-offset gate;
 - a claim that Stage 67 is positional-method promotion evidence.

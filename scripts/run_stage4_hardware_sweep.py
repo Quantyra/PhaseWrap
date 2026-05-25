@@ -315,7 +315,7 @@ def run_single_backend(
         env["QROPE_BRAKET_AWS_REGION"] = str(backend.get("aws_region", ""))
         env["QROPE_BRAKET_OUTPUT_S3_BUCKET"] = str(backend.get("output_s3_bucket", ""))
         env["QROPE_BRAKET_OUTPUT_S3_PREFIX"] = (
-            "phasewrap-rope/stage4-hardware-sweep/"
+            "phasewrap/stage4-hardware-sweep/"
             f"{_safe_name(backend['backend'])}/"
             f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
         )

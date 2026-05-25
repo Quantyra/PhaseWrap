@@ -21,7 +21,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After exact approval and provider execution, populate the locked Stage114 provider result JSONL files, rerun Stage164 and Stage115, then assemble Stage113 evidence.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "ready_window_count": 2,
   "required_result_fields": [

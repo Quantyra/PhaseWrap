@@ -19,7 +19,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After IBM cutover and Stage 133 authorization, live provider submitters must pass this metadata guard before any Stage 114 provider result JSONL is written.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "required_backend_metadata_fields": [
     "provider",

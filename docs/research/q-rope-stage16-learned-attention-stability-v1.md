@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 16 Learned Attention Stability Benchmark v1
+# PhaseWrap Stage 16 Learned Attention Stability Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 16 tests whether the Stage 15 learned attention-readout result is stable across initialization seeds. It reruns the same non-phase-cued key-value readout task across five deterministic learned-scorer initializations.
 
-This is a local stability check. It is not a full decoder-only transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local stability check. It is not a full decoder-only transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

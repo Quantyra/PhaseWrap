@@ -17,7 +17,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Install missing provider SDK extras, clear Stage 106 configuration blockers, and optionally rerun this gate with --allow-live-discovery before executing Stage 107 windows.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_count": 2,
   "provider_credentials_required": false,
   "ready_provider_count": 1,

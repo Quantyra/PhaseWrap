@@ -15,7 +15,7 @@ COMPARATOR_FAMILIES = ("rope_like", "sinusoidal_like", "alibi_like", "no_positio
 STAGE105_PREREGISTERED = "INDEPENDENT_RERUN_PROTOCOL_PREREGISTERED_EXECUTION_REQUIRED"
 STAGE103_READY = "ROBUSTNESS_METRICS_READY_FOR_INTERPRETATION"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

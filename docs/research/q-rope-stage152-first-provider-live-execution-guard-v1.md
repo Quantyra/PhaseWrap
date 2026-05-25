@@ -1,7 +1,7 @@
 # QRoPE Stage 152 - First Provider Live Execution Guard
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 152 is the final non-live guard before any first-provider live-submit command is executed. It does not submit hardware jobs, create live provider SDK clients, record credentials, or write real provider result records.

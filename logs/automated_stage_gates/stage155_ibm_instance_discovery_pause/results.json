@@ -33,7 +33,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Populate IBM_QUANTUM_INSTANCE_CRN locally, then rerun Stage 140 with --load-dotenv followed by Stage 106, Stage 111, Stage 128, Stage 129, Stage 130, Stage 139, Stage 144, and Stage 152 before any guarded Stage 133 live-submit command.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "qiskit_sdk_ready": true,
   "schema_version": "qrope_stage155_ibm_instance_discovery_pause_v1",

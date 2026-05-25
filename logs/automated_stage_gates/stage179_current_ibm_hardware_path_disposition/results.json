@@ -32,7 +32,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Archive the current locked IBM run. Continue the objective only through redesigned fixed-width targets, alternative providers/backends, or stronger calibration evidence that changes the accepted noise model.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "reopen_requirements": [
     "a redesigned fixed-width target/circuit family with IBM-backend-informed primary stable targets on both templates",

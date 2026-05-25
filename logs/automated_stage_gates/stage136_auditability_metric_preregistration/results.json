@@ -154,7 +154,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After Stage 113 assembles provider counts and Stage 101 calibration passes, compute component reconstruction MAE per family/window and bind any auditability wording to the preregistered advantage rule.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_count": 20,
   "packet_records": [
     {

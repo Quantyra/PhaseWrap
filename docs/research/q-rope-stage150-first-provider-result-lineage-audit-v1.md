@@ -1,7 +1,7 @@
 # QRoPE Stage 150 - First Provider Result Lineage Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 150 audits IBM Runtime first-provider result lineage before live execution. It does not submit hardware jobs, create live provider SDK clients, record credentials, or write real provider result records.

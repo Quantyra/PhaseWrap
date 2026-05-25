@@ -2810,7 +2810,7 @@
   "next_gate": "If a stable signed-offset region exists, design a small calibration probe for signed coherent bias before any full hardware run. If not, archive the current IBM hardware path or redesign the encoding target.",
   "no_hardware_submission": true,
   "noise_model_count": 18,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "offset_records": [
     {
       "base_noise_model_id": "ibm_backend_median_stochastic",

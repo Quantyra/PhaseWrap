@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 26 Compact Key-Value QA v1
+# PhaseWrap Stage 26 Compact Key-Value QA v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 26 adds a compact key-value QA/retrieval benchmark with explicit content keys, distractor facts, and train-short/test-long context lengths. The target is the latest candidate whose key matches the query key. Targets are not selected by the PhaseWrap score.
 
-This is a deterministic local compact retrieval benchmark. It is not a full transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a deterministic local compact retrieval benchmark. It is not a full transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -56,7 +56,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

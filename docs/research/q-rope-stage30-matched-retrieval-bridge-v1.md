@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 30 Matched Retrieval-Bridge Benchmark v1
+# PhaseWrap Stage 30 Matched Retrieval-Bridge Benchmark v1
 
 Date: `2026-05-20`
 
@@ -63,7 +63,7 @@ On the default artifact, `rope_relative` and `phasewrap_distance_adapter` both r
 
 Stage 30 is useful because it removes one confound from Stage 28: uneven feature widths and learned parameter counts. Under this matched feature-budget bridge, PhaseWrap-plus-distance is competitive on argmax retrieval ranking, but RoPE-like scoring remains better calibrated and assigns more target probability mass.
 
-This is not a production transformer result, not a full language-model benchmark, and not evidence that PhaseWrap-RoPE is a validated RoPE replacement. It supports continuing the RoPE-facing research lane with a stronger decoder-only transformer or standard retrieval harness.
+This is not a production transformer result, not a full language-model benchmark, and not evidence that PhaseWrap is a validated RoPE replacement. It supports continuing the RoPE-facing research lane with a stronger decoder-only transformer or standard retrieval harness.
 
 ## Claim Boundary
 
@@ -79,4 +79,4 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- a claim that PhaseWrap-RoPE is a validated RoPE replacement.
+- a claim that PhaseWrap is a validated RoPE replacement.

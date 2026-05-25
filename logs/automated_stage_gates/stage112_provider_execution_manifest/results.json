@@ -17,7 +17,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Clear Stage 111 provider readiness, then use this manifest to drive provider-specific calibration and packet execution while writing counts to the declared target evidence files.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_job_count": 480,
   "provider_credentials_required": false,
   "schema_version": "qrope_stage112_provider_execution_manifest_v1",

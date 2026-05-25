@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 95 Headline Interval Audit v1
+# PhaseWrap Stage 95 Headline Interval Audit v1
 
 Date: `2026-05-21`
 
@@ -53,7 +53,7 @@ Supported:
 
 Excluded:
 
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that interval reporting creates a PhaseWrap-led retrieval solve;
 - a claim that structural copy experts are standard free decoder-only language modeling;
 - production transformer superiority;

@@ -1,7 +1,7 @@
 # QRoPE Stage 128 - SDK Client Factory Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 128 adds implemented guarded provider SDK client factory boundaries for IBM Runtime and Amazon Braket.

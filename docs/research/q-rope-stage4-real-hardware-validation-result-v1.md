@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 4 Real-Hardware Validation Result v1
+# PhaseWrap Stage 4 Real-Hardware Validation Result v1
 
 Date: 2026-05-19
 

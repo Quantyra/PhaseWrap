@@ -62,7 +62,7 @@ def _claim_boundary() -> dict[str, list[str]]:
         "excluded": [
             "production transformer superiority",
             "full transformer-scale validation",
-            "a claim that PhaseWrap-RoPE replaces RoPE",
+            "a claim that PhaseWrap replaces RoPE",
             "broad quantum advantage",
             "a claim that a one-block synthetic decoder gate is sufficient for promotion",
         ],
@@ -168,7 +168,7 @@ def _gate_decision(aggregate_table: list[dict[str, Any]]) -> dict[str, Any]:
         "rope_best_tasks": rope_best_tasks,
         "high_confidence_tasks": high_confidence_tasks,
         "claim_boundary": (
-            "This matched one-block decoder-only gate does not promote PhaseWrap-RoPE beyond the bounded claim."
+            "This matched one-block decoder-only gate does not promote PhaseWrap beyond the bounded claim."
             if not promotes
             else "This matched one-block decoder-only gate would justify replication, not a replacement claim by itself."
         ),

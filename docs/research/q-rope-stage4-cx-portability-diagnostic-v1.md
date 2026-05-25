@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 4 CX Portability Diagnostic v1
+# PhaseWrap Stage 4 CX Portability Diagnostic v1
 
 Date: 2026-05-19
 

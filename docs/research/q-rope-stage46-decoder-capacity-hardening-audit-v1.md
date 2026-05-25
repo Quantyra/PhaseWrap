@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 46 Decoder Capacity Hardening Audit v1
+# PhaseWrap Stage 46 Decoder Capacity Hardening Audit v1
 
 Date: `2026-05-21`
 
@@ -71,5 +71,5 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that Stage 46 validates the one-block decoder as a positional-method discriminator.

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 86 Dual-Auxiliary Budget Sensitivity Audit v1
+# PhaseWrap Stage 86 Dual-Auxiliary Budget Sensitivity Audit v1
 
 Date: `2026-05-21`
 
@@ -60,7 +60,7 @@ Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that budget tuning alone establishes positional-method promotion;
 - a claim that auxiliary-supervised diagnostics are standard free decoder-only language modeling;
 - broad quantum advantage.

@@ -59,8 +59,8 @@ def _claim_boundary() -> dict[str, list[str]]:
             "A next-gate boundary for stronger matched decoder-only transformer evidence before any RoPE-replacement claim.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
-            "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+            "a claim that PhaseWrap replaces RoPE",
+            "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
             "a claim that structural copy experts satisfy the free learned transformer gate",
             "production transformer superiority",
             "full transformer-scale validation",

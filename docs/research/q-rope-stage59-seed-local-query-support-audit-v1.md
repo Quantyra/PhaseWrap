@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 59 Seed-Local Query Support Audit v1
+# PhaseWrap Stage 59 Seed-Local Query Support Audit v1
 
 Date: `2026-05-21`
 
@@ -56,6 +56,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that a seed-local lookup map is a matched decoder-only transformer;
 - a claim that this deterministic cue-copy diagnostic is positional-method promotion evidence.

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 15 Learned Attention-Readout Benchmark v1
+# PhaseWrap Stage 15 Learned Attention-Readout Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 15 adds a compact learned attention-readout benchmark over the Stage 14 key-value rows. Instead of using a linear positional adapter, each method trains a one-hidden-layer scorer over its positional features and then evaluates target value-token retrieval on held-out length-1024 rows.
 
-This is still a local learned attention probe. It is not a full decoder-only transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is still a local learned attention probe. It is not a full decoder-only transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -69,7 +69,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

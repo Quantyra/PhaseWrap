@@ -39,7 +39,7 @@
   "next_command": "python scripts/run_stage140_local_provider_configuration_readiness.py --load-dotenv",
   "next_gate": "Clear Stage 144 and Stage 133 authorization first. After IBM Runtime result JSONL files exist, run the provider-scoped collection and evidence commands before Stage 110/138 claim gates.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "result_path": "logs/automated_stage_gates/stage145_first_provider_evidence_path_audit/results.json",
   "schema_version": "qrope_stage145_first_provider_evidence_path_audit_v1",

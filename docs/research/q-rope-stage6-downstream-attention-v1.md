@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 6 Downstream Attention v1
+# PhaseWrap Stage 6 Downstream Attention v1
 
 Date: `2026-05-20`
 
@@ -54,7 +54,7 @@ Leakage diagnostics over all splits:
 
 ## Interpretation
 
-The PhaseWrap-RoPE attention variant has the lowest MAE on this toy downstream task. The mod-24 and direct phase-feature baselines no longer recover the target exactly, which addresses the Stage 5 limitation, but the PhaseWrap feature set is still privileged by direct access to `phase_label`.
+The PhaseWrap attention variant has the lowest MAE on this toy downstream task. The mod-24 and direct phase-feature baselines no longer recover the target exactly, which addresses the Stage 5 limitation, but the PhaseWrap feature set is still privileged by direct access to `phase_label`.
 
 The result is evidence for a bounded toy downstream setting only. The no-position, RoPE, and ALiBI variants still rank the best candidate perfectly in this packet, so the strongest Stage 6 distinction is score calibration/MAE, not top-1 selection. Future work should increase the task difficulty and test additional seeds before making broader claims.
 
@@ -62,9 +62,9 @@ The result is evidence for a bounded toy downstream setting only. The no-positio
 
 Supported:
 
-- reproducible oracle phase-feature comparison across PhaseWrap-RoPE, RoPE, ALiBI, sinusoidal, no-position, and classical lookup/feature baselines;
+- reproducible oracle phase-feature comparison across PhaseWrap, RoPE, ALiBI, sinusoidal, no-position, and classical lookup/feature baselines;
 - evidence that the Stage 6 target is not exactly recovered by mod-24 or direct phase features alone;
-- bounded evidence that PhaseWrap-RoPE gives the best score calibration on this fixed packet.
+- bounded evidence that PhaseWrap gives the best score calibration on this fixed packet.
 
 Excluded:
 

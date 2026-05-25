@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Documentation
+# PhaseWrap Documentation
 
 This documentation tree separates the reusable method/package material from the static evidence artifacts and archived research process.
 

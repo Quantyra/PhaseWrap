@@ -1,7 +1,7 @@
 # QRoPE Stage 126 - Stage 114 Result Record Builder Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 126 adds a shared result-record builder that combines provider submission plans, provider task metadata, timestamps, and normalized counts into Stage 114-shaped result records.

@@ -1,8 +1,8 @@
 {
   "claim_boundary": {
     "excluded": [
-      "a claim that PhaseWrap-RoPE replaces RoPE",
-      "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+      "a claim that PhaseWrap replaces RoPE",
+      "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
       "a claim that the promotion gate is satisfied",
       "production transformer superiority",
       "full transformer-scale validation",
@@ -30,7 +30,7 @@
   ],
   "missing_source_artifacts": [],
   "no_hardware_submission": true,
-  "objective": "Find the strongest honest claim PhaseWrap-RoPE can support under fair RoPE/ALiBI/sinusoidal/no-position comparisons, preserving both positive evidence and failure modes.",
+  "objective": "Find the strongest honest claim PhaseWrap can support under fair RoPE/ALiBI/sinusoidal/no-position comparisons, preserving both positive evidence and failure modes.",
   "provider_credentials_required": false,
   "result_path": "logs/automated_stage_gates/stage97_strongest_claim_goal_completion_audit/results.json",
   "schema_version": "qrope_stage97_strongest_claim_goal_completion_audit_v1",

@@ -1,7 +1,7 @@
 # QRoPE Stage 151 - First Provider Result Metadata Guard Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 151 audits the guarded runner metadata write path after Stage 150 result lineage. It does not submit hardware jobs, create live provider SDK clients, record credentials, or write real provider result records.

@@ -17,7 +17,7 @@ ROBUSTNESS_NOT_SUPPORTED = "PHASEWRAP_REPLICATED_ADVANTAGE_NOT_SUPPORTED_BY_STAG
 AUDITABILITY_READY = "AUDITABILITY_METRICS_READY_FOR_CLAIM_GATE"
 STATISTICAL_READY = "FIRST_PROVIDER_STATISTICAL_INTERPRETATION_READY_FOR_CLAIM_GATES"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

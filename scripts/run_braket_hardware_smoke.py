@@ -20,7 +20,7 @@ from qrope.env_utils import load_local_dotenv
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LOG_ROOT = REPO_ROOT / "logs" / "automated_stage_gates"
 DEFAULT_DEVICE_ARN = "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q"
-DEFAULT_OUTPUT_S3_PREFIX_ROOT = "phasewrap-rope/braket-hardware-smoke"
+DEFAULT_OUTPUT_S3_PREFIX_ROOT = "phasewrap/braket-hardware-smoke"
 
 
 def _execution_task_arns(execution: dict[str, Any]) -> list[str]:

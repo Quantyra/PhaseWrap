@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 92 Support-Binding Teacher Pointer Generator Audit v1
+# PhaseWrap Stage 92 Support-Binding Teacher Pointer Generator Audit v1
 
 Date: `2026-05-21`
 
@@ -62,7 +62,7 @@ Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that support-binding supervision is full transformer-scale validation;
 - a claim that training-time support-binding teachers are positional-method promotion evidence;
 - broad quantum advantage.

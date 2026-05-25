@@ -264,7 +264,7 @@ def run_stage13_benchmark(
         "task": {
             "description": "Train-short/test-long positional-adapter benchmark on the Stage 12 non-phase-cued retrieval packet.",
             "target_construction": "Targets are inherited from Stage 12 explicit retrieval rules, not from PhaseWrap score maximization.",
-            "note": "This is a compact positional-adapter experiment, not a production transformer benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This is a compact positional-adapter experiment, not a production transformer benchmark or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
@@ -277,7 +277,7 @@ def run_stage13_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "training_records": training_records,

@@ -10,7 +10,7 @@ STAGE98_SCHEMA_VERSION = "qrope_stage98_noisy_hardware_robustness_goal_audit_v1"
 DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage98_noisy_hardware_robustness_goal_audit"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )
@@ -30,7 +30,7 @@ def _claim_boundary() -> dict[str, list[str]]:
             "A fixed-width protocol gate for comparing PhaseWrap score readout with matched positional-score encodings.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
+            "a claim that PhaseWrap replaces RoPE",
             "a claim that noisy quantum hardware improves language models",
             "a claim that Stage 4 already proves general noisy-hardware robustness",
             "provider-wide bitstring-order validation without known-state calibration counts",
@@ -198,13 +198,13 @@ def run_stage98_audit(*, artifact_root: Path = DEFAULT_ARTIFACT_ROOT) -> dict[st
         "bitstring_calibration_status": calibration,
         "protocol_requirements": requirements,
         "proposed_strongest_claim_if_successful": (
-            "PhaseWrap-RoPE's compact positional score has bounded noisy-hardware readout robustness or auditability "
+            "PhaseWrap's compact positional score has bounded noisy-hardware readout robustness or auditability "
             "advantages over matched fixed-width positional-score encodings under specified backend, date, calibration, "
             "shot-budget, and bitstring-decoding conditions."
         ),
         "unsupported_claims": [
             "Noisy quantum hardware improves language-model performance.",
-            "PhaseWrap-RoPE replaces RoPE.",
+            "PhaseWrap replaces RoPE.",
             "Stage 4 already proves general cross-backend robustness.",
             "Provider-wide bitstring conventions are validated without known-state calibration counts.",
         ],

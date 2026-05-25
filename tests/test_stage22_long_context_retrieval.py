@@ -13,7 +13,7 @@ def test_run_stage22_benchmark_is_complete() -> None:
     assert result["row_count"] == 6
     assert {row["sequence_length"] for row in result["length_table"]} == {128, 256}
     assert result["best_method_by_top1_mrr"] in set(result["method_names"])
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage22_outputs_are_written(tmp_path) -> None:

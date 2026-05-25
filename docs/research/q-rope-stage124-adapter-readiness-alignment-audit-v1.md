@@ -1,7 +1,7 @@
 # QRoPE Stage 124 - Adapter Readiness Alignment Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 124 aligns the provider adapter environment contracts and Stage 123 submission-plan environment fields with the authoritative Stage 106/111 provider readiness blockers.

@@ -80,7 +80,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Use this reduced-scope boundary in the next cost/attestation packet. If the user attests credit allowance, rerun Stage194/195 against the reduced scope before preparing any live runner.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "recommended_scope_id": "all_lanes_half_shots_2048",
   "result_path": "logs/automated_stage_gates/stage198_reduced_scope_preregistration/results.json",

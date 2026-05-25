@@ -1,7 +1,7 @@
 # QRoPE Stage 144 - Post-Configuration Rerun Chain Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 144 audits the first-provider transition chain after the local provider environment is filled outside git. It does not submit hardware jobs, create live SDK clients, or record credential values. The first transition now requires Stage 143 to verify scoped empty templates, non-live rerun commands, and an empty Stage 139 action-checklist context blocker list from Stage 142.

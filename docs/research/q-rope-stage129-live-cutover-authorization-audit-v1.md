@@ -1,7 +1,7 @@
 # QRoPE Stage 129 - Live Cutover Authorization Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 129 adds an explicit live-client cutover authorization gate over Stage 106, Stage 111, and Stage 128 evidence.

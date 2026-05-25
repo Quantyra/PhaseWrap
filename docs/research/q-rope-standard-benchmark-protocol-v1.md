@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Standard Benchmark Protocol v1
+# PhaseWrap Standard Benchmark Protocol v1
 
 Date: `2026-05-23`
 
@@ -6,7 +6,7 @@ Status: `implemented_primary_gate`
 
 ## Purpose
 
-This protocol defines the next evidence-producing transformer benchmark before any stronger RoPE-facing claim. It exists to keep the public claim boundary honest: PhaseWrap-RoPE is currently supported as a compact phase-wrap feature and bounded hardware witness, not as a proven RoPE replacement.
+This protocol defines the next evidence-producing transformer benchmark before any stronger RoPE-facing claim. It exists to keep the public claim boundary honest: PhaseWrap is currently supported as a compact phase-wrap feature and bounded hardware witness, not as a proven RoPE replacement.
 
 Implementation status: Stage 219 now applies this protocol to the Stage 30 matched retrieval bridge as the primary bounded benchmark and Stage 32 as full-context corroboration. The result supports bounded substitution with measured degradation, not general RoPE replacement.
 

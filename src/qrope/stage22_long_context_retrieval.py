@@ -78,7 +78,7 @@ def run_stage22_benchmark(
         "task": {
             "description": "Long-context extension of the Stage 12 local RULER-style passkey, multi-needle, and aggregation retrieval packet.",
             "target_construction": "Targets are selected by explicit retrieval rules and RNG offsets, not by maximizing the PhaseWrap score.",
-            "note": "This is a deterministic no-credential positional-scoring benchmark, not a trained language model or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This is a deterministic no-credential positional-scoring benchmark, not a trained language model or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
@@ -91,7 +91,7 @@ def run_stage22_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "phasewrap_target_diagnostic": _phasewrap_target_diagnostic(examples),

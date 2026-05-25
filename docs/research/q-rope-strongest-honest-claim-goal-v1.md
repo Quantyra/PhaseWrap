@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Strongest Honest Claim Goal v1
+# PhaseWrap Strongest Honest Claim Goal v1
 
 Date: `2026-05-21`
 
@@ -6,9 +6,9 @@ Status: `active`
 
 ## Goal
 
-Find the strongest honest claim PhaseWrap-RoPE can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons, preserving both positive evidence and failure modes.
+Find the strongest honest claim PhaseWrap can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons, preserving both positive evidence and failure modes.
 
-The program should optimize for the maximum defensible claim boundary, not for proving that PhaseWrap-RoPE replaces RoPE. A negative or mixed result is successful if it cleanly separates useful PhaseWrap behavior from unsupported replacement, hardware-advantage, or production-transformer claims.
+The program should optimize for the maximum defensible claim boundary, not for proving that PhaseWrap replaces RoPE. A negative or mixed result is successful if it cleanly separates useful PhaseWrap behavior from unsupported replacement, hardware-advantage, or production-transformer claims.
 
 ## Evidence Standard
 
@@ -26,7 +26,7 @@ Evidence is not enough for a RoPE-replacement claim if it is only a compact brid
 
 Supported now:
 
-- PhaseWrap-RoPE is an auditable modular phase-wrap scoring rule with reproducible classical analyses.
+- PhaseWrap is an auditable modular phase-wrap scoring rule with reproducible classical analyses.
 - The repository contains bounded small-circuit hardware readout witnesses for the recorded packets, providers, dates, and calibration contexts.
 - PhaseWrap-derived adapters can be competitive on ranking in several compact retrieval and copy-aware diagnostics.
 - Stage 43 shows that generator-target hardening improves the Stage 42 learned vocab branch and preserves PhaseWrap-derived ranking competitiveness.
@@ -80,16 +80,16 @@ Not supported now:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that the Stage 4 hardware witnesses establish model advantage;
-- a claim that Stage 43 solves free learned value generation or validates PhaseWrap-RoPE as a RoPE replacement.
+- a claim that Stage 43 solves free learned value generation or validates PhaseWrap as a RoPE replacement.
 - a claim that additional compact copy-path diagnostics should broaden the claim boundary after the Stage 44 plateau audit.
-- a claim that Stage 45 validates PhaseWrap-RoPE as a replacement or production transformer mechanism.
+- a claim that Stage 45 validates PhaseWrap as a replacement or production transformer mechanism.
 - a claim that Stage 46 validates the one-block decoder harness as a positional-method discriminator.
 - a claim that Stage 47's tiny text-fact QA positive is enough for a RoPE-replacement claim.
 - a claim that the Stage 47 one-seed PhaseWrap tiny text-fact QA lead is stable across seeds.
-- a claim that Stage 49's copy-output repair is equivalent to free learned value generation or promotes PhaseWrap-RoPE over RoPE.
-- a claim that Stage 50 validates PhaseWrap-RoPE as a RoPE replacement or solves learned retrieval generation.
+- a claim that Stage 49's copy-output repair is equivalent to free learned value generation or promotes PhaseWrap over RoPE.
+- a claim that Stage 50 validates PhaseWrap as a RoPE replacement or solves learned retrieval generation.
 - a claim that the Stage 45-50 decoder path should broaden the claim boundary after the Stage 51 plateau audit.
 - a claim that Stage 52 satisfies the five-seed promotion standard or establishes retrieval generalization.
 - a claim that Stage 53 repairs retrieval or validates the two-block hardening path for promotion.

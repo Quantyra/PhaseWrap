@@ -182,7 +182,7 @@ def test_braket_stage4_profile_uses_aws_specific_controls() -> None:
         "QROPE_BRAKET_AWS_PROFILE": "cyint-ea-dev",
         "QROPE_BRAKET_AWS_REGION": "us-west-1",
         "QROPE_BRAKET_OUTPUT_S3_BUCKET": "localdev-experiments",
-        "QROPE_BRAKET_OUTPUT_S3_PREFIX": "phasewrap-rope/test",
+        "QROPE_BRAKET_OUTPUT_S3_PREFIX": "phasewrap/test",
         "QROPE_BRAKET_BUDGET_USD_CAP": "1",
         "QROPE_BRAKET_ESTIMATED_COST_USD": "0.01",
         "QROPE_HARDWARE_ROW_LIMIT": "1",
@@ -194,7 +194,7 @@ def test_braket_stage4_profile_uses_aws_specific_controls() -> None:
     assert config["aws_profile"] == "cyint-ea-dev"
     assert config["aws_region"] == "us-west-1"
     assert config["output_s3_bucket"] == "localdev-experiments"
-    assert config["output_s3_key_prefix"] == "phasewrap-rope/test"
+    assert config["output_s3_key_prefix"] == "phasewrap/test"
     assert config["budget_cap_usd"] == 1.0
     assert config["estimated_packet_cost_usd"] == 0.01
 
@@ -494,7 +494,7 @@ def test_braket_run_packet_submits_waits_and_fetches_result() -> None:
         "QROPE_BRAKET_AWS_PROFILE": "cyint-ea-dev",
         "QROPE_BRAKET_AWS_REGION": "us-west-1",
         "QROPE_BRAKET_OUTPUT_S3_BUCKET": "localdev-experiments",
-        "QROPE_BRAKET_OUTPUT_S3_PREFIX": "phasewrap-rope/test",
+        "QROPE_BRAKET_OUTPUT_S3_PREFIX": "phasewrap/test",
         "QROPE_BRAKET_BUDGET_USD_CAP": "1",
         "QROPE_BRAKET_ESTIMATED_COST_USD": "0.01",
         "QROPE_HARDWARE_ROW_LIMIT": "1",

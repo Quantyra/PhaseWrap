@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 73 Phase-Cued Period-Pair Support Audit v1
+# PhaseWrap Stage 73 Phase-Cued Period-Pair Support Audit v1
 
 Date: `2026-05-21`
 
@@ -63,7 +63,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that period-pair selection after seeing held-out rows is promotion evidence;
 - a claim that fixed-score support is learned decoder-only transformer behavior.
 

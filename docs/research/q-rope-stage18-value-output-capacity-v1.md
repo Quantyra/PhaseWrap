@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 18 Value-Output Capacity Probe v1
+# PhaseWrap Stage 18 Value-Output Capacity Probe v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 18 diagnoses the Stage 17 small decoder value-model failure. It removes positional attention as the main bottleneck by comparing uniform attention with teacher-forced target attention, while keeping the learned value embeddings and output projection.
 
-This is a local capacity probe. It is not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local capacity probe. It is not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -52,7 +52,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

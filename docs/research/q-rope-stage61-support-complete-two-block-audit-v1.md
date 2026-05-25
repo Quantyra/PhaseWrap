@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 61 Support-Complete Two-Block Audit v1
+# PhaseWrap Stage 61 Support-Complete Two-Block Audit v1
 
 Date: `2026-05-21`
 
@@ -57,13 +57,13 @@ Supported:
 - evidence that support-complete phase-cued train coverage does not establish learned two-block decoder capacity;
 - fair reporting across RoPE/ALiBI/sinusoidal/no-position/PhaseWrap variants;
 - failed-run retention;
-- continued bounded framing of PhaseWrap-RoPE as an auditable compact mechanism with mixed toy downstream evidence.
+- continued bounded framing of PhaseWrap as an auditable compact mechanism with mixed toy downstream evidence.
 
 Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that support-complete training alone solves learned retrieval generalization;
 - a claim that Stage 61 is positional-method promotion evidence.

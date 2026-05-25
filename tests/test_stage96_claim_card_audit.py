@@ -17,11 +17,11 @@ def test_stage96_packages_bounded_claim_card(tmp_path) -> None:
         tmp_path,
         "stage70_strongest_honest_claim_synthesis",
         {
-            "strongest_honest_claim": "PhaseWrap-RoPE is compact and auditable, but not a RoPE replacement.",
+            "strongest_honest_claim": "PhaseWrap is compact and auditable, but not a RoPE replacement.",
             "decision": {"decision": "BOUND_STRONGEST_HONEST_CLAIM_WITH_RETRIEVAL_FAILURES"},
             "positive_evidence": [{"source": "stage88_structural_retrieval_routed_copy_expert_audit"}],
             "failure_modes": [{"stage": "stage95_headline_interval_audit"}],
-            "unsupported_claims": ["PhaseWrap-RoPE replaces RoPE."],
+            "unsupported_claims": ["PhaseWrap replaces RoPE."],
             "reviewer_next_gate": "Run a stronger matched decoder-only transformer.",
         },
     )
@@ -63,7 +63,7 @@ def test_stage96_packages_bounded_claim_card(tmp_path) -> None:
     assert result["decision"]["decision"] == "CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM"
     assert result["decision"]["promotion_gate_ready"] is False
     assert result["decision"]["headline_intervals_present"] is True
-    assert result["claim_card"]["unsupported_claims"] == ["PhaseWrap-RoPE replaces RoPE."]
+    assert result["claim_card"]["unsupported_claims"] == ["PhaseWrap replaces RoPE."]
     assert result["claim_card"]["headline_intervals"][0]["top1_mean"] == 0.05
 
 

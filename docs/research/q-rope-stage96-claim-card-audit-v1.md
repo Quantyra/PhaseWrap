@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 96 Claim Card Audit v1
+# PhaseWrap Stage 96 Claim Card Audit v1
 
 Date: `2026-05-21`
 
@@ -6,7 +6,7 @@ Status: `completed`
 
 ## Purpose
 
-Stage 96 packages the current strongest honest PhaseWrap-RoPE claim into a compact claim card.
+Stage 96 packages the current strongest honest PhaseWrap claim into a compact claim card.
 
 It reads Stage 70, Stage 94, and Stage 95 artifacts, then emits the current claim, positive evidence, failure modes, unsupported claims, promotion-gate status, headline intervals, and next gate in one machine-readable artifact.
 
@@ -28,7 +28,7 @@ Stage 96 records `CLAIM_CARD_BOUND_STRONGEST_HONEST_CLAIM`.
 
 Claim-card summary:
 
-- strongest claim: PhaseWrap-RoPE is compact, auditable, and supported by bounded diagnostic evidence, but not by fair evidence for RoPE replacement;
+- strongest claim: PhaseWrap is compact, auditable, and supported by bounded diagnostic evidence, but not by fair evidence for RoPE replacement;
 - promotion gate: not ready;
 - remaining failed requirement: `free_learned_phasewrap_original_retrieval_solve`;
 - headline intervals: present through Stage 95;
@@ -42,14 +42,14 @@ Stage 96 does not expand the claim. It makes the current bounded claim harder to
 
 Supported:
 
-- a no-credential claim-card package for the current strongest honest PhaseWrap-RoPE claim;
+- a no-credential claim-card package for the current strongest honest PhaseWrap claim;
 - a compact mapping from the claim to positive evidence, failure modes, unsupported claims, and next gate;
 - a publication-facing guardrail artifact that preserves bounded wording from Stage 70/94/95.
 
 Excluded:
 
-- a claim that PhaseWrap-RoPE replaces RoPE;
-- a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings;
+- a claim that PhaseWrap replaces RoPE;
+- a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings;
 - a claim that structural copy experts are standard free decoder-only language modeling;
 - production transformer superiority;
 - full transformer-scale validation;

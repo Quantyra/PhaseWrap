@@ -1,7 +1,7 @@
 # QRoPE Stage 120 - Live Runner Orchestration Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 120 upgrades the guarded provider runner from a dead-end live-submit placeholder into an orchestration boundary that can load Stage 118 payloads, require Stage 129 cutover authorization, validate Stage 114-shaped submitter output, and write provider result JSONL only when an explicit submitter is injected.

@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 14 Attention-Readout Benchmark v1
+# PhaseWrap Stage 14 Attention-Readout Benchmark v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 14 moves the Stage 13 positional-adapter result one step closer to transformer behavior by turning the non-phase-cued retrieval rows into key-value attention-readout rows. The model ranks candidate key positions, aggregates probability onto value tokens, and is evaluated on whether the target value token is recovered.
 
-This is still a local attention-readout benchmark. It is not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is still a local attention-readout benchmark. It is not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -69,7 +69,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

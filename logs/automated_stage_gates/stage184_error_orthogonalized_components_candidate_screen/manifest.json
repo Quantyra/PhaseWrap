@@ -25,7 +25,7 @@
   "missing_source_packets": [],
   "next_gate": "If this candidate fails, test the next Stage181 redesign family or revise the preregistered control/target semantics before considering any IBM hardware reopen.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_count": 30,
   "packet_paths": [
     "logs/automated_stage_gates/stage184_error_orthogonalized_components_candidate_screen/packets/ibm_product_seed314_rows16_shots4096__pw_error_orthogonalized_components_v1__phasewrap.json",

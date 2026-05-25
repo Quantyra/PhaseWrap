@@ -1,7 +1,7 @@
 {
   "claim_boundary": {
     "excluded": [
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that interval reporting creates a PhaseWrap-led retrieval solve",
       "a claim that structural copy experts are standard free decoder-only language modeling",
       "production transformer superiority",

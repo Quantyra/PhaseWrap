@@ -25,7 +25,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Use this as the reduced-scope hardware conclusion; pause before any full 4096-shot or cross-backend spend.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "objective_supported": true,
   "packet_template_count": 20,
   "provider_credentials_required": false,
@@ -48,7 +48,7 @@
   "status": "completed",
   "summary_csv_path": "logs/automated_stage_gates/stage210_reduced_scope_objective_conclusion_100usd/summary.csv",
   "support_mode": "robustness",
-  "supported_claim": "Under the preregistered reduced-precision fixed-width protocol on IBM ibm_fez, PhaseWrap-RoPE's compact phase-wrap positional score showed lower normalized noise sensitivity than matched RoPE-like, sinusoidal-like, ALIBI-like, and matched nonzero null-control encodings across two seeds and two circuit templates.",
+  "supported_claim": "Under the preregistered reduced-precision fixed-width protocol on IBM ibm_fez, PhaseWrap's compact phase-wrap positional score showed lower normalized noise sensitivity than matched RoPE-like, sinusoidal-like, ALIBI-like, and matched nonzero null-control encodings across two seeds and two circuit templates.",
   "weakest_matched_null_margin_shot_quanta": 15.76895,
   "weakest_positional_margin_shot_quanta": 11.066974
 }

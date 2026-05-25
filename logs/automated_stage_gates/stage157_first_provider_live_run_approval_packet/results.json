@@ -42,7 +42,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Only after the user explicitly says `APPROVE IBM RUNTIME STAGE133 LIVE RUN`, read the runnable live-submit commands from Stage 133, execute only the authorized first-provider commands, then collect Stage 114 shards through Stage 115 and assemble Stage 113 evidence.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "runnable_commands_recorded": false,
   "schema_version": "qrope_stage157_first_provider_live_run_approval_packet_v1",

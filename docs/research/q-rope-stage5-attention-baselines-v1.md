@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 5 Attention Baselines v1
+# PhaseWrap Stage 5 Attention Baselines v1
 
 Date: `2026-05-20`
 

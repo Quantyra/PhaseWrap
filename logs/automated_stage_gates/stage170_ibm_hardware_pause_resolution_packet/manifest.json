@@ -27,7 +27,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Pause with the user to resolve IBM credit/provider state. If that resolves and the decision is GO, require the exact approval phrase before any live Stage133 execution.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "pause_resolution_items": [
     "Verify IBM account, billing, credits, and allowed Runtime usage outside the artifact.",
     "Confirm the configured IBM backend is still acceptable, or rerun the read-only Stage159 preflight.",

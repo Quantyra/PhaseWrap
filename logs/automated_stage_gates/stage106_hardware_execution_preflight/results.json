@@ -16,7 +16,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Set provider credentials, backend selections, budget caps, queue caps, and artifact destinations; rerun Stage 106, then execute Stage 101/104 only if the preflight is ready.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": true,
   "provider_records": [
     {

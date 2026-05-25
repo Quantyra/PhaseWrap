@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 88 Structural Retrieval-Routed Copy Expert Audit v1
+# PhaseWrap Stage 88 Structural Retrieval-Routed Copy Expert Audit v1
 
 Date: `2026-05-21`
 
@@ -51,7 +51,7 @@ Additional decision fields:
 
 Stage 88 shows that the original retrieval row family is jointly solvable when the decoder is given structural retrieval-routed copy experts. This is useful mechanism evidence because it separates row solvability from the earlier learned free-decoder failure.
 
-It is not PhaseWrap-RoPE promotion evidence. The composed repair is structural, `rope_relative` leads both retrieval lanes in the default run, and `no_position` also crosses the phase-cued threshold.
+It is not PhaseWrap promotion evidence. The composed repair is structural, `rope_relative` leads both retrieval lanes in the default run, and `no_position` also crosses the phase-cued threshold.
 
 ## Claim Boundary
 
@@ -65,7 +65,7 @@ Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that structural retrieval-routed copy experts are standard free decoder-only language modeling;
 - a claim that structural expert success is positional-method promotion evidence;
 - broad quantum advantage.

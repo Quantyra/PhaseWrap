@@ -1,8 +1,8 @@
 {
-  "title": "PhaseWrap-RoPE: Negative Results for Phase-Wrap Positional Scoring and Hardware-Readout Audit Tooling",
+  "title": "PhaseWrap: Negative Results for Phase-Wrap Positional Scoring and Hardware-Readout Audit Tooling",
   "upload_type": "software",
   "version": "0.2.44",
-  "description": "Open-source negative-results evidence repository for PhaseWrap-RoPE, including a phase-wrap positional scoring rule, deterministic validation packets, score-theory limits, retrieval-benchmark failure modes, method-nonspecific support-routing repairs, a machine-verifiable Stage 4 hardware sweep, provider-aware IBM Runtime and Amazon Braket artifacts, and Stage216-218 full IBM Fez 4096-shot hardware-readout comparison. The release does not claim broad quantum advantage, production transformer superiority, full transformer-scale validation, RoPE replacement, or general cross-backend robustness.",
+  "description": "Open-source negative-results evidence repository for PhaseWrap, including a phase-wrap positional scoring rule, deterministic validation packets, score-theory limits, retrieval-benchmark failure modes, method-nonspecific support-routing repairs, a machine-verifiable Stage 4 hardware sweep, provider-aware IBM Runtime and Amazon Braket artifacts, and Stage216-218 full IBM Fez 4096-shot hardware-readout comparison. The release does not claim broad quantum advantage, production transformer superiority, full transformer-scale validation, RoPE replacement, or general cross-backend robustness.",
   "creators": [
     {
       "name": "Fredriksen, Daniel Eric"
@@ -22,7 +22,7 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/Quantyra/PhaseWrap-RoPE",
+      "identifier": "https://github.com/Quantyra/PhaseWrap",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

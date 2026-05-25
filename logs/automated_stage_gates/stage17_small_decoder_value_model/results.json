@@ -6,7 +6,7 @@
       "full transformer-scale validation",
       "broad quantum advantage",
       "general cross-backend robustness",
-      "a claim that PhaseWrap-RoPE is a validated RoPE replacement"
+      "a claim that PhaseWrap is a validated RoPE replacement"
     ],
     "supported": [
       "A deterministic train-short/test-long learned value-token readout over non-phase-cued key-value rows.",
@@ -277,7 +277,7 @@
   ],
   "task": {
     "description": "Small decoder-style value-token retrieval with learned candidate value embeddings and learned output projection.",
-    "note": "This is a compact learned readout, not a production transformer benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+    "note": "This is a compact learned readout, not a production transformer benchmark or proof that PhaseWrap replaces RoPE.",
     "target_construction": "Targets are explicit retrieval-rule value tokens, not PhaseWrap-selected positions."
   },
   "task_names": [

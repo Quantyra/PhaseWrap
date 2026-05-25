@@ -294,7 +294,7 @@ def run_stage14_benchmark(
         "task": {
             "description": "Train-short/test-long decoder attention readout over key-value retrieval rows derived from Stage 12.",
             "target_construction": "Targets are explicit retrieval-rule value tokens, not PhaseWrap-selected positions.",
-            "note": "This isolates attention readout behavior. It is not a full language-model benchmark or proof that PhaseWrap-RoPE replaces RoPE.",
+            "note": "This isolates attention readout behavior. It is not a full language-model benchmark or proof that PhaseWrap replaces RoPE.",
         },
         "claim_boundary": {
             "supported": [
@@ -307,7 +307,7 @@ def run_stage14_benchmark(
                 "full transformer-scale validation",
                 "broad quantum advantage",
                 "general cross-backend robustness",
-                "a claim that PhaseWrap-RoPE is a validated RoPE replacement",
+                "a claim that PhaseWrap is a validated RoPE replacement",
             ],
         },
         "training_records": training_records,

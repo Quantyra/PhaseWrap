@@ -33,7 +33,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Build a replacement-semantics execution package and calibration/result-ingestion contract for the selected IBM lanes; then perform credit/provider and exact-approval review before any live run.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "primary_noise_model_ids": [
     "ibm_backend_median_stochastic",
     "ibm_backend_p75_stochastic"

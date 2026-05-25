@@ -24,7 +24,7 @@
   "missing_source_artifacts": [],
   "next_gate": "After IBM Runtime known-state counts are collected, require Stage 101 to pass and compare each dominant known-state count against these Wilson 95% thresholds before interpreting matched packet counts.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "provider_scope": "ibm_runtime",
   "ready_state_count": 4,

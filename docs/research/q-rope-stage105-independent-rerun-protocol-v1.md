@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 105 Independent Rerun Protocol v1
+# PhaseWrap Stage 105 Independent Rerun Protocol v1
 
 Date: `2026-05-21`
 

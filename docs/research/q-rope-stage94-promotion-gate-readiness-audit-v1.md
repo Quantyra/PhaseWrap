@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 94 Promotion Gate Readiness Audit v1
+# PhaseWrap Stage 94 Promotion Gate Readiness Audit v1
 
 Date: `2026-05-21`
 
@@ -56,8 +56,8 @@ Supported:
 
 Excluded:
 
-- a claim that PhaseWrap-RoPE replaces RoPE;
-- a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings;
+- a claim that PhaseWrap replaces RoPE;
+- a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings;
 - a claim that structural copy experts satisfy the free learned transformer gate;
 - production transformer superiority;
 - full transformer-scale validation;

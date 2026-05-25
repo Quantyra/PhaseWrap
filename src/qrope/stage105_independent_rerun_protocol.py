@@ -15,7 +15,7 @@ DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage105_independent_rerun_protoco
 MIN_INDEPENDENT_WINDOWS_PER_PROVIDER = 2
 MIN_HOURS_BETWEEN_WINDOWS = 24
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

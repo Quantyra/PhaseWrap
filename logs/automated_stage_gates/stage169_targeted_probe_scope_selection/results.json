@@ -300,7 +300,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Before any IBM execution, verify credit/provider state with the user. Execute only the locked Stage163 IBM shards whose source lanes include the stable Stage165 target lanes; do not broaden to excluded recommended lanes.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "schema_version": "qrope_stage169_targeted_probe_scope_selection_v1",
   "secret_values_recorded": false,

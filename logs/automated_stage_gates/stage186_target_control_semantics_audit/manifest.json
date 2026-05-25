@@ -7,7 +7,7 @@
     "excluded": [
       "hardware job submission",
       "a final noisy-hardware robustness or auditability conclusion",
-      "a claim that PhaseWrap-RoPE has no possible value under future fair semantics",
+      "a claim that PhaseWrap has no possible value under future fair semantics",
       "a replacement packet freeze or simulation result"
     ],
     "supported": [
@@ -24,7 +24,7 @@
   "negative_positional_margin_group_count": 18,
   "next_gate": "Create a replacement target/control preregistration that keeps fixed width but gives controls matched nonzero noise exposure, then run simulated IBM-informed screening before reconsidering hardware.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_credentials_required": false,
   "raw_mae_control_dominance_observed": true,
   "replacement_semantics_requirements": [

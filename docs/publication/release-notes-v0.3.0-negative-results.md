@@ -6,11 +6,11 @@ Date: `2026-05-25`
 
 ## Release Title
 
-`PhaseWrap-RoPE v0.3.0-negative-results`
+`PhaseWrap v0.3.0-negative-results`
 
 ## Summary
 
-This release reframes PhaseWrap-RoPE as a negative-results and methodology package. The positive RoPE-replacement line is closed. The repository preserves the evidence for that decision: score-theory limits, retrieval-benchmark failure modes, method-nonspecific assistance-pipeline repairs, bounded two-qubit hardware-readout audits, and reproducibility infrastructure.
+This release reframes PhaseWrap as a negative-results and methodology package. The positive RoPE-replacement line is closed. The repository preserves the evidence for that decision: score-theory limits, retrieval-benchmark failure modes, method-nonspecific assistance-pipeline repairs, bounded two-qubit hardware-readout audits, and reproducibility infrastructure.
 
 ## Main Artifacts
 
@@ -68,6 +68,6 @@ Expected outcomes:
 
 This release has been published as a GitHub release in the currently private repository:
 
-`https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
+`https://github.com/Quantyra/PhaseWrap/releases/tag/v0.3.0-negative-results`
 
 Do not change repository visibility, refresh Zenodo, post arXiv, create an OSF project, publish a blog post, or make a public announcement until the repository owner explicitly approves broader public publication.

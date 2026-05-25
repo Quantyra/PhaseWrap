@@ -11,7 +11,7 @@ DEFAULT_ARTIFACT_ROOT = Path("logs") / "automated_stage_gates"
 DEFAULT_STAGE107_WINDOW_PLANS = DEFAULT_ARTIFACT_ROOT / "stage107_window_execution_orchestrator" / "window_execution_plans.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_ARTIFACT_ROOT / "stage109_window_evidence_intake_validator"
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )
@@ -226,7 +226,7 @@ def run_stage109_intake_validator(
                 "real hardware submission",
                 "provider credential validation",
                 "a noisy-hardware robustness result",
-                "a replicated PhaseWrap-RoPE advantage claim",
+                "a replicated PhaseWrap advantage claim",
             ],
         },
         "next_gate": (

@@ -40,7 +40,7 @@ Stage 81 strengthens the Stage 80 coupling result: the phase-cued repair does no
 
 It still does not support positional-method promotion. The repair is method-nonspecific; `no_position`, `sinusoidal`, `alibi`, `rope_relative`, `phasewrap_bias`, and `phasewrap_adapter` all reach phase-cued top-1 `1.000000`.
 
-The strongest honest claim remains bounded. Stage 81 supports the claim that recovered support can be coupled to token selection in a compact diagnostic, but it does not prove that a matched decoder-only transformer learns the routing or that PhaseWrap-RoPE replaces RoPE.
+The strongest honest claim remains bounded. Stage 81 supports the claim that recovered support can be coupled to token selection in a compact diagnostic, but it does not prove that a matched decoder-only transformer learns the routing or that PhaseWrap replaces RoPE.
 
 ## Next Gate
 

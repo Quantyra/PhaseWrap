@@ -1,7 +1,7 @@
 # QRoPE Stage 130 - Live Cutover Remediation Packet
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 130 packages the Stage 106, Stage 111, Stage 128, and Stage 129 blocker state into a non-secret live cutover remediation packet, with downstream reruns through the Stage 133 authorized runner command packet.

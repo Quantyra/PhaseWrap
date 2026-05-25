@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 55 Row-Metadata Cue-Copy Upper-Bound Audit v1
+# PhaseWrap Stage 55 Row-Metadata Cue-Copy Upper-Bound Audit v1
 
 Date: `2026-05-21`
 
@@ -75,6 +75,6 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that explicit row metadata is a standard decoder-only input feature;
 - a claim that this upper bound is positional-method promotion evidence.

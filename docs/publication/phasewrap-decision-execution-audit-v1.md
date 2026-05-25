@@ -52,7 +52,7 @@ Public-facing receipt/confirmation scan returned no matches for the configured f
 
 The repository has a private GitHub release:
 
-- `https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
+- `https://github.com/Quantyra/PhaseWrap/releases/tag/v0.3.0-negative-results`
 
 Broader public release actions still require explicit approval because they change public state:
 

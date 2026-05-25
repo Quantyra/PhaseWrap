@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 23 Long-Context Adapter v1
+# PhaseWrap Stage 23 Long-Context Adapter v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 23 trains positional adapters on the explicit long-context retrieval rows introduced in Stage 22. It trains on `512` and `1024` token contexts, validates on `2048`, and tests on `4096`. Targets remain explicit passkey, multi-needle, and aggregation rules; they are not selected by the PhaseWrap score.
 
-This is a deterministic local positional-adapter benchmark. It is not a full transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a deterministic local positional-adapter benchmark. It is not a full transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

@@ -1,7 +1,7 @@
 # QRoPE Stage 118 - Provider Payload Dry-Run Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 118 compiles non-secret dry-run provider submission payloads from the Stage 116 runner plan and Stage 114 job shards.

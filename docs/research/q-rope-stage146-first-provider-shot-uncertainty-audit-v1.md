@@ -1,7 +1,7 @@
 # QRoPE Stage 146 - First Provider Shot Uncertainty Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 146 preregisters conservative shot-noise uncertainty thresholds for the IBM-first matched packet plan. It does not submit hardware jobs, create provider SDK clients, record credentials, or inspect real provider results.

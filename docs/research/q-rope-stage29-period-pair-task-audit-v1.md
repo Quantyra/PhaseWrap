@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 29 Period-Pair Task Audit v1
+# PhaseWrap Stage 29 Period-Pair Task Audit v1
 
 Date: `2026-05-20`
 
@@ -60,4 +60,4 @@ Stage 29 strengthens the theory-to-task boundary:
 - alias and target-score-gap diagnostics remain necessary when presenting any period-pair choice;
 - the stronger evidence path remains an adapter or transformer mechanism that combines PhaseWrap features with distance/content information.
 
-This audit does not prove any period pair is globally optimal and does not establish that PhaseWrap-RoPE replaces RoPE.
+This audit does not prove any period pair is globally optimal and does not establish that PhaseWrap replaces RoPE.

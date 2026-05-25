@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 20 Hardened Positional Value Model v1
+# PhaseWrap Stage 20 Hardened Positional Value Model v1
 
 Date: `2026-05-20`
 
@@ -6,7 +6,7 @@ Date: `2026-05-20`
 
 Stage 20 reintroduces learned positional attention after the Stage 19 value-output hardening probe. It uses the Stage 14 non-phase-cued key-value rows, trains attention weights for each positional feature family, and keeps the hardened full-batch Adam value-output path.
 
-This is a local learned positional-attention/value-output comparison. It is not a production transformer benchmark and not proof that PhaseWrap-RoPE replaces RoPE.
+This is a local learned positional-attention/value-output comparison. It is not a production transformer benchmark and not proof that PhaseWrap replaces RoPE.
 
 ## Artifact Paths
 
@@ -54,7 +54,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

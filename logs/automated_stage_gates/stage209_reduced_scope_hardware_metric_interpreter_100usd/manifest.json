@@ -22,7 +22,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Summarize the reduced-scope hardware conclusion and decide whether a full 4096-shot evidentiary run is justified.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_template_count": 20,
   "pass_fail_policy": {
     "lower_precision_caveat": "A win at 2048 shots can support a reduced-precision hardware positive, but it cannot be described as the original 4096-shot evidentiary run. Any marginal result below 2 shot quanta is inconclusive, not a loss or win.",

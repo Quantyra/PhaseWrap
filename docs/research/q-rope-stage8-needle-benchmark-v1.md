@@ -1,10 +1,10 @@
-# PhaseWrap-RoPE Stage 8 Needle-Style Benchmark v1
+# PhaseWrap Stage 8 Needle-Style Benchmark v1
 
 Date: `2026-05-20`
 
 ## Purpose
 
-Stage 8 adds a no-credential local retrieval benchmark to test whether the PhaseWrap-RoPE scoring rule is worth keeping in the RoPE-replacement research lane. The benchmark is a modest synthetic Needle-style task with same-token distractors, multiple seeds, long context lengths, bootstrap intervals, and direct comparisons against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules.
+Stage 8 adds a no-credential local retrieval benchmark to test whether the PhaseWrap scoring rule is worth keeping in the RoPE-replacement research lane. The benchmark is a modest synthetic Needle-style task with same-token distractors, multiple seeds, long context lengths, bootstrap intervals, and direct comparisons against RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules.
 
 This is not a RULER score, not a language-model benchmark, and not production transformer evidence. It is a bounded phase-cued retrieval packet for deciding whether broader RoPE-facing experiments are justified.
 
@@ -65,7 +65,7 @@ This ablation supports the release-local choice of `(8, 12)` for the synthetic p
 
 Supported:
 
-- deterministic local Needle-style retrieval comparison across PhaseWrap-RoPE, RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules;
+- deterministic local Needle-style retrieval comparison across PhaseWrap, RoPE-like, ALiBI-like, sinusoidal, and no-position scoring rules;
 - bootstrap intervals over benchmark rows for top-1 and MRR;
 - a release-local period-pair ablation that favors `(8, 12)` on this packet;
 - evidence that a broader RoPE-facing benchmark lane is worth running.
@@ -76,7 +76,7 @@ Excluded:
 - full transformer-scale validation;
 - broad quantum advantage;
 - general cross-backend robustness;
-- proof that PhaseWrap-RoPE replaces RoPE.
+- proof that PhaseWrap replaces RoPE.
 
 ## Next Step
 

@@ -168,7 +168,7 @@ def run_stage186_target_control_semantics_audit(
             "excluded": [
                 "hardware job submission",
                 "a final noisy-hardware robustness or auditability conclusion",
-                "a claim that PhaseWrap-RoPE has no possible value under future fair semantics",
+                "a claim that PhaseWrap has no possible value under future fair semantics",
                 "a replacement packet freeze or simulation result",
             ],
         },

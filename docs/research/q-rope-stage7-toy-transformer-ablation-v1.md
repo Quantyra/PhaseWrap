@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 7 Toy Transformer Ablation v1
+# PhaseWrap Stage 7 Toy Transformer Ablation v1
 
 Date: `2026-05-20`
 

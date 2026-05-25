@@ -37,7 +37,7 @@ def test_stage41_benchmark_and_outputs(tmp_path) -> None:
     assert len(result["run_table"]) == 4
     assert len(result["task_table"]) == 12
     assert "mean_target_attention_probability_mean" in result["table"][0]
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
     paths = write_stage41_outputs(result, tmp_path)
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))

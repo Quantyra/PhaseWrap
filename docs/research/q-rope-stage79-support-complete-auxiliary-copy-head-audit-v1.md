@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 79 Support-Complete Auxiliary Copy Head Audit v1
+# PhaseWrap Stage 79 Support-Complete Auxiliary Copy Head Audit v1
 
 Date: `2026-05-21`
 
@@ -59,7 +59,7 @@ Excluded:
 - production transformer superiority;
 - full transformer-scale validation;
 - broad quantum advantage;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that this compact support-complete auxiliary copy-head is a matched decoder-only transformer;
 - a claim that support-complete auxiliary copy training supports positional-method promotion.
 

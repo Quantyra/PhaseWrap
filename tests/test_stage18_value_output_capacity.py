@@ -30,7 +30,7 @@ def test_run_stage18_benchmark_is_complete() -> None:
     assert result["no_hardware_submission"] is True
     assert {row["mode"] for row in result["table"]} == {"uniform_attention", "teacher_forced_attention"}
     assert {row["split"] for row in result["table"]} == {"train", "validation", "test"}
-    assert "a claim that PhaseWrap-RoPE is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap is a validated RoPE replacement" in result["claim_boundary"]["excluded"]
 
 
 def test_stage18_outputs_are_written(tmp_path) -> None:

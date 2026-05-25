@@ -40,7 +40,7 @@ Stage 80 is positive evidence that Stage 79's remaining failure was a coupling f
 
 It is also negative evidence for positional-method promotion. The repair is method-nonspecific; `no_position`, `sinusoidal`, `alibi`, `rope_relative`, `phasewrap_bias`, and `phasewrap_adapter` all reach phase-cued top-1 `1.000000` under the support-routed selector.
 
-The strongest honest claim remains bounded. Stage 80 proves the row family can be solved when a learned support signal is explicitly routed into the right token-selection rule. It does not prove that PhaseWrap-RoPE replaces RoPE, that a matched decoder-only transformer learns this routing, or that the repair is PhaseWrap-specific.
+The strongest honest claim remains bounded. Stage 80 proves the row family can be solved when a learned support signal is explicitly routed into the right token-selection rule. It does not prove that PhaseWrap replaces RoPE, that a matched decoder-only transformer learns this routing, or that the repair is PhaseWrap-specific.
 
 ## Next Gate
 

@@ -72,7 +72,7 @@ def _claim_boundary() -> dict[str, list[str]]:
             "A narrowed promotion-gate gap showing interval reporting exists while PhaseWrap-led free learned retrieval evidence remains missing.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
+            "a claim that PhaseWrap replaces RoPE",
             "a claim that interval reporting creates a PhaseWrap-led retrieval solve",
             "a claim that structural copy experts are standard free decoder-only language modeling",
             "production transformer superiority",

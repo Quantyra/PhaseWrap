@@ -1,7 +1,7 @@
 # QRoPE Stage 148 - First Provider Statistical Interpretation Gate
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 148 binds later IBM Runtime interpretation to the Stage 146 shot-noise thresholds, Stage 147 known-state calibration confidence thresholds, Stage 113-assembled calibration evidence, and Stage 103 ready-for-interpretation decisions. Stage 103 readiness must also carry Stage 104 matched-surface readiness, Stage 113 live-submit provenance, complete comparison groups, and provider-aligned summaries. It does not submit hardware jobs, create provider SDK clients, record credentials, or add provider results.

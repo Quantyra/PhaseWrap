@@ -42,7 +42,7 @@ def test_stage51_audit_declares_decoder_path_plateau(tmp_path: Path) -> None:
     assert result["decision"]["fixed_copy_only_generalizes"] is True
     assert result["decision"]["final_stage_retrieval_generalized"] is False
     assert result["decision"]["phasewrap_retrieval_generalized_by_stage"] == {}
-    assert "a claim that PhaseWrap-RoPE replaces RoPE" in result["claim_boundary"]["excluded"]
+    assert "a claim that PhaseWrap replaces RoPE" in result["claim_boundary"]["excluded"]
 
 
 def test_stage51_outputs_are_written(tmp_path: Path) -> None:

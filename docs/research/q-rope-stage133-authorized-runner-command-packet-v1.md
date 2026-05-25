@@ -1,7 +1,7 @@
 # QRoPE Stage 133 - Authorized Runner Command Packet
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 133 prepares exact live-submit command templates from Stage 116 runner records, Stage 129 cutover authorization, and Stage 132 guarded SDK factory readiness.

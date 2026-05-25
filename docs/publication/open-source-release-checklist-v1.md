@@ -1,8 +1,8 @@
-# PhaseWrap-RoPE open-source release checklist v1
+# PhaseWrap open-source release checklist v1
 
 Status: `NEGATIVE_RESULTS_RELEASE_PREP`
 
-Target repository: `https://github.com/Quantyra/PhaseWrap-RoPE`
+Target repository: `https://github.com/Quantyra/PhaseWrap`
 
 License: `AGPL-3.0-only`
 
@@ -12,7 +12,7 @@ Patent notice: low-prominence legal mention only; patent status is not part of t
 
 | Artifact | Status | Notes |
 | --- | --- | --- |
-| `README.md` | Prepared | Public-facing Quantyra/PhaseWrap-RoPE negative-results positioning with claim boundary. |
+| `README.md` | Prepared | Public-facing Quantyra/PhaseWrap negative-results positioning with claim boundary. |
 | `LICENSE` | Prepared | GNU AGPL v3 text. |
 | `NOTICE` | Prepared | Short public ownership and patent/IP-status notice. |
 | `PATENTS.md` | Prepared | Low-prominence patent/IP notice and license boundary. |
@@ -76,7 +76,7 @@ The public repository has been created and published:
 
 | Step | Status |
 | --- | --- |
-| Confirm target GitHub owner and repository name: `Quantyra/PhaseWrap-RoPE`. | Done |
+| Confirm target GitHub owner and repository name: `Quantyra/PhaseWrap`. | Done |
 | Create or connect the public GitHub repository. | Done |
 | Push the prepared local repository. | Done |
 | Confirm the public repository metadata. | Done |

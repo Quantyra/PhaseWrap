@@ -13,7 +13,7 @@ The validator reads `logs/automated_stage_gates/stage107_window_execution_orches
 - non-empty counts for every expected packet row;
 - Stage 103 results showing `ready_to_interpret_hardware_metrics: true`.
 
-The gate deliberately does not submit hardware jobs, validate credentials, or infer a PhaseWrap-RoPE advantage. It only records whether evidence is complete enough for the next aggregation step.
+The gate deliberately does not submit hardware jobs, validate credentials, or infer a PhaseWrap advantage. It only records whether evidence is complete enough for the next aggregation step.
 
 Current expected decision before real provider execution:
 

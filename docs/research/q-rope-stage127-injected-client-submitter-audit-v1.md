@@ -1,7 +1,7 @@
 # QRoPE Stage 127 - Injected-Client Submitter Audit
 
 ## Objective
-Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
+Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.
 
 ## Result
 Stage 127 adds and audits injected-client execution paths inside the IBM Runtime and Amazon Braket adapters.

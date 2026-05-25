@@ -3306,7 +3306,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Use these templates only after IBM credit/provider review and exact human approval; filled counts must pass calibration and result-ingestion checks before any robustness interpretation.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "packet_template_count": 20,
   "provider_credentials_required": false,
   "runnable_commands_recorded": false,

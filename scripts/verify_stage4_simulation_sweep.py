@@ -57,7 +57,7 @@ def print_table(rows: list[dict]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Offline verifier for the PhaseWrap-RoPE Stage 4 simulation sweep.")
+    parser = argparse.ArgumentParser(description="Offline verifier for the PhaseWrap Stage 4 simulation sweep.")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args(argv)

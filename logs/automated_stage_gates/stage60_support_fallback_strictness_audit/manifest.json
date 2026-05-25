@@ -3,7 +3,7 @@
     "excluded": [
       "production transformer superiority",
       "full transformer-scale validation",
-      "a claim that PhaseWrap-RoPE replaces RoPE",
+      "a claim that PhaseWrap replaces RoPE",
       "a claim that fallback decoding is a matched decoder-only transformer",
       "a claim that strict seed-local support coverage solves held-out phase-cued retrieval",
       "a claim that this deterministic cue-copy diagnostic is positional-method promotion evidence",

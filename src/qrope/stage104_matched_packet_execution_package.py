@@ -32,7 +32,7 @@ REQUIRED_CIRCUIT_TEMPLATES: tuple[str, ...] = (
     "two_ry_cx_parity_z_readout_v1",
 )
 OBJECTIVE = (
-    "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or "
+    "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or "
     "auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, "
     "under fixed circuit width."
 )

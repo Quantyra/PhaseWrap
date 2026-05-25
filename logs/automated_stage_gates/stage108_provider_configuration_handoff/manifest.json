@@ -17,7 +17,7 @@
   "missing_source_artifacts": [],
   "next_gate": "Fill provider configuration locally, rerun Stage 106 with --load-dotenv, and proceed to Stage 107 only after Stage 106 reports ready.",
   "no_hardware_submission": true,
-  "objective": "Determine whether PhaseWrap-RoPE's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
+  "objective": "Determine whether PhaseWrap's compact phase-wrap positional score has measurable robustness or auditability advantages on noisy quantum hardware, compared with matched positional-score encodings, under fixed circuit width.",
   "provider_count": 2,
   "provider_credentials_required": true,
   "ready_for_hardware_submission": false,

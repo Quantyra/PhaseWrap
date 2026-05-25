@@ -22,13 +22,13 @@ SOURCE_FILES: tuple[tuple[str, str], ...] = (
 def _claim_boundary() -> dict[str, list[str]]:
     return {
         "supported": [
-            "A no-credential claim-card package for the current strongest honest PhaseWrap-RoPE claim.",
+            "A no-credential claim-card package for the current strongest honest PhaseWrap claim.",
             "A compact mapping from the claim to positive evidence, failure modes, unsupported claims, and next gate.",
             "A publication-facing guardrail artifact that preserves bounded wording from Stage70/94/95.",
         ],
         "excluded": [
-            "a claim that PhaseWrap-RoPE replaces RoPE",
-            "a claim that PhaseWrap-RoPE is currently better than RoPE in fair matched transformer settings",
+            "a claim that PhaseWrap replaces RoPE",
+            "a claim that PhaseWrap is currently better than RoPE in fair matched transformer settings",
             "a claim that structural copy experts are standard free decoder-only language modeling",
             "production transformer superiority",
             "full transformer-scale validation",

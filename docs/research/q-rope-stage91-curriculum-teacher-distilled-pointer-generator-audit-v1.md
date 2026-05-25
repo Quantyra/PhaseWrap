@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Stage 91 Curriculum Teacher-Distilled Pointer Generator Audit v1
+# PhaseWrap Stage 91 Curriculum Teacher-Distilled Pointer Generator Audit v1
 
 Date: `2026-05-21`
 
@@ -62,7 +62,7 @@ Excluded:
 
 - production transformer superiority;
 - full transformer-scale validation;
-- a claim that PhaseWrap-RoPE replaces RoPE;
+- a claim that PhaseWrap replaces RoPE;
 - a claim that a length-curriculum toy pointer-generator is full transformer-scale validation;
 - a claim that curriculum or training-time structural teachers are positional-method promotion evidence;
 - broad quantum advantage.

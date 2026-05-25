@@ -1,4 +1,4 @@
-# PhaseWrap-RoPE Next Transformer Benchmark Roadmap v1
+# PhaseWrap Next Transformer Benchmark Roadmap v1
 
 Date: `2026-05-20`
 
@@ -6,9 +6,9 @@ Status: `planned`
 
 ## Purpose
 
-This roadmap defines the evidence needed before PhaseWrap-RoPE can be presented as a credible RoPE-replacement candidate rather than an auditable phase-wrap scoring rule with bounded hardware witnesses and toy downstream checks.
+This roadmap defines the evidence needed before PhaseWrap can be presented as a credible RoPE-replacement candidate rather than an auditable phase-wrap scoring rule with bounded hardware witnesses and toy downstream checks.
 
-North-star goal: find the strongest honest claim PhaseWrap-RoPE can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons, preserving both positive evidence and failure modes. The detailed active goal is recorded in `docs/research/q-rope-strongest-honest-claim-goal-v1.md`.
+North-star goal: find the strongest honest claim PhaseWrap can support under fair RoPE, ALiBI, sinusoidal, and no-position comparisons, preserving both positive evidence and failure modes. The detailed active goal is recorded in `docs/research/q-rope-strongest-honest-claim-goal-v1.md`.
 
 The current repository already separates three tracks:
 
@@ -138,7 +138,7 @@ Open theory questions:
 
 ## Promotion Gate
 
-PhaseWrap-RoPE can be described as a credible RoPE-replacement candidate only after a matched trained-transformer benchmark shows competitive performance against RoPE, ALiBI, sinusoidal, and no-position baselines on at least one non-PhaseWrap-labeled task, across multiple seeds, with confidence intervals and failed-run artifacts.
+PhaseWrap can be described as a credible RoPE-replacement candidate only after a matched trained-transformer benchmark shows competitive performance against RoPE, ALiBI, sinusoidal, and no-position baselines on at least one non-PhaseWrap-labeled task, across multiple seeds, with confidence intervals and failed-run artifacts.
 
 Stage 30 closes a compact-bridge confound by equalizing feature width and parameter count, but it does not satisfy this promotion gate because it is still a retrieval bridge rather than a stronger decoder-only transformer or standard language-model/retrieval harness.
 
@@ -240,7 +240,7 @@ Stage 94 audits promotion-gate readiness. It still does not satisfy this promoti
 
 Stage 95 surfaces selected headline confidence intervals. It still does not satisfy this promotion gate because interval reporting does not create the missing free learned PhaseWrap-led retrieval solve.
 
-Until then, the supported claim remains narrower: PhaseWrap-RoPE is a compact, auditable phase-wrap positional scoring rule with reproducible classical analyses, bounded hardware readout witnesses, and mixed but useful toy downstream evidence.
+Until then, the supported claim remains narrower: PhaseWrap is a compact, auditable phase-wrap positional scoring rule with reproducible classical analyses, bounded hardware readout witnesses, and mixed but useful toy downstream evidence.
 
 Stage 76 integrates support/copy training into the token-copy objective and records `INTEGRATED_SUPPORT_COPY_HEAD_PARTIAL_RETRIEVAL`: exact-offset is partially repaired for `rope_relative`, but phase-cued retrieval returns to `0.000000` for every method.
 

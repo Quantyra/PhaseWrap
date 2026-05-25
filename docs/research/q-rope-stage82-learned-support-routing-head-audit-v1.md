@@ -38,7 +38,7 @@ Stage 82 preserves support recovery but fails to preserve the Stage 80/81 phase-
 
 This sharpens the current blocker. The issue is no longer support-label recovery, and it is not solved merely by soft support probabilities. The remaining blocker is learning the support-to-token routing rule from standard training signals.
 
-The strongest honest claim remains bounded. Stage 82 does not support PhaseWrap-RoPE as a RoPE replacement, does not validate a matched decoder-only transformer, and does not support positional-method promotion.
+The strongest honest claim remains bounded. Stage 82 does not support PhaseWrap as a RoPE replacement, does not validate a matched decoder-only transformer, and does not support positional-method promotion.
 
 ## Next Gate
 

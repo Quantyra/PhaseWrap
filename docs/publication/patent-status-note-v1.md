@@ -1,10 +1,10 @@
-# PhaseWrap-RoPE patent status note v1
+# PhaseWrap patent status note v1
 
 Status: `low_prominence_legal_notice`
 
 ## Public patent statement
 
-PhaseWrap-RoPE is associated with USPTO provisional applications `64/068,121` (received `2026-05-18`) and `64/073,899` (received `2026-05-25`).
+PhaseWrap is associated with USPTO provisional applications `64/068,121` (received `2026-05-18`) and `64/073,899` (received `2026-05-25`).
 
 Additional USPTO receipt identifiers and confirmation numbers are retained in internal CYINT IP records and are not published in this repository.
 
@@ -16,7 +16,7 @@ Patent prosecution and conversion strategy is outside this repository. This repo
 
 Public statements should stay within the submitted and repo-backed evidence boundary:
 
-- PhaseWrap-RoPE method;
+- PhaseWrap method;
 - negative-results framing for the replacement research line;
 - deterministic frozen-packet validation;
 - Stage 11 score-theory limits;
