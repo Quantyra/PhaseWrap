@@ -1,6 +1,6 @@
 # Release Notes: v0.3.0-negative-results
 
-Status: `RELEASE_NOTES_PREPARED_NOT_PUBLISHED`
+Status: `GITHUB_RELEASE_PUBLISHED_REPO_PRIVATE`
 
 Date: `2026-05-25`
 
@@ -66,4 +66,8 @@ Expected outcomes:
 
 ## Publication Boundary
 
-This release note is prepared for a future release but is not itself a release action. Do not create a tag, push, GitHub release, Zenodo update, arXiv post, OSF project, blog post, or public announcement until the repository owner explicitly approves publication.
+This release has been published as a GitHub release in the currently private repository:
+
+`https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
+
+Do not change repository visibility, refresh Zenodo, post arXiv, create an OSF project, publish a blog post, or make a public announcement until the repository owner explicitly approves broader public publication.

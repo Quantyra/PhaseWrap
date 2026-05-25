@@ -1,6 +1,6 @@
 # PhaseWrap Decision Execution Audit v1
 
-Status: `DECISION_MEMO_REPO_ACTIONS_EXECUTED_RELEASE_HELD`
+Status: `DECISION_MEMO_EXECUTED_GITHUB_RELEASE_PRIVATE`
 
 Date: `2026-05-25`
 
@@ -24,7 +24,7 @@ This audit checks whether the actions in `phasewrap-research-program-decision-v1
 | Keep patent/IP posture factual and low-prominence. | `PATENTS.md`, `NOTICE`, patent status note, README, and release checklist describe patent status as a low-prominence legal mention, not scientific evidence. | Executed |
 | Keep receipt-specific identifiers and confirmation numbers out of public materials. | Publication verifier and explicit public-file scans check forbidden receipt/confirmation fragments. | Executed |
 | Prepare conservative release notes for the negative-results tag. | `release-notes-v0.3.0-negative-results.md` exists with support/non-support boundaries and verifier commands. | Executed |
-| Release under a conservative negative-results tag only after wording is safe. | Release plan recommends `v0.3.0-negative-results`; package verifier passes. No local tag, GitHub release, push, DOI refresh, arXiv, or OSF publication has been performed. | Held pending explicit release approval |
+| Release under a conservative negative-results tag only after wording is safe. | Commit `b228ca43` was pushed to `main`, tag `v0.3.0-negative-results` was pushed, and the GitHub release was created. The repository remains private. | Executed for private GitHub release |
 
 ## Verification Commands
 
@@ -50,17 +50,16 @@ Public-facing receipt/confirmation scan returned no matches for the configured f
 
 ## Release Boundary
 
-The repository is locally prepared for a negative-results release, but no external release action has been executed.
+The repository has a private GitHub release:
 
-External release actions require explicit approval because they change public state:
+- `https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
 
-- committing the current working tree;
-- creating a local or remote release tag;
-- pushing to GitHub;
-- creating a GitHub release;
+Broader public release actions still require explicit approval because they change public state:
+
+- changing repository visibility from private to public;
 - refreshing Zenodo metadata or DOI records;
 - posting arXiv, OSF, blog, or public announcement material.
 
 ## Current Verdict
 
-All repo-side actions in the decision memo are executed. The only held item is external publication/tagging, which is intentionally pending explicit release approval.
+All repo-side actions in the decision memo are executed, and the conservative GitHub release tag exists in the private repository. The only held items are broader public-publication actions: repository visibility, Zenodo, arXiv, OSF, blog, or public announcement.

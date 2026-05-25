@@ -58,12 +58,17 @@ Prepared artifact:
 - `.zenodo.json`
 - [Release notes for v0.3.0-negative-results](release-notes-v0.3.0-negative-results.md)
 
+Current GitHub release:
+
+- `https://github.com/Quantyra/PhaseWrap-RoPE/releases/tag/v0.3.0-negative-results`
+- Repository visibility at publication time: `PRIVATE`
+
 Blocking items:
 
 - Zenodo account access.
 - Zenodo GitHub integration enabled for the repository.
 - GitHub release tag decision.
-- explicit owner approval to publish the currently private/unpublished repository state.
+- explicit owner approval to make the currently private repository public or post beyond GitHub.
 
 ## Release tag recommendation
 

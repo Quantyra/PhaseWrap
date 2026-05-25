@@ -115,11 +115,11 @@ REQUIRED_PUBLIC_STRINGS = [
     "Ranking parity is not substitution adequacy",
     "PHASEWRAP_POSITIVE_EXECUTION_FROZEN",
     "Any new PhaseWrap-positive execution must cite one of the reopen gates",
-    "DECISION_MEMO_REPO_ACTIONS_EXECUTED_RELEASE_HELD",
+    "DECISION_MEMO_EXECUTED_GITHUB_RELEASE_PRIVATE",
     "All repo-side actions in the decision memo are executed",
-    "external publication/tagging",
-    "RELEASE_NOTES_PREPARED_NOT_PUBLISHED",
-    "Do not create a tag, push, GitHub release, Zenodo update, arXiv post, OSF project, blog post, or public announcement until the repository owner explicitly approves publication",
+    "broader public-publication actions",
+    "GITHUB_RELEASE_PUBLISHED_REPO_PRIVATE",
+    "Do not change repository visibility, refresh Zenodo, post arXiv, create an OSF project, publish a blog post, or make a public announcement until the repository owner explicitly approves broader public publication",
 ]
 
 
