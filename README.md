@@ -4,11 +4,17 @@
 [![Open verification in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Quantyra/PhaseWrap/blob/main/docs/notebooks/phasewrap_verify.ipynb)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20387905.svg)](https://doi.org/10.5281/zenodo.20387905)
 
-Repository naming note: public materials use `PhaseWrap`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem for compatibility with frozen artifacts.
+Repository naming note: public materials use `PhaseWrap`; Python imports, script paths, packet IDs, and evidence IDs retain the existing `qrope` stem for compatibility with frozen artifacts. A `phasewrap` compatibility import is also provided for the public scoring surface.
 
 PhaseWrap is Quantyra's negative-results research repository for a phase-wrap positional scoring rule, retrieval-benchmark methodology, and two-qubit readout audit infrastructure.
 
 This repository is intended for open scientific review of what the PhaseWrap line did and did not support. The positive replacement thesis is closed: the evidence does not support RoPE replacement, production transformer superiority, quantum advantage, entanglement-based advantage, or broad cross-backend robustness.
+
+Start here for a short no-credentials review path: [Reviewer Start](REVIEWER_START.md). Use the [stage-to-claim map](docs/stage-to-claim-map.md) to avoid reading the full stage archive first.
+
+Mathematically, the public scoring rule is `SQR = m8 * m12`: two wrapped residual margins at periods `8` and `12` are multiplied into one scalar. Stage 11 shows this default score is mod-24 periodic, has only `10` distinct residue values, and is therefore an auditable but heavily aliased classical feature.
+
+> `Hardware-positive` here means a bounded two-qubit readout-audit result on archived packets. It does not imply RoPE replacement, transformer-scale improvement, quantum advantage, or general hardware robustness.
 
 ## Reviewer Fast Path
 
@@ -40,16 +46,18 @@ Expected public decision: `IBM_FEZ_FROZEN_PACKET_READOUT_NOISE_DELTA_FAVORS_PHAS
 **One-command package check:**
 
 ```bash
-python scripts/verify_publication_package.py
+python -m qrope.verify_publication --profile public
 ```
 
-Expected output: `PUBLICATION_PACKAGE_VERIFY_PASS`.
+Expected output: `PHASEWRAP_PUBLIC_VERIFY_PASS`.
+
+Equivalent legacy script: `python scripts/verify_publication_package.py`.
 
 **Command matrix:**
 
 | Goal | Command | Expected time | Credentials |
 | --- | --- | --- | --- |
-| Verify public package | `python scripts/verify_publication_package.py` | Fast | No |
+| Verify public package | `python -m qrope.verify_publication --profile public` | Fast | No |
 | Test public scoring API | `pytest tests/test_scoring_api.py` | Fast | No |
 | Recompute score theory | `python scripts/run_stage11_phasewrap_theory.py` | Fast | No |
 | Reproduce support-routing warning | `python scripts/run_stage80_support_routed_token_selector_audit.py` | Fast to medium | No |
@@ -59,6 +67,8 @@ Expected output: `PUBLICATION_PACKAGE_VERIFY_PASS`.
 ## Why This Matters in 60 Seconds
 
 PhaseWrap turns relative-position offsets into two wrapped residual margins, one mod 8 and one mod 12, then multiplies them into a compact score used throughout the repository as `SQR`. That score is small enough to characterize classically, cheap enough to test against RoPE/ALiBI/sinusoidal/no-position baselines, and structured enough to map into two-qubit readout witnesses using `RY` angle encodings with optional `CX` parity readout.
+
+![PhaseWrap method schematic](docs/publication/figures/qrope-method-schematic-v1.svg)
 
 The current contribution is the negative-results methodology around that idea: assistance pipelines that repair `no_position` too, frozen packets, raw counts, backend metadata, known-state calibration, offline verifiers, bounded hardware witness results, and failed retrieval/promotional gates are all kept together. The result is a falsifiable negative-results repo, not a broad positional-encoding victory lap.
 
@@ -98,6 +108,8 @@ A stronger hardware-specific claim would require a preregistered same-packet com
 
 Start here:
 
+- Reviewer start: [Reviewer Start](REVIEWER_START.md)
+- Stage-to-claim map: [Stage-to-claim map](docs/stage-to-claim-map.md)
 - Program decision: [PhaseWrap research program decision](docs/publication/phasewrap-research-program-decision-v1.md)
 - Execution freeze: [PhaseWrap execution freeze](docs/publication/phasewrap-execution-freeze-v1.md)
 - Execution audit: [PhaseWrap decision execution audit](docs/publication/phasewrap-decision-execution-audit-v1.md)
@@ -125,96 +137,12 @@ features = phasewrap_features(reference_delta=37, candidate_delta=13)
 Minimal local verification:
 
 ```bash
-python scripts/verify_stage4_hardware_packet.py
-python scripts/verify_stage4_hardware_sweep.py
-python scripts/estimate_stage4_classical_compute_cost.py
-python scripts/preregister_stage4_replication_packets.py
-python scripts/prepare_stage4_bitstring_calibration_packets.py
-python scripts/run_stage5_attention_baselines.py
-python scripts/run_stage6_downstream_attention.py
-python scripts/run_stage7_toy_transformer_ablation.py
-python scripts/run_stage8_needle_benchmark.py
-python scripts/run_stage9_trained_transformer_ablation.py
-python scripts/run_stage10_small_decoder_transformer.py
 python scripts/run_stage11_phasewrap_theory.py
-python scripts/run_stage12_ruler_retrieval.py
-python scripts/run_stage13_positional_adapter.py
-python scripts/run_stage14_attention_readout.py
-python scripts/run_stage15_learned_attention.py
-python scripts/run_stage16_learned_attention_stability.py
-python scripts/run_stage17_small_decoder_value_model.py
-python scripts/run_stage18_value_output_capacity.py
-python scripts/run_stage19_value_output_hardening.py
-python scripts/run_stage20_hardened_positional_value_model.py
-python scripts/run_stage21_hardened_positional_stability.py
-python scripts/run_stage22_long_context_retrieval.py
-python scripts/run_stage23_long_context_adapter.py
-python scripts/run_stage24_long_context_value_model.py
-python scripts/run_stage25_long_context_value_stability.py
-python scripts/run_stage26_compact_kv_qa.py
-python scripts/run_stage27_compact_kv_transformer_bridge.py
-python scripts/run_stage28_ruler_attention_bridge.py
-python scripts/run_stage29_period_pair_task_audit.py
-python scripts/run_stage30_matched_retrieval_bridge.py
-python scripts/run_stage31_full_context_retrieval_attention.py
-python scripts/run_stage32_full_context_feature_bridge.py
-python scripts/run_stage33_temperature_calibration.py
-python scripts/run_stage34_small_decoder_value_bridge.py
-python scripts/run_stage35_value_bridge_bottleneck_diagnostic.py
-python scripts/run_stage36_copy_value_bridge.py
-python scripts/run_stage37_copy_value_temperature_calibration.py
-python scripts/run_stage38_hardened_decoder_value_bridge.py
-python scripts/run_stage39_sequence_decoder_retrieval.py
-python scripts/run_stage40_sequence_length_curriculum.py
-python scripts/run_stage41_pointer_copy_sequence.py
-python scripts/run_stage42_trainable_pointer_generator_sequence.py
-python scripts/run_stage43_generator_hardened_pointer_sequence.py
-python scripts/run_stage44_compact_diagnostic_plateau_audit.py
-python scripts/run_stage45_matched_decoder_only_gate.py
-python scripts/run_stage46_decoder_capacity_hardening_audit.py
-python scripts/run_stage47_adam_decoder_generalization_audit.py
-python scripts/run_stage48_adam_decoder_stability_audit.py
-python scripts/run_stage49_copy_decoder_retrieval_repair_audit.py
-python scripts/run_stage50_learned_pointer_generator_decoder_audit.py
-python scripts/run_stage51_decoder_path_plateau_audit.py
-python scripts/run_stage52_two_block_decoder_feasibility_audit.py
-python scripts/run_stage53_two_block_retrieval_hardening_audit.py
-python scripts/run_stage54_attention_supervised_two_block_audit.py
-python scripts/run_stage55_row_metadata_cue_copy_upper_bound_audit.py
-python scripts/run_stage56_standard_input_cue_copy_audit.py
-python scripts/run_stage57_support_aware_query_cue_audit.py
-python scripts/run_stage58_pooled_train_query_support_audit.py
-python scripts/run_stage59_seed_local_query_support_audit.py
-python scripts/run_stage60_support_fallback_strictness_audit.py
-python scripts/run_stage61_support_complete_two_block_audit.py
-python scripts/run_stage62_long_training_support_complete_audit.py
-python scripts/run_stage63_two_block_copy_output_capacity_audit.py
-python scripts/run_stage64_two_block_pointer_generator_capacity_audit.py
-python scripts/run_stage65_pointer_generator_length_curriculum_audit.py
-python scripts/run_stage66_positional_copy_expert_audit.py
-python scripts/run_stage67_content_key_retrieval_audit.py
-python scripts/run_stage68_content_key_auxiliary_transfer_audit.py
-python scripts/run_stage69_original_multitask_pointer_generator_audit.py
-python scripts/run_stage70_strongest_honest_claim_synthesis.py
-python scripts/run_stage71_positional_bias_copy_upper_bound_audit.py
-python scripts/run_stage72_phase_cued_bias_tie_support_audit.py
-python scripts/run_stage73_phase_cued_period_pair_support_audit.py
-python scripts/run_stage74_leave_one_seed_query_support_audit.py
-python scripts/run_stage75_learned_query_support_head_audit.py
-python scripts/run_stage76_integrated_support_copy_head_audit.py
-python scripts/run_stage77_auxiliary_support_copy_head_audit.py
-python scripts/run_stage78_support_coverage_split_audit.py
-python scripts/run_stage79_support_complete_auxiliary_copy_head_audit.py
 python scripts/run_stage80_support_routed_token_selector_audit.py
-python scripts/run_stage81_soft_support_routed_token_selector_audit.py
-python scripts/run_stage82_learned_support_routing_head_audit.py
-python scripts/run_stage83_nonlinear_support_routing_bridge_audit.py
-python scripts/run_stage84_support_auxiliary_pointer_generator_audit.py
-python scripts/run_stage216_full_replacement_merged_result_counts.py
-python scripts/run_stage217_full_replacement_calibration_validation.py
-python scripts/run_stage218_full_replacement_hardware_metric_interpreter.py
-python scripts/verify_publication_package.py
+python -m qrope.verify_publication --profile public
 ```
+
+For the full audit tree, use [docs/stage-to-claim-map.md](docs/stage-to-claim-map.md) and `scripts/run_stage*.py`.
 
 ## Status
 

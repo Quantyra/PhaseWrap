@@ -15,6 +15,12 @@ score = phasewrap_score(reference_delta=37, candidate_delta=13)
 features = phasewrap_features(reference_delta=37, candidate_delta=13)
 ```
 
+The canonical artifact-compatible package name remains `qrope`. A `phasewrap` compatibility import exposes the same public scoring functions for readers who arrive through the repository name:
+
+```python
+from phasewrap import phasewrap_score
+```
+
 ## Functions
 
 ### `phase_residual(reference_delta, candidate_delta, period)`

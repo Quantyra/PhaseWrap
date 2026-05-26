@@ -26,6 +26,8 @@ SCREENING_MIX_ANGLE = math.pi / 4.0
 SUPPORTED_READOUTS = {"weighted", "q2", "parity"}
 SUPPORTED_MIXING_PRESETS = {"mix_it1", "mix_v0", "mix_v1", "mix_v2"}
 PAIRSTATE_CONTROL_MODES = {"aligned", "sector_permuted", "sector_parity"}
+MIN_SIM_QUBITS = 2
+MAX_SIM_QUBITS = 6
 
 
 def simple_quantum_score(
@@ -67,8 +69,9 @@ def build_quantum_state(
     seed: int,
     n_qubits: int = 3,
     mixing_preset: str = "mix_v0",
+    clamp_qubits: bool = False,
 ) -> np.ndarray:
-    n = max(2, min(n_qubits, 6))
+    n = validate_sim_qubits(n_qubits, clamp_qubits=clamp_qubits)
     dim = 1 << n
     state = np.zeros(dim, dtype=np.complex128)
     state[0] = 1.0 + 0.0j
@@ -227,8 +230,14 @@ def relational_witness_features(text: str, seed: int, n_qubits: int = 3) -> dict
     }
 
 
-def build_branch_state(token: str, position: int, seed: int, n_qubits: int = 3) -> np.ndarray:
-    n = max(2, min(n_qubits, 6))
+def build_branch_state(
+    token: str,
+    position: int,
+    seed: int,
+    n_qubits: int = 3,
+    clamp_qubits: bool = False,
+) -> np.ndarray:
+    n = validate_sim_qubits(n_qubits, clamp_qubits=clamp_qubits)
     dim = 1 << n
     state = np.zeros(dim, dtype=np.complex128)
     state[0] = 1.0 + 0.0j
@@ -328,14 +337,26 @@ def feature_angles(text: str, n_qubits: int, seed: int) -> list[float]:
 
 
 def stable_token_hash(tok: str, qubit_index: int, seed: int) -> int:
+    """Return a deterministic 16-bit bucket hash for toy feature loading."""
     payload = f"{tok}|{qubit_index}|{seed}".encode("utf-8")
     digest = hashlib.sha256(payload).digest()
     return int.from_bytes(digest[:2], byteorder="big", signed=False)
 
 
 def raw_variant_phases(variant: str, n_qubits: int) -> list[float]:
-    base = VARIANT_PHASE_BASES.get(variant, 0.04)
+    if variant not in VARIANT_PHASE_BASES:
+        raise ValueError(f"Unknown variant: {variant!r}")
+    base = VARIANT_PHASE_BASES[variant]
     return [base * (i + 1) for i in range(n_qubits)]
+
+
+def validate_sim_qubits(n_qubits: int, *, clamp_qubits: bool = False) -> int:
+    n = int(n_qubits)
+    if clamp_qubits:
+        return max(MIN_SIM_QUBITS, min(n, MAX_SIM_QUBITS))
+    if n < MIN_SIM_QUBITS or n > MAX_SIM_QUBITS:
+        raise ValueError(f"n_qubits must be between {MIN_SIM_QUBITS} and {MAX_SIM_QUBITS}")
+    return n
 
 
 def effective_variant_phases(variant: str, features: list[float]) -> list[float]:

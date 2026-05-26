@@ -11,6 +11,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
+import phasewrap  # noqa: E402
 import qrope  # noqa: E402
 
 OPTIONAL_DEPENDENCY_ROOTS = {
@@ -54,6 +55,13 @@ def _import_modules() -> list[str]:
     return skipped
 
 
+def _check_phasewrap_alias() -> None:
+    qrope_score = qrope.phasewrap_score(37, 13)
+    phasewrap_score = phasewrap.phasewrap_score(37, 13)
+    if phasewrap_score != qrope_score:
+        raise RuntimeError("phasewrap compatibility import does not match qrope scoring surface")
+
+
 def _check_artifacts() -> None:
     failures: list[str] = []
     for artifact in REQUIRED_ARTIFACTS:
@@ -94,6 +102,7 @@ def _run_script_help() -> None:
 
 def main() -> int:
     skipped = _import_modules()
+    _check_phasewrap_alias()
     _check_artifacts()
     _run_script_help()
     print("Public surface smoke passed.")

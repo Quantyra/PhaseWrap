@@ -5,11 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "qrope"
 version = "0.1.0"
-description = "PhaseWrap phase-wrap evidence and hardware-validation tooling"
+description = "PhaseWrap negative-results evidence and reviewer-verification tooling"
 readme = "README.md"
-license = { text = "AGPL-3.0-only" }
+license = "AGPL-3.0-only"
 classifiers = [
-  "License :: OSI Approved :: GNU Affero General Public License v3",
   "Programming Language :: Python :: 3",
 ]
 requires-python = ">=3.10"
@@ -50,6 +49,9 @@ hardware = [
 transformer = [
   "autograd>=1.8",
 ]
+
+[project.scripts]
+phasewrap-verify = "qrope.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

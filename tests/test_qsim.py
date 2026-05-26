@@ -174,6 +174,17 @@ def test_build_quantum_state_is_normalized() -> None:
     assert np.allclose(float(np.vdot(state, state).real), 1.0)
 
 
+def test_build_quantum_state_rejects_invalid_qubit_count_unless_clamped() -> None:
+    import numpy as np
+
+    with pytest.raises(ValueError, match="n_qubits"):
+        build_quantum_state("good food", variant="V3", seed=42, n_qubits=1)
+
+    state = build_quantum_state("good food", variant="V3", seed=42, n_qubits=1, clamp_qubits=True)
+    assert len(state) == 4
+    assert np.allclose(float(np.vdot(state, state).real), 1.0)
+
+
 def test_state_overlap_score_identity_is_one() -> None:
     state = build_quantum_state("good food and quick service", variant="V3", seed=42)
     assert state_overlap_score(state, state) == pytest.approx(1.0)
@@ -213,6 +224,16 @@ def test_build_branch_state_is_normalized() -> None:
 
     state = build_branch_state(token="A", position=3, seed=42)
     assert np.allclose(float(np.vdot(state, state).real), 1.0)
+
+
+def test_build_branch_state_rejects_invalid_qubit_count() -> None:
+    with pytest.raises(ValueError, match="n_qubits"):
+        build_branch_state(token="A", position=3, seed=42, n_qubits=7)
+
+
+def test_unknown_variant_is_rejected() -> None:
+    with pytest.raises(ValueError, match="Unknown variant"):
+        raw_variant_phases("V_typo", 3)
 
 
 def test_explicit_interference_score_is_deterministic_and_bounded() -> None:

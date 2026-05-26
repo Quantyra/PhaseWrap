@@ -28,6 +28,14 @@ python -m pip install -e .
 Run the publication package verifier:
 
 ```bash
+python -m qrope.verify_publication --profile public
+```
+
+Expected output: `PHASEWRAP_PUBLIC_VERIFY_PASS`.
+
+Equivalent legacy script:
+
+```bash
 python scripts/verify_publication_package.py
 ```
 
@@ -35,6 +43,15 @@ Run the focused public-review tests:
 
 ```bash
 python -m pytest tests/test_scoring_api.py tests/test_publication_package_verifier.py tests/test_stage216_218_full_replacement_interpretation.py tests/test_stage219_rope_substitution_gate.py
+```
+
+## Reviewer Container
+
+`Dockerfile.reviewer` provides a no-credentials verifier container for reviewers who prefer an isolated environment:
+
+```bash
+docker build -f Dockerfile.reviewer -t phasewrap-reviewer .
+docker run --rm phasewrap-reviewer
 ```
 
 ## Optional Provider Installs

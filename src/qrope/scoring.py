@@ -33,6 +33,8 @@ def phase_margins(
     """Return the two signed residual margins used by the PhaseWrap score."""
     if len(period_pair) != 2:
         raise ValueError("period_pair must contain exactly two periods")
+    if len(set(period_pair)) != len(period_pair):
+        raise ValueError("period_pair periods must be unique")
     first_period, second_period = period_pair
     first_residual = phase_residual(reference_delta, candidate_delta, first_period)
     second_residual = phase_residual(reference_delta, candidate_delta, second_period)
@@ -77,10 +79,11 @@ def phasewrap_features(
 ) -> dict[str, Any]:
     """Return a JSON-friendly feature record for the PhaseWrap score inputs."""
     margins = phase_margins(reference_delta, candidate_delta, period_pair)
+    score = float(margins["first_margin"] * margins["second_margin"])
     return {
         "reference_delta": reference_delta,
         "candidate_delta": candidate_delta,
         "period_pair": list(period_pair),
         **margins,
-        "score": phasewrap_score(reference_delta, candidate_delta, period_pair),
+        "score": score,
     }

@@ -53,3 +53,5 @@ def test_invalid_period_inputs_raise() -> None:
         phase_residual(1, 2, 0)
     with pytest.raises(ValueError, match="period_pair"):
         phase_margins(1, 2, (8, 12, 24))  # type: ignore[arg-type]
+    with pytest.raises(ValueError, match="unique"):
+        phase_margins(1, 2, (8, 8))

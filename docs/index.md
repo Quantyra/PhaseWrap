@@ -4,6 +4,8 @@ This documentation tree separates the reusable method/package material from the 
 
 ## Reviewer Fast Path
 
+- [Reviewer start](../REVIEWER_START.md)
+- [Stage-to-claim map](stage-to-claim-map.md)
 - [PhaseWrap research program decision](publication/phasewrap-research-program-decision-v1.md)
 - [PhaseWrap execution freeze](publication/phasewrap-execution-freeze-v1.md)
 - [PhaseWrap decision execution audit](publication/phasewrap-decision-execution-audit-v1.md)

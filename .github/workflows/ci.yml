@@ -7,6 +7,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   public-review-tests:
     runs-on: ubuntu-latest
@@ -35,10 +38,13 @@ jobs:
         run: |
           pytest --cov=qrope --cov-report=term-missing --cov-report=xml \
             tests/test_scoring_api.py \
+            tests/test_phasewrap_alias.py \
+            tests/test_qsim.py \
             tests/test_stage11_phasewrap_theory.py \
             tests/test_stage12_ruler_retrieval.py \
             tests/test_env_utils.py \
             tests/test_publication_package_verifier.py \
+            tests/test_publication_verify_cli.py \
             tests/test_stage216_218_full_replacement_interpretation.py \
             tests/test_stage219_rope_substitution_gate.py
 

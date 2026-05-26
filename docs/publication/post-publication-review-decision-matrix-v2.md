@@ -119,14 +119,23 @@ The novelty supplement adds no discarded items. Its main effect is to narrow the
 | 5 | Hardware-language containment | R004, R033-R035, R042, R044 | Hardware-readout positives must never be confused with transformer, RoPE, or quantum-advantage claims. |
 | 6 | External review and publication path | R030, R045-R050 | The repo's scientific value increases if external reviewers can independently walk the short path and open issues. |
 
-## Recommended Next Decision
+## Implementation Status
 
-If choosing the next work package by relevance rather than timeline, the highest leverage is:
+The first implementation pass addresses the highest-leverage items without rewriting frozen historical evidence:
 
-1. Add `REVIEWER_START.md`.
-2. Add one canonical no-credential verifier CLI.
-3. Add a dedicated stage-to-claim map that exposes only headline stages first.
-4. Harden `qsim` and scoring edge cases.
-5. Split CI into fast/full/manual-live lanes.
+- `R001-R004`: added `REVIEWER_START.md`, a visible hardware-positive caveat, and a shorter first-contact README path.
+- `R002`, `R006`: added `python -m qrope.verify_publication --profile public` and the `phasewrap-verify` console entry point backed by `qrope.verify`.
+- `R003`, `R023`, `R031`: added `docs/stage-to-claim-map.md` and replaced the README's long command dump with the headline verifier path.
+- `R007-R011`: hardened `qsim` qubit/variant validation, documented the 16-bit toy hash assumption, rejected duplicate period pairs, and made `phasewrap_features()` single-pass over computed margins.
+- `R012-R017`, `R040-R041`: expanded fast CI coverage, added a manual full-test/build workflow, added least-privilege workflow permissions, switched Gitleaks to the maintained action path, added Dependabot, CodeQL, pre-commit config, and basic Pyright config.
+- `R018-R019`: kept `qrope` for artifact compatibility and added a `phasewrap` compatibility import surface.
+- `R021-R022`, `R043`: added a compact mathematical summary and README schematic, and pulled the Stage 5 exact-recovery constraint into the front-door limitation list.
+- `R029`: added a concise "How To Cite Or Review" section to `REVIEWER_START.md`.
+- `R033-R035`, `R042`, `R044`: preserved historical Stage 218 strings only as aliases and made bounded readout-audit language load-bearing near the top.
 
-Those changes directly address the common critique across all three reviewers: the repo's evidence discipline is strong, but the reviewer path is still too noisy.
+Longer-run relevant items remain valid but are deliberately not forced into this pass:
+
+- `R005`, `R025-R026`: splitting `src/qrope/run.py`, reducing stage boilerplate, and broad type-hint cleanup are larger refactors that should preserve frozen evidence semantics.
+- `R014`, `R027`: lint/type/coverage reporting can be made stricter after the public verifier path is stable.
+- `R015`: `Dockerfile.reviewer` adds a container path, but a fully hash-pinned lock remains useful for archival reproducibility.
+- `R030`, `R045-R050`: external publication and external review are process steps outside this code-only pass.

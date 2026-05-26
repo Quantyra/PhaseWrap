@@ -1,0 +1,9 @@
+{
+  "typeCheckingMode": "basic",
+  "include": ["src"],
+  "exclude": [
+    "**/__pycache__",
+    "src/qrope/run.py"
+  ],
+  "reportMissingTypeStubs": false
+}

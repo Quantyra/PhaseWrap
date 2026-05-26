@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /phasewrap
+
+COPY requirements-review.txt pyproject.toml README.md ./
+COPY src ./src
+COPY scripts ./scripts
+COPY docs ./docs
+COPY logs ./logs
+COPY tests ./tests
+COPY CITATION.cff NOTICE PATENTS.md .zenodo.json REVIEWER_START.md ./
+
+RUN python -m pip install --upgrade pip \
+    && python -m pip install -r requirements-review.txt \
+    && python -m pip install -e .
+
+CMD ["python", "-m", "qrope.verify_publication", "--profile", "public"]
