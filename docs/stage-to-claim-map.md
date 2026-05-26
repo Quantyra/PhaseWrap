@@ -2,9 +2,9 @@
 
 Status: `REVIEWER_FRONT_DOOR`
 
-This map separates the headline evidence from the full historical stage archive.
+This map separates the canonical public argument from the full historical stage archive. The full stage tree is preserved for provenance, but the negative-results publication should be reviewed through the compact experiment set below.
 
-## Headline Path
+## Canonical Experiment Map
 
 | Claim question | Decisive stage(s) | Current result | Review command |
 | --- | --- | --- | --- |
@@ -14,6 +14,10 @@ This map separates the headline evidence from the full historical stage archive.
 | Can assistance pipelines solve retrieval without isolating the positional method? | Stage 67, 74/75, 80/81, 82, 93/94/96 | Content-key, support-recovery, and support-routing paths repeatedly repair retrieval for `no_position` too; learned support-to-token binding remains bounded. | `python scripts/run_stage80_support_routed_token_selector_audit.py` |
 | Do PhaseWrap-derived adapters reach bounded rank parity while losing calibration/probability? | Stage 219 | Top-1/MRR parity in Stage 30/32 bridges, with measured probability and ECE degradation versus RoPE. | `python scripts/run_stage219_rope_substitution_gate.py` |
 | What is the hardware evidence? | Stage 216-218 | One frozen IBM Fez packet favors PhaseWrap on normalized readout-noise delta after known-state calibration. This is hardware-readout audit evidence only. | `python scripts/run_stage218_full_replacement_hardware_metric_interpreter.py` |
+
+## Historical Archive Policy
+
+Stages outside the canonical map remain part of the evidence archive and can be rerun from `scripts/run_stage*.py` or inspected under `logs/automated_stage_gates/`. They should not be promoted as independent headline claims unless a future review adds them to this map with an explicit claim boundary.
 
 ## Claim Boundary
 

@@ -96,6 +96,13 @@ The strongest already-addressed concern is hardware-overclaim wording. The prior
 | R053 | Claude supplement | Do not call specific external papers "suspect" without reproducing their experiments under stronger controls. | `relevant` | This is the correct scientific posture. The repo can make a category-level warning about missing controls, not allegations about particular papers. |
 | R054 | Claude supplement | Position Stage 80/81 as a granular worked example of an established concern. | `relevant` | This preserves the value of the PhaseWrap evidence while avoiding novelty overclaiming. |
 | R055 | Claude supplement | If the draft implies the warning itself is novel, reviewers will object. | `relevant` | The methodology paper should explicitly state the novelty boundary. |
+| R056 | Claude final recommendation | Rewrite the README around Stage 11 score theory, Stages 80/81 methodology warning, and Stages 216-218 bounded hardware-readout audit. | `relevant` | Valid. The previous README still read like a lab notebook despite the short front door. The public README should carry only the three headline lanes and link to the archive. |
+| R057 | Claude final recommendation | Promote Stages 80/81 into a standalone methods preprint. | `relevant` | Valid. This remains the most generalizable contribution, especially when framed as a worked example of established shortcut/control-task/NoPE concerns. |
+| R058 | Claude final recommendation | Decide on one name: PhaseWrap or qrope, everywhere. | `partially_relevant` | Valid as reviewer ergonomics, but frozen artifacts and import compatibility make a hard rename risky. Public naming should be PhaseWrap; `qrope` remains a documented legacy namespace with a `phasewrap` shim. |
+| R059 | Claude final recommendation | Rerun trained ablations in a real ML framework or remove them. | `relevant` | Valid. Archived autograd toy ablations should not be headline evidence. Future positive transformer claims require a current ML framework and preregistered metrics. |
+| R060 | Claude final recommendation | Rename hardware decision string to describe the measured noise-sensitivity delta, not "advantage." | `partially_relevant` | Valid for public language. The public alias is now `IBM_FEZ_FROZEN_PACKET_READOUT_NOISE_DELTA_FAVORS_PHASEWRAP`; the old manifest string is retained only as frozen historical evidence. |
+| R061 | Claude final recommendation | Reconcile or remove patent language. | `partially_relevant` | Valid for positioning. Patent text should remain low-prominence, factual, and non-claim-bearing; full removal is unnecessary because the repo has filed-document context and a separate `PATENTS.md`. |
+| R062 | Claude final recommendation | Collapse Stages 5-87 into about 10 canonical experiments and archive the rest. | `relevant` | Valid. The repo should preserve the full stage archive for provenance while presenting only a compact canonical experiment map to reviewers. |
 
 ## Items To Discard
 
@@ -106,7 +113,7 @@ Only two recommendations are discarded:
 
 Everything else is at least partially relevant when judged against long-run repo quality rather than short-term implementation cost.
 
-The novelty supplement adds no discarded items. Its main effect is to narrow the claimed contribution: PhaseWrap should be presented as an auditable worked example of established shortcut-learning/control-task/NoPE concerns.
+The novelty supplement and final recommendation add no discarded items. Their main effect is to narrow the claimed contribution: PhaseWrap should be presented as an auditable worked example of established shortcut-learning/control-task/NoPE concerns, with a compact public front door rather than a full lab notebook in the README.
 
 ## Highest-Value Backlog Themes
 
@@ -132,6 +139,7 @@ The first implementation pass addresses the highest-leverage items without rewri
 - `R021-R022`, `R043`: added a compact mathematical summary and README schematic, and pulled the Stage 5 exact-recovery constraint into the front-door limitation list.
 - `R029`: added a concise "How To Cite Or Review" section to `REVIEWER_START.md`.
 - `R033-R035`, `R042`, `R044`: preserved historical Stage 218 strings only as aliases and made bounded readout-audit language load-bearing near the top.
+- `R056`, `R059-R062`: rewrote the README around three headline lanes, demoted autograd toy ablations to archived context, kept patents low-prominence, and made the canonical stage map the reviewer-facing replacement for the full stage cascade.
 
 Longer-run relevant items remain valid but are deliberately not forced into this pass:
 
